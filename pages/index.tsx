@@ -8,10 +8,11 @@ import Link from "next/link";
 
 export type Props = {
 	menu: Menu,
+	host: string
 }
 
-export default function Home({ menu }: Props) {
-
+export default function Home({ menu, host }: Props) {
+	console.log(host)
 	return (
 		<div className={s.container}>
 

@@ -158,6 +158,7 @@ type DistrictModelFilter = {
   email?: InputMaybe<StringFilter>;
   id?: InputMaybe<ItemIdFilter>;
   name?: InputMaybe<StringFilter>;
+  subdomain?: InputMaybe<StringFilter>;
 };
 
 enum DistrictModelOrderBy {
@@ -182,7 +183,9 @@ enum DistrictModelOrderBy {
   id_ASC = 'id_ASC',
   id_DESC = 'id_DESC',
   name_ASC = 'name_ASC',
-  name_DESC = 'name_DESC'
+  name_DESC = 'name_DESC',
+  subdomain_ASC = 'subdomain_ASC',
+  subdomain_DESC = 'subdomain_DESC'
 }
 
 /** Record of type Distrikt (district) */
@@ -203,6 +206,7 @@ type DistrictRecord = RecordInterface & {
   email?: Maybe<Scalars['String']>;
   id: Scalars['ItemId'];
   name?: Maybe<Scalars['String']>;
+  subdomain?: Maybe<Scalars['String']>;
 };
 
 
