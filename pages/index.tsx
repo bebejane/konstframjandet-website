@@ -15,7 +15,6 @@ export default function Home({ menu, host }: Props) {
 	console.log(host)
 	return (
 		<div className={s.container}>
-
 			<ul>
 				<li><Link href="/nyheter">Nyheter</Link></li>
 				<li><Link href="/om">Om</Link></li>

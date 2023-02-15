@@ -44,30 +44,6 @@ const nextOptions = {
 		);
 		return config;
 	},
-	async rewrites() {
-		return [
-			{
-				has: [
-					{
-						type: "host",
-						value: "(?distrikt1.*)",
-					},
-				],
-				source: "/",
-				destination: "/",
-			},
-			{
-				has: [
-					{
-						type: "host",
-						value: "(?distrikt2.*)",
-					},
-				],
-				source: "/",
-				destination: "/",
-			},
-		];
-	},
 };
 
 /**
