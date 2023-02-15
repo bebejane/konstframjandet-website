@@ -4,18 +4,23 @@ import withGlobalProps from "/lib/withGlobalProps";
 import { GetStaticProps } from "next";
 import { apiQuery } from "dato-nextjs-utils/api";
 import type { Menu } from "/lib/menu";
+import Link from "next/link";
 
 export type Props = {
-	regionStart: RegionRecord
 	menu: Menu,
-	region: RegionRecord
 }
 
-export default function Home({ }: Props) {
+export default function Home({ menu }: Props) {
 
 	return (
 		<div className={s.container}>
-			home
+
+			<ul>
+				<li><Link href="/nyheter">Nyheter</Link></li>
+				<li><Link href="/om">Om</Link></li>
+				<li><Link href="/projekt">Projekt</Link></li>
+				<li><Link href="/kontakt">Kontakt</Link></li>
+			</ul>
 		</div>
 	);
 }

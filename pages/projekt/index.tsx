@@ -2,28 +2,28 @@ import s from "./index.module.scss";
 import withGlobalProps from "/lib/withGlobalProps";
 import { GetStaticProps } from "next";
 import { apiQuery } from "dato-nextjs-utils/api";
-import { AllNewsDocument } from "/graphql";
+import { AllProjectsDocument } from "/graphql";
 import { format } from "date-fns";
 import Link from "next/link";
 import { useEffect } from "react";
 
 export type Props = {
-  news: NewsRecord[]
+  projects: ProjectRecord[]
 }
 
-export default function News({ news }: Props) {
+export default function Projects({ projects }: Props) {
 
   return (
     <>
-      <h1 className="noPadding">Nyheter</h1>
+      <h1 className="noPadding">Projekt</h1>
       <div className={s.container}>
         <ul>
-          {news.length > 0 ? news.map(({ id, title, slug }, idx) =>
+          {projects.length > 0 ? projects.map(({ id, title, slug }, idx) =>
             <li key={id} >
-              <Link href={`/nyheter/${slug}`}>{title}</Link>
+              <Link href={`/projekt/${slug}`}>{title}</Link>
             </li>
           ) :
-            <>Det finns inga nyheter...</>
+            <>Det finns inga projekt...</>
           }
         </ul>
       </div>
@@ -35,12 +35,12 @@ export default function News({ news }: Props) {
 
 export const getStaticProps: GetStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
 
-  const { news } = await apiQuery(AllNewsDocument)
+  const { projects } = await apiQuery(AllProjectsDocument)
 
   return {
     props: {
       ...props,
-      news
+      projects
     },
     revalidate
   };

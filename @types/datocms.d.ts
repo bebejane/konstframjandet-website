@@ -1897,6 +1897,7 @@ type ProjectModelFilter = {
   id?: InputMaybe<ItemIdFilter>;
   parent?: InputMaybe<ParentFilter>;
   position?: InputMaybe<PositionFilter>;
+  slug?: InputMaybe<SlugFilter>;
   title?: InputMaybe<StringFilter>;
 };
 
@@ -1945,6 +1946,7 @@ type ProjectRecord = RecordInterface & {
   id: Scalars['ItemId'];
   parent?: Maybe<ProjectRecord>;
   position?: Maybe<Scalars['IntType']>;
+  slug: Scalars['String'];
   title?: Maybe<Scalars['String']>;
 };
 
@@ -2668,6 +2670,21 @@ type focalPoint = {
   y: Scalars['FloatType'];
 };
 
+type AllAboutsQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['IntType']>;
+  skip?: InputMaybe<Scalars['IntType']>;
+}>;
+
+
+type AllAboutsQuery = { __typename?: 'Query', abouts: Array<{ __typename?: 'AboutRecord', id: any, title?: string | null, slug?: string | null }>, pagination: { __typename?: 'CollectionMetadata', count: any } };
+
+type AboutQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+type AboutQuery = { __typename?: 'Query', about?: { __typename?: 'AboutRecord', id: any, title?: string | null, slug?: string | null } | null };
+
 type ImageFragment = { __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, bgColor?: string | null, sizes: string } | null };
 
 type ImageMediumFragment = { __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, bgColor?: string | null, sizes: string } | null };
@@ -2684,11 +2701,26 @@ type AllNewsQueryVariables = Exact<{
 }>;
 
 
-type AllNewsQuery = { __typename?: 'Query', news: Array<{ __typename?: 'NewsRecord', id: any, title?: string | null }>, pagination: { __typename?: 'CollectionMetadata', count: any } };
+type AllNewsQuery = { __typename?: 'Query', news: Array<{ __typename?: 'NewsRecord', id: any, title?: string | null, slug?: string | null }>, pagination: { __typename?: 'CollectionMetadata', count: any } };
 
 type NewsQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-type NewsQuery = { __typename?: 'Query', news?: { __typename?: 'NewsRecord', id: any } | null };
+type NewsQuery = { __typename?: 'Query', news?: { __typename?: 'NewsRecord', id: any, title?: string | null, slug?: string | null } | null };
+
+type AllProjectsQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['IntType']>;
+  skip?: InputMaybe<Scalars['IntType']>;
+}>;
+
+
+type AllProjectsQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string }>, pagination: { __typename?: 'CollectionMetadata', count: any } };
+
+type ProjectQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+type ProjectQuery = { __typename?: 'Query', project?: { __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string } | null };

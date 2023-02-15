@@ -51,20 +51,6 @@ body {
 
 html {
 	box-sizing: border-box;
-
-	&[data-theme="dark"] {
-		--background: var(--black);
-		--foreground: var(--white);
-
-		button:hover {
-			color: var(--black);
-		}
-
-		span {
-			color: var(--white);
-		}
-
-	}
 }
 
 html,
