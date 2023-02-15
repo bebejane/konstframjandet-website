@@ -2676,20 +2676,40 @@ type AllAboutsQueryVariables = Exact<{
 }>;
 
 
-type AllAboutsQuery = { __typename?: 'Query', abouts: Array<{ __typename?: 'AboutRecord', id: any, title?: string | null, slug?: string | null }>, pagination: { __typename?: 'CollectionMetadata', count: any } };
+type AllAboutsQuery = { __typename?: 'Query', abouts: Array<{ __typename?: 'AboutRecord', id: any, title?: string | null, slug?: string | null, _createdAt: any }>, pagination: { __typename?: 'CollectionMetadata', count: any } };
 
 type AboutQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-type AboutQuery = { __typename?: 'Query', about?: { __typename?: 'AboutRecord', id: any, title?: string | null, slug?: string | null } | null };
+type AboutQuery = { __typename?: 'Query', about?: { __typename?: 'AboutRecord', id: any, title?: string | null, slug?: string | null, _createdAt: any } | null };
+
+type AllDistricsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type AllDistricsQuery = { __typename?: 'Query', districts: Array<{ __typename?: 'DistrictRecord', id: any, name?: string | null, email?: string | null, color?: { __typename?: 'ColorField', hex: string } | null }> };
+
+type DistrictQueryVariables = Exact<{
+  email: Scalars['String'];
+}>;
+
+
+type DistrictQuery = { __typename?: 'Query', district?: { __typename?: 'DistrictRecord', id: any, name?: string | null, email?: string | null, color?: { __typename?: 'ColorField', hex: string } | null } | null };
+
+type AboutFragment = { __typename?: 'AboutRecord', id: any, title?: string | null, slug?: string | null, _createdAt: any };
+
+type DistrictFragment = { __typename?: 'DistrictRecord', id: any, name?: string | null, email?: string | null, color?: { __typename?: 'ColorField', hex: string } | null };
 
 type ImageFragment = { __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, bgColor?: string | null, sizes: string } | null };
 
 type ImageMediumFragment = { __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, bgColor?: string | null, sizes: string } | null };
 
 type ImageThumbnailFragment = { __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, bgColor?: string | null } | null };
+
+type NewsFragment = { __typename?: 'NewsRecord', id: any, title?: string | null, slug?: string | null, _createdAt: any };
+
+type ProjectFragment = { __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string, _createdAt: any, color?: { __typename?: 'ColorField', hex: string } | null };
 
 type SiteFragment = { __typename?: 'Site', favicon: Array<{ __typename?: 'Tag', attributes?: any | null, content?: string | null, tag: string }>, globalSeo?: { __typename?: 'GlobalSeoField', facebookPageUrl?: string | null, siteName?: string | null, titleSuffix?: string | null, twitterAccount?: string | null, fallbackSeo?: { __typename?: 'SeoField', description?: string | null, title?: string | null, twitterCard?: string | null, image?: { __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, bgColor?: string | null, sizes: string } | null } | null } | null } | null };
 
@@ -2701,14 +2721,14 @@ type AllNewsQueryVariables = Exact<{
 }>;
 
 
-type AllNewsQuery = { __typename?: 'Query', news: Array<{ __typename?: 'NewsRecord', id: any, title?: string | null, slug?: string | null }>, pagination: { __typename?: 'CollectionMetadata', count: any } };
+type AllNewsQuery = { __typename?: 'Query', news: Array<{ __typename?: 'NewsRecord', id: any, title?: string | null, slug?: string | null, _createdAt: any }>, pagination: { __typename?: 'CollectionMetadata', count: any } };
 
 type NewsQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-type NewsQuery = { __typename?: 'Query', news?: { __typename?: 'NewsRecord', id: any, title?: string | null, slug?: string | null } | null };
+type NewsQuery = { __typename?: 'Query', news?: { __typename?: 'NewsRecord', id: any, title?: string | null, slug?: string | null, _createdAt: any } | null };
 
 type AllProjectsQueryVariables = Exact<{
   first?: InputMaybe<Scalars['IntType']>;
@@ -2716,11 +2736,11 @@ type AllProjectsQueryVariables = Exact<{
 }>;
 
 
-type AllProjectsQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string }>, pagination: { __typename?: 'CollectionMetadata', count: any } };
+type AllProjectsQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string, _createdAt: any, color?: { __typename?: 'ColorField', hex: string } | null }>, pagination: { __typename?: 'CollectionMetadata', count: any } };
 
 type ProjectQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-type ProjectQuery = { __typename?: 'Query', project?: { __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string } | null };
+type ProjectQuery = { __typename?: 'Query', project?: { __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string, _createdAt: any, children?: Array<{ __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string, _createdAt: any, color?: { __typename?: 'ColorField', hex: string } | null } | null> | null, color?: { __typename?: 'ColorField', hex: string } | null } | null };

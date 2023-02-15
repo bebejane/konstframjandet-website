@@ -1,0 +1,10 @@
+query AllDistrics {
+	districts: allDistricts {
+		...DistrictFragment
+	}
+}
+query District($email: String!) {
+	district(filter: { email: { eq: $email } }) {
+		...DistrictFragment
+	}
+}

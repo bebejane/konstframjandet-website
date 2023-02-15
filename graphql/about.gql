@@ -1,8 +1,6 @@
 query AllAbouts($first: IntType = 100, $skip: IntType = 0) {
 	abouts: allAbouts(first: $first, skip: $skip, orderBy: [_createdAt_DESC]) {
-		id
-		title
-		slug
+		...AboutFragment
 	}
 	pagination: _allAboutsMeta {
 		count
@@ -11,8 +9,6 @@ query AllAbouts($first: IntType = 100, $skip: IntType = 0) {
 
 query About($slug: String!) {
 	about(filter: { slug: { eq: $slug } }) {
-		id
-		title
-		slug
+		...AboutFragment
 	}
 }

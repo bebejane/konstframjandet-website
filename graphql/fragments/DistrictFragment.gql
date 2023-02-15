@@ -1,0 +1,8 @@
+fragment DistrictFragment on DistrictRecord {
+	id
+	name
+	email
+	color {
+		hex
+	}
+}

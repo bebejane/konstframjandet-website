@@ -1,0 +1,6 @@
+fragment AboutFragment on AboutRecord {
+	id
+	title
+	slug
+	_createdAt
+}

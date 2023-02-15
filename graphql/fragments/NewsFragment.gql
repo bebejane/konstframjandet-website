@@ -1,0 +1,6 @@
+fragment NewsFragment on NewsRecord {
+	id
+	title
+	slug
+	_createdAt
+}

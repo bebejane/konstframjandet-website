@@ -1,0 +1,8 @@
+export { default as Button } from './blocks/Button'
+export { default as Image } from './blocks/Image'
+export { default as ImageGallery } from './blocks/ImageGallery'
+export { default as ImageShortcut } from './blocks/ImageShortcut'
+export { default as Block } from './blocks'
+export { default as LatestNews } from './blocks/LatestNews'
+export { default as Text } from './blocks/Text'
+export { default as Video } from './blocks/Video'

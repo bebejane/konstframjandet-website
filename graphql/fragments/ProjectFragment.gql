@@ -1,0 +1,9 @@
+fragment ProjectFragment on ProjectRecord {
+	id
+	title
+	slug
+	_createdAt
+	color {
+		hex
+	}
+}

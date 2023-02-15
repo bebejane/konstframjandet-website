@@ -1,8 +1,6 @@
 query AllNews($first: IntType = 100, $skip: IntType = 0) {
 	news: allNews(first: $first, skip: $skip, orderBy: [_createdAt_DESC]) {
-		id
-		title
-		slug
+		...NewsFragment
 	}
 
 	pagination: _allNewsMeta {
@@ -12,8 +10,6 @@ query AllNews($first: IntType = 100, $skip: IntType = 0) {
 
 query News($slug: String!) {
 	news(filter: { slug: { eq: $slug } }) {
-		id
-		title
-		slug
+		...NewsFragment
 	}
 }
