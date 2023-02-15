@@ -16,6 +16,7 @@ export default function Home({ menu, district }: Props) {
 	return (
 		<div className={s.container}>
 			District: {district?.name}
+			<div className={s.color} style={{ backgroundColor: district?.color.hex }}></div>
 			<ul>
 				<li><Link href="/nyheter">Nyheter</Link></li>
 				<li><Link href="/om">Om</Link></li>
