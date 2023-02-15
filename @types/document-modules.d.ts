@@ -43,3 +43,13 @@ declare module '*/VideoFragment.gql' {
   export default defaultDocument;
 }
     
+
+declare module '*/news.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const AllNews: DocumentNode;
+export const News: DocumentNode;
+
+  export default defaultDocument;
+}
+    
