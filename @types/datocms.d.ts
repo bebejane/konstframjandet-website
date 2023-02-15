@@ -2695,7 +2695,7 @@ type AllDistricsQueryVariables = Exact<{ [key: string]: never; }>;
 type AllDistricsQuery = { __typename?: 'Query', districts: Array<{ __typename?: 'DistrictRecord', id: any, name?: string | null, email?: string | null, color?: { __typename?: 'ColorField', hex: string } | null }> };
 
 type DistrictQueryVariables = Exact<{
-  email: Scalars['String'];
+  subdomain: Scalars['String'];
 }>;
 
 

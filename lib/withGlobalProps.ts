@@ -1,5 +1,6 @@
 import { apiQuery, SEOQuery } from "dato-nextjs-utils/api";
 import { GetStaticProps, GetServerSideProps } from 'next'
+import { DistrictDocument } from "/graphql";
 import type { TypedDocumentNode } from "@apollo/client/core/types.js";
 import { buildMenu } from "/lib/menu";
 
@@ -18,7 +19,9 @@ export default function withGlobalProps(opt: any, callback: Function): GetStatic
   return async (context) => {
     const props = await apiQuery(queries, { preview: context.preview });
     props.menu = []//await buildMenu()
-    props.host = context.req?.headers?.host || null
+    const subdomain = context.req?.headers?.host?.split('.')[0] || null
+    if (subdomain)
+      props.district = (await apiQuery(DistrictDocument, { variables: { subdomain } }))
 
     if (callback)
       return await callback({ context, props: { ...props }, revalidate });

@@ -8,13 +8,14 @@ import Link from "next/link";
 
 export type Props = {
 	menu: Menu,
-	host: string
+	district: DistrictRecord
 }
 
-export default function Home({ menu, host }: Props) {
-	console.log(host)
+export default function Home({ menu, district }: Props) {
+
 	return (
 		<div className={s.container}>
+			District: {district?.name}
 			<ul>
 				<li><Link href="/nyheter">Nyheter</Link></li>
 				<li><Link href="/om">Om</Link></li>

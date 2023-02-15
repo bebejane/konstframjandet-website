@@ -3,8 +3,8 @@ query AllDistrics {
 		...DistrictFragment
 	}
 }
-query District($email: String!) {
-	district(filter: { email: { eq: $email } }) {
+query District($subdomain: String!) {
+	district(filter: { subdomain: { eq: $subdomain } }) {
 		...DistrictFragment
 	}
 }
