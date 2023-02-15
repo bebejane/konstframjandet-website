@@ -33,7 +33,7 @@ export default function News({ news }: Props) {
 
 //News.page = { title: 'Nyheter' } as PageProps
 
-export const getStaticProps: GetStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
+export const getServerSideProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
 
   const { news } = await apiQuery(AllNewsDocument)
 
@@ -41,7 +41,11 @@ export const getStaticProps: GetStaticProps = withGlobalProps({ queries: [] }, a
     props: {
       ...props,
       news
-    },
-    revalidate
+    }
   };
 });
+
+export const config = {
+  runtime: 'experimental-edge'
+}
+

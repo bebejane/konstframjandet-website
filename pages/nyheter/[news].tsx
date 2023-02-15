@@ -20,16 +20,7 @@ export default function NewsItem({ news: { id, _createdAt, title, district, slug
 
 //NewsItem.page = { crumbs: [{ slug: 'nyheter', title: 'Nyheter' }], regional: true } as PageProps
 
-export async function getStaticPaths(context) {
-  const { news } = await apiQuery(AllNewsDocument)
-  const paths = news.map(({ slug }) => ({ params: { news: slug } }))
-  return {
-    paths,
-    fallback: 'blocking'
-  }
-}
-
-export const getStaticProps: GetStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
+export const getServerSideProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
 
   const slug = context.params.news;
   const { news } = await apiQuery(NewsDocument, { variables: { slug }, preview: context.preview })
@@ -42,7 +33,10 @@ export const getStaticProps: GetStaticProps = withGlobalProps({ queries: [] }, a
       ...props,
       news,
       pageTitle: news.title
-    },
-    revalidate
+    }
   };
 });
+
+export const config = {
+  runtime: 'experimental-edge'
+}

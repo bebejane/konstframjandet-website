@@ -20,16 +20,7 @@ export default function ProjectItem({ project: { id, _createdAt, title, district
 
 //ProjectItem.page = { crumbs: [{ slug: 'nyheter', title: 'Nyheter' }], regional: true } as PageProps
 
-export async function getStaticPaths(context) {
-  const { projects } = await apiQuery(AllProjectsDocument)
-  const paths = projects.map(({ slug }) => ({ params: { project: slug } }))
-  return {
-    paths,
-    fallback: 'blocking'
-  }
-}
-
-export const getStaticProps: GetStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
+export const getServerSideProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
 
   const slug = context.params.project;
   const { project } = await apiQuery(ProjectDocument, { variables: { slug }, preview: context.preview })
@@ -42,7 +33,10 @@ export const getStaticProps: GetStaticProps = withGlobalProps({ queries: [] }, a
       ...props,
       project,
       pageTitle: project.title
-    },
-    revalidate
+    }
   };
 });
+
+export const config = {
+  runtime: 'experimental-edge'
+}

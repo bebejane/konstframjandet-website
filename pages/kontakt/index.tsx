@@ -21,10 +21,13 @@ export default function Contact({ }: Props) {
 
 //News.page = { title: 'Nyheter' } as PageProps
 
-export const getStaticProps: GetStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
+export const config = {
+  runtime: 'experimental-edge'
+}
+
+export const getServerSideProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
 
   return {
-    props,
-    revalidate
+    props
   };
 });

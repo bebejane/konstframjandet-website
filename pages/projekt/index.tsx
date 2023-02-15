@@ -40,7 +40,7 @@ export default function Projects({ projects }: Props) {
 
 //News.page = { title: 'Nyheter' } as PageProps
 
-export const getStaticProps: GetStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
+export const getServerSideProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
 
   const { projects } = await apiQuery(AllProjectsTreeDocument)
 
@@ -48,7 +48,10 @@ export const getStaticProps: GetStaticProps = withGlobalProps({ queries: [] }, a
     props: {
       ...props,
       projects
-    },
-    revalidate
+    }
   };
 });
+
+export const config = {
+  runtime: 'experimental-edge'
+}
