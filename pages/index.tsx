@@ -12,7 +12,7 @@ export type Props = {
 }
 
 export default function Home({ menu, district }: Props) {
-
+	console.log(district)
 	return (
 		<div className={s.container}>
 			District: {district?.name}
