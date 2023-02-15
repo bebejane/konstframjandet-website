@@ -54,7 +54,7 @@ const nextOptions = {
 					},
 				],
 				source: "/",
-				destination: "/",
+				destination: "/:host",
 			},
 			{
 				has: [
@@ -64,7 +64,7 @@ const nextOptions = {
 					},
 				],
 				source: "/",
-				destination: "/",
+				destination: "/:host",
 			},
 		];
 	},

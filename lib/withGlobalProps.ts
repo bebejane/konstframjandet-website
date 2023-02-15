@@ -18,7 +18,7 @@ export default function withGlobalProps(opt: any, callback: Function): GetStatic
   return async (context) => {
     const props = await apiQuery(queries, { preview: context.preview });
     props.menu = []//await buildMenu()
-    props.host = context.params?.host
+    props.host = context.params?.host || null
 
     if (callback)
       return await callback({ context, props: { ...props }, revalidate });
