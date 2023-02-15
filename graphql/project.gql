@@ -6,6 +6,17 @@ query AllProjects($first: IntType = 100, $skip: IntType = 0) {
 		count
 	}
 }
+query AllProjectsTree($first: IntType = 100, $skip: IntType = 0) {
+	projects: allProjects(filter: { parent: { exists: false } }, first: $first, skip: $skip) {
+		...ProjectFragment
+		children {
+			...ProjectFragment
+		}
+	}
+	pagination: _allProjectsMeta {
+		count
+	}
+}
 
 query Project($slug: String!) {
 	project(filter: { slug: { eq: $slug } }) {

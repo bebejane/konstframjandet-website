@@ -2,7 +2,7 @@ import s from "./index.module.scss";
 import withGlobalProps from "/lib/withGlobalProps";
 import { GetStaticProps } from "next";
 import { apiQuery } from "dato-nextjs-utils/api";
-import { AllProjectsDocument } from "/graphql";
+import { AllProjectsTreeDocument } from "/graphql";
 import { format } from "date-fns";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -18,9 +18,16 @@ export default function Projects({ projects }: Props) {
       <h1 className="noPadding">Projekt</h1>
       <div className={s.container}>
         <ul>
-          {projects.length > 0 ? projects.map(({ id, title, slug }, idx) =>
+          {projects.length > 0 ? projects.map(({ id, title, slug, children }, idx) =>
             <li key={id} >
               <Link href={`/projekt/${slug}`}>{title}</Link>
+              {children &&
+                <ul>
+                  {children.map(({ id, title, slug }) =>
+                    <li>- <Link href={`/projekt/${slug}`}>{title}</Link></li>
+                  )}
+                </ul>
+              }
             </li>
           ) :
             <>Det finns inga projekt...</>
@@ -35,7 +42,7 @@ export default function Projects({ projects }: Props) {
 
 export const getStaticProps: GetStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
 
-  const { projects } = await apiQuery(AllProjectsDocument)
+  const { projects } = await apiQuery(AllProjectsTreeDocument)
 
   return {
     props: {

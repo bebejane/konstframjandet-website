@@ -2738,6 +2738,14 @@ type AllProjectsQueryVariables = Exact<{
 
 type AllProjectsQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string, _createdAt: any, color?: { __typename?: 'ColorField', hex: string } | null }>, pagination: { __typename?: 'CollectionMetadata', count: any } };
 
+type AllProjectsTreeQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['IntType']>;
+  skip?: InputMaybe<Scalars['IntType']>;
+}>;
+
+
+type AllProjectsTreeQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string, _createdAt: any, children?: Array<{ __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string, _createdAt: any, color?: { __typename?: 'ColorField', hex: string } | null } | null> | null, color?: { __typename?: 'ColorField', hex: string } | null }>, pagination: { __typename?: 'CollectionMetadata', count: any } };
+
 type ProjectQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
