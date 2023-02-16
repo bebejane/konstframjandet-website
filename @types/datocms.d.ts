@@ -2722,6 +2722,7 @@ type VideoFragment = { __typename?: 'FileField', id: any, alt?: string | null, b
 type AllNewsQueryVariables = Exact<{
   first?: InputMaybe<Scalars['IntType']>;
   skip?: InputMaybe<Scalars['IntType']>;
+  districtId?: InputMaybe<Scalars['ItemId']>;
 }>;
 
 
