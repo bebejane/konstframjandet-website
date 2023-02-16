@@ -1,8 +1,6 @@
 import s from "./index.module.scss";
 import cn from 'classnames'
 import withGlobalProps from "/lib/withGlobalProps";
-import { GetServerSideProps, GetStaticProps } from "next";
-import { apiQuery } from "dato-nextjs-utils/api";
 import type { Menu } from "/lib/menu";
 import Link from "next/link";
 
