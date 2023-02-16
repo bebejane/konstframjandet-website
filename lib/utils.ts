@@ -1,6 +1,5 @@
 import { TypedDocumentNode } from "@apollo/client/core";
 import { apiQuery } from "dato-nextjs-utils/api";
-import { regions } from "/lib/region";
 import { isAfter, isBefore } from "date-fns";
 import { NextApiRequest, NextApiResponse } from "next";
 import type { ApiQueryOptions } from "dato-nextjs-utils/api";
