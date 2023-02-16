@@ -1,20 +1,20 @@
 import s from './[news].module.scss'
 import withGlobalProps from "/lib/withGlobalProps";
-import { GetStaticProps } from "next";
 import { apiQuery } from "dato-nextjs-utils/api";
 import { NewsDocument, AllNewsDocument } from "/graphql";
 import { format } from "date-fns";
 import { apiQueryAll } from '/lib/utils';
-
+import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
 export type Props = {
   news: NewsRecord
 }
 
-export default function NewsItem({ news: { id, _createdAt, title, district, slug, _seoMetaTags } }: Props) {
+export default function NewsItem({ news: { id, _createdAt, title, intro, district, slug, _seoMetaTags } }: Props) {
 
   return (
     <>
       {title}
+      <Markdown>{intro}</Markdown>
     </>
   );
 }
