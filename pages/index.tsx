@@ -11,8 +11,9 @@ export type Props = {
 	district: DistrictRecord
 }
 
-export default function Home({ menu, district }: Props) {
-	console.log(district)
+export default function Home({ menu, district, locale }: Props) {
+	console.log(locale)
+	return null
 	return (
 		<div className={s.container}>
 			District: {district?.name}
@@ -27,6 +28,15 @@ export default function Home({ menu, district }: Props) {
 	);
 }
 
+export async function getStaticProps({ params, locale }) {
+	return {
+		props: {
+			locale
+		},
+		revalidate: 60 // Seconds. This refresh time could be longer depending on how often data changes.
+	}
+}
+/*
 export const getServerSideProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
 
 	return {
@@ -37,3 +47,4 @@ export const getServerSideProps = withGlobalProps({ queries: [] }, async ({ prop
 export const config = {
 	runtime: 'experimental-edge'
 }
+*/

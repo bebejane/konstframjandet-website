@@ -12,6 +12,16 @@ const sassOptions = {
   `,
 };
 
+const sites = {
+	distrikt1: {
+		domain: "distrikt1.konstframjandet.se",
+	},
+	distrikt2: {
+		domain: "distrikt2.konstframjandet.se",
+	},
+};
+const siteKeys = Object.keys(sites);
+
 const nextOptions = {
 	typescript: {
 		ignoreBuildErrors: true,
@@ -24,6 +34,17 @@ const nextOptions = {
 	},
 	experimental: {
 		scrollRestoration: true,
+	},
+	publicRuntimeConfig: {
+		sites,
+	},
+	i18n: {
+		locales: siteKeys,
+		defaultLocale: siteKeys[0],
+		domains: siteKeys.map((siteKey) => ({
+			domain: sites[siteKey].domain,
+			defaultLocale: siteKey,
+		})),
 	},
 	webpack: (config, ctx) => {
 		config.module.rules.push({
