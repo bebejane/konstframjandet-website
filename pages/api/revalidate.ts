@@ -25,11 +25,15 @@ export default withRevalidate(async (record, revalidate) => {
   }
 
   if (!revalidateSubdomain) {
-    return await fetch(`https://${district.subdomain}.konstframjandet.se/api/revalidate`, {
+    const headers = new Headers();
+    headers.set('Authorization', 'Basic ' + btoa(process.env.BASIC_AUTH_USER + ":" + process.env.BASIC_AUTH_PASSWORD));
+    await fetch(`https://${district.subdomain}.konstframjandet.se/api/revalidate`, {
       method: 'POST',
-      body: JSON.stringify({ ...payload, revalidateSubdomain: true })
+      body: JSON.stringify({ ...payload, revalidateSubdomain: true }),
+      headers
     })
+  } else {
+    console.log('revalidate district', district?.name, paths)
+    revalidate(paths)
   }
-  console.log('revalidate district', district?.name, paths)
-  revalidate(paths)
 })
