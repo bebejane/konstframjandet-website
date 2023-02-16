@@ -30,10 +30,12 @@ export default function Home({ menu, district }: Props) {
 export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
 
 	return {
-		props
+		props,
+		revalidate
 	}
 })
-
+/*
 export const config = {
 	runtime: 'experimental-edge'
 }
+*/
