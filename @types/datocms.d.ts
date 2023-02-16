@@ -1844,7 +1844,7 @@ type NewsRecord = RecordInterface & {
   _updatedAt: Scalars['DateTime'];
   district: DistrictRecord;
   id: Scalars['ItemId'];
-  slug?: Maybe<Scalars['String']>;
+  slug: Scalars['String'];
   title?: Maybe<Scalars['String']>;
 };
 
@@ -2711,7 +2711,7 @@ type ImageMediumFragment = { __typename?: 'FileField', id: any, mimeType: string
 
 type ImageThumbnailFragment = { __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, bgColor?: string | null } | null };
 
-type NewsFragment = { __typename?: 'NewsRecord', id: any, title?: string | null, slug?: string | null, _createdAt: any };
+type NewsFragment = { __typename?: 'NewsRecord', id: any, title?: string | null, slug: string, _createdAt: any };
 
 type ProjectFragment = { __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string, _createdAt: any, color?: { __typename?: 'ColorField', hex: string } | null };
 
@@ -2726,14 +2726,14 @@ type AllNewsQueryVariables = Exact<{
 }>;
 
 
-type AllNewsQuery = { __typename?: 'Query', news: Array<{ __typename?: 'NewsRecord', id: any, title?: string | null, slug?: string | null, _createdAt: any }>, pagination: { __typename?: 'CollectionMetadata', count: any } };
+type AllNewsQuery = { __typename?: 'Query', news: Array<{ __typename?: 'NewsRecord', id: any, title?: string | null, slug: string, _createdAt: any }>, pagination: { __typename?: 'CollectionMetadata', count: any } };
 
 type NewsQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-type NewsQuery = { __typename?: 'Query', news?: { __typename?: 'NewsRecord', id: any, title?: string | null, slug?: string | null, _createdAt: any } | null };
+type NewsQuery = { __typename?: 'Query', news?: { __typename?: 'NewsRecord', id: any, title?: string | null, slug: string, _createdAt: any } | null };
 
 type AllProjectsQueryVariables = Exact<{
   first?: InputMaybe<Scalars['IntType']>;
