@@ -1,6 +1,7 @@
 fragment NewsFragment on NewsRecord {
 	id
 	title
+	intro(markdown: false)
 	slug
 	_createdAt
 }

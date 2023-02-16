@@ -48,6 +48,7 @@ export const getServerSideProps = withGlobalProps({ queries: [] }, async ({ prop
 */
 
 export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
+
   const { news } = await apiQuery(AllNewsDocument, { variables: { districtId: props.district.id } })
 
   return {

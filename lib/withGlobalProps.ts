@@ -18,12 +18,14 @@ export default function withGlobalProps(opt: any, callback: Function): GetStatic
 
   return async (context) => {
     const props = await apiQuery(queries, { preview: context.preview });
-    props.menu = []//await buildMenu()
-    const subdomain = context.locale//context.req?.headers?.host?.split('.')[0] || null
+    const subdomain = context.locale || null
     if (subdomain) {
       const { district } = await apiQuery(DistrictDocument, { variables: { subdomain } })
       props.district = district || null
     }
+
+    props.menu = [] //await buildMenu()
+
     if (callback)
       return await callback({ context, props: { ...props }, revalidate });
     else

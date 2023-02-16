@@ -1801,6 +1801,7 @@ type NewsModelFilter = {
   _updatedAt?: InputMaybe<UpdatedAtFilter>;
   district?: InputMaybe<LinkFilter>;
   id?: InputMaybe<ItemIdFilter>;
+  intro?: InputMaybe<TextFilter>;
   slug?: InputMaybe<SlugFilter>;
   title?: InputMaybe<StringFilter>;
 };
@@ -1844,6 +1845,7 @@ type NewsRecord = RecordInterface & {
   _updatedAt: Scalars['DateTime'];
   district: DistrictRecord;
   id: Scalars['ItemId'];
+  intro?: Maybe<Scalars['String']>;
   slug: Scalars['String'];
   title?: Maybe<Scalars['String']>;
 };
@@ -1852,6 +1854,12 @@ type NewsRecord = RecordInterface & {
 /** Record of type Nyheter (news) */
 type NewsRecord_seoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Nyheter (news) */
+type NewsRecordintroArgs = {
+  markdown?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** Specifies how to filter by image orientation */
@@ -2303,6 +2311,18 @@ type Tag = {
   tag: Scalars['String'];
 };
 
+/** Specifies how to filter text fields */
+type TextFilter = {
+  /** Filter records with the specified field defined (i.e. with any value) or not */
+  exists?: InputMaybe<Scalars['BooleanType']>;
+  /** Filter records with the specified field set as blank (null or empty string) */
+  isBlank?: InputMaybe<Scalars['BooleanType']>;
+  /** Filter records based on a regular expression */
+  matches?: InputMaybe<StringMatchesFilter>;
+  /** Exclude records based on a regular expression */
+  notMatches?: InputMaybe<StringMatchesFilter>;
+};
+
 /** Specifies how to filter by upload type */
 type TypeFilter = {
   /** Search uploads with the specified type */
@@ -2711,7 +2731,7 @@ type ImageMediumFragment = { __typename?: 'FileField', id: any, mimeType: string
 
 type ImageThumbnailFragment = { __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, bgColor?: string | null } | null };
 
-type NewsFragment = { __typename?: 'NewsRecord', id: any, title?: string | null, slug: string, _createdAt: any };
+type NewsFragment = { __typename?: 'NewsRecord', id: any, title?: string | null, intro?: string | null, slug: string, _createdAt: any };
 
 type ProjectFragment = { __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string, _createdAt: any, color?: { __typename?: 'ColorField', hex: string } | null };
 
@@ -2726,14 +2746,14 @@ type AllNewsQueryVariables = Exact<{
 }>;
 
 
-type AllNewsQuery = { __typename?: 'Query', news: Array<{ __typename?: 'NewsRecord', id: any, title?: string | null, slug: string, _createdAt: any }>, pagination: { __typename?: 'CollectionMetadata', count: any } };
+type AllNewsQuery = { __typename?: 'Query', news: Array<{ __typename?: 'NewsRecord', id: any, title?: string | null, intro?: string | null, slug: string, _createdAt: any }>, pagination: { __typename?: 'CollectionMetadata', count: any } };
 
 type NewsQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-type NewsQuery = { __typename?: 'Query', news?: { __typename?: 'NewsRecord', id: any, title?: string | null, slug: string, _createdAt: any } | null };
+type NewsQuery = { __typename?: 'Query', news?: { __typename?: 'NewsRecord', id: any, title?: string | null, intro?: string | null, slug: string, _createdAt: any } | null };
 
 type AllProjectsQueryVariables = Exact<{
   first?: InputMaybe<Scalars['IntType']>;
