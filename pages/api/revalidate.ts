@@ -6,6 +6,7 @@ export default withRevalidate(async (record, revalidate) => {
   const { slug } = record
   const paths = []
 
+  console.log('payload')
   console.log(_payload)
 
   switch (apiKey) {
