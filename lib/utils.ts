@@ -1,7 +1,5 @@
 import { TypedDocumentNode } from "@apollo/client/core";
 import { apiQuery } from "dato-nextjs-utils/api";
-import { isAfter, isBefore } from "date-fns";
-import { NextApiRequest, NextApiResponse } from "next";
 import type { ApiQueryOptions } from "dato-nextjs-utils/api";
 import React from "react";
 
@@ -43,20 +41,6 @@ export const parseDatoError = (err: any) => {
   return error
 }
 
-export const catchErrorsFrom = (handler) => {
-  return async (req: NextApiRequest, res: NextApiResponse) => {
-    return handler(req, res).catch((error) => {
-      let err = parseDatoError(error)
-      err = typeof err === 'string' ? err : {
-        ...err,
-        _originalError: typeof error === 'string' ? error : { ...error }
-      }
-      res.status(500).send(err);
-      console.log(JSON.stringify(err, null, 2));
-    });
-  }
-}
-
 export const pingEndpoint = async (path: string | string[], method: 'GET' | 'POST' = 'POST') => {
   path = !Array.isArray(path) ? [path] : path;
   path.forEach(p =>
@@ -66,7 +50,7 @@ export const pingEndpoint = async (path: string | string[], method: 'GET' | 'POS
   )
 }
 
-export const recordToSlug = (record: any, region?: Region): string => {
+export const recordToSlug = (record: any): string => {
 
   let url;
 
@@ -100,7 +84,7 @@ export const recordToSlug = (record: any, region?: Region): string => {
     }
   }
 
-  return region && !region?.global ? `/${region.slug}/${url}` : url
+  return url
 }
 
 export const isEmail = (string: string): boolean => {
@@ -109,72 +93,6 @@ export const isEmail = (string: string): boolean => {
   if (string.length > 320) return false;
   return matcher.test(string);
 }
-
-export const fetchAllRecords = async (query: TypedDocumentNode, type?: string) => {
-  const posts = []
-
-  for (let page = 0, count; posts.length < count || page === 0; page++) {
-    const res = await apiQuery(query, { variables: { first: 100, skip: (page * 100) } })
-    const key = type || Object.keys(res).find(k => k !== 'pagination')
-    posts.push.apply(posts, res[key]);
-    count = res.pagination.count;
-  }
-
-  return posts
-}
-
-export const getStaticPaginationPaths = async (query: TypedDocumentNode, segment: string, regional: boolean = false) => {
-
-  const paths = []
-  const items = await fetchAllRecords(query)
-
-  if (regional) {
-    regions.forEach((region) => {
-      const pages = chunkArray(items.filter(p => p.region.id === region.id), pageSize)
-      pages.forEach((posts, pageNo) => {
-        paths.push.apply(paths, posts.map(p => ({
-          params: {
-            region: region.slug,
-            [segment]: p.slug,
-            page: `${pageNo + 1}`,
-          }
-        })))
-      })
-    })
-  } else {
-    const pages = chunkArray(items, pageSize)
-    pages.forEach((posts, pageNo) => {
-      paths.push.apply(paths, posts.map(p => ({
-        params: {
-          [segment]: p.slug,
-          page: `${pageNo + 1}`
-        }
-      })))
-    })
-  }
-
-  return {
-    paths,
-    fallback: 'blocking'
-  };
-}
-
-export const getStaticPagePaths = async (query: TypedDocumentNode, segment: string, regional: boolean = false) => {
-  const items = await fetchAllRecords(query)
-  const paths = []
-
-  items.forEach(({ slug, region }) => {
-    const params = { [segment]: slug }
-    paths.push(!regional ? { params } : { params: { ...params, region: region?.slug } })
-  })
-
-  return {
-    paths,
-    fallback: 'blocking'
-  }
-}
-
-
 
 export const truncateParagraph = (s: string, sentances: number = 1, ellipsis: boolean = true, minLength = 200): string => {
   if (!s || s.length < minLength)
@@ -254,15 +172,6 @@ export const apiQueryAll = async (doc: TypedDocumentNode, opt: ApiQueryOptions =
   }
   return results
 }
-
-export const memberNewsStatus = (date, dateEnd): { value: string, label: string, order: number } => {
-  const today = new Date()
-  const start = new Date(date);
-  const end = !dateEnd ? start : new Date(dateEnd);
-  const status = isAfter(today, end) ? { value: 'past', label: 'Avslutat', order: -1 } : isBefore(today, start) ? { value: 'upcoming', label: 'Kommande', order: 0 } : { value: 'present', label: 'Nu', order: 1 }
-  return status
-}
-
 export const randomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
