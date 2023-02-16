@@ -2,8 +2,8 @@ import { withRevalidate } from 'dato-nextjs-utils/hoc'
 
 export default withRevalidate(async (record, revalidate) => {
 
-  const { api_key: apiKey, _payload } = record.model;
-  const { slug } = record
+  const { api_key: apiKey, } = record.model;
+  const { slug, _payload } = record
   const paths = []
 
   console.log('payload')
