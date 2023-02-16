@@ -2,6 +2,7 @@ fragment DistrictFragment on DistrictRecord {
 	id
 	name
 	email
+	subdomain
 	color {
 		hex
 	}

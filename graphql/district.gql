@@ -1,5 +1,5 @@
 query AllDistrics {
-	districts: allDistricts {
+	districts: allDistricts(first: 100, orderBy: name_ASC) {
 		...DistrictFragment
 	}
 }
