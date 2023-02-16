@@ -5,6 +5,7 @@ export default withRevalidate(async (record, revalidate) => {
   const { api_key: apiKey, _payload } = record.model;
   const { slug } = record
   const paths = []
+
   console.log('payload')
   console.log(_payload)
 
