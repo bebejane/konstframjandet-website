@@ -24,7 +24,7 @@ export default withRevalidate(async (record, revalidate) => {
       break;
   }
 
-  if (!revalidateSubdomain) {
+  if (false) {
     console.log('revalidate subdomain req')
 
     const headers = new Headers();
