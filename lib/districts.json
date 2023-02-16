@@ -1,0 +1,142 @@
+[
+  {
+    "id": "122565723",
+    "type": "item",
+    "name": "Distrikt 1",
+    "email": "bjorn@konst-teknik.se",
+    "color": {
+      "red": 135,
+      "blue": 242,
+      "alpha": 255,
+      "green": 12
+    },
+    "subdomain": "distrikt1",
+    "item_type": {
+      "id": "1452375",
+      "type": "item_type"
+    },
+    "creator": {
+      "id": "38999",
+      "type": "user"
+    },
+    "meta": {
+      "created_at": "2023-02-15T10:19:58.547+00:00",
+      "updated_at": "2023-02-15T13:46:22.906+00:00",
+      "published_at": "2023-02-15T13:46:22.937+00:00",
+      "publication_scheduled_at": null,
+      "unpublishing_scheduled_at": null,
+      "first_published_at": "2023-02-15T10:19:58.571+00:00",
+      "is_valid": true,
+      "is_current_version_valid": true,
+      "is_published_version_valid": true,
+      "status": "published",
+      "current_version": "233525589",
+      "stage": null
+    }
+  },
+  {
+    "id": "122735045",
+    "type": "item",
+    "name": "Distrikt 2",
+    "email": "bjornthief@gmail.com",
+    "color": {
+      "red": 170,
+      "blue": 25,
+      "alpha": 255,
+      "green": 211
+    },
+    "subdomain": "distrikt2",
+    "item_type": {
+      "id": "1452375",
+      "type": "item_type"
+    },
+    "creator": {
+      "id": "39027",
+      "type": "user"
+    },
+    "meta": {
+      "created_at": "2023-02-15T13:56:19.562+00:00",
+      "updated_at": "2023-02-15T13:58:04.477+00:00",
+      "published_at": "2023-02-15T13:58:04.504+00:00",
+      "publication_scheduled_at": null,
+      "unpublishing_scheduled_at": null,
+      "first_published_at": "2023-02-15T13:56:19.585+00:00",
+      "is_valid": true,
+      "is_current_version_valid": true,
+      "is_published_version_valid": true,
+      "status": "published",
+      "current_version": "233531052",
+      "stage": null
+    }
+  },
+  {
+    "id": "122564749",
+    "type": "item",
+    "name": "Förbundet",
+    "email": "",
+    "color": {
+      "red": 255,
+      "blue": 0,
+      "alpha": 255,
+      "green": 151
+    },
+    "subdomain": "",
+    "item_type": {
+      "id": "1452375",
+      "type": "item_type"
+    },
+    "creator": {
+      "id": "43587",
+      "type": "account"
+    },
+    "meta": {
+      "created_at": "2023-02-15T10:08:15.025+00:00",
+      "updated_at": "2023-02-15T11:40:18.155+00:00",
+      "published_at": "2023-02-15T11:40:18.182+00:00",
+      "publication_scheduled_at": null,
+      "unpublishing_scheduled_at": null,
+      "first_published_at": "2023-02-15T10:08:15.047+00:00",
+      "is_valid": true,
+      "is_current_version_valid": true,
+      "is_published_version_valid": true,
+      "status": "published",
+      "current_version": "233314582",
+      "stage": null
+    }
+  },
+  {
+    "id": "122565546",
+    "type": "item",
+    "name": "Västmanland",
+    "email": "",
+    "color": {
+      "red": 191,
+      "blue": 56,
+      "alpha": 255,
+      "green": 244
+    },
+    "subdomain": "",
+    "item_type": {
+      "id": "1452375",
+      "type": "item_type"
+    },
+    "creator": {
+      "id": "43587",
+      "type": "account"
+    },
+    "meta": {
+      "created_at": "2023-02-15T10:17:54.307+00:00",
+      "updated_at": "2023-02-15T13:56:53.181+00:00",
+      "published_at": "2023-02-15T13:56:53.208+00:00",
+      "publication_scheduled_at": null,
+      "unpublishing_scheduled_at": null,
+      "first_published_at": "2023-02-15T10:17:54.331+00:00",
+      "is_valid": true,
+      "is_current_version_valid": true,
+      "is_published_version_valid": true,
+      "status": "published",
+      "current_version": "233530326",
+      "stage": null
+    }
+  }
+]

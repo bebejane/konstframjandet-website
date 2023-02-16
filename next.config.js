@@ -1,3 +1,4 @@
+const districts = require("./lib/districts.json");
 const webpack = require("webpack");
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
 	enabled: process.env.ANALYZE === "true",
@@ -12,14 +13,13 @@ const sassOptions = {
   `,
 };
 
-const sites = {
-	distrikt1: {
-		domain: "distrikt1.konstframjandet.se",
-	},
-	distrikt2: {
-		domain: "distrikt2.konstframjandet.se",
-	},
-};
+const baseDomain = "konstframjandet.se";
+const sites = {};
+
+districts
+	.filter(({ subdomain }) => subdomain)
+	.map(({ subdomain }) => (sites[subdomain] = { domain: `${subdomain}.${baseDomain}` }));
+
 const siteKeys = Object.keys(sites);
 
 const nextOptions = {

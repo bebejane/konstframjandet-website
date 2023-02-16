@@ -1,17 +1,16 @@
 import s from "./index.module.scss";
 import cn from 'classnames'
+import districts from '/lib/districts.json'
 import withGlobalProps from "/lib/withGlobalProps";
 import type { Menu } from "/lib/menu";
 import Link from "next/link";
-import { AllDistricsDocument } from '/graphql'
 
 export type Props = {
 	menu: Menu,
-	district: DistrictRecord,
-	districts: DistrictRecord[]
+	district: DistrictRecord
 }
 
-export default function Home({ menu, district, districts }: Props) {
+export default function Home({ menu, district }: Props) {
 	return (
 		<div className={s.container}>
 			{district?.name}
@@ -40,7 +39,7 @@ export default function Home({ menu, district, districts }: Props) {
 }
 
 
-export const getStaticProps = withGlobalProps({ queries: [AllDistricsDocument] }, async ({ props, revalidate, context }: any) => {
+export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
 
 	return {
 		props,

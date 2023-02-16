@@ -13,7 +13,8 @@
 		"preview": "npm run build && npm run start",
 		"barrel": "node ./lib/scripts/barrel",
 		"barrel:watch": "watch 'node ./lib/scripts/barrel' ./components",
-		"postbuild": "next-sitemap"
+		"postbuild": "next-sitemap",
+		"prebuild": "node prebuild"
 	},
 	"exports": {
 		"lib/*": "/lib",
