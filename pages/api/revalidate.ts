@@ -42,7 +42,7 @@ export default withRevalidate(async (record, revalidate) => {
     }
   }).then(() => {
     console.log('fetch done')
-    revalidate([])
+
   }).catch((err) => {
     console.log('fetch err')
 
