@@ -32,7 +32,7 @@ export default withRevalidate(async (record, revalidate) => {
     return console.log('no district found in payload')
 
   console.log(`revalidate subdomain: ${district.subdomain}`)
-  fetch(`https://${district.subdomain}.konstframjandet.se/api/revalidate`, {
+  await fetch(`https://${district.subdomain}.konstframjandet.se/api/revalidate`, {
     method: 'POST',
     body: JSON.stringify({ entity: { ...payload, revlidateSubdomain: true } }),
     headers: {
@@ -40,14 +40,6 @@ export default withRevalidate(async (record, revalidate) => {
       //'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
-  }).then(() => {
-    console.log('fetch done')
-
-  }).catch((err) => {
-    console.log('fetch err')
-
-  }).finally(() => {
-    revalidate([])
   })
-
+  revalidate([])
 })
