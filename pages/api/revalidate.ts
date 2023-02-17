@@ -27,7 +27,7 @@ export default withRevalidate(async (record, revalidate) => {
   }
 
   if (revalidateSubdomain)
-    return revalidate(paths)
+    return await revalidate(paths)
 
   if (!district)
     return console.log('no district found in payload')
