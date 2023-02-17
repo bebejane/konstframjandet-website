@@ -37,7 +37,7 @@ export default withRevalidate(async (record, revalidate) => {
     body: JSON.stringify({ entity: { ...payload, revlidateSubdomain: true } }),
     headers: {
       'Authorization': 'Basic ' + btoa(process.env.BASIC_AUTH_USER + ":" + process.env.BASIC_AUTH_PASSWORD),
-      'Accept': 'application/json',
+      //'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
   }).then(() => {
