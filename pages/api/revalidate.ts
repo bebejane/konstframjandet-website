@@ -33,7 +33,7 @@ export default withRevalidate(async (record, revalidate) => {
     return console.log('no district found in payload')
 
   const domain = `${district.subdomain}.konstframjandet.se`
-  console.log(`revalidate subdomain please: ${domain}`)
+  console.log(`revalidate subdomain pls: ${domain}`)
   await revalidate(paths)
 
   /*
