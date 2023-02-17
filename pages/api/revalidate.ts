@@ -1,4 +1,5 @@
 import { withRevalidate } from 'dato-nextjs-utils/hoc'
+import { sleep } from '/lib/utils';
 import districts from '/lib/districts.json'
 
 export default withRevalidate(async (record, revalidate) => {
@@ -32,7 +33,7 @@ export default withRevalidate(async (record, revalidate) => {
     return console.log('no district found in payload')
 
   console.log(`revalidate subdomain: ${district.subdomain}`)
-  await fetch(`https://${district.subdomain}.konstframjandet.se/api/revalidate`, {
+  fetch(`https://${district.subdomain}.konstframjandet.se/api/revalidate`, {
     method: 'POST',
     body: JSON.stringify({ entity: { ...payload, revlidateSubdomain: true } }),
     headers: {
@@ -40,6 +41,7 @@ export default withRevalidate(async (record, revalidate) => {
       //'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
-  })
+  }).then(() => { })
+  await sleep(200)
   revalidate([])
 })
