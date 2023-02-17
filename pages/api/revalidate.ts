@@ -34,6 +34,8 @@ export default withRevalidate(async (record, revalidate) => {
 
   const domain = `${district.subdomain}.konstframjandet.se`
   console.log(`revalidate subdomain: ${domain}`)
+  revalidate([])
+  /*
   await fetch(`https://${domain}/api/revalidate`, {
     method: 'POST',
     body: JSON.stringify({ entity: { ...payload, revlidateSubdomain: true } }),
@@ -43,4 +45,5 @@ export default withRevalidate(async (record, revalidate) => {
       'Content-Type': 'application/json'
     }
   })
+  */
 })
