@@ -1,9 +1,8 @@
 import s from './[project].module.scss'
 import withGlobalProps from "/lib/withGlobalProps";
-import { GetStaticProps } from "next";
+import { apiQueryAll } from '/lib/utils';
 import { apiQuery } from "dato-nextjs-utils/api";
 import { ProjectDocument, AllProjectsDocument } from "/graphql";
-import { format } from "date-fns";
 
 export type Props = {
   project: ProjectRecord
@@ -20,10 +19,19 @@ export default function ProjectItem({ project: { id, _createdAt, title, district
 
 //ProjectItem.page = { crumbs: [{ slug: 'nyheter', title: 'Nyheter' }], regional: true } as PageProps
 
-export const getServerSideProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
+export async function getStaticPaths() {
+  const { projects } = await apiQueryAll(AllProjectsDocument)
+  const paths = projects.map(({ slug }) => ({ params: { project: slug } }))
+  return {
+    paths,
+    fallback: 'blocking'
+  }
+}
+
+export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
 
   const slug = context.params.project;
-  const { project } = await apiQuery(ProjectDocument, { variables: { slug }, preview: context.preview })
+  const { project } = await apiQuery(ProjectDocument, { variables: { slug, districtId: props.district.id }, preview: context.preview })
 
   if (!project)
     return { notFound: true }

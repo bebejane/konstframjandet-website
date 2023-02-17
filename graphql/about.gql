@@ -1,5 +1,10 @@
-query AllAbouts($first: IntType = 100, $skip: IntType = 0) {
-	abouts: allAbouts(first: $first, skip: $skip, orderBy: [_createdAt_DESC]) {
+query AllAbouts($first: IntType = 100, $skip: IntType = 0, $districtId: ItemId) {
+	abouts: allAbouts(
+		filter: { district: { eq: $districtId } }
+		first: $first
+		skip: $skip
+		orderBy: [_createdAt_DESC]
+	) {
 		...AboutFragment
 	}
 	pagination: _allAboutsMeta {
@@ -7,8 +12,8 @@ query AllAbouts($first: IntType = 100, $skip: IntType = 0) {
 	}
 }
 
-query About($slug: String!) {
-	about(filter: { slug: { eq: $slug } }) {
+query About($slug: String!, $districtId: ItemId) {
+	about(filter: { slug: { eq: $slug }, district: { eq: $districtId } }) {
 		...AboutFragment
 	}
 }

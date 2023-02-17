@@ -2697,6 +2697,7 @@ type focalPoint = {
 type AllAboutsQueryVariables = Exact<{
   first?: InputMaybe<Scalars['IntType']>;
   skip?: InputMaybe<Scalars['IntType']>;
+  districtId?: InputMaybe<Scalars['ItemId']>;
 }>;
 
 
@@ -2704,6 +2705,7 @@ type AllAboutsQuery = { __typename?: 'Query', abouts: Array<{ __typename?: 'Abou
 
 type AboutQueryVariables = Exact<{
   slug: Scalars['String'];
+  districtId?: InputMaybe<Scalars['ItemId']>;
 }>;
 
 
@@ -2750,6 +2752,7 @@ type AllNewsQuery = { __typename?: 'Query', news: Array<{ __typename?: 'NewsReco
 
 type NewsQueryVariables = Exact<{
   slug: Scalars['String'];
+  districtId?: InputMaybe<Scalars['ItemId']>;
 }>;
 
 
@@ -2758,6 +2761,7 @@ type NewsQuery = { __typename?: 'Query', news?: { __typename?: 'NewsRecord', id:
 type AllProjectsQueryVariables = Exact<{
   first?: InputMaybe<Scalars['IntType']>;
   skip?: InputMaybe<Scalars['IntType']>;
+  districtId?: InputMaybe<Scalars['ItemId']>;
 }>;
 
 
@@ -2766,6 +2770,7 @@ type AllProjectsQuery = { __typename?: 'Query', projects: Array<{ __typename?: '
 type AllProjectsTreeQueryVariables = Exact<{
   first?: InputMaybe<Scalars['IntType']>;
   skip?: InputMaybe<Scalars['IntType']>;
+  districtId?: InputMaybe<Scalars['ItemId']>;
 }>;
 
 
@@ -2773,6 +2778,7 @@ type AllProjectsTreeQuery = { __typename?: 'Query', projects: Array<{ __typename
 
 type ProjectQueryVariables = Exact<{
   slug: Scalars['String'];
+  districtId?: InputMaybe<Scalars['ItemId']>;
 }>;
 
 

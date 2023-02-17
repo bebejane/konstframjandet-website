@@ -18,8 +18,9 @@ export default function NewsItem({ news: { id, _createdAt, title, intro, distric
     </>
   );
 }
+//NewsItem.page = { crumbs: [{ slug: 'nyheter', title: 'Nyheter' }], regional: true } as PageProps
 
-export async function getStaticPaths(context) {
+export async function getStaticPaths() {
   const { news } = await apiQueryAll(AllNewsDocument)
   const paths = news.map(({ slug }) => ({ params: { news: slug } }))
   return {
@@ -28,10 +29,9 @@ export async function getStaticPaths(context) {
   }
 }
 
-
 export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
   const slug = context.params.news;
-  const { news } = await apiQuery(NewsDocument, { variables: { slug }, preview: context.preview })
+  const { news } = await apiQuery(NewsDocument, { variables: { slug, districtId: props.district.id }, preview: context.preview })
   return {
     props: {
       ...props,
@@ -41,27 +41,4 @@ export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, r
   }
 })
 
-//NewsItem.page = { crumbs: [{ slug: 'nyheter', title: 'Nyheter' }], regional: true } as PageProps
-/*
-export const getServerSideProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
 
-  const slug = context.params.news;
-  const { news } = await apiQuery(NewsDocument, { variables: { slug }, preview: context.preview })
-
-  if (!news)
-    return { notFound: true }
-
-  return {
-    props: {
-      ...props,
-      news,
-      pageTitle: news.title
-    }
-  };
-});
-
-export const config = {
-  runtime: 'experimental-edge'
-}
-
-*/

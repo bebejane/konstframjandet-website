@@ -14,7 +14,6 @@ export default function Home({ menu, district }: Props) {
 	return (
 		<div className={s.container}>
 			{district?.name}
-			<div className={s.color} style={{ backgroundColor: district?.color.hex }}></div>
 			<ul>
 				<li><Link href="/nyheter">Nyheter</Link></li>
 				<li><Link href="/om">Om</Link></li>
@@ -24,8 +23,8 @@ export default function Home({ menu, district }: Props) {
 			<br />
 			<h1>Alla distrikt</h1>
 			<ul>
-				{districts.map(({ subdomain, name }) =>
-					<li>
+				{districts.map(({ subdomain, name }, idx) =>
+					<li key={idx}>
 						{subdomain ?
 							<a href={`https://${subdomain}.konstframjandet.se`} target="_blank">
 								{name}

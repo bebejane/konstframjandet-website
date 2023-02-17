@@ -1,11 +1,9 @@
 import s from "./index.module.scss";
 import withGlobalProps from "/lib/withGlobalProps";
-import { GetStaticProps } from "next";
-import { apiQuery } from "dato-nextjs-utils/api";
+import { apiQueryAll } from "/lib/utils";
 import { AllProjectsTreeDocument } from "/graphql";
-import { format } from "date-fns";
+
 import Link from "next/link";
-import { useEffect } from "react";
 
 export type Props = {
   projects: ProjectRecord[]
@@ -42,7 +40,7 @@ export default function Projects({ projects }: Props) {
 
 export const getServerSideProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
 
-  const { projects } = await apiQuery(AllProjectsTreeDocument)
+  const { projects } = await apiQueryAll(AllProjectsTreeDocument, { variables: { districtId: props.district.id } })
 
   return {
     props: {

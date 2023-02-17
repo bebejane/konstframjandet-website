@@ -13,8 +13,8 @@ query AllNews($first: IntType = 100, $skip: IntType = 0, $districtId: ItemId) {
 	}
 }
 
-query News($slug: String!) {
-	news(filter: { slug: { eq: $slug } }) {
+query News($slug: String!, $districtId: ItemId) {
+	news(filter: { slug: { eq: $slug }, district: { eq: $districtId } }) {
 		...NewsFragment
 	}
 }
