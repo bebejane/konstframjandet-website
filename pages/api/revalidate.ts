@@ -34,7 +34,7 @@ export default withRevalidate(async (record, revalidate) => {
 
   const domain = `${district.subdomain}.konstframjandet.se`
   console.log(`revalidate subdomain please: ${domain}`)
-  revalidate(paths)
+  await revalidate(paths)
 
   /*
   await fetch(`https://${domain}/api/revalidate`, {
