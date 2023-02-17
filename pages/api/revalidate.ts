@@ -1,4 +1,5 @@
-import { withRevalidate } from 'dato-nextjs-utils/hoc'
+//import { withRevalidate } from 'dato-nextjs-utils/hoc'
+import withRevalidate from '/lib/withRevalidate';
 import districts from '/lib/districts.json'
 
 export default withRevalidate(async (record, revalidate) => {
@@ -32,7 +33,7 @@ export default withRevalidate(async (record, revalidate) => {
     try {
       await fetch(`https://${district.subdomain}.konstframjandet.se/api/revalidate`, {
         method: 'POST',
-        body: JSON.stringify({ ...payload, revalidateSubdomain: true }),
+        body: JSON.stringify({ entity: { ...payload, revalidateSubdomain: true } }),
         headers: {
           'Authorization': 'Basic ' + btoa(process.env.BASIC_AUTH_USER + ":" + process.env.BASIC_AUTH_PASSWORD),
           'Accept': 'application/json',
