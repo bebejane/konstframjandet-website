@@ -40,7 +40,14 @@ export default withRevalidate(async (record, revalidate) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
-  }).then(() => { })
+  }).then(() => {
+    console.log('fetch done')
+    revalidate([])
+  }).catch((err) => {
+    console.log('fetch err')
 
-  revalidate([])
+  }).finally(() => {
+    revalidate([])
+  })
+
 })
