@@ -23,5 +23,5 @@ export default withRevalidate(async (record, revalidate) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
-  })
+  }).then(() => console.log('sent req')).catch(err => console.error(err))
 })
