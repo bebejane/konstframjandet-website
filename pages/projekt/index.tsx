@@ -49,7 +49,3 @@ export const getServerSideProps = withGlobalProps({ queries: [] }, async ({ prop
     }
   };
 });
-
-export const config = {
-  runtime: 'experimental-edge'
-}

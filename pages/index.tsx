@@ -46,7 +46,3 @@ export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, r
 		revalidate
 	}
 })
-
-export const config = {
-	runtime: 'experimental-edge'
-}
