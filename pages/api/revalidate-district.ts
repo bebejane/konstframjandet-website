@@ -19,7 +19,7 @@ export default withRevalidate(async (record, revalidate) => {
     method: 'POST',
     body: JSON.stringify({ entity: { ...payload } }),
     headers: {
-      'Authorization': 'Basic ' + btoa(process.env.BASIC_AUTH_USER + ":" + process.env.BASIC_AUTH_PASSWORD),
+      'Authorization': 'Basic ' + Buffer.from(process.env.BASIC_AUTH_USER + ":" + process.env.BASIC_AUTH_PASSWORD).toString('base64'),
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
