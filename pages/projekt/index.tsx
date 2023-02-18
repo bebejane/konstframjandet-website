@@ -38,7 +38,7 @@ export default function Projects({ projects }: Props) {
 
 //News.page = { title: 'Nyheter' } as PageProps
 
-export const getServerSideProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
+export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate }: any) => {
 
   const { projects } = await apiQueryAll(AllProjectsTreeDocument, { variables: { districtId: props.district.id } })
 
@@ -46,6 +46,7 @@ export const getServerSideProps = withGlobalProps({ queries: [] }, async ({ prop
     props: {
       ...props,
       projects
-    }
+    },
+    revalidate
   };
 });

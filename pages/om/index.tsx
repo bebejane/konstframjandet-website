@@ -32,7 +32,7 @@ export default function About({ abouts }: Props) {
   );
 }
 
-export const getServerSideProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
+export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate }: any) => {
 
   const { abouts } = await apiQueryAll(AllAboutsDocument, { variables: { districtId: props.district.id } })
 
@@ -40,6 +40,7 @@ export const getServerSideProps = withGlobalProps({ queries: [] }, async ({ prop
     props: {
       ...props,
       abouts
-    }
+    },
+    revalidate
   };
 });
