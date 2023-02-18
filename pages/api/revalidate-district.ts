@@ -13,7 +13,7 @@ export default withRevalidate(async (record, revalidate) => {
     return
 
   const domain = `${district.subdomain}.konstframjandet.se`
-  console.log(`revalidate subdomain plsss: ${domain}`)
+  console.log(`revalidate subdomain: ${domain}`)
 
   fetch(`https://${domain}/api/revalidate`, {
     method: 'POST',
@@ -24,4 +24,5 @@ export default withRevalidate(async (record, revalidate) => {
       'Content-Type': 'application/json'
     }
   }).then(() => console.log('sent req')).catch(err => console.error(err))
+  await sleep(1000)
 })
