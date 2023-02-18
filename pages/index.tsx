@@ -1,5 +1,4 @@
 import s from "./index.module.scss";
-import cn from 'classnames'
 import districts from '/lib/districts.json'
 import withGlobalProps from "/lib/withGlobalProps";
 import type { Menu } from "/lib/menu";
@@ -13,27 +12,27 @@ export type Props = {
 export default function Home({ menu, district }: Props) {
 	return (
 		<div className={s.container}>
-			{district?.name}
-			<ul>
-				<li><Link href="/nyheter">Nyheter</Link></li>
-				<li><Link href="/om">Om</Link></li>
-				<li><Link href="/projekt">Projekt</Link></li>
-				<li><Link href="/kontakt">Kontakt</Link></li>
-			</ul>
-			<br />
-			<h1>Alla distrikt</h1>
-			<ul>
+			<ul className={s.districts}>
 				{districts.map(({ subdomain, name }, idx) =>
 					<li key={idx}>
 						{subdomain ?
-							<a href={`https://${subdomain}.konstframjandet.se`} target="_blank">
+							<a href={`https://${subdomain}.konstframjandet.se`}>
 								{name}
 							</a>
 							:
 							<>{name}</>
 						}
+						{idx !== districts.length - 1 && <>&nbsp;|&nbsp;</>}
 					</li>
 				)}
+			</ul>
+			<br />
+			<b>{district?.name}</b>
+			<ul>
+				<li><Link href="/nyheter">Nyheter</Link></li>
+				<li><Link href="/om">Om</Link></li>
+				<li><Link href="/projekt">Projekt</Link></li>
+				<li><Link href="/kontakt">Kontakt</Link></li>
 			</ul>
 		</div>
 	);
@@ -47,8 +46,7 @@ export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, r
 		revalidate
 	}
 })
-/*
+
 export const config = {
 	runtime: 'experimental-edge'
 }
-*/
