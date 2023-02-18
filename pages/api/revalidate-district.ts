@@ -25,7 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
-  }).then(() => console.log('sent req')).catch(err => console.error(err))
+  }).then(() => console.log('revalidation sent')).catch(err => console.error(err))
   await sleep(1000)
   return res.json({ revalidated: true })
 
