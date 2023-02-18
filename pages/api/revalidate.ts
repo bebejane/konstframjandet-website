@@ -1,16 +1,11 @@
 import { withRevalidate } from 'dato-nextjs-utils/hoc'
-import { sleep } from '/lib/utils';
-import districts from '/lib/districts.json'
 
 export default withRevalidate(async (record, revalidate) => {
 
   const { api_key: apiKey, } = record.model;
-  const { slug, _payload: payload } = record
+  const { slug } = record
 
   const paths = []
-  const districtId = payload?.attributes?.district;
-  const district = districts.find(el => el.id === districtId)
-  const { revalidateSubdomain } = payload
 
   switch (apiKey) {
     case 'about':
@@ -25,25 +20,5 @@ export default withRevalidate(async (record, revalidate) => {
     default:
       break;
   }
-
-  if (revalidateSubdomain)
-    return await revalidate(paths)
-
-  if (!district)
-    return console.log('no district found in payload')
-
-  const domain = `${district.subdomain}.konstframjandet.se`
-  console.log(`revalidate subdomain plsss: ${domain}`)
-  await revalidate(paths)
-  /*
-  await fetch(`https://${domain}/api/revalidate`, {
-    method: 'POST',
-    body: JSON.stringify({ entity: { ...payload, revlidateSubdomain: true } }),
-    headers: {
-      'Authorization': 'Basic ' + btoa(process.env.BASIC_AUTH_USER + ":" + process.env.BASIC_AUTH_PASSWORD),
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    }
-  })
-  */
+  revalidate(paths)
 })
