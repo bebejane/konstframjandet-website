@@ -15,7 +15,6 @@ export default function Content({ children, title, menu }: ContentProps) {
 
 	return (
 		<>
-
 			<main id="content" className={cn(s.content)}>
 				<SectionHeader title={title} />
 				<article>
