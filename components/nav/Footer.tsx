@@ -12,7 +12,7 @@ export type FooterProps = {
 export default function Footer({ footer, menu }: FooterProps) {
 
 	const { district } = usePage()
-	console.log(menu)
+	//console.log(menu)
 	return (
 		<footer className={cn(s.footer)} id="footer">
 			<div className={s.line}></div>

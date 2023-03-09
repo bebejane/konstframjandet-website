@@ -1,5 +1,5 @@
 import districts from "/lib/districts.json";
-export { default, getStaticProps } from '/pages/nyheter'
+export { default, getStaticProps } from '/pages/aktuellt'
 
 export async function getStaticPaths() {
 
