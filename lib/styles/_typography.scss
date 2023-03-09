@@ -10,13 +10,23 @@ body {
   }
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: $headline-font;
+  letter-spacing: -0.01em;
+  strong {
+    font-weight: normal;
+  }
+}
+
 h1 {
   font-size: 34px;
-  font-family: $headline-font;
   @include mq($from: tablet) {
     font-size: 58px;
   }
-  letter-spacing: -0.01em;
   font-weight: normal;
   padding-top: 0.1em;
   padding-bottom: 0.8em;
@@ -32,47 +42,15 @@ h3 {
     font-size: 1.5rem;
   }
   font-weight: normal;
-  letter-spacing: -0.015em;
   padding-bottom: 1em;
-  line-height: 1.25;
 }
 
 h4 {
   font-size: 1.3rem;
   padding-bottom: 0;
   font-weight: normal;
-  line-height: 1.25;
   margin-bottom: 0.5em;
   text-underline-offset: 0.1em;
-}
-
-h5 {
-  font-family: "Jazz-Medium";
-  font-weight: normal;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.58rem;
-  padding-bottom: 1em;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  strong {
-    font-weight: normal;
-  }
-}
-
-// Typo för content
-.article {
-  p + h3,
-  ul + h3,
-  ul + h2,
-  p + h2 {
-    padding-top: 1rem;
-  }
 }
 
 p {
@@ -94,7 +72,7 @@ footer,
 footer nav,
 figcaption,
 label {
-  font-size: 0.75rem;
+  font-size: 16px;
 }
 
 nav,
@@ -103,7 +81,7 @@ button,
 .mid input,
 .mid select {
   @include mq($from: tablet) {
-    font-size: 0.9rem;
+    font-size: calc(1rem + 3px);
   }
 }
 
@@ -113,6 +91,12 @@ b {
 }
 
 article {
+  p + h3,
+  ul + h3,
+  ul + h2,
+  p + h2 {
+    padding-top: 1rem;
+  }
   ul {
     padding-left: 1em;
     list-style-type: square;
@@ -128,15 +112,7 @@ article {
 }
 
 button {
-  font-family: "Jazz";
-}
-
-sup {
-  line-height: 0;
-  font-size: 0.4em;
-  vertical-align: super;
-  letter-spacing: 1px;
-  padding-left: 0.5em;
+  font-family: $headline-font;
 }
 
 em,

@@ -1,12 +1,7 @@
 :root {
-	--black: #121212;
+	--black: #191919;
 	--white: #fcfcfc;
-	--beige-dark: #807a6e;
-	--beige-light: #e1dcd230;
-	--beige-mid: #ddd6c891;
-	--beige-light-solid: #eceae5;
-	--beige-very-light: #e1dcd216;
-	--red: #bf0000;
+	--light-grey: #f5f5f5;
 	--outer-margin: 6vw;
 	--logo-size: 2rem;
 	--logo-size-optical: 1.7rem;
@@ -20,18 +15,13 @@
 	--gutter: 4vw;
 	--navbar-height: 4.5rem;
 
-	--background: var(--white);
+	--background: var(--light-greye);
 	--foreground: var(--black);
 
 	@include mq($from: tablet) {
 		--space: 4rem;
-		--outer-margin: 3.333vw;
+		--outer-margin: 4vw;
 		--gutter: 2.5vw;
-	}
-
-	@include mq($until: tablet) {
-		--navbar-height: 3.5rem;
-		--logo-size: 1.3rem;
 	}
 }
 
@@ -42,11 +32,9 @@ body {
 	color: var(--foreground);
 	background-color: var(--background);
 	font-family: $body-font;
-	letter-spacing: -0.01em;
 	-webkit-font-smoothing: antialiased;
 	font-feature-settings: "liga", "kern";
 	overflow-x: hidden;
-
 }
 
 html {
@@ -215,7 +203,6 @@ select {
 	img {
 		user-select: none !important;
 		pointer-events: none;
-
 	}
 
 	div:nth-child(2) {
