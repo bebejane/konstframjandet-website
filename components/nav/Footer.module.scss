@@ -1,48 +1,39 @@
 .footer {
-  width: calc(100% - (var(--outer-margin) * 2));
-  margin-left: var(--outer-margin);
-  margin-right: var(--outer-margin);
-  padding-bottom: var(--outer-margin);
-  border-top: 1px solid var(--black);
+  width: 100%;
   position: relative;
-  text-align: left;
-  z-index: var(--z-footer);
+  background-color: var(--black);
+  color: var(--white);
+  padding: var(--outer-margin);
+  display: flex;
+  flex-direction: row;
 
-  section {
-    display: flex;
-
-    @include mq($until: tablet) {
-      flex-direction: column;
-      align-items: center;
-      padding-left: var(--outer-margin);
-      padding-right: var(--outer-margin);
-    }
-
-    padding-top: var(--outer-margin);
-    padding-left: var(--total-outer-margin);
-    padding-right: var(--total-outer-margin);
-    position: relative;
-
-    div {
-      padding-bottom: 0.5em;
-
-      @include mq($from: tablet) {
-        width: 33.33%;
-      }
-
-      text-align: center;
-    }
+  .about {
+    flex: 0 0 calc(var(--grid-unit));
   }
 
-  .kf {
-    @include mq($until: tablet) {
-      transform: scale(0.7);
-    }
+  ul {
+    list-style: none;
+    display: flex;
+  }
 
-    @include mq($from: tablet) {
-      position: absolute;
-      right: 0;
-      margin-bottom: var(--outer-margin);
+  >ul {
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: row;
+
+    >li {
+      flex: 0 0 calc(100% / 5);
+
+      ul {
+        flex-direction: column;
+        margin-top: 1rem;
+
+        li {
+          a {
+            color: var(--white);
+          }
+        }
+      }
     }
   }
 }

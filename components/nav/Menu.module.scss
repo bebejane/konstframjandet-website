@@ -37,6 +37,7 @@
     li {
       cursor: pointer;
       margin-right: 0.6em;
+      user-select: none;
 
       &.active {
         color: var(--page-color);
@@ -66,7 +67,7 @@
 
   h3 {
     flex: 0 0 calc(var(--grid-unit));
-
+    color: var(--page-color);
   }
 
   ul {
