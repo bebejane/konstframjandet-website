@@ -53,24 +53,19 @@ export default function Article({ id, children, title, content, image, imageSize
             />
           </figure>
         }
-        <section className="intro">
-          {date &&
-            <div className={s.date}>
-              <span className="small">{format(new Date(date), 'MMM').replace('.', '')}</span>
-              <span>{format(new Date(date), 'dd').replace('.', '')}</span>
-            </div>
-          }
-          {intro}
+        <section>
+          <div className={s.content}>
+            <StructuredContent
+              id={id}
+              record={record}
+              content={content}
+              onClick={(imageId) => setImageId(imageId)}
+            />
+          </div>
+          <div className={s.caption}>
+            Image caption here...
+          </div>
         </section>
-        {content &&
-          <StructuredContent
-            id={id}
-            record={record}
-            content={content}
-            onClick={(imageId) => setImageId(imageId)}
-          />
-        }
-        {children}
       </div>
     </>
   )
