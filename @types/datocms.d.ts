@@ -3177,6 +3177,13 @@ type SiteFragment = { __typename?: 'Site', favicon: Array<{ __typename?: 'Tag', 
 
 type VideoFragment = { __typename?: 'FileField', id: any, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, height?: any | null, video?: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } | null };
 
+type MenuQueryVariables = Exact<{
+  districtId?: InputMaybe<Scalars['ItemId']>;
+}>;
+
+
+type MenuQuery = { __typename?: 'Query', abouts: Array<{ __typename?: 'AboutRecord', id: any, slug: string, title?: string | null }>, projects: Array<{ __typename?: 'ProjectRecord', id: any, slug: string, title?: string | null }>, news: Array<{ __typename?: 'NewsRecord', id: any, slug: string, title?: string | null }>, districts: Array<{ __typename?: 'DistrictRecord', id: any, subdomain: string, name: string }> };
+
 type AllNewsQueryVariables = Exact<{
   first?: InputMaybe<Scalars['IntType']>;
   skip?: InputMaybe<Scalars['IntType']>;

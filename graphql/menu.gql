@@ -1,0 +1,30 @@
+query Menu($districtId: ItemId) {
+	abouts: allAbouts(
+		filter: { district: { eq: $districtId } }
+		first: 100
+		orderBy: _createdAt_DESC
+	) {
+		id
+		slug
+		title
+	}
+	projects: allProjects(
+		filter: { district: { eq: $districtId } }
+		first: 100
+		orderBy: _createdAt_DESC
+	) {
+		id
+		slug
+		title
+	}
+	news: allNews(filter: { district: { eq: $districtId } }, first: 100, orderBy: _createdAt_DESC) {
+		id
+		slug
+		title
+	}
+	districts: allDistricts(first: 100, orderBy: name_ASC) {
+		id
+		subdomain
+		name
+	}
+}

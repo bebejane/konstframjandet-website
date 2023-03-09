@@ -1,14 +1,17 @@
 import s from './Footer.module.scss'
 import cn from 'classnames'
-import type { MenuItem } from '/lib/menu'
+import type { Menu, MenuItem } from '/lib/menu'
 import Link from 'next/link'
+import { usePage } from '/lib/context/page'
 
 export type FooterProps = {
 	footer: any
-	districts: DistrictRecord[]
+	menu: Menu
 }
 
-export default function Footer({ footer, districts }: FooterProps) {
+export default function Footer({ footer, menu }: FooterProps) {
+
+	const { district } = usePage()
 
 	return (
 		<footer className={cn(s.footer)} id="footer">
@@ -20,32 +23,16 @@ export default function Footer({ footer, districts }: FooterProps) {
 					och med att föra ut konst till människor i deras vardag. Vi verkar i hela Sverige.
 				</div>
 				<ul>
-					<li>
-						Aktuellt
-						<ul></ul>
-					</li>
-					<li>
-						Projekt
-						<ul></ul>
-					</li>
-					<li>
-						Distrikt
-						<ul>
-							{districts.map(({ id, subdomain, name }) =>
-								<li key={id}>
-									<Link href={`/`} locale={subdomain}>{name}</Link>
-								</li>
-							)}
-						</ul>
-					</li>
-					<li>
-						Om
-						<ul></ul>
-					</li>
-					<li>
-						Kontakt
-						<ul></ul>
-					</li>
+					{menu.map(({ type, label, slug, items }, idx) =>
+						<li key={idx}>
+							{slug ? <Link href={slug} locale={district.subdomain}>{label}</Link> : <>{label}</>}
+							<ul>
+								{items?.map(({ type, label, slug }) =>
+									<li><Link href={slug} locale={district.subdomain}>{label}</Link></li>
+								)}
+							</ul>
+						</li>
+					)}
 				</ul>
 			</nav>
 		</footer>

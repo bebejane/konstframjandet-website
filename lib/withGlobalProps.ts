@@ -28,7 +28,7 @@ export default function withGlobalProps(opt: any, callback: Function): GetStatic
     const props = await apiQuery(queries, { variables, preview: context.preview });
     const subdomain = context.locale || null
 
-    props.menu = [] //await buildMenu()
+    props.menu = await buildMenu(district.id)
     props.district = districts.find(el => el.subdomain === subdomain) ?? null
     props.districts = districts
     props.subdomain = subdomain

@@ -24,25 +24,26 @@
     ul {
       list-style: none;
       display: flex;
+
+      a {
+        color: var(--white);
+      }
     }
 
-    > ul {
+    >ul {
       display: flex;
       flex: 1 1 100%;
       flex-direction: row;
 
-      > li {
+      >li {
         flex: 0 0 calc(100% / 5);
 
         ul {
           flex-direction: column;
           margin-top: 1rem;
+          color: var(--white);
 
-          li {
-            a {
-              color: var(--white);
-            }
-          }
+          li {}
         }
       }
     }

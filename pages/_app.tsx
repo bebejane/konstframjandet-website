@@ -35,7 +35,7 @@ function App({ Component, pageProps, router }) {
       <PageProvider value={{ district, ...page }}>
         <Layout
           title={page.title}
-          menu={menu || []}
+          menu={menu}
           footer={footer}
           districts={districts}
         >
