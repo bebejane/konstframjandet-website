@@ -8,12 +8,14 @@
   padding: var(--outer-margin);
   padding-top: var(--navbar-height);
 
-
   @include mq($from: tablet) {}
 
   @include mq($until: tablet) {}
 
   article {
+    display: flex;
+    flex-direction: row;
+    margin-top: var(--small-space);
 
     @include mq($until: tablet) {}
 

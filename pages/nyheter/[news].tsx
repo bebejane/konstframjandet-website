@@ -2,19 +2,28 @@ import s from './[news].module.scss'
 import withGlobalProps from "/lib/withGlobalProps";
 import { apiQuery } from "dato-nextjs-utils/api";
 import { NewsDocument, AllNewsDocument } from "/graphql";
-import { format } from "date-fns";
+import { Article, MetaSection } from '/components';
 import { apiQueryAll } from '/lib/utils';
-import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
+
 export type Props = {
   news: NewsRecord
 }
 
-export default function NewsItem({ news: { id, _createdAt, title, intro, district, slug, _seoMetaTags } }: Props) {
+export default function NewsItem({ news: { id, _createdAt, title, intro, image, content, district, slug, _seoMetaTags } }: Props) {
 
   return (
     <>
-      {title}
-      <Markdown>{intro}</Markdown>
+      <MetaSection>
+        meta
+      </MetaSection>
+      <Article
+        id={id}
+        title={title}
+        image={image}
+        intro={intro}
+        content={content}
+        date={_createdAt}
+      />
     </>
   );
 }
@@ -37,7 +46,8 @@ export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, r
   return {
     props: {
       ...props,
-      news
+      news,
+      pageTitle: news.title
     },
     revalidate
   }

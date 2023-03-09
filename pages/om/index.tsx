@@ -34,7 +34,10 @@ export default function About({ abouts }: Props) {
 export const getStaticProps = withGlobalProps({ queries: [AllAboutsDocument] }, async ({ props, revalidate }: any) => {
 
   return {
-    props,
+    props: {
+      ...props,
+      pageTitle: 'Om'
+    },
     revalidate
   };
 });

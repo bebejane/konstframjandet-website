@@ -2,18 +2,14 @@ import s from './MetaSection.module.scss'
 import Link from 'next/link'
 
 export type Props = {
-  items: {
-    title: string
-    value: string
-    link?: string
-  }[]
+  children: React.ReactNode[] | React.ReactNode
 }
 
-export default function MetaSection({ }: Props) {
+export default function MetaSection({ children }: Props) {
 
   return (
     <section className={s.meta}>
-      meta
+      {children}
     </section>
   )
 }

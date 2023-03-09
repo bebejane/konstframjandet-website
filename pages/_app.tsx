@@ -26,7 +26,7 @@ function App({ Component, pageProps, router }) {
     <>
       <DefaultDatoSEO siteTitle={siteTitle} />
       <PageProvider value={{ district: pageProps.district, title: siteTitle }}>
-        <Layout title={siteTitle} menu={pageProps.menu || []} footer={pageProps.footer}>
+        <Layout title={pageProps.pageTitle} menu={pageProps.menu || []} footer={pageProps.footer}>
           <Component {...pageProps} />
         </Layout>
       </PageProvider>
