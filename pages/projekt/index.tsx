@@ -1,6 +1,7 @@
 import s from "./index.module.scss";
 import withGlobalProps from "/lib/withGlobalProps";
 import { AllProjectsDocument } from "/graphql";
+import { ProjectContainer, ProjectCard } from "/components";
 
 import Link from "next/link";
 
@@ -11,23 +12,15 @@ export type Props = {
 export default function Projects({ projects }: Props) {
 
   return (
-    <>
-      <div className={s.container}>
-        <ul>
-          {projects.length > 0 ? projects.map(({ id, title, slug }, idx) =>
-            <li key={id} >
-              <Link href={`/projekt/${slug}`}>{title}</Link>
-            </li>
-          ) :
-            <>Det finns inga projekt...</>
-          }
-        </ul>
-      </div>
-    </>
+    <div className={s.container}>
+      <ProjectContainer>
+        {projects.map((item, idx) =>
+          <ProjectCard key={idx} project={item} />
+        )}
+      </ProjectContainer>
+    </div>
   );
 }
-
-//News.page = { title: 'Nyheter' } as PageProps
 
 export const getStaticProps = withGlobalProps({ queries: [AllProjectsDocument] }, async ({ props, revalidate }: any) => {
 
