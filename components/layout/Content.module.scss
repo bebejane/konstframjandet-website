@@ -14,8 +14,10 @@
   @include mq($until: tablet) {}
 
   article {
+    position: relative;
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
     min-height: 100vh;
 
     @include mq($until: tablet) {}
