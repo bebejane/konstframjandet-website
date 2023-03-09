@@ -1929,7 +1929,7 @@ enum NewsModelOrderBy {
   where_DESC = 'where_DESC'
 }
 
-/** Record of type Nyheter (news) */
+/** Record of type Aktuellt (news) */
 type NewsRecord = RecordInterface & {
   __typename?: 'NewsRecord';
   _createdAt: Scalars['DateTime'];
@@ -1960,13 +1960,13 @@ type NewsRecord = RecordInterface & {
 };
 
 
-/** Record of type Nyheter (news) */
+/** Record of type Aktuellt (news) */
 type NewsRecord_seoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
 
-/** Record of type Nyheter (news) */
+/** Record of type Aktuellt (news) */
 type NewsRecordintroArgs = {
   markdown?: InputMaybe<Scalars['Boolean']>;
 };
