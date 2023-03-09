@@ -7,9 +7,6 @@
     "subdomain": "distrikt1",
     "color": {
       "hex": "#870CF2",
-      "red": 135,
-      "green": 12,
-      "blue": 242,
       "__typename": "ColorField"
     }
   },
@@ -21,9 +18,6 @@
     "subdomain": "distrikt2",
     "color": {
       "hex": "#AAD319",
-      "red": 170,
-      "green": 211,
-      "blue": 25,
       "__typename": "ColorField"
     }
   },
@@ -35,9 +29,6 @@
     "subdomain": "forbundet",
     "color": {
       "hex": "#F5C010",
-      "red": 245,
-      "green": 192,
-      "blue": 16,
       "__typename": "ColorField"
     }
   },
@@ -49,9 +40,6 @@
     "subdomain": "vastermanland",
     "color": {
       "hex": "#BFF438",
-      "red": 191,
-      "green": 244,
-      "blue": 56,
       "__typename": "ColorField"
     }
   }

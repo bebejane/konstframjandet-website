@@ -16,8 +16,9 @@ function App({ Component, pageProps, router }) {
   const isHome = router.asPath === '/'
 
   useEffect(() => {
+    console.log(isHome)
     const r = document.querySelector<HTMLElement>(':root')
-    r.style.setProperty('--background', isHome ? district?.color?.hex : 'var(--lightgray)');
+    r.style.setProperty('--background', isHome ? district?.color?.hex : 'var(--light-grey)');
     r.style.setProperty('--page-color', district?.color?.hex);
 
   }, [isHome, district])
