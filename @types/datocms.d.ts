@@ -2021,6 +2021,7 @@ type ProjectModelFilter = {
   intro?: InputMaybe<TextFilter>;
   slug?: InputMaybe<SlugFilter>;
   subpage?: InputMaybe<LinksFilter>;
+  subtitle?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
 };
 
@@ -2045,6 +2046,8 @@ enum ProjectModelOrderBy {
   completed_DESC = 'completed_DESC',
   id_ASC = 'id_ASC',
   id_DESC = 'id_DESC',
+  subtitle_ASC = 'subtitle_ASC',
+  subtitle_DESC = 'subtitle_DESC',
   title_ASC = 'title_ASC',
   title_DESC = 'title_DESC'
 }
@@ -2072,6 +2075,7 @@ type ProjectRecord = RecordInterface & {
   intro?: Maybe<Scalars['String']>;
   slug: Scalars['String'];
   subpage: Array<ProjectSubpageRecord>;
+  subtitle?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
 };
 
@@ -2108,6 +2112,7 @@ type ProjectSubpageModelFilter = {
   id?: InputMaybe<ItemIdFilter>;
   image?: InputMaybe<FileFilter>;
   intro?: InputMaybe<TextFilter>;
+  subtitle?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
 };
 
@@ -2130,6 +2135,8 @@ enum ProjectSubpageModelOrderBy {
   _updatedAt_DESC = '_updatedAt_DESC',
   id_ASC = 'id_ASC',
   id_DESC = 'id_DESC',
+  subtitle_ASC = 'subtitle_ASC',
+  subtitle_DESC = 'subtitle_DESC',
   title_ASC = 'title_ASC',
   title_DESC = 'title_DESC'
 }
@@ -2152,6 +2159,7 @@ type ProjectSubpageRecord = RecordInterface & {
   id: Scalars['ItemId'];
   image?: Maybe<FileField>;
   intro?: Maybe<Scalars['String']>;
+  subtitle?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
 };
 

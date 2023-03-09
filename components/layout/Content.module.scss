@@ -1,0 +1,81 @@
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 0 1;
+  flex-basis: 100%;
+  border-right: 1px solid var(--black);
+  //transform: translateX(0%);
+
+  @include mq($from: tablet) {
+    flex-basis: 80%;
+    max-width: 80%;
+    transition: all 0.3s ease-in-out;
+
+    &.full {
+      flex-basis: 100%;
+      max-width: 100%;
+      border-right: 0px;
+
+      article {
+        @include mq($from: tablet) {
+          margin-left: calc(var(--grid-unit) + var(--total-outer-margin)) !important;
+          margin-right: calc(var(--grid-unit) + var(--total-outer-margin)) !important;
+        }
+
+        @include mq($from: wide) {
+
+          margin-left: calc(2 * var(--grid-unit) + var(--total-outer-margin)) !important;
+          margin-right: calc(2 * var(--grid-unit) + var(--total-outer-margin)) !important;
+        }
+      }
+    }
+  }
+
+  @include mq($until: tablet) {
+    --max-width: calc(100% - var(--logo-size-optical) - calc(var(--outer-margin) * 3));
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(calc(-1 * var(--max-width)));
+
+    &.full {
+      transform: translateX(0%);
+      border-right: 0px;
+    }
+  }
+
+  article {
+    transition: all 0.3s ease-in-out;
+    padding-bottom: var(--space);
+    margin: 0;
+
+    @include mq($until: tablet) {
+      padding-top: var(--navbar-height);
+    }
+
+    @include mq($from: tablet) {
+      margin-left: calc(var(--total-outer-margin));
+      margin-right: calc(var(--total-outer-margin));
+    }
+  }
+
+  &.noMargins {
+    article {
+      margin: 0;
+      padding-left: 0;
+      padding-right: 0;
+
+      @include mq($from: tablet) {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+
+  &.noBottom {
+    article {
+      padding-bottom: 0;
+    }
+  }
+}
