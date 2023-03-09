@@ -13,10 +13,8 @@ export type ContentProps = {
 
 export default function Content({ children, title, menu }: ContentProps) {
 
-	const [showMenu] = useStore((state) => [state.showMenu])
-
 	return (
-		<main id="content" className={cn(s.content, !showMenu && s.full)}>
+		<main id="content" className={cn(s.content)}>
 			<SectionHeader title={title} />
 			<article>
 				{children}

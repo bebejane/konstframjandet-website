@@ -4,17 +4,37 @@ import { apiQuery } from "dato-nextjs-utils/api";
 import { NewsDocument, AllNewsDocument } from "/graphql";
 import { Article, MetaSection } from '/components';
 import { apiQueryAll } from '/lib/utils';
-
+import format from 'date-fns/format';
 export type Props = {
   news: NewsRecord
 }
 
-export default function NewsItem({ news: { id, _createdAt, title, intro, image, content, district, slug, _seoMetaTags } }: Props) {
+export default function NewsItem({ news: {
+  id,
+  title,
+  intro,
+  image,
+  content,
+  address,
+  date,
+  misc,
+  externalLink,
+  time,
+  where,
+  subtitle,
+  _createdAt,
+} }: Props) {
 
   return (
     <>
       <MetaSection>
-        meta
+        <h3>Var & när</h3>
+        <p>
+          {where}<br />
+          {format(new Date(date), 'iiii d MMMM')}<br />
+          {time}<br />
+          {misc}
+        </p>
       </MetaSection>
       <Article
         id={id}
