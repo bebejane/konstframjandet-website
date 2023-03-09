@@ -5,5 +5,8 @@ fragment DistrictFragment on DistrictRecord {
 	subdomain
 	color {
 		hex
+		red
+		green
+		blue
 	}
 }

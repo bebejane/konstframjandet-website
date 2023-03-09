@@ -12,12 +12,21 @@ type Scalars = {
   Float: number;
   BooleanType: any;
   CustomData: any;
+  Date: any;
   DateTime: any;
   FloatType: any;
   IntType: any;
   ItemId: any;
+  JsonField: any;
   MetaTagAttributes: any;
   UploadId: any;
+};
+
+type AboutModelContentField = {
+  __typename?: 'AboutModelContentField';
+  blocks: Array<ImageRecord>;
+  links: Array<Scalars['String']>;
+  value: Scalars['JsonField'];
 };
 
 type AboutModelFilter = {
@@ -30,6 +39,7 @@ type AboutModelFilter = {
   _status?: InputMaybe<StatusFilter>;
   _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
   _updatedAt?: InputMaybe<UpdatedAtFilter>;
+  content?: InputMaybe<StructuredTextFilter>;
   district?: InputMaybe<LinkFilter>;
   id?: InputMaybe<ItemIdFilter>;
   slug?: InputMaybe<SlugFilter>;
@@ -73,6 +83,7 @@ type AboutRecord = RecordInterface & {
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']>;
   _updatedAt: Scalars['DateTime'];
+  content?: Maybe<AboutModelContentField>;
   district: DistrictRecord;
   id: Scalars['ItemId'];
   slug?: Maybe<Scalars['String']>;
@@ -142,6 +153,24 @@ type CreatedAtFilter = {
   lte?: InputMaybe<Scalars['DateTime']>;
   /** Filter records with a value that's outside the specified minute range. Seconds and milliseconds are truncated from the argument. */
   neq?: InputMaybe<Scalars['DateTime']>;
+};
+
+/** Specifies how to filter Date fields */
+type DateFilter = {
+  /** Search for records with an exact match */
+  eq?: InputMaybe<Scalars['Date']>;
+  /** Filter records with the specified field defined (i.e. with any value) or not */
+  exists?: InputMaybe<Scalars['BooleanType']>;
+  /** Filter records with a value that's strictly greater than the one specified */
+  gt?: InputMaybe<Scalars['Date']>;
+  /** Filter records with a value that's greater than or equal to the one specified */
+  gte?: InputMaybe<Scalars['Date']>;
+  /** Filter records with a value that's less than the one specified */
+  lt?: InputMaybe<Scalars['Date']>;
+  /** Filter records with a value that's less or equal than the one specified */
+  lte?: InputMaybe<Scalars['Date']>;
+  /** Exclude records with an exact match */
+  neq?: InputMaybe<Scalars['Date']>;
 };
 
 type DistrictModelFilter = {
@@ -372,6 +401,20 @@ type FileFieldInterfaceurlArgs = {
   imgixParams?: InputMaybe<ImgixParams>;
 };
 
+/** Specifies how to filter Single-file/image fields */
+type FileFilter = {
+  /** Search for records with an exact match. The specified value must be an Upload ID */
+  eq?: InputMaybe<Scalars['UploadId']>;
+  /** Filter records with the specified field defined (i.e. with any value) or not */
+  exists?: InputMaybe<Scalars['BooleanType']>;
+  /** Filter records that have one of the specified uploads */
+  in?: InputMaybe<Array<InputMaybe<Scalars['UploadId']>>>;
+  /** Exclude records with an exact match. The specified value must be an Upload ID */
+  neq?: InputMaybe<Scalars['UploadId']>;
+  /** Filter records that do not have one of the specified uploads */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['UploadId']>>>;
+};
+
 type GlobalSeoField = {
   __typename?: 'GlobalSeoField';
   facebookPageUrl?: Maybe<Scalars['String']>;
@@ -379,6 +422,31 @@ type GlobalSeoField = {
   siteName?: Maybe<Scalars['String']>;
   titleSuffix?: Maybe<Scalars['String']>;
   twitterAccount?: Maybe<Scalars['String']>;
+};
+
+/** Block of type Bild (image) */
+type ImageRecord = RecordInterface & {
+  __typename?: 'ImageRecord';
+  _createdAt: Scalars['DateTime'];
+  _firstPublishedAt?: Maybe<Scalars['DateTime']>;
+  _isValid: Scalars['BooleanType'];
+  _modelApiKey: Scalars['String'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']>;
+  _publishedAt?: Maybe<Scalars['DateTime']>;
+  /** SEO meta tags */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']>;
+  _updatedAt: Scalars['DateTime'];
+  bild: Array<FileField>;
+  id: Scalars['ItemId'];
+  layout?: Maybe<Scalars['String']>;
+};
+
+
+/** Block of type Bild (image) */
+type ImageRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
 };
 
 type ImgixParams = {
@@ -1789,6 +1857,15 @@ enum MuxThumbnailFormatType {
   png = 'png'
 }
 
+type NewsModelContentBlocksField = ImageRecord | VideoRecord;
+
+type NewsModelContentField = {
+  __typename?: 'NewsModelContentField';
+  blocks: Array<NewsModelContentBlocksField>;
+  links: Array<ProjectRecord>;
+  value: Scalars['JsonField'];
+};
+
 type NewsModelFilter = {
   OR?: InputMaybe<Array<InputMaybe<NewsModelFilter>>>;
   _createdAt?: InputMaybe<CreatedAtFilter>;
@@ -1799,11 +1876,20 @@ type NewsModelFilter = {
   _status?: InputMaybe<StatusFilter>;
   _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
   _updatedAt?: InputMaybe<UpdatedAtFilter>;
+  address?: InputMaybe<StringFilter>;
+  content?: InputMaybe<StructuredTextFilter>;
+  date?: InputMaybe<DateFilter>;
   district?: InputMaybe<LinkFilter>;
+  externalLink?: InputMaybe<StringFilter>;
   id?: InputMaybe<ItemIdFilter>;
+  image?: InputMaybe<FileFilter>;
   intro?: InputMaybe<TextFilter>;
+  misc?: InputMaybe<StringFilter>;
   slug?: InputMaybe<SlugFilter>;
+  subtitle?: InputMaybe<StringFilter>;
+  time?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
+  where?: InputMaybe<StringFilter>;
 };
 
 enum NewsModelOrderBy {
@@ -1823,13 +1909,27 @@ enum NewsModelOrderBy {
   _unpublishingScheduledAt_DESC = '_unpublishingScheduledAt_DESC',
   _updatedAt_ASC = '_updatedAt_ASC',
   _updatedAt_DESC = '_updatedAt_DESC',
+  address_ASC = 'address_ASC',
+  address_DESC = 'address_DESC',
+  date_ASC = 'date_ASC',
+  date_DESC = 'date_DESC',
+  externalLink_ASC = 'externalLink_ASC',
+  externalLink_DESC = 'externalLink_DESC',
   id_ASC = 'id_ASC',
   id_DESC = 'id_DESC',
+  misc_ASC = 'misc_ASC',
+  misc_DESC = 'misc_DESC',
+  subtitle_ASC = 'subtitle_ASC',
+  subtitle_DESC = 'subtitle_DESC',
+  time_ASC = 'time_ASC',
+  time_DESC = 'time_DESC',
   title_ASC = 'title_ASC',
-  title_DESC = 'title_DESC'
+  title_DESC = 'title_DESC',
+  where_ASC = 'where_ASC',
+  where_DESC = 'where_DESC'
 }
 
-/** Record of type Nyheter (news) */
+/** Record of type Aktuellt (news) */
 type NewsRecord = RecordInterface & {
   __typename?: 'NewsRecord';
   _createdAt: Scalars['DateTime'];
@@ -1843,21 +1943,30 @@ type NewsRecord = RecordInterface & {
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']>;
   _updatedAt: Scalars['DateTime'];
+  address?: Maybe<Scalars['String']>;
+  content?: Maybe<NewsModelContentField>;
+  date?: Maybe<Scalars['Date']>;
   district: DistrictRecord;
+  externalLink?: Maybe<Scalars['String']>;
   id: Scalars['ItemId'];
+  image?: Maybe<FileField>;
   intro?: Maybe<Scalars['String']>;
+  misc?: Maybe<Scalars['String']>;
   slug: Scalars['String'];
+  subtitle?: Maybe<Scalars['String']>;
+  time?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
+  where?: Maybe<Scalars['String']>;
 };
 
 
-/** Record of type Nyheter (news) */
+/** Record of type Aktuellt (news) */
 type NewsRecord_seoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
 
-/** Record of type Nyheter (news) */
+/** Record of type Aktuellt (news) */
 type NewsRecordintroArgs = {
   markdown?: InputMaybe<Scalars['Boolean']>;
 };
@@ -1894,6 +2003,15 @@ type PositionFilter = {
   neq?: InputMaybe<Scalars['IntType']>;
 };
 
+type ProjectModelContentBlocksField = ImageRecord | VideoRecord;
+
+type ProjectModelContentField = {
+  __typename?: 'ProjectModelContentField';
+  blocks: Array<ProjectModelContentBlocksField>;
+  links: Array<Scalars['String']>;
+  value: Scalars['JsonField'];
+};
+
 type ProjectModelFilter = {
   OR?: InputMaybe<Array<InputMaybe<ProjectModelFilter>>>;
   _createdAt?: InputMaybe<CreatedAtFilter>;
@@ -1904,7 +2022,10 @@ type ProjectModelFilter = {
   _status?: InputMaybe<StatusFilter>;
   _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
   _updatedAt?: InputMaybe<UpdatedAtFilter>;
+  avslutatProjekt?: InputMaybe<BooleanFilter>;
+  bild?: InputMaybe<FileFilter>;
   color?: InputMaybe<ColorFilter>;
+  content?: InputMaybe<StructuredTextFilter>;
   district?: InputMaybe<LinkFilter>;
   id?: InputMaybe<ItemIdFilter>;
   parent?: InputMaybe<ParentFilter>;
@@ -1930,6 +2051,8 @@ enum ProjectModelOrderBy {
   _unpublishingScheduledAt_DESC = '_unpublishingScheduledAt_DESC',
   _updatedAt_ASC = '_updatedAt_ASC',
   _updatedAt_DESC = '_updatedAt_DESC',
+  avslutatProjekt_ASC = 'avslutatProjekt_ASC',
+  avslutatProjekt_DESC = 'avslutatProjekt_DESC',
   id_ASC = 'id_ASC',
   id_DESC = 'id_DESC',
   position_ASC = 'position_ASC',
@@ -1952,8 +2075,11 @@ type ProjectRecord = RecordInterface & {
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']>;
   _updatedAt: Scalars['DateTime'];
+  avslutatProjekt?: Maybe<Scalars['BooleanType']>;
+  bild?: Maybe<FileField>;
   children?: Maybe<Array<Maybe<ProjectRecord>>>;
   color?: Maybe<ColorField>;
+  content?: Maybe<ProjectModelContentField>;
   district: DistrictRecord;
   id: Scalars['ItemId'];
   parent?: Maybe<ProjectRecord>;
@@ -2282,12 +2408,14 @@ type StatusFilter = {
 type StringFilter = {
   /** Search for records with an exact match */
   eq?: InputMaybe<Scalars['String']>;
-  /** Filter records with the specified field defined (i.e. with any value) or not */
+  /** Filter records with the specified field defined (i.e. with any value) or not [DEPRECATED] */
   exists?: InputMaybe<Scalars['BooleanType']>;
   /** Filter records that equal one of the specified values */
   in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Filter records with the specified field set as blank (null or empty string) */
   isBlank?: InputMaybe<Scalars['BooleanType']>;
+  /** Filter records with the specified field present (neither null, nor empty string) */
+  isPresent?: InputMaybe<Scalars['BooleanType']>;
   /** Filter records based on a regular expression */
   matches?: InputMaybe<StringMatchesFilter>;
   /** Exclude records with an exact match */
@@ -2304,6 +2432,20 @@ type StringMatchesFilter = {
   regexp?: InputMaybe<Scalars['BooleanType']>;
 };
 
+/** Specifies how to filter Structured Text fields */
+type StructuredTextFilter = {
+  /** Filter records with the specified field defined (i.e. with any value) or not [DEPRECATED] */
+  exists?: InputMaybe<Scalars['BooleanType']>;
+  /** Filter records with the specified field set as blank (null or single empty paragraph) */
+  isBlank?: InputMaybe<Scalars['BooleanType']>;
+  /** Filter records with the specified field present (neither null, nor empty string) */
+  isPresent?: InputMaybe<Scalars['BooleanType']>;
+  /** Filter records based on a regular expression */
+  matches?: InputMaybe<StringMatchesFilter>;
+  /** Exclude records based on a regular expression */
+  notMatches?: InputMaybe<StringMatchesFilter>;
+};
+
 type Tag = {
   __typename?: 'Tag';
   attributes?: Maybe<Scalars['MetaTagAttributes']>;
@@ -2313,10 +2455,12 @@ type Tag = {
 
 /** Specifies how to filter text fields */
 type TextFilter = {
-  /** Filter records with the specified field defined (i.e. with any value) or not */
+  /** Filter records with the specified field defined (i.e. with any value) or not [DEPRECATED] */
   exists?: InputMaybe<Scalars['BooleanType']>;
   /** Filter records with the specified field set as blank (null or empty string) */
   isBlank?: InputMaybe<Scalars['BooleanType']>;
+  /** Filter records with the specified field present (neither null, nor empty string) */
+  isPresent?: InputMaybe<Scalars['BooleanType']>;
   /** Filter records based on a regular expression */
   matches?: InputMaybe<StringMatchesFilter>;
   /** Exclude records based on a regular expression */
@@ -2682,11 +2826,47 @@ type UploadWidthFilter = {
   neq?: InputMaybe<Scalars['IntType']>;
 };
 
+type VideoField = {
+  __typename?: 'VideoField';
+  height: Scalars['IntType'];
+  provider: Scalars['String'];
+  providerUid: Scalars['String'];
+  thumbnailUrl: Scalars['String'];
+  title: Scalars['String'];
+  url: Scalars['String'];
+  width: Scalars['IntType'];
+};
+
 enum VideoMp4Res {
   high = 'high',
   low = 'low',
   medium = 'medium'
 }
+
+/** Block of type Video (video) */
+type VideoRecord = RecordInterface & {
+  __typename?: 'VideoRecord';
+  _createdAt: Scalars['DateTime'];
+  _firstPublishedAt?: Maybe<Scalars['DateTime']>;
+  _isValid: Scalars['BooleanType'];
+  _modelApiKey: Scalars['String'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']>;
+  _publishedAt?: Maybe<Scalars['DateTime']>;
+  /** SEO meta tags */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']>;
+  _updatedAt: Scalars['DateTime'];
+  caption?: Maybe<Scalars['String']>;
+  id: Scalars['ItemId'];
+  video?: Maybe<VideoField>;
+};
+
+
+/** Block of type Video (video) */
+type VideoRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
 
 type focalPoint = {
   __typename?: 'focalPoint';
