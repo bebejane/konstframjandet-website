@@ -1,17 +1,39 @@
 .card {
-  display: flex;
-  flex-direction: row;
+  position: relative;
+  flex: 0 0 50%;
 
-  >p,
-  figure {
-    flex: 0 0 50%;
+  a {
+    position: relative;
+
+    figure {
+      position: relative;
+      aspect-ratio: 4/3;
+
+      h1,
+      .intro {
+        position: absolute;
+        left: 0;
+        z-index: 1;
+        margin: var(--outer-margin);
+      }
+
+      h1 {
+        top: 0;
+      }
+
+      figcaption {
+        margin: 0;
+
+        .intro {
+          color: var(--white);
+          bottom: 0;
+        }
+      }
+
+      .image {
+        height: 100%;
+        width: 100%;
+      }
+    }
   }
-
-  p {}
-
-  figure {}
-
-  @include mq($until: tablet) {}
-
-  @include mq($from: tablet) {}
 }

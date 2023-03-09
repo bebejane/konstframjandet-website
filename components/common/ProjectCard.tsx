@@ -7,21 +7,23 @@ import { Image } from 'react-datocms/image'
 import Link from 'next/link'
 
 export type CardProps = {
-  news: ProjectRecord
+  project: ProjectRecord
 }
 
-export default function ProjectCard({ news: { title, intro, image, slug } }: CardProps) {
+export default function ProjectCard({ project: { title, intro, image, slug } }: CardProps) {
   return (
     <li className={cn(s.card)}>
-      <figure className={s.figure}>
-        <Image data={image.responsiveImage} className={s.image} />
-        <div className={s.content}>
+      <Link href={`/projekt/${slug}`}>
+        <figure>
           <h1>{title}</h1>
-          <Markdown>
-            {intro}
-          </Markdown>
-        </div>
-      </figure>
+          <Image data={image.responsiveImage} className={s.image} objectFit="cover" />
+          <figcaption className={s.content}>
+            <Markdown className={s.intro}>
+              {intro}
+            </Markdown>
+          </figcaption>
+        </figure>
+      </Link>
     </li>
   )
 }

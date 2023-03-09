@@ -3,6 +3,7 @@ fragment ProjectFragment on ProjectRecord {
 	title
 	slug
 	_createdAt
+	intro(markdown: false)
 	color {
 		hex
 	}
