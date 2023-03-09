@@ -1,7 +1,7 @@
 import s from './Article.module.scss'
 import cn from 'classnames'
 import React, { useEffect, useRef } from 'react'
-import { StructuredContent } from "/components";
+import { MetaSection, StructuredContent } from "/components";
 import { Image } from 'react-datocms';
 import { useScrollInfo } from 'dato-nextjs-utils/hooks'
 import { DatoSEO } from 'dato-nextjs-utils/components';
@@ -28,11 +28,6 @@ export default function Article({ id, children, title, content, image, imageSize
 
   const [setImageId, setImages, imageId] = useStore((state) => [state.setImageId, state.setImages, state.imageId])
   const { scrolledPosition, viewportHeight } = useScrollInfo()
-  const captionRef = useRef<HTMLElement | null>(null)
-  const offset = captionRef.current?.offsetTop
-  const ratio = offset ? Math.max(0, Math.min(1, ((scrolledPosition - (offset > viewportHeight ? offset - viewportHeight + 100 : 0)) / viewportHeight))) : 0
-  const padding = `${ratio * 100}px`;
-  const opacity = Math.max(0, 1 - (ratio * 1.5));
 
   useEffect(() => {
     const images = [image]
@@ -46,6 +41,7 @@ export default function Article({ id, children, title, content, image, imageSize
   return (
     <>
       <DatoSEO title={title} />
+      <MetaSection />
       <div className={cn(s.article, 'article')}>
         <h1>{title}</h1>
         {image &&
@@ -56,9 +52,9 @@ export default function Article({ id, children, title, content, image, imageSize
             <Image
               data={image.responsiveImage}
               pictureClassName={s.picture}
-              pictureStyle={{ padding }}
+
             />
-            <figcaption ref={captionRef} style={{ opacity }}>{image.title}</figcaption>
+            <figcaption >caption</figcaption>
           </figure>
         }
         <section className="intro">
