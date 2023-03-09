@@ -32,7 +32,10 @@ export default function Projects({ projects }: Props) {
 export const getStaticProps = withGlobalProps({ queries: [AllProjectsDocument] }, async ({ props, revalidate }: any) => {
 
   return {
-    props,
+    props: {
+      ...props,
+      pageTitle: 'Projekt'
+    },
     revalidate
   };
 });

@@ -32,7 +32,7 @@ export default function Footer({ footer, districts }: FooterProps) {
 					<ul>
 						{districts.map(({ id, subdomain, name }) =>
 							<li key={id}>
-								<Link href={`/${subdomain}`}>{name}</Link>
+								<Link href={`/`} locale={subdomain}>{name}</Link>
 							</li>
 						)}
 					</ul>
