@@ -16,7 +16,6 @@ export default function About({ abouts }: Props) {
 
   return (
     <>
-      <h1 className="noPadding">Om</h1>
       <div className={s.container}>
         <ul>
           {abouts.length > 0 ? abouts.map(({ id, title, slug }, idx) =>
