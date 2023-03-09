@@ -82,9 +82,10 @@
   display: none;
   flex-direction: row;
   background-color: var(--white);
-  top: calc(var(--navbar-height) + var(--small-space));
+  top: calc(var(--navbar-height));
   left: var(--outer-margin);
   width: var(--body-width);
+  padding: var(--small-space);
 
   &.show {
     display: flex;
@@ -92,12 +93,18 @@
 
   h3 {
     flex: 0 0 calc(var(--grid-unit));
+    color: var(--page-color);
   }
 
   ul {
+    width: 100%;
     list-style: none;
-
+    margin-left: calc(-1 * var(--small-space));
+    column-count: 5;
     li {
+      &:hover {
+        color: var(--page-color);
+      }
     }
   }
 }
