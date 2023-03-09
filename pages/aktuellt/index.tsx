@@ -6,6 +6,7 @@ import { AllNewsDocument } from "/graphql";
 import { format } from "date-fns";
 import Link from "next/link";
 import { useEffect } from "react";
+import { NewsCard, NewsContainer } from "/components";
 
 export type Props = {
   news: NewsRecord[]
@@ -16,15 +17,11 @@ export default function News({ news }: Props) {
   return (
     <>
       <div className={s.container}>
-        <ul>
-          {news.length > 0 ? news.map(({ id, title, slug }, idx) =>
-            <li key={id} >
-              <Link href={`/nyheter/${slug}`}>{title}</Link>
-            </li>
-          ) :
-            <>Det finns inga nyheter...</>
-          }
-        </ul>
+        <NewsContainer>
+          {news.map(item =>
+            <NewsCard news={item} />
+          )}
+        </NewsContainer>
       </div>
     </>
   );
@@ -36,7 +33,7 @@ export const getStaticProps = withGlobalProps({ queries: [AllNewsDocument] }, as
   return {
     props: {
       ...props,
-      pageTitle: 'Nyheter'
+      pageTitle: 'Aktuellt'
     },
     revalidate
   }
