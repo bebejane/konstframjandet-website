@@ -35,6 +35,6 @@ export default function NewsCard({ news: { title, intro, image, slug, address, w
           <Image data={image.responsiveImage} className={s.image} />
         </figure>
       </Link>
-    </li >
+    </li>
   )
 }

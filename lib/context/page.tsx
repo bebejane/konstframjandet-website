@@ -2,7 +2,8 @@ import { useContext, createContext } from "react";
 
 const initialState: PageProps = {
   district: undefined,
-  title: undefined
+  title: undefined,
+  layout: 'full'
 }
 
 export const PageContext = createContext(initialState);
@@ -18,7 +19,8 @@ export const PageProvider = ({ children, value }: PageProviderProps) => {
   return (
     <PageContext.Provider value={{
       ...initialState,
-      ...value
+      ...value,
+      layout: value.layout || initialState.layout
     }}>
       {children}
     </PageContext.Provider>

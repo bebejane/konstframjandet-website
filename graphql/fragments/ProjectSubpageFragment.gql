@@ -1,23 +1,12 @@
-fragment NewsFragment on NewsRecord {
+fragment ProjectSubpageFragment on ProjectSubpageRecord {
+	_createdAt
 	id
 	title
+	subtitle
 	intro(markdown: false)
 	image {
 		...ImageFragment
 	}
-	address
-	date
-	district {
-		...DistrictFragment
-	}
-	externalLink
-	misc
-	subtitle
-	time
-	title
-	where
-	slug
-	_createdAt
 	content {
 		value
 		blocks {

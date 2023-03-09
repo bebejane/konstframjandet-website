@@ -91,6 +91,24 @@ declare module '*/ProjectFragment.gql' {
 }
     
 
+declare module '*/ProjectSubpageFragment.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const ProjectSubpageFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/ProjectSubpageFragmentLight.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const ProjectSubpageFragmentLight: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/SiteFragment.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
