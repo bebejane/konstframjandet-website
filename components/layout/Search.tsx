@@ -77,7 +77,7 @@ export default function SearchResult({ }: Props) {
                   <div className={s.intro}>
                     <Markdown>{text}</Markdown>
                   </div>
-                  <Link href={slug}><button>{t('General.readMore')}</button></Link>
+                  <Link href={slug}><button>read more</button></Link>
                 </li>
               )}
             </ul>
@@ -87,7 +87,7 @@ export default function SearchResult({ }: Props) {
         loading ?
           <div className={s.loading}><Loader /></div>
           :
-          results && <p className={cn(s.nohits, "small")}>{t('Search.noHitsFor')}: &quot;{query}&quot;</p>
+          results && <p className={cn(s.nohits, "small")}>Inga träffar: &quot;{query}&quot;</p>
       }
       {error &&
         <div className={s.error}>

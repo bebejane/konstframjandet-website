@@ -5,7 +5,7 @@ import { Image } from 'react-datocms'
 import { ReadMore } from '/components'
 
 export type ImageShortcutBlockProps = {
-  data: ImageShortcutRecord
+  data: any
 }
 
 export default function ImageShortcut({ data: { headline, image, link, text, blackHeadline } }: ImageShortcutBlockProps) {

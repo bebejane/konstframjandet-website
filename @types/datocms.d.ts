@@ -497,8 +497,8 @@ type ImageRecord = RecordInterface & {
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']>;
   _updatedAt: Scalars['DateTime'];
-  bild: Array<FileField>;
   id: Scalars['ItemId'];
+  image: Array<FileField>;
   layout?: Maybe<Scalars['String']>;
 };
 

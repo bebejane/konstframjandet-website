@@ -12,28 +12,7 @@ export type Props = {
 export default function Home({ menu, district }: Props) {
 	return (
 		<div className={s.container}>
-			<ul className={s.districts}>
-				{districts.map(({ subdomain, name }, idx) =>
-					<li key={idx}>
-						{subdomain ?
-							<Link href={`/`} locale={subdomain}>
-								{name}
-							</Link>
-							:
-							<>{name}</>
-						}
-						{idx !== districts.length - 1 && <>&nbsp;|&nbsp;</>}
-					</li>
-				)}
-			</ul>
-			<br />
-			<b>{district?.name}</b>
-			<ul>
-				<li><Link href="/nyheter">Nyheter</Link></li>
-				<li><Link href="/om">Om</Link></li>
-				<li><Link href="/projekt">Projekt</Link></li>
-				<li><Link href="/kontakt">Kontakt</Link></li>
-			</ul>
+			hem
 		</div>
 	);
 }

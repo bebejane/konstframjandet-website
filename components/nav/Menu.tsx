@@ -8,27 +8,25 @@ import useStore from '/lib/store'
 import { useScrollInfo } from 'dato-nextjs-utils/hooks'
 import { useWindowSize } from 'usehooks-ts'
 import useDevice from '/lib/hooks/useDevice'
+import { usePage } from '/lib/context/page'
 
 export type MenuProps = { items: Menu }
 
 export default function Menu({ items }: MenuProps) {
 
-	const router = useRouter()
-	const menuRef = useRef<HTMLUListElement | null>(null);
-	const [showMenu, setShowMenu, searchQuery, setSearchQuery] = useStore((state) => [state.showMenu, state.setShowMenu, state.searchQuery, state.setSearchQuery])
-	const [selected, setSelected] = useState<MenuItem | undefined>()
-	const { scrolledPosition, documentHeight, viewportHeight } = useScrollInfo()
-	const { width, height } = useWindowSize()
-	const { isDesktop } = useDevice()
-
+	const { district } = usePage()
 
 	return (
 		<>
+			<nav className={cn(s.menu)}>
+				<h3>{district.name}</h3>
+				<ul>
 
-			<nav
-				className={cn(s.menu, !showMenu && s.hide)}
-			>
-				Menu
+					<li><Link href="/nyheter">Nyheter</Link></li>
+					<li><Link href="/om">Om</Link></li>
+					<li><Link href="/projekt">Projekt</Link></li>
+					<li><Link href="/kontakt">Kontakt</Link></li>
+				</ul>
 			</nav>
 		</>
 	)
