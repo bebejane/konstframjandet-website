@@ -22,6 +22,12 @@
 	--line-thin: 3px solid var(--white);
 	--background: var(--light-grey);
 
+	--z-background-image: 0;
+	--z-menu: 400;
+	--z-logo: 600;
+	--z-fullscreen-gallery: 800;
+	--z-fullscreen-gallery-close: 801;
+
 	@include mq($from: tablet) {
 		--space: 3rem;
 		--outer-margin: 4vw;
