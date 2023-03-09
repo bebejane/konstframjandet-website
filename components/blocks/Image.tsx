@@ -1,6 +1,6 @@
 import s from './Image.module.scss'
 import React from 'react'
-import { KCImage as DatoImage } from '/components'
+import { Image as DatoImage } from 'react-datocms'
 import { ImageGallery } from '/components'
 import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components'
 

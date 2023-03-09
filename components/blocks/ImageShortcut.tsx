@@ -1,8 +1,8 @@
 import s from './ImageShortcut.module.scss'
 import cn from 'classnames'
 import React from 'react'
-import { KCImage as Image } from '/components'
-import ReadMore from '../common/ReadMore'
+import { Image } from 'react-datocms'
+import { ReadMore } from '/components'
 
 export type ImageShortcutBlockProps = {
   data: ImageShortcutRecord
