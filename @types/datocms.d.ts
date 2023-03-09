@@ -2114,13 +2114,13 @@ type ProjectModelFilter = {
   _status?: InputMaybe<StatusFilter>;
   _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
   _updatedAt?: InputMaybe<UpdatedAtFilter>;
-  bild?: InputMaybe<FileFilter>;
   color?: InputMaybe<ColorFilter>;
   colorOptions?: InputMaybe<StringFilter>;
   completed?: InputMaybe<BooleanFilter>;
   content?: InputMaybe<StructuredTextFilter>;
   district?: InputMaybe<LinkFilter>;
   id?: InputMaybe<ItemIdFilter>;
+  image?: InputMaybe<FileFilter>;
   intro?: InputMaybe<TextFilter>;
   slug?: InputMaybe<SlugFilter>;
   subpage?: InputMaybe<LinksFilter>;
@@ -2171,13 +2171,13 @@ type ProjectRecord = RecordInterface & {
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']>;
   _updatedAt: Scalars['DateTime'];
-  bild?: Maybe<FileField>;
   color?: Maybe<ColorField>;
   colorOptions?: Maybe<Scalars['String']>;
   completed?: Maybe<Scalars['BooleanType']>;
   content?: Maybe<ProjectModelContentField>;
   district: DistrictRecord;
   id: Scalars['ItemId'];
+  image?: Maybe<FileField>;
   intro?: Maybe<Scalars['String']>;
   slug: Scalars['String'];
   subpage: Array<ProjectSubpageRecord>;
@@ -3163,7 +3163,7 @@ type ImageThumbnailFragment = { __typename?: 'FileField', id: any, mimeType: str
 
 type NewsFragment = { __typename?: 'NewsRecord', id: any, title?: string | null, intro?: string | null, address?: string | null, date?: any | null, externalLink?: string | null, misc?: string | null, subtitle?: string | null, time?: string | null, where?: string | null, slug: string, _createdAt: any, image?: { __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, bgColor?: string | null, sizes: string } | null } | null, district: { __typename?: 'DistrictRecord', id: any, name: string, email?: string | null, subdomain: string, color: { __typename?: 'ColorField', hex: string, red: any, green: any, blue: any } }, content?: { __typename?: 'NewsModelContentField', value: any, blocks: Array<{ __typename: 'ButtonRecord', id: any, text?: string | null, url?: string | null } | { __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, bgColor?: string | null, sizes: string } | null }> } | { __typename: 'ImageRecord', id: any, layout?: string | null, image: Array<{ __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, bgColor?: string | null, sizes: string } | null }> } | { __typename: 'LogoRecord', id: any, image: Array<{ __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, bgColor?: string | null, sizes: string } | null }> } | { __typename: 'VideoRecord', caption?: string | null, id: any, video?: { __typename?: 'VideoField', width: any, height: any, provider: string, providerUid: string, thumbnailUrl: string, title: string, url: string } | null }> } | null };
 
-type ProjectFragment = { __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string, _createdAt: any, color?: { __typename?: 'ColorField', hex: string } | null };
+type ProjectFragment = { __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string, _createdAt: any, color?: { __typename?: 'ColorField', hex: string } | null, image?: { __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, bgColor?: string | null, sizes: string } | null } | null };
 
 type SiteFragment = { __typename?: 'Site', favicon: Array<{ __typename?: 'Tag', attributes?: any | null, content?: string | null, tag: string }>, globalSeo?: { __typename?: 'GlobalSeoField', facebookPageUrl?: string | null, siteName?: string | null, titleSuffix?: string | null, twitterAccount?: string | null, fallbackSeo?: { __typename?: 'SeoField', description?: string | null, title?: string | null, twitterCard?: string | null, image?: { __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, bgColor?: string | null, sizes: string } | null } | null } | null } | null };
 
@@ -3193,7 +3193,7 @@ type AllProjectsQueryVariables = Exact<{
 }>;
 
 
-type AllProjectsQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string, _createdAt: any, color?: { __typename?: 'ColorField', hex: string } | null }>, pagination: { __typename?: 'CollectionMetadata', count: any } };
+type AllProjectsQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string, _createdAt: any, color?: { __typename?: 'ColorField', hex: string } | null, image?: { __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, bgColor?: string | null, sizes: string } | null } | null }>, pagination: { __typename?: 'CollectionMetadata', count: any } };
 
 type ProjectQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -3201,4 +3201,4 @@ type ProjectQueryVariables = Exact<{
 }>;
 
 
-type ProjectQuery = { __typename?: 'Query', project?: { __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string, _createdAt: any, color?: { __typename?: 'ColorField', hex: string } | null } | null };
+type ProjectQuery = { __typename?: 'Query', project?: { __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string, _createdAt: any, color?: { __typename?: 'ColorField', hex: string } | null, image?: { __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, bgColor?: string | null, sizes: string } | null } | null } | null };

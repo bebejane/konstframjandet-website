@@ -1,0 +1,17 @@
+.card {
+  display: flex;
+  flex-direction: row;
+
+  >p,
+  figure {
+    flex: 0 0 50%;
+  }
+
+  p {}
+
+  figure {}
+
+  @include mq($until: tablet) {}
+
+  @include mq($from: tablet) {}
+}
