@@ -5,32 +5,42 @@
   color: var(--white);
   padding: var(--outer-margin);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
-  .about {
-    flex: 0 0 calc(var(--grid-unit));
+  .line {
+    border: var(--line-thin);
+    margin-bottom: var(--outer-margin);
   }
 
-  ul {
-    list-style: none;
+  nav {
     display: flex;
-  }
-
-  >ul {
-    display: flex;
-    flex: 1 1 100%;
     flex-direction: row;
 
-    >li {
-      flex: 0 0 calc(100% / 5);
+    .about {
+      flex: 0 0 calc(var(--grid-unit));
+    }
 
-      ul {
-        flex-direction: column;
-        margin-top: 1rem;
+    ul {
+      list-style: none;
+      display: flex;
+    }
 
-        li {
-          a {
-            color: var(--white);
+    >ul {
+      display: flex;
+      flex: 1 1 100%;
+      flex-direction: row;
+
+      >li {
+        flex: 0 0 calc(100% / 5);
+
+        ul {
+          flex-direction: column;
+          margin-top: 1rem;
+
+          li {
+            a {
+              color: var(--white);
+            }
           }
         }
       }
