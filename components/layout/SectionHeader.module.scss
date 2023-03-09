@@ -1,3 +1,5 @@
 .header {
-  //border-top: ;
+  border-top: var(--line-thick);
+  padding: var(--small-space);
+  border-bottom: var(--line-thick);
 }

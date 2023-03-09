@@ -9,24 +9,11 @@ export type Props = {
   }[]
 }
 
-export default function MetaSection({ items = [] }: Props) {
+export default function MetaSection({ }: Props) {
 
   return (
     <section className={s.meta}>
-      <ul className="small">
-        {items.filter(({ value, title }) => value && title).map(({ title, value, link }, idx) =>
-          <li key={idx}>
-            {title}:&nbsp;
-            <strong>
-              {link ?
-                <Link href={link}>{value}</Link>
-                :
-                <>{value}</>
-              }
-            </strong>
-          </li>
-        )}
-      </ul>
+      meta
     </section>
   )
 }
