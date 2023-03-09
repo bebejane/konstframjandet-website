@@ -3,7 +3,7 @@
 	--white: #fcfcfc;
 	--light-grey: #f5f5f5;
 	--outer-margin: 6vw;
-	--logo-size: 2rem;
+	--logo-size: 40px;
 	--logo-size-optical: 1.7rem;
 	--total-outer-margin: calc((var(--outer-margin) * 2) + var(--logo-size-optical));
 	--grid-unit: calc(((100vw - (2 * var(--total-outer-margin))) / 12));
@@ -14,14 +14,16 @@
 	--line-height-nav: 1.6em;
 	--gutter: 4vw;
 	--navbar-height: 4.5rem;
-
 	--background: var(--light-greye);
 	--foreground: var(--black);
+	--line-thick: 7px solid var(--white);
+	--line-thin: 3px solid var(--white);
 
 	@include mq($from: tablet) {
 		--space: 4rem;
 		--outer-margin: 4vw;
 		--gutter: 2.5vw;
+		--logo-size: 84px;
 	}
 }
 
