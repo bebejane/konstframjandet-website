@@ -8,15 +8,15 @@ import { usePage } from '/lib/context/page'
 import useStore from '/lib/store'
 
 export type SectionHeaderProps = {
-  menu: MenuItem[]
+  title: string
 }
 
-export default function SectionHeader({ }: SectionHeaderProps) {
+export default function SectionHeader({ title }: SectionHeaderProps) {
 
   return (
 
     <header className={cn(s.header)}>
-
+      {title}
     </header>
   )
 }
