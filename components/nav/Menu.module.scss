@@ -37,11 +37,11 @@
 
     li {
       cursor: pointer;
-      margin-right: 1em;
+      margin-right: 0.6em;
 
       &:not(:last-of-type)::after {
         content: "4";
-        padding-left: 1em;
+        padding-left: 0.6em;
         font-family: $symbol-font;
       }
     }

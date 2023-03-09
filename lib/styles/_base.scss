@@ -18,7 +18,7 @@
 	--navbar-space: 1.5rem;
 	--navbar-title-size: 30px;
 	--navbar-text-size: 20px;
-	--navbar-height: calc((2 * var(--navbar-space)) + var(--navbar-title-size) + 1rem + var(--navbar-text-size));
+	--navbar-height: calc((2 * var(--navbar-space)) + var(--navbar-title-size) + 0.5rem + var(--navbar-text-size));
 	--background: var(--light-greye);
 	--foreground: var(--black);
 	--line-thick: 7px solid var(--white);

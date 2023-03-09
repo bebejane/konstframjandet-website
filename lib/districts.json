@@ -30,14 +30,14 @@
   {
     "__typename": "DistrictRecord",
     "id": "122564749",
-    "name": "Förbundet",
+    "name": "Konstfrämjandet",
     "email": "",
     "subdomain": "forbundet",
     "color": {
-      "hex": "#FF9700",
-      "red": 255,
-      "green": 151,
-      "blue": 0,
+      "hex": "#F5C010",
+      "red": 245,
+      "green": 192,
+      "blue": 16,
       "__typename": "ColorField"
     }
   },

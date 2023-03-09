@@ -22,9 +22,10 @@ export default function Menu({ items }: MenuProps) {
 				<h2>{district.name}</h2>
 				<div className={s.wrapper}>
 					<ul>
+						<li><Link href="/nyheter">Hem</Link></li>
 						<li><Link href="/nyheter">Nyheter</Link></li>
-						<li><Link href="/om">Om</Link></li>
 						<li><Link href="/projekt">Projekt</Link></li>
+						<li><Link href="/om">Om oss</Link></li>
 						<li><Link href="/kontakt">Kontakt</Link></li>
 					</ul>
 					<span className="mid">Sök</span>
