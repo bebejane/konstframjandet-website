@@ -12,7 +12,7 @@ export type FooterProps = {
 export default function Footer({ footer, menu }: FooterProps) {
 
 	const { district } = usePage()
-	//console.log(menu)
+
 	return (
 		<footer className={cn(s.footer)} id="footer">
 			<div className={s.line}></div>
@@ -23,12 +23,12 @@ export default function Footer({ footer, menu }: FooterProps) {
 					och med att föra ut konst till människor i deras vardag. Vi verkar i hela Sverige.
 				</div>
 				<ul>
-					{menu.map(({ type, label, slug, items, subdomain }, idx) =>
+					{menu.map(({ label, slug, items, subdomain }, idx) =>
 						<li key={idx}>
 							{slug ? <Link href={slug} locale={subdomain}>{label}</Link> : <>{label}</>}
 							<ul>
-								{items?.map(({ type, label, slug, subdomain }) =>
-									<li><Link href={slug} locale={subdomain}>{label}</Link></li>
+								{items?.map(({ label, slug, subdomain }, idx) =>
+									<li key={`${idx}-sub`}><Link href={slug} locale={subdomain}>{label}</Link></li>
 								)}
 							</ul>
 						</li>

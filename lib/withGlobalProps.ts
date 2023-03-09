@@ -24,6 +24,8 @@ export default function withGlobalProps(opt: any, callback: Function): GetStatic
     if (!district)
       return { notFound: true };
 
+
+
     const variables = queries.map(el => ({ districtId: district.id }))
     const props = await apiQuery(queries, { variables, preview: context.preview });
     const subdomain = context.locale || null

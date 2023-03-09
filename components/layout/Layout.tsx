@@ -28,9 +28,9 @@ export default function Layout({ children, menu: menuFromProps, footer, title, d
 			<Content menu={menu} title={title}>
 				{children}
 			</Content>
+			<Footer footer={footer} menu={menu} />
 			<Menu districts={districts} />
 			<Logo />
-			<Footer footer={footer} menu={menu} key={router.asPath} />
 			<FullscreenGallery
 				index={images?.findIndex((image) => image?.id === imageId)}
 				images={images}
