@@ -12,8 +12,7 @@
   margin-right: var(--outer-margin);
   background-color: var(--background);
 
-  @include mq($until: desktop) {
-  }
+  @include mq($until: desktop) {}
 
   h2 {
     margin: 0;
@@ -39,11 +38,40 @@
       cursor: pointer;
       margin-right: 0.6em;
 
+      &.active {
+        //color: ;
+      }
+
       &:not(:last-of-type)::after {
         content: "4";
         padding-left: 0.6em;
         font-family: $symbol-font;
       }
     }
+  }
+}
+
+.districts {
+  position: fixed;
+  display: none;
+  flex-direction: row;
+  background-color: var(--white);
+  top: calc(var(--navbar-height) + var(--small-space));
+  left: var(--outer-margin);
+  width: var(--body-width);
+
+  &.show {
+    display: flex;
+  }
+
+  h3 {
+    flex: 0 0 calc(var(--grid-unit));
+
+  }
+
+  ul {
+    list-style: none;
+
+    li {}
   }
 }

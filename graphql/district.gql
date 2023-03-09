@@ -1,6 +1,6 @@
 query AllDistrics {
 	districts: allDistricts(first: 100, orderBy: name_ASC) {
-		...DistrictFragment
+		...DistrictFragmentLight
 	}
 }
 query District($subdomain: String!) {
