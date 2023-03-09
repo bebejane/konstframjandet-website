@@ -41,8 +41,7 @@ export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, r
       ...props,
       about,
       page: {
-        title: about.title,
-        image: about.image
+        title: about.title
       }
     }
   };
