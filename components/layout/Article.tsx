@@ -41,8 +41,8 @@ export default function Article({ id, children, title, content, image, imageSize
   return (
     <>
       <DatoSEO title={title} />
-      <MetaSection />
       <div className={cn(s.article, 'article')}>
+
         <h1>{title}</h1>
         {image &&
           <figure

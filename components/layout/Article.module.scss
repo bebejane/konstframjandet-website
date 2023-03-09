@@ -1,14 +1,5 @@
 .article {
   position: relative;
-  //padding-top: var(--header-height);
-
-  &.noBottom {
-    padding-bottom: 0;
-  }
-
-  a:hover {
-    color: var(--beige-dark) !important;
-  }
 
   figure {
     display: flex;
@@ -25,15 +16,14 @@
       padding-right: calc(2 * var(--grid-unit));
     }
 
-    &.medium {
-    }
+    &.medium {}
 
-    &.large {
-    }
+    &.large {}
 
     &.portrait {
       padding-left: calc(3 * var(--grid-unit));
       padding-right: calc(3 * var(--grid-unit));
+
       @include mq($from: tablet) {
         padding-left: calc(2 * var(--grid-unit));
         padding-right: calc(2 * var(--grid-unit));
@@ -43,7 +33,6 @@
 
   .date {
     font-family: $headline-font;
-    border: 1px solid var(--black);
     display: flex;
     flex-direction: column;
     align-items: center;
