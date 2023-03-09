@@ -32,7 +32,7 @@ export default function SectionHeader({ }: SectionHeaderProps) {
       }
       {intro &&
 
-        <Markdown className={s.intro}>
+        <Markdown className={cn(s.intro, "intro")}>
           {intro}
         </Markdown>
 
