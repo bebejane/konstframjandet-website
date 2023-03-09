@@ -64,9 +64,9 @@ p {
 
 p.intro,
 .intro p {
-  font-size: 1.15rem;
+  font-size: calc(1rem + 4px);
   padding-bottom: 0;
-  font-weight: normal;
+  font-weight: bold;
   line-height: var(--line-height);
 }
 
@@ -75,6 +75,7 @@ label.small,
 .small p,
 footer,
 footer nav,
+footer nav li,
 figcaption,
 label {
   font-family: $headline-font;

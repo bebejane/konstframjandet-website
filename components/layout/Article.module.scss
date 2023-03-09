@@ -42,6 +42,10 @@
     .content {
       width: calc(2 * var(--grid-unit));
 
+      & > *:nth-last-child(2) {
+        margin-bottom: 0;
+      }
+
       .back {
         position: absolute;
         margin-left: calc(-1 * var(--grid-unit));
