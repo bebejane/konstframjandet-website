@@ -41,10 +41,20 @@
 
     .content {
       width: calc(2 * var(--grid-unit));
+
+      .back {
+        position: absolute;
+        margin-left: calc(-1 * var(--grid-unit));
+        margin-top: -1em;
+      }
     }
 
     .caption {
       flex: 0 0 25%;
+      margin-left: var(--gutter);
+      figcaption {
+        padding-top: 0;
+      }
     }
   }
 }

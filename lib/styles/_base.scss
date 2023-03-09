@@ -34,7 +34,7 @@
 
 	@include mq($from: tablet) {
 		--outer-margin: 4vw;
-		--gutter: 2.5vw;
+		--gutter: 4vw;
 		--logo-size: 84px;
 	}
 }
@@ -62,7 +62,7 @@ body {
 
 ::-webkit-scrollbar {
 	-webkit-appearance: none;
-	background: var(--beige-light);
+	background: var(--white);
 }
 
 ::-webkit-scrollbar:vertical {
@@ -74,7 +74,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-	background: var(--black);
+	background: var(--page-color);
 }
 
 *,
@@ -97,8 +97,8 @@ a {
 }
 
 article p a {
-	text-decoration: underline !important;
-	text-underline-offset: 0.1em;
+	text-decoration: none;
+	border-bottom: 1px solid var(--page-color);
 
 	&:hover {
 		color: var(--page-color);

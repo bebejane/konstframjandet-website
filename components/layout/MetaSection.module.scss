@@ -3,4 +3,13 @@
   padding-top: var(--space);
   top: var(--navbar-height);
   width: var(--grid-unit);
+  div {
+    border-bottom: var(--line-thin);
+    margin-right: var(--gutter);
+  }
+  h3 {
+    color: var(--page-color);
+    border-bottom: var(--line-thin);
+    margin-bottom: var(--small-space);
+  }
 }

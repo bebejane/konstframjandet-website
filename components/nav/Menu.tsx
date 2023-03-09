@@ -20,7 +20,12 @@ export default function Menu({ districts }: MenuProps) {
 	return (
 		<>
 			<nav className={cn(s.menu)}>
-				<h2>{district.name}</h2>
+				<div className={s.top}>
+					<h2>{district.name}</h2>
+					<div class="small">
+						<a>Facebook</a><a>Instagram</a><a>English</a>
+					</div>
+				</div>
 				<div className={s.wrapper}>
 					<ul>
 						<li>

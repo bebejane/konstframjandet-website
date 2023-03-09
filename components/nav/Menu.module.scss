@@ -12,12 +12,29 @@
   margin-right: var(--outer-margin);
   background-color: var(--background);
 
-  @include mq($until: desktop) {}
+  @include mq($until: desktop) {
+  }
 
   h2 {
     margin: 0;
     padding: 0;
     margin-left: calc(var(--grid-unit));
+  }
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+
+    div a {
+      &:not(:last-of-type) {
+        padding-right: 0.6em;
+      }
+      &:not(:last-of-type)::after {
+        content: "4";
+        padding-left: 0.6em;
+        font-family: $symbol-font;
+      }
+    }
   }
 
   .wrapper {
@@ -66,12 +83,12 @@
 
   h3 {
     flex: 0 0 calc(var(--grid-unit));
-
   }
 
   ul {
     list-style: none;
 
-    li {}
+    li {
+    }
   }
 }

@@ -59,9 +59,12 @@ export default function Article({ id, children, title, content, image, imageSize
               content={content}
               onClick={(imageId) => setImageId(imageId)}
             />
+            <div className={s.back}><a className="mid">Visa alla</a></div>
           </div>
           <div className={s.caption}>
-            Image caption here...
+            <figcaption>
+              Image caption here...
+            </figcaption>
           </div>
         </section>
       </div>
