@@ -22,8 +22,6 @@ export type ArticleProps = {
   date?: string
 }
 
-const MAX_PORTRAIT_HEIGHT = 600;
-
 export default function Article({ id, children, title, content, image, imageSize, intro, date, onClick, record }: ArticleProps) {
 
   const [setImageId, setImages, imageId] = useStore((state) => [state.setImageId, state.setImages, state.imageId])
