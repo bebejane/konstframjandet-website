@@ -10,7 +10,7 @@ export default function Logo({ }: Props) {
 
   return (
     <div className={s.container}>
-      <Link href={'/'}>Logo</Link>
+      <Link href={'/'}>B</Link>
     </div>
   )
 }

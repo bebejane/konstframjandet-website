@@ -4,19 +4,31 @@
   left: 0;
   z-index: var(--z-menu);
   min-height: var(--navbar-height);
-  padding: 1rem;
-  width: 100%;
-  margin-left: 20rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  width: var(--body-width);
+  border-bottom: var(--line-thick);
+  margin-left: var(--outer-margin);
+  margin-right: var(--outer-margin);
+  background-color: var(--background);
 
-  @include mq($until: desktop) {}
+  @include mq($until: desktop) {
+  }
 
-  h3 {
+  h2 {
     margin: 0;
     padding: 0;
+    margin-left: calc(var(--outer-margin) + var(--grid-unit));
+  }
 
+  .wrapper {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
   }
 
   ul {
+    margin-left: calc(var(--outer-margin) + var(--grid-unit));
     list-style: none;
     display: flex;
     width: 100%;
@@ -25,7 +37,13 @@
 
     li {
       cursor: pointer;
-      margin-right: 1rem;
+      margin-right: 1em;
+
+      &:not(:last-of-type)::after {
+        content: "4";
+        padding-left: 1em;
+        font-family: $symbol-font;
+      }
     }
   }
 }

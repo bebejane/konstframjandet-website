@@ -1,25 +1,13 @@
 .container {
   position: fixed;
-  top: 0;
+  top: var(--very-small-space);
   left: 0;
   max-width: 0;
   z-index: var(--z-logo);
   left: var(--outer-margin);
-
-  @include mq($until: tablet) {
-    top: var(--outer-margin);
-    transform: scale(0.9);
-  }
-
-  @include mq($from: tablet) {
-    bottom: var(--outer-margin);
-  }
-
-  svg,
-  g,
-  path {
-    @include mq($from: tablet) {
-      fill: inherit;
-    }
+  font-family: $symbol-font;
+  font-size: var(--logo-size);
+  a {
+    line-height: 1;
   }
 }
