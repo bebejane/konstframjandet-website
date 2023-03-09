@@ -26,6 +26,7 @@ h5 {
 
 h1 {
   font-size: 34px;
+  color: var(--page-color);
   @include mq($from: tablet) {
     font-size: 58px;
   }

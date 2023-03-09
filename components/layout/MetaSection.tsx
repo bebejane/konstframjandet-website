@@ -9,7 +9,9 @@ export type Props = {
 export default function MetaSection({ children }: Props) {
   return (
     <section className={s.meta}>
-      {children}
+      <div className="mid">
+        {children}
+      </div>
     </section>
   )
 }

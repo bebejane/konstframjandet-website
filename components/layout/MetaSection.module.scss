@@ -1,5 +1,6 @@
 .meta {
   position: sticky;
+  padding-top: var(--space);
   top: var(--navbar-height);
-
+  width: var(--grid-unit);
 }

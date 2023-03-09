@@ -1,5 +1,7 @@
 .article {
   position: relative;
+  width: 75%;
+  padding-top: var(--space);
 
   figure {
     display: flex;
@@ -16,9 +18,11 @@
       padding-right: calc(2 * var(--grid-unit));
     }
 
-    &.medium {}
+    &.medium {
+    }
 
-    &.large {}
+    &.large {
+    }
 
     &.portrait {
       padding-left: calc(3 * var(--grid-unit));
@@ -36,11 +40,11 @@
     flex-direction: row;
 
     .content {
-      flex: 0 0 80%;
+      width: calc(2 * var(--grid-unit));
     }
 
     .caption {
-      flex: 0 0 20%;
+      flex: 0 0 25%;
     }
   }
 }
