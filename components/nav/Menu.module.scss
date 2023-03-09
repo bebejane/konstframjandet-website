@@ -39,7 +39,7 @@
       margin-right: 0.6em;
 
       &.active {
-        //color: ;
+        color: var(--page-color);
       }
 
       &:not(:last-of-type)::after {
