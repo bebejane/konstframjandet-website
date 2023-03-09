@@ -10,11 +10,12 @@ import { useWindowSize } from 'usehooks-ts'
 import useDevice from '/lib/hooks/useDevice'
 import { usePage } from '/lib/context/page'
 
-export type MenuProps = { items: Menu }
+export type MenuProps = { districts: DistrictRecord[] }
 
-export default function Menu({ items }: MenuProps) {
+export default function Menu({ districts }: MenuProps) {
 
 	const { district } = usePage()
+	const [showDistricts, setShowDistricts] = useState(false)
 
 	return (
 		<>
@@ -22,14 +23,38 @@ export default function Menu({ items }: MenuProps) {
 				<h2>{district.name}</h2>
 				<div className={s.wrapper}>
 					<ul>
-						<li><Link href="/nyheter">Hem</Link></li>
-						<li><Link href="/nyheter">Nyheter</Link></li>
-						<li><Link href="/projekt">Projekt</Link></li>
-						<li><Link href="/om">Om oss</Link></li>
-						<li><Link href="/kontakt">Kontakt</Link></li>
+						<li>
+							<Link href="/">Hem</Link>
+						</li>
+						<li>
+							<Link href="/nyheter">Nyheter</Link>
+						</li>
+						<li>
+							<Link href="/projekt">Projekt</Link>
+						</li>
+						<li
+							className={cn(showDistricts && s.active)}
+							onClick={() => setShowDistricts(!showDistricts)}
+						>
+							Distrikt
+						</li>
+						<li>
+							<Link href="/om">Om oss</Link>
+						</li>
+						<li>
+							<Link href="/kontakt">Kontakt</Link>
+						</li>
 					</ul>
 					<span className="mid">Sök</span>
 				</div>
+			</nav>
+			<nav className={cn(s.districts, showDistricts && s.show)}>
+				<h3>Besök våra distrikt</h3>
+				<ul>
+					{districts.map(({ name }) =>
+						<li>{name}</li>
+					)}
+				</ul>
 			</nav>
 		</>
 	)

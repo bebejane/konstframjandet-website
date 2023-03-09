@@ -37,6 +37,15 @@ declare module '*/DistrictFragment.gql' {
 }
     
 
+declare module '*/DistrictFragmentLight.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const DistrictFragmentLight: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/ImageFragment.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;

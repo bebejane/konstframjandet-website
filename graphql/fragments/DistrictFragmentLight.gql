@@ -1,0 +1,9 @@
+fragment DistrictFragmentLight on DistrictRecord {
+	id
+	name
+	email
+	subdomain
+	color {
+		hex
+	}
+}

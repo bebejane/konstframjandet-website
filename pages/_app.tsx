@@ -13,11 +13,11 @@ const siteTitle = 'Konstnärsfrämjandet'
 function App({ Component, pageProps, router }) {
 
   const { district } = pageProps
+  const isHome = router.asPath === '/'
 
   useEffect(() => {
-    //document.body.style.backgroundColor = district?.color?.hex
-    //document.querySelector<HTMLElement>(':root').style.setProperty('--background', district?.color?.hex);
-  }, [router.asPath, district])
+    document.querySelector<HTMLElement>(':root').style.setProperty('--background', isHome ? district?.color?.hex : 'var(--white)');
+  }, [isHome, district])
 
   const errorCode = parseInt(router.pathname.replace('/', ''))
   const isError = (!isNaN(errorCode) && (errorCode > 400 && errorCode < 600)) || router.pathname.replace('/', '') === '_error'
@@ -27,7 +27,12 @@ function App({ Component, pageProps, router }) {
     <>
       <DefaultDatoSEO siteTitle={siteTitle} />
       <PageProvider value={{ district: pageProps.district, title: siteTitle }}>
-        <Layout title={pageProps.pageTitle} menu={pageProps.menu || []} footer={pageProps.footer}>
+        <Layout
+          title={pageProps.pageTitle}
+          menu={pageProps.menu || []}
+          footer={pageProps.footer}
+          districts={pageProps.districts}
+        >
           <Component {...pageProps} />
         </Layout>
       </PageProvider>

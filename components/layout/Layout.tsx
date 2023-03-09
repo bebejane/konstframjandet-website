@@ -13,9 +13,10 @@ export type LayoutProps = {
 	menu: MenuItem[],
 	footer: any
 	title: string
+	districts: DistrictRecord[]
 }
 
-export default function Layout({ children, menu: menuFromProps, footer, title }: LayoutProps) {
+export default function Layout({ children, menu: menuFromProps, footer, title, districts }: LayoutProps) {
 
 	const router = useRouter()
 	const { district } = usePage()
@@ -27,7 +28,7 @@ export default function Layout({ children, menu: menuFromProps, footer, title }:
 			<Content menu={menu} title={title}>
 				{children}
 			</Content>
-			<Menu items={menu} />
+			<Menu districts={districts} />
 			<Logo />
 			<Footer menu={menu} footer={footer} />
 			<FullscreenGallery
