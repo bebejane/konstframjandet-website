@@ -1,17 +1,32 @@
 .card {
   display: flex;
   flex-direction: row;
+  padding-top: var(--space);
+  padding-bottom: var(--space);
+  border-bottom: var(--line-thin);
 
-  >p,
+  h1 {
+    padding-bottom: var(--small-space);
+  }
+
+  .meta {
+    line-height: var(--line-height) !important;
+  }
+
+  > p,
   figure {
     flex: 0 0 50%;
   }
 
-  p {}
+  p {
+  }
 
-  figure {}
+  figure {
+  }
 
-  @include mq($until: tablet) {}
+  @include mq($until: tablet) {
+  }
 
-  @include mq($from: tablet) {}
+  @include mq($from: tablet) {
+  }
 }

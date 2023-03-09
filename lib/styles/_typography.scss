@@ -24,7 +24,8 @@ h5 {
   }
 }
 
-h1 {
+h1,
+h2.big {
   font-size: 34px;
   color: var(--page-color);
   @include mq($from: tablet) {
@@ -67,6 +68,12 @@ p.intro,
   font-size: calc(1rem + 4px);
   padding-bottom: 0;
   font-weight: bold;
+  line-height: var(--line-height);
+}
+
+p.big,
+.big p {
+  font-size: calc(1rem + 2px);
   line-height: var(--line-height);
 }
 

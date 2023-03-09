@@ -15,10 +15,10 @@ export default function NewsCard({ news: { title, intro, image, slug, address, w
     <li className={cn(s.card)}>
       <div className={s.content}>
         <h1>{title}</h1>
-        <Markdown>
+        <Markdown className="big">
           {intro}
         </Markdown>
-        <div className={s.meta}>
+        <div className={cn(s.meta, "mid")}>
           {where}<br />
           {format(new Date(date), 'iiii d MMMM')}<br />
           {time}<br />
