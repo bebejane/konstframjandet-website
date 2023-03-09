@@ -25,12 +25,11 @@ export default function Layout({ children, menu: menuFromProps, footer, title }:
 	return (
 		<>
 			<div className={s.layout}>
-				<Content menu={menu}>
+				<Content menu={menu} title={title}>
 					{children}
 				</Content>
 			</div>
 			<Menu items={menu} />
-
 			<Logo />
 			<Footer menu={menu} footer={footer} />
 			<FullscreenGallery

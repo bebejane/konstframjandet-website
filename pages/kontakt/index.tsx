@@ -14,11 +14,13 @@ export default function Contact({ }: Props) {
   );
 }
 
-//News.page = { title: 'Nyheter' } as PageProps
-
 export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
 
   return {
-    props
+    props: {
+      ...props,
+      pageTitle: 'Kontakt'
+    },
+    revalidate
   };
 });

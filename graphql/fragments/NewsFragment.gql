@@ -2,6 +2,69 @@ fragment NewsFragment on NewsRecord {
 	id
 	title
 	intro(markdown: false)
+	image {
+		...ImageFragment
+	}
+	address
+	date
+	district {
+		...DistrictFragment
+	}
+	externalLink
+	misc
+	subtitle
+	time
+	title
+	where
 	slug
 	_createdAt
+
+	content {
+		value
+		blocks {
+			__typename
+			... on ButtonRecord {
+				__typename
+				id
+				text
+				url
+			}
+			... on ImageGalleryRecord {
+				__typename
+				id
+				images {
+					...ImageFragment
+				}
+			}
+			... on ImageRecord {
+				__typename
+				id
+				image {
+					...ImageFragment
+				}
+				layout
+			}
+			... on LogoRecord {
+				__typename
+				id
+				image {
+					...ImageFragment
+				}
+			}
+			... on VideoRecord {
+				__typename
+				caption
+				id
+				video {
+					width
+					height
+					provider
+					providerUid
+					thumbnailUrl
+					title
+					url
+				}
+			}
+		}
+	}
 }

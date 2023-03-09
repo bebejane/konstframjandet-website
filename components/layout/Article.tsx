@@ -42,8 +42,6 @@ export default function Article({ id, children, title, content, image, imageSize
     <>
       <DatoSEO title={title} />
       <div className={cn(s.article, 'article')}>
-
-        <h1>{title}</h1>
         {image &&
           <figure
             className={cn(s.mainImage, imageSize && s[imageSize], image.height > image.width && s.portrait)}
@@ -52,9 +50,7 @@ export default function Article({ id, children, title, content, image, imageSize
             <Image
               data={image.responsiveImage}
               pictureClassName={s.picture}
-
             />
-            <figcaption >caption</figcaption>
           </figure>
         }
         <section className="intro">
