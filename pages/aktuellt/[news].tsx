@@ -23,7 +23,7 @@ export default function NewsItem({ news: {
   where,
   subtitle,
   _createdAt,
-} }: Props) {
+}, news }: Props) {
 
   return (
     <>
@@ -38,6 +38,7 @@ export default function NewsItem({ news: {
       </MetaSection>
       <Article
         id={id}
+        record={news}
         title={title}
         image={image}
         intro={intro}
@@ -67,7 +68,9 @@ export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, r
     props: {
       ...props,
       news,
-      pageTitle: news.title
+      page: {
+        title: news.title
+      }
     },
     revalidate
   }

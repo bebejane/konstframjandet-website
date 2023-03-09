@@ -26,14 +26,11 @@ export default function ProjectItem({ project: { id, _createdAt, title, subpage,
         image={image}
         intro={intro}
         content={content}
-        //layout="project"
         date={_createdAt}
       />
     </>
   );
 }
-
-//ProjectItem.page = { crumbs: [{ slug: 'nyheter', title: 'Nyheter' }], regional: true } as PageProps
 
 export async function getStaticPaths() {
   const { projects } = await apiQueryAll(AllProjectsDocument)
@@ -56,7 +53,12 @@ export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, r
     props: {
       ...props,
       project,
-      pageTitle: project.title
+      page: {
+        title: project.title,
+        image: project.image,
+        intro: project.intro,
+        layout: 'project'
+      }
     }
   };
 });

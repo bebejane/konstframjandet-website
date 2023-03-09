@@ -36,7 +36,9 @@ export const getStaticProps = withGlobalProps({ queries: [AllAboutsDocument] }, 
   return {
     props: {
       ...props,
-      pageTitle: 'Om'
+      page: {
+        title: 'Om'
+      }
     },
     revalidate
   };

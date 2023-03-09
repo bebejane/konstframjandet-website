@@ -13,7 +13,7 @@ const siteTitle = 'Konstnärsfrämjandet'
 function App({ Component, pageProps, router }) {
 
   const { asPath } = router
-  const { district, districts, pageTitle, pageLayout, footer, menu } = pageProps
+  const { district, districts, page, footer, menu } = pageProps
   const isHome = asPath === '/' || districts.find(({ subdomain }) => `/${subdomain}` === asPath) !== undefined
 
   useEffect(() => {
@@ -32,9 +32,9 @@ function App({ Component, pageProps, router }) {
   return (
     <>
       <DefaultDatoSEO siteTitle={siteTitle} />
-      <PageProvider value={{ district, title: siteTitle, layout: pageLayout }}>
+      <PageProvider value={{ district, ...page }}>
         <Layout
-          title={pageTitle}
+          title={page.title}
           menu={menu || []}
           footer={footer}
           districts={districts}
