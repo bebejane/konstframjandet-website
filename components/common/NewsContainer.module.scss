@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+
+  li:nth-child(even) {
+    flex-direction: row-reverse;
+
+
+  }
+}

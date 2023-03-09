@@ -28,7 +28,7 @@ export default function Menu({ districts }: MenuProps) {
 			<nav className={cn(s.menu)}>
 				<div className={s.top}>
 					<h2>{district.name}</h2>
-					<div class="small">
+					<div className="small">
 						<a>Facebook</a><a>Instagram</a><a>English</a>
 					</div>
 				</div>
@@ -38,7 +38,7 @@ export default function Menu({ districts }: MenuProps) {
 							<Link href="/">Hem</Link>
 						</li>
 						<li>
-							<Link href="/nyheter">Nyheter</Link>
+							<Link href="/aktuellt">Aktuellt</Link>
 						</li>
 						<li>
 							<Link href="/projekt">Projekt</Link>
