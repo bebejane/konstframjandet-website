@@ -208,6 +208,15 @@ type DateFilter = {
   neq?: InputMaybe<Scalars['Date']>;
 };
 
+type DistrictModelContentBlocksField = ButtonRecord | ImageGalleryRecord | ImageRecord | LogoRecord | VideoRecord;
+
+type DistrictModelContentField = {
+  __typename?: 'DistrictModelContentField';
+  blocks: Array<DistrictModelContentBlocksField>;
+  links: Array<Scalars['String']>;
+  value: Scalars['JsonField'];
+};
+
 type DistrictModelFilter = {
   OR?: InputMaybe<Array<InputMaybe<DistrictModelFilter>>>;
   _createdAt?: InputMaybe<CreatedAtFilter>;
@@ -219,8 +228,10 @@ type DistrictModelFilter = {
   _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
   _updatedAt?: InputMaybe<UpdatedAtFilter>;
   color?: InputMaybe<ColorFilter>;
+  content?: InputMaybe<StructuredTextFilter>;
   email?: InputMaybe<StringFilter>;
   id?: InputMaybe<ItemIdFilter>;
+  intro?: InputMaybe<TextFilter>;
   name?: InputMaybe<StringFilter>;
   subdomain?: InputMaybe<StringFilter>;
 };
@@ -267,8 +278,10 @@ type DistrictRecord = RecordInterface & {
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']>;
   _updatedAt: Scalars['DateTime'];
   color: ColorField;
+  content?: Maybe<DistrictModelContentField>;
   email?: Maybe<Scalars['String']>;
   id: Scalars['ItemId'];
+  intro?: Maybe<Scalars['String']>;
   name: Scalars['String'];
   subdomain: Scalars['String'];
 };
@@ -277,6 +290,12 @@ type DistrictRecord = RecordInterface & {
 /** Record of type Distrikt (district) */
 type DistrictRecord_seoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Distrikt (district) */
+type DistrictRecordintroArgs = {
+  markdown?: InputMaybe<Scalars['Boolean']>;
 };
 
 enum FaviconType {
