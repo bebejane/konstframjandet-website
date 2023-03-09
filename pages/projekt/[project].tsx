@@ -3,16 +3,32 @@ import withGlobalProps from "/lib/withGlobalProps";
 import { apiQueryAll } from '/lib/utils';
 import { apiQuery } from "dato-nextjs-utils/api";
 import { ProjectDocument, AllProjectsDocument } from "/graphql";
-
+import { MetaSection, Article } from '/components';
 export type Props = {
   project: ProjectRecord
 }
 
-export default function ProjectItem({ project: { id, _createdAt, title, district, slug, _seoMetaTags } }: Props) {
+export default function ProjectItem({ project: { id, _createdAt, title, subpage, image, intro, content } }: Props) {
 
   return (
     <>
-      {title}
+      <MetaSection>
+        <h3>{title}</h3>
+        <ul className={s.submenu}>
+          {subpage.map(({ slug, title }) =>
+            <li>{title}</li>
+          )}
+        </ul>
+      </MetaSection>
+      <Article
+        id={id}
+        title={title}
+        image={image}
+        intro={intro}
+        content={content}
+        layout="project"
+        date={_createdAt}
+      />
     </>
   );
 }

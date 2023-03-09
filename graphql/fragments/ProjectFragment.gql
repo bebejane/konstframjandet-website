@@ -1,13 +1,70 @@
 fragment ProjectFragment on ProjectRecord {
 	id
 	title
+	subtitle
 	slug
 	_createdAt
 	intro(markdown: false)
 	color {
 		hex
 	}
+	colorOption
+	completed
+	district {
+		...DistrictFragmentLight
+	}
 	image {
 		...ImageFragment
+	}
+	subpage {
+		...ProjectSubpageFragmentLight
+	}
+	content {
+		value
+		blocks {
+			__typename
+			... on ButtonRecord {
+				__typename
+				id
+				text
+				url
+			}
+			... on ImageGalleryRecord {
+				__typename
+				id
+				images {
+					...ImageFragment
+				}
+			}
+			... on ImageRecord {
+				__typename
+				id
+				image {
+					...ImageFragment
+				}
+				layout
+			}
+			... on LogoRecord {
+				__typename
+				id
+				image {
+					...ImageFragment
+				}
+			}
+			... on VideoRecord {
+				__typename
+				caption
+				id
+				video {
+					width
+					height
+					provider
+					providerUid
+					thumbnailUrl
+					title
+					url
+				}
+			}
+		}
 	}
 }
