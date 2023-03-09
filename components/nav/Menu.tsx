@@ -57,8 +57,10 @@ export default function Menu({ districts }: MenuProps) {
 			<nav className={cn(s.districts, showDistricts && s.show)}>
 				<h3>Besök våra distrikt</h3>
 				<ul>
-					{districts.map(({ name }) =>
-						<li>{name}</li>
+					{districts.map(({ id, subdomain, name }) =>
+						<li key={id}>
+							<Link href={`/`} locale={subdomain}>{name}</Link>
+						</li>
 					)}
 				</ul>
 			</nav>
