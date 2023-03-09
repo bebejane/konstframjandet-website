@@ -1,7 +1,7 @@
 import s from './Article.module.scss'
 import cn from 'classnames'
 import React, { useEffect, useRef } from 'react'
-import { MetaSection, StructuredContent } from "/components";
+import { StructuredContent } from "/components";
 import { Image } from 'react-datocms';
 import { useScrollInfo } from 'dato-nextjs-utils/hooks'
 import { DatoSEO } from 'dato-nextjs-utils/components';
@@ -21,8 +21,6 @@ export type ArticleProps = {
   record?: any
   date?: string
 }
-
-const MAX_PORTRAIT_HEIGHT = 600;
 
 export default function Article({ id, children, title, content, image, imageSize, intro, date, onClick, record }: ArticleProps) {
 
