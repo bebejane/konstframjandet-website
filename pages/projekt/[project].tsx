@@ -8,7 +8,7 @@ export type Props = {
   project: ProjectRecord
 }
 
-export default function ProjectItem({ project: { id, _createdAt, title, subpage, image, intro, content } }: Props) {
+export default function ProjectItem({ project: { id, _createdAt, title, subpage, image, intro, content }, project }: Props) {
 
   return (
     <>
@@ -23,9 +23,9 @@ export default function ProjectItem({ project: { id, _createdAt, title, subpage,
       <Article
         id={id}
         title={title}
-        image={image}
         intro={intro}
         content={content}
+        record={project}
         date={_createdAt}
       />
     </>

@@ -18,7 +18,7 @@ export type ArticleProps = {
   imageSize?: 'small' | 'medium' | 'large'
   content?: any
   onClick?: (id: string) => void
-  record?: any
+  record: any
   date?: string
 }
 
