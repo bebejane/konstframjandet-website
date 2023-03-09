@@ -14,7 +14,7 @@ export default function NewsCard({ news: { title, intro, image, slug, address, w
   return (
     <li className={cn(s.card)}>
       <div className={s.content}>
-        <h1>{title}</h1>
+        <h2 className="big">{title}</h2>
         <Markdown className="big">
           {intro}
         </Markdown>
@@ -31,6 +31,6 @@ export default function NewsCard({ news: { title, intro, image, slug, address, w
       <figure className={s.figure}>
         <Image data={image.responsiveImage} className={s.image} />
       </figure>
-    </li>
+    </li >
   )
 }

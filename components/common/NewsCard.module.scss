@@ -5,7 +5,8 @@
   padding-bottom: var(--space);
   border-bottom: var(--line-thin);
 
-  h1 {
+  h2 {
+    padding-top: 0.2em;
     padding-bottom: var(--small-space);
   }
 
@@ -22,6 +23,11 @@
   }
 
   figure {
+    display: flex;
+    aspect-ratio: 6 / 4;
+    img {
+      object-fit: cover;
+    }
   }
 
   @include mq($until: tablet) {

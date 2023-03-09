@@ -5,7 +5,16 @@
   padding-left: 0;
   width: 100%;
 
+  li:nth-child(odd) {
+    & > div {
+      padding-right: var(--gutter);
+    }
+  }
+
   li:nth-child(even) {
     flex-direction: row-reverse;
+    & > div {
+      padding-left: var(--gutter);
+    }
   }
 }
