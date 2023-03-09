@@ -26,7 +26,7 @@ export default function ProjectItem({ project: { id, _createdAt, title, subpage,
         image={image}
         intro={intro}
         content={content}
-        layout="project"
+        //layout="project"
         date={_createdAt}
       />
     </>

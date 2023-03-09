@@ -6,6 +6,8 @@ import useStore from '/lib/store'
 
 export type SectionHeaderProps = {
   title: string
+  image?: FileField
+  intro?: string
 }
 
 export default function SectionHeader({ title }: SectionHeaderProps) {
