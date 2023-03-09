@@ -5,6 +5,12 @@
   padding-bottom: var(--space);
   border-bottom: var(--line-thin);
 
+  &:hover {
+    .meta a {
+      color: var(--page-color);
+    }
+  }
+
   h2 {
     padding-top: 0.2em;
     padding-bottom: var(--small-space);
@@ -12,6 +18,7 @@
 
   .meta {
     line-height: var(--line-height) !important;
+    column-count: 2;
   }
 
   > div,
@@ -20,9 +27,12 @@
   }
 
   p {
+    padding-bottom: var(--small-space);
+    margin-bottom: 0 !important;
   }
 
   figure {
+    border: var(--line-thick);
     display: flex;
     aspect-ratio: 6 / 4;
     img {

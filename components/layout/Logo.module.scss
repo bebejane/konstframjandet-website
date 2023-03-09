@@ -9,5 +9,8 @@
   font-size: var(--logo-size);
   a {
     line-height: 1;
+    &:hover {
+      color: var(--page-color);
+    }
   }
 }
