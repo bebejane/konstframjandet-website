@@ -33,7 +33,9 @@ export const getStaticProps = withGlobalProps({ queries: [AllNewsDocument] }, as
   return {
     props: {
       ...props,
-      pageTitle: 'Aktuellt'
+      page: {
+        title: 'Aktuellt'
+      }
     },
     revalidate
   }

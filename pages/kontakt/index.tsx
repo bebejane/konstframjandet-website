@@ -19,7 +19,9 @@ export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, r
   return {
     props: {
       ...props,
-      pageTitle: 'Kontakt'
+      page: {
+        title: 'Kontakt'
+      }
     },
     revalidate
   };

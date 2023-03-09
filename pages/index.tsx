@@ -21,7 +21,13 @@ export default function Home({ menu, district }: Props) {
 export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
 
 	return {
-		props,
+		props: {
+			...props,
+			page: {
+				title: 'Hem',
+				layout: 'home'
+			}
+		},
 		revalidate
 	}
 })
