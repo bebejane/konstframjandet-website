@@ -2,7 +2,6 @@ import s from './Menu.module.scss'
 import cn from 'classnames'
 import { useRouter } from 'next/router'
 import { useState, useRef, useEffect } from 'react'
-import type { Menu, MenuItem } from '/lib/menu'
 import Link from 'next/link'
 import useStore from '/lib/store'
 import { useScrollInfo } from 'dato-nextjs-utils/hooks'
@@ -13,9 +12,16 @@ import { usePage } from '/lib/context/page'
 export type MenuProps = { districts: DistrictRecord[] }
 
 export default function Menu({ districts }: MenuProps) {
-
+	const router = useRouter()
 	const { district } = usePage()
 	const [showDistricts, setShowDistricts] = useState(false)
+
+	useEffect(() => {
+		const handleRouteChangeStart = (path: string) => setShowDistricts(false)
+		router.events.on('routeChangeStart', handleRouteChangeStart)
+		return () => router.events.off('routeChangeStart', handleRouteChangeStart)
+	}, [])
+
 
 	return (
 		<>
@@ -56,8 +62,10 @@ export default function Menu({ districts }: MenuProps) {
 			<nav className={cn(s.districts, showDistricts && s.show)}>
 				<h3>Besök våra distrikt</h3>
 				<ul>
-					{districts.map(({ name }) =>
-						<li>{name}</li>
+					{districts.map(({ id, subdomain, name }) =>
+						<li key={id}>
+							<Link href={`/`} locale={subdomain}>{name}</Link>
+						</li>
 					)}
 				</ul>
 			</nav>

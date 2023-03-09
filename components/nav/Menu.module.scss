@@ -54,6 +54,7 @@
     li {
       cursor: pointer;
       margin-right: 0.6em;
+      user-select: none;
 
       &.active {
         color: var(--page-color);

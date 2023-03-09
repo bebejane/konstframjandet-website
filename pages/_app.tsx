@@ -12,11 +12,12 @@ const siteTitle = 'Konstnärsfrämjandet'
 
 function App({ Component, pageProps, router }) {
 
-  const { district } = pageProps
-  const isHome = router.asPath === '/'
+  const { asPath } = router
+  const { district, districts, pageTitle, footer, menu } = pageProps
+  const isHome = asPath === '/' || districts.find(({ subdomain }) => `/${subdomain}` === asPath) !== undefined
 
   useEffect(() => {
-    console.log(isHome)
+
     const r = document.querySelector<HTMLElement>(':root')
     r.style.setProperty('--background', isHome ? district?.color?.hex : 'var(--light-grey)');
     r.style.setProperty('--page-color', district?.color?.hex);
@@ -25,17 +26,18 @@ function App({ Component, pageProps, router }) {
 
   const errorCode = parseInt(router.pathname.replace('/', ''))
   const isError = (!isNaN(errorCode) && (errorCode > 400 && errorCode < 600)) || router.pathname.replace('/', '') === '_error'
+
   if (isError) return <Component {...pageProps} />
 
   return (
     <>
       <DefaultDatoSEO siteTitle={siteTitle} />
-      <PageProvider value={{ district: pageProps.district, title: siteTitle }}>
+      <PageProvider value={{ district, title: siteTitle }}>
         <Layout
-          title={pageProps.pageTitle}
-          menu={pageProps.menu || []}
-          footer={pageProps.footer}
-          districts={pageProps.districts}
+          title={pageTitle}
+          menu={menu || []}
+          footer={footer}
+          districts={districts}
         >
           <Component {...pageProps} />
         </Layout>

@@ -4,14 +4,13 @@
   flex-direction: column;
   flex: 0 1;
   flex-basis: 100%;
+  min-height: 100vh;
   padding: var(--outer-margin);
   padding-top: var(--navbar-height);
 
-  @include mq($from: tablet) {
-  }
+  @include mq($from: tablet) {}
 
-  @include mq($until: tablet) {
-  }
+  @include mq($until: tablet) {}
 
   article {
     position: relative;
@@ -19,10 +18,8 @@
     flex-direction: row;
     align-items: flex-start;
 
-    @include mq($until: tablet) {
-    }
+    @include mq($until: tablet) {}
 
-    @include mq($from: tablet) {
-    }
+    @include mq($from: tablet) {}
   }
 }
