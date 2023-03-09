@@ -7,6 +7,7 @@ export type MenuItem = {
   type: string
   label: string
   slug?: string
+  subdomain?: string
   items?: MenuItem[]
 }
 
@@ -34,6 +35,7 @@ export const buildMenu = async (districtId: string) => {
     MenuDocument
   ], { variables: { districtId, first: 100 } });
 
+  const subdomain = districts.find(({ id }) => id === districtId).subdomain
   const menu = base.map(item => {
     let items: MenuItem[];
     switch (item.type) {
@@ -47,7 +49,7 @@ export const buildMenu = async (districtId: string) => {
         items = projects.map(el => ({ type: 'project', label: el.title, slug: `/projekt/${el.slug}` }))
         break;
       case 'district':
-        items = districts.map(el => ({ type: 'district', label: el.name, slug: `/${el.subdomain}` }))
+        items = districts.map(el => ({ type: 'district', label: el.name, slug: `/`, subdomain: el.subdomain }))
         break;
       case 'contact':
         items = []
@@ -56,7 +58,7 @@ export const buildMenu = async (districtId: string) => {
       default:
         break;
     }
-    return { ...item, items: items ? items : item.items }
+    return { ...item, items: items ? items : item.items, subdomain }
   })
 
   return menu
