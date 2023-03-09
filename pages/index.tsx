@@ -16,9 +16,9 @@ export default function Home({ menu, district }: Props) {
 				{districts.map(({ subdomain, name }, idx) =>
 					<li key={idx}>
 						{subdomain ?
-							<a href={`https://${subdomain}.konstframjandet.se`}>
+							<Link href={`/`} locale={subdomain}>
 								{name}
-							</a>
+							</Link>
 							:
 							<>{name}</>
 						}

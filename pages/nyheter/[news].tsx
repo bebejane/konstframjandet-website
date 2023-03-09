@@ -18,7 +18,6 @@ export default function NewsItem({ news: { id, _createdAt, title, intro, distric
     </>
   );
 }
-//NewsItem.page = { crumbs: [{ slug: 'nyheter', title: 'Nyheter' }], regional: true } as PageProps
 
 export async function getStaticPaths() {
   const { news } = await apiQueryAll(AllNewsDocument)
@@ -32,6 +31,9 @@ export async function getStaticPaths() {
 export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
   const slug = context.params.news;
   const { news } = await apiQuery(NewsDocument, { variables: { slug, districtId: props.district.id }, preview: context.preview })
+
+  if (!news) return { notFound: true }
+
   return {
     props: {
       ...props,

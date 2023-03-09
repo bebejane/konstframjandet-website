@@ -1,3 +1,4 @@
+import districts from '/lib/districts.json'
 import { TypedDocumentNode } from "@apollo/client/core";
 import { apiQuery } from "dato-nextjs-utils/api";
 import type { ApiQueryOptions } from "dato-nextjs-utils/api";
@@ -164,8 +165,10 @@ export const apiQueryAll = async (doc: TypedDocumentNode, opt: ApiQueryOptions =
       if (error)
         throw new Error(error)
 
-      for (let x = 0; x < data.length; x++)
+      for (let x = 0; x < data.length; x++) {
+        //@ts-ignore
         mergeProps(data[x].value);
+      }
       await sleep(100)
       reqs = []
     }
@@ -176,4 +179,22 @@ export const randomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+export async function getStaticDistrictPaths(doc: TypedDocumentNode, segment: string) {
+
+  const res = await apiQueryAll(doc)
+  const data = res[Object.keys(res)[0]];
+  const paths = []
+
+  districts.forEach(({ id, subdomain }) => {
+    const items = data.filter(({ district }) => district && district?.id === id)
+    paths.push.apply(paths, items.map(i => ({ params: { district: subdomain, [segment]: i.slug } })))
+  })
+
+  return {
+    paths,
+    fallback: 'blocking',
+  };
 }

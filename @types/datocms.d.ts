@@ -231,11 +231,11 @@ type DistrictRecord = RecordInterface & {
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']>;
   _updatedAt: Scalars['DateTime'];
-  color?: Maybe<ColorField>;
+  color: ColorField;
   email?: Maybe<Scalars['String']>;
   id: Scalars['ItemId'];
-  name?: Maybe<Scalars['String']>;
-  subdomain?: Maybe<Scalars['String']>;
+  name: Scalars['String'];
+  subdomain: Scalars['String'];
 };
 
 
@@ -1851,6 +1851,20 @@ type LinkFilter = {
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ItemId']>>>;
 };
 
+/** Specifies how to filter Multiple-links fields */
+type LinksFilter = {
+  /** Filter records linked to all of the specified records. The specified values must be Record IDs */
+  allIn?: InputMaybe<Array<InputMaybe<Scalars['ItemId']>>>;
+  /** Filter records linked to at least one of the specified records. The specified values must be Record IDs */
+  anyIn?: InputMaybe<Array<InputMaybe<Scalars['ItemId']>>>;
+  /** Search for records with an exact match. The specified values must be Record IDs */
+  eq?: InputMaybe<Array<InputMaybe<Scalars['ItemId']>>>;
+  /** Filter records with the specified field defined (i.e. with any value) or not */
+  exists?: InputMaybe<Scalars['BooleanType']>;
+  /** Filter records not linked to any of the specified records. The specified values must be Record IDs */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ItemId']>>>;
+};
+
 enum MuxThumbnailFormatType {
   gif = 'gif',
   jpg = 'jpg',
@@ -1979,30 +1993,6 @@ type OrientationFilter = {
   neq?: InputMaybe<UploadOrientation>;
 };
 
-/** Specifies how to filter by parent (tree-like collections only) */
-type ParentFilter = {
-  /** Filter records children of the specified record. Value must be a Record ID */
-  eq?: InputMaybe<Scalars['ItemId']>;
-  /** Filter records with a parent record or not */
-  exists?: InputMaybe<Scalars['BooleanType']>;
-};
-
-/** Specifies how to filter by position (sorted and tree-like collections) */
-type PositionFilter = {
-  /** Search for records with an exact match */
-  eq?: InputMaybe<Scalars['IntType']>;
-  /** Filter records with a value that's strictly greater than the one specified */
-  gt?: InputMaybe<Scalars['IntType']>;
-  /** Filter records with a value that's greater than or equal to the one specified */
-  gte?: InputMaybe<Scalars['IntType']>;
-  /** Filter records with a value that's less than the one specified */
-  lt?: InputMaybe<Scalars['IntType']>;
-  /** Filter records with a value that's less or equal than the one specified */
-  lte?: InputMaybe<Scalars['IntType']>;
-  /** Exclude records with an exact match */
-  neq?: InputMaybe<Scalars['IntType']>;
-};
-
 type ProjectModelContentBlocksField = ImageRecord | VideoRecord;
 
 type ProjectModelContentField = {
@@ -2022,15 +2012,15 @@ type ProjectModelFilter = {
   _status?: InputMaybe<StatusFilter>;
   _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
   _updatedAt?: InputMaybe<UpdatedAtFilter>;
-  avslutatProjekt?: InputMaybe<BooleanFilter>;
   bild?: InputMaybe<FileFilter>;
   color?: InputMaybe<ColorFilter>;
+  completed?: InputMaybe<BooleanFilter>;
   content?: InputMaybe<StructuredTextFilter>;
   district?: InputMaybe<LinkFilter>;
   id?: InputMaybe<ItemIdFilter>;
-  parent?: InputMaybe<ParentFilter>;
-  position?: InputMaybe<PositionFilter>;
+  intro?: InputMaybe<TextFilter>;
   slug?: InputMaybe<SlugFilter>;
+  subpage?: InputMaybe<LinksFilter>;
   title?: InputMaybe<StringFilter>;
 };
 
@@ -2051,12 +2041,10 @@ enum ProjectModelOrderBy {
   _unpublishingScheduledAt_DESC = '_unpublishingScheduledAt_DESC',
   _updatedAt_ASC = '_updatedAt_ASC',
   _updatedAt_DESC = '_updatedAt_DESC',
-  avslutatProjekt_ASC = 'avslutatProjekt_ASC',
-  avslutatProjekt_DESC = 'avslutatProjekt_DESC',
+  completed_ASC = 'completed_ASC',
+  completed_DESC = 'completed_DESC',
   id_ASC = 'id_ASC',
   id_DESC = 'id_DESC',
-  position_ASC = 'position_ASC',
-  position_DESC = 'position_DESC',
   title_ASC = 'title_ASC',
   title_DESC = 'title_DESC'
 }
@@ -2075,16 +2063,15 @@ type ProjectRecord = RecordInterface & {
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']>;
   _updatedAt: Scalars['DateTime'];
-  avslutatProjekt?: Maybe<Scalars['BooleanType']>;
   bild?: Maybe<FileField>;
-  children?: Maybe<Array<Maybe<ProjectRecord>>>;
   color?: Maybe<ColorField>;
+  completed?: Maybe<Scalars['BooleanType']>;
   content?: Maybe<ProjectModelContentField>;
   district: DistrictRecord;
   id: Scalars['ItemId'];
-  parent?: Maybe<ProjectRecord>;
-  position?: Maybe<Scalars['IntType']>;
+  intro?: Maybe<Scalars['String']>;
   slug: Scalars['String'];
+  subpage: Array<ProjectSubpageRecord>;
   title?: Maybe<Scalars['String']>;
 };
 
@@ -2092,6 +2079,92 @@ type ProjectRecord = RecordInterface & {
 /** Record of type Projekt (project) */
 type ProjectRecord_seoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Projekt (project) */
+type ProjectRecordintroArgs = {
+  markdown?: InputMaybe<Scalars['Boolean']>;
+};
+
+type ProjectSubpageModelContentField = {
+  __typename?: 'ProjectSubpageModelContentField';
+  blocks: Array<Scalars['String']>;
+  links: Array<Scalars['String']>;
+  value: Scalars['JsonField'];
+};
+
+type ProjectSubpageModelFilter = {
+  OR?: InputMaybe<Array<InputMaybe<ProjectSubpageModelFilter>>>;
+  _createdAt?: InputMaybe<CreatedAtFilter>;
+  _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
+  _isValid?: InputMaybe<BooleanFilter>;
+  _publicationScheduledAt?: InputMaybe<PublishedAtFilter>;
+  _publishedAt?: InputMaybe<PublishedAtFilter>;
+  _status?: InputMaybe<StatusFilter>;
+  _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
+  _updatedAt?: InputMaybe<UpdatedAtFilter>;
+  content?: InputMaybe<StructuredTextFilter>;
+  id?: InputMaybe<ItemIdFilter>;
+  image?: InputMaybe<FileFilter>;
+  intro?: InputMaybe<TextFilter>;
+  title?: InputMaybe<StringFilter>;
+};
+
+enum ProjectSubpageModelOrderBy {
+  _createdAt_ASC = '_createdAt_ASC',
+  _createdAt_DESC = '_createdAt_DESC',
+  _firstPublishedAt_ASC = '_firstPublishedAt_ASC',
+  _firstPublishedAt_DESC = '_firstPublishedAt_DESC',
+  _isValid_ASC = '_isValid_ASC',
+  _isValid_DESC = '_isValid_DESC',
+  _publicationScheduledAt_ASC = '_publicationScheduledAt_ASC',
+  _publicationScheduledAt_DESC = '_publicationScheduledAt_DESC',
+  _publishedAt_ASC = '_publishedAt_ASC',
+  _publishedAt_DESC = '_publishedAt_DESC',
+  _status_ASC = '_status_ASC',
+  _status_DESC = '_status_DESC',
+  _unpublishingScheduledAt_ASC = '_unpublishingScheduledAt_ASC',
+  _unpublishingScheduledAt_DESC = '_unpublishingScheduledAt_DESC',
+  _updatedAt_ASC = '_updatedAt_ASC',
+  _updatedAt_DESC = '_updatedAt_DESC',
+  id_ASC = 'id_ASC',
+  id_DESC = 'id_DESC',
+  title_ASC = 'title_ASC',
+  title_DESC = 'title_DESC'
+}
+
+/** Record of type Undersida (project_subpage) */
+type ProjectSubpageRecord = RecordInterface & {
+  __typename?: 'ProjectSubpageRecord';
+  _createdAt: Scalars['DateTime'];
+  _firstPublishedAt?: Maybe<Scalars['DateTime']>;
+  _isValid: Scalars['BooleanType'];
+  _modelApiKey: Scalars['String'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']>;
+  _publishedAt?: Maybe<Scalars['DateTime']>;
+  /** SEO meta tags */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']>;
+  _updatedAt: Scalars['DateTime'];
+  content?: Maybe<ProjectSubpageModelContentField>;
+  id: Scalars['ItemId'];
+  image?: Maybe<FileField>;
+  intro?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+
+/** Record of type Undersida (project_subpage) */
+type ProjectSubpageRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Undersida (project_subpage) */
+type ProjectSubpageRecordintroArgs = {
+  markdown?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** Specifies how to filter by publication datetime */
@@ -2122,6 +2195,8 @@ type Query = {
   /** Returns meta information regarding a record collection */
   _allNewsMeta: CollectionMetadata;
   /** Returns meta information regarding a record collection */
+  _allProjectSubpagesMeta: CollectionMetadata;
+  /** Returns meta information regarding a record collection */
   _allProjectsMeta: CollectionMetadata;
   /** Returns meta information regarding an assets collection */
   _allUploadsMeta?: Maybe<CollectionMetadata>;
@@ -2136,6 +2211,8 @@ type Query = {
   /** Returns a collection of records */
   allNews: Array<NewsRecord>;
   /** Returns a collection of records */
+  allProjectSubpages: Array<ProjectSubpageRecord>;
+  /** Returns a collection of records */
   allProjects: Array<ProjectRecord>;
   /** Returns a collection of assets */
   allUploads: Array<FileField>;
@@ -2145,6 +2222,8 @@ type Query = {
   news?: Maybe<NewsRecord>;
   /** Returns a specific record */
   project?: Maybe<ProjectRecord>;
+  /** Returns a specific record */
+  projectSubpage?: Maybe<ProjectSubpageRecord>;
   /** Returns a specific asset */
   upload?: Maybe<FileField>;
 };
@@ -2170,6 +2249,14 @@ type Query_allDistrictsMetaArgs = {
 type Query_allNewsMetaArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   filter?: InputMaybe<NewsModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** The query root for this schema */
+type Query_allProjectSubpagesMetaArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<ProjectSubpageModelFilter>;
   locale?: InputMaybe<SiteLocale>;
 };
 
@@ -2239,6 +2326,17 @@ type QueryallNewsArgs = {
 
 
 /** The query root for this schema */
+type QueryallProjectSubpagesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<ProjectSubpageModelFilter>;
+  first?: InputMaybe<Scalars['IntType']>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<ProjectSubpageModelOrderBy>>>;
+  skip?: InputMaybe<Scalars['IntType']>;
+};
+
+
+/** The query root for this schema */
 type QueryallProjectsArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   filter?: InputMaybe<ProjectModelFilter>;
@@ -2284,6 +2382,15 @@ type QueryprojectArgs = {
   filter?: InputMaybe<ProjectModelFilter>;
   locale?: InputMaybe<SiteLocale>;
   orderBy?: InputMaybe<Array<InputMaybe<ProjectModelOrderBy>>>;
+};
+
+
+/** The query root for this schema */
+type QueryprojectSubpageArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<ProjectSubpageModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<ProjectSubpageModelOrderBy>>>;
 };
 
 
@@ -2894,18 +3001,18 @@ type AboutQuery = { __typename?: 'Query', about?: { __typename?: 'AboutRecord', 
 type AllDistricsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type AllDistricsQuery = { __typename?: 'Query', districts: Array<{ __typename?: 'DistrictRecord', id: any, name?: string | null, email?: string | null, subdomain?: string | null, color?: { __typename?: 'ColorField', hex: string } | null }> };
+type AllDistricsQuery = { __typename?: 'Query', districts: Array<{ __typename?: 'DistrictRecord', id: any, name: string, email?: string | null, subdomain: string, color: { __typename?: 'ColorField', hex: string, red: any, green: any, blue: any } }> };
 
 type DistrictQueryVariables = Exact<{
   subdomain: Scalars['String'];
 }>;
 
 
-type DistrictQuery = { __typename?: 'Query', district?: { __typename?: 'DistrictRecord', id: any, name?: string | null, email?: string | null, subdomain?: string | null, color?: { __typename?: 'ColorField', hex: string } | null } | null };
+type DistrictQuery = { __typename?: 'Query', district?: { __typename?: 'DistrictRecord', id: any, name: string, email?: string | null, subdomain: string, color: { __typename?: 'ColorField', hex: string, red: any, green: any, blue: any } } | null };
 
 type AboutFragment = { __typename?: 'AboutRecord', id: any, title?: string | null, slug?: string | null, _createdAt: any };
 
-type DistrictFragment = { __typename?: 'DistrictRecord', id: any, name?: string | null, email?: string | null, subdomain?: string | null, color?: { __typename?: 'ColorField', hex: string } | null };
+type DistrictFragment = { __typename?: 'DistrictRecord', id: any, name: string, email?: string | null, subdomain: string, color: { __typename?: 'ColorField', hex: string, red: any, green: any, blue: any } };
 
 type ImageFragment = { __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, bgColor?: string | null, sizes: string } | null };
 
@@ -2947,19 +3054,10 @@ type AllProjectsQueryVariables = Exact<{
 
 type AllProjectsQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string, _createdAt: any, color?: { __typename?: 'ColorField', hex: string } | null }>, pagination: { __typename?: 'CollectionMetadata', count: any } };
 
-type AllProjectsTreeQueryVariables = Exact<{
-  first?: InputMaybe<Scalars['IntType']>;
-  skip?: InputMaybe<Scalars['IntType']>;
-  districtId?: InputMaybe<Scalars['ItemId']>;
-}>;
-
-
-type AllProjectsTreeQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string, _createdAt: any, children?: Array<{ __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string, _createdAt: any, color?: { __typename?: 'ColorField', hex: string } | null } | null> | null, color?: { __typename?: 'ColorField', hex: string } | null }>, pagination: { __typename?: 'CollectionMetadata', count: any } };
-
 type ProjectQueryVariables = Exact<{
   slug: Scalars['String'];
   districtId?: InputMaybe<Scalars['ItemId']>;
 }>;
 
 
-type ProjectQuery = { __typename?: 'Query', project?: { __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string, _createdAt: any, children?: Array<{ __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string, _createdAt: any, color?: { __typename?: 'ColorField', hex: string } | null } | null> | null, color?: { __typename?: 'ColorField', hex: string } | null } | null };
+type ProjectQuery = { __typename?: 'Query', project?: { __typename?: 'ProjectRecord', id: any, title?: string | null, slug: string, _createdAt: any, color?: { __typename?: 'ColorField', hex: string } | null } | null };

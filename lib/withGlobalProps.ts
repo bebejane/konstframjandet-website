@@ -19,14 +19,19 @@ export default function withGlobalProps(opt: any, callback: Function): GetStatic
     queries.push(SEOQuery(opt.seo))
 
   return async (context) => {
-    const props = await apiQuery(queries, { preview: context.preview });
+
+    const district = districts.find(({ subdomain }) => subdomain === context.locale)
+
+    if (!district)
+      return { notFound: true };
+
+    const variables = queries.map(el => ({ districtId: district.id }))
+    const props = await apiQuery(queries, { variables, preview: context.preview });
     const subdomain = context.locale || null
-    if (subdomain)
-      props.district = districts.find(el => el.subdomain === subdomain) ?? null
-    else
-      props.district = districts.find(el => el.subdomain)
 
     props.menu = [] //await buildMenu()
+    props.district = districts.find(el => el.subdomain === subdomain) ?? null
+    props.subdomain = subdomain
 
     if (callback)
       return await callback({ context, props: { ...props }, revalidate });

@@ -7,6 +7,9 @@
     "subdomain": "distrikt1",
     "color": {
       "hex": "#870CF2",
+      "red": 135,
+      "green": 12,
+      "blue": 242,
       "__typename": "ColorField"
     }
   },
@@ -18,6 +21,9 @@
     "subdomain": "distrikt2",
     "color": {
       "hex": "#AAD319",
+      "red": 170,
+      "green": 211,
+      "blue": 25,
       "__typename": "ColorField"
     }
   },
@@ -26,9 +32,12 @@
     "id": "122564749",
     "name": "Förbundet",
     "email": "",
-    "subdomain": "",
+    "subdomain": "forbundet",
     "color": {
       "hex": "#FF9700",
+      "red": 255,
+      "green": 151,
+      "blue": 0,
       "__typename": "ColorField"
     }
   },
@@ -37,9 +46,12 @@
     "id": "122565546",
     "name": "Västmanland",
     "email": "",
-    "subdomain": "",
+    "subdomain": "vastermanland",
     "color": {
       "hex": "#BFF438",
+      "red": 191,
+      "green": 244,
+      "blue": 56,
       "__typename": "ColorField"
     }
   }
