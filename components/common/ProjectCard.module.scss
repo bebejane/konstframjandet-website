@@ -1,38 +1,49 @@
 .card {
   position: relative;
   flex: 0 0 50%;
+  padding-top: var(--space);
 
   a {
     position: relative;
 
     figure {
       position: relative;
-      aspect-ratio: 4/3;
+      display: flex;
+      aspect-ratio: 6/4;
+      background-color: var(--black);
 
       h1,
       .intro {
         position: absolute;
         left: 0;
         z-index: 1;
-        margin: var(--outer-margin);
+        margin: var(--space);
       }
 
       h1 {
         top: 0;
+        color: var(--white);
       }
 
-      figcaption {
+      .text {
         margin: 0;
+        padding-bottom: 0;
 
         .intro {
           color: var(--white);
           bottom: 0;
+          p {
+            font-weight: bold;
+            margin: 0;
+          }
         }
       }
 
       .image {
+        object-fit: cover;
         height: 100%;
         width: 100%;
+        opacity: 0.5;
       }
     }
   }

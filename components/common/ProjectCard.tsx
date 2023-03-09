@@ -16,14 +16,15 @@ export default function ProjectCard({ project: { title, intro, image, slug } }: 
       <Link href={`/projekt/${slug}`}>
         <figure>
           <h1>{title}</h1>
-          <Image data={image.responsiveImage} className={s.image} objectFit="cover" />
-          <figcaption className={s.content}>
-            <Markdown className={s.intro}>
+          <div className={s.text}>          <Image data={image.responsiveImage} className={s.image} objectFit="cover" />
+            <Markdown className={cn(s.intro)}>
+
               {intro}
             </Markdown>
-          </figcaption>
+          </div>
+
         </figure>
       </Link>
-    </li>
+    </li >
   )
 }
