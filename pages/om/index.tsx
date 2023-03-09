@@ -32,15 +32,10 @@ export default function About({ abouts }: Props) {
   );
 }
 
-export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate }: any) => {
-
-  const { abouts } = await apiQueryAll(AllAboutsDocument, { variables: { districtId: props.district.id } })
+export const getStaticProps = withGlobalProps({ queries: [AllAboutsDocument] }, async ({ props, revalidate }: any) => {
 
   return {
-    props: {
-      ...props,
-      abouts
-    },
+    props,
     revalidate
   };
 });

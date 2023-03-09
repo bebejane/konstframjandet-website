@@ -11,28 +11,9 @@ query AllProjects($first: IntType = 100, $skip: IntType = 0, $districtId: ItemId
 		count
 	}
 }
-query AllProjectsTree($first: IntType = 100, $skip: IntType = 0, $districtId: ItemId) {
-	projects: allProjects(
-		filter: { parent: { exists: false }, district: { eq: $districtId } }
-		orderBy: [_createdAt_DESC]
-		first: $first
-		skip: $skip
-	) {
-		...ProjectFragment
-		children {
-			...ProjectFragment
-		}
-	}
-	pagination: _allProjectsMeta {
-		count
-	}
-}
 
 query Project($slug: String!, $districtId: ItemId) {
 	project(filter: { slug: { eq: $slug }, district: { eq: $districtId } }) {
 		...ProjectFragment
-		children {
-			...ProjectFragment
-		}
 	}
 }

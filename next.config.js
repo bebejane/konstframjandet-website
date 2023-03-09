@@ -1,19 +1,17 @@
 const districts = require("./lib/districts.json");
 const webpack = require("webpack");
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-	enabled: process.env.ANALYZE === "true",
-});
 
 const sassOptions = {
 	includePaths: ["./components", "./pages"],
 	prependData: `
-    @use "sass:math";
-    @import "./lib/styles/mediaqueries"; 
-    @import "./lib/styles/fonts";
+    @use 'sass:math';
+    @import './lib/styles/mediaqueries'; 
+    @import './lib/styles/fonts';
   `,
 };
 
 const baseDomain = "konstframjandet.se";
+const primaryDomain = "forbundet";
 const sites = {};
 
 districts
@@ -40,7 +38,7 @@ const nextOptions = {
 	},
 	i18n: {
 		locales: siteKeys,
-		defaultLocale: siteKeys[0],
+		defaultLocale: primaryDomain,
 		domains: siteKeys.map((siteKey) => ({
 			domain: sites[siteKey].domain,
 			defaultLocale: siteKey,

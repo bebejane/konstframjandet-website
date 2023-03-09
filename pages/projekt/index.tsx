@@ -1,7 +1,6 @@
 import s from "./index.module.scss";
 import withGlobalProps from "/lib/withGlobalProps";
-import { apiQueryAll } from "/lib/utils";
-import { AllProjectsTreeDocument } from "/graphql";
+import { AllProjectsDocument } from "/graphql";
 
 import Link from "next/link";
 
@@ -16,16 +15,9 @@ export default function Projects({ projects }: Props) {
       <h1 className="noPadding">Projekt</h1>
       <div className={s.container}>
         <ul>
-          {projects.length > 0 ? projects.map(({ id, title, slug, children }, idx) =>
+          {projects.length > 0 ? projects.map(({ id, title, slug }, idx) =>
             <li key={id} >
               <Link href={`/projekt/${slug}`}>{title}</Link>
-              {children &&
-                <ul>
-                  {children.map(({ id, title, slug }) =>
-                    <li>- <Link href={`/projekt/${slug}`}>{title}</Link></li>
-                  )}
-                </ul>
-              }
             </li>
           ) :
             <>Det finns inga projekt...</>
@@ -38,15 +30,10 @@ export default function Projects({ projects }: Props) {
 
 //News.page = { title: 'Nyheter' } as PageProps
 
-export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate }: any) => {
-
-  const { projects } = await apiQueryAll(AllProjectsTreeDocument, { variables: { districtId: props.district.id } })
+export const getStaticProps = withGlobalProps({ queries: [AllProjectsDocument] }, async ({ props, revalidate }: any) => {
 
   return {
-    props: {
-      ...props,
-      projects
-    },
+    props,
     revalidate
   };
 });
