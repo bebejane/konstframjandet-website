@@ -15,6 +15,14 @@
   @include mq($until: desktop) {
   }
 
+  a:hover,
+  li:hover {
+    color: var(--page-color);
+    &:after {
+      color: var(--black);
+    }
+  }
+
   h2 {
     margin: 0;
     padding: 0;

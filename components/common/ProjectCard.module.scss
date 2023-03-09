@@ -3,6 +3,10 @@
   flex: 0 0 50%;
   padding-top: var(--space);
 
+  &:hover .image {
+    opacity: 0.4;
+  }
+
   a {
     position: relative;
 

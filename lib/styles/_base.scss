@@ -33,7 +33,7 @@
 	--z-fullscreen-gallery-close: 801;
 
 	@include mq($from: tablet) {
-		--outer-margin: 4vw;
+		--outer-margin: 5vw;
 		--gutter: 4vw;
 		--logo-size: 84px;
 	}
