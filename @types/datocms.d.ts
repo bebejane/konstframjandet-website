@@ -2894,18 +2894,18 @@ type AboutQuery = { __typename?: 'Query', about?: { __typename?: 'AboutRecord', 
 type AllDistricsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type AllDistricsQuery = { __typename?: 'Query', districts: Array<{ __typename?: 'DistrictRecord', id: any, name?: string | null, email?: string | null, subdomain?: string | null, color?: { __typename?: 'ColorField', hex: string } | null }> };
+type AllDistricsQuery = { __typename?: 'Query', districts: Array<{ __typename?: 'DistrictRecord', id: any, name?: string | null, email?: string | null, subdomain?: string | null, color?: { __typename?: 'ColorField', hex: string, red: any, green: any, blue: any } | null }> };
 
 type DistrictQueryVariables = Exact<{
   subdomain: Scalars['String'];
 }>;
 
 
-type DistrictQuery = { __typename?: 'Query', district?: { __typename?: 'DistrictRecord', id: any, name?: string | null, email?: string | null, subdomain?: string | null, color?: { __typename?: 'ColorField', hex: string } | null } | null };
+type DistrictQuery = { __typename?: 'Query', district?: { __typename?: 'DistrictRecord', id: any, name?: string | null, email?: string | null, subdomain?: string | null, color?: { __typename?: 'ColorField', hex: string, red: any, green: any, blue: any } | null } | null };
 
 type AboutFragment = { __typename?: 'AboutRecord', id: any, title?: string | null, slug?: string | null, _createdAt: any };
 
-type DistrictFragment = { __typename?: 'DistrictRecord', id: any, name?: string | null, email?: string | null, subdomain?: string | null, color?: { __typename?: 'ColorField', hex: string } | null };
+type DistrictFragment = { __typename?: 'DistrictRecord', id: any, name?: string | null, email?: string | null, subdomain?: string | null, color?: { __typename?: 'ColorField', hex: string, red: any, green: any, blue: any } | null };
 
 type ImageFragment = { __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, bgColor?: string | null, sizes: string } | null };
 
