@@ -10,12 +10,15 @@
 	--full-margin: calc(-1 * (2 * var(--grid-unit)));
 	--body-width: calc(100% - (2 * var(--outer-margin)));
 	--very-small-space: 0.5rem;
-	--small-space: 1rem;
-	--space: 2rem;
+	--small-space: 1.5rem;
+	--space: 2.5rem;
 	--line-height: 1.4em;
 	--line-height-nav: 1.6em;
 	--gutter: 4vw;
-	--navbar-height: 4.5rem;
+	--navbar-space: 1.5rem;
+	--navbar-title-size: 30px;
+	--navbar-text-size: 20px;
+	--navbar-height: calc((2 * var(--navbar-space)) + var(--navbar-title-size) + 1rem + var(--navbar-text-size));
 	--background: var(--light-greye);
 	--foreground: var(--black);
 	--line-thick: 7px solid var(--white);
@@ -23,7 +26,7 @@
 	--background: var(--light-grey);
 
 	@include mq($from: tablet) {
-		--space: 3rem;
+		--space: 3.5rem;
 		--outer-margin: 4vw;
 		--gutter: 2.5vw;
 		--logo-size: 84px;

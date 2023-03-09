@@ -4,8 +4,8 @@
   left: 0;
   z-index: var(--z-menu);
   min-height: var(--navbar-height);
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: var(--small-space);
+  padding-bottom: var(--small-space);
   width: var(--body-width);
   border-bottom: var(--line-thick);
   margin-left: var(--outer-margin);
@@ -18,7 +18,7 @@
   h2 {
     margin: 0;
     padding: 0;
-    margin-left: calc(var(--outer-margin) + var(--grid-unit));
+    margin-left: calc(var(--grid-unit));
   }
 
   .wrapper {
@@ -28,7 +28,7 @@
   }
 
   ul {
-    margin-left: calc(var(--outer-margin) + var(--grid-unit));
+    margin-left: calc(var(--grid-unit));
     list-style: none;
     display: flex;
     width: 100%;

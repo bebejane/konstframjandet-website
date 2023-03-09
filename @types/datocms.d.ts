@@ -2615,6 +2615,29 @@ type SlugFilter = {
   notIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+/** Block of type Utvalda projekt (start_project) */
+type StartProjectRecord = RecordInterface & {
+  __typename?: 'StartProjectRecord';
+  _createdAt: Scalars['DateTime'];
+  _firstPublishedAt?: Maybe<Scalars['DateTime']>;
+  _isValid: Scalars['BooleanType'];
+  _modelApiKey: Scalars['String'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']>;
+  _publishedAt?: Maybe<Scalars['DateTime']>;
+  /** SEO meta tags */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']>;
+  _updatedAt: Scalars['DateTime'];
+  id: Scalars['ItemId'];
+};
+
+
+/** Block of type Utvalda projekt (start_project) */
+type StartProjectRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
 /** Specifies how to filter by status */
 type StatusFilter = {
   /** Search the record with the specified status */

@@ -1,4 +1,7 @@
 .header {
-  padding: var(--small-space);
+  padding-top: var(--small-space);
+  padding-bottom: var(--space);
+
+  padding-left: var(--grid-unit);
   border-bottom: var(--line-thick);
 }
