@@ -6,14 +6,13 @@ import Link from "next/link";
 import { DatoMarkdown as Markdown } from "dato-nextjs-utils/components";
 import useStore from "/lib/store";
 import { useRouter } from "next/router";
-import { useTranslations } from "next-intl";
 
 export type Props = {}
 
 export default function SearchResult({ }: Props) {
 
   const router = useRouter()
-  const t = useTranslations()
+
   const [query, setSearchQuery] = useStore((state) => [state.searchQuery, state.setSearchQuery])
   const [results, setResults] = useState<any | undefined>()
   const [error, setError] = useState<Error | undefined>()
@@ -66,7 +65,7 @@ export default function SearchResult({ }: Props) {
     <div className={s.container}>
       {results && Object.keys(results).length > 0 ?
         <>
-          <h2>{t('Search.searcResults')}</h2>
+          <h2>result</h2>
           {Object.keys(results).map((type, idx) =>
             <ul key={idx}>
               <li><h3>{results[type][0].category}</h3></li>
@@ -78,7 +77,7 @@ export default function SearchResult({ }: Props) {
                   <div className={s.intro}>
                     <Markdown>{text}</Markdown>
                   </div>
-                  <Link href={slug}><button>{t('General.readMore')}</button></Link>
+                  <Link href={slug}><button>read more</button></Link>
                 </li>
               )}
             </ul>
@@ -88,7 +87,7 @@ export default function SearchResult({ }: Props) {
         loading ?
           <div className={s.loading}><Loader /></div>
           :
-          results && <p className={cn(s.nohits, "small")}>{t('Search.noHitsFor')}: &quot;{query}&quot;</p>
+          results && <p className={cn(s.nohits, "small")}>Inga träffar: &quot;{query}&quot;</p>
       }
       {error &&
         <div className={s.error}>

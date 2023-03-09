@@ -30,7 +30,7 @@ export default function Layout({ children, menu: menuFromProps, footer, title }:
 				</Content>
 			</div>
 			<Menu items={menu} />
-			<Language />
+
 			<Logo />
 			<Footer menu={menu} footer={footer} />
 			<FullscreenGallery

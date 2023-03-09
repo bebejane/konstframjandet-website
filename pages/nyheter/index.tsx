@@ -15,7 +15,6 @@ export default function News({ news }: Props) {
 
   return (
     <>
-      <h1 className="noPadding">Nyheter</h1>
       <div className={s.container}>
         <ul>
           {news.length > 0 ? news.map(({ id, title, slug }, idx) =>
@@ -31,21 +30,6 @@ export default function News({ news }: Props) {
   );
 }
 
-//News.page = { title: 'Nyheter' } as PageProps
-
-/*
-export const getServerSideProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
-
-  const { news } = await apiQuery(AllNewsDocument)
-
-  return {
-    props: {
-      ...props,
-      news
-    }
-  };
-});
-*/
 
 export const getStaticProps = withGlobalProps({ queries: [AllNewsDocument] }, async ({ props, revalidate, context }: any) => {
 

@@ -22,9 +22,11 @@ type Scalars = {
   UploadId: any;
 };
 
+type AboutModelContentBlocksField = ButtonRecord | ImageGalleryRecord | ImageRecord | LogoRecord | VideoRecord;
+
 type AboutModelContentField = {
   __typename?: 'AboutModelContentField';
-  blocks: Array<ImageRecord>;
+  blocks: Array<AboutModelContentBlocksField>;
   links: Array<Scalars['String']>;
   value: Scalars['JsonField'];
 };
@@ -42,6 +44,7 @@ type AboutModelFilter = {
   content?: InputMaybe<StructuredTextFilter>;
   district?: InputMaybe<LinkFilter>;
   id?: InputMaybe<ItemIdFilter>;
+  intro?: InputMaybe<TextFilter>;
   slug?: InputMaybe<SlugFilter>;
   title?: InputMaybe<StringFilter>;
 };
@@ -86,7 +89,8 @@ type AboutRecord = RecordInterface & {
   content?: Maybe<AboutModelContentField>;
   district: DistrictRecord;
   id: Scalars['ItemId'];
-  slug?: Maybe<Scalars['String']>;
+  intro?: Maybe<Scalars['String']>;
+  slug: Scalars['String'];
   title?: Maybe<Scalars['String']>;
 };
 
@@ -96,10 +100,41 @@ type AboutRecord_seoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
+
+/** Record of type Om (about) */
+type AboutRecordintroArgs = {
+  markdown?: InputMaybe<Scalars['Boolean']>;
+};
+
 /** Specifies how to filter Boolean fields */
 type BooleanFilter = {
   /** Search for records with an exact match */
   eq?: InputMaybe<Scalars['BooleanType']>;
+};
+
+/** Block of type Knapp (button) */
+type ButtonRecord = RecordInterface & {
+  __typename?: 'ButtonRecord';
+  _createdAt: Scalars['DateTime'];
+  _firstPublishedAt?: Maybe<Scalars['DateTime']>;
+  _isValid: Scalars['BooleanType'];
+  _modelApiKey: Scalars['String'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']>;
+  _publishedAt?: Maybe<Scalars['DateTime']>;
+  /** SEO meta tags */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']>;
+  _updatedAt: Scalars['DateTime'];
+  id: Scalars['ItemId'];
+  text?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+};
+
+
+/** Block of type Knapp (button) */
+type ButtonRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
 };
 
 type CollectionMetadata = {
@@ -424,6 +459,30 @@ type GlobalSeoField = {
   twitterAccount?: Maybe<Scalars['String']>;
 };
 
+/** Block of type Bilder (image_gallery) */
+type ImageGalleryRecord = RecordInterface & {
+  __typename?: 'ImageGalleryRecord';
+  _createdAt: Scalars['DateTime'];
+  _firstPublishedAt?: Maybe<Scalars['DateTime']>;
+  _isValid: Scalars['BooleanType'];
+  _modelApiKey: Scalars['String'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']>;
+  _publishedAt?: Maybe<Scalars['DateTime']>;
+  /** SEO meta tags */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']>;
+  _updatedAt: Scalars['DateTime'];
+  id: Scalars['ItemId'];
+  images: Array<FileField>;
+};
+
+
+/** Block of type Bilder (image_gallery) */
+type ImageGalleryRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
 /** Block of type Bild (image) */
 type ImageRecord = RecordInterface & {
   __typename?: 'ImageRecord';
@@ -438,8 +497,8 @@ type ImageRecord = RecordInterface & {
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']>;
   _updatedAt: Scalars['DateTime'];
-  bild: Array<FileField>;
   id: Scalars['ItemId'];
+  image: Array<FileField>;
   layout?: Maybe<Scalars['String']>;
 };
 
@@ -1865,13 +1924,37 @@ type LinksFilter = {
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ItemId']>>>;
 };
 
+/** Block of type Logotyp(er) (logo) */
+type LogoRecord = RecordInterface & {
+  __typename?: 'LogoRecord';
+  _createdAt: Scalars['DateTime'];
+  _firstPublishedAt?: Maybe<Scalars['DateTime']>;
+  _isValid: Scalars['BooleanType'];
+  _modelApiKey: Scalars['String'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']>;
+  _publishedAt?: Maybe<Scalars['DateTime']>;
+  /** SEO meta tags */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']>;
+  _updatedAt: Scalars['DateTime'];
+  id: Scalars['ItemId'];
+  image: Array<FileField>;
+};
+
+
+/** Block of type Logotyp(er) (logo) */
+type LogoRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
 enum MuxThumbnailFormatType {
   gif = 'gif',
   jpg = 'jpg',
   png = 'png'
 }
 
-type NewsModelContentBlocksField = ImageRecord | VideoRecord;
+type NewsModelContentBlocksField = ButtonRecord | ImageGalleryRecord | ImageRecord | LogoRecord | VideoRecord;
 
 type NewsModelContentField = {
   __typename?: 'NewsModelContentField';
@@ -1993,7 +2076,7 @@ type OrientationFilter = {
   neq?: InputMaybe<UploadOrientation>;
 };
 
-type ProjectModelContentBlocksField = ImageRecord | VideoRecord;
+type ProjectModelContentBlocksField = ButtonRecord | ImageGalleryRecord | ImageRecord | LogoRecord | VideoRecord;
 
 type ProjectModelContentField = {
   __typename?: 'ProjectModelContentField';
@@ -2014,6 +2097,7 @@ type ProjectModelFilter = {
   _updatedAt?: InputMaybe<UpdatedAtFilter>;
   bild?: InputMaybe<FileFilter>;
   color?: InputMaybe<ColorFilter>;
+  colorOptions?: InputMaybe<StringFilter>;
   completed?: InputMaybe<BooleanFilter>;
   content?: InputMaybe<StructuredTextFilter>;
   district?: InputMaybe<LinkFilter>;
@@ -2042,6 +2126,8 @@ enum ProjectModelOrderBy {
   _unpublishingScheduledAt_DESC = '_unpublishingScheduledAt_DESC',
   _updatedAt_ASC = '_updatedAt_ASC',
   _updatedAt_DESC = '_updatedAt_DESC',
+  colorOptions_ASC = 'colorOptions_ASC',
+  colorOptions_DESC = 'colorOptions_DESC',
   completed_ASC = 'completed_ASC',
   completed_DESC = 'completed_DESC',
   id_ASC = 'id_ASC',
@@ -2068,6 +2154,7 @@ type ProjectRecord = RecordInterface & {
   _updatedAt: Scalars['DateTime'];
   bild?: Maybe<FileField>;
   color?: Maybe<ColorField>;
+  colorOptions?: Maybe<Scalars['String']>;
   completed?: Maybe<Scalars['BooleanType']>;
   content?: Maybe<ProjectModelContentField>;
   district: DistrictRecord;
@@ -2091,9 +2178,11 @@ type ProjectRecordintroArgs = {
   markdown?: InputMaybe<Scalars['Boolean']>;
 };
 
+type ProjectSubpageModelContentBlocksField = ButtonRecord | ImageGalleryRecord | ImageRecord | LogoRecord | VideoRecord;
+
 type ProjectSubpageModelContentField = {
   __typename?: 'ProjectSubpageModelContentField';
-  blocks: Array<Scalars['String']>;
+  blocks: Array<ProjectSubpageModelContentBlocksField>;
   links: Array<Scalars['String']>;
   value: Scalars['JsonField'];
 };
@@ -2996,7 +3085,7 @@ type AllAboutsQueryVariables = Exact<{
 }>;
 
 
-type AllAboutsQuery = { __typename?: 'Query', abouts: Array<{ __typename?: 'AboutRecord', id: any, title?: string | null, slug?: string | null, _createdAt: any }>, pagination: { __typename?: 'CollectionMetadata', count: any } };
+type AllAboutsQuery = { __typename?: 'Query', abouts: Array<{ __typename?: 'AboutRecord', id: any, title?: string | null, slug: string, _createdAt: any }>, pagination: { __typename?: 'CollectionMetadata', count: any } };
 
 type AboutQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -3004,7 +3093,7 @@ type AboutQueryVariables = Exact<{
 }>;
 
 
-type AboutQuery = { __typename?: 'Query', about?: { __typename?: 'AboutRecord', id: any, title?: string | null, slug?: string | null, _createdAt: any } | null };
+type AboutQuery = { __typename?: 'Query', about?: { __typename?: 'AboutRecord', id: any, title?: string | null, slug: string, _createdAt: any } | null };
 
 type AllDistricsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3018,7 +3107,7 @@ type DistrictQueryVariables = Exact<{
 
 type DistrictQuery = { __typename?: 'Query', district?: { __typename?: 'DistrictRecord', id: any, name: string, email?: string | null, subdomain: string, color: { __typename?: 'ColorField', hex: string, red: any, green: any, blue: any } } | null };
 
-type AboutFragment = { __typename?: 'AboutRecord', id: any, title?: string | null, slug?: string | null, _createdAt: any };
+type AboutFragment = { __typename?: 'AboutRecord', id: any, title?: string | null, slug: string, _createdAt: any };
 
 type DistrictFragment = { __typename?: 'DistrictRecord', id: any, name: string, email?: string | null, subdomain: string, color: { __typename?: 'ColorField', hex: string, red: any, green: any, blue: any } };
 

@@ -12,7 +12,6 @@ export default function Projects({ projects }: Props) {
 
   return (
     <>
-      <h1 className="noPadding">Projekt</h1>
       <div className={s.container}>
         <ul>
           {projects.length > 0 ? projects.map(({ id, title, slug }, idx) =>
