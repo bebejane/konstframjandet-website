@@ -7,7 +7,7 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head />
-        <body style={{ backgroundColor: district?.color?.hex }}>
+        <body >
           <Main />
           <NextScript />
         </body>

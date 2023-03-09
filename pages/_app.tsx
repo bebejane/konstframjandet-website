@@ -15,9 +15,8 @@ function App({ Component, pageProps, router }) {
   const { district } = pageProps
 
   useEffect(() => {
-    document.body.style.backgroundColor = district?.color?.hex
-    document.querySelector<HTMLElement>(':root').style.setProperty('--background', district?.color?.hex);
-
+    //document.body.style.backgroundColor = district?.color?.hex
+    //document.querySelector<HTMLElement>(':root').style.setProperty('--background', district?.color?.hex);
   }, [router.asPath, district])
 
   const errorCode = parseInt(router.pathname.replace('/', ''))
