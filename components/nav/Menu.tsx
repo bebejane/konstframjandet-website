@@ -25,7 +25,7 @@ export default function Menu({ districts }: MenuProps) {
 	const ref = useRef<HTMLElement | null>(null)
 
 	const scrollY = Math.min(offset, scrolledPosition)
-	const ratio = Math.min(1, scrolledPosition / offset)
+	const ratio = Math.min(1, (scrolledPosition / offset))
 	const navStyle = { transform: `translateY(-${scrollY}px)` }
 	const searchStyle = { height: `calc(var(--navbar-height) - ${scrollY}px)` }
 	const logoStyle = {
