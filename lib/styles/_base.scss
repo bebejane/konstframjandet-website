@@ -49,6 +49,10 @@ body {
 	-webkit-font-smoothing: antialiased;
 	font-feature-settings: "liga", "kern";
 	overflow-x: hidden;
+
+	.home {
+		background-color: var(--page-color);
+	}
 }
 
 html {
