@@ -24,11 +24,10 @@ export default function Menu({ districts }: MenuProps) {
 	const searchRef = useRef<HTMLInputElement | null>(null)
 	const ref = useRef<HTMLElement | null>(null)
 
-	const translateY = Math.min(offset, scrolledPosition)
+	const scrollY = Math.min(offset, scrolledPosition)
 	const ratio = Math.min(1, scrolledPosition / offset)
-
-	const navStyle = { transform: `translateY(-${translateY}px)` }
-	const searchStyle = { height: `calc(var(--navbar-height) - ${translateY}px)` }
+	const navStyle = { transform: `translateY(-${scrollY}px)` }
+	const searchStyle = { height: `calc(var(--navbar-height) - ${scrollY}px)` }
 	const logoStyle = {
 		transform: `scale(${Math.max(0.7, 1 - (ratio) * 0.3)})`,
 		marginTop: `-${ratio * 10}px`
@@ -51,9 +50,9 @@ export default function Menu({ districts }: MenuProps) {
 	return (
 		<>
 			<div className={cn(s.logo, isHome && s.home)} style={logoStyle}>
-				<Link href={'/'}>B</Link>
+				<Link href={'/'} locale={primarySubdomain}>B</Link>
 			</div>
-			<nav className={s.menu} style={navStyle} ref={ref}>
+			<nav className={cn(s.menu, isHome && s.home)} style={navStyle} ref={ref}>
 				<div className={s.top} style={{ opacity: (1 - ratio) }}>
 					<h2>{district.name}</h2>
 					<div className="small" >
@@ -63,7 +62,7 @@ export default function Menu({ districts }: MenuProps) {
 					</div>
 				</div>
 				<div className={s.wrapper} >
-					<ul className={cn(isHome && s.home)}>
+					<ul>
 						<li className={cn(isHome && s.active)}>
 							<Link href="/">Hem</Link>
 						</li>

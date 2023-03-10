@@ -91,7 +91,6 @@
     flex-direction: row;
     width: 100%;
 
-
     li {
       cursor: pointer;
       margin-right: 0.6em;
@@ -110,14 +109,16 @@
       }
     }
 
-    &.home li {
 
-      &.active,
-      &.active>a,
-      &:hover,
-      >a:hover {
-        color: var(--white) !important;
-      }
+  }
+
+  &.home {
+
+    .active,
+    .active>a,
+    li:hover,
+    a:hover {
+      color: var(--white) !important;
     }
   }
 }
