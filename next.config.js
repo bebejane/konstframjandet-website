@@ -11,7 +11,7 @@ const sassOptions = {
 };
 
 const baseDomain = "konstframjandet.se";
-const primaryDomain = "forbundet";
+const primarySubdomain = "forbundet";
 const sites = {};
 
 districts
@@ -38,7 +38,7 @@ const nextOptions = {
 	},
 	i18n: {
 		locales: siteKeys,
-		defaultLocale: primaryDomain,
+		defaultLocale: primarySubdomain,
 		domains: siteKeys.map((siteKey) => ({
 			domain: sites[siteKey].domain,
 			defaultLocale: siteKey,

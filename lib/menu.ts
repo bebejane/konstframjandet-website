@@ -1,5 +1,6 @@
 import { apiQuery } from 'dato-nextjs-utils/api';
 import { MenuDocument } from "/graphql";
+import { primarySubdomain } from '/lib/utils';
 
 export type Menu = MenuItem[]
 
@@ -35,7 +36,8 @@ export const buildMenu = async (districtId: string) => {
     MenuDocument
   ], { variables: { districtId, first: 100 } });
 
-  const subdomain = districts.find(({ id }) => id === districtId).subdomain
+  const district = districts.find(({ id }) => id === districtId)
+
   const menu = base.map(item => {
     let items: MenuItem[];
     switch (item.type) {
@@ -49,16 +51,18 @@ export const buildMenu = async (districtId: string) => {
         items = projects.map(el => ({ type: 'project', label: el.title, slug: `/projekt/${el.slug}` }))
         break;
       case 'district':
-        items = districts.map(el => ({ type: 'district', label: el.name, slug: `/`, subdomain: el.subdomain }))
+        items = districts.filter(({ subdomain }) => primarySubdomain !== subdomain).map(el => ({ type: 'district', label: el.name, slug: `/`, subdomain: el.subdomain }))
         break;
       case 'contact':
-        items = []
+        items = [
+          { type: 'contact', label: 'Facebook', slug: district.facebook, subdomain: district.subdomain },
+          { type: 'contact', label: 'Instagram', slug: district.instagram, subdomain: district.subdomain },
+        ]
         break;
-
       default:
         break;
     }
-    return { ...item, items: items ? items : item.items, subdomain }
+    return { ...item, items: items ? items : item.items, subdomain: district.subdomain }
   })
 
   return menu

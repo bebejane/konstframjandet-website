@@ -5,6 +5,8 @@
     "name": "Distrikt 1",
     "email": "bjornthief@gmail.com",
     "subdomain": "distrikt1",
+    "instagram": "",
+    "facebook": "",
     "color": {
       "hex": "#870CF2",
       "__typename": "ColorField"
@@ -16,6 +18,8 @@
     "name": "Distrikt 2",
     "email": "bjorn@konst-teknik.se",
     "subdomain": "distrikt2",
+    "instagram": "",
+    "facebook": "",
     "color": {
       "hex": "#AAD319",
       "__typename": "ColorField"
@@ -27,6 +31,8 @@
     "name": "Konstfrämjandet",
     "email": "",
     "subdomain": "forbundet",
+    "instagram": "",
+    "facebook": "",
     "color": {
       "hex": "#F5C010",
       "__typename": "ColorField"
@@ -38,6 +44,8 @@
     "name": "Västmanland",
     "email": "",
     "subdomain": "vastermanland",
+    "instagram": "",
+    "facebook": "",
     "color": {
       "hex": "#BFF438",
       "__typename": "ColorField"

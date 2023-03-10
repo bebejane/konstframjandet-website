@@ -61,11 +61,13 @@ export default function Article({ id, children, title, content, image, imageSize
             />
             <div className={s.back}><a className="mid">Visa alla</a></div>
           </div>
-          <div className={s.caption}>
-            <figcaption>
-              Image caption here...
-            </figcaption>
-          </div>
+          {image &&
+            <div className={s.caption}>
+              <figcaption>
+                {image.title}
+              </figcaption>
+            </div>
+          }
         </section>
       </div>
     </>

@@ -3,6 +3,7 @@ import { GetStaticProps, GetServerSideProps } from 'next'
 import { AllDistricsDocument } from "/graphql";
 import type { TypedDocumentNode } from "@apollo/client/core/types.js";
 import { buildMenu } from "/lib/menu";
+import { primarySubdomain } from "/lib/utils";
 
 export default function withGlobalProps(opt: any, callback: Function): GetStaticProps | GetServerSideProps {
 
@@ -24,14 +25,12 @@ export default function withGlobalProps(opt: any, callback: Function): GetStatic
     if (!district)
       return { notFound: true };
 
-
-
     const variables = queries.map(el => ({ districtId: district.id }))
     const props = await apiQuery(queries, { variables, preview: context.preview });
     const subdomain = context.locale || null
 
     props.menu = await buildMenu(district.id)
-    props.district = districts.find(el => el.subdomain === subdomain) ?? null
+    props.district = props.district ?? districts.find(el => el.subdomain === subdomain) ?? null
     props.districts = districts
     props.subdomain = subdomain
 

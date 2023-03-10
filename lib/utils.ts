@@ -14,6 +14,7 @@ export const breakpoints = {
   navBreak: 1368
 }
 
+export const primarySubdomain = 'forbundet'
 export const pageSize = 10;
 
 export const chunkArray = (array: any[] | React.ReactNode[], chunkSize: number) => {

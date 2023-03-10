@@ -25,6 +25,8 @@ query Menu($districtId: ItemId) {
 	districts: allDistricts(first: 100, orderBy: name_ASC) {
 		id
 		subdomain
+		facebook
+		instagram
 		name
 	}
 }

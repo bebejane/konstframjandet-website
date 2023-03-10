@@ -3,6 +3,8 @@ fragment DistrictFragmentLight on DistrictRecord {
 	name
 	email
 	subdomain
+	instagram
+	facebook
 	color {
 		hex
 	}

@@ -3,6 +3,7 @@ import cn from 'classnames'
 import { useRouter } from 'next/router'
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
+import { primarySubdomain } from '/lib/utils'
 import useStore from '/lib/store'
 import { useScrollInfo } from 'dato-nextjs-utils/hooks'
 import { useWindowSize } from 'usehooks-ts'
@@ -12,6 +13,7 @@ import { usePage } from '/lib/context/page'
 export type MenuProps = { districts: DistrictRecord[] }
 
 export default function Menu({ districts }: MenuProps) {
+
 	const router = useRouter()
 	const { district } = usePage()
 	const [showDistricts, setShowDistricts] = useState(false)
@@ -22,39 +24,25 @@ export default function Menu({ districts }: MenuProps) {
 		return () => router.events.off('routeChangeStart', handleRouteChangeStart)
 	}, [])
 
-
 	return (
 		<>
 			<nav className={cn(s.menu)}>
 				<div className={s.top}>
 					<h2>{district.name}</h2>
 					<div className="small">
-						<a>Facebook</a><a>Instagram</a><a>English</a>
+						<a href={district.facebook}>Facebook</a>
+						<a href={district.instagram}>Instagram</a>
+						<a>English</a>
 					</div>
 				</div>
 				<div className={s.wrapper}>
 					<ul>
-						<li>
-							<Link href="/">Hem</Link>
-						</li>
-						<li>
-							<Link href="/aktuellt">Aktuellt</Link>
-						</li>
-						<li>
-							<Link href="/projekt">Projekt</Link>
-						</li>
-						<li
-							className={cn(showDistricts && s.active)}
-							onClick={() => setShowDistricts(!showDistricts)}
-						>
-							Distrikt
-						</li>
-						<li>
-							<Link href="/om">Om oss</Link>
-						</li>
-						<li>
-							<Link href="/kontakt">Kontakt</Link>
-						</li>
+						<li><Link href="/">Hem</Link></li>
+						<li><Link href="/aktuellt">Aktuellt</Link></li>
+						<li><Link href="/projekt">Projekt</Link></li>
+						<li className={cn(showDistricts && s.active)} onClick={() => setShowDistricts(!showDistricts)}>Distrikt</li>
+						<li><Link href="/om">Om oss</Link></li>
+						<li><Link href="/kontakt">Kontakt</Link></li>
 					</ul>
 					<span className="mid">Sök</span>
 				</div>
@@ -62,7 +50,7 @@ export default function Menu({ districts }: MenuProps) {
 			<nav className={cn(s.districts, showDistricts && s.show)}>
 				<h3>Besök våra distrikt</h3>
 				<ul>
-					{districts.map(({ id, subdomain, name }) =>
+					{districts.filter(({ subdomain }) => primarySubdomain !== subdomain).map(({ id, subdomain, name }) =>
 						<li key={id}>
 							<Link href={`/`} locale={subdomain}>{name}</Link>
 						</li>

@@ -3,8 +3,9 @@ query AllDistrics {
 		...DistrictFragmentLight
 	}
 }
-query District($subdomain: String!) {
-	district(filter: { subdomain: { eq: $subdomain } }) {
+
+query District($districtId: ItemId) {
+	district(filter: { id: { eq: $districtId } }) {
 		...DistrictFragment
 	}
 }
