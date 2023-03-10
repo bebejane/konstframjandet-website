@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react'
 import { StructuredContent } from "/components";
 import { Image } from 'react-datocms';
 import { useScrollInfo } from 'dato-nextjs-utils/hooks'
-import { DatoSEO } from 'dato-nextjs-utils/components';
+import { DatoSEO, DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
 import useStore from '/lib/store';
 import format from 'date-fns/format';
 
@@ -22,7 +22,7 @@ export type ArticleProps = {
   date?: string
 }
 
-export default function Article({ id, children, title, content, image, imageSize, intro, date, onClick, record }: ArticleProps) {
+export default function Article({ id, title, content, image, imageSize, intro, date, onClick, record }: ArticleProps) {
 
   const [setImageId, setImages, imageId] = useStore((state) => [state.setImageId, state.setImages, state.imageId])
   const { scrolledPosition, viewportHeight } = useScrollInfo()
@@ -53,6 +53,9 @@ export default function Article({ id, children, title, content, image, imageSize
         }
         <section>
           <div className={s.content}>
+            {intro &&
+              <Markdown className={s.intro}>{intro}</Markdown>
+            }
             <StructuredContent
               id={id}
               record={record}

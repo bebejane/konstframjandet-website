@@ -51,8 +51,6 @@ export async function getStaticPaths() {
   }
 }
 
-//AboutItem.page = { crumbs: [{ slug: 'nyheter', title: 'Nyheter' }], regional: true } as PageProps
-
 export const getStaticProps = withGlobalProps({ queries: [AllAboutsDocument] }, async ({ props, revalidate, context }: any) => {
 
   const slug = context.params.about;
