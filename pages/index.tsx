@@ -25,8 +25,8 @@ export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, r
 			...props,
 			page: {
 				title: 'Hem',
-				layout: 'home'
-			}
+				layout: 'home',
+			} as PageProps
 		},
 		revalidate
 	}

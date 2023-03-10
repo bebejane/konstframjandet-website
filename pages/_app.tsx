@@ -32,7 +32,7 @@ function App({ Component, pageProps, router }) {
   return (
     <>
       <DefaultDatoSEO siteTitle={siteTitle} />
-      <PageProvider value={{ district, ...page }} key={router.locale}>
+      <PageProvider value={{ district, ...page, isHome }} key={router.locale}>
         <Layout
           title={page.title}
           menu={menu}

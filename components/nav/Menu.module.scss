@@ -1,3 +1,26 @@
+.logo {
+  position: fixed;
+  top: var(--very-small-space);
+  left: 0;
+  max-width: 0;
+  z-index: var(--z-logo);
+  left: var(--outer-margin);
+  font-family: $symbol-font;
+  font-size: var(--logo-size);
+
+  a {
+    line-height: 1;
+
+    &:hover {
+      color: var(--page-color);
+    }
+  }
+
+  &.home>a:hover {
+    color: var(--white);
+  }
+}
+
 .menu {
   position: fixed;
   top: 0;
@@ -12,13 +35,17 @@
   margin-right: var(--outer-margin);
   background-color: var(--background);
 
-  @include mq($until: desktop) {
+  @include mq($until: desktop) {}
+
+  &.small {
+    transform: translateY(-50%);
   }
 
   a:hover,
   li:hover {
     color: var(--page-color);
-    &:after {
+
+    &::after {
       color: var(--black);
     }
   }
@@ -37,6 +64,7 @@
       &:not(:last-of-type) {
         padding-right: 0.6em;
       }
+
       &:not(:last-of-type)::after {
         content: "4";
         padding-left: 0.6em;
@@ -55,23 +83,35 @@
     margin-left: calc(var(--grid-unit));
     list-style: none;
     display: flex;
+    flex-direction: row;
     width: 100%;
 
-    flex-direction: row;
 
     li {
       cursor: pointer;
       margin-right: 0.6em;
       user-select: none;
 
-      &.active {
+      &.active,
+      &.active>a {
         color: var(--page-color);
       }
 
       &:not(:last-of-type)::after {
         content: "4";
+        color: var(--black);
         padding-left: 0.6em;
         font-family: $symbol-font;
+      }
+    }
+
+    &.home li {
+
+      &.active,
+      &.active>a,
+      &:hover,
+      >a:hover {
+        color: var(--white) !important;
       }
     }
   }
@@ -101,6 +141,7 @@
     list-style: none;
     margin-left: calc(-1 * var(--small-space));
     column-count: 5;
+
     li {
       &:hover {
         color: var(--page-color);

@@ -3,7 +3,8 @@ import { useContext, createContext } from "react";
 const initialState: PageProps = {
   district: undefined,
   title: undefined,
-  layout: 'full'
+  layout: 'full',
+  isHome: true
 }
 
 export const PageContext = createContext(initialState);

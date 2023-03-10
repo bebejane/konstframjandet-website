@@ -4,6 +4,7 @@ type PageProps = {
   image?: FileField
   intro?: string
   layout: 'full' | 'project' | 'home'
+  isHome: boolean
 }
 
 type ThumbnailImage = {

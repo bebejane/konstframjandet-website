@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 export default class MyDocument extends Document {
 
   render() {
-    const { district: { color: { hex } } }: { district: DistrictRecord } = this.props?.__NEXT_DATA__?.props?.pageProps || {};
+    //const { district: { color: { hex } } }: { district: DistrictRecord } = this.props?.__NEXT_DATA__?.props?.pageProps || {};
     const isHome = this.props.dangerousAsPath === '/'
 
     return (

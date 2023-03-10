@@ -1,12 +1,11 @@
 import s from './Layout.module.scss'
-import React, { useEffect, useState } from 'react'
-import { Content, MetaSection, Footer, Logo, Grid, Menu, Language, FullscreenGallery, SearchResult } from '/components'
+import React, { useState } from 'react'
+import { Content, Footer, Grid, Menu, FullscreenGallery } from '/components'
 import type { MenuItem } from '/lib/menu'
-import { buildMenu } from '/lib/menu'
 import { useRouter } from 'next/router'
 import { useStore } from '/lib/store'
 import { usePage } from '/lib/context/page'
-import { Image } from 'react-datocms'
+
 
 export type LayoutProps = {
 	children: React.ReactNode,
@@ -28,16 +27,14 @@ export default function Layout({ children, menu: menuFromProps, footer, title, d
 			<Content menu={menu} title={title}>
 				{children}
 			</Content>
-			<Footer footer={footer} menu={menu} />
 			<Menu districts={districts} />
-			<Logo />
+			<Footer footer={footer} menu={menu} />
 			<FullscreenGallery
 				index={images?.findIndex((image) => image?.id === imageId)}
 				images={images}
 				show={imageId !== undefined}
 				onClose={() => setImageId(undefined)}
 			/>
-
 			<Grid />
 		</>
 	)
