@@ -20,13 +20,17 @@ export default function Menu({ districts }: MenuProps) {
 	const { scrolledPosition } = useScrollInfo()
 	const [offset, setOffset] = useState(0)
 	const [showDistricts, setShowDistricts] = useState(false)
+	const [showSearch, setShowSearch] = useState(false)
+	const searchRef = useRef<HTMLInputElement | null>(null)
 	const ref = useRef<HTMLElement | null>(null)
 
 	const translateY = Math.min(offset, scrolledPosition)
 	const ratio = Math.min(1, scrolledPosition / offset)
+
 	const navStyle = { transform: `translateY(-${translateY}px)` }
+	const searchStyle = { height: `calc(var(--navbar-height) - ${translateY}px)` }
 	const logoStyle = {
-		transform: `scale(${Math.max(0.7, 1 - ratio)})`,
+		transform: `scale(${Math.max(0.7, 1 - (ratio) * 0.3)})`,
 		marginTop: `-${ratio * 10}px`
 	}
 
@@ -39,6 +43,10 @@ export default function Menu({ districts }: MenuProps) {
 		router.events.on('routeChangeStart', handleRouteChangeStart)
 		return () => router.events.off('routeChangeStart', handleRouteChangeStart)
 	}, [])
+
+	useEffect(() => {
+		searchRef.current[showSearch ? 'focus' : 'blur']()
+	}, [showSearch])
 
 	return (
 		<>
@@ -75,7 +83,7 @@ export default function Menu({ districts }: MenuProps) {
 							<Link href="/kontakt">Kontakt</Link>
 						</li>
 					</ul>
-					<span className="mid">Sök</span>
+					<span className="mid" onClick={() => setShowSearch(true)}>Sök</span>
 				</div>
 			</nav>
 			<nav className={cn(s.districts, showDistricts && s.show)}>
@@ -88,6 +96,10 @@ export default function Menu({ districts }: MenuProps) {
 					)}
 				</ul>
 			</nav>
+			<div className={cn(s.search, showSearch && s.show)} style={searchStyle}>
+				<input className={'mid'} placeholder={'Sök...'} ref={searchRef} />
+				<span className={cn(s.close, 'small')} onClick={() => setShowSearch(false)}>Stäng</span>
+			</div>
 		</>
 	)
 }

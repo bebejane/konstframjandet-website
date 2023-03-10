@@ -25,9 +25,11 @@
 	--line-thick: 7px solid var(--white);
 	--line-thin: 3px solid var(--white);
 	--background: var(--light-grey);
-	--page-color: var(--temp-orange);
+	--page-color: transparent;
+
 	--z-background-image: 0;
 	--z-menu: 400;
+	--z-search: 500;
 	--z-logo: 600;
 	--z-fullscreen-gallery: 800;
 	--z-fullscreen-gallery-close: 801;
