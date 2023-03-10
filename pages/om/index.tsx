@@ -1,12 +1,8 @@
 import s from "./index.module.scss";
 import withGlobalProps from "/lib/withGlobalProps";
-import { GetStaticProps } from "next";
-import { apiQuery } from "dato-nextjs-utils/api";
-import { apiQueryAll } from "/lib/utils";
 import { AllAboutsDocument } from "/graphql";
-import { format } from "date-fns";
 import Link from "next/link";
-import { useEffect } from "react";
+import { MetaSection, Article } from "/components";
 
 export type Props = {
   abouts: AboutRecord[]
@@ -16,7 +12,7 @@ export default function About({ abouts }: Props) {
 
   return (
     <>
-      <div className={s.container}>
+      <MetaSection>
         <ul>
           {abouts.length > 0 ? abouts.map(({ id, title, slug }, idx) =>
             <li key={id} >
@@ -26,8 +22,17 @@ export default function About({ abouts }: Props) {
             <>Det finns inga Om...</>
           }
         </ul>
-      </div>
+      </MetaSection>
+      <Article
+        id={'id'}
+
+        intro={'intro'}
+        //content={content}
+        record={{}}
+
+      />
     </>
+
   );
 }
 
@@ -37,7 +42,7 @@ export const getStaticProps = withGlobalProps({ queries: [AllAboutsDocument] }, 
     props: {
       ...props,
       page: {
-        title: 'Om'
+        title: 'Om oss'
       }
     },
     revalidate
