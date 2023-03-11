@@ -9,3 +9,9 @@ query District($districtId: ItemId) {
 		...DistrictFragment
 	}
 }
+
+query DistrictBySubdomain($subdomain: String) {
+	district(filter: { subdomain: { eq: $subdomain } }) {
+		...DistrictFragment
+	}
+}

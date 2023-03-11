@@ -14,6 +14,7 @@ declare module '*/district.gql' {
   const defaultDocument: DocumentNode;
   export const AllDistrics: DocumentNode;
 export const District: DocumentNode;
+export const DistrictBySubdomain: DocumentNode;
 
   export default defaultDocument;
 }

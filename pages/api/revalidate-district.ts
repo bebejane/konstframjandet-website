@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { sleep } from '/lib/utils';
-import districts from '/lib/districts.json'
+import { sleep, allDistricts } from '/lib/utils';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
@@ -9,6 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const payload = req.body?.entity;
   const districtId = payload?.attributes?.district;
+  const districts = await allDistricts()
   const district = districts.find(el => el.id === districtId)
 
   if (!district)

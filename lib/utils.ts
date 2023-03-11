@@ -1,6 +1,6 @@
-import districts from '/lib/districts.json'
 import { TypedDocumentNode } from "@apollo/client/core";
 import { apiQuery } from "dato-nextjs-utils/api";
+import { AllDistricsDocument, DistrictBySubdomainDocument } from '/graphql';
 import type { ApiQueryOptions } from "dato-nextjs-utils/api";
 import React from "react";
 
@@ -188,6 +188,7 @@ export async function getStaticDistrictPaths(doc: TypedDocumentNode, segment: st
   const res = await apiQueryAll(doc)
   const data = res[Object.keys(res)[0]];
   const paths = []
+  const districts = await allDistricts()
 
   districts.forEach(({ id, subdomain }) => {
     const items = data.filter(({ district }) => district && district?.id === id)
@@ -198,4 +199,14 @@ export async function getStaticDistrictPaths(doc: TypedDocumentNode, segment: st
     paths,
     fallback: 'blocking',
   };
+}
+
+export async function allDistricts() {
+  const { districts } = await apiQuery(AllDistricsDocument)
+  return districts
+}
+
+export async function mainDistrict() {
+  const { district } = await apiQuery(DistrictBySubdomainDocument, { variables: { subdomain: primarySubdomain } })
+  return district
 }

@@ -1,5 +1,4 @@
 import s from "./index.module.scss";
-import districts from '/lib/districts.json'
 import withGlobalProps from "/lib/withGlobalProps";
 import type { Menu } from "/lib/menu";
 import Link from "next/link";

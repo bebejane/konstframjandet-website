@@ -1,6 +1,6 @@
 import s from './[...project].module.scss'
 import withGlobalProps from "/lib/withGlobalProps";
-import { apiQueryAll } from '/lib/utils';
+import { apiQueryAll, mainDistrict } from '/lib/utils';
 import { apiQuery } from "dato-nextjs-utils/api";
 import { ProjectDocument, ProjectSubpageDocument, AllProjectsDocument } from "/graphql";
 import { Aside, Article } from '/components';
@@ -38,8 +38,10 @@ export default function ProjectItem({ project: { id, _createdAt, title, slug, im
   );
 }
 
-export async function getStaticPaths() {
-  const { projects }: { projects: ProjectRecord[] } = await apiQueryAll(AllProjectsDocument)
+export async function getStaticPaths(context) {
+
+  const district = await mainDistrict()
+  const { projects }: { projects: ProjectRecord[] } = await apiQueryAll(AllProjectsDocument, { variables: { districtId: district.id } })
   const paths = []
 
   projects.forEach(({ slug, subpage }) => {
@@ -54,10 +56,10 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
-  console.log(context.params.project)
+
   const isSubpage = context.params.project.length === 2
   const slug = context.params.project[!isSubpage ? 0 : 1]
-  const { project } = await apiQuery(!isSubpage ? ProjectDocument : ProjectSubpageDocument, { variables: { slug, districtId: props.district.id }, preview: context.preview })
+  const { project } = await apiQuery(!isSubpage ? ProjectDocument : ProjectSubpageDocument, { variables: { slug }, preview: context.preview })
 
   if (!project)
     return { notFound: true }

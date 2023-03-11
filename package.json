@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "npm run prebuild && npm run dev:watch",
+		"dev": "npm run dev:watch",
 		"dev:watch": "LOG_GRAPHQL=true next dev & npm run barrel:watch & graphql-codegen --watch",
 		"dev:emails": "npx mailing",
 		"build": "npm run prebuild && next build",
