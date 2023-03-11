@@ -22,7 +22,7 @@ export default function StartSelectionCard({ item }: CardProps) {
         <figure className={s.figure}>
           <Image
             data={item.image.responsiveImage}
-            className={s.image}
+            pictureClassName={s.image}
             objectFit="cover"
             pictureStyle={{ WebkitMaskImage: `url(/images/mask1.png` }}
           />

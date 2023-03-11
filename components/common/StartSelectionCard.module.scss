@@ -29,20 +29,25 @@
     margin-bottom: 0 !important;
   }
 
-  figure {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    aspect-ratio: 4 / 4;
-    height: 25vh;
+  a {
+    width: 100%;
 
-    img {
-      object-fit: cover;
-      mask-position: 50% 50%;
-      mask-size: cover;
-      mask-repeat: none;
+    figure {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      height: 25vh;
+      width: 100%;
+
+
+
+      .image {
+        object-fit: cover;
+        mask-position: 50% 50%;
+        mask-size: contain;
+        mask-repeat: space;
+      }
     }
-
   }
 
   @include mq($until: tablet) {}
