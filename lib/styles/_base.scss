@@ -52,7 +52,7 @@ body {
 	font-feature-settings: "liga", "kern";
 	overflow-x: hidden;
 
-	.home {
+	&.home {
 		background-color: var(--page-color);
 	}
 }

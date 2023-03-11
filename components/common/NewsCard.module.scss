@@ -5,6 +5,15 @@
   padding-bottom: var(--space);
   border-bottom: var(--line-thin);
 
+  &.home {
+
+    a>h2,
+    p>a,
+    a:hover {
+      color: var(--black) !important;
+    }
+  }
+
   &:hover {
     .meta a {
       color: var(--page-color);
@@ -21,7 +30,7 @@
     column-count: 2;
   }
 
-  > div,
+  >div,
   a {
     flex: 0 0 50%;
   }
@@ -35,14 +44,13 @@
     border: var(--line-thick);
     display: flex;
     aspect-ratio: 6 / 4;
+
     img {
       object-fit: cover;
     }
   }
 
-  @include mq($until: tablet) {
-  }
+  @include mq($until: tablet) {}
 
-  @include mq($from: tablet) {
-  }
+  @include mq($from: tablet) {}
 }

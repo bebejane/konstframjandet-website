@@ -5,6 +5,7 @@ import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components'
 import format from 'date-fns/format'
 import { Image } from 'react-datocms/image'
 import Link from 'next/link'
+import { usePage } from '/lib/context/page'
 
 export type CardProps = {
   item: (NewsRecord | ProjectRecord)

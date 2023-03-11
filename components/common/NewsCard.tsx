@@ -5,14 +5,18 @@ import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components'
 import format from 'date-fns/format'
 import { Image } from 'react-datocms/image'
 import Link from 'next/link'
+import { usePage } from '/lib/context/page'
 
 export type CardProps = {
   news: NewsRecord
 }
 
 export default function NewsCard({ news: { title, intro, image, slug, address, where, date, time, misc } }: CardProps) {
+
+  const { isHome } = usePage()
+
   return (
-    <li className={cn(s.card)}>
+    <li className={cn(s.card, isHome && s.home)}>
       <div className={s.content}>
         <Link href={`/aktuellt/${slug}`}>
           <h2 className="big">{title}</h2>

@@ -1,9 +1,11 @@
 .container {
+  margin-top: var(--space);
+
   ul {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
+    padding: 0;
   }
-
 }

@@ -69,6 +69,7 @@ fragment DistrictFragment on DistrictRecord {
 			image {
 				...ImageFragment
 			}
+			headline
 			link
 			text
 		}
