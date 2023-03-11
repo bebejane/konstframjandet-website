@@ -1,16 +1,13 @@
 import s from "./index.module.scss";
 import withGlobalProps from "/lib/withGlobalProps";
 import { AllProjectsDocument } from "/graphql";
-import { ProjectContainer, ProjectCard, SectionHeader } from "/components";
-
-import Link from "next/link";
+import { ProjectContainer, ProjectCard } from "/components";
 
 export type Props = {
   projects: ProjectRecord[]
 }
 
 export default function Projects({ projects }: Props) {
-
   return (
     <>
       <div className={s.container}>

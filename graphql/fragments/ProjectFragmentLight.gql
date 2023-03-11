@@ -16,4 +16,7 @@ fragment ProjectFragmentLight on ProjectRecord {
 	subpage {
 		...ProjectSubpageFragmentLight
 	}
+	image {
+		...ImageFragment
+	}
 }
