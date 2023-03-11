@@ -1,7 +1,12 @@
 .container {
+  position: relative;
   color: var(--white);
   border-top: var(--line-thick);
   border-bottom: var(--line-thick);
+
+  &:first-of-type {
+    border-top: 0;
+  }
 
   a {
     figure {
@@ -42,5 +47,21 @@
         }
       }
     }
+  }
+
+  .bubble {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    right: 0;
+    margin: var(--space);
+    background-color: var(--white);
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    color: var(--black) !important;
+
   }
 }

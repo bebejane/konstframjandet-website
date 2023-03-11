@@ -28,7 +28,9 @@ export default function ImageShortcut({ data: { headline, image, link, text } }:
             <p>{text}</p>
           </figcaption>
         </figure>
+        <div className={cn(s.bubble, 'mid')}>Visa</div>
       </Link>
+
     </section >
   )
 }
