@@ -132,6 +132,7 @@
   left: var(--outer-margin);
   width: var(--body-width);
   padding: var(--small-space);
+  z-index: var(--z-district-popup);
 
   &.show {
     display: flex;

@@ -15,12 +15,13 @@
     width: 100%;
     //margin-bottom: var(--space);
     border-bottom: var(--line-thick);
+
     h1 {
       position: absolute;
       color: var(--white);
       top: var(--small-space);
       left: var(--grid-unit);
-      z-index: 2;
+
     }
 
     .intro {

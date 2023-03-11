@@ -85,7 +85,8 @@ export default function Menu({ districts }: MenuProps) {
 					<span className="mid" onClick={() => setShowSearch(true)}>Sök</span>
 				</div>
 			</nav>
-			<nav className={cn(s.districts, showDistricts && s.show)}>
+
+			<nav className={cn(s.districts, showDistricts && s.show)} style={navStyle}>
 				<h3>Besök våra distrikt</h3>
 				<ul>
 					{districts.filter(({ subdomain }) => primarySubdomain !== subdomain).map(({ id, subdomain, name }) =>
@@ -95,10 +96,12 @@ export default function Menu({ districts }: MenuProps) {
 					)}
 				</ul>
 			</nav>
+
 			<div className={cn(s.search, showSearch && s.show)} style={searchStyle}>
 				<input className={'mid'} placeholder={'Sök...'} ref={searchRef} />
 				<span className={cn(s.close, 'small')} onClick={() => setShowSearch(false)}>Stäng</span>
 			</div>
+
 		</>
 	)
 }
