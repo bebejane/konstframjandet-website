@@ -2,7 +2,7 @@ import s from './[news].module.scss'
 import withGlobalProps from "/lib/withGlobalProps";
 import { apiQuery } from "dato-nextjs-utils/api";
 import { NewsDocument, AllNewsDocument } from "/graphql";
-import { Article, MetaSection } from '/components';
+import { Article, Aside } from '/components';
 import { apiQueryAll } from '/lib/utils';
 import format from 'date-fns/format';
 export type Props = {
@@ -27,7 +27,7 @@ export default function NewsItem({ news: {
 
   return (
     <>
-      <MetaSection>
+      <Aside>
         <h3>Var & när</h3>
         <p>
           {where}<br />
@@ -35,7 +35,7 @@ export default function NewsItem({ news: {
           {time}<br />
           {misc}
         </p>
-      </MetaSection>
+      </Aside>
       <Article
         id={id}
         record={news}

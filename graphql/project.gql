@@ -5,7 +5,7 @@ query AllProjects($first: IntType = 100, $skip: IntType = 0, $districtId: ItemId
 		skip: $skip
 		orderBy: [_createdAt_DESC]
 	) {
-		...ProjectFragment
+		...ProjectFragmentLight
 	}
 	pagination: _allProjectsMeta {
 		count
@@ -15,5 +15,11 @@ query AllProjects($first: IntType = 100, $skip: IntType = 0, $districtId: ItemId
 query Project($slug: String!, $districtId: ItemId) {
 	project(filter: { slug: { eq: $slug }, district: { eq: $districtId } }) {
 		...ProjectFragment
+	}
+}
+
+query ProjectSubpage($slug: String!, $districtId: ItemId) {
+	project: projectSubpage(filter: { slug: { eq: $slug }, district: { eq: $districtId } }) {
+		...ProjectSubpageFragment
 	}
 }

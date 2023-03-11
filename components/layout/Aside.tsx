@@ -1,15 +1,15 @@
-import s from './MetaSection.module.scss'
+import s from './Aside.module.scss'
 
 export type Props = {
   children: React.ReactNode[] | React.ReactNode
 }
 
-export default function MetaSection({ children }: Props) {
+export default function Aside({ children }: Props) {
   return (
-    <section className={s.meta}>
+    <aside className={s.meta}>
       <div className="mid">
         {children}
       </div>
-    </section>
+    </aside>
   )
 }

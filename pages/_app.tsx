@@ -13,7 +13,8 @@ const siteTitle = 'Konstnärsfrämjandet'
 function App({ Component, pageProps, router }) {
 
   const { asPath } = router
-  const { district, districts, page, footer, menu } = pageProps
+  const { district, districts, footer, menu } = pageProps
+  const page = pageProps.page as PageProps
   const isHome = asPath === '/' || districts.find(({ subdomain }) => `/${subdomain}` === asPath) !== undefined
 
   useEffect(() => {

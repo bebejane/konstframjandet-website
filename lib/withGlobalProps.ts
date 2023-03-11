@@ -18,7 +18,6 @@ export default function withGlobalProps(opt: any, callback: Function): GetStatic
     queries.push(SEOQuery(opt.seo))
 
   return async (context) => {
-
     const { districts } = await apiQuery(AllDistricsDocument)
     const district = districts.find(({ subdomain }) => subdomain === context.locale)
 

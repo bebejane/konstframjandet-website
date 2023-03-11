@@ -2,7 +2,7 @@ import s from "./index.module.scss";
 import withGlobalProps from "/lib/withGlobalProps";
 import { AllAboutsDocument } from "/graphql";
 import Link from "next/link";
-import { MetaSection, Article } from "/components";
+import { Aside, Article } from "/components";
 
 export type Props = {
   abouts: AboutRecord[]
@@ -12,7 +12,7 @@ export default function About({ abouts }: Props) {
 
   return (
     <>
-      <MetaSection>
+      <Aside>
         <ul>
           {abouts.length > 0 ? abouts.map(({ id, title, slug }, idx) =>
             <li key={id} >
@@ -22,7 +22,7 @@ export default function About({ abouts }: Props) {
             <>Det finns inga Om...</>
           }
         </ul>
-      </MetaSection>
+      </Aside>
       <Article
         id={'id'}
 

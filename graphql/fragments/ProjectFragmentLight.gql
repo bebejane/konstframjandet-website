@@ -1,0 +1,19 @@
+fragment ProjectFragmentLight on ProjectRecord {
+	id
+	title
+	subtitle
+	slug
+	_createdAt
+	intro(markdown: false)
+	color {
+		hex
+	}
+	colorOption
+	completed
+	district {
+		...DistrictFragmentLight
+	}
+	subpage {
+		...ProjectSubpageFragmentLight
+	}
+}

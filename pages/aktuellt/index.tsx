@@ -19,7 +19,7 @@ export default function News({ news }: Props) {
       <div className={s.container}>
         <NewsContainer>
           {news.map(item =>
-            <NewsCard news={item} />
+            <NewsCard key={item.id} news={item} />
           )}
         </NewsContainer>
       </div>

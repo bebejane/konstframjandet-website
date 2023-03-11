@@ -4,7 +4,7 @@ import withGlobalProps from "/lib/withGlobalProps";
 import { apiQuery } from 'dato-nextjs-utils/api';
 import { apiQueryAll } from '/lib/utils';
 import { AboutDocument, AllAboutsDocument } from "/graphql";
-import { MetaSection, Article } from '/components';
+import { Aside, Article } from '/components';
 import Link from 'next/link';
 
 export type Props = {
@@ -16,7 +16,7 @@ export default function AboutItem({ about: { id, content, intro, slug, _seoMetaT
 
   return (
     <>
-      <MetaSection>
+      <Aside>
         <ul className={s.submenu}>
           {abouts.length > 0 ? abouts.map((about, idx) =>
             <li key={about.id}>
@@ -30,7 +30,7 @@ export default function AboutItem({ about: { id, content, intro, slug, _seoMetaT
             <>Det finns inga Om...</>
           }
         </ul>
-      </MetaSection>
+      </Aside>
       <Article
         id={'id'}
         intro={intro}

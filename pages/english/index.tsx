@@ -1,7 +1,7 @@
 import s from "./index.module.scss";
 import withGlobalProps from "/lib/withGlobalProps";
 import { DistrictDocument } from "/graphql";
-import { MetaSection, Article } from "/components";
+import { Aside, Article } from "/components";
 
 export type Props = {
   district: DistrictRecord
@@ -12,8 +12,8 @@ export default function English({ }: Props) {
   return (
     <>
       {/*
-      <MetaSection>
-      </MetaSection>
+      <Aside>
+      </Aside>
       <Article
         id={id}
         record={district}
