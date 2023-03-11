@@ -13,7 +13,7 @@ fragment DistrictFragment on DistrictRecord {
 	facebook
 	instagram
 	intro(markdown: false)
-	content {
+	contentContact {
 		value
 		blocks {
 			__typename

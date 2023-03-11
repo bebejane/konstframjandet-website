@@ -53,7 +53,7 @@ export default function Menu({ districts }: MenuProps) {
 				<Link href={'/'} locale={primarySubdomain}>B</Link>
 			</div>
 			<nav className={cn(s.menu, isHome && s.home)} style={navStyle} ref={ref}>
-				<div className={s.top} style={{ opacity: isNaN(1 - ratio) ? 1 : (1 - ratio) }}>
+				<div className={s.top} style={{ opacity: (1 - ratio) }}>
 					<h2>{district.name}</h2>
 					<div className="small" >
 						<a href={district.facebook}>Facebook</a>

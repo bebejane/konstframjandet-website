@@ -11,8 +11,6 @@ export type FooterProps = {
 
 export default function Footer({ footer, menu }: FooterProps) {
 
-	const { district } = usePage()
-
 	return (
 		<footer className={cn(s.footer)} id="footer">
 			<div className={s.line}></div>
@@ -28,7 +26,9 @@ export default function Footer({ footer, menu }: FooterProps) {
 							{slug ? <Link href={slug} locale={subdomain}>{label}</Link> : <>{label}</>}
 							<ul>
 								{items?.map(({ label, slug, subdomain }, idx) =>
-									<li key={`${idx}-sub`}><Link href={slug} locale={subdomain}>{label}</Link></li>
+									<li key={`${idx}-sub`}>
+										<Link href={slug} locale={subdomain}>{label}</Link>
+									</li>
 								)}
 							</ul>
 						</li>

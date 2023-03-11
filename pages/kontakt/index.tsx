@@ -7,7 +7,7 @@ export type Props = {
   district: DistrictRecord
 }
 
-export default function Contact({ district: { id, intro, content }, district }: Props) {
+export default function Contact({ district: { id, intro, contentContact }, district }: Props) {
 
   return (
     <>
@@ -17,7 +17,7 @@ export default function Contact({ district: { id, intro, content }, district }: 
         id={id}
         record={district}
         intro={intro}
-        content={content}
+        content={contentContact}
       />
     </>
   );
