@@ -61,4 +61,30 @@ fragment DistrictFragment on DistrictRecord {
 			}
 		}
 	}
+	content {
+		__typename
+		... on ImageShortcutRecord {
+			__typename
+			id
+			image {
+				...ImageFragment
+			}
+			link
+			text
+		}
+		... on StartProjectRecord {
+			__typename
+			id
+			projects {
+				...ProjectFragmentLight
+			}
+		}
+		... on StartSelectedNewsRecord {
+			__typename
+			id
+			news {
+				...NewsFragmentLight
+			}
+		}
+	}
 }

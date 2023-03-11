@@ -1,0 +1,21 @@
+fragment NewsFragmentLight on NewsRecord {
+	id
+	title
+	intro(markdown: false)
+	image {
+		...ImageFragment
+	}
+	address
+	date
+	district {
+		...DistrictFragmentLight
+	}
+	externalLink
+	misc
+	subtitle
+	time
+	title
+	where
+	slug
+	_createdAt
+}

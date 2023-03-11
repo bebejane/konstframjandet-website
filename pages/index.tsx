@@ -1,23 +1,32 @@
 import s from "./index.module.scss";
 import withGlobalProps from "/lib/withGlobalProps";
-import type { Menu } from "/lib/menu";
-import Link from "next/link";
+import { StartDocument } from "/graphql";
+import { StartSelectionContainer, StartSelectionCard } from "/components";
+import { Block } from '/components'
 
 export type Props = {
-	menu: Menu,
 	district: DistrictRecord
+	start: StartRecord
 }
 
-export default function Home({ menu, district }: Props) {
+export default function Home({ district, start }: Props) {
+
 	return (
 		<div className={s.container}>
-			hem
+			{district.content.map((block, idx) =>
+				<Block key={idx} data={block} record={district} />
+			)}
+			<StartSelectionContainer>
+				{start.selectedInDistricts.map(item =>
+					<StartSelectionCard item={item} />
+				)}
+			</StartSelectionContainer>
 		</div>
 	);
 }
 
 
-export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
+export const getStaticProps = withGlobalProps({ queries: [StartDocument] }, async ({ props, revalidate, context }: any) => {
 
 	return {
 		props: {

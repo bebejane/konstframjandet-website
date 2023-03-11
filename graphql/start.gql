@@ -1,0 +1,20 @@
+query Start($districtId: ItemId) {
+	start {
+		id
+		selectedInDistricts {
+			__typename
+			... on NewsRecord {
+				__typename
+				...NewsFragmentLight
+			}
+			... on ProjectRecord {
+				__typename
+				...ProjectFragmentLight
+			}
+		}
+	}
+
+	district(filter: { id: { eq: $districtId } }) {
+		...DistrictFragment
+	}
+}

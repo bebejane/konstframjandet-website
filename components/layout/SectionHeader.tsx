@@ -14,8 +14,8 @@ export type SectionHeaderProps = {
 
 export default function SectionHeader({ }: SectionHeaderProps) {
 
-  const { title, image, intro, layout } = usePage()
-
+  const { title, image, intro, layout, isHome } = usePage()
+  if (isHome) return null
   return (
     <header className={cn(s.header, s[layout])}>
       <h1>{title}</h1>

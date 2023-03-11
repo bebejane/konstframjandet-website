@@ -1,54 +1,30 @@
 .container {
   color: var(--white);
-  margin-top: var(--space);
+  border-top: var(--line-thick);
+  border-bottom: var(--line-thick);
 
   figure {
     position: relative;
+    width: 100%;
 
     .image {
-      margin-right: calc(-1 * var(--outer-margin));
-      margin-left: calc(-1 * var(--outer-margin));
-      width: calc(100% + (2 * var(--outer-margin))) !important;
+      width: 100%;
+      height: calc(100vh - var(--navbar-height) - calc(var(--space) *2));
 
-      @include mq($until: tablet) {
-        height: 60vh;
-      }
+      @include mq($until: tablet) {}
 
-      @include mq($from: tablet) {
-        min-width: calc(100% - (2 * var(--full-margin)));
-        margin-right: var(--full-margin);
-        margin-left: var(--full-margin);
-        max-width: none;
-        max-height: calc(100vh - (2 * var(--navbar-height)));
-      }
+      @include mq($from: tablet) {}
     }
 
     figcaption {
       position: absolute;
-      top: var(--small-space);
+      bottom: var(--small-space);
       left: 0;
       width: 100%;
-      height: 100%;
 
-      @include mq($from: tablet) {
-        margin-left: calc(-1 * var(--grid-unit));
-      }
+      text-align: center;
 
-      h2,
-      p,
-      a {
-        z-index: 2;
-        position: relative;
-      }
-
-      p {
-        margin-bottom: 0;
-        padding-right: var(--grid-unit);
-      }
-
-      a {
-        color: var(--white);
-      }
+      @include mq($from: tablet) {}
 
       .fade {
         //background-color: red;
@@ -72,7 +48,5 @@
     }
   }
 
-  .black {
-    color: var(--black);
-  }
+
 }

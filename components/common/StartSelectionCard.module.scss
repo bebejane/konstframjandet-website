@@ -1,0 +1,43 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--small-space);
+  border-right: var(--line-thin);
+  flex: 1 1 25%;
+
+  &:hover {
+    .meta a {
+      color: var(--page-color);
+    }
+  }
+
+  h2 {
+    padding-top: 0.2em;
+    padding-top: var(--small-space);
+  }
+
+  p {
+    padding-bottom: var(--small-space);
+    margin-top: 1rem;
+    margin-bottom: 0 !important;
+  }
+
+  figure {
+    position: relative;
+    display: flex;
+    aspect-ratio: 4 / 4;
+
+    img {
+      object-fit: cover;
+      mask-position: 50% 50%;
+      mask-size: cover;
+      mask-repeat: none;
+    }
+
+  }
+
+  @include mq($until: tablet) {}
+
+  @include mq($from: tablet) {}
+}

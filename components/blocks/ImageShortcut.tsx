@@ -5,10 +5,10 @@ import { Image } from 'react-datocms'
 import { ReadMore } from '/components'
 
 export type ImageShortcutBlockProps = {
-  data: any
+  data: ImageShortcutRecord
 }
 
-export default function ImageShortcut({ data: { headline, image, link, text, blackHeadline } }: ImageShortcutBlockProps) {
+export default function ImageShortcut({ data: { headline, image, link, text } }: ImageShortcutBlockProps) {
 
   return (
     <section className={s.container}>
@@ -21,12 +21,10 @@ export default function ImageShortcut({ data: { headline, image, link, text, bla
           />
         }
         <figcaption>
-          <div className={s.fade}></div>
-          <h2 className={cn(blackHeadline && s.black)}>
+          <h2>
             {headline}
           </h2>
-          <p className={cn(blackHeadline && s.black, "intro")}>{text}</p><br />
-          <ReadMore link={link} message='Läs mer' external={true} regional={false} invert={blackHeadline ? false : true} />
+          <p>{text}</p>
         </figcaption>
       </figure>
     </section >
