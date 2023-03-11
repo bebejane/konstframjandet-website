@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@apollo/client': 3.8.0-alpha.8
+  '@apollo/client': ^3.8.0-alpha.8
   '@datocms/cma-client': 1.2.9
   '@datocms/cma-client-browser': ^1.2.9
   '@datocms/cma-client-node': 1.2.9
