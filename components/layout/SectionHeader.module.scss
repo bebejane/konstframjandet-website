@@ -18,6 +18,7 @@
 
     h1 {
       position: absolute;
+      z-index: 1;
       color: var(--white);
       top: var(--small-space);
       left: var(--grid-unit);

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { usePage } from '/lib/context/page'
 import useStore from '/lib/store'
 import { Image } from 'react-datocms'
-import { DatoMarkdown, DatoMarkdown as Markdown } from 'dato-nextjs-utils/components'
+import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components'
 
 export type SectionHeaderProps = {
   title: string
@@ -14,8 +14,8 @@ export type SectionHeaderProps = {
 
 export default function SectionHeader({ }: SectionHeaderProps) {
 
-  const { title, image, intro, layout, isHome } = usePage()
-  if (isHome) return null
+  const { title, image, intro, layout } = usePage()
+
   return (
     <header className={cn(s.header, s[layout])}>
       <h1>{title}</h1>
@@ -27,15 +27,12 @@ export default function SectionHeader({ }: SectionHeaderProps) {
             pictureClassName={s.image}
             objectFit="cover"
           />
-
         </figure>
       }
       {intro &&
-
         <Markdown className={cn(s.intro, "intro")}>
           {intro}
         </Markdown>
-
       }
     </header>
   )

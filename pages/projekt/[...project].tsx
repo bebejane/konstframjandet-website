@@ -16,7 +16,7 @@ export default function ProjectItem({ project: { id, _createdAt, title, slug, im
     <>
       <Aside>
         <h3>{title}</h3>
-        {project.__typename === 'ProjectRecord' &&
+        {project.__typename === 'ProjectRecord' && project.subpage.length > 0 &&
           <ul className={s.submenu}>
             {project.subpage.map(({ id, slug: subslug, title }) =>
               <li key={id}>

@@ -9,6 +9,7 @@ import { useScrollInfo } from 'dato-nextjs-utils/hooks'
 import { useWindowSize } from 'usehooks-ts'
 import useDevice from '/lib/hooks/useDevice'
 import { usePage } from '/lib/context/page'
+import { sleep } from '/lib/utils'
 
 export type MenuProps = { districts: DistrictRecord[] }
 
@@ -28,9 +29,16 @@ export default function Menu({ districts }: MenuProps) {
 	const ratio = Math.min(1, ((scrolledPosition || 0) / offset))
 	const navStyle = { transform: `translateY(-${scrollY}px)` }
 	const searchStyle = { height: `calc(var(--navbar-height) - ${scrollY}px)` }
-	const logoStyle = {
-		transform: `scale(${Math.max(0.7, 1 - (ratio) * 0.3)})`,
-		marginTop: `-${ratio * 10}px`
+	const logoStyle = { fontSize: `${((1 - ratio) * 20) + 64}px` }
+
+	const animateLogo = async () => {
+		const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+		const logo = document.getElementById('logo') as HTMLAnchorElement
+		for (let i = 0; i < alphabet.length; i++) {
+			logo.innerText = alphabet[i]
+			await sleep(20)
+		}
+		logo.innerText = alphabet[0]
 	}
 
 	useEffect(() => {
@@ -38,7 +46,10 @@ export default function Menu({ districts }: MenuProps) {
 	}, [ref])
 
 	useEffect(() => {
-		const handleRouteChangeStart = (path: string) => setShowDistricts(false)
+		const handleRouteChangeStart = (path: string) => {
+			setShowDistricts(false)
+			animateLogo()
+		}
 		router.events.on('routeChangeStart', handleRouteChangeStart)
 		return () => router.events.off('routeChangeStart', handleRouteChangeStart)
 	}, [])
@@ -50,7 +61,7 @@ export default function Menu({ districts }: MenuProps) {
 	return (
 		<>
 			<div className={cn(s.logo, isHome && s.home)} style={logoStyle}>
-				<Link href={'/'} locale={primarySubdomain}>B</Link>
+				<Link id="logo" href={'/'} locale={primarySubdomain}>A</Link>
 			</div>
 			<nav className={cn(s.menu, isHome && s.home)} style={navStyle} ref={ref}>
 				<div className={s.top} style={{ opacity: (1 - ratio) }}>

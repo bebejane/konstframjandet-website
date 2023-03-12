@@ -16,12 +16,14 @@ export type ContentProps = {
 
 export default function Content({ children, title, image, intro, menu }: ContentProps) {
 
-	const { layout } = usePage()
+	const { layout, isHome } = usePage()
 
 	return (
 		<>
 			<main id="content" className={cn(s.content, s[layout])}>
-				<SectionHeader title={title} />
+				{!isHome && title &&
+					<SectionHeader title={title} />
+				}
 				<article>
 					{children}
 				</article>
