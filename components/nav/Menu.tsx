@@ -11,13 +11,23 @@ import useDevice from '/lib/hooks/useDevice'
 import { usePage } from '/lib/context/page'
 import { sleep } from '/lib/utils'
 
+const animateLogo = async () => {
+	const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+	const logo = document.getElementById('logo') as HTMLAnchorElement
+	for (let i = 0; i < alphabet.length; i++) {
+		logo.innerText = alphabet[i]
+		await sleep(20)
+	}
+	logo.innerText = alphabet[0]
+}
+
 export type MenuProps = { districts: DistrictRecord[] }
 
 export default function Menu({ districts }: MenuProps) {
 
 	const router = useRouter()
 	const { asPath } = router
-	const { district, isHome } = usePage()
+	const { district, isHome, isMainDistrict } = usePage()
 	const { scrolledPosition } = useScrollInfo()
 	const [offset, setOffset] = useState(0)
 	const [showDistricts, setShowDistricts] = useState(false)
@@ -30,16 +40,6 @@ export default function Menu({ districts }: MenuProps) {
 	const navStyle = { transform: `translateY(-${scrollY}px)` }
 	const searchStyle = { height: `calc(var(--navbar-height) - ${scrollY}px)` }
 	const logoStyle = { fontSize: `${((1 - ratio) * 20) + 64}px` }
-
-	const animateLogo = async () => {
-		const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-		const logo = document.getElementById('logo') as HTMLAnchorElement
-		for (let i = 0; i < alphabet.length; i++) {
-			logo.innerText = alphabet[i]
-			await sleep(20)
-		}
-		logo.innerText = alphabet[0]
-	}
 
 	useEffect(() => {
 		setOffset(parseInt(getComputedStyle(ref.current).paddingTop))
@@ -58,6 +58,7 @@ export default function Menu({ districts }: MenuProps) {
 		searchRef.current[showSearch ? 'focus' : 'blur']()
 	}, [showSearch])
 
+
 	return (
 		<>
 			<div className={cn(s.logo, isHome && s.home)} style={logoStyle}>
@@ -65,7 +66,7 @@ export default function Menu({ districts }: MenuProps) {
 			</div>
 			<nav className={cn(s.menu, isHome && s.home)} style={navStyle} ref={ref}>
 				<div className={s.top} style={{ opacity: (1 - ratio) }}>
-					<h2>{district.name}</h2>
+					<h2>Konstfrämjandet{!isMainDistrict && ` ${district.name}`}</h2>
 					<div className="small" >
 						<a href={district.facebook}>Facebook</a>
 						<a href={district.instagram}>Instagram</a>

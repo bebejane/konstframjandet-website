@@ -10,19 +10,19 @@ export type CardProps = {
   project: ProjectRecord
 }
 
-export default function ProjectCard({ project: { title, intro, image, slug } }: CardProps) {
+export default function ProjectCard({ project: { id, title, intro, image, slug } }: CardProps) {
+
   return (
-    <li className={cn(s.card)}>
+    <li className={cn(s.card)} key={id}>
       <Link href={`/projekt/${slug}`}>
         <figure>
           <h1>{title}</h1>
-          <div className={s.text}>          <Image data={image.responsiveImage} className={s.image} objectFit="cover" />
+          <div className={s.text}>
+            <Image data={image.responsiveImage} className={s.image} objectFit="cover" />
             <Markdown className={cn(s.intro)}>
-
               {intro}
             </Markdown>
           </div>
-
         </figure>
       </Link>
     </li >

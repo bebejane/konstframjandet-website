@@ -17,7 +17,7 @@ export default function StartSelectionCard({ item }: CardProps) {
   const subdomain = item.district.subdomain
 
   return (
-    <li className={s.card}>
+    <li className={s.card} key={item.id}>
       <Link href={slug} locale={subdomain}>
         <figure className={s.figure}>
           <Image

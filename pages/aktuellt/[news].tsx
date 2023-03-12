@@ -5,6 +5,8 @@ import { NewsDocument, AllNewsDocument } from "/graphql";
 import { Article, Aside } from '/components';
 import { apiQueryAll } from '/lib/utils';
 import format from 'date-fns/format';
+import { capitalize } from '/lib/utils';
+
 export type Props = {
   news: NewsRecord
 }
@@ -22,7 +24,6 @@ export default function NewsItem({ news: {
   time,
   where,
   subtitle,
-  _createdAt,
 }, news }: Props) {
 
   return (
@@ -30,20 +31,22 @@ export default function NewsItem({ news: {
       <Aside>
         <h3>Var & när</h3>
         <p>
-          {where}<br />
-          {format(new Date(date), 'iiii d MMMM')}<br />
-          {time}<br />
-          {misc}
+          {where && <>{where}<br /></>}
+          {address && <>{address}<br /></>}
+          {date && <>{capitalize(format(new Date(date), 'EEEE d MMMM'))}<br /></>}
+          {time && <>{time}<br /></>}
+          {misc && <>{misc}</>}
         </p>
       </Aside>
       <Article
         id={id}
         record={news}
         title={title}
+        subtitle={subtitle}
         image={image}
         intro={intro}
         content={content}
-        date={_createdAt}
+        date={date}
         backLink={'/aktuellt'}
       />
     </>
@@ -70,7 +73,8 @@ export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, r
       ...props,
       news,
       page: {
-        title: news.title
+        title: news.title,
+        subtitle: news.subtitle
       }
     },
     revalidate

@@ -14,11 +14,11 @@ export type SectionHeaderProps = {
 
 export default function SectionHeader({ }: SectionHeaderProps) {
 
-  const { title, image, intro, layout } = usePage()
+  const { title, subtitle, image, intro, layout } = usePage()
 
   return (
     <header className={cn(s.header, s[layout])}>
-      <h1>{title}</h1>
+      <h1>{title}{subtitle && ` — ${subtitle}`}</h1>
       {image &&
         <figure>
           <Image

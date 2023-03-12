@@ -10,7 +10,7 @@ export type Props = {
   project: ProjectRecord | ProjectSubpageRecord
 }
 
-export default function ProjectItem({ project: { id, _createdAt, title, slug, image, intro, content }, project }: Props) {
+export default function ProjectItem({ project: { id, title, slug, image, intro, content }, project }: Props) {
 
   return (
     <>
@@ -32,7 +32,6 @@ export default function ProjectItem({ project: { id, _createdAt, title, slug, im
         intro={intro}
         content={content}
         record={project}
-        date={_createdAt}
         backLink={'/projekt'}
       />
     </>
@@ -71,6 +70,7 @@ export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, r
       project,
       page: {
         title: project.title,
+        subtitle: project.subtitle,
         image: project.image,
         intro: project.intro,
         layout: 'project'

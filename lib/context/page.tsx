@@ -1,10 +1,13 @@
 import { useContext, createContext } from "react";
+import { primarySubdomain } from "/lib/utils";
 
 const initialState: PageProps = {
   district: undefined,
   title: undefined,
+  subtitle: undefined,
   layout: 'full',
-  isHome: true
+  isHome: true,
+  isMainDistrict: true
 }
 
 export const PageContext = createContext(initialState);
@@ -21,7 +24,8 @@ export const PageProvider = ({ children, value }: PageProviderProps) => {
     <PageContext.Provider value={{
       ...initialState,
       ...value,
-      layout: value.layout || initialState.layout
+      layout: value.layout || initialState.layout,
+      isMainDistrict: value?.district?.subdomain === primarySubdomain
     }}>
       {children}
     </PageContext.Provider>
