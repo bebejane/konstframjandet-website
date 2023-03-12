@@ -94,6 +94,11 @@ fragment DistrictFragment on DistrictRecord {
 						slug
 					}
 				}
+				... on ExternalLinkRecord {
+					__typename
+					url
+					title
+				}
 			}
 		}
 		... on StartProjectRecord {

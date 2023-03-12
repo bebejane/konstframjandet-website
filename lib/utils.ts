@@ -54,7 +54,7 @@ export const pingEndpoint = async (path: string | string[], method: 'GET' | 'POS
 
 export const recordToSlug = (record: any): string => {
 
-  let url;
+  let href;
 
   if (!record) {
     throw new Error('recordToSlug: Record  is empty')
@@ -63,26 +63,29 @@ export const recordToSlug = (record: any): string => {
   if (typeof record === 'string')
     return record
   else {
-    const { __typename, slug, _allReferencingProjects } = record
+    const { __typename, slug, _allReferencingProjects, url } = record
     switch (__typename) {
       case 'AboutRecord':
-        url = `/om/${slug}`
+        href = `/om/${slug}`
         break;
       case 'NewsRecord':
-        url = `/aktuellt/${slug}`
+        href = `/aktuellt/${slug}`
         break;
       case 'ProjectRecord':
-        url = `/projekt/${slug}`
+        href = `/projekt/${slug}`
         break;
       case 'ProjectSubpageRecord':
-        url = `/projekt/${_allReferencingProjects[0].slug}/${slug}`
+        href = `/projekt/${_allReferencingProjects[0].slug}/${slug}`
+        break;
+      case 'ExternalLinkRecord':
+        href = url
         break;
       default:
         throw Error(`${__typename} is unknown record slug!`)
     }
   }
 
-  return url
+  return href
 }
 
 export const isEmail = (string: string): boolean => {
