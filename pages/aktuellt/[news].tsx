@@ -44,6 +44,7 @@ export default function NewsItem({ news: {
         intro={intro}
         content={content}
         date={_createdAt}
+        backLink={'/aktuellt'}
       />
     </>
   );

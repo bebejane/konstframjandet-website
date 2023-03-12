@@ -1,12 +1,12 @@
 import s from './Article.module.scss'
 import cn from 'classnames'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 import { StructuredContent } from "/components";
 import { Image } from 'react-datocms';
 import { useScrollInfo } from 'dato-nextjs-utils/hooks'
 import { DatoSEO, DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
 import useStore from '/lib/store';
-import format from 'date-fns/format';
+import Link from 'next/link';
 
 export type ArticleProps = {
   id: string
@@ -20,9 +20,10 @@ export type ArticleProps = {
   onClick?: (id: string) => void
   record: any
   date?: string
+  backLink?: string
 }
 
-export default function Article({ id, title, content, image, imageSize, intro, date, onClick, record }: ArticleProps) {
+export default function Article({ id, title, content, image, imageSize, intro, date, onClick, record, backLink }: ArticleProps) {
 
   const [setImageId, setImages, imageId] = useStore((state) => [state.setImageId, state.setImages, state.imageId])
   const { scrolledPosition, viewportHeight } = useScrollInfo()
@@ -62,7 +63,11 @@ export default function Article({ id, title, content, image, imageSize, intro, d
               content={content}
               onClick={(imageId) => setImageId(imageId)}
             />
-            <div className={s.back}><a className="mid">Visa alla</a></div>
+            {backLink &&
+              <div className={s.back}>
+                <Link href={backLink} className="mid">Visa alla</Link>
+              </div>
+            }
           </div>
           {image &&
             <div className={s.caption}>

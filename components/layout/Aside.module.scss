@@ -7,6 +7,11 @@
   div {
     border-bottom: var(--line-thin);
     margin-right: var(--gutter);
+    padding-bottom: var(--small-space);
+
+    p {
+      margin-bottom: 0;
+    }
   }
 
   h3 {

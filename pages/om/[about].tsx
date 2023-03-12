@@ -36,6 +36,7 @@ export default function AboutItem({ about: { id, content, intro, slug, _seoMetaT
         intro={intro}
         content={content}
         record={{}}
+        backLink={'/om'}
       />
     </>
   )

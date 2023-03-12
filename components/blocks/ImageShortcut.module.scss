@@ -3,9 +3,11 @@
   color: var(--white);
   border-top: var(--line-thick);
   border-bottom: var(--line-thick);
+  margin-top: var(--small-space);
 
   &:first-of-type {
     border-top: 0;
+    margin-top: 0;
   }
 
   a {

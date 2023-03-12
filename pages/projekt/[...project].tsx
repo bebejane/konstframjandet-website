@@ -33,6 +33,7 @@ export default function ProjectItem({ project: { id, _createdAt, title, slug, im
         content={content}
         record={project}
         date={_createdAt}
+        backLink={'/projekt'}
       />
     </>
   );
