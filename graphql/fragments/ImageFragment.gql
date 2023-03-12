@@ -4,14 +4,16 @@ fragment ImageFragment on FileField {
 	url
 	title
 	alt
+	height
+	width
 	responsiveImage(imgixParams: { auto: format }) {
 		src
 		width
 		height
 		alt
 		title
-		#base64
-		bgColor
+		base64
+		#bgColor
 		sizes
 	}
 }

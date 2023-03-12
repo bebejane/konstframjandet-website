@@ -70,8 +70,31 @@ fragment DistrictFragment on DistrictRecord {
 				...ImageFragment
 			}
 			headline
-			link
 			text
+			externalLink
+			link {
+				__typename
+				... on AboutRecord {
+					__typename
+					slug
+				}
+				... on NewsRecord {
+					__typename
+					slug
+				}
+				... on ProjectRecord {
+					__typename
+					slug
+				}
+				... on ProjectSubpageRecord {
+					__typename
+					slug
+					_allReferencingProjects {
+						__typename
+						slug
+					}
+				}
+			}
 		}
 		... on StartProjectRecord {
 			__typename

@@ -4,6 +4,8 @@ fragment ImageThumbnailFragment on FileField {
 	url
 	title
 	alt
+	height
+	width
 	responsiveImage(
 		imgixParams: { q: 50, ar: "3:2", fit: crop, auto: format }
 		sizes: "(max-width: 46.24em) 50vw, 25vw"

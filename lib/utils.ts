@@ -63,23 +63,19 @@ export const recordToSlug = (record: any): string => {
   if (typeof record === 'string')
     return record
   else {
-    const { __typename, slug } = record
-
+    const { __typename, slug, _allReferencingProjects } = record
     switch (__typename) {
-      case 'CommissionRecord':
-        url = `/anlita-oss/uppdrag/${slug}`
-        break;
-      case 'MemberRecord':
-        url = `/anlita-oss/hitta-konstnar/${slug}`
-        break;
-      case 'NewsRecord':
-        url = `/nyheter/${slug}`
-        break;
-      case 'MemberNewsRecord':
-        url = `/konstnar/aktuellt/${slug}`
-        break;
       case 'AboutRecord':
         url = `/om/${slug}`
+        break;
+      case 'NewsRecord':
+        url = `/aktuellt/${slug}`
+        break;
+      case 'ProjectRecord':
+        url = `/projekt/${slug}`
+        break;
+      case 'ProjectSubpageRecord':
+        url = `/projekt/${_allReferencingProjects[0].slug}/${slug}`
         break;
       default:
         throw Error(`${__typename} is unknown record slug!`)

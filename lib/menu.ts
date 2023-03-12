@@ -14,8 +14,8 @@ export type MenuItem = {
 
 const base: Menu = [
   { type: 'news', label: 'Aktuellt', slug: '/aktuellt', items: [] },
-  { type: 'project', label: 'Project', slug: '/project', items: [] },
-  { type: 'district', label: 'District', items: [] },
+  { type: 'project', label: 'Projekt', slug: '/projekt', items: [] },
+  { type: 'district', label: 'Distrikt', items: [] },
   { type: 'about', label: 'Om', slug: '/om', items: [] },
   { type: 'contact', label: 'Kontakt', slug: '/kontakt', items: [] },
 ]
