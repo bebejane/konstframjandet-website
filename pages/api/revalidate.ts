@@ -7,7 +7,7 @@ export default withRevalidate(async (record, revalidate) => {
 
   const { api_key: apiKey, } = record.model;
   const { id, slug, district: districtId } = record
-  const district = (await allDistricts()).find(({ id }) => id === districtId)
+  const district = districtId ? (await allDistricts()).find(({ id }) => id === districtId) : undefined
   const paths = []
 
   switch (apiKey) {
@@ -19,9 +19,7 @@ export default withRevalidate(async (record, revalidate) => {
       break;
     case 'project_subpage':
       const { project } = await apiQuery(ProjectBySubpageDocument, { variables: { subpageId: id } })
-      console.log(project)
-      if (project)
-        paths.push(`/projekt/${project.slug}/${slug}`)
+      project && paths.push(`/projekt/${project.slug}/${slug}`)
       break;
     case 'news':
       paths.push(`/aktuellt/${slug}`)
@@ -39,6 +37,5 @@ export default withRevalidate(async (record, revalidate) => {
   if (district)
     paths.forEach((path, idx) => paths[idx] = `/${district.subdomain}${path}`)
 
-  console.log(paths)
   revalidate(paths)
 })
