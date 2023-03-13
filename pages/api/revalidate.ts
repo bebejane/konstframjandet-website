@@ -1,12 +1,13 @@
 import { withRevalidate } from 'dato-nextjs-utils/hoc'
 import { apiQuery } from 'dato-nextjs-utils/api';
+import { allDistricts } from '/lib/utils';
 import { ProjectBySubpageDocument } from '/graphql';
 
 export default withRevalidate(async (record, revalidate) => {
 
   const { api_key: apiKey, } = record.model;
-  const { id, slug } = record
-
+  const { id, slug, district: districtId } = record
+  const district = (await allDistricts()).find(({ id }) => id === districtId)
   const paths = []
 
   switch (apiKey) {
@@ -34,6 +35,10 @@ export default withRevalidate(async (record, revalidate) => {
     default:
       break;
   }
+
+  if (district)
+    paths.forEach((path, idx) => paths[idx] = `/${district.subomain}${path}`)
+
   console.log(paths)
   revalidate(paths)
 })
