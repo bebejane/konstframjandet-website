@@ -1,8 +1,7 @@
 import s from './Footer.module.scss'
 import cn from 'classnames'
-import type { Menu, MenuItem } from '/lib/menu'
+import type { Menu } from '/lib/menu'
 import Link from 'next/link'
-import { usePage } from '/lib/context/page'
 import { primarySubdomain } from '/lib/utils'
 
 export type FooterProps = {

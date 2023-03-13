@@ -1,13 +1,12 @@
 import s from './StartSelectionContainer.module.scss'
 import cn from 'classnames'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 export type Props = {
-  children?: React.ReactNode | React.ReactNode[],
-  className?: string
+  children?: React.ReactNode | React.ReactNode[]
 }
 
-export default function StartSelectionContainer({ children, className }: Props) {
+export default function StartSelectionContainer({ children }: Props) {
 
   return (
     <section className={s.container}>

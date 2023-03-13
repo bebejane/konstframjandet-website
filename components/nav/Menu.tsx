@@ -2,14 +2,11 @@ import s from './Menu.module.scss'
 import cn from 'classnames'
 import { useRouter } from 'next/router'
 import { useState, useRef, useEffect } from 'react'
-import Link from 'next/link'
 import { primarySubdomain } from '/lib/utils'
-import useStore from '/lib/store'
 import { useScrollInfo } from 'dato-nextjs-utils/hooks'
-import { useWindowSize } from 'usehooks-ts'
-import useDevice from '/lib/hooks/useDevice'
 import { usePage } from '/lib/context/page'
 import { sleep } from '/lib/utils'
+import Link from 'next/link'
 
 const animateLogo = async () => {
 	const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -36,7 +33,7 @@ export default function Menu({ districts }: MenuProps) {
 	const ref = useRef<HTMLElement | null>(null)
 
 	const scrollY = Math.min(offset, scrolledPosition)
-	const ratio = Math.min(1, ((scrolledPosition || 0) / offset))
+	const ratio = Math.min(1, ((scrolledPosition || 0) / offset)) || 0
 	const navStyle = { transform: `translateY(-${scrollY}px)` }
 	const searchStyle = { height: `calc(var(--navbar-height) - ${scrollY}px)` }
 	const logoStyle = { fontSize: `${((1 - ratio) * 20) + 64}px` }
@@ -57,7 +54,6 @@ export default function Menu({ districts }: MenuProps) {
 	useEffect(() => {
 		searchRef.current[showSearch ? 'focus' : 'blur']()
 	}, [showSearch])
-
 
 	return (
 		<>
