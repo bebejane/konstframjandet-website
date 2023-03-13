@@ -1,6 +1,6 @@
-.meta {
+.aside {
   position: sticky;
-  padding-top: var(--space);
+  margin-top: var(--space);
   top: var(--navbar-height);
   width: var(--grid-unit);
 
@@ -22,5 +22,7 @@
 
   ul {
     list-style: none;
+
+    li {}
   }
 }

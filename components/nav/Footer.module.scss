@@ -13,21 +13,22 @@
     margin-bottom: var(--outer-margin);
   }
 
+  a {
+    color: var(--white);
+  }
+
   nav {
     display: flex;
     flex-direction: row;
 
     .about {
       flex: 0 0 calc(var(--grid-unit));
+      padding-right: 1rem;
     }
 
     ul {
       list-style: none;
       display: flex;
-
-      a {
-        color: var(--white);
-      }
     }
 
     >ul {
@@ -37,13 +38,20 @@
 
       >li {
         flex: 0 0 calc(100% / 5);
+        padding-right: 1rem;
+        overflow: hidden;
 
         ul {
           flex-direction: column;
           margin-top: 1rem;
           color: var(--white);
 
-          li {}
+          li {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: pre;
+
+          }
         }
       }
     }

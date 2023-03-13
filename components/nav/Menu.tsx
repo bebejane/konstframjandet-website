@@ -75,22 +75,22 @@ export default function Menu({ districts }: MenuProps) {
 				</div>
 				<div className={s.wrapper} >
 					<ul>
-						<li className={cn(isHome && s.active)}>
+						<li className={cn(isHome && !showDistricts && s.active)}>
 							<Link href="/">Hem</Link>
 						</li>
-						<li className={cn(asPath.startsWith('/aktuellt') && s.active)}>
+						<li className={cn(asPath.startsWith('/aktuellt') && !showDistricts && s.active)}>
 							<Link href="/aktuellt">Aktuellt</Link>
 						</li>
-						<li className={cn(asPath.startsWith('/projekt') && s.active)}>
+						<li className={cn(asPath.startsWith('/projekt') && !showDistricts && s.active)}>
 							<Link href="/projekt">Projekt</Link>
 						</li>
 						<li className={cn(showDistricts && s.active)} onClick={() => setShowDistricts(!showDistricts)}>
 							Distrikt
 						</li>
-						<li className={cn(asPath.startsWith('/om') && s.active)}>
+						<li className={cn(asPath.startsWith('/om') && !showDistricts && s.active)}>
 							<Link href="/om">Om oss</Link>
 						</li>
-						<li className={cn(asPath.startsWith('/kontakt') && s.active)}>
+						<li className={cn(asPath.startsWith('/kontakt') && !showDistricts && s.active)}>
 							<Link href="/kontakt">Kontakt</Link>
 						</li>
 					</ul>

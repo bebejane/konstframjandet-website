@@ -3,6 +3,7 @@ import cn from 'classnames'
 import type { Menu, MenuItem } from '/lib/menu'
 import Link from 'next/link'
 import { usePage } from '/lib/context/page'
+import { primarySubdomain } from '/lib/utils'
 
 export type FooterProps = {
 	footer: any
@@ -16,7 +17,11 @@ export default function Footer({ footer, menu }: FooterProps) {
 			<div className={s.line}></div>
 			<nav>
 				<div className={s.about}>
-					<p>Konstfrämjandet</p>
+					<p>
+						<Link href={'/'} scroll={true} locale={primarySubdomain}>
+							Konstfrämjandet
+						</Link>
+					</p>
 					Konstfrämjandet är en organisation bildad 1947 som arbetar med konstbildning
 					och med att föra ut konst till människor i deras vardag. Vi verkar i hela Sverige.
 				</div>
@@ -27,7 +32,7 @@ export default function Footer({ footer, menu }: FooterProps) {
 							<ul>
 								{items?.map(({ label, slug, subdomain }, idx) =>
 									<li key={`${idx}-sub`}>
-										<Link href={slug} locale={subdomain}>{label}</Link>
+										<Link href={slug} scroll={true} locale={subdomain}>{label}</Link>
 									</li>
 								)}
 							</ul>

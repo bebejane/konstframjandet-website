@@ -12,7 +12,6 @@ import { Modal } from "/components";
 
 SwiperCore.use([EffectFade]);
 
-
 export type FullscreenGalleryProps = {
   images: FileField[],
   onClose: (event?: React.MouseEvent) => void,

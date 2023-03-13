@@ -18,7 +18,6 @@ export type LayoutProps = {
 export default function Layout({ children, menu: menuFromProps, footer, title, districts }: LayoutProps) {
 
 	const router = useRouter()
-	const { district } = usePage()
 	const [menu, setMenu] = useState(menuFromProps)
 	const [images, imageId, setImageId, searchQuery] = useStore((state) => [state.images, state.imageId, state.setImageId, state.searchQuery])
 
@@ -27,7 +26,7 @@ export default function Layout({ children, menu: menuFromProps, footer, title, d
 			<Content menu={menu} title={title}>
 				{children}
 			</Content>
-			<Menu districts={districts} />
+			<Menu districts={districts} key={router.asPath} />
 			<Footer footer={footer} menu={menu} />
 			<FullscreenGallery
 				index={images?.findIndex((image) => image?.id === imageId)}

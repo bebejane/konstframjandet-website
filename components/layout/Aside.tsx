@@ -6,7 +6,7 @@ export type Props = {
 
 export default function Aside({ children }: Props) {
   return (
-    <aside className={s.meta}>
+    <aside className={s.aside}>
       <div className="mid">
         {children}
       </div>

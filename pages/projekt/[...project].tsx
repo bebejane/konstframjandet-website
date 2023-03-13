@@ -3,7 +3,7 @@ import withGlobalProps from "/lib/withGlobalProps";
 import { apiQueryAll, mainDistrict } from '/lib/utils';
 import { apiQuery } from "dato-nextjs-utils/api";
 import { ProjectDocument, ProjectSubpageDocument, AllProjectsDocument } from "/graphql";
-import { Aside, Article } from '/components';
+import { Aside, Article, Loader } from '/components';
 import Link from 'next/link';
 
 export type Props = {
@@ -25,6 +25,7 @@ export default function ProjectItem({ project: { id, title, slug, image, intro, 
             )}
           </ul>
         }
+
       </Aside>
       <Article
         id={id}
