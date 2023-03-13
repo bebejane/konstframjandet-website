@@ -15,7 +15,13 @@ export default withRevalidate(async (record, revalidate) => {
       paths.push(`/projekt/${slug}`)
       break;
     case 'news':
-      paths.push(`/nyheter/${slug}`)
+      paths.push(`/aktuellt/${slug}`)
+      break;
+    case 'district':
+      paths.push(`/`)
+      paths.push(`/om`)
+      paths.push(`/projekt`)
+      paths.push(`/aktuellt`)
       break;
     default:
       break;
