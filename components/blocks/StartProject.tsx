@@ -14,7 +14,7 @@ export default function StartProject({ data: { projects } }: Props) {
   return (
     <section className={s.container}>
       <header className="mid">
-        <h2 className="mid">Aktuella preojekt</h2>
+        <h2 className="mid">Aktuella projekt</h2>
         <Link href={'/projekt'} className="mid">Visa alla</Link>
       </header>
       <ProjectContainer>
