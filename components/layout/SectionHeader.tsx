@@ -5,6 +5,7 @@ import { usePage } from '/lib/context/page'
 import useStore from '/lib/store'
 import { Image } from 'react-datocms'
 import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components'
+import BalanceText from 'react-balance-text'
 
 export type SectionHeaderProps = {
   title: string
@@ -18,7 +19,7 @@ export default function SectionHeader({ }: SectionHeaderProps) {
 
   return (
     <header className={cn(s.header, s[layout])}>
-      <h1>{title}{subtitle && ` — ${subtitle}`}</h1>
+      <h1><BalanceText>{title}{subtitle && ` — ${subtitle}`}</BalanceText></h1>
       {image &&
         <figure>
           <Image

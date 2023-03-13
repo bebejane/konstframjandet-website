@@ -50,6 +50,7 @@ specifiers:
   nodemailer: ^6.9.1
   nodemailer-postmark-transport: ^5.2.1
   react: ^18.2.0
+  react-balance-text: ^2.0.1
   react-datocms: ^4.0.9
   react-dom: ^18.2.0
   react-intersection-observer: ^9.4.3
@@ -100,6 +101,7 @@ dependencies:
   nodemailer: 6.9.1
   nodemailer-postmark-transport: 5.2.1_nodemailer@6.9.1
   react: 18.2.0
+  react-balance-text: 2.0.1_react@18.2.0
   react-datocms: 4.0.9_react@18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-intersection-observer: 9.4.3_react@18.2.0
@@ -4211,6 +4213,10 @@ packages:
 
   /bail/2.0.2:
     resolution: {integrity: sha512-0xO6mYd7JB2YesxDKplafRpsiOzPt9V02ddPCLbY1xYGPOX24NTyN50qnUxgCPcSoYMhKpAuBTjQoRZCAkUDRw==}
+    dev: false
+
+  /balance-text/3.3.1:
+    resolution: {integrity: sha512-tpnHvo1w0rJ5rbu+jZKf7NLKKg6XZ6eAwREP/9jEDJ+ZTBi6jQFqn/UGARL3/oqD8SgQbyTwBXBjhKDdTgoPRw==}
     dev: false
 
   /balanced-match/1.0.2:
@@ -8923,6 +8929,16 @@ packages:
     resolution: {integrity: sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA==}
     dependencies:
       performance-now: 2.1.0
+    dev: false
+
+  /react-balance-text/2.0.1_react@18.2.0:
+    resolution: {integrity: sha512-AyhX0GchhK6xcPEzvsLPAgbM8dcUA6xkrWEYJtyg3voDRYW/QLPlCFgHU3r3sdTaZu0UztsOdJa8BemScd8llQ==}
+    engines: {npm: ^3.0.0}
+    peerDependencies:
+      react: ^0.14.7 || ^15.0.0 || ^16.0.0-0
+    dependencies:
+      balance-text: 3.3.1
+      react: 18.2.0
     dev: false
 
   /react-datocms/4.0.9_react@18.2.0:

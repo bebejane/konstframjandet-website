@@ -54,6 +54,7 @@
 		"nodemailer": "^6.9.1",
 		"nodemailer-postmark-transport": "^5.2.1",
 		"react": "^18.2.0",
+		"react-balance-text": "^2.0.1",
 		"react-datocms": "^4.0.9",
 		"react-dom": "^18.2.0",
 		"react-intersection-observer": "^9.4.3",
