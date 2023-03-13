@@ -18,7 +18,7 @@ export default withRevalidate(async (record, revalidate) => {
       paths.push(`/projekt/${slug}`)
       break;
     case 'project_subpage':
-      const { project } = await apiQuery(ProjectBySubpageDocument, { variables: { projectId: id } })
+      const { project } = await apiQuery(ProjectBySubpageDocument, { variables: { subpageId: id } })
       console.log(project)
       if (project)
         paths.push(`/projekt/${project.slug}/${slug}`)
@@ -37,7 +37,7 @@ export default withRevalidate(async (record, revalidate) => {
   }
 
   if (district)
-    paths.forEach((path, idx) => paths[idx] = `/${district.subomain}${path}`)
+    paths.forEach((path, idx) => paths[idx] = `/${district.subdomain}${path}`)
 
   console.log(paths)
   revalidate(paths)
