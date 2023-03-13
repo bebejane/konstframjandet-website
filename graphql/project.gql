@@ -18,6 +18,12 @@ query Project($slug: String!, $districtId: ItemId) {
 	}
 }
 
+query ProjectBySubpage($subpageId: ItemId) {
+	project(filter: { subpage: { anyIn: [$subpageId] } }) {
+		...ProjectFragment
+	}
+}
+
 query ProjectSubpage($slug: String!, $districtId: ItemId) {
 	project: projectSubpage(filter: { slug: { eq: $slug }, district: { eq: $districtId } }) {
 		...ProjectSubpageFragment

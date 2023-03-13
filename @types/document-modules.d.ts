@@ -170,6 +170,7 @@ declare module '*/project.gql' {
   const defaultDocument: DocumentNode;
   export const AllProjects: DocumentNode;
 export const Project: DocumentNode;
+export const ProjectBySubpage: DocumentNode;
 export const ProjectSubpage: DocumentNode;
 
   export default defaultDocument;

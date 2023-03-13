@@ -1,9 +1,11 @@
 import { withRevalidate } from 'dato-nextjs-utils/hoc'
+import { apiQuery } from 'dato-nextjs-utils/api';
+import { ProjectBySubpageDocument } from '/graphql';
 
 export default withRevalidate(async (record, revalidate) => {
 
   const { api_key: apiKey, } = record.model;
-  const { slug } = record
+  const { id, slug } = record
 
   const paths = []
 
@@ -13,6 +15,12 @@ export default withRevalidate(async (record, revalidate) => {
       break;
     case 'project':
       paths.push(`/projekt/${slug}`)
+      break;
+    case 'project_subpage':
+      const { project } = await apiQuery(ProjectBySubpageDocument, { variables: { projectId: id } })
+      console.log(project)
+      if (project)
+        paths.push(`/projekt/${project.slug}/${slug}`)
       break;
     case 'news':
       paths.push(`/aktuellt/${slug}`)
@@ -26,5 +34,6 @@ export default withRevalidate(async (record, revalidate) => {
     default:
       break;
   }
+  console.log(paths)
   revalidate(paths)
 })
