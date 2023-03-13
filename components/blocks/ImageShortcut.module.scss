@@ -53,17 +53,8 @@
 
   .bubble {
     position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     bottom: 0;
     right: 0;
     margin: var(--space);
-    background-color: var(--white);
-    height: 6rem;
-    width: 6rem;
-    border-radius: 50%;
-    color: var(--black) !important;
-
   }
 }

@@ -25,7 +25,6 @@ export default function ProjectItem({ project: { id, title, slug, image, intro, 
             )}
           </ul>
         }
-
       </Aside>
       <Article
         id={id}

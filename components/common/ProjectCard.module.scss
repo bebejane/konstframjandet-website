@@ -2,6 +2,13 @@
   position: relative;
   flex: 0 0 50%;
   padding-top: var(--space);
+  padding-bottom: var(--space);
+  border-bottom: var(--line-thick);
+
+  &:nth-last-child(1),
+  &:nth-last-child(2) {
+    border-bottom: 0;
+  }
 
   &:hover .image {
     opacity: 0.4;
@@ -36,6 +43,7 @@
         .intro {
           color: var(--white);
           bottom: 0;
+
           p {
             font-weight: bold;
             margin: 0;

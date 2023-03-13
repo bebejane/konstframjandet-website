@@ -16,19 +16,15 @@ export default function Bubble({ href, className, children }: Props) {
 
   useEffect(() => {
     const corner = ['TopLeft', 'TopRight', 'BottomRight', 'BottomLeft'][randomInt(0, 3)]
-    console.log(`borderRadius${corner}`)
-    setStyles({
-      [`border${corner}Radius`]: `${50 + randomInt(1, 5)}px`
-    })
+    setStyles({ [`border${corner}Radius`]: `${50 + randomInt(5, 10)}%` })
   }, [])
 
   const button = (
-    <button className={cn(s.bubble, 'small')} style={styles}>
+    <button className={cn(s.bubble, 'mid', className)} style={styles}>
       {children}
     </button>
   )
   return (
-    href ? <Link href={href}>{button}</Link> : button
-
+    href ? <Link href={href}>{button}</Link> : <>{button}</>
   )
 }

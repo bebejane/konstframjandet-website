@@ -1,7 +1,7 @@
 import s from "./index.module.scss";
 import withGlobalProps from "/lib/withGlobalProps";
 import { AllNewsDocument } from "/graphql";
-import { NewsCard, NewsContainer } from "/components";
+import { NewsCard, NewsContainer, Bubble } from "/components";
 
 export type Props = {
   news: NewsRecord[]
@@ -17,6 +17,7 @@ export default function News({ news }: Props) {
             <NewsCard key={item.id} news={item} />
           )}
         </NewsContainer>
+        <Bubble className={s.more}>Fler</Bubble>
       </div>
     </>
   );

@@ -3,6 +3,7 @@ import cn from 'classnames'
 import React from 'react'
 import { Image } from 'react-datocms'
 import Link from 'next/link'
+import { Bubble } from '/components'
 import { recordToSlug } from '/lib/utils'
 
 export type ImageShortcutBlockProps = {
@@ -31,7 +32,8 @@ export default function ImageShortcut({ data: { headline, image, link, externalL
             <p>{text}</p>
           </figcaption>
         </figure>
-        <div className={cn(s.bubble, 'mid')}>Visa</div>
+        <Bubble className={cn(s.bubble, 'mid')}>Visa</Bubble>
+
       </Link>
     </section >
   )

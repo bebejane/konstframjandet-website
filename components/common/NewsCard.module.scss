@@ -5,6 +5,10 @@
   padding-bottom: var(--space);
   border-bottom: var(--line-thin);
 
+  &:last-child {
+    border-bottom: 0;
+  }
+
   &.home {
 
     a>h2,
