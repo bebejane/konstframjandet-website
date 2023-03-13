@@ -3,7 +3,6 @@ import cn from 'classnames'
 import React, { useEffect } from 'react'
 import { StructuredContent } from "/components";
 import { Image } from 'react-datocms';
-import { useScrollInfo } from 'dato-nextjs-utils/hooks'
 import { DatoSEO, DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
 import useStore from '/lib/store';
 import Link from 'next/link';
@@ -26,15 +25,14 @@ export type ArticleProps = {
 export default function Article({ id, title, content, image, imageSize, intro, date, onClick, record, backLink }: ArticleProps) {
 
   const [setImageId, setImages, imageId] = useStore((state) => [state.setImageId, state.setImages, state.imageId])
-  const { scrolledPosition, viewportHeight } = useScrollInfo()
 
   useEffect(() => {
     const images = [image]
     content?.blocks.forEach(el => {
-      el.__typename === 'ImageRecord' && images.push(el.image)
-      el.__typename === 'ImageGalleryRecord' && images.push.apply(images, el.images)
+      el.__typename === 'ImageRecord' && images.push.apply(images, el.image)
     })
     setImages(images.filter(el => el))
+    console.log(images.filter(el => el))
   }, [])
 
   return (

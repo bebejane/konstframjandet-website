@@ -8,7 +8,7 @@ import { EffectFade } from 'swiper'
 import SwiperCore from 'swiper'
 import React, { useState, useRef, useEffect } from 'react';
 import type { Swiper as SwiperType } from 'swiper'
-import { Modal } from "/components";
+import { Loader, Modal } from "/components";
 
 SwiperCore.use([EffectFade]);
 
@@ -59,6 +59,7 @@ export default function FullscreenGallery({ images, onClose, index = 0, show }: 
   return (
     <Modal>
       <div className={cn(s.gallery, images.length <= 1 && s.noArrows, isSingleSlide && s.noArrows)}>
+        <div className={s.back} onClick={() => swiperRef.current.slidePrev()}><button>‹</button></div>
         <div className={s.images} onClick={() => !isSingleSlide && swiperRef?.current?.slideNext()}>
           <Swiper
             id={`main-gallery`}
@@ -81,13 +82,14 @@ export default function FullscreenGallery({ images, onClose, index = 0, show }: 
                   onLoad={() => setLoaded({ ...loaded, [image.id]: true })}
                   fadeInDuration={0}
                 />
-                {/*!loaded[image.id] && initLoaded &&
+                {!loaded[image.id] && initLoaded &&
                   <div className={s.loading}><Loader /></div>
-                */}
+                }
               </SwiperSlide>
             )}
           </Swiper>
         </div>
+        <div className={s.forward} onClick={() => swiperRef.current.slideNext()}><button>›</button></div>
         <div className={s.caption}>
           {title &&
             <Markdown className={cn(s.text, "small")} allowedElements={['em', 'p']}>

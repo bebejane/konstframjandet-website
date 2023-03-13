@@ -6,6 +6,7 @@ import format from 'date-fns/format'
 import { Image } from 'react-datocms/image'
 import Link from 'next/link'
 import { usePage } from '/lib/context/page'
+import { recordToSlug } from '/lib/utils'
 
 export type CardProps = {
   item: (NewsRecord | ProjectRecord)
@@ -13,7 +14,7 @@ export type CardProps = {
 
 export default function StartSelectionCard({ item }: CardProps) {
 
-  const slug = item.__typename === 'NewsRecord' ? `/aktuellt/${item.slug}` : `/projekt/${item.slug}`
+  const slug = recordToSlug(item)
   const subdomain = item.district.subdomain
 
   return (

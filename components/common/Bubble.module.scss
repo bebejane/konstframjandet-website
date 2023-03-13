@@ -1,0 +1,17 @@
+.bubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white);
+  color: var(--black) !important;
+  padding: 1rem;
+  aspect-ratio: 4/4;
+  border-radius: 50%;
+  border: 0;
+  cursor: pointer;
+
+  &:hover {
+    background-color: unset;
+    color: unset;
+  }
+}

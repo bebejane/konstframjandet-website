@@ -1,27 +1,22 @@
 .gallery {
   position: fixed;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-direction: row;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(2rem);
-  //background-color: var(--black);
+  background-color: #000;
   z-index: var(--z-fullscreen-gallery);
+  padding: var(--space);
 
   .images {
-    //--height: calc(100vh - calc(2 * var(--outer-margin)) - 1em);
-    --height: 100vh;
-    //--width: calc(100vw - calc(2 * var(--outer-margin)) - calc(2 * var(--gutter)));
+    --height: calc(100vh - 10vh - var(--space));
     --width: 100vw;
-    max-height: var(--height);
-    min-height: var(--height);
-    //margin-bottom: 2rem;
-    max-width: var(--width);
-    min-width: var(--width);
+    height: var(--height);
+    width: var(--width);
 
     @include mq($until: desktop) {
       max-width: 100vw;
@@ -66,12 +61,8 @@
   .caption .text,
   .close {
     padding: 1em;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-    border-radius: 2em;
-    background-color: var(--white);
     z-index: var(--z-fullscreen-gallery-close);
-    color: var(--black) !important;
+    color: var(--white);
   }
 
   .caption {
@@ -82,12 +73,11 @@
     justify-content: center;
     bottom: 0;
     font-weight: normal;
-    color: var(--black) !important;
+    color: var(--white);
     margin-right: var(--outer-margin);
     margin-left: var(--outer-margin);
 
     .text {
-      background-color: var(--white);
 
       p {
         padding: 0;
@@ -103,13 +93,36 @@
     display: flex;
     justify-content: center;
     cursor: pointer;
-    margin: var(--outer-margin);
+    margin: var(--small-space);
 
-    //writing-mode: vertical-lr;
-    &:hover {
-      background: var(--black);
-      color: var(--white) !important;
+    &:hover {}
+  }
+
+  .back,
+  .forward {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    z-index: 1;
+
+    button {
+      background-color: var(--white);
+      border-radius: 50%;
+      height: 4rem;
+      width: 4rem;
+      color: var(--black);
     }
+  }
+
+  .back {
+    left: var(--space);
+  }
+
+  .forward {
+    right: var(--space);
   }
 
   @include mq($until: tablet) {}
