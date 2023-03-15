@@ -35,7 +35,7 @@ function App({ Component, pageProps, router }) {
       <DefaultDatoSEO siteTitle={siteTitle} />
       <PageProvider value={{ district, ...page, isHome }} key={router.locale}>
         <Layout
-          title={page.title}
+          title={page?.title}
           menu={menu}
           footer={footer}
           districts={districts}

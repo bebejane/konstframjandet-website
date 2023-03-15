@@ -16,9 +16,9 @@ export default function Image({ id, data: { image: images }, onClick, editable }
 	if (!images || !images.length)
 		return null
 
-	const isSingle = images.length === 1
-	const isDouble = images.length === 2
-	const isGallery = images.length > 2;
+	const isSingle = images.length === 1 && images[0]
+	const isDouble = images.length === 2 && images[0] && images[1]
+	const isGallery = images.length > 2 && images[0]
 
 	return (
 		isSingle ?
