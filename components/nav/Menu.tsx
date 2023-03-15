@@ -39,20 +39,21 @@ export default function Menu({ districts }: MenuProps) {
 	const logoStyle = { fontSize: `${((1 - ratio) * 20) + 64}px` }
 
 	useEffect(() => {
+		if (!ref.current) return
 		setOffset(parseInt(getComputedStyle(ref.current).paddingTop))
 	}, [ref])
 
 	useEffect(() => {
 		const handleRouteChangeStart = (path: string) => {
-			setShowDistricts(false)
-			animateLogo()
+			//setShowDistricts(false)
+			//animateLogo()
 		}
 		router.events.on('routeChangeStart', handleRouteChangeStart)
 		return () => router.events.off('routeChangeStart', handleRouteChangeStart)
 	}, [])
 
 	useEffect(() => {
-		searchRef.current[showSearch ? 'focus' : 'blur']()
+		searchRef.current[showSearch ? 'focus' : 'blur']?.()
 	}, [showSearch])
 
 	return (
