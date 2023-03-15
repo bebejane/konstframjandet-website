@@ -45,15 +45,15 @@ export default function Menu({ districts }: MenuProps) {
 
 	useEffect(() => {
 		const handleRouteChangeStart = (path: string) => {
-			//setShowDistricts(false)
-			//animateLogo()
+			setShowDistricts(false)
+			animateLogo()
 		}
 		router.events.on('routeChangeStart', handleRouteChangeStart)
 		return () => router.events.off('routeChangeStart', handleRouteChangeStart)
 	}, [])
 
 	useEffect(() => {
-		searchRef.current[showSearch ? 'focus' : 'blur']?.()
+		//searchRef.current[showSearch ? 'focus' : 'blur']?.()
 	}, [showSearch])
 
 	return (
@@ -98,7 +98,7 @@ export default function Menu({ districts }: MenuProps) {
 			<nav className={cn(s.districts, showDistricts && s.show)} style={navStyle}>
 				<h3>Besök våra distrikt</h3>
 				<ul>
-					{districts.filter(({ subdomain }) => primarySubdomain !== subdomain).map(({ id, subdomain, name }) =>
+					{districts?.filter(({ subdomain }) => primarySubdomain !== subdomain).map(({ id, subdomain, name }) =>
 						<li key={id}>
 							<Link href={`/`} locale={subdomain}>{name}</Link>
 						</li>
