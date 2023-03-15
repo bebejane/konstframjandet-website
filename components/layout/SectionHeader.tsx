@@ -7,19 +7,13 @@ import { Image } from 'react-datocms'
 import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components'
 import BalanceText from 'react-balance-text'
 
-export type SectionHeaderProps = {
-  title: string
-  image?: FileField
-  intro?: string
-}
-
-export default function SectionHeader({ }: SectionHeaderProps) {
+export default function SectionHeader() {
 
   const { title, subtitle, image, intro, layout } = usePage()
 
   return (
     <header className={cn(s.header, s[layout])}>
-      <h1><BalanceText>{title}{subtitle && ` — ${subtitle}`}</BalanceText></h1>
+      <h1><BalanceText><span>{title}{subtitle && ` — ${subtitle}`}</span></BalanceText></h1>
       {image &&
         <figure>
           <Image

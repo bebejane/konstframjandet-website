@@ -44,6 +44,7 @@ export default function Menu({ districts }: MenuProps) {
 	}, [ref])
 
 	useEffect(() => {
+
 		const handleRouteChangeStart = (path: string) => {
 			setShowDistricts(false)
 			animateLogo()
@@ -53,8 +54,9 @@ export default function Menu({ districts }: MenuProps) {
 	}, [])
 
 	useEffect(() => {
-		//searchRef.current[showSearch ? 'focus' : 'blur']?.()
+		searchRef.current?.[showSearch ? 'focus' : 'blur']()
 	}, [showSearch])
+
 
 	return (
 		<>
