@@ -200,12 +200,12 @@ export async function getStaticDistrictPaths(doc: TypedDocumentNode, segment: st
   };
 }
 
-export async function allDistricts() {
+export async function allDistricts(excludeMain: boolean = false): Promise<DistrictRecord[]> {
   const { districts } = await apiQuery(AllDistricsDocument)
-  return districts
+  return districts.filter(({ subdomain }) => excludeMain ? subdomain !== primarySubdomain : true) as DistrictRecord[]
 }
 
-export async function mainDistrict() {
+export async function mainDistrict(): Promise<DistrictRecord> {
   const { district } = await apiQuery(DistrictBySubdomainDocument, { variables: { subdomain: primarySubdomain } })
-  return district
+  return district as DistrictRecord
 }
