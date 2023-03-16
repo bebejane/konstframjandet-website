@@ -1,6 +1,7 @@
 import { TypedDocumentNode } from "@apollo/client/core";
 import { apiQuery } from "dato-nextjs-utils/api";
 import { AllDistricsDocument, DistrictBySubdomainDocument } from '/graphql';
+import * as EmailValidator from 'email-validator';
 import type { ApiQueryOptions } from "dato-nextjs-utils/api";
 import React from "react";
 
@@ -88,11 +89,8 @@ export const recordToSlug = (record: any): string => {
   return href
 }
 
-export const isEmail = (string: string): boolean => {
-  if (!string) return false
-  const matcher = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-  if (string.length > 320) return false;
-  return matcher.test(string);
+export const isEmail = (email: string): boolean => {
+  return EmailValidator.validate(email)
 }
 
 export const truncateParagraph = (s: string, sentances: number = 1, ellipsis: boolean = true, minLength = 200): string => {

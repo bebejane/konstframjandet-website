@@ -30,6 +30,7 @@ specifiers:
   dato-nextjs-utils: github:bebejane/dato-nextjs-utils
   datocms-structured-text-utils: ^2.0.4
   dotenv: ^16.0.3
+  email-validator: ^2.0.4
   eslint: ^8.26.0
   eslint-config-next: ^12.3.1
   graphql: ^16.6.0
@@ -83,6 +84,7 @@ dependencies:
   dato-nextjs-utils: github.com/bebejane/dato-nextjs-utils/41aa5041ca4c734820bbdb1e95f3e19c52cdb7ab_2neam6bgtfjvaefszcuxozh6am
   datocms-structured-text-utils: 2.0.4
   dotenv: 16.0.3
+  email-validator: 2.0.4
   graphql: 16.6.0
   graphql-request: 4.3.0_graphql@16.6.0
   graphql-tag: 2.12.6_graphql@16.6.0
@@ -5161,6 +5163,11 @@ packages:
     resolution: {integrity: sha512-B+ZM+RXvRqQaAmkMlO/oSe5nMUOaUnyfGYCEHoR8wrXsZR2mA0XVibsxV1bvTwxdRWah1PkQqso2EzhILGHtEQ==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /email-validator/2.0.4:
+    resolution: {integrity: sha512-gYCwo7kh5S3IDyZPLZf6hSS0MnZT8QmJFqYvbqlDZSbwdZlY6QZWxJ4i/6UhITOJ4XzyI647Bm2MXKCLqnJ4nQ==}
+    engines: {node: '>4.0'}
+    dev: false
 
   /emoji-regex/8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}

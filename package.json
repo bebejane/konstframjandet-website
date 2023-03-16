@@ -36,6 +36,7 @@
 		"dato-nextjs-utils": "github:bebejane/dato-nextjs-utils",
 		"datocms-structured-text-utils": "^2.0.4",
 		"dotenv": "^16.0.3",
+		"email-validator": "^2.0.4",
 		"graphql": "^16.6.0",
 		"graphql-request": "^4.3.0",
 		"graphql-tag": "^2.12.6",

@@ -10,7 +10,7 @@ export default function StartSelectionContainer({ children }: Props) {
 
   return (
     <section className={s.container}>
-      <h2 className="mid">Aktuellt i distrikt</h2>
+      <h2 className="mid">Aktuellt i övriga distrikt</h2>
       <ul className={cn(s.container)}>
         {children}
       </ul>
