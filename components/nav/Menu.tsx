@@ -45,9 +45,6 @@ export default function Menu({ districts, menu }: MenuProps) {
 	const searchStyle = { minHeight: `calc(var(--navbar-height) - ${scrollY}px)` }
 	const logoStyle = { fontSize: `${((1 - ratio) * 20) + 64}px` }
 
-	const aboutStartPageSlug = menu.find(({ type }) => type === 'about')?.slug
-
-
 	useEffect(() => {
 		if (!ref.current) return
 		setOffset(parseInt(getComputedStyle(ref.current).paddingTop))
@@ -96,26 +93,16 @@ export default function Menu({ districts, menu }: MenuProps) {
 				</div>
 				<div className={s.wrapper} >
 					<ul>
-						<li className={cn(isHome && !showDistricts && s.active)}>
-							<Link href="/">Hem</Link>
-						</li>
-						<li className={cn(asPath.startsWith('/aktuellt') && !showDistricts && s.active)}>
-							<Link href="/aktuellt">Aktuellt</Link>
-						</li>
-						<li className={cn(asPath.startsWith('/projekt') && !showDistricts && s.active)}>
-							<Link href="/projekt">Projekt</Link>
-						</li>
-						{isMainDistrict &&
-							<li className={cn(showDistricts && s.active)} onClick={() => setShowDistricts(!showDistricts)}>
-								Distrikt
-							</li>
-						}
-						<li className={cn(asPath.startsWith('/om') && !showDistricts && s.active)}>
-							<Link href={aboutStartPageSlug}>Om oss</Link>
-						</li>
-						<li className={cn(asPath.startsWith('/kontakt') && !showDistricts && s.active)}>
-							<Link href="/kontakt">Kontakt</Link>
-						</li>
+						{menu.map(({ type, slug, label }) =>
+							type !== 'district' ?
+								<li className={cn(((asPath.startsWith(slug) && slug !== '/') || (isHome && type == 'home')) && !showDistricts && s.active)}>
+									<Link href={slug}>{label}</Link>
+								</li>
+								:
+								<li className={cn(showDistricts && s.active)} onClick={() => setShowDistricts(!showDistricts)}>
+									Distrikt
+								</li>
+						)}
 					</ul>
 					<span className="mid" onClick={() => setShowSearch(true)}>Sök</span>
 				</div>
@@ -147,6 +134,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 					<SearchResult query={query} />
 				</div>
 			</div>
+
 		</>
 	)
 }
