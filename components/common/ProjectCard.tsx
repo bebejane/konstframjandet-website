@@ -16,20 +16,22 @@ export default function ProjectCard({ project: { id, title, intro, image, slug, 
     <li className={cn(s.card)} key={id}>
       <Link href={`/projekt/${slug}`}>
         <figure>
-          <h1>{title}</h1>
           <div className={s.text}>
             <Image
               data={image.responsiveImage}
               className={s.image}
               objectFit="cover"
             />
+            {color?.hex &&
+              <div className={s.bgcolor} style={{ backgroundColor: color.hex }}></div>
+            }
+            <h1>{title}</h1>
+
             <Markdown className={cn(s.intro)}>
               {intro}
             </Markdown>
           </div>
-          {color?.hex &&
-            <div className={s.bgcolor} style={{ backgroundColor: color.hex }}></div>
-          }
+
         </figure>
       </Link>
     </li >

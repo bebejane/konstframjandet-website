@@ -19,8 +19,8 @@
     border-bottom: 0;
   }
 
-  &:hover .image {
-    opacity: 0.4;
+  &:hover .bgcolor {
+    opacity: 1;
   }
 
   a {
@@ -73,8 +73,7 @@
         object-fit: cover;
         height: 100%;
         width: 100%;
-        opacity: 0.5;
-        transition: opacity 0.5s ease;
+        //opacity: 0.5;
       }
 
       .bgcolor {
@@ -84,7 +83,9 @@
         width: 100%;
         height: 100%;
         z-index: 1;
-        mix-blend-mode: screen;
+        opacity: 0.75;
+        mix-blend-mode: multiply;
+        transition: opacity 0.5s ease;
       }
     }
   }

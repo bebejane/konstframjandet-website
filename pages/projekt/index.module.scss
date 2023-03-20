@@ -1,8 +1,11 @@
 .container {
   h2.completed {
-    padding-left: var(--grid-unit);
     margin-top: var(--space);
     padding-bottom: var(--big-space);
     border-bottom: var(--line-thick);
+
+    @include mq($from: tablet) {
+      padding-left: var(--grid-unit);
+    }
   }
 }
