@@ -4,6 +4,7 @@
   padding-top: var(--space);
   padding-bottom: var(--space);
   border-bottom: var(--line-thin);
+
   @include mq($from: tablet) {
     flex-direction: row;
   }
@@ -12,25 +13,46 @@
     border-bottom: 0;
   }
 
-  &.home {
-    a > h2,
-    p > a {
-      color: var(--black) !important;
-      &:hover {
-        color: var(--white) !important;
-      }
-      transition: color 0.2s ease;
-    }
-    p > a {
-      border-color: var(--white) !important;
-    }
-  }
-
   &:hover {
     .meta a {
       color: var(--page-color);
     }
   }
+
+  &.home {
+
+
+    a>h2,
+    p>a {
+      color: var(--black) !important;
+
+      &:hover {
+        color: var(--white) !important;
+      }
+
+      transition: color 0.2s ease;
+    }
+
+    p>a {
+      border-color: var(--white) !important;
+    }
+
+
+    &:hover .meta a {
+      color: var(--black);
+    }
+
+    .meta a {
+      border-bottom: 1px solid var(--white);
+
+      &:hover {
+        color: var(--white);
+      }
+
+    }
+  }
+
+
 
   h2 {
     padding-top: 0.2em;
@@ -41,12 +63,15 @@
     line-height: var(--line-height) !important;
     column-count: 2;
 
+
+
+
     span {
       display: block;
     }
   }
 
-  > div,
+  >div,
   a {
     @include mq($from: tablet) {
       flex: 0 0 50%;
@@ -62,6 +87,7 @@
     border: var(--line-thick);
     display: flex;
     aspect-ratio: 6 / 4;
+
     @include mq($until: tablet) {
       margin-bottom: var(--small-space);
     }
@@ -71,9 +97,7 @@
     }
   }
 
-  @include mq($until: tablet) {
-  }
+  @include mq($until: tablet) {}
 
-  @include mq($from: tablet) {
-  }
+  @include mq($from: tablet) {}
 }
