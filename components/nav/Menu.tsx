@@ -98,7 +98,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 								<li className={cn(((asPath.startsWith(slug) && slug !== '/') || (isHome && type == 'home')) && !showDistricts && s.active)}>
 									<Link href={slug}>{label}</Link>
 								</li>
-								:
+								: isMainDistrict &&
 								<li className={cn(showDistricts && s.active)} onClick={() => setShowDistricts(!showDistricts)}>
 									Distrikt
 								</li>
