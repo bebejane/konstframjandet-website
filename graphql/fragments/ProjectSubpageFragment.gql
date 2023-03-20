@@ -3,6 +3,7 @@ fragment ProjectSubpageFragment on ProjectSubpageRecord {
 	id
 	title
 	subtitle
+	slug
 	intro(markdown: false)
 	image {
 		...ImageFragment

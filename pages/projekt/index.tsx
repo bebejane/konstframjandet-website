@@ -29,7 +29,6 @@ export default function Projects({ projects, completedProjects }: Props) {
             </ProjectContainer>
           </>
         }
-
       </div>
     </>
   );

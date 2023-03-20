@@ -16,6 +16,8 @@
     border: 0;
   }
 
+
+
   &:hover {
     .meta a {
       color: var(--page-color);
@@ -26,6 +28,7 @@
     padding-top: var(--small-space);
     padding-bottom: 0;
     transition: color 0.2s ease;
+
     &:hover {
       color: var(--white);
     }
@@ -41,6 +44,7 @@
     display: inline;
     width: auto;
     border-bottom: 1px solid var(--white);
+
     &:hover {
       color: var(--white);
     }
@@ -65,9 +69,24 @@
     }
   }
 
-  @include mq($until: tablet) {
+  // bubble masks
+  &:nth-child(1)>a>figure .image {
+    mask-image: url(/images/mask1.svg);
   }
 
-  @include mq($from: tablet) {
+  &:nth-child(2)>a>figure .image {
+    mask-image: url(/images/mask2.svg);
   }
+
+  &:nth-child(3)>a>figure .image {
+    mask-image: url(/images/mask3.svg);
+  }
+
+  &:nth-child(4)>a>figure .image {
+    mask-image: url(/images/mask4.svg);
+  }
+
+  @include mq($until: tablet) {}
+
+  @include mq($from: tablet) {}
 }

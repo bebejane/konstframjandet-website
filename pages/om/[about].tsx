@@ -4,7 +4,7 @@ import withGlobalProps from "/lib/withGlobalProps";
 import { apiQuery } from 'dato-nextjs-utils/api';
 import { apiQueryAll } from '/lib/utils';
 import { AboutDocument, AllAboutsDocument } from "/graphql";
-import { Aside, Article } from '/components';
+import { Aside, Article, SideMenu } from '/components';
 import Link from 'next/link';
 
 export type Props = {
@@ -17,19 +17,7 @@ export default function AboutItem({ about: { id, content, intro, slug, _seoMetaT
   return (
     <>
       <Aside>
-        <ul className={s.submenu}>
-          {abouts.length > 0 ? abouts.map((about, idx) =>
-            <li key={about.id}>
-              {about.slug !== slug ?
-                <Link href={`/om/${about.slug}`}>{about.title}</Link>
-                :
-                <span className={s.active}>{about.title}</span>
-              }
-            </li>
-          ) :
-            <>Det finns inga Om...</>
-          }
-        </ul>
+        <SideMenu items={abouts.map(({ id, slug, title }) => ({ id, title, slug: `/om/${slug}` }))} />
       </Aside>
       <Article
         id={'id'}

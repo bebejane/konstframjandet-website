@@ -1,9 +1,10 @@
 import s from './[...project].module.scss'
+import cn from 'classnames'
 import withGlobalProps from "/lib/withGlobalProps";
 import { apiQueryAll, mainDistrict } from '/lib/utils';
 import { apiQuery } from "dato-nextjs-utils/api";
 import { ProjectDocument, ProjectSubpageDocument, ProjectBySubpageDocument, AllProjectsDocument } from "/graphql";
-import { Aside, Article } from '/components';
+import { Aside, Article, SideMenu } from '/components';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { usePage } from '/lib/context/page';
@@ -12,9 +13,14 @@ import { useRouter } from 'next/router';
 export type Props = {
   project: ProjectRecord | ProjectSubpageRecord,
   parentProject?: ProjectRecord
+  projectMenu: {
+    id: string
+    slug: string
+    title: string
+  }[]
 }
 
-export default function ProjectItem({ project: { id, title, slug, image, intro, content }, project, parentProject }: Props) {
+export default function ProjectItem({ project: { id, title, slug, image, intro, content }, project, parentProject, projectMenu }: Props) {
 
   const { asPath } = useRouter()
   const { isHome, district } = usePage()
@@ -32,17 +38,8 @@ export default function ProjectItem({ project: { id, title, slug, image, intro, 
 
   return (
     <>
-      <Aside>
-        <h3>{title}</h3>
-        {project.__typename === 'ProjectRecord' && project.subpage.length > 0 &&
-          <ul className={s.submenu}>
-            {project.subpage.map(({ id, slug: subslug, title }) =>
-              <li key={id}>
-                <Link href={`/projekt/${slug}/${subslug}`}>{title}</Link>
-              </li>
-            )}
-          </ul>
-        }
+      <Aside title={title}>
+        <SideMenu items={projectMenu} />
       </Aside>
       <Article
         id={id}
@@ -86,11 +83,18 @@ export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, r
   if (isSubpage)
     parentProject = (await apiQuery(ProjectBySubpageDocument, { variables: { subpageId: project.id }, preview: context.preview }))?.project ?? null
 
+  const projectMenu = (project.subpage ?? parentProject.subpage).map(({ id, title, slug }) => ({
+    id,
+    title,
+    slug: `/projekt/${isSubpage ? parentProject.slug : project.slug}/${slug}`
+  }))
+
   return {
     props: {
       ...props,
       project,
       parentProject,
+      projectMenu,
       page: {
         title: project.title,
         subtitle: project.subtitle,

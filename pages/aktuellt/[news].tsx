@@ -26,17 +26,22 @@ export default function NewsItem({ news: {
   subtitle,
 }, news }: Props) {
 
+  const haveMeta = [where, address, date, time, misc].filter(el => el).length > 0
+
   return (
     <>
-      <Aside>
-        <h3>Var & när</h3>
-        <p>
-          {where && <>{where}<br /></>}
-          {address && <>{address}<br /></>}
-          {date && <>{capitalize(format(new Date(date), 'EEEE d MMMM'))}<br /></>}
-          {time && <>{time}<br /></>}
-          {misc && <>{misc}</>}
-        </p>
+      <Aside title={'Var & när'}>
+        {haveMeta &&
+          <>
+            <p>
+              {where && <>{where}<br /></>}
+              {address && <>{address}<br /></>}
+              {date && <>{capitalize(format(new Date(date), 'EEEE d MMMM'))}<br /></>}
+              {time && <>{time}<br /></>}
+              {misc && <>{misc}</>}
+            </p>
+          </>
+        }
       </Aside>
       <Article
         id={id}

@@ -2,10 +2,8 @@ import s from './StartSelectionCard.module.scss'
 import cn from 'classnames'
 import React from 'react'
 import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components'
-import format from 'date-fns/format'
 import { Image } from 'react-datocms/image'
 import Link from 'next/link'
-import { usePage } from '/lib/context/page'
 import { recordToSlug } from '/lib/utils'
 
 export type CardProps = {
@@ -16,6 +14,7 @@ export default function StartSelectionCard({ item }: CardProps) {
 
   const slug = recordToSlug(item)
   const subdomain = item.district.subdomain
+  const intro = `**${item.district.name}** ${item.intro}`
 
   return (
     <li className={s.card} key={item.id}>
@@ -25,7 +24,6 @@ export default function StartSelectionCard({ item }: CardProps) {
             data={item.image.responsiveImage}
             pictureClassName={s.image}
             objectFit="cover"
-            pictureStyle={{ WebkitMaskImage: `url(/images/mask1.svg` }}
           />
         </figure>
       </Link>
@@ -33,7 +31,7 @@ export default function StartSelectionCard({ item }: CardProps) {
         <h3>{item.title}</h3>
       </Link>
       <Markdown className="body-small">
-        {item.intro}
+        {intro}
       </Markdown>
       <Link href={slug} locale={subdomain} className={cn('small', s.more)}>
         Läs mer

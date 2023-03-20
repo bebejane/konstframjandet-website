@@ -6,6 +6,7 @@ import { primarySubdomain } from '/lib/utils'
 import { useScrollInfo } from 'dato-nextjs-utils/hooks'
 import { usePage } from '/lib/context/page'
 import { sleep } from '/lib/utils'
+import type { Menu } from '/lib/menu'
 import Link from 'next/link'
 
 const animateLogo = async () => {
@@ -18,9 +19,12 @@ const animateLogo = async () => {
 	logo.innerText = alphabet[0]
 }
 
-export type MenuProps = { districts: DistrictRecord[] }
+export type MenuProps = {
+	districts: DistrictRecord[]
+	menu: Menu
+}
 
-export default function Menu({ districts }: MenuProps) {
+export default function Menu({ districts, menu }: MenuProps) {
 
 	const router = useRouter()
 	const { asPath } = router
@@ -37,6 +41,9 @@ export default function Menu({ districts }: MenuProps) {
 	const navStyle = { transform: `translateY(-${scrollY}px)` }
 	const searchStyle = { height: `calc(var(--navbar-height) - ${scrollY}px)` }
 	const logoStyle = { fontSize: `${((1 - ratio) * 20) + 64}px` }
+
+	const aboutStartPageSlug = menu.find(({ type }) => type === 'about')?.slug
+
 
 	useEffect(() => {
 		if (!ref.current) return
@@ -57,7 +64,6 @@ export default function Menu({ districts }: MenuProps) {
 	useEffect(() => {
 		searchRef.current?.[showSearch ? 'focus' : 'blur']()
 	}, [showSearch])
-
 
 	return (
 		<>
@@ -100,7 +106,7 @@ export default function Menu({ districts }: MenuProps) {
 							</li>
 						}
 						<li className={cn(asPath.startsWith('/om') && !showDistricts && s.active)}>
-							<Link href="/om">Om oss</Link>
+							<Link href={aboutStartPageSlug}>Om oss</Link>
 						</li>
 						<li className={cn(asPath.startsWith('/kontakt') && !showDistricts && s.active)}>
 							<Link href="/kontakt">Kontakt</Link>
