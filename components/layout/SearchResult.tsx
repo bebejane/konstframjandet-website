@@ -67,10 +67,10 @@ export default function SearchResult({ query }: Props) {
                   <h1>
                     <Link href={slug}>{title}</Link>
                   </h1>
-                  <div className={s.intro}>
+                  <div className={cn(s.intro, "intro")}>
                     <Markdown>{text}</Markdown>
                   </div>
-                  <Link href={slug}>Läs mer</Link>
+                  <Link href={slug} className="mid">Läs mer</Link>
                 </li>
               )}
             </ul>

@@ -1,28 +1,38 @@
 .container {
   position: relative;
+  left: 0;
   min-height: 100vh;
+  width: 100vw;
+  padding-left: var(--outer-margin);
+  padding-right: var(--grid-unit);
 
-  h2 {
-    text-align: center;
+  background-color: rgba(227, 227, 227, 0.134);
+  h1 a {
+    color: var(--page-color);
+    margin-bottom: var(--space);
   }
 
   h3 {
+    display: none;
     font-weight: normal;
     text-transform: uppercase;
   }
 
-  >ul {
+  > ul {
     list-style: none;
-    padding-left: 0;
+    padding-left: var(--grid-unit);
 
     li {
       margin-top: var(--space);
+      padding-bottom: var(--space);
+      border-bottom: var(--line-thick);
 
       .intro {
         p {
           padding: 0;
+          margin-top: var(--small-space);
 
-          >strong {
+          > strong {
             font-family: $headline-font;
             font-size: 0.75rem;
             font-weight: bold !important;
@@ -42,5 +52,6 @@
     margin-top: calc(var(--space) * 1);
   }
 
-  .nohits {}
+  .nohits {
+  }
 }
