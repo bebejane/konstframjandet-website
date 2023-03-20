@@ -3,7 +3,7 @@
   color: var(--white);
 
   @include mq($from: desktop) {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -81,8 +81,8 @@
       border-bottom: var(--line-thin);
     }
 
-    > ul {
-      > li {
+    >ul {
+      >li {
         ul {
           display: none;
 
