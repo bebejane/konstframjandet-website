@@ -7,10 +7,12 @@ export type Props = {
 }
 
 export default function Aside({ children, title }: Props) {
-
+  console.log(children)
   return (
     <aside className={s.aside}>
-      {title && <h3>{title}</h3>}
+      {title && children &&
+        <h3>{title}</h3>
+      }
       {children &&
         <div className="mid">
           {children}

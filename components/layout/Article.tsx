@@ -22,9 +22,9 @@ export type ArticleProps = {
   backLink?: string
 }
 
-export default function Article({ id, title, content, image, imageSize, intro, date, onClick, record, backLink }: ArticleProps) {
+export default function Article({ id, title, content, image, imageSize, intro, record, backLink }: ArticleProps) {
 
-  const [setImageId, setImages, imageId] = useStore((state) => [state.setImageId, state.setImages, state.imageId])
+  const [setImageId, setImages] = useStore((state) => [state.setImageId, state.setImages])
 
   useEffect(() => {
     const images = [image]
@@ -32,7 +32,6 @@ export default function Article({ id, title, content, image, imageSize, intro, d
       el.__typename === 'ImageRecord' && images.push.apply(images, el.image)
     })
     setImages(images.filter(el => el))
-    console.log(images.filter(el => el))
   }, [])
 
   return (

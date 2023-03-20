@@ -5,7 +5,6 @@ import { apiQueryAll, mainDistrict } from '/lib/utils';
 import { apiQuery } from "dato-nextjs-utils/api";
 import { ProjectDocument, ProjectSubpageDocument, ProjectBySubpageDocument, AllProjectsDocument } from "/graphql";
 import { Aside, Article, SideMenu } from '/components';
-import Link from 'next/link';
 import { useEffect } from 'react';
 import { usePage } from '/lib/context/page';
 import { useRouter } from 'next/router';
@@ -39,7 +38,9 @@ export default function ProjectItem({ project: { id, title, slug, image, intro, 
   return (
     <>
       <Aside title={title}>
-        <SideMenu items={projectMenu} />
+        {projectMenu.length > 0 &&
+          <SideMenu items={projectMenu} />
+        }
       </Aside>
       <Article
         id={id}
