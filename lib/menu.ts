@@ -13,6 +13,7 @@ export type MenuItem = {
 }
 
 const base: Menu = [
+  { type: 'home', label: 'Hem', slug: '/', items: [] },
   { type: 'news', label: 'Aktuellt', slug: '/aktuellt', items: [] },
   { type: 'project', label: 'Projekt', slug: '/projekt', items: [] },
   { type: 'district', label: 'Distrikt', items: [] },
@@ -64,8 +65,6 @@ export const buildMenu = async (districtId: string) => {
     }
     return { ...item, items: items ? items : item.items, subdomain: district.subdomain }
   })
-
-
 
   return menu
 }
