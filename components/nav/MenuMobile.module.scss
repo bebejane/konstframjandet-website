@@ -1,6 +1,7 @@
 .navbar,
 .menuMobile {
   color: var(--white);
+  transition: background-color 0.3s ease-out, color 0.3s ease-out;
 
   @include mq($from: desktop) {
     display: none !important;
@@ -19,7 +20,7 @@
   z-index: var(--z-navbar-mobile);
   color: var(--black);
   background-color: var(--background);
-  transition: color 0.3s ease-in-out;
+
 
   .line {
     width: calc(100% - (2 * var(--outer-margin)));
@@ -44,7 +45,7 @@
   .logo,
   .hamburger,
   h2 {
-    transition: color 0.3s ease-in-out;
+    transition: color 0.3s ease-out;
   }
 
   &.open {
@@ -68,10 +69,13 @@
   height: 100%;
   z-index: var(--z-menu-mobile);
   background-color: var(--black);
-  transform: translateX(100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
 
   &.open {
-    transform: translateX(0%);
+    opacity: 1;
+    pointer-events: all;
   }
 
   a {

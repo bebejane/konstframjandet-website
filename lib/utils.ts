@@ -240,3 +240,13 @@ export const truncateText = (text: string, options: TruncateOptions): string => 
 
   return truncatedText;
 }
+
+export const animateLogo = async (id) => {
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  const logo = document.getElementById(id) as HTMLAnchorElement
+  for (let i = 0; i < alphabet.length; i++) {
+    logo.innerText = alphabet[i]
+    await sleep(20)
+  }
+  logo.innerText = alphabet[0]
+}

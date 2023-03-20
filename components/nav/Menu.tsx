@@ -5,21 +5,10 @@ import { useState, useRef, useEffect } from 'react'
 import { primarySubdomain } from '/lib/utils'
 import { useScrollInfo } from 'dato-nextjs-utils/hooks'
 import { usePage } from '/lib/context/page'
-import { sleep } from '/lib/utils'
+import { animateLogo } from '/lib/utils'
 import { SearchResult } from '/components'
-
 import type { Menu } from '/lib/menu'
 import Link from 'next/link'
-
-const animateLogo = async () => {
-	const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-	const logo = document.getElementById('logo') as HTMLAnchorElement
-	for (let i = 0; i < alphabet.length; i++) {
-		logo.innerText = alphabet[i]
-		await sleep(20)
-	}
-	logo.innerText = alphabet[0]
-}
 
 export type MenuProps = {
 	districts: DistrictRecord[]
@@ -54,7 +43,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 
 		const handleRouteChangeStart = (path: string) => {
 			setShowDistricts(false)
-			animateLogo()
+			animateLogo('logo')
 			setQuery('')
 			setShowSearch(false)
 		}
@@ -93,13 +82,13 @@ export default function Menu({ districts, menu }: MenuProps) {
 				</div>
 				<div className={s.wrapper} >
 					<ul>
-						{menu.map(({ type, slug, label }) =>
+						{menu.map(({ type, slug, label }, idx) =>
 							type !== 'district' ?
-								<li className={cn(((asPath.startsWith(slug) && slug !== '/') || (isHome && type == 'home')) && !showDistricts && s.active)}>
+								<li key={idx} className={cn(((asPath.startsWith(slug) && slug !== '/') || (isHome && type == 'home')) && !showDistricts && s.active)}>
 									<Link href={slug}>{label}</Link>
 								</li>
-								:
-								<li className={cn(showDistricts && s.active)} onClick={() => setShowDistricts(!showDistricts)}>
+								: isMainDistrict &&
+								<li key={idx} className={cn(showDistricts && s.active)} onClick={() => setShowDistricts(!showDistricts)}>
 									Distrikt
 								</li>
 						)}
