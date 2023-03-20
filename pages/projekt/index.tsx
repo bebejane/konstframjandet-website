@@ -2,7 +2,7 @@ import s from "./index.module.scss";
 import cn from 'classnames'
 import withGlobalProps from "/lib/withGlobalProps";
 import { AllProjectsDocument } from "/graphql";
-import { ProjectContainer, ProjectCard, Bubble } from "/components";
+import { ProjectContainer, ProjectCard } from "/components";
 
 export type Props = {
   projects: ProjectRecord[]
