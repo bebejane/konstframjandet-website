@@ -146,7 +146,6 @@ export default function Menu({ districts, menu }: MenuProps) {
 				<div className={s.result}>
 					<SearchResult query={query} />
 				</div>
-
 			</div>
 		</>
 	)

@@ -51,7 +51,7 @@ export const buildMenu = async (districtId: string) => {
         items = projects.map(el => ({ type: 'project', label: el.title, slug: `/projekt/${el.slug}` }))
         break;
       case 'district':
-        items = districts.filter(({ subdomain }) => primarySubdomain !== subdomain).map(el => ({ type: 'district', label: el.name, slug: `/`, subdomain: el.subdomain }))
+        items = districts.filter(({ subdomain }) => primarySubdomain !== subdomain).map(el => ({ type: 'district', label: el.name, slug: `/${el.subdomain}`, subdomain: el.subdomain }))
         break;
       case 'contact':
         items = [

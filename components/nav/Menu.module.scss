@@ -1,3 +1,12 @@
+.logo,
+.menu,
+.districts,
+.search {
+  @include mq($until: desktop) {
+    display: none;
+  }
+}
+
 .logo {
   position: fixed;
   top: var(--very-small-space);
