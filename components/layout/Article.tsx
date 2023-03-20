@@ -53,7 +53,7 @@ export default function Article({ id, title, content, image, imageSize, intro, d
         <section>
           <div className={s.content}>
             {intro &&
-              <Markdown className={s.intro}>{intro}</Markdown>
+              <Markdown className={cn(s.intro, "intro")}>{intro}</Markdown>
             }
             <StructuredContent
               id={id}

@@ -10,11 +10,20 @@
   .line {
     border: var(--line-thin);
     border-color: var(--light-grey);
-    margin-bottom: var(--outer-margin);
+    margin-bottom: var(--space);
   }
 
   a {
     color: var(--white);
+  }
+
+  .logo {
+    font-family: "KF-Symbol";
+    font-size: 3rem;
+    line-height: 1;
+    display: block;
+    margin-top: -0.15em;
+    padding-bottom: 0.25em;
   }
 
   nav {
@@ -31,12 +40,12 @@
       display: flex;
     }
 
-    >ul {
+    > ul {
       display: flex;
       flex: 1 1 100%;
       flex-direction: row;
 
-      >li {
+      > li {
         flex: 0 0 calc(100% / 5);
         padding-right: 1rem;
         overflow: hidden;
@@ -50,7 +59,7 @@
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: pre;
-
+            padding-bottom: 0.2em;
           }
         }
       }

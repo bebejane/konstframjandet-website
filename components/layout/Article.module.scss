@@ -43,12 +43,20 @@
     .content {
       width: calc(2 * var(--grid-unit));
 
-      & > *:nth-last-child(2) {
-        margin-bottom: 0;
+      & > p:first-of-type {
+        &:first-child:first-letter {
+          color: var(--page-color);
+          float: left;
+          font-family: $headline-font;
+          font-size: 5rem;
+          line-height: 60px;
+          padding-top: 0.1em;
+          padding-right: 8px;
+        }
       }
 
-      .intro {
-        font-weight: bold;
+      & > *:nth-last-child(2) {
+        margin-bottom: 0;
       }
 
       .back {

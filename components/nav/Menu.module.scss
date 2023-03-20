@@ -16,7 +16,7 @@
     }
   }
 
-  &.home>a:hover {
+  &.home > a:hover {
     color: var(--white);
   }
 }
@@ -35,7 +35,8 @@
   margin-right: var(--outer-margin);
   background-color: var(--background);
 
-  @include mq($until: desktop) {}
+  @include mq($until: desktop) {
+  }
 
   &.small {
     transform: translateY(-50%);
@@ -97,7 +98,7 @@
       user-select: none;
 
       &.active,
-      &.active>a {
+      &.active > a {
         color: var(--page-color);
       }
 
@@ -108,14 +109,11 @@
         font-family: $symbol-font;
       }
     }
-
-
   }
 
   &.home {
-
     .active,
-    .active>a,
+    .active > a,
     li:hover,
     a:hover {
       color: var(--white) !important;
@@ -167,7 +165,8 @@
   background-color: var(--white);
   height: var(--navbar-height);
   width: 100%;
-  transition: transform .25s cubic-bezier(0.165, 0.84, 0.44, 1);
+  padding-left: var(--outer-margin);
+  transition: transform 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
   transform: translateY(-100%);
 
   &.show {
@@ -177,8 +176,8 @@
   input {
     margin: 0;
     width: 100%;
+    margin-left: calc(var(--grid-unit) - 1em);
     margin-right: var(--grid-unit);
-    margin-left: var(--grid-unit);
   }
 
   .close {
@@ -190,6 +189,7 @@
     margin-top: var(--small-space);
     cursor: pointer;
 
-    &:hover {}
+    &:hover {
+    }
   }
 }

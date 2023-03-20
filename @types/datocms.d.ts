@@ -45,6 +45,7 @@ type AboutModelFilter = {
   district?: InputMaybe<LinkFilter>;
   id?: InputMaybe<ItemIdFilter>;
   intro?: InputMaybe<TextFilter>;
+  position?: InputMaybe<PositionFilter>;
   slug?: InputMaybe<SlugFilter>;
   title?: InputMaybe<StringFilter>;
 };
@@ -68,6 +69,8 @@ enum AboutModelOrderBy {
   _updatedAt_DESC = '_updatedAt_DESC',
   id_ASC = 'id_ASC',
   id_DESC = 'id_DESC',
+  position_ASC = 'position_ASC',
+  position_DESC = 'position_DESC',
   title_ASC = 'title_ASC',
   title_DESC = 'title_DESC'
 }
@@ -90,6 +93,7 @@ type AboutRecord = RecordInterface & {
   district: DistrictRecord;
   id: Scalars['ItemId'];
   intro?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['IntType']>;
   slug: Scalars['String'];
   title?: Maybe<Scalars['String']>;
 };
@@ -2251,6 +2255,22 @@ type OrientationFilter = {
   eq?: InputMaybe<UploadOrientation>;
   /** Exclude uploads with the specified orientation */
   neq?: InputMaybe<UploadOrientation>;
+};
+
+/** Specifies how to filter by position (sorted and tree-like collections) */
+type PositionFilter = {
+  /** Search for records with an exact match */
+  eq?: InputMaybe<Scalars['IntType']>;
+  /** Filter records with a value that's strictly greater than the one specified */
+  gt?: InputMaybe<Scalars['IntType']>;
+  /** Filter records with a value that's greater than or equal to the one specified */
+  gte?: InputMaybe<Scalars['IntType']>;
+  /** Filter records with a value that's less than the one specified */
+  lt?: InputMaybe<Scalars['IntType']>;
+  /** Filter records with a value that's less or equal than the one specified */
+  lte?: InputMaybe<Scalars['IntType']>;
+  /** Exclude records with an exact match */
+  neq?: InputMaybe<Scalars['IntType']>;
 };
 
 type ProjectModelContentBlocksField = ButtonRecord | ImageGalleryRecord | ImageRecord | LogoRecord | VideoRecord;
