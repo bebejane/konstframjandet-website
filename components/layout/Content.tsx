@@ -5,6 +5,7 @@ import { Loader, SectionHeader } from '/components'
 import { Menu } from '/lib/menu'
 import useStore from '/lib/store'
 import { usePage } from '/lib/context/page'
+import { useRouter } from 'next/router'
 
 export type ContentProps = {
 	children: React.ReactNode,
@@ -16,13 +17,14 @@ export type ContentProps = {
 
 export default function Content({ children, title, image, intro, menu }: ContentProps) {
 
+	const { asPath } = useRouter()
 	const { layout, isHome } = usePage()
 
 	return (
 		<>
 			<main id="content" className={cn(s.content, s[layout])}>
 				{!isHome && title &&
-					<SectionHeader title={title} />
+					<SectionHeader key={asPath} />
 				}
 				<article>
 					{children}

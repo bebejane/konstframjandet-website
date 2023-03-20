@@ -2,9 +2,11 @@ html,
 body {
   font-weight: normal;
   font-size: 17px;
+
   @include mq($from: semi-wide) {
     font-size: 24px;
   }
+
   @include mq($from: wide) {
     font-size: 26px;
   }
@@ -28,11 +30,14 @@ h1,
 h2.big {
   font-size: 34px;
   color: var(--page-color);
+
   @include mq($from: tablet) {
     font-size: 58px;
   }
+
   font-weight: normal;
   line-height: calc(1em - 2px);
+
   &.noPadding {
     padding: 0;
   }
@@ -44,9 +49,11 @@ h2 {
 
 h3 {
   font-size: 1.3rem;
+
   @include mq($from: tablet) {
     font-size: 1.5rem;
   }
+
   font-weight: normal;
   padding-bottom: 1em;
 }
@@ -96,6 +103,7 @@ button,
 .mid input,
 .mid select {
   font-family: $headline-font;
+
   @include mq($from: tablet) {
     font-size: calc(1rem + 3px);
   }
@@ -107,12 +115,14 @@ b {
 }
 
 article {
-  p + h3,
-  ul + h3,
-  ul + h2,
-  p + h2 {
+
+  p+h3,
+  ul+h3,
+  ul+h2,
+  p+h2 {
     padding-top: 1rem;
   }
+
   ul {
     padding-left: 1em;
     list-style-type: square;
@@ -134,4 +144,8 @@ button {
 em,
 i {
   font-style: italic;
+}
+
+.symbol {
+  font-family: "KF-Symbol";
 }

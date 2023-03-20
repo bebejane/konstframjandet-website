@@ -2,15 +2,33 @@ import s from './[...project].module.scss'
 import withGlobalProps from "/lib/withGlobalProps";
 import { apiQueryAll, mainDistrict } from '/lib/utils';
 import { apiQuery } from "dato-nextjs-utils/api";
-import { ProjectDocument, ProjectSubpageDocument, AllProjectsDocument } from "/graphql";
+import { ProjectDocument, ProjectSubpageDocument, ProjectBySubpageDocument, AllProjectsDocument } from "/graphql";
 import { Aside, Article } from '/components';
 import Link from 'next/link';
+import { useEffect } from 'react';
+import { usePage } from '/lib/context/page';
+import { useRouter } from 'next/router';
 
 export type Props = {
-  project: ProjectRecord | ProjectSubpageRecord
+  project: ProjectRecord | ProjectSubpageRecord,
+  parentProject?: ProjectRecord
 }
 
-export default function ProjectItem({ project: { id, title, slug, image, intro, content }, project }: Props) {
+export default function ProjectItem({ project: { id, title, slug, image, intro, content }, project, parentProject }: Props) {
+
+  const { asPath } = useRouter()
+  const { isHome, district } = usePage()
+
+  useEffect(() => {
+
+    const color = project.__typename === 'ProjectRecord' ? project.color : parentProject?.color ?? null
+    const r = document.querySelector<HTMLElement>(':root')
+
+    setTimeout(() => { // Override _app styling
+      r.style.setProperty('--page-color', color ? color.hex : district?.color?.hex);
+    }, 30)
+
+  }, [isHome, project, parentProject, asPath])
 
   return (
     <>
@@ -63,10 +81,16 @@ export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, r
   if (!project)
     return { notFound: true }
 
+  let parentProject = null;
+
+  if (isSubpage)
+    parentProject = (await apiQuery(ProjectBySubpageDocument, { variables: { subpageId: project.id }, preview: context.preview }))?.project ?? null
+
   return {
     props: {
       ...props,
       project,
+      parentProject,
       page: {
         title: project.title,
         subtitle: project.subtitle,

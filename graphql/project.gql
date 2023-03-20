@@ -20,7 +20,7 @@ query Project($slug: String!, $districtId: ItemId) {
 
 query ProjectBySubpage($subpageId: ItemId) {
 	project(filter: { subpage: { anyIn: [$subpageId] } }) {
-		...ProjectFragment
+		...ProjectFragmentLight
 	}
 }
 

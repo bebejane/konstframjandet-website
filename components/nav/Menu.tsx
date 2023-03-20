@@ -53,6 +53,7 @@ export default function Menu({ districts }: MenuProps) {
 		return () => router.events.off('routeChangeStart', handleRouteChangeStart)
 	}, [])
 
+
 	useEffect(() => {
 		searchRef.current?.[showSearch ? 'focus' : 'blur']()
 	}, [showSearch])
@@ -67,9 +68,19 @@ export default function Menu({ districts }: MenuProps) {
 				<div className={s.top} style={{ opacity: (1 - ratio) }}>
 					<h2>Konstfrämjandet{!isMainDistrict && ` ${district.name}`}</h2>
 					<div className="small" >
-						<a href={district.facebook}>Facebook</a>
-						<a href={district.instagram}>Instagram</a>
-						<Link href="/english">English</Link>
+						{isMainDistrict ?
+							<>
+								<a href={district.facebook}>Facebook</a>
+								<a href={district.instagram}>Instagram</a>
+								<Link href="/english">English</Link>
+							</>
+							:
+							<>
+								<a className="symbol" href={district.facebook}>7</a>
+								<a className="symbol" href={district.instagram}>8</a>
+								<Link href="/" locale={primarySubdomain}>Till Konstfrämjandet.se</Link>
+							</>
+						}
 					</div>
 				</div>
 				<div className={s.wrapper} >
@@ -83,9 +94,11 @@ export default function Menu({ districts }: MenuProps) {
 						<li className={cn(asPath.startsWith('/projekt') && !showDistricts && s.active)}>
 							<Link href="/projekt">Projekt</Link>
 						</li>
-						<li className={cn(showDistricts && s.active)} onClick={() => setShowDistricts(!showDistricts)}>
-							Distrikt
-						</li>
+						{isMainDistrict &&
+							<li className={cn(showDistricts && s.active)} onClick={() => setShowDistricts(!showDistricts)}>
+								Distrikt
+							</li>
+						}
 						<li className={cn(asPath.startsWith('/om') && !showDistricts && s.active)}>
 							<Link href="/om">Om oss</Link>
 						</li>
