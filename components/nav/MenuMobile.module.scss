@@ -12,11 +12,13 @@
   top: 0;
   left: 0;
   display: flex;
+  width: 100%;
   flex-direction: row;
   height: var(--navbar-height);
   padding: var(--outer-margin);
   z-index: var(--z-navbar-mobile);
   color: var(--black);
+  border-bottom: var(--line-thick);
 
   .logo {
     font-size: 2.5rem;
@@ -65,7 +67,6 @@
 
 
   nav {
-    border-top: var(--line-thick);
     padding-top: 1rem;
     margin: var(--outer-margin);
     font-size: var(--navbar-text-size);
