@@ -32,11 +32,10 @@ export const buildMenu = async (districtId: string) => {
     abouts: AboutRecord[],
     projects: ProjectRecord[],
     districts: DistrictRecord[],
-  } = await apiQuery([
-    MenuDocument
-  ], { variables: { districtId, first: 100 } });
+  } = await apiQuery([MenuDocument], { variables: { districtId, first: 100 } });
 
   const district = districts.find(({ id }) => id === districtId)
+
 
   const menu = base.map(item => {
     let items: MenuItem[];
@@ -46,6 +45,7 @@ export const buildMenu = async (districtId: string) => {
         break;
       case 'about':
         items = abouts.map(el => ({ type: 'about', label: el.title, slug: `/om/${el.slug}` }))
+        item.slug = items[0].slug
         break;
       case 'project':
         items = projects.map(el => ({ type: 'project', label: el.title, slug: `/projekt/${el.slug}` }))
@@ -64,6 +64,8 @@ export const buildMenu = async (districtId: string) => {
     }
     return { ...item, items: items ? items : item.items, subdomain: district.subdomain }
   })
+
+
 
   return menu
 }

@@ -1,3 +1,11 @@
 .submenu {
   list-style: none;
+
+  li {
+    &.selected {
+      a {
+        color: var(--page-color) !important;
+      }
+    }
+  }
 }

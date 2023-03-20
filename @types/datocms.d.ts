@@ -45,6 +45,7 @@ type AboutModelFilter = {
   district?: InputMaybe<LinkFilter>;
   id?: InputMaybe<ItemIdFilter>;
   intro?: InputMaybe<TextFilter>;
+  position?: InputMaybe<PositionFilter>;
   slug?: InputMaybe<SlugFilter>;
   title?: InputMaybe<StringFilter>;
 };
@@ -68,6 +69,8 @@ enum AboutModelOrderBy {
   _updatedAt_DESC = '_updatedAt_DESC',
   id_ASC = 'id_ASC',
   id_DESC = 'id_DESC',
+  position_ASC = 'position_ASC',
+  position_DESC = 'position_DESC',
   title_ASC = 'title_ASC',
   title_DESC = 'title_DESC'
 }
@@ -90,6 +93,7 @@ type AboutRecord = RecordInterface & {
   district: DistrictRecord;
   id: Scalars['ItemId'];
   intro?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['IntType']>;
   slug: Scalars['String'];
   title?: Maybe<Scalars['String']>;
 };
@@ -2253,6 +2257,22 @@ type OrientationFilter = {
   neq?: InputMaybe<UploadOrientation>;
 };
 
+/** Specifies how to filter by position (sorted and tree-like collections) */
+type PositionFilter = {
+  /** Search for records with an exact match */
+  eq?: InputMaybe<Scalars['IntType']>;
+  /** Filter records with a value that's strictly greater than the one specified */
+  gt?: InputMaybe<Scalars['IntType']>;
+  /** Filter records with a value that's greater than or equal to the one specified */
+  gte?: InputMaybe<Scalars['IntType']>;
+  /** Filter records with a value that's less than the one specified */
+  lt?: InputMaybe<Scalars['IntType']>;
+  /** Filter records with a value that's less or equal than the one specified */
+  lte?: InputMaybe<Scalars['IntType']>;
+  /** Exclude records with an exact match */
+  neq?: InputMaybe<Scalars['IntType']>;
+};
+
 type ProjectModelContentBlocksField = ButtonRecord | ImageGalleryRecord | ImageRecord | LogoRecord | VideoRecord;
 
 type ProjectModelContentField = {
@@ -3477,7 +3497,7 @@ type ProjectFragment = { __typename?: 'ProjectRecord', id: any, title?: string |
 
 type ProjectFragmentLightFragment = { __typename?: 'ProjectRecord', id: any, title?: string | null, subtitle?: string | null, slug: string, _createdAt: any, intro?: string | null, colorOption?: string | null, completed?: any | null, color?: { __typename?: 'ColorField', hex: string } | null, district: { __typename?: 'DistrictRecord', id: any, name: string, email?: string | null, subdomain: string, instagram?: string | null, facebook?: string | null, color: { __typename?: 'ColorField', hex: string } }, subpage: Array<{ __typename?: 'ProjectSubpageRecord', _createdAt: any, id: any, title?: string | null, subtitle?: string | null, slug: string, intro?: string | null }>, image: { __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, height?: any | null, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, sizes: string } | null } };
 
-type ProjectSubpageFragment = { __typename?: 'ProjectSubpageRecord', _createdAt: any, id: any, title?: string | null, subtitle?: string | null, intro?: string | null, image: { __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, height?: any | null, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, sizes: string } | null }, content?: { __typename?: 'ProjectSubpageModelContentField', value: any, blocks: Array<{ __typename: 'ButtonRecord', id: any, text?: string | null, url?: string | null } | { __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, height?: any | null, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, sizes: string } | null }> } | { __typename: 'ImageRecord', id: any, layout?: string | null, image: Array<{ __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, height?: any | null, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, sizes: string } | null }> } | { __typename: 'LogoRecord', id: any, image: Array<{ __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, height?: any | null, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, sizes: string } | null }> } | { __typename: 'VideoRecord', caption?: string | null, id: any, video?: { __typename?: 'VideoField', width: any, height: any, provider: string, providerUid: string, thumbnailUrl: string, title: string, url: string } | null }> } | null };
+type ProjectSubpageFragment = { __typename?: 'ProjectSubpageRecord', _createdAt: any, id: any, title?: string | null, subtitle?: string | null, slug: string, intro?: string | null, image: { __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, height?: any | null, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, sizes: string } | null }, content?: { __typename?: 'ProjectSubpageModelContentField', value: any, blocks: Array<{ __typename: 'ButtonRecord', id: any, text?: string | null, url?: string | null } | { __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, height?: any | null, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, sizes: string } | null }> } | { __typename: 'ImageRecord', id: any, layout?: string | null, image: Array<{ __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, height?: any | null, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, sizes: string } | null }> } | { __typename: 'LogoRecord', id: any, image: Array<{ __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, height?: any | null, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, sizes: string } | null }> } | { __typename: 'VideoRecord', caption?: string | null, id: any, video?: { __typename?: 'VideoField', width: any, height: any, provider: string, providerUid: string, thumbnailUrl: string, title: string, url: string } | null }> } | null };
 
 type ProjectSubpageFragmentLightFragment = { __typename?: 'ProjectSubpageRecord', _createdAt: any, id: any, title?: string | null, subtitle?: string | null, slug: string, intro?: string | null };
 
@@ -3539,7 +3559,7 @@ type ProjectSubpageQueryVariables = Exact<{
 }>;
 
 
-type ProjectSubpageQuery = { __typename?: 'Query', project?: { __typename?: 'ProjectSubpageRecord', _createdAt: any, id: any, title?: string | null, subtitle?: string | null, intro?: string | null, image: { __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, height?: any | null, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, sizes: string } | null }, content?: { __typename?: 'ProjectSubpageModelContentField', value: any, blocks: Array<{ __typename: 'ButtonRecord', id: any, text?: string | null, url?: string | null } | { __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, height?: any | null, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, sizes: string } | null }> } | { __typename: 'ImageRecord', id: any, layout?: string | null, image: Array<{ __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, height?: any | null, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, sizes: string } | null }> } | { __typename: 'LogoRecord', id: any, image: Array<{ __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, height?: any | null, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, sizes: string } | null }> } | { __typename: 'VideoRecord', caption?: string | null, id: any, video?: { __typename?: 'VideoField', width: any, height: any, provider: string, providerUid: string, thumbnailUrl: string, title: string, url: string } | null }> } | null } | null };
+type ProjectSubpageQuery = { __typename?: 'Query', project?: { __typename?: 'ProjectSubpageRecord', _createdAt: any, id: any, title?: string | null, subtitle?: string | null, slug: string, intro?: string | null, image: { __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, height?: any | null, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, sizes: string } | null }, content?: { __typename?: 'ProjectSubpageModelContentField', value: any, blocks: Array<{ __typename: 'ButtonRecord', id: any, text?: string | null, url?: string | null } | { __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, height?: any | null, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, sizes: string } | null }> } | { __typename: 'ImageRecord', id: any, layout?: string | null, image: Array<{ __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, height?: any | null, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, sizes: string } | null }> } | { __typename: 'LogoRecord', id: any, image: Array<{ __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, height?: any | null, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, sizes: string } | null }> } | { __typename: 'VideoRecord', caption?: string | null, id: any, video?: { __typename?: 'VideoField', width: any, height: any, provider: string, providerUid: string, thumbnailUrl: string, title: string, url: string } | null }> } | null } | null };
 
 type StartQueryVariables = Exact<{
   districtId?: InputMaybe<Scalars['ItemId']>;

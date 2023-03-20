@@ -3,12 +3,14 @@ import cn from 'classnames'
 
 export type Props = {
   children: React.ReactNode[] | React.ReactNode
+  title?: string
 }
 
-export default function Aside({ children }: Props) {
+export default function Aside({ children, title }: Props) {
 
   return (
     <aside className={s.aside}>
+      {title && <h3>{title}</h3>}
       {children &&
         <div className="mid">
           {children}
