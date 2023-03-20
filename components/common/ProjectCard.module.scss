@@ -8,6 +8,12 @@
     flex: 0 0 50%;
   }
 
+  @include mq($until: tablet) {
+    &:first-child {
+      padding-bottom: 0;
+    }
+  }
+
   &:nth-last-child(1),
   &:nth-last-child(2) {
     border-bottom: 0;

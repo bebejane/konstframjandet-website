@@ -55,15 +55,14 @@ h2 {
 }
 
 h3 {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  font-weight: normal;
+  padding-bottom: 1em;
+  line-height: calc(1em - 1px);
 
   @include mq($from: tablet) {
     font-size: 1.4rem;
   }
-
-  font-weight: normal;
-  padding-bottom: 1em;
-  line-height: calc(1em - 2px);
 }
 
 h4 {
@@ -110,7 +109,10 @@ label {
 }
 
 .body-small {
-  font-size: 16px;
+  font-size: 15px;
+  @include mq($from: tablet) {
+    font-size: 16px;
+  }
   font-family: $body-font;
 }
 

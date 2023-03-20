@@ -3,6 +3,12 @@
   flex-direction: column;
   align-items: flex-start;
 
+  @include mq($until: tablet) {
+    border-bottom: var(--line-thin);
+    padding-bottom: var(--small-space);
+    margin-bottom: var(--small-space);
+  }
+
   @include mq($from: tablet) {
     padding-right: var(--small-space);
     padding-left: var(--small-space);
@@ -29,6 +35,7 @@
     padding-top: var(--small-space);
     padding-bottom: 0;
     transition: color 0.2s ease;
+    color: black;
 
     &:hover {
       color: var(--white);
