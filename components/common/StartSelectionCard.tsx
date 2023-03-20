@@ -30,12 +30,12 @@ export default function StartSelectionCard({ item }: CardProps) {
         </figure>
       </Link>
       <Link href={slug} locale={subdomain}>
-        <h2 className="mid">{item.title}</h2>
+        <h3>{item.title}</h3>
       </Link>
-      <Markdown className="small">
+      <Markdown className="body-small">
         {item.intro}
       </Markdown>
-      <Link href={slug} locale={subdomain} className={'small'}>
+      <Link href={slug} locale={subdomain} className={cn('small', s.more)}>
         Läs mer
       </Link>
     </li>

@@ -19,9 +19,11 @@
       padding-right: calc(2 * var(--grid-unit));
     }
 
-    &.medium {}
+    &.medium {
+    }
 
-    &.large {}
+    &.large {
+    }
 
     &.portrait {
       padding-left: calc(3 * var(--grid-unit));
@@ -41,7 +43,7 @@
     .content {
       width: calc(2 * var(--grid-unit));
 
-      &>*:nth-last-child(2) {
+      & > *:nth-last-child(2) {
         margin-bottom: 0;
       }
 
@@ -53,6 +55,9 @@
         position: absolute;
         margin-left: calc(-1 * var(--grid-unit));
         margin-top: -1em;
+        &:hover {
+          color: var(--page-color);
+        }
       }
     }
 

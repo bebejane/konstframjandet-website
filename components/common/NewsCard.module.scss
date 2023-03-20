@@ -10,11 +10,16 @@
   }
 
   &.home {
-
-    a>h2,
-    p>a,
-    a:hover {
+    a > h2,
+    p > a {
       color: var(--black) !important;
+      &:hover {
+        color: var(--white) !important;
+      }
+      transition: color 0.2s ease;
+    }
+    p > a {
+      border-color: var(--white) !important;
     }
   }
 
@@ -34,7 +39,7 @@
     column-count: 2;
   }
 
-  >div,
+  > div,
   a {
     flex: 0 0 50%;
   }
@@ -54,7 +59,9 @@
     }
   }
 
-  @include mq($until: tablet) {}
+  @include mq($until: tablet) {
+  }
 
-  @include mq($from: tablet) {}
+  @include mq($from: tablet) {
+  }
 }
