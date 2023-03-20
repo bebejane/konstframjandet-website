@@ -41,14 +41,11 @@ export default function ProjectItem({ project: { id, title, slug, image, intro, 
       <Aside title={title}>
         {projectMenu.length > 0 &&
           <ul className={s.submenu}>
-            {projectMenu.map(({ id, slug, title }) => {
-
-              return (
-                <li key={id} className={cn(slug === asPath && s.selected)}>
-                  <Link href={slug}>{title}</Link>
-                </li>
-              )
-            })}
+            {projectMenu.map(({ id, slug, title }) =>
+              <li key={id} className={cn(slug === asPath && s.selected)}>
+                <Link href={slug}>{title}</Link>
+              </li>
+            )}
           </ul>
         }
       </Aside>
