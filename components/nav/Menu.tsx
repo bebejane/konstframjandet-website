@@ -32,7 +32,13 @@ export default function Menu({ districts, menu }: MenuProps) {
 	const ratio = Math.min(1, ((scrolledPosition || 0) / offset)) || 0
 	const navStyle = { transform: `translateY(-${scrollY}px)` }
 	const searchStyle = { minHeight: `calc(var(--navbar-height) - ${scrollY}px)` }
+	const resultsStyle = { minHeight: `calc(100vh - var(--navbar-height) + ${scrollY}px)`, maxHeight: `calc(100vh - var(--navbar-height) + ${scrollY}px)` }
 	const logoStyle = { fontSize: `${((1 - ratio) * 20) + 64}px` }
+
+	const resetSearch = () => {
+		setQuery('')
+		setShowSearch(false)
+	}
 
 	useEffect(() => {
 		if (!ref.current) return
@@ -44,8 +50,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 		const handleRouteChangeStart = (path: string) => {
 			setShowDistricts(false)
 			animateLogo('logo')
-			setQuery('')
-			setShowSearch(false)
+			resetSearch()
 		}
 		router.events.on('routeChangeStart', handleRouteChangeStart)
 		return () => router.events.off('routeChangeStart', handleRouteChangeStart)
@@ -109,7 +114,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 			</nav>
 
 			<div className={cn(s.search, showSearch && s.show)} style={searchStyle}>
-				<span className={cn(s.close, 'small')} onClick={() => setShowSearch(false)}>Stäng</span>
+				<span className={cn(s.close, 'small')} onClick={resetSearch}>Stäng</span>
 				<div className={s.bar} style={searchStyle}>
 					<input
 						className={'mid'}
@@ -119,11 +124,10 @@ export default function Menu({ districts, menu }: MenuProps) {
 						onChange={({ target: { value } }) => setQuery(value)}
 					/>
 				</div>
-				<div className={s.result}>
+				<div className={s.results} style={query ? resultsStyle : {}}>
 					<SearchResult query={query} />
 				</div>
 			</div>
-
 		</>
 	)
 }

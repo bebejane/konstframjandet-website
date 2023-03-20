@@ -4,15 +4,12 @@ import { Loader } from "/components";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { DatoMarkdown as Markdown } from "dato-nextjs-utils/components";
-import { useRouter } from "next/router";
 
 export type Props = {
   query: string
 }
 
 export default function SearchResult({ query }: Props) {
-
-  const router = useRouter()
 
   const [results, setResults] = useState<any | undefined>()
   const [error, setError] = useState<Error | undefined>()
@@ -61,7 +58,7 @@ export default function SearchResult({ query }: Props) {
         <>
           {Object.keys(results).map((type, idx) =>
             <ul key={idx}>
-              <li><h3>{results[type][0].category}</h3></li>
+              {/*<li><h3>{results[type][0].category}</h3></li>*/}
               {results[type]?.map(({ category, title, text, image, slug }, i) =>
                 <li key={i}>
                   <h1>
