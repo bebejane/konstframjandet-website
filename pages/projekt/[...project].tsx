@@ -4,7 +4,7 @@ import withGlobalProps from "/lib/withGlobalProps";
 import { apiQueryAll, mainDistrict } from '/lib/utils';
 import { apiQuery } from "dato-nextjs-utils/api";
 import { ProjectDocument, ProjectSubpageDocument, ProjectBySubpageDocument, AllProjectsDocument } from "/graphql";
-import { Aside, Article } from '/components';
+import { Aside, Article, SideMenu } from '/components';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { usePage } from '/lib/context/page';
@@ -39,15 +39,7 @@ export default function ProjectItem({ project: { id, title, slug, image, intro, 
   return (
     <>
       <Aside title={title}>
-        {projectMenu.length > 0 &&
-          <ul className={s.submenu}>
-            {projectMenu.map(({ id, slug, title }) =>
-              <li key={id} className={cn(slug === asPath && s.selected)}>
-                <Link href={slug}>{title}</Link>
-              </li>
-            )}
-          </ul>
-        }
+        <SideMenu items={projectMenu} />
       </Aside>
       <Article
         id={id}
