@@ -23,12 +23,9 @@
 
       .image {
         width: 100%;
-        height: calc(100vh - var(--navbar-height) - calc(var(--space) * 2));
-
-        @include mq($until: tablet) {
-        }
-
+        height: 70vh;
         @include mq($from: tablet) {
+          height: calc(100vh - var(--navbar-height) - calc(var(--space) * 2));
         }
       }
 
@@ -38,15 +35,23 @@
         flex-direction: column;
         top: 0;
         left: 0;
-        width: 80%;
         height: 100%;
-        padding-left: var(--grid-unit);
         padding-bottom: var(--small-space);
         padding-top: 0;
+        padding-left: var(--outer-margin);
+        padding-right: var(--outer-margin);
+        padding-bottom: var(--outer-margin);
+
+        @include mq($from: tablet) {
+          padding-left: var(--grid-unit);
+          width: 80%;
+          padding-bottom: var(--small-space);
+        }
 
         h1,
         p {
           color: var(--white);
+          margin-bottom: 0;
         }
 
         h1 {

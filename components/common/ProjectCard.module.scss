@@ -1,9 +1,12 @@
 .card {
   position: relative;
-  flex: 0 0 50%;
   padding-top: var(--space);
   padding-bottom: var(--space);
   border-bottom: var(--line-thick);
+
+  @include mq($from: tablet) {
+    flex: 0 0 50%;
+  }
 
   &:nth-last-child(1),
   &:nth-last-child(2) {
@@ -20,16 +23,22 @@
     figure {
       position: relative;
       display: flex;
-      aspect-ratio: 6/4;
       background-color: var(--black);
+      aspect-ratio: 4/4;
+      @include mq($from: tablet) {
+        aspect-ratio: 6/4;
+      }
 
       h1,
       .intro {
         position: absolute;
         left: 0;
         z-index: 1;
-        margin: var(--space);
-        margin-top: calc(var(--space) - 0.15em);
+        margin: var(--outer-margin);
+        @include mq($from: tablet) {
+          margin: var(--space);
+          margin-top: calc(var(--space) - 0.15em);
+        }
       }
 
       h1 {
