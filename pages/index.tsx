@@ -17,8 +17,8 @@ export default function Home({ district, start }: Props) {
 				<Block key={idx} data={block} record={district} />
 			)}
 			<StartSelectionContainer>
-				{start.selectedInDistricts.map(item =>
-					<StartSelectionCard item={item} />
+				{start.selectedInDistricts.map((item, idx) =>
+					<StartSelectionCard key={idx} item={item} />
 				)}
 			</StartSelectionContainer>
 		</div>

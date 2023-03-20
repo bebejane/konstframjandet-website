@@ -21,7 +21,7 @@ export default function Projects({ projects, completedProjects }: Props) {
         </ProjectContainer>
         {completedProjects.length > 0 &&
           <>
-            <h2 className={cn('big', s.completed)}>Avslutade Projekt</h2>
+            <h2 className={cn('big', s.completed)}>Avslutade projekt</h2>
             <ProjectContainer>
               {completedProjects.map((item, idx) =>
                 <ProjectCard key={idx} project={item} />
@@ -43,7 +43,7 @@ export const getStaticProps = withGlobalProps({ queries: [AllProjectsDocument] }
       projects: props.projects.filter(({ completed }) => !completed),
       completedProjects: props.projects.filter(({ completed }) => completed),
       page: {
-        title: 'Aktuella Projekt'
+        title: 'Aktuella projekt'
       }
     },
     revalidate
