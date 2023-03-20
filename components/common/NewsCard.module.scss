@@ -1,9 +1,12 @@
 .card {
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
   padding-top: var(--space);
   padding-bottom: var(--space);
   border-bottom: var(--line-thin);
+  @include mq($from: tablet) {
+    flex-direction: row;
+  }
 
   &:last-child {
     border-bottom: 0;
@@ -37,11 +40,17 @@
   .meta {
     line-height: var(--line-height) !important;
     column-count: 2;
+
+    span {
+      display: block;
+    }
   }
 
   > div,
   a {
-    flex: 0 0 50%;
+    @include mq($from: tablet) {
+      flex: 0 0 50%;
+    }
   }
 
   p {
@@ -53,6 +62,9 @@
     border: var(--line-thick);
     display: flex;
     aspect-ratio: 6 / 4;
+    @include mq($until: tablet) {
+      margin-bottom: var(--small-space);
+    }
 
     img {
       object-fit: cover;

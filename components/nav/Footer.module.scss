@@ -31,16 +31,24 @@
     flex-direction: row;
 
     .about {
-      flex: 0 0 calc(var(--grid-unit));
-      padding-right: 1rem;
+      @include mq($from: tablet) {
+        flex: 0 0 calc(var(--grid-unit));
+        padding-right: 1rem;
+      }
     }
 
     ul {
+      @include mq($until: tablet) {
+        display: none;
+      }
       list-style: none;
       display: flex;
     }
 
     > ul {
+      @include mq($until: tablet) {
+        display: none;
+      }
       display: flex;
       flex: 1 1 100%;
       flex-direction: row;

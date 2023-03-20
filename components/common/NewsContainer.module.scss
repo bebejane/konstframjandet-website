@@ -6,16 +6,18 @@
   width: 100%;
   border-bottom: var(--line-thick);
 
-  li:nth-child(odd) {
-    & > div {
-      padding-right: var(--gutter);
+  @include mq($from: tablet) {
+    li:nth-child(odd) {
+      & > div {
+        padding-right: var(--gutter);
+      }
     }
-  }
 
-  li:nth-child(even) {
-    flex-direction: row-reverse;
-    & > div {
-      padding-left: var(--gutter);
+    li:nth-child(even) {
+      flex-direction: row-reverse;
+      & > div {
+        padding-left: var(--gutter);
+      }
     }
   }
 }

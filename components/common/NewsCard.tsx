@@ -5,19 +5,14 @@ import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components'
 import format from 'date-fns/format'
 import { Image } from 'react-datocms/image'
 import Link from 'next/link'
-import { usePage } from '/lib/context/page'
-import { capitalize } from '/lib/utils'
 
 export type CardProps = {
   news: NewsRecord
 }
 
-export default function NewsCard({ news: { id, title, intro, image, slug, address, where, date, time, misc } }: CardProps) {
-
-  const { isHome } = usePage()
-
+export default function NewsCard({ news: { title, intro, image, slug, address, where, date, time, misc } }: CardProps) {
   return (
-    <li className={cn(s.card, isHome && s.home)} key={id}>
+    <li className={cn(s.card)}>
       <div className={s.content}>
         <Link href={`/aktuellt/${slug}`}>
           <h2 className="big">{title}</h2>
@@ -26,13 +21,11 @@ export default function NewsCard({ news: { id, title, intro, image, slug, addres
           {intro}
         </Markdown>
         <div className={cn(s.meta, "mid")}>
-          {where}<br />
-          {capitalize(format(new Date(date), 'iiii d MMMM'))}<br />
-          {time}<br />
-          {misc}
-          <p>
-            <Link href={`/aktuellt/${slug}`}>Läs mer</Link>
-          </p>
+          {where && <span>{where}</span>}
+          <span>{format(new Date(date), 'iiii d MMMM')}</span>
+          {time && <span>{time}</span>}
+          {misc && <span>{misc}</span>}
+          <span><Link href={`/aktuellt/${slug}`}>Läs mer</Link></span>
         </div>
       </div>
       <Link href={`/aktuellt/${slug}`}>
