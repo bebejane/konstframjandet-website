@@ -59,6 +59,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 			setShowDistricts(false)
 			animateLogo()
 			setQuery('')
+			setShowSearch(false)
 		}
 		router.events.on('routeChangeStart', handleRouteChangeStart)
 		return () => router.events.off('routeChangeStart', handleRouteChangeStart)
@@ -138,6 +139,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 						className={'mid'}
 						placeholder={'Sök...'}
 						ref={searchRef}
+						value={query}
 						onChange={({ target: { value } }) => setQuery(value)}
 					/>
 				</div>
