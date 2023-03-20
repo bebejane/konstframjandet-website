@@ -1,6 +1,7 @@
 .aside {
   margin-top: var(--space);
   width: 100%;
+
   @include mq($from: tablet) {
     position: sticky;
     top: var(--navbar-height);
@@ -31,7 +32,12 @@
   ul {
     list-style: none;
 
-    li {
+    li {}
+  }
+
+  &.hideMobile {
+    @include mq($until: desktop) {
+      display: none;
     }
   }
 }

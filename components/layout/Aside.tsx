@@ -4,12 +4,13 @@ import cn from 'classnames'
 export type Props = {
   children: React.ReactNode[] | React.ReactNode
   title?: string
+  hideOnMobile?: boolean
 }
 
-export default function Aside({ children, title }: Props) {
+export default function Aside({ children, title, hideOnMobile = false }: Props) {
 
   return (
-    <aside className={s.aside}>
+    <aside className={cn(s.aside, hideOnMobile && s.hideMobile)}>
       {title && children &&
         <h3>{title}</h3>
       }

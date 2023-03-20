@@ -93,13 +93,13 @@ export default function Menu({ districts, menu }: MenuProps) {
 				</div>
 				<div className={s.wrapper} >
 					<ul>
-						{menu.map(({ type, slug, label }) =>
+						{menu.map(({ type, slug, label }, idx) =>
 							type !== 'district' ?
-								<li className={cn(((asPath.startsWith(slug) && slug !== '/') || (isHome && type == 'home')) && !showDistricts && s.active)}>
+								<li key={idx} className={cn(((asPath.startsWith(slug) && slug !== '/') || (isHome && type == 'home')) && !showDistricts && s.active)}>
 									<Link href={slug}>{label}</Link>
 								</li>
-								:
-								<li className={cn(showDistricts && s.active)} onClick={() => setShowDistricts(!showDistricts)}>
+								: isMainDistrict &&
+								<li key={idx} className={cn(showDistricts && s.active)} onClick={() => setShowDistricts(!showDistricts)}>
 									Distrikt
 								</li>
 						)}

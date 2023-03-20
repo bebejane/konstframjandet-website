@@ -11,9 +11,11 @@
   }
 
   a {
-    &:hover {
-      .bubble {
-        opacity: 1;
+    @include mq($from: desktop) {
+      &:hover {
+        .bubble {
+          opacity: 1;
+        }
       }
     }
 
@@ -24,6 +26,7 @@
       .image {
         width: 100%;
         height: 70vh;
+
         @include mq($from: tablet) {
           height: calc(100vh - var(--navbar-height) - calc(var(--space) * 2));
         }

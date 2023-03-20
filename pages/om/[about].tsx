@@ -13,7 +13,7 @@ export default function AboutItem({ about: { id, content, intro, slug, _seoMetaT
 
   return (
     <>
-      <Aside>
+      <Aside hideOnMobile={true}>
         <SideMenu
           items={abouts.map(({ id, slug, title }) => ({ id, title, slug: `/om/${slug}` }))}
         />
