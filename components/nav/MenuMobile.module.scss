@@ -19,7 +19,6 @@
   z-index: var(--z-navbar-mobile);
   color: var(--black);
   background-color: var(--background);
-  transition: color 0.3s ease-in-out;
 
   .line {
     width: calc(100% - (2 * var(--outer-margin)));
@@ -44,7 +43,7 @@
   .logo,
   .hamburger,
   h2 {
-    transition: color 0.3s ease-in-out;
+    transition: color 0.3s ease-out;
   }
 
   &.open {
