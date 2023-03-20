@@ -32,10 +32,11 @@
 	--z-search: 500;
 	--z-logo: 600;
 	--z-district-popup: 700;
-	--z-fullscreen-gallery: 900;
-	--z-fullscreen-gallery-close: 901;
-	--z-menu-mobile: 1000;
-	--z-navbar-mobile: 1001;
+	--z-menu-mobile: 900;
+	--z-navbar-mobile: 901;
+	--z-fullscreen-gallery: 1000;
+	--z-fullscreen-gallery-close: 1001;
+
 
 	@include mq($from: tablet) {
 		--gutter: 4vw;
