@@ -36,7 +36,7 @@ export default function NewsItem({ news: {
             <p>
               {where && <>{where}<br /></>}
               {address && <>{address}<br /></>}
-              {date && <>{capitalize(format(new Date(date), 'EEEE d MMMM'))}<br /></>}
+              {date && <>{capitalize(format(new Date(date), 'd MMMM'))}<br /></>}
               {time && <>{time}<br /></>}
               {misc && <>{misc}</>}
             </p>

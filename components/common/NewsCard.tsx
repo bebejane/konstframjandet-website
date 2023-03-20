@@ -6,6 +6,7 @@ import format from 'date-fns/format'
 import { Image } from 'react-datocms/image'
 import Link from 'next/link'
 import { usePage } from '/lib/context/page'
+import { capitalize } from '/lib/utils'
 
 export type CardProps = {
   news: NewsRecord
@@ -26,7 +27,7 @@ export default function NewsCard({ news: { title, intro, image, slug, address, w
         </Markdown>
         <div className={cn(s.meta, "mid")}>
           {where && <span>{where}</span>}
-          <span>{format(new Date(date), 'iiii d MMMM')}</span>
+          <span>{capitalize(format(new Date(date), 'd MMMM'))}</span>
           {time && <span>{time}</span>}
           {misc && <span>{misc}</span>}
           <span><Link href={`/aktuellt/${slug}`}>Läs mer</Link></span>
