@@ -42,17 +42,17 @@ export default async function handler(req: NextRequest, res: NextResponse) {
 
 export const siteSearch = async (opt: any) => {
 
-  const { q, locale } = opt;
+  const { q } = opt;
 
   if (!q) return {}
 
   const variables = {
-    query: q ? `${q.split(' ').filter(el => el).join('|')}` : undefined,
-    locale
+    query: q ? `${q.split(' ').filter(el => el).join('|')}` : undefined
   };
 
   if (isEmptyObject(variables))
     return {}
+
 
   const client = buildClient({ apiToken: process.env.GRAPHQL_API_TOKEN });
   const itemTypes = await client.itemTypes.list();
@@ -60,7 +60,6 @@ export const siteSearch = async (opt: any) => {
   const search = (await client.items.list({
     filter: { type: itemTypes.map(m => m.api_key).join(','), query: q },
     order_by: '_rank_DESC',
-    locale,
     allPages: true
   })).map(el => ({
     ...el,
@@ -79,8 +78,7 @@ export const siteSearch = async (opt: any) => {
         projectIds: chunk.filter(el => el._api_key === 'project').map(el => el.id),
         projectSubpageIds: chunk.filter(el => el._api_key === 'project_subpage').map(el => el.id),
         first,
-        skip: i,
-        locale
+        skip: i
       }
     })
 

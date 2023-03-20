@@ -37,7 +37,7 @@ export default function ProjectItem({ project: { id, title, slug, image, intro, 
 
   return (
     <>
-      <Aside title={title}>
+      <Aside title={parentProject?.title ?? title}>
         {projectMenu.length > 0 &&
           <SideMenu items={projectMenu} />
         }

@@ -221,7 +221,7 @@ export const truncateText = (text: string, options: TruncateOptions): string => 
   const sentencesArr = text.match(/[^\.!\?]+[\.!\?]+/g);
 
   // If there aren't enough sentences, return the full text
-  if (sentencesArr.length <= sentences) {
+  if (!sentencesArr || sentencesArr.length <= sentences) {
     return text;
   }
 
