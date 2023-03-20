@@ -3,7 +3,6 @@ import cn from 'classnames'
 import { useRouter } from 'next/router'
 import { useState, useRef, useEffect } from 'react'
 import { primarySubdomain } from '/lib/utils'
-import { useScrollInfo } from 'dato-nextjs-utils/hooks'
 import { usePage } from '/lib/context/page'
 
 import type { Menu } from '/lib/menu'
@@ -25,7 +24,6 @@ export default function MenuMobile({ districts, menu }: Props) {
 
 
   useEffect(() => {
-
     const handleRouteChangeStart = (path: string) => {
       setOpen(false)
     }
@@ -47,7 +45,7 @@ export default function MenuMobile({ districts, menu }: Props) {
           <ul>
             {menu.map(({ type, slug, label, items }) =>
               <li className={cn(s.active)} key={type}>
-                {slug && !items ?
+                {slug && !items?.length ?
                   <Link href={slug}>{label}</Link>
                   :
                   <>
