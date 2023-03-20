@@ -37,7 +37,6 @@ export const buildMenu = async (districtId: string) => {
 
   const district = districts.find(({ id }) => id === districtId)
 
-
   const menu = base.map(item => {
     let items: MenuItem[];
     switch (item.type) {

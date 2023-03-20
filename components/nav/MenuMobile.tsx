@@ -22,6 +22,8 @@ export default function MenuMobile({ districts, menu }: Props) {
   const ref = useRef<HTMLElement | null>(null)
   const [subSelected, setSubSelected] = useState<string | null>(null)
 
+  // Remove some sub items
+  menu = menu.map((item) => ['about', 'district'].includes(item.type) ? item : { ...item, items: [] })
 
   useEffect(() => {
     const handleRouteChangeStart = (path: string) => {
@@ -58,6 +60,7 @@ export default function MenuMobile({ districts, menu }: Props) {
                         </li>
                       )}
                     </ul>
+
                   </>
                 }
               </li>

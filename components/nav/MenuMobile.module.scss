@@ -19,6 +19,7 @@
   z-index: var(--z-navbar-mobile);
   color: var(--black);
   background-color: var(--background);
+  transition: color 0.3s ease-in-out;
 
   .line {
     width: calc(100% - (2 * var(--outer-margin)));
@@ -40,10 +41,17 @@
     margin-left: 1rem;
   }
 
+  .logo,
+  .hamburger,
+  h2 {
+    transition: color 0.3s ease-in-out;
+  }
+
   &.open {
     color: var(--white);
+    background-color: var(--black);
 
-    > * {
+    >* {
       color: var(--white);
     }
   }
@@ -85,8 +93,8 @@
       border-bottom: var(--line-thin);
     }
 
-    > ul {
-      > li {
+    >ul {
+      >li {
         ul {
           display: none;
 
