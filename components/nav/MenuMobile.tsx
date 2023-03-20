@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useState, useRef, useEffect } from 'react'
 import { primarySubdomain } from '/lib/utils'
 import { usePage } from '/lib/context/page'
-
+import { animateLogo } from '/lib/utils'
 import type { Menu } from '/lib/menu'
 import Link from 'next/link'
 
@@ -28,6 +28,7 @@ export default function MenuMobile({ districts, menu }: Props) {
   useEffect(() => {
     const handleRouteChangeStart = (path: string) => {
       setOpen(false)
+      animateLogo('logo-mobile')
     }
     router.events.on('routeChangeStart', handleRouteChangeStart)
     return () => router.events.off('routeChangeStart', handleRouteChangeStart)
@@ -36,7 +37,7 @@ export default function MenuMobile({ districts, menu }: Props) {
   return (
     <>
       <header className={cn(s.navbar, open && s.open)}>
-        <Link href={'/'} className={s.logo} locale={primarySubdomain}>A</Link>
+        <Link id="logo-mobile" href={'/'} className={s.logo} locale={primarySubdomain}>A</Link>
         <h2>Konstfrämjandet</h2>
         <div className={cn(s.hamburger, 'symbol')} onClick={() => setOpen(!open)}>
           {open ? '5' : '2'}
