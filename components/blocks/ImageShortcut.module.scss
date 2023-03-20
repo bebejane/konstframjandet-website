@@ -11,17 +11,25 @@
   }
 
   a {
+    &:hover {
+      .bubble {
+        opacity: 1;
+      }
+    }
+
     figure {
       position: relative;
       width: 100%;
 
       .image {
         width: 100%;
-        height: calc(100vh - var(--navbar-height) - calc(var(--space) *2));
+        height: calc(100vh - var(--navbar-height) - calc(var(--space) * 2));
 
-        @include mq($until: tablet) {}
+        @include mq($until: tablet) {
+        }
 
-        @include mq($from: tablet) {}
+        @include mq($from: tablet) {
+        }
       }
 
       figcaption {
@@ -30,10 +38,11 @@
         flex-direction: column;
         top: 0;
         left: 0;
-        width: 100%;
+        width: 80%;
         height: 100%;
         padding-left: var(--grid-unit);
         padding-bottom: var(--small-space);
+        padding-top: 0;
 
         h1,
         p {
@@ -42,6 +51,7 @@
 
         h1 {
           flex: 1 1 auto;
+          margin-top: var(--small-space);
         }
 
         p {
@@ -56,5 +66,7 @@
     bottom: 0;
     right: 0;
     margin: var(--space);
+    opacity: 0;
+    transition: all 0.3s ease;
   }
 }

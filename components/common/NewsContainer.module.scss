@@ -4,6 +4,7 @@
   flex-wrap: wrap;
   padding-left: 0;
   width: 100%;
+  border-bottom: var(--line-thick);
 
   li:nth-child(odd) {
     & > div {

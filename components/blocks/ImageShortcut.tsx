@@ -29,7 +29,7 @@ export default function ImageShortcut({ data: { headline, image, link, externalL
             <h1>
               {headline}
             </h1>
-            <p>{text}</p>
+            <p className="intro">{text}</p>
           </figcaption>
         </figure>
         <Bubble className={cn(s.bubble, 'mid')}>Visa</Bubble>
