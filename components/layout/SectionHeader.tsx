@@ -9,7 +9,7 @@ import BalanceText from 'react-balance-text'
 
 export default function SectionHeader() {
 
-  const { title, subtitle, image, intro, layout } = usePage()
+  const { title, subtitle, image, intro, layout, color } = usePage()
 
   return (
     <header className={cn(s.header, s[layout])}>
@@ -28,6 +28,9 @@ export default function SectionHeader() {
         <Markdown className={cn(s.intro, "intro")}>
           {intro}
         </Markdown>
+      }
+      {color &&
+        <div className={s.bgcolor} style={{ backgroundColor: color }}></div>
       }
     </header>
   )

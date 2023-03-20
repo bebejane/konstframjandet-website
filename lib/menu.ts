@@ -42,22 +42,22 @@ export const buildMenu = async (districtId: string) => {
     let items: MenuItem[];
     switch (item.type) {
       case 'news':
-        //items = news.map(el => ({ type: 'news', label: el.title, slug: `/aktuellt/${el.slug}` }))
+        items = news.map(el => ({ type: 'news', label: el.title, slug: `/aktuellt/${el.slug}` }))
         break;
       case 'about':
         items = abouts.map(el => ({ type: 'about', label: el.title, slug: `/om/${el.slug}` }))
         item.slug = items[0]?.slug ?? item.slug
         break;
       case 'project':
-        //items = projects.map(el => ({ type: 'project', label: el.title, slug: `/projekt/${el.slug}` }))
+        items = projects.map(el => ({ type: 'project', label: el.title, slug: `/projekt/${el.slug}` }))
         break;
       case 'district':
         items = districts.filter(({ subdomain }) => primarySubdomain !== subdomain).map(el => ({ type: 'district', label: el.name, slug: `/${el.subdomain}`, subdomain: el.subdomain }))
         break;
       case 'contact':
         items = [
-          //{ type: 'contact', label: 'Facebook', slug: district.facebook, subdomain: district.subdomain },
-          //{ type: 'contact', label: 'Instagram', slug: district.instagram, subdomain: district.subdomain },
+          { type: 'contact', label: 'Facebook', slug: district.facebook, subdomain: district.subdomain },
+          { type: 'contact', label: 'Instagram', slug: district.instagram, subdomain: district.subdomain },
         ]
         break;
       default:

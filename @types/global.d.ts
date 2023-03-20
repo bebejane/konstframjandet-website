@@ -4,6 +4,7 @@ type PageProps = {
   subtitle?: string
   image?: FileField
   intro?: string
+  color?: string
   layout: 'full' | 'project' | 'home'
   isHome: boolean
   isMainDistrict: boolean

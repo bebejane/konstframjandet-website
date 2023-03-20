@@ -14,6 +14,7 @@ function App({ Component, pageProps, router }) {
 
   const { asPath } = router
   const { district, districts, footer, menu } = pageProps
+
   const page = pageProps.page || {} as PageProps
   const isHome = asPath === '/' || districts?.find(({ subdomain }) => `/${subdomain}` === asPath) !== undefined
 

@@ -101,7 +101,8 @@ export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, r
         subtitle: project.subtitle,
         image: project.image,
         intro: project.intro,
-        layout: 'project'
+        layout: 'project',
+        color: project.color?.hex
       }
     }
   };
