@@ -35,14 +35,14 @@ export default function MenuMobile({ districts, menu }: Props) {
 
   return (
     <>
-      <div className={cn(s.hamburger, 'symbol')} onClick={() => setOpen(!open)}>
-        {open ? '5' : '2'}
-      </div>
+      <header className={cn(s.navbar, open && s.open)}>
+        <Link href={'/'} className={s.logo} locale={primarySubdomain}>A</Link>
+        <h2>Konstfrämjandet</h2>
+        <div className={cn(s.hamburger, 'symbol')} onClick={() => setOpen(!open)}>
+          {open ? '5' : '2'}
+        </div>
+      </header>
       <div className={cn(s.menuMobile, open && s.open)}>
-        <header>
-          <Link href={'/'} className={s.logo} locale={primarySubdomain}>A</Link>
-          <h2>Konstfrämjandet</h2>
-        </header>
         <nav className={cn(s.menu)} ref={ref}>
           <ul>
             {menu.map(({ type, slug, label, items }) =>
