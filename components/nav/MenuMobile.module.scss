@@ -12,13 +12,20 @@
   top: 0;
   left: 0;
   display: flex;
-  width: calc(100% - (2 * var(--outer-margin)));
+  width: 100%;
   flex-direction: row;
   height: var(--navbar-height);
-  margin: var(--outer-margin);
+  padding: var(--outer-margin);
   z-index: var(--z-navbar-mobile);
   color: var(--black);
-  border-bottom: var(--line-thick);
+  background-color: var(--background);
+
+  .line {
+    width: calc(100% - (2 * var(--outer-margin)));
+    border-bottom: var(--line-thick);
+    position: absolute;
+    bottom: 0;
+  }
 
   .logo {
     font-size: 2.5rem;

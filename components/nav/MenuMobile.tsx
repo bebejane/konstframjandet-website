@@ -39,6 +39,7 @@ export default function MenuMobile({ districts, menu }: Props) {
         <div className={cn(s.hamburger, 'symbol')} onClick={() => setOpen(!open)}>
           {open ? '5' : '2'}
         </div>
+        <div className={s.line}></div>
       </header>
       <div className={cn(s.menuMobile, open && s.open)}>
         <nav className={cn(s.menu)} ref={ref}>
