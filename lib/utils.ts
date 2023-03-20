@@ -207,3 +207,36 @@ export async function mainDistrict(): Promise<DistrictRecord> {
   const { district } = await apiQuery(DistrictBySubdomainDocument, { variables: { subdomain: primarySubdomain } })
   return district as DistrictRecord
 }
+
+export type TruncateOptions = {
+  sentences: number
+  useEllipsis: boolean
+  minLength: number
+}
+
+export const truncateText = (text: string, options: TruncateOptions): string => {
+  let { sentences = 1, useEllipsis = false, minLength = 0 } = options;
+
+  // Split the text into sentences
+  const sentencesArr = text.match(/[^\.!\?]+[\.!\?]+/g);
+
+  // If there aren't enough sentences, return the full text
+  if (sentencesArr.length <= sentences) {
+    return text;
+  }
+
+  // Create the truncated text by joining specified number of sentences
+  let truncatedText = sentencesArr.slice(0, sentences).join(' ');
+
+  // Cut off at ! and ? until minimum length is reached
+  while (truncatedText.length < minLength && truncatedText.search(/[!?]/) > -1) {
+    truncatedText = truncatedText.concat(sentencesArr[sentences].match(/^[^!.?]+[!.?]+/) ? sentencesArr[sentences].match(/^[^!.?]+[!.?]+/)[0] : "");
+    sentences++;
+  }
+
+  if (useEllipsis) {
+    truncatedText += '...';
+  }
+
+  return truncatedText;
+}

@@ -1,0 +1,40 @@
+query SiteSearch(
+	$aboutIds: [ItemId]
+	$newsIds: [ItemId]
+	$projectIds: [ItemId]
+	$first: IntType = 100
+	$skip: IntType = 0
+	$locale: SiteLocale
+) {
+	abouts: allAbouts(
+		first: $first
+		skip: $skip
+		locale: $locale
+		filter: { id: { in: $aboutIds } }
+	) {
+		__typename
+		_modelApiKey
+		title
+		text: intro(markdown: false)
+		slug
+	}
+	news: allNews(first: $first, skip: $skip, locale: $locale, filter: { id: { in: $newsIds } }) {
+		__typename
+		_modelApiKey
+		title
+		text: intro(markdown: false)
+		slug
+	}
+	projects: allProjects(
+		first: $first
+		skip: $skip
+		locale: $locale
+		filter: { id: { in: $projectIds } }
+	) {
+		__typename
+		_modelApiKey
+		title
+		text: intro(markdown: false)
+		slug
+	}
+}

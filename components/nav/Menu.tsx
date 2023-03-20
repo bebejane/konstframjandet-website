@@ -6,6 +6,8 @@ import { primarySubdomain } from '/lib/utils'
 import { useScrollInfo } from 'dato-nextjs-utils/hooks'
 import { usePage } from '/lib/context/page'
 import { sleep } from '/lib/utils'
+import { SearchResult } from '/components'
+
 import type { Menu } from '/lib/menu'
 import Link from 'next/link'
 
@@ -33,13 +35,14 @@ export default function Menu({ districts, menu }: MenuProps) {
 	const [offset, setOffset] = useState(0)
 	const [showDistricts, setShowDistricts] = useState(false)
 	const [showSearch, setShowSearch] = useState(false)
+	const [query, setQuery] = useState('')
 	const searchRef = useRef<HTMLInputElement | null>(null)
 	const ref = useRef<HTMLElement | null>(null)
 
 	const scrollY = Math.min(offset, scrolledPosition)
 	const ratio = Math.min(1, ((scrolledPosition || 0) / offset)) || 0
 	const navStyle = { transform: `translateY(-${scrollY}px)` }
-	const searchStyle = { height: `calc(var(--navbar-height) - ${scrollY}px)` }
+	const searchStyle = { minHeight: `calc(var(--navbar-height) - ${scrollY}px)` }
 	const logoStyle = { fontSize: `${((1 - ratio) * 20) + 64}px` }
 
 	const aboutStartPageSlug = menu.find(({ type }) => type === 'about')?.slug
@@ -55,6 +58,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 		const handleRouteChangeStart = (path: string) => {
 			setShowDistricts(false)
 			animateLogo()
+			setQuery('')
 		}
 		router.events.on('routeChangeStart', handleRouteChangeStart)
 		return () => router.events.off('routeChangeStart', handleRouteChangeStart)
@@ -128,10 +132,20 @@ export default function Menu({ districts, menu }: MenuProps) {
 			</nav>
 
 			<div className={cn(s.search, showSearch && s.show)} style={searchStyle}>
-				<input className={'mid'} placeholder={'Sök...'} ref={searchRef} />
 				<span className={cn(s.close, 'small')} onClick={() => setShowSearch(false)}>Stäng</span>
-			</div>
+				<div className={s.bar} style={searchStyle}>
+					<input
+						className={'mid'}
+						placeholder={'Sök...'}
+						ref={searchRef}
+						onChange={({ target: { value } }) => setQuery(value)}
+					/>
+				</div>
+				<div className={s.result}>
+					<SearchResult query={query} />
+				</div>
 
+			</div>
 		</>
 	)
 }

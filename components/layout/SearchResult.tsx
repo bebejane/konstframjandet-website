@@ -1,19 +1,19 @@
-import s from "./Search.module.scss";
+import s from "./SearchResult.module.scss";
 import cn from 'classnames'
 import { Loader } from "/components";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { DatoMarkdown as Markdown } from "dato-nextjs-utils/components";
-import useStore from "/lib/store";
 import { useRouter } from "next/router";
 
-export type Props = {}
+export type Props = {
+  query: string
+}
 
-export default function SearchResult({ }: Props) {
+export default function SearchResult({ query }: Props) {
 
   const router = useRouter()
 
-  const [query, setSearchQuery] = useStore((state) => [state.searchQuery, state.setSearchQuery])
   const [results, setResults] = useState<any | undefined>()
   const [error, setError] = useState<Error | undefined>()
   const [loading, setLoading] = useState<boolean>(false)
@@ -53,19 +53,12 @@ export default function SearchResult({ }: Props) {
     searchTimeout.current = setTimeout(() => siteSearch(query), 250)
   }, [query])
 
-  useEffect(() => {
-    const handleRouteChangeStart = (path: string) => setSearchQuery(undefined)
-    router.events.on('routeChangeComplete', handleRouteChangeStart)
-    return () => router.events.off('routeChangeComplete', handleRouteChangeStart)
-  }, [])
-
   if (!query) return null
 
   return (
     <div className={s.container}>
       {results && Object.keys(results).length > 0 ?
         <>
-          <h2>result</h2>
           {Object.keys(results).map((type, idx) =>
             <ul key={idx}>
               <li><h3>{results[type][0].category}</h3></li>
@@ -77,7 +70,7 @@ export default function SearchResult({ }: Props) {
                   <div className={s.intro}>
                     <Markdown>{text}</Markdown>
                   </div>
-                  <Link href={slug}><button>read more</button></Link>
+                  <Link href={slug}>Läs mer</Link>
                 </li>
               )}
             </ul>

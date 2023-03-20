@@ -1,4 +1,7 @@
 .container {
+  position: relative;
+  min-height: 100vh;
+
   h2 {
     text-align: center;
   }
@@ -8,7 +11,7 @@
     text-transform: uppercase;
   }
 
-  > ul {
+  >ul {
     list-style: none;
     padding-left: 0;
 
@@ -19,7 +22,7 @@
         p {
           padding: 0;
 
-          > strong {
+          >strong {
             font-family: $headline-font;
             font-size: 0.75rem;
             font-weight: bold !important;
@@ -29,9 +32,6 @@
 
       button {
         margin-top: var(--small-space);
-        margin-left: calc(var(--grid-unit) * 3);
-        margin-right: calc(var(--grid-unit) * 3);
-        width: calc(100% - (var(--grid-unit) * 6));
       }
     }
   }
@@ -42,6 +42,5 @@
     margin-top: calc(var(--space) * 1);
   }
 
-  .nohits {
-  }
+  .nohits {}
 }

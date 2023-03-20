@@ -3561,6 +3561,18 @@ type ProjectSubpageQueryVariables = Exact<{
 
 type ProjectSubpageQuery = { __typename?: 'Query', project?: { __typename?: 'ProjectSubpageRecord', _createdAt: any, id: any, title?: string | null, subtitle?: string | null, slug: string, intro?: string | null, image: { __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, height?: any | null, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, sizes: string } | null }, content?: { __typename?: 'ProjectSubpageModelContentField', value: any, blocks: Array<{ __typename: 'ButtonRecord', id: any, text?: string | null, url?: string | null } | { __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, height?: any | null, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, sizes: string } | null }> } | { __typename: 'ImageRecord', id: any, layout?: string | null, image: Array<{ __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, height?: any | null, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, sizes: string } | null }> } | { __typename: 'LogoRecord', id: any, image: Array<{ __typename?: 'FileField', id: any, mimeType: string, url: string, title?: string | null, alt?: string | null, height?: any | null, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', src: string, width: any, height: any, alt?: string | null, title?: string | null, base64?: string | null, sizes: string } | null }> } | { __typename: 'VideoRecord', caption?: string | null, id: any, video?: { __typename?: 'VideoField', width: any, height: any, provider: string, providerUid: string, thumbnailUrl: string, title: string, url: string } | null }> } | null } | null };
 
+type SiteSearchQueryVariables = Exact<{
+  aboutIds?: InputMaybe<Array<InputMaybe<Scalars['ItemId']>> | InputMaybe<Scalars['ItemId']>>;
+  newsIds?: InputMaybe<Array<InputMaybe<Scalars['ItemId']>> | InputMaybe<Scalars['ItemId']>>;
+  projectIds?: InputMaybe<Array<InputMaybe<Scalars['ItemId']>> | InputMaybe<Scalars['ItemId']>>;
+  first?: InputMaybe<Scalars['IntType']>;
+  skip?: InputMaybe<Scalars['IntType']>;
+  locale?: InputMaybe<SiteLocale>;
+}>;
+
+
+type SiteSearchQuery = { __typename?: 'Query', abouts: Array<{ __typename: 'AboutRecord', _modelApiKey: string, title?: string | null, slug: string, text?: string | null }>, news: Array<{ __typename: 'NewsRecord', _modelApiKey: string, title?: string | null, slug: string, text?: string | null }>, projects: Array<{ __typename: 'ProjectRecord', _modelApiKey: string, title?: string | null, slug: string, text?: string | null }> };
+
 type StartQueryVariables = Exact<{
   districtId?: InputMaybe<Scalars['ItemId']>;
 }>;
