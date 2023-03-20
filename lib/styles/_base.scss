@@ -3,7 +3,7 @@
 	--white: #ffffff;
 	--light-grey: #f5f5f5;
 	--temp-orange: #f5c010;
-	--outer-margin: 6vw;
+	--outer-margin: 5vw;
 	--logo-size: 40px;
 	--logo-size-optical: 1.7rem;
 	--grid-unit: calc(((100vw - (2 * var(--outer-margin))) / 4));
@@ -11,8 +11,8 @@
 	--body-width: calc(100% - (2 * var(--outer-margin)));
 	--very-small-space: 0.5rem;
 	--small-space: 1.5rem;
-	--space: 2.5rem;
-	--big-space: 3.5rem;
+	--space: 2rem;
+	--big-space: 2rem;
 	--line-height: 1.4em;
 	--line-height-nav: 1.6em;
 	--gutter: 4vw;
@@ -22,7 +22,7 @@
 	--navbar-height: calc((2 * var(--navbar-space)) + var(--navbar-title-size) + 0.5rem + var(--navbar-text-size));
 	--background: var(--light-greye);
 	--foreground: var(--black);
-	--line-thick: 7px solid var(--white);
+	--line-thick: 6px solid var(--white);
 	--line-thin: 3px solid var(--white);
 	--background: var(--light-grey);
 	--page-color: transparent;
@@ -37,9 +37,12 @@
 	--z-fullscreen-gallery-close: 801;
 
 	@include mq($from: tablet) {
-		--outer-margin: 5vw;
 		--gutter: 4vw;
 		--logo-size: 84px;
+		--small-space: 1.5rem;
+		--space: 2.5rem;
+		--big-space: 3.5rem;
+		--line-thick: 7px solid var(--white);
 	}
 }
 

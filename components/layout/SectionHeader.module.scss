@@ -4,8 +4,10 @@
   &.full {
     padding-top: var(--small-space);
     padding-bottom: var(--big-space);
-    padding-left: var(--grid-unit);
     border-bottom: var(--line-thick);
+    @include mq($from: tablet) {
+      padding-left: var(--grid-unit);
+    }
   }
 
   &.project {
@@ -13,7 +15,6 @@
     background-color: var(--black);
 
     width: 100%;
-    //margin-bottom: var(--space);
     border-bottom: var(--line-thick);
 
     h1 {
@@ -21,8 +22,9 @@
       z-index: 1;
       color: var(--white);
       top: var(--small-space);
-      left: var(--grid-unit);
-
+      @include mq($from: tablet) {
+        left: var(--grid-unit);
+      }
     }
 
     .intro {

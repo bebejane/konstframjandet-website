@@ -54,17 +54,19 @@ export default function Article({ id, title, content, image, imageSize, intro, r
             {intro &&
               <Markdown className={cn(s.intro, "intro")}>{intro}</Markdown>
             }
-            <StructuredContent
-              id={id}
-              record={record}
-              content={content}
-              onClick={(imageId) => setImageId(imageId)}
-            />
-            {backLink &&
-              <div className={s.back}>
-                <Link href={backLink} className="mid">Visa alla</Link>
-              </div>
-            }
+            <div className={s.structured}>
+              <StructuredContent
+                id={id}
+                record={record}
+                content={content}
+                onClick={(imageId) => setImageId(imageId)}
+              />
+              {backLink &&
+                <div className={s.back}>
+                  <Link href={backLink} className="mid">Visa alla</Link>
+                </div>
+              }
+            </div>
           </div>
           {image &&
             <div className={s.caption}>

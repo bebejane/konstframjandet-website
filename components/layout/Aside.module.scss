@@ -1,10 +1,17 @@
 .aside {
-  position: sticky;
   margin-top: var(--space);
-  top: var(--navbar-height);
-  width: var(--grid-unit);
+  width: 100%;
+  @include mq($from: tablet) {
+    position: sticky;
+    top: var(--navbar-height);
+    width: var(--grid-unit);
+  }
 
   div {
+    @include mq($until: tablet) {
+      column-count: 2;
+    }
+
     border-bottom: var(--line-thin);
     margin-right: var(--gutter);
     padding-bottom: var(--small-space);
@@ -18,11 +25,13 @@
     color: var(--page-color);
     border-bottom: var(--line-thin);
     margin-bottom: var(--small-space);
+    margin-right: var(--gutter);
   }
 
   ul {
     list-style: none;
 
-    li {}
+    li {
+    }
   }
 }

@@ -2,7 +2,12 @@
   list-style: none;
 
   li {
-    &.selected {
+    &:not(:last-of-type) {
+      padding-bottom: 0.5em;
+    }
+
+    &.selected,
+    &:hover {
       a {
         color: var(--page-color) !important;
       }

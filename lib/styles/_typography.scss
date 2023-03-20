@@ -1,7 +1,11 @@
 html,
 body {
   font-weight: normal;
-  font-size: 17px;
+  font-size: 15px;
+
+  @include mq($from: tablet) {
+    font-size: 17px;
+  }
 
   @include mq($from: semi-wide) {
     font-size: 24px;
@@ -74,10 +78,14 @@ p {
 p.intro,
 .intro p {
   font-family: $body-font;
-  font-size: calc(1rem + 4px);
   padding-bottom: 0;
   font-weight: bold;
   line-height: var(--line-height);
+  font-size: calc(1rem + 2px);
+
+  @include mq($from: tablet) {
+    font-size: calc(1rem + 4px);
+  }
 }
 
 p.big,
