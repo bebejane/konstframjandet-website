@@ -23,6 +23,7 @@ export default function StartSelectionCard({ item }: CardProps) {
           <Image
             data={item.image.responsiveImage}
             pictureClassName={s.image}
+            placeholderClassName={s.image}
             objectFit="cover"
           />
         </figure>

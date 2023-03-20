@@ -18,8 +18,9 @@ export default function Footer({ footer, menu }: FooterProps) {
 				<div className={s.about}>
 					<span className={s.logo}>B</span>
 					<Link href={'/'} scroll={true} locale={primarySubdomain}>
-						Konstfrämjandet<br /><br />
+						Konstfrämjandet
 					</Link>
+					<br /><br />
 					Konstfrämjandet är en organisation bildad 1947 som arbetar med konstbildning
 					och med att föra ut konst till människor i deras vardag. Vi verkar i hela Sverige.
 				</div>
