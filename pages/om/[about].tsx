@@ -1,11 +1,8 @@
-import s from "./[about].module.scss";
-import cn from 'classnames'
 import withGlobalProps from "/lib/withGlobalProps";
 import { apiQuery } from 'dato-nextjs-utils/api';
 import { apiQueryAll } from '/lib/utils';
 import { AboutDocument, AllAboutsDocument } from "/graphql";
 import { Aside, Article, SideMenu } from '/components';
-import Link from 'next/link';
 
 export type Props = {
   about: AboutRecord
@@ -17,14 +14,15 @@ export default function AboutItem({ about: { id, content, intro, slug, _seoMetaT
   return (
     <>
       <Aside>
-        <SideMenu items={abouts.map(({ id, slug, title }) => ({ id, title, slug: `/om/${slug}` }))} />
+        <SideMenu
+          items={abouts.map(({ id, slug, title }) => ({ id, title, slug: `/om/${slug}` }))}
+        />
       </Aside>
       <Article
         id={'id'}
         intro={intro}
         content={content}
         record={{}}
-        backLink={'/om'}
       />
     </>
   )

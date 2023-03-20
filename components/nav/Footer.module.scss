@@ -7,6 +7,10 @@
   color: var(--light-grey);
   padding: var(--outer-margin);
 
+  @include mq($until: desktop) {
+    display: none;
+  }
+
   .line {
     border: var(--line-thin);
     border-color: var(--light-grey);
@@ -40,12 +44,12 @@
       display: flex;
     }
 
-    > ul {
+    >ul {
       display: flex;
       flex: 1 1 100%;
       flex-direction: row;
 
-      > li {
+      >li {
         flex: 0 0 calc(100% / 5);
         padding-right: 1rem;
         overflow: hidden;

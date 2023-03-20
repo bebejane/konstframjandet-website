@@ -29,12 +29,13 @@
 
 	--z-background-image: 0;
 	--z-menu: 400;
-
 	--z-search: 500;
 	--z-logo: 600;
 	--z-district-popup: 700;
-	--z-fullscreen-gallery: 800;
-	--z-fullscreen-gallery-close: 801;
+	--z-fullscreen-gallery: 900;
+	--z-fullscreen-gallery-close: 901;
+	--z-menu-mobile: 1000;
+	--z-hamburger: 1001;
 
 	@include mq($from: tablet) {
 		--gutter: 4vw;
@@ -43,6 +44,10 @@
 		--space: 2.5rem;
 		--big-space: 3.5rem;
 		--line-thick: 7px solid var(--white);
+	}
+
+	@include mq($until: desktop) {
+		--navbar-height: 2rem;
 	}
 }
 

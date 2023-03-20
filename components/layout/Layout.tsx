@@ -1,6 +1,6 @@
 import s from './Layout.module.scss'
 import React, { useState } from 'react'
-import { Content, Footer, Grid, Menu, FullscreenGallery } from '/components'
+import { Content, Footer, Grid, Menu, FullscreenGallery, MenuMobile } from '/components'
 import type { MenuItem } from '/lib/menu'
 import { useRouter } from 'next/router'
 import { useStore } from '/lib/store'
@@ -27,6 +27,7 @@ export default function Layout({ children, menu: menuFromProps, footer, title, d
 				{children}
 			</Content>
 			<Menu districts={districts} menu={menu} />
+			<MenuMobile districts={districts} menu={menu} />
 			<Footer footer={footer} menu={menu} />
 			<FullscreenGallery
 				index={images?.findIndex((image) => image?.id === imageId)}
