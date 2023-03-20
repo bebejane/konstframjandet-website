@@ -22,6 +22,8 @@
       z-index: 1;
       color: var(--white);
       top: var(--small-space);
+      left: var(--outer-margin);
+
       @include mq($from: tablet) {
         left: var(--grid-unit);
       }
@@ -29,11 +31,16 @@
 
     .intro {
       position: absolute;
-      left: var(--grid-unit);
       bottom: var(--small-space);
       color: var(--white);
       margin-bottom: 0;
-      margin-right: calc(2 * var(--gutter));
+      left: var(--outer-margin);
+      margin-right: var(--outer-margin);
+
+      @include mq($from: tablet) {
+        left: var(--grid-unit);
+        margin-right: calc(2 * var(--gutter));
+      }
     }
   }
 

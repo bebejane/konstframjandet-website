@@ -54,8 +54,14 @@
       list-style: none;
     }
 
-    >ul {
-      >li {
+    li {
+      padding-top: 1em;
+      padding-bottom: 1em;
+      border-bottom: var(--line-thin);
+    }
+
+    > ul {
+      > li {
         ul {
           display: none;
 
@@ -65,7 +71,12 @@
 
           margin-left: 1rem;
 
-          li {}
+          li {
+            &:last-of-type {
+              border-bottom: 0;
+              padding-bottom: 0em;
+            }
+          }
         }
       }
     }
