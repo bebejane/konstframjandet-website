@@ -8,10 +8,10 @@ import { ProjectBySubpageDocument } from '/graphql';
 const generatePreviewUrl = async ({ item, itemType, locale }) => {
 
   let path = null;
-  const { id, slug, district: districtId } = item.attributes
+  const { slug, district: districtId } = item.attributes
   const district = districtId ? (await allDistricts()).find(({ id }) => id === districtId) : undefined
   const districtSlug = district && district.subdomain !== primarySubdomain ? `/${district.subdomain}` : ''
-  console.log(id, itemType.attributes.api_key)
+  console.log(item.id, itemType.attributes.api_key)
 
   switch (itemType.attributes.api_key) {
     case 'news':
@@ -24,7 +24,7 @@ const generatePreviewUrl = async ({ item, itemType, locale }) => {
       path = `/projekt/${slug}`;
       break;
     case 'project_subpage':
-      const { project } = await apiQuery(ProjectBySubpageDocument, { variables: { subpageId: id } })
+      const { project } = await apiQuery(ProjectBySubpageDocument, { variables: { subpageId: item.id } })
       project && (path = `/projekt/${project.slug}/${slug}`)
       break;
     case 'district':
