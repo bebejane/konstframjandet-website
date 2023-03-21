@@ -30,7 +30,11 @@ export default function Menu({ districts, menu }: MenuProps) {
 
 	const scrollY = Math.min(offset, scrolledPosition)
 	const ratio = Math.min(1, ((scrolledPosition || 0) / offset)) || 0
-	const navStyle = { transform: `translateY(-${scrollY}px)` }
+	const navStyle = {
+		transform: `translateY(-${scrollY}px)`,
+		backgroundColor: scrollY > 0 ? 'var(--background)' : undefined
+
+	}
 	const searchStyle = { minHeight: `calc(var(--navbar-height) - ${scrollY}px)` }
 	const resultsStyle = { minHeight: `calc(100vh - var(--navbar-height) + ${scrollY}px)`, maxHeight: `calc(100vh - var(--navbar-height) + ${scrollY}px)` }
 	const logoStyle = { fontSize: `${((1 - ratio) * 20) + 64}px` }
