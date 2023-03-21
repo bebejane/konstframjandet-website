@@ -9,7 +9,7 @@ export type Props = {
   abouts: AboutRecord[]
 }
 
-export default function AboutItem({ about: { id, content, intro, slug, _seoMetaTags }, abouts }: Props) {
+export default function AboutItem({ about: { id, content, intro, slug, _seoMetaTags }, about, abouts }: Props) {
 
   return (
     <>
@@ -22,7 +22,7 @@ export default function AboutItem({ about: { id, content, intro, slug, _seoMetaT
         id={'id'}
         intro={intro}
         content={content}
-        record={{}}
+        record={about}
       />
     </>
   )
