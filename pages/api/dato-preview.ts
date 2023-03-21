@@ -32,7 +32,7 @@ export default async function handler(req: NextRequest, res: NextResponse) {
 
   // This will allow OPTIONS request
   if (req.method === 'OPTIONS') {
-
+    return new Response('ok', { status: 200 })
   }
   const url = generatePreviewUrl(body);
   const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : process.env.URL;
