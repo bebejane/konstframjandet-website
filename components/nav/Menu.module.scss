@@ -42,8 +42,7 @@
   border-bottom: var(--line-thick);
   margin-left: var(--outer-margin);
   margin-right: var(--outer-margin);
-  background-color: var(--background);
-  transition: background-color 0.5s ease-in-out;
+
 
   @include mq($until: desktop) {
   }

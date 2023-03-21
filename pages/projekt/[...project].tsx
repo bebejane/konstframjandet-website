@@ -37,7 +37,10 @@ export default function ProjectItem({ project: { id, title, slug, image, intro, 
 
   return (
     <>
-      <Aside title={parentProject?.title ?? title}>
+      <Aside
+        title={parentProject?.title ?? title}
+        titleHref={parentProject ? `/projekt/${parentProject.slug}` : undefined}
+      >
         {projectMenu.length > 0 &&
           <SideMenu items={projectMenu} />
         }
