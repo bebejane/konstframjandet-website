@@ -8,6 +8,7 @@ fragment ProjectSubpageFragment on ProjectSubpageRecord {
 	image {
 		...ImageFragment
 	}
+	dropcap
 	content {
 		value
 		blocks {

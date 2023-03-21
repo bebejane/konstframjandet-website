@@ -19,6 +19,7 @@ fragment ProjectFragment on ProjectRecord {
 	subpage {
 		...ProjectSubpageFragmentLight
 	}
+	dropcap
 	content {
 		value
 		blocks {

@@ -17,6 +17,7 @@ fragment NewsFragment on NewsRecord {
 	title
 	where
 	slug
+	dropcap
 	_createdAt
 	content {
 		value

@@ -4,7 +4,7 @@ fragment AboutFragment on AboutRecord {
 	title
 	slug
 	intro(markdown: false)
-
+	dropcap
 	content {
 		value
 		blocks {
