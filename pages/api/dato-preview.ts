@@ -26,6 +26,7 @@ const generatePreviewUrl = async ({ item, itemType, locale }) => {
       break;
     case 'district':
       path = '/';
+      break;
     default:
       break;
   }
