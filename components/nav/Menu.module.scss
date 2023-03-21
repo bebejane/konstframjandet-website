@@ -25,7 +25,7 @@
     }
   }
 
-  &.home > a:hover {
+  &.home>a:hover {
     color: var(--white);
   }
 }
@@ -43,8 +43,7 @@
   margin-left: var(--outer-margin);
   margin-right: var(--outer-margin);
 
-  @include mq($until: desktop) {
-  }
+  @include mq($until: desktop) {}
 
   &.small {
     transform: translateY(-50%);
@@ -106,7 +105,7 @@
       user-select: none;
 
       &.active,
-      &.active > a {
+      &.active>a {
         color: var(--page-color);
       }
 
@@ -120,8 +119,9 @@
   }
 
   &.home {
+
     .active,
-    .active > a,
+    .active>a,
     li:hover,
     a:hover {
       color: var(--white) !important;
@@ -174,7 +174,6 @@
   min-height: 100vh;
   z-index: var(--z-search);
   background-color: var(--white);
-  padding-left: var(--outer-margin);
   transition: transform 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
   transform: translateY(-100%);
 
@@ -182,12 +181,13 @@
     transform: translateY(0%);
   }
 
+
   .bar {
     display: flex;
     align-items: center;
-
     height: 100%;
     width: 100%;
+    padding-left: var(--outer-margin);
 
     input {
       margin: 0;
