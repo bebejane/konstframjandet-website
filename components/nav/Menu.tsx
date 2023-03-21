@@ -68,7 +68,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 	return (
 		<>
 			<div className={cn(s.logo, isHome && s.home)} style={logoStyle}>
-				<Link id="logo" href={'/'} locale={primarySubdomain}>A</Link>
+				<Link id="logo" href={'/'}>A</Link>
 			</div>
 			<nav className={cn(s.menu, isHome && s.home)} style={navStyle} ref={ref}>
 				<div className={s.top} style={{ opacity: (1 - ratio) }}>

@@ -37,7 +37,7 @@ export default function MenuMobile({ districts, menu }: Props) {
   return (
     <>
       <header className={cn(s.navbar, open && s.open)}>
-        <Link id="logo-mobile" href={'/'} className={s.logo} locale={primarySubdomain}>A</Link>
+        <Link id="logo-mobile" href={'/'} className={s.logo}>A</Link>
         <h2>{isMainDistrict ? 'Konstfrämjandet' : `${district.name}`}</h2>
         <div className={cn(s.hamburger, 'symbol')} onClick={() => setOpen(!open)}>
           {open ? '5' : '2'}
