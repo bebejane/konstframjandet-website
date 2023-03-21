@@ -15,13 +15,17 @@ const generatePreviewUrl = async ({ item, itemType, locale }) => {
   switch (itemType.attributes.api_key) {
     case 'news':
       path = `/aktuellt/${slug}`;
+      break;
     case 'about':
       path = `/om/${slug}`;
+      break;
     case 'project':
       path = `/projekt/${slug}`;
+      break;
     case 'project_subpage':
       const { project } = await apiQuery(ProjectBySubpageDocument, { variables: { subpageId: id } })
-      path = `/projekt/${project.slug}/${slug}`
+      project && (path = `/projekt/${project.slug}/${slug}`)
+      break;
     case 'district':
       path = '/';
     default:
