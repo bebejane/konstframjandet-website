@@ -51,11 +51,11 @@ export default function Article({ id, title, content, image, imageSize, intro, b
           </figure>
         }
         <section>
-          <div className={cn(s.content, record.dropcap || dropcap && s.dropcap)}>
+          <div className={s.content}>
             {intro &&
               <Markdown className={cn(s.intro, "intro")}>{intro}</Markdown>
             }
-            <div className={s.structured}>
+            <div className={cn(s.structured, record.dropcap || dropcap && s.dropcap)}>
               <StructuredContent
                 id={id}
                 record={record}
