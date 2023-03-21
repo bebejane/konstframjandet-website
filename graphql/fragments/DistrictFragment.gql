@@ -115,5 +115,25 @@ fragment DistrictFragment on DistrictRecord {
 				...NewsFragmentLight
 			}
 		}
+		... on StartImageGalleryRecord {
+			__typename
+			id
+			links {
+				... on ExternalLinkRecord {
+					id
+					title
+					url
+					externalLinkImage: image {
+						...ImageFragment
+					}
+				}
+				... on NewsRecord {
+					...NewsFragmentLight
+				}
+				... on ProjectRecord {
+					...ProjectFragmentLight
+				}
+			}
+		}
 	}
 }
