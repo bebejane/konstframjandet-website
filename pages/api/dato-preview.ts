@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { allDistricts } from '/lib/utils';
+import { allDistricts, primarySubdomain } from '/lib/utils';
 import { apiQuery } from 'dato-nextjs-utils/api';
 import { ProjectBySubpageDocument } from '/graphql';
 //import type { NextRequest, NextResponse } from 'next/server'
@@ -10,7 +10,7 @@ const generatePreviewUrl = async ({ item, itemType, locale }) => {
   let path = null;
   const { id, slug, district: districtId } = item.attributes
   const district = districtId ? (await allDistricts()).find(({ id }) => id === districtId) : undefined
-  const districtSlug = district ? `/${district.name}` : ''
+  const districtSlug = district && district.subdomain !== primarySubdomain ? `/${district.subdomain}` : ''
 
   switch (itemType.attributes.api_key) {
     case 'news':
