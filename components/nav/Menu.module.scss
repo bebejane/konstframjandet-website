@@ -91,6 +91,12 @@
     span {
       cursor: pointer;
     }
+
+    span {
+      &:hover {
+        color: var(--page-color);
+      }
+    }
   }
 
   ul {

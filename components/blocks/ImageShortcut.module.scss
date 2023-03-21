@@ -48,7 +48,7 @@
         @include mq($from: tablet) {
           padding-left: var(--grid-unit);
           width: 80%;
-          padding-bottom: var(--small-space);
+          padding-bottom: var(--space);
         }
 
         h1,
