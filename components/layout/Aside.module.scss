@@ -33,6 +33,9 @@
 
   ul {
     list-style: none;
+    @include mq($until: tablet) {
+      padding-left: 0;
+    }
 
     li {
     }
