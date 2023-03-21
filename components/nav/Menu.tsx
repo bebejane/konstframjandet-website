@@ -118,7 +118,6 @@ export default function Menu({ districts, menu }: MenuProps) {
 			</nav>
 
 			<div className={cn(s.search, showSearch && s.show)} style={searchStyle}>
-				<span className={cn(s.close, 'small')} onClick={resetSearch}>Stäng</span>
 				<div className={s.bar} style={searchStyle}>
 					<input
 						className={'mid'}
@@ -131,6 +130,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 				<div className={s.results} style={query ? resultsStyle : {}}>
 					<SearchResult query={query} />
 				</div>
+				<span className={cn(s.close, 'small')} onClick={resetSearch}>Stäng</span>
 			</div>
 		</>
 	)

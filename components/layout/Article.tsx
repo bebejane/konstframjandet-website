@@ -20,6 +20,7 @@ export type ArticleProps = {
   record: any
   date?: string
   backLink?: string
+  dropCap?: boolean
 }
 
 export default function Article({ id, title, content, image, imageSize, intro, record, backLink }: ArticleProps) {

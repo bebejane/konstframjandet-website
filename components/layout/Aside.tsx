@@ -14,11 +14,12 @@ export default function Aside({ children, title, titleHref, hideOnMobile = false
 
   return (
     <aside className={cn(s.aside, hideOnMobile && s.hideMobile)}>
-      {title && children &&
+      {title && children ?
         titleHref ?
-        <Link href={titleHref}><h3>{title}</h3></Link>
-        :
-        <h3>{title}</h3>
+          <Link href={titleHref}><h3>{title}</h3></Link>
+          :
+          <h3>{title}</h3>
+        : null
       }
       {children &&
         <div className="mid">
