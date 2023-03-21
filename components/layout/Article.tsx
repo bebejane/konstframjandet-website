@@ -18,12 +18,12 @@ export type ArticleProps = {
   content?: any
   onClick?: (id: string) => void
   record: any
+  dropcap?: boolean
   date?: string
   backLink?: string
-  dropCap?: boolean
 }
 
-export default function Article({ id, title, content, image, imageSize, intro, record, backLink }: ArticleProps) {
+export default function Article({ id, title, content, image, imageSize, intro, backLink, record = {}, dropcap = true }: ArticleProps) {
 
   const [setImageId, setImages] = useStore((state) => [state.setImageId, state.setImages])
 
@@ -51,7 +51,7 @@ export default function Article({ id, title, content, image, imageSize, intro, r
           </figure>
         }
         <section>
-          <div className={s.content}>
+          <div className={cn(s.content, record.dropcap || dropcap && s.dropcap)}>
             {intro &&
               <Markdown className={cn(s.intro, "intro")}>{intro}</Markdown>
             }
