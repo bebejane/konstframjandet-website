@@ -1,4 +1,5 @@
 import '/lib/styles/index.scss'
+import "swiper/css";
 import { Layout } from '/components';
 import { PageProvider, usePage } from '/lib/context/page'
 import { useEffect } from 'react';

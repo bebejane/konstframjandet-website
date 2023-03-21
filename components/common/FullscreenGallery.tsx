@@ -1,4 +1,3 @@
-import "swiper/css";
 import s from './FullscreenGallery.module.scss'
 import cn from 'classnames'
 import { DatoMarkdown as Markdown } from "dato-nextjs-utils/components";

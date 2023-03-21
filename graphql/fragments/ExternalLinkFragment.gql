@@ -1,0 +1,9 @@
+fragment ExternalLinkFragment on ExternalLinkRecord {
+	id
+	title
+	url
+	linkIntro: intro(markdown: false)
+	linkImage: image {
+		...ImageFragment
+	}
+}

@@ -120,12 +120,7 @@ fragment DistrictFragment on DistrictRecord {
 			id
 			links {
 				... on ExternalLinkRecord {
-					id
-					title
-					url
-					externalLinkImage: image {
-						...ImageFragment
-					}
+					...ExternalLinkFragment
 				}
 				... on NewsRecord {
 					...NewsFragmentLight
