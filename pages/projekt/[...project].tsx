@@ -92,7 +92,7 @@ export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, r
     slug: `/projekt/${isSubpage ? parentProject.slug : project.slug}/${slug}`
   }))
 
-  const projectColor = parentProject?.color?.hex ?? project.__typename === 'ProjectRecord' ? project.color?.hex : null
+  const projectColor = parentProject?.color?.hex ?? (project.__typename === 'ProjectRecord' ? project.color?.hex : null)
 
   return {
     props: {
