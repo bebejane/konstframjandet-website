@@ -1,35 +1,45 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { allDistricts } from '/lib/utils';
+import { apiQuery } from 'dato-nextjs-utils/api';
+import { ProjectBySubpageDocument } from '/graphql';
 //import type { NextRequest, NextResponse } from 'next/server'
 //import { primarySubdomain } from '/lib/utils';
 
-const generatePreviewUrl = ({ item, itemType, locale }) => {
-  const { slug, district: districtId } = item.attributes
+const generatePreviewUrl = async ({ item, itemType, locale }) => {
+
+  let path = null;
+  const { id, slug, district: districtId } = item.attributes
+  const district = districtId ? (await allDistricts()).find(({ id }) => id === districtId) : undefined
+  const districtSlug = district ? `/${district.name}` : ''
 
   switch (itemType.attributes.api_key) {
     case 'news':
-      return `/aktuellt/${slug}`;
+      path = `/aktuellt/${slug}`;
     case 'about':
-      return `/om/${slug}`;
+      path = `/om/${slug}`;
     case 'project':
-      return `/projekt/${slug}`;
+      path = `/projekt/${slug}`;
     case 'project_subpage':
-      return `/projekt/${slug}`;
+      const { project } = await apiQuery(ProjectBySubpageDocument, { variables: { subpageId: id } })
+      path = `/projekt/${project.slug}/${slug}`
+    case 'district':
+      path = '/';
     default:
-      return null;
+      break;
   }
+
+  return path ? `${districtSlug}${path}` : null
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  // setup CORS permissions
+
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.setHeader('Content-Type', 'application/json');
-  // This will allow OPTIONS request
-  if (req.method === 'OPTIONS') {
-    return res.status(200).send('ok');
-  }
-  const url = generatePreviewUrl(req.body);
+  if (req.method === 'OPTIONS') return res.status(200).send('ok');
+
+  const url = await generatePreviewUrl(req.body);
   const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : process.env.URL;
   const previewLinks = !url ? [] : [{
     label: 'Live',
