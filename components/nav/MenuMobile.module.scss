@@ -21,7 +21,6 @@
   color: var(--black);
   background-color: var(--background);
 
-
   .line {
     width: calc(100% - (2 * var(--outer-margin)));
     border-bottom: var(--line-thick);
@@ -52,7 +51,7 @@
     color: var(--white);
     background-color: var(--black);
 
-    >* {
+    > * {
       color: var(--white);
     }
   }
@@ -83,7 +82,6 @@
   }
 
   nav {
-    padding-top: 1rem;
     margin: var(--outer-margin);
     font-size: var(--navbar-text-size);
 
@@ -97,8 +95,8 @@
       border-bottom: var(--line-thin);
     }
 
-    >ul {
-      >li {
+    > ul {
+      > li {
         ul {
           display: none;
 
