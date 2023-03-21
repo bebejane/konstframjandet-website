@@ -26,6 +26,9 @@ export default function Aside({ children, title, titleHref, hideOnMobile = false
           {children}
         </div>
       }
+      <div className={s.back}>
+        <Link href="" className="mid">Visa alla</Link>
+      </div>
     </aside>
   )
 }

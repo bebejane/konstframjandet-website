@@ -12,10 +12,12 @@
     @include mq($until: tablet) {
       column-count: 2;
     }
-
     border-bottom: var(--line-thin);
-    margin-right: var(--gutter);
     padding-bottom: var(--small-space);
+
+    @include mq($from: tablet) {
+      margin-right: var(--gutter);
+    }
 
     p {
       margin-bottom: 0;
@@ -32,11 +34,30 @@
   ul {
     list-style: none;
 
-    li {}
+    li {
+    }
   }
 
   &.hideMobile {
     @include mq($until: desktop) {
+      display: none;
+    }
+  }
+
+  .back {
+    background-color: var(--white);
+    padding: 1em;
+    text-align: center;
+    border-bottom: 0;
+    column-count: 1;
+    margin-top: var(--space);
+    margin-bottom: var(--small-space);
+
+    a {
+      width: 100%;
+      text-align: center;
+    }
+    @include mq($from: tablet) {
       display: none;
     }
   }
