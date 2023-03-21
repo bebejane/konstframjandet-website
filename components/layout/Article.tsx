@@ -26,7 +26,7 @@ export type ArticleProps = {
 export default function Article({ id, title, content, image, imageSize, intro, backLink, record = {}, dropcap = false }: ArticleProps) {
 
   const [setImageId, setImages] = useStore((state) => [state.setImageId, state.setImages])
-
+  console.log((record.dropcap || dropcap))
   useEffect(() => {
     const images = [image]
     content?.blocks.forEach(el => {
