@@ -2,8 +2,6 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { allDistricts, primarySubdomain } from '/lib/utils';
 import { apiQuery } from 'dato-nextjs-utils/api';
 import { ProjectBySubpageDocument } from '/graphql';
-//import type { NextRequest, NextResponse } from 'next/server'
-//import { primarySubdomain } from '/lib/utils';
 
 const generatePreviewUrl = async ({ item, itemType, locale }) => {
 
@@ -11,7 +9,6 @@ const generatePreviewUrl = async ({ item, itemType, locale }) => {
   const { slug, district: districtId } = item.attributes
   const district = districtId ? (await allDistricts()).find(({ id }) => id === districtId) : undefined
   const districtSlug = district && district.subdomain !== primarySubdomain ? `/${district.subdomain}` : ''
-  console.log(item.id, itemType.attributes.api_key)
 
   switch (itemType.attributes.api_key) {
     case 'news':
