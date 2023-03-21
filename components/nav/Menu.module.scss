@@ -25,7 +25,7 @@
     }
   }
 
-  &.home>a:hover {
+  &.home > a:hover {
     color: var(--white);
   }
 }
@@ -45,7 +45,8 @@
   background-color: var(--background);
   transition: background-color 0.5s ease-in-out;
 
-  @include mq($until: desktop) {}
+  @include mq($until: desktop) {
+  }
 
   &.small {
     transform: translateY(-50%);
@@ -107,7 +108,7 @@
       user-select: none;
 
       &.active,
-      &.active>a {
+      &.active > a {
         color: var(--page-color);
       }
 
@@ -121,9 +122,8 @@
   }
 
   &.home {
-
     .active,
-    .active>a,
+    .active > a,
     li:hover,
     a:hover {
       color: var(--white) !important;
@@ -146,7 +146,7 @@
     display: flex;
   }
 
-  h3 {
+  span {
     flex: 0 0 calc(var(--grid-unit));
     color: var(--page-color);
   }
@@ -215,8 +215,7 @@
     margin-top: var(--small-space);
     cursor: pointer;
 
-    &:hover {}
+    &:hover {
+    }
   }
-
-
 }
