@@ -49,16 +49,20 @@
         width: calc(2 * var(--grid-unit));
       }
 
-      .structured:not(.dropcap)>p:first-of-type {
-        &:first-child:first-letter {
-          color: var(--page-color);
-          float: left;
-          font-family: $headline-font;
-          font-weight: normal;
-          line-height: 0.7em;
-          font-size: 5rem;
-          padding-top: 0.1em;
-          padding-right: 8px;
+      .structured {
+        &.dropcap {
+          >p:first-of-type {
+            &:first-child:first-letter {
+              color: var(--page-color);
+              float: left;
+              font-family: $headline-font;
+              font-weight: normal;
+              line-height: 0.7em;
+              font-size: 5rem;
+              padding-top: 0.1em;
+              padding-right: 8px;
+            }
+          }
         }
       }
 

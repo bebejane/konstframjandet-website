@@ -22,15 +22,14 @@ export type Props = {
 export default function ProjectItem({ project: { id, title, slug, image, intro, content }, project, parentProject, projectMenu }: Props) {
 
   const { asPath } = useRouter()
-  const { isHome, district } = usePage()
+  const { isHome, district, color } = usePage()
 
   useEffect(() => {
 
-    const color = project.__typename === 'ProjectRecord' ? project.color : parentProject?.color ?? null
     const r = document.querySelector<HTMLElement>(':root')
 
     setTimeout(() => { // Override _app styling
-      r.style.setProperty('--page-color', color ? color.hex : district?.color?.hex);
+      r.style.setProperty('--page-color', color ?? district?.color?.hex);
     }, 30)
 
   }, [isHome, project, parentProject, asPath])
@@ -77,21 +76,23 @@ export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, r
 
   const isSubpage = context.params.project.length === 2
   const slug = context.params.project[!isSubpage ? 0 : 1]
-  const { project } = await apiQuery(!isSubpage ? ProjectDocument : ProjectSubpageDocument, { variables: { slug }, preview: context.preview })
+  const { project }: { project: ProjectRecord | ProjectSubpageRecord } = await apiQuery(!isSubpage ? ProjectDocument : ProjectSubpageDocument, { variables: { slug }, preview: context.preview })
 
   if (!project)
     return { notFound: true }
 
-  let parentProject = null;
+  let parentProject: ProjectRecord = null;
 
   if (isSubpage)
     parentProject = (await apiQuery(ProjectBySubpageDocument, { variables: { subpageId: project.id }, preview: context.preview }))?.project ?? null
 
-  const projectMenu = (project.subpage ?? parentProject.subpage).map(({ id, title, slug }) => ({
+  const projectMenu = (project.__typename === 'ProjectRecord' ? project.subpage : parentProject.subpage).map(({ id, title, slug }) => ({
     id,
     title,
     slug: `/projekt/${isSubpage ? parentProject.slug : project.slug}/${slug}`
   }))
+
+  const projectColor = parentProject?.color?.hex ?? project.__typename === 'ProjectRecord' ? project.color?.hex : null
 
   return {
     props: {
@@ -105,7 +106,8 @@ export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, r
         image: project.image,
         intro: project.intro,
         layout: 'project',
-        color: parentProject?.color?.hex ?? project.color?.hex ?? null
+        color: projectColor,
+        colorOption: project.colorOption ?? parentProject?.colorOption ?? null
       }
     }
   };

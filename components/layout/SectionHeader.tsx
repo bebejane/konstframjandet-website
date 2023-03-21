@@ -9,10 +9,10 @@ import BalanceText from 'react-balance-text'
 
 export default function SectionHeader() {
 
-  const { title, subtitle, image, intro, layout, color } = usePage()
+  const { title, subtitle, image, intro, layout, color, colorOption } = usePage()
 
   return (
-    <header className={cn(s.header, s[layout])}>
+    <header className={cn(s.header, s[layout], colorOption && s[colorOption])}>
       <h1><BalanceText><span>{title}{subtitle && ` — ${subtitle}`}</span></BalanceText></h1>
       {image &&
         <figure>

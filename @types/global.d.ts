@@ -5,6 +5,7 @@ type PageProps = {
   image?: FileField
   intro?: string
   color?: string
+  colorOption?: string
   layout: 'full' | 'project' | 'home'
   isHome: boolean
   isMainDistrict: boolean
