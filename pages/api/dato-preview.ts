@@ -11,6 +11,7 @@ const generatePreviewUrl = async ({ item, itemType, locale }) => {
   const { id, slug, district: districtId } = item.attributes
   const district = districtId ? (await allDistricts()).find(({ id }) => id === districtId) : undefined
   const districtSlug = district && district.subdomain !== primarySubdomain ? `/${district.subdomain}` : ''
+  console.log(id, itemType.attributes.api_key)
 
   switch (itemType.attributes.api_key) {
     case 'news':
