@@ -43,7 +43,6 @@
   margin-left: var(--outer-margin);
   margin-right: var(--outer-margin);
 
-
   @include mq($until: desktop) {
   }
 
@@ -140,6 +139,7 @@
   width: var(--body-width);
   padding: var(--small-space);
   z-index: var(--z-district-popup);
+  border-bottom: var(--line-thick);
 
   &.show {
     display: flex;
