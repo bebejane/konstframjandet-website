@@ -107,7 +107,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 			</nav>
 
 			<nav className={cn(s.districts, showDistricts && s.show)} style={navStyle}>
-				<span class="mid">Besök våra distrikt</span>
+				<span className="mid">Besök våra distrikt</span>
 				<ul>
 					{districts?.filter(({ subdomain }) => primarySubdomain !== subdomain).map(({ id, subdomain, name }) =>
 						<li key={id}>

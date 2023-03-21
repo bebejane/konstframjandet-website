@@ -23,7 +23,7 @@ export type ArticleProps = {
   backLink?: string
 }
 
-export default function Article({ id, title, content, image, imageSize, intro, backLink, record = {}, dropcap = true }: ArticleProps) {
+export default function Article({ id, title, content, image, imageSize, intro, backLink, record = {}, dropcap = false }: ArticleProps) {
 
   const [setImageId, setImages] = useStore((state) => [state.setImageId, state.setImages])
 
@@ -55,7 +55,7 @@ export default function Article({ id, title, content, image, imageSize, intro, b
             {intro &&
               <Markdown className={cn(s.intro, "intro")}>{intro}</Markdown>
             }
-            <div className={cn(s.structured, record.dropcap || dropcap && s.dropcap)}>
+            <div className={cn(s.structured, (record.dropcap || dropcap) && s.dropcap)}>
               <StructuredContent
                 id={id}
                 record={record}

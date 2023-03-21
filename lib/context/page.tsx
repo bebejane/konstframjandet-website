@@ -6,6 +6,7 @@ const initialState: PageProps = {
   title: undefined,
   subtitle: undefined,
   color: undefined,
+  colorOption: undefined,
   layout: 'full',
   isHome: true,
   isMainDistrict: true
