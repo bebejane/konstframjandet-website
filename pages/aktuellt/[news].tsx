@@ -30,7 +30,11 @@ export default function NewsItem({ news: {
 
   return (
     <>
-      <Aside title={'Var & när'}>
+      <Aside
+        title={'Var & när'}
+        backLink={'/aktuellt'}
+        backLinkType={'aktuellt'}
+      >
         {haveMeta &&
           <>
             <p>

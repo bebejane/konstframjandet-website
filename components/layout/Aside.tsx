@@ -7,10 +7,11 @@ export type Props = {
   title?: string
   titleHref?: string
   hideOnMobile?: boolean
-
+  backLink?: string
+  backLinkType?: string
 }
 
-export default function Aside({ children, title, titleHref, hideOnMobile = false }: Props) {
+export default function Aside({ children, title, titleHref, backLink, backLinkType, hideOnMobile = false }: Props) {
 
   return (
     <aside className={cn(s.aside, hideOnMobile && s.hideMobile)}>
@@ -26,9 +27,11 @@ export default function Aside({ children, title, titleHref, hideOnMobile = false
           {children}
         </div>
       }
-      <div className={s.back}>
-        <Link href="" className="mid">Visa alla</Link>
-      </div>
+      {backLink &&
+        <div className={s.back}>
+          <Link href={backLink} className="mid">Visa alla {backLinkType}</Link>
+        </div>
+      }
     </aside>
   )
 }
