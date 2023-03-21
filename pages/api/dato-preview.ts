@@ -40,7 +40,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === 'OPTIONS') return res.status(200).send('ok');
 
   const url = await generatePreviewUrl(req.body);
-  const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : process.env.URL;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
   const previewLinks = !url ? [] : [{
     label: 'Live',
     url: `${baseUrl}${url}`
