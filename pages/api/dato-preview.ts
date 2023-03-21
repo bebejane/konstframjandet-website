@@ -12,6 +12,10 @@ const generatePreviewUrl = ({ item, itemType, locale }) => {
       return `/aktuellt/${slug}`;
     case 'about':
       return `/om/${slug}`;
+    case 'project':
+      return `/projekt/${slug}`;
+    case 'project_subpage':
+      return `/projekt/${slug}`;
     default:
       return null;
   }
@@ -22,14 +26,13 @@ export default async function handler(req: NextRequest, res: NextResponse) {
   const body = await req.json();
 
   res.headers.set('Access-Control-Allow-Origin', '*');
-  res.headers.set('Access-Control-Allow-Methods', 'POST');
+  res.headers.set('Access-Control-Allow-Methods', 'POST,OPTIONS');
   res.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.headers.set('Content-Type', 'application/json');
 
   // This will allow OPTIONS request
   if (req.method === 'OPTIONS') {
-    //return res.status(200).send('ok');
-    console.log('options')
+
   }
   const url = generatePreviewUrl(body);
   const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : process.env.URL;
