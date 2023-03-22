@@ -1,15 +1,7 @@
 import { GraphQLClient, gql } from "graphql-request";
 
-const baseDomain = "konstframjandet.se";
 const primarySubdomain = "forbundet";
-const sassOptions = {
-	includePaths: ["./components", "./pages"],
-	prependData: `
-		@use 'sass:math';
-		@import './lib/styles/mediaqueries'; 
-		@import './lib/styles/fonts';
-	`,
-};
+const baseDomain = "konstframjandet.se";
 
 async function allDistricts() {
 	const graphQLClient = new GraphQLClient("https://graphql.datocms.com", {
@@ -60,7 +52,14 @@ export default async (phase, { defaultConfig }) => {
 		publicRuntimeConfig: {
 			sites,
 		},
-		sassOptions,
+		sassOptions: {
+			includePaths: ["./components", "./pages"],
+			prependData: `
+				@use 'sass:math';
+				@import './lib/styles/mediaqueries'; 
+				@import './lib/styles/fonts';
+			`,
+		},
 		i18n: {
 			locales: siteKeys,
 			defaultLocale: primarySubdomain,
