@@ -3,6 +3,7 @@ import withGlobalProps from "/lib/withGlobalProps";
 import { StartDocument } from "/graphql";
 import { StartSelectionContainer, StartSelectionCard } from "/components";
 import { Block } from '/components'
+import { usePage } from "/lib/context/page";
 
 export type Props = {
 	district: DistrictRecord
@@ -11,16 +12,31 @@ export type Props = {
 
 export default function Home({ district, start }: Props) {
 
+	const { isMainDistrict } = usePage()
+
 	return (
 		<div className={s.container}>
-			{district.content.map((block, idx) =>
-				<Block key={idx} data={block} record={district} />
-			)}
-			<StartSelectionContainer>
-				{start.selectedInDistricts.map((item, idx) =>
-					<StartSelectionCard key={idx} item={item} />
+			{district.content
+				.map((block, idx) =>
+					//@ts-ignore
+					block.__typename === 'StartSelectedDistrictNewsRecord' ?
+						isMainDistrict &&
+						<StartSelectionContainer>
+							{start.selectedInDistricts.map((item, idx) =>
+								<StartSelectionCard key={idx} item={item} />
+							)}
+						</StartSelectionContainer>
+						:
+						<Block key={idx} data={block} record={district} />
 				)}
-			</StartSelectionContainer>
+
+			{!isMainDistrict &&
+				<StartSelectionContainer>
+					{start.selectedInDistricts.map((item, idx) =>
+						<StartSelectionCard key={idx} item={item} />
+					)}
+				</StartSelectionContainer>
+			}
 		</div>
 	);
 }
