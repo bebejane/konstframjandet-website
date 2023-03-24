@@ -74,9 +74,14 @@
     opacity: 1;
   }
 
-  &.normal {}
+  &.normal {
+  }
 
-  &.light {}
+  &.light {
+    background-color: none !important;
+  }
 
-  &.dark {}
+  &.dark {
+    background-color: none !important;
+  }
 }
