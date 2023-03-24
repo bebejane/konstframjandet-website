@@ -78,7 +78,9 @@
   }
 
   &.light {
-    background-color: none !important;
+    .bgcolor {
+      display: none;
+    }
   }
 
   &.dark {

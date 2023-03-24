@@ -1,4 +1,7 @@
 .container {
+  border-top: var(--line-thick);
+  padding-top: var(--space);
+
   margin-top: var(--space);
 
   header {
