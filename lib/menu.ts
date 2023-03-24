@@ -33,7 +33,7 @@ export const buildMenu = async (districtId: string) => {
     abouts: AboutRecord[],
     projects: ProjectRecord[],
     districts: DistrictRecord[],
-  } = await apiQuery([MenuDocument], { variables: { districtId, first: 100 } });
+  } = await apiQuery(MenuDocument, { variables: { districtId, first: 100 } });
 
   const district = districts.find(({ id }) => id === districtId)
 
