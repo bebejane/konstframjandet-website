@@ -16,11 +16,7 @@ export default function StartSelectedDistrictNews({ data: { news } }: Props) {
         <h2 className="mid">Aktuellt</h2>
         <Link href={'/aktuellt'} className="mid">Visa alla</Link>
       </header>
-      <NewsContainer>
-        {news.map(item =>
-          <NewsCard key={item.id} news={item} />
-        )}
-      </NewsContainer>
+
     </section >
   )
 }
