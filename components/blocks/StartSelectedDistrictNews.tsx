@@ -1,22 +1,24 @@
 import s from './StartSelectedDistrictNews.module.scss'
 import cn from 'classnames'
 import React from 'react'
-import { NewsContainer, NewsCard } from '/components'
+import { NewsContainer, NewsCard, StartSelectionContainer, StartSelectionCard } from '/components'
 import Link from 'next/link'
 
 export type Props = {
-  data: StartSelectedNewsRecord
+  data: StartSelectedDistrictNewsRecord
+  selectedInDistricts: StartModelSelectedInDistrictsField[]
 }
 
-export default function StartSelectedDistrictNews({ data: { news } }: Props) {
+export default function StartSelectedDistrictNews({ data: { id }, selectedInDistricts }: Props) {
 
+  return <></>
   return (
-    <section className={s.container}>
-      <header className="mid">
-        <h2 className="mid">Aktuellt</h2>
-        <Link href={'/aktuellt'} className="mid">Visa alla</Link>
-      </header>
 
-    </section >
+    <StartSelectionContainer>
+      {selectedInDistricts.map((item, idx) =>
+        <StartSelectionCard key={idx} item={item} />
+      )}
+    </StartSelectionContainer>
+
   )
 }

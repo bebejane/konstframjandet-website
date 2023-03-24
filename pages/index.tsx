@@ -13,19 +13,30 @@ export type Props = {
 export default function Home({ district, start }: Props) {
 
 	const { isMainDistrict } = usePage()
-	console.log(district)
+
 	return (
 		<div className={s.container}>
 			{district.content
-				.filter(({ __typename }) => !(!isMainDistrict && __typename === 'StartSelectedDistrictNewsRecord'))
 				.map((block, idx) =>
-					<Block key={idx} data={block} record={district} />
+					//@ts-ignore
+					block.__typename === 'StartSelectedDistrictNewsRecord' ?
+						isMainDistrict &&
+						<StartSelectionContainer>
+							{start.selectedInDistricts.map((item, idx) =>
+								<StartSelectionCard key={idx} item={item} />
+							)}
+						</StartSelectionContainer>
+						:
+						<Block key={idx} data={block} record={district} />
 				)}
-			<StartSelectionContainer>
-				{start.selectedInDistricts.map((item, idx) =>
-					<StartSelectionCard key={idx} item={item} />
-				)}
-			</StartSelectionContainer>
+
+			{!isMainDistrict &&
+				<StartSelectionContainer>
+					{start.selectedInDistricts.map((item, idx) =>
+						<StartSelectionCard key={idx} item={item} />
+					)}
+				</StartSelectionContainer>
+			}
 		</div>
 	);
 }
