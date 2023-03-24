@@ -130,5 +130,8 @@ fragment DistrictFragment on DistrictRecord {
 				}
 			}
 		}
+		... on StartSelectedDistrictNewsRecord {
+			__typename
+		}
 	}
 }
