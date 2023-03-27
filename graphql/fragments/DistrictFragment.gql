@@ -118,6 +118,7 @@ fragment DistrictFragment on DistrictRecord {
 		... on StartTextRecord {
 			__typename
 			text
+			href
 		}
 		... on StartImageGalleryRecord {
 			__typename
