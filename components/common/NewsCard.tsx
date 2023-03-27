@@ -27,7 +27,7 @@ export default function NewsCard({ news: { title, intro, image, slug, address, w
         </Markdown>
         <div className={cn(s.meta, "mid")}>
           {where && <span>{where}</span>}
-          <span>{capitalize(format(new Date(date), 'd MMMM'))}</span>
+          <span>{date}</span>
           {time && <span>{time}</span>}
           {misc && <span>{misc}</span>}
           <span><Link href={`/aktuellt/${slug}`}>Läs mer</Link></span>
