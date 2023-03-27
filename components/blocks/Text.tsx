@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { recordToSlug } from '/lib/utils'
 
 export type TextBlockProps = {
-  data: ImageShortcutRecord
+  data: TextBlockRecord
 }
 
 export default function Text({ data: { text } }: TextBlockProps) {
@@ -16,7 +16,6 @@ export default function Text({ data: { text } }: TextBlockProps) {
     <section className={s.container}>
       <Link href={href}>
         {text}
-
       </Link>
     </section >
   )
