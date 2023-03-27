@@ -41,7 +41,7 @@ fragment DistrictFragment on DistrictRecord {
 			... on LogoRecord {
 				__typename
 				id
-				image {
+				logotypes {
 					...ImageFragment
 				}
 			}

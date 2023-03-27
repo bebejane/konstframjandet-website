@@ -38,7 +38,7 @@ fragment ProjectSubpageFragment on ProjectSubpageRecord {
 			... on LogoRecord {
 				__typename
 				id
-				image {
+				logotypes {
 					...ImageFragment
 				}
 			}

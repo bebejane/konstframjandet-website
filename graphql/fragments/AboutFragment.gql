@@ -33,7 +33,7 @@ fragment AboutFragment on AboutRecord {
 			... on LogoRecord {
 				__typename
 				id
-				image {
+				logotypes {
 					...ImageFragment
 				}
 			}

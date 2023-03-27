@@ -47,7 +47,7 @@ fragment NewsFragment on NewsRecord {
 			... on LogoRecord {
 				__typename
 				id
-				image {
+				logotypes {
 					...ImageFragment
 				}
 			}
