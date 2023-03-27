@@ -115,6 +115,10 @@ fragment DistrictFragment on DistrictRecord {
 				...NewsFragmentLight
 			}
 		}
+		... on StartTextRecord {
+			__typename
+				text
+		}
 		... on StartImageGalleryRecord {
 			__typename
 			id

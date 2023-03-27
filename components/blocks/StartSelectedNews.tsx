@@ -13,7 +13,7 @@ export default function StartSelectedNews({ data: { news } }: Props) {
   return (
     <section className={s.container}>
       <header className="mid">
-        <h2 className="mid">Aktuellt</h2>
+        <h2>Aktuellt</h2>
         <Link href={'/aktuellt'} className="mid">Visa alla</Link>
       </header>
       <NewsContainer>

@@ -1,7 +1,10 @@
 .single {
   margin-top: var(--space);
   margin-bottom: var(--space);
-  border: var(--line-thick);
+
+  & > div {
+    border: var(--line-thick);
+  }
 
   div {
     max-width: none !important;
