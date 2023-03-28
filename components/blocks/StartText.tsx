@@ -13,7 +13,14 @@ export default function StartText({ data: { text, href } }: TextBlockProps) {
   return (
     <section className={s.container}>
       <Link href={href}>
-        {text}
+        <h2>Om oss</h2>
+        <div className={s.text}>
+          <p className="intro">
+            {text}
+          </p>
+          <span className="mid">Läs mer</span>
+        </div>
+
       </Link>
     </section >
   )

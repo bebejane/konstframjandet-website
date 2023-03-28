@@ -2,15 +2,28 @@
   margin-top: var(--space);
   margin-bottom: var(--space);
 
-  &.small {}
+  &.small {
+    padding-left: var(--outer-margin);
+    padding-right: var(--outer-margin);
+  }
 
-  &.medium {}
+  &.medium {
+  }
 
-  &.large {}
+  &.large {
+    margin-right: calc(-1 * var(--grid-unit));
+    //align-items: flex-end;
+  }
 
-  &.right {}
+  &.right {
+    margin-right: calc(-1 * var(--grid-unit));
+    width: var(--grid-unit);
+    float: right;
+    margin-top: 0;
+    padding-left: var(--gutter);
+  }
 
-  &>div {
+  & > div {
     border: var(--line-thick);
   }
 
