@@ -14,12 +14,13 @@ export default function SectionHeader() {
 
   return (
     <header className={cn(s.header, s[layout], colorOption && s[colorOption])}>
-      <h1><BalanceText><span>{title}{subtitle && ` — ${subtitle}`}</span></BalanceText></h1>
+      <h1><BalanceText><span>{title}{subtitle && ` — ${subtitle}`}</span></BalanceText>
+        <div className={s.fade}></div></h1>
 
       {image &&
         <>
           <div className={s.direct}>
-            <img src="http://localhost:3000/images/mask4.svg"></img>
+            <img src="/images/mask4.svg"></img>
             <span className="mid">Besök<br /> projektets<br />hemsida</span></div>
           <figure>
             <Image
@@ -32,13 +33,19 @@ export default function SectionHeader() {
         </>
       }
       {intro &&
-        <Markdown className={cn(s.intro, "intro")}>
-          {intro}
-        </Markdown>
+        <>
+          <div className={s.introWrapper}>
+            <Markdown className={cn(s.intro, "intro")}>
+              {intro}
+            </Markdown>
+            <div className={s.fade}></div>
+          </div>
+        </>
       }
-      {color &&
+      {
+        color &&
         <div className={s.bgcolor} style={{ backgroundColor: color }}></div>
       }
-    </header>
+    </header >
   )
 }

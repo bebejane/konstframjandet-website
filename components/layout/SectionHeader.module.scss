@@ -1,5 +1,6 @@
 .header {
   position: relative;
+  overflow: hidden;
 
   &.full {
     padding-top: var(--small-space);
@@ -28,9 +29,22 @@
       @include mq($from: tablet) {
         left: var(--grid-unit);
       }
+
+      .fade {
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0));
+        width: calc(100vw - (2 * var(--outer-margin)));
+        height: 10rem;
+        position: absolute;
+        top: calc(-1 * var(--space));
+        z-index: -1;
+        margin-left: calc(-1 * var(--outer-margin));
+        @include mq($from: tablet) {
+          margin-left: calc(-1 * var(--grid-unit));
+        }
+      }
     }
 
-    .intro {
+    .introWrapper {
       position: absolute;
       z-index: 1;
       bottom: var(--small-space);
@@ -42,6 +56,19 @@
       @include mq($from: tablet) {
         left: var(--grid-unit);
         margin-right: calc(2 * var(--gutter));
+      }
+
+      .fade {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0));
+        width: calc(100vw - (2 * var(--outer-margin)));
+        height: 250%;
+        position: absolute;
+        bottom: calc(-1 * var(--space));
+        z-index: -1;
+        margin-left: calc(-1 * var(--outer-margin));
+        @include mq($from: tablet) {
+          margin-left: calc(-1 * var(--grid-unit));
+        }
       }
     }
   }
@@ -104,15 +131,30 @@
   }
 
   &.normal {
+    .fade {
+      display: none;
+    }
   }
 
   &.light {
     .bgcolor {
       display: none;
     }
+    h1 .fade {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)) !important;
+    }
+    .introWrapper .fade {
+      background: linear-gradient(00deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)) !important;
+    }
+    h1,
+    .intro {
+      color: var(--black);
+    }
   }
 
   &.dark {
-    background-color: none !important;
+    .bgcolor {
+      display: none;
+    }
   }
 }

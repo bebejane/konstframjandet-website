@@ -233,9 +233,9 @@ type DistrictModelFilter = {
   instagram?: InputMaybe<StringFilter>;
   intro?: InputMaybe<TextFilter>;
   name?: InputMaybe<StringFilter>;
-  newsletterCode?: InputMaybe<StringFilter>;
   newsletterId?: InputMaybe<StringFilter>;
   newsletterText?: InputMaybe<TextFilter>;
+  newsletterUser?: InputMaybe<StringFilter>;
   subdomain?: InputMaybe<StringFilter>;
 };
 
@@ -268,10 +268,10 @@ enum DistrictModelOrderBy {
   instagram_DESC = 'instagram_DESC',
   name_ASC = 'name_ASC',
   name_DESC = 'name_DESC',
-  newsletterCode_ASC = 'newsletterCode_ASC',
-  newsletterCode_DESC = 'newsletterCode_DESC',
   newsletterId_ASC = 'newsletterId_ASC',
   newsletterId_DESC = 'newsletterId_DESC',
+  newsletterUser_ASC = 'newsletterUser_ASC',
+  newsletterUser_DESC = 'newsletterUser_DESC',
   subdomain_ASC = 'subdomain_ASC',
   subdomain_DESC = 'subdomain_DESC'
 }
@@ -300,9 +300,9 @@ type DistrictRecord = RecordInterface & {
   instagram?: Maybe<Scalars['String']>;
   intro?: Maybe<Scalars['String']>;
   name: Scalars['String'];
-  newsletterCode?: Maybe<Scalars['String']>;
   newsletterId?: Maybe<Scalars['String']>;
   newsletterText?: Maybe<Scalars['String']>;
+  newsletterUser?: Maybe<Scalars['String']>;
   subdomain: Scalars['String'];
 };
 
@@ -2395,6 +2395,7 @@ type ProjectModelFilter = {
   subpage?: InputMaybe<LinksFilter>;
   subtitle?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
+  webpage?: InputMaybe<StringFilter>;
 };
 
 enum ProjectModelOrderBy {
@@ -2427,7 +2428,9 @@ enum ProjectModelOrderBy {
   subtitle_ASC = 'subtitle_ASC',
   subtitle_DESC = 'subtitle_DESC',
   title_ASC = 'title_ASC',
-  title_DESC = 'title_DESC'
+  title_DESC = 'title_DESC',
+  webpage_ASC = 'webpage_ASC',
+  webpage_DESC = 'webpage_DESC'
 }
 
 /** Record of type Projekt (project) */
@@ -2458,6 +2461,7 @@ type ProjectRecord = RecordInterface & {
   subpage: Array<ProjectSubpageRecord>;
   subtitle?: Maybe<Scalars['String']>;
   title: Scalars['String'];
+  webpage?: Maybe<Scalars['String']>;
 };
 
 

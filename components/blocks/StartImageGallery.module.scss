@@ -43,8 +43,8 @@
       figure {
         position: relative;
         width: 100%;
-        max-height: var(--height);
-
+        height: var(--height);
+        display: flex;
 
         .image,
         .picture {
@@ -67,10 +67,14 @@
           left: 0;
           height: 100%;
           padding: 0;
+          padding-bottom: var(--space);
+
+          @include mq($until: tablet) {
+            padding-left: var(--outer-margin);
+          }
 
           @include mq($from: tablet) {
             padding-left: var(--grid-unit);
-            padding-bottom: var(--space);
           }
 
           h1,
@@ -86,9 +90,11 @@
 
           p {
             flex: 0 0;
-            padding-bottom: var(--small-space);
+            @include mq($from: tablet) {
+              width: 75%;
+            }
+            padding-bottom: var(--space);
             padding-right: var(--outer-margin);
-
           }
         }
       }
@@ -97,6 +103,10 @@
 
   .next,
   .prev {
+    @include mq($until: desktop) {
+      display: none;
+    }
+
     position: absolute;
     display: flex;
     align-items: center;
@@ -107,10 +117,10 @@
     pointer-events: none;
 
     button {
-      font-size: 1rem;
-      line-height: 1rem;
-      height: 64px;
-      width: 64px;
+      font-size: 1.5rem;
+      line-height: 0rem;
+      height: 5rem;
+      width: 5rem;
       border-radius: 50%;
       margin: var(--small-space);
       pointer-events: all;

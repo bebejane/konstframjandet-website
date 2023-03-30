@@ -40,15 +40,21 @@ export default function Article({ id, title, content, image, imageSize, intro, b
       <DatoSEO title={title} />
       <div className={cn(s.article, 'article')}>
         {image &&
-          <figure
-            className={cn(s.mainImage, imageSize && s[imageSize], image.height > image.width && s.portrait)}
-            onClick={() => setImageId(image?.id)}
-          >
-            <Image
-              data={image.responsiveImage}
-              pictureClassName={s.picture}
-            />
-          </figure>
+          <>
+            <figure
+              className={cn(s.mainImage, imageSize && s[imageSize], image.height > image.width && s.portrait)}
+              onClick={() => setImageId(image?.id)}
+            >
+              <Image
+                data={image.responsiveImage}
+                pictureClassName={s.picture}
+              />
+              <figcaption>
+                {image.title}
+              </figcaption>
+            </figure>
+
+          </>
         }
         <section>
           <div className={s.content}>
@@ -69,13 +75,6 @@ export default function Article({ id, title, content, image, imageSize, intro, b
               }
             </div>
           </div>
-          {image &&
-            <div className={s.caption}>
-              <figcaption>
-                {image.title}
-              </figcaption>
-            </div>
-          }
         </section>
       </div>
     </>

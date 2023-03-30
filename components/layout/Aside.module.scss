@@ -53,8 +53,11 @@
     text-align: center;
     border-bottom: 0;
     column-count: 1;
-    margin-top: var(--space);
     margin-bottom: var(--small-space);
+
+    &:not(:first-of-type) {
+      margin-top: var(--space);
+    }
 
     a {
       width: 100%;

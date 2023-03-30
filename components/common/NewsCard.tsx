@@ -12,7 +12,7 @@ export type CardProps = {
   news: NewsRecord
 }
 
-export default function NewsCard({ news: { title, intro, image, slug, address, where, date, time, misc } }: CardProps) {
+export default function NewsCard({ news: { title, subtitle, intro, image, slug, address, where, date, time, misc } }: CardProps) {
 
   const { isHome } = usePage()
 
@@ -20,7 +20,7 @@ export default function NewsCard({ news: { title, intro, image, slug, address, w
     <li className={cn(s.card, isHome && s.home)}>
       <div className={s.content}>
         <Link href={`/aktuellt/${slug}`}>
-          <h2 className="big">{title}</h2>
+          <h2 className="big">{title} — {subtitle}</h2>
         </Link>
         <Markdown className="big">
           {intro}

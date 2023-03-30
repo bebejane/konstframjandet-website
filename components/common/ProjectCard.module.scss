@@ -1,11 +1,11 @@
 .card {
   position: relative;
   padding-top: var(--space);
-  padding-bottom: var(--space);
   border-bottom: var(--line-thick);
 
   @include mq($from: tablet) {
     flex: 0 0 50%;
+    padding-bottom: var(--space);
   }
 
   @include mq($until: tablet) {
