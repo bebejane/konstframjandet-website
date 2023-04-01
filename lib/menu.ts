@@ -45,7 +45,7 @@ export const buildMenu = async (districtId: string) => {
         break;
       case 'about':
         items = abouts.map(el => ({ type: 'about', label: el.title, slug: `/om/${el.slug}` }))
-        item.slug = items[0]?.slug ?? item.slug
+        item.slug = items[0]?.slug ?? null
         break;
       case 'project':
         items = projects.map(el => ({ type: 'project', label: el.title, slug: `/projekt/${el.slug}` }))

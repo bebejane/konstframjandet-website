@@ -4,7 +4,7 @@ import withGlobalProps from "/lib/withGlobalProps";
 import { apiQueryAll, mainDistrict } from '/lib/utils';
 import { apiQuery } from "dato-nextjs-utils/api";
 import { ProjectDocument, ProjectSubpageDocument, ProjectBySubpageDocument, AllProjectsDocument } from "/graphql";
-import { Aside, Article, SideMenu } from '/components';
+import { Aside, Article, SideMenu, Bubble } from '/components';
 import { useEffect } from 'react';
 import { usePage } from '/lib/context/page';
 import { useRouter } from 'next/router';
@@ -55,10 +55,9 @@ export default function ProjectItem({ project: { id, title, content }, project, 
       />
 
       {project.__typename === 'ProjectRecord' && project.webpage &&
-        <a href={project.webpage} className={s.direct}>
-          <img src="/images/mask4.svg"></img>
-          <span className="mid">Besök<br /> projektets<br />hemsida</span>
-        </a>
+        <Bubble href={project.webpage} className={s.direct}>
+          Besök projektets hemsida
+        </Bubble>
       }
     </>
   );

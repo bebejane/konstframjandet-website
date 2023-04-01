@@ -99,6 +99,10 @@
     li,
     span {
       cursor: pointer;
+
+      &:hover {
+        color: var(--white) !important;
+      }
     }
 
     span {

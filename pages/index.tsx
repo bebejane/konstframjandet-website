@@ -14,28 +14,26 @@ export default function Home({ district, start }: Props) {
 
 	const { isMainDistrict } = usePage()
 
+	const selectedInDistricts = (
+		<StartSelectionContainer>
+			{start.selectedInDistricts.map((item, idx) =>
+				<StartSelectionCard key={idx} item={item} />
+			)}
+		</StartSelectionContainer>
+	)
+
 	return (
 		<div className={s.container}>
 			{district.content
 				.map((block, idx) =>
-					//@ts-ignore
-					block.__typename === 'StartSelectedDistrictNewsRecord' ?
-						isMainDistrict &&
-						<StartSelectionContainer>
-							{start.selectedInDistricts.map((item, idx) =>
-								<StartSelectionCard key={idx} item={item} />
-							)}
-						</StartSelectionContainer>
+					block.__typename === 'StartSelectedDistrictNewsRecord' && isMainDistrict ?
+						<>{selectedInDistricts}</>
 						:
 						<Block key={idx} data={block} record={district} />
 				)}
 
 			{!isMainDistrict &&
-				<StartSelectionContainer>
-					{start.selectedInDistricts.map((item, idx) =>
-						<StartSelectionCard key={idx} item={item} />
-					)}
-				</StartSelectionContainer>
+				<>{selectedInDistricts}</>
 			}
 		</div>
 	);

@@ -1,0 +1,17 @@
+.newsletter {
+  padding-top: var(--space);
+  flex: 0 0;
+  width: var(--grid-unit);
+
+  p {
+    margin-top: var(--small-space);
+  }
+
+  input {
+    background-color: var(--white);
+  }
+
+  button {
+    width: 100%;
+  }
+}

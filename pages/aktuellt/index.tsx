@@ -1,7 +1,9 @@
 import s from "./index.module.scss";
+import cn from 'classnames'
 import withGlobalProps from "/lib/withGlobalProps";
 import { AllNewsDocument } from "/graphql";
 import { NewsCard, NewsContainer, Bubble } from "/components";
+import { useState } from "react";
 
 export type Props = {
   news: NewsRecord[]
@@ -9,12 +11,14 @@ export type Props = {
 
 export default function News({ news }: Props) {
 
+  const [listView, setListView] = useState(true)
+
   return (
     <>
-      <div className={s.container}>
-        <NewsContainer>
+      <div className={cn(s.container, listView && s.list)}>
+        <NewsContainer view={listView ? 'list' : 'full'}>
           {news.map(item =>
-            <NewsCard key={item.id} news={item} />
+            <NewsCard key={item.id} news={item} view={listView ? 'list' : 'full'} />
           )}
         </NewsContainer>
         <Bubble className={s.more}>Fler</Bubble>

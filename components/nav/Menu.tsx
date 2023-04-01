@@ -30,11 +30,8 @@ export default function Menu({ districts, menu }: MenuProps) {
 
 	const scrollY = Math.min(offset, scrolledPosition)
 	const ratio = Math.min(1, ((scrolledPosition || 0) / offset)) || 0
-	const navStyle = {
-		transform: `translateY(-${scrollY}px)`,
-		backgroundColor: scrollY > 0 ? 'var(--background)' : undefined
-	}
 
+	const navStyle = { transform: `translateY(-${scrollY}px)`, backgroundColor: scrollY > 0 ? 'var(--background)' : undefined }
 	const searchStyle = { minHeight: `calc(var(--navbar-height) - ${scrollY}px)` }
 	const resultsStyle = { minHeight: `calc(100vh - var(--navbar-height) + ${scrollY}px)`, maxHeight: `calc(100vh - var(--navbar-height) + ${scrollY}px)` }
 	const logoStyle = { fontSize: `calc(${Math.max(0.8, (1 - ratio))} * var(--navbar-height) + calc(-1 * var(--navbar-space))` }
@@ -59,7 +56,6 @@ export default function Menu({ districts, menu }: MenuProps) {
 		router.events.on('routeChangeStart', handleRouteChangeStart)
 		return () => router.events.off('routeChangeStart', handleRouteChangeStart)
 	}, [])
-
 
 	useEffect(() => {
 		searchRef.current?.[showSearch ? 'focus' : 'blur']()
@@ -94,7 +90,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 						{menu.map(({ type, slug, label }, idx) =>
 							type !== 'district' ?
 								<li key={idx} className={cn(((asPath.startsWith(slug) && slug !== '/') || (isHome && type == 'home')) && !showDistricts && s.active)}>
-									<Link href={slug}>{label}</Link>
+									{slug ? <Link href={slug}>{label}</Link> : <>{label}</>}
 								</li>
 								: isMainDistrict &&
 								<li key={idx} className={cn(showDistricts && s.active)} onClick={() => setShowDistricts(!showDistricts)}>
@@ -102,7 +98,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 								</li>
 						)}
 					</ul>
-					<span className="mid" onClick={() => setShowSearch(true)}>Sök</span>
+					<span className={"mid"} onClick={() => setShowSearch(true)}>Sök</span>
 				</div>
 			</nav>
 
