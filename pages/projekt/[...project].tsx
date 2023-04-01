@@ -19,7 +19,7 @@ export type Props = {
   }[]
 }
 
-export default function ProjectItem({ project: { id, title, slug, image, intro, content }, project, parentProject, projectMenu }: Props) {
+export default function ProjectItem({ project: { id, title, content }, project, parentProject, projectMenu }: Props) {
 
   const { asPath } = useRouter()
   const { isHome, district, color } = usePage()
@@ -53,6 +53,13 @@ export default function ProjectItem({ project: { id, title, slug, image, intro, 
         record={project}
         backLink={'/projekt'}
       />
+
+      {project.__typename === 'ProjectRecord' && project.webpage &&
+        <a href={project.webpage} className={s.direct}>
+          <img src="/images/mask4.svg"></img>
+          <span className="mid">Besök<br /> projektets<br />hemsida</span>
+        </a>
+      }
     </>
   );
 }

@@ -10,27 +10,20 @@ import BalanceText from 'react-balance-text'
 export default function SectionHeader() {
 
   const { title, subtitle, image, intro, layout, color, colorOption } = usePage()
-  console.log(colorOption, s[colorOption])
 
   return (
     <header className={cn(s.header, s[layout], colorOption && s[colorOption])}>
       <h1><BalanceText><span>{title}{subtitle && ` — ${subtitle}`}</span></BalanceText>
         <div className={s.fade}></div></h1>
-
       {image &&
-        <>
-          <div className={s.direct}>
-            <img src="/images/mask4.svg"></img>
-            <span className="mid">Besök<br /> projektets<br />hemsida</span></div>
-          <figure>
-            <Image
-              data={image.responsiveImage}
-              className={s.image}
-              pictureClassName={s.image}
-              objectFit="cover"
-            />
-          </figure>
-        </>
+        <figure>
+          <Image
+            data={image.responsiveImage}
+            className={s.image}
+            pictureClassName={s.image}
+            objectFit="cover"
+          />
+        </figure>
       }
       {intro &&
         <>

@@ -33,11 +33,11 @@ export default function Menu({ districts, menu }: MenuProps) {
 	const navStyle = {
 		transform: `translateY(-${scrollY}px)`,
 		backgroundColor: scrollY > 0 ? 'var(--background)' : undefined
-
 	}
+
 	const searchStyle = { minHeight: `calc(var(--navbar-height) - ${scrollY}px)` }
 	const resultsStyle = { minHeight: `calc(100vh - var(--navbar-height) + ${scrollY}px)`, maxHeight: `calc(100vh - var(--navbar-height) + ${scrollY}px)` }
-	const logoStyle = { fontSize: `${((1 - ratio) * 20) + 64}px` }
+	const logoStyle = { fontSize: `calc(${Math.max(0.8, (1 - ratio))} * var(--navbar-height) + calc(-1 * var(--navbar-space))` }
 
 	const resetSearch = () => {
 		setQuery('')
@@ -67,8 +67,8 @@ export default function Menu({ districts, menu }: MenuProps) {
 
 	return (
 		<>
-			<div className={cn(s.logo, isHome && s.home)} style={logoStyle}>
-				<Link id="logo" href={'/'}>A</Link>
+			<div className={cn(s.logo, isHome && s.home)} >
+				<Link id="logo" href={'/'} style={logoStyle}>A</Link>
 			</div>
 			<nav className={cn(s.menu, isHome && s.home)} style={navStyle} ref={ref}>
 				<div className={s.top} style={{ opacity: (1 - ratio) }}>

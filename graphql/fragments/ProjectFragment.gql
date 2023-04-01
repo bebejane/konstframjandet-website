@@ -10,6 +10,7 @@ fragment ProjectFragment on ProjectRecord {
 	}
 	colorOption
 	completed
+	webpage
 	district {
 		...DistrictFragmentLight
 	}
