@@ -1,4 +1,5 @@
 export { default as Button } from './blocks/Button'
+export { default as DownloadPdf } from './blocks/DownloadPdf'
 export { default as FullscreenVideo } from './blocks/FullscreenVideo'
 export { default as Image } from './blocks/Image'
 export { default as ImageGallery } from './blocks/ImageGallery'

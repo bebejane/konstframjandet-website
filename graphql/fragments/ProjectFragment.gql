@@ -31,6 +31,14 @@ fragment ProjectFragment on ProjectRecord {
 				text
 				url
 			}
+			... on DownloadPdfRecord {
+				__typename
+				id
+				url
+				image {
+					...ImageFragment
+				}
+			}
 			... on ImageGalleryRecord {
 				__typename
 				id
