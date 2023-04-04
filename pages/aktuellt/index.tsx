@@ -3,7 +3,7 @@ import cn from 'classnames'
 import withGlobalProps from "/lib/withGlobalProps";
 import { AllNewsDocument } from "/graphql";
 import { NewsCard, NewsContainer, Bubble } from "/components";
-import { useState } from "react";
+import useStore from "/lib/store";
 
 export type Props = {
   news: NewsRecord[]
@@ -11,18 +11,17 @@ export type Props = {
 
 export default function News({ news }: Props) {
 
-  const [listView, setListView] = useState(true)
+  const [view] = useStore((state) => [state.view])
 
   return (
     <>
-      <div className={cn(s.container, listView && s.list)}>
-        <button onClick={() => setListView(!listView)}>{listView ? 'List' : 'Full'}</button>
-        <NewsContainer view={listView ? 'list' : 'full'}>
+      <div className={cn(s.container, view && s.list)}>
+        <NewsContainer view={view}>
           {news.map(item =>
             <NewsCard
               key={item.id}
               news={item}
-              view={listView ? 'list' : 'full'}
+              view={view}
             />
           )}
         </NewsContainer>
@@ -39,8 +38,9 @@ export const getStaticProps = withGlobalProps({ queries: [AllNewsDocument] }, as
     props: {
       ...props,
       page: {
-        title: 'Aktuellt'
-      }
+        title: 'Aktuellt',
+        layout: 'news'
+      } as PageProps
     },
     revalidate
   }

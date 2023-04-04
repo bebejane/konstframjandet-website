@@ -6,7 +6,7 @@ type PageProps = {
   intro?: string
   color?: string
   colorOption?: string
-  layout: 'full' | 'project' | 'home'
+  layout: 'full' | 'project' | 'home' | 'news'
   isHome: boolean
   isMainDistrict: boolean
 }

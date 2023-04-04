@@ -10,11 +10,15 @@ import BalanceText from 'react-balance-text'
 export default function SectionHeader() {
 
   const { title, subtitle, image, intro, layout, color, colorOption } = usePage()
+  const [view, setView] = useStore((state) => [state.view, state.setView])
 
   return (
     <header className={cn(s.header, s[layout], colorOption && s[colorOption])}>
-      <h1><BalanceText><span>{title}{subtitle && ` — ${subtitle}`}</span></BalanceText>
-        <div className={s.fade}></div></h1>
+      <h1>
+        <BalanceText><span>{title}{subtitle && ` — ${subtitle}`}</span></BalanceText>
+        <div className={s.fade}></div>
+      </h1>
+
       {image &&
         <figure>
           <Image
@@ -35,9 +39,13 @@ export default function SectionHeader() {
           </div>
         </>
       }
-      {
-        color &&
+      {color &&
         <div className={s.bgcolor} style={{ backgroundColor: color }}></div>
+      }
+      {layout === 'news' &&
+        <span className={cn(s.view, 'mid')} onClick={() => setView(view === 'full' ? 'list' : 'full')}>
+          {view === 'list' ? 'Full' : 'List'}
+        </span>
       }
     </header >
   )
