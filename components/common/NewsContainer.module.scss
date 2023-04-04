@@ -8,7 +8,7 @@
 
   @include mq($from: tablet) {
     li:nth-child(odd) {
-      &>div {
+      & > div {
         padding-right: var(--gutter);
       }
     }
@@ -16,8 +16,20 @@
     li:nth-child(even) {
       flex-direction: row-reverse;
 
-      &>div {
+      & > div {
         padding-left: var(--gutter);
+      }
+    }
+  }
+
+  &.list {
+    p {
+      display: none;
+    }
+    li {
+      flex-direction: row-reverse;
+      & > div {
+        padding-left: 0;
       }
     }
   }
