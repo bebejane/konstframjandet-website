@@ -48,7 +48,7 @@
       display: flex;
     }
 
-    >ul {
+    > ul {
       @include mq($until: desktop) {
         display: none;
       }
@@ -57,7 +57,7 @@
       flex: 1 1 100%;
       flex-direction: row;
 
-      >li {
+      > li {
         flex: 0 0 calc(100% / 5);
         padding-right: 1rem;
         overflow: hidden;
@@ -68,10 +68,8 @@
           color: var(--white);
 
           li {
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: pre;
             padding-bottom: 0.2em;
+            line-height: 1.2;
           }
         }
 

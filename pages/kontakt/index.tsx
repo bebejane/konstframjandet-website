@@ -27,7 +27,7 @@ export default function Contact({ district: { id, intro, contentContact }, distr
         </p>
 
         <form
-          action="//konstframjandet.us3.list-manage.com/subscribe/post?u=8b6aeb8402131fab41dc9e52c&amp;id=94772b4952"
+          action="//konstframjandet.us3.list-manage.com/subscribe/post?u=ç&amp;id=94772b4952"
           method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
           target="_blank" novalidate>
           <input type="email" value="" placeholder="Din epostadress" name="EMAIL" class="required email"
