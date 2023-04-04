@@ -3,9 +3,7 @@
   --height: calc(100vh - var(--navbar-height) - var(--space));
   --width: 100%;
   width: var(--width);
-  border-top: var(--line-thick);
   border-bottom: var(--line-thick);
-  margin-top: var(--small-space);
 
   @include mq($until: desktop) {
     //max-width: 100vw;
