@@ -16,13 +16,11 @@ export default async function handler(req: NextRequest, res: NextResponse) {
   }
 
   try {
+
     const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID;
     const API_KEY = process.env.MAILCHIMP_API_KEY;
     const DATACENTER = process.env.MAILCHIMP_API_SERVER;
-    const data = {
-      email_address: email,
-      status: 'subscribed',
-    };
+    const data = { email_address: email, status: 'subscribed' };
 
     const response = await fetch(`https://${DATACENTER}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members`, {
       body: JSON.stringify(data),
@@ -33,11 +31,13 @@ export default async function handler(req: NextRequest, res: NextResponse) {
       }
     });
 
+    const { title, status, detail } = await response.json()
 
-    if (response.status >= 400) {
+    if (status >= 400) {
+      const exists = title?.toLowerCase().includes('exists') ?? false
       return NextResponse.json({
         success: false,
-        error: `There was an error subscribing to the newsletter.`,
+        error: exists ? 'Du är redan anmäld till nyhetsbrevet' : `Det uppstod ett fel: ${detail}`,
       }, {
         status: 400,
         headers: { 'content-type': 'application/json' }
