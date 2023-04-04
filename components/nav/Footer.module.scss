@@ -33,7 +33,7 @@
     .about {
       @include mq($from: tablet) {
         flex: 0 0 calc(var(--grid-unit));
-        padding-right: 1rem;
+        padding-right: 3rem;
       }
 
       line-height: 1.25em;
@@ -58,7 +58,7 @@
       flex-direction: row;
 
       > li {
-        flex: 0 0 calc(100% / 5);
+        flex: 0 0 calc(100% / 4);
         padding-right: 1rem;
         overflow: hidden;
 
@@ -74,7 +74,7 @@
         }
 
         &.double {
-          flex: 0 0 calc(2 * calc(100% / 5));
+          flex: 0 0 calc(2 * calc(100% / 4));
           display: block;
 
           ul {
@@ -82,7 +82,7 @@
             flex-wrap: wrap;
 
             li {
-              flex: 0 0 50%;
+              flex: 0 0 33%;
               white-space: unset;
             }
           }
