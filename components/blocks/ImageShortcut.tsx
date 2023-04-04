@@ -26,10 +26,14 @@ export default function ImageShortcut({ data: { headline, image, link, externalL
             />
           }
           <figcaption>
-            <h1>
-              {headline}
-            </h1>
-            <p className="intro">{text}</p>
+            <header>
+              <h1>{headline}</h1>
+              <div className={s.fade}></div>
+            </header>
+            <div className={s.intro}>
+              <p className="intro">{text}</p>
+              <div className={s.fade}></div>
+            </div>
           </figcaption>
         </figure>
         <Bubble className={cn(s.bubble, 'mid')}>Visa</Bubble>

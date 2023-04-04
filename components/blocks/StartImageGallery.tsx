@@ -55,10 +55,16 @@ export default function StartImageGallery({ id, data: { links } }: Props) {
 									/>
 								}
 								<figcaption>
-									<h1>
-										{item.title}
-									</h1>
-									<p className="intro">{(item.intro || item.linkIntro)}</p>
+									<header>
+										<div className={s.fade}></div>
+										<h1>
+											{item.title}
+										</h1>
+									</header>
+									<div className={s.intro}>
+										<p className="intro">{(item.intro || item.linkIntro)}</p>
+										<div className={s.fade}></div>
+									</div>
 								</figcaption>
 							</figure>
 							<Bubble className={cn(s.bubble, 'mid')}>Visa</Bubble>
