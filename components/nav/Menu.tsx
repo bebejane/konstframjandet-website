@@ -74,7 +74,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 							<>
 								<a href={district.facebook}>Facebook</a>
 								<a href={district.instagram}>Instagram</a>
-								<Link href="/english">English</Link>
+								<Link href="/om/english">English</Link>
 							</>
 							:
 							<>
