@@ -26,7 +26,7 @@ export default function NewsCard({ view = 'full', news: { title, subtitle, intro
         </Markdown>
         <div className={cn(s.meta, "mid")}>
           {where && <span>{where}</span>}
-          <span>{date}</span>
+          {date && <span>{date}</span>}
           {time && <span>{time}</span>}
           {misc && <span>{misc}</span>}
           <span><Link href={`/aktuellt/${slug}`}>Läs mer</Link></span>
