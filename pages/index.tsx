@@ -4,6 +4,7 @@ import { StartDocument } from "/graphql";
 import { StartSelectionContainer, StartSelectionCard } from "/components";
 import { Block } from '/components'
 import { usePage } from "/lib/context/page";
+import React from "react";
 
 export type Props = {
 	district: DistrictRecord
@@ -27,7 +28,7 @@ export default function Home({ district, start }: Props) {
 			{district.content
 				.map((block, idx) =>
 					block.__typename === 'StartSelectedDistrictNewsRecord' && isMainDistrict ?
-						<>{selectedInDistricts}</>
+						<React.Fragment key={idx}>{selectedInDistricts}</React.Fragment>
 						:
 						<Block key={idx} data={block} record={district} />
 				)}
