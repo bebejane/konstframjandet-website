@@ -35,6 +35,7 @@ fragment ProjectFragment on ProjectRecord {
 				__typename
 				id
 				url
+				text
 				image {
 					...ImageFragment
 				}

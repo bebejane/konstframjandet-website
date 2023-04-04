@@ -1,10 +1,28 @@
 .button {
-  margin-top: var(--small-space);
+  margin-top: var(--space);
   margin-bottom: var(--small-space);
   display: block;
 
+  button {
+    //width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .image {
     cursor: pointer;
+    height: 2rem;
+    width: 2rem !important;
+    display: flex;
 
+    img {
+      object-fit: contain;
+      width: auto;
+    }
+  }
+
+  span {
+    padding-left: 1em;
   }
 }
