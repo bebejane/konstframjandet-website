@@ -1,0 +1,16 @@
+.logotypes {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+
+  li {
+    margin-right: 1rem;
+    background-color: var(--white);
+
+    .image {
+      max-height: 5rem;
+      aspect-ratio: 4/4;
+    }
+  }
+}
