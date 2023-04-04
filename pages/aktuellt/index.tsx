@@ -16,9 +16,14 @@ export default function News({ news }: Props) {
   return (
     <>
       <div className={cn(s.container, listView && s.list)}>
+        <button onClick={() => setListView(!listView)}>{listView ? 'List' : 'Full'}</button>
         <NewsContainer view={listView ? 'list' : 'full'}>
           {news.map(item =>
-            <NewsCard key={item.id} news={item} view={listView ? 'list' : 'full'} />
+            <NewsCard
+              key={item.id}
+              news={item}
+              view={listView ? 'list' : 'full'}
+            />
           )}
         </NewsContainer>
         <Bubble className={s.more}>Fler</Bubble>
