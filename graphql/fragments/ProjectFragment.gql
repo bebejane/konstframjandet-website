@@ -10,6 +10,7 @@ fragment ProjectFragment on ProjectRecord {
 	}
 	colorOption
 	completed
+	webpage
 	district {
 		...DistrictFragmentLight
 	}
@@ -29,6 +30,14 @@ fragment ProjectFragment on ProjectRecord {
 				id
 				text
 				url
+			}
+			... on DownloadPdfRecord {
+				__typename
+				id
+				url
+				image {
+					...ImageFragment
+				}
 			}
 			... on ImageGalleryRecord {
 				__typename

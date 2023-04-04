@@ -2,22 +2,21 @@ import s from './NewsCard.module.scss'
 import cn from 'classnames'
 import React from 'react'
 import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components'
-import format from 'date-fns/format'
 import { Image } from 'react-datocms/image'
 import Link from 'next/link'
 import { usePage } from '/lib/context/page'
-import { capitalize } from '/lib/utils'
 
 export type CardProps = {
   news: NewsRecord
+  view?: 'list' | 'full'
 }
 
-export default function NewsCard({ news: { title, subtitle, intro, image, slug, address, where, date, time, misc } }: CardProps) {
+export default function NewsCard({ view = 'full', news: { title, subtitle, intro, image, slug, address, where, date, time, misc } }: CardProps) {
 
   const { isHome } = usePage()
 
   return (
-    <li className={cn(s.card, isHome && s.home)}>
+    <li className={cn(s.card, isHome && s.home, view === 'list' && s.list)}>
       <div className={s.content}>
         <Link href={`/aktuellt/${slug}`}>
           <h2 className="big">{title} — {subtitle}</h2>

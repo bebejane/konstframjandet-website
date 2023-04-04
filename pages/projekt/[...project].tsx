@@ -4,7 +4,7 @@ import withGlobalProps from "/lib/withGlobalProps";
 import { apiQueryAll, mainDistrict } from '/lib/utils';
 import { apiQuery } from "dato-nextjs-utils/api";
 import { ProjectDocument, ProjectSubpageDocument, ProjectBySubpageDocument, AllProjectsDocument } from "/graphql";
-import { Aside, Article, SideMenu } from '/components';
+import { Aside, Article, SideMenu, Bubble } from '/components';
 import { useEffect } from 'react';
 import { usePage } from '/lib/context/page';
 import { useRouter } from 'next/router';
@@ -19,7 +19,7 @@ export type Props = {
   }[]
 }
 
-export default function ProjectItem({ project: { id, title, slug, image, intro, content }, project, parentProject, projectMenu }: Props) {
+export default function ProjectItem({ project: { id, title, content }, project, parentProject, projectMenu }: Props) {
 
   const { asPath } = useRouter()
   const { isHome, district, color } = usePage()
@@ -53,6 +53,12 @@ export default function ProjectItem({ project: { id, title, slug, image, intro, 
         record={project}
         backLink={'/projekt'}
       />
+
+      {project.__typename === 'ProjectRecord' && project.webpage &&
+        <Bubble href={project.webpage} className={s.direct}>
+          Besök projektets hemsida
+        </Bubble>
+      }
     </>
   );
 }

@@ -19,6 +19,15 @@ export default function Contact({ district: { id, intro, contentContact }, distr
         intro={intro}
         content={contentContact}
       />
+      <div className={s.newsletter}>
+        <h2>Nyhetsbrev</h2>
+        <p>
+          Anmäl dig till vårt nyhetsbrev för att få information om våra utställningar och projekt,
+          och tips på andra konstrelaterade händelser.
+        </p>
+        <input type="email" placeholder="E-post address..." />
+        <button>Skicka</button>
+      </div>
     </>
   );
 }

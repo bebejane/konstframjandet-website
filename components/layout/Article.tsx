@@ -1,7 +1,7 @@
 import s from './Article.module.scss'
 import cn from 'classnames'
 import React, { useEffect } from 'react'
-import { StructuredContent } from "/components";
+import { StructuredContent, Aside } from "/components";
 import { Image } from 'react-datocms';
 import { DatoSEO, DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
 import useStore from '/lib/store';
@@ -21,9 +21,10 @@ export type ArticleProps = {
   dropcap?: boolean
   date?: string
   backLink?: string
+  aside?: React.ReactNode | React.ReactNode[] | undefined
 }
 
-export default function Article({ id, title, content, image, imageSize, intro, backLink, record = {}, dropcap = false }: ArticleProps) {
+export default function Article({ id, title, content, image, imageSize, intro, backLink, aside, record = {}, dropcap = false }: ArticleProps) {
 
   const [setImageId, setImages] = useStore((state) => [state.setImageId, state.setImages])
 
@@ -53,7 +54,6 @@ export default function Article({ id, title, content, image, imageSize, intro, b
                 {image.title}
               </figcaption>
             </figure>
-
           </>
         }
         <section>
