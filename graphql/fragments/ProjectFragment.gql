@@ -58,7 +58,7 @@ fragment ProjectFragment on ProjectRecord {
 				__typename
 				id
 				logotypes {
-					...ImageFragment
+					...ImageMediumFragment
 				}
 			}
 			... on VideoRecord {

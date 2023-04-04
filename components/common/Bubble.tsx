@@ -32,7 +32,6 @@ export default function Bubble({ href, className, children, onClick }: Props) {
     </button>
   )
 
-  return (
-    href ? <Link href={href}>{button}</Link> : <>{button}</>
-  )
+  return href ? <Link href={href}>{button}</Link> : <>{button}</>
+
 }

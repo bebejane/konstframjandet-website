@@ -35,6 +35,7 @@
         flex: 0 0 calc(var(--grid-unit));
         padding-right: 1rem;
       }
+
       line-height: 1.25em;
     }
 
@@ -42,19 +43,21 @@
       @include mq($until: tablet) {
         display: none;
       }
+
       list-style: none;
       display: flex;
     }
 
-    > ul {
+    >ul {
       @include mq($until: desktop) {
         display: none;
       }
+
       display: flex;
       flex: 1 1 100%;
       flex-direction: row;
 
-      > li {
+      >li {
         flex: 0 0 calc(100% / 5);
         padding-right: 1rem;
         overflow: hidden;
@@ -69,6 +72,21 @@
             overflow: hidden;
             white-space: pre;
             padding-bottom: 0.2em;
+          }
+        }
+
+        &.double {
+          flex: 0 0 calc(2 * calc(100% / 5));
+          display: block;
+
+          ul {
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            li {
+              flex: 0 0 50%;
+              white-space: unset;
+            }
           }
         }
       }

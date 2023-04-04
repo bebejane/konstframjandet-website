@@ -3,6 +3,7 @@ import cn from 'classnames'
 import type { Menu } from '/lib/menu'
 import Link from 'next/link'
 import { primarySubdomain } from '/lib/utils'
+import { usePage } from '/lib/context/page'
 
 export type FooterProps = {
 	footer: any
@@ -10,6 +11,8 @@ export type FooterProps = {
 }
 
 export default function Footer({ footer, menu }: FooterProps) {
+
+	const { isMainDistrict } = usePage()
 
 	return (
 		<footer className={cn(s.footer)} id="footer">
@@ -25,18 +28,20 @@ export default function Footer({ footer, menu }: FooterProps) {
 					och med att föra ut konst till människor i deras vardag. Vi verkar i hela Sverige.
 				</div>
 				<ul>
-					{menu.filter(({ type }) => type !== 'home').map(({ label, slug, items, subdomain }, idx) =>
-						<li key={idx}>
-							{slug ? <Link href={slug} locale={subdomain}>{label}</Link> : <>{label}</>}
-							<ul>
-								{items?.map(({ label, slug, subdomain }, idx) =>
-									<li key={`${idx}-sub`}>
-										<Link href={slug} scroll={true} locale={subdomain}>{label}</Link>
-									</li>
-								)}
-							</ul>
-						</li>
-					)}
+					{menu
+						.filter(({ type }, idx) => type !== 'home' && !(type === 'project' && isMainDistrict))
+						.map(({ type, label, slug, items, subdomain }, idx) =>
+							<li key={idx} className={cn(isMainDistrict && type === 'district' && s.double)}>
+								{slug ? <Link href={slug} locale={subdomain}>{label}</Link> : <>{label}</>}
+								<ul>
+									{items?.map(({ label, slug, subdomain }, idx) =>
+										<li key={`${idx}-sub`}>
+											<Link href={slug} scroll={true} locale={subdomain}>{label}</Link>
+										</li>
+									)}
+								</ul>
+							</li>
+						)}
 				</ul>
 			</nav>
 		</footer>

@@ -42,7 +42,7 @@ fragment DistrictFragment on DistrictRecord {
 				__typename
 				id
 				logotypes {
-					...ImageFragment
+					...ImageMediumFragment
 				}
 			}
 			... on VideoRecord {

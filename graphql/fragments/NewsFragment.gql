@@ -48,7 +48,7 @@ fragment NewsFragment on NewsRecord {
 				__typename
 				id
 				logotypes {
-					...ImageFragment
+					...ImageMediumFragment
 				}
 			}
 			... on VideoRecord {
