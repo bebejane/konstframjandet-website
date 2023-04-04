@@ -72,8 +72,8 @@ export default function StartImageGallery({ id, data: { links } }: Props) {
 					</SwiperSlide>
 				)}
 			</SwiperReact>
-			<div className={s.prev}><button onClick={() => swiperRef.current.slidePrev()}>‹</button></div>
-			<div className={s.next}><button onClick={() => swiperRef.current.slideNext()}>›</button></div>
+			<div className={s.prev}><Bubble onClick={() => swiperRef.current.slidePrev()}>‹</Bubble></div>
+			<div className={s.next}><Bubble onClick={() => swiperRef.current.slideNext()}>›</Bubble></div>
 		</section>
 	)
 }

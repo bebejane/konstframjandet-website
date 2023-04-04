@@ -90,6 +90,7 @@
             top: calc(-1 * var(--space));
             z-index: 0;
             margin-left: calc(-1 * var(--outer-margin));
+
             @include mq($from: tablet) {
               margin-left: calc(-1 * var(--grid-unit));
             }
@@ -97,6 +98,7 @@
 
           .intro {
             position: relative;
+
             .fade {
               background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0));
               z-index: 1;
@@ -121,9 +123,11 @@
 
           p {
             flex: 0 0;
+
             @include mq($from: tablet) {
               width: 75%;
             }
+
             padding-bottom: var(--space);
             padding-right: var(--outer-margin);
             z-index: 3;
@@ -150,11 +154,8 @@
     pointer-events: none;
 
     button {
-      font-size: 1.5rem;
+      font-size: 2rem;
       line-height: 0rem;
-      height: 5rem;
-      width: 5rem;
-      border-radius: 50%;
       margin: var(--small-space);
       pointer-events: all;
     }
