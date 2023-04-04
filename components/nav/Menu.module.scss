@@ -27,7 +27,7 @@
     }
   }
 
-  &.home>a:hover {
+  &.home > a:hover {
     color: var(--white);
   }
 }
@@ -45,7 +45,8 @@
   margin-left: var(--outer-margin);
   margin-right: var(--outer-margin);
 
-  @include mq($until: desktop) {}
+  @include mq($until: desktop) {
+  }
 
   &.small {
     transform: translateY(-50%);
@@ -125,7 +126,7 @@
       user-select: none;
 
       &.active,
-      &.active>a {
+      &.active > a {
         color: var(--page-color);
       }
 
@@ -139,9 +140,8 @@
   }
 
   &.home {
-
     .active,
-    .active>a,
+    .active > a,
     li:hover,
     a:hover {
       color: var(--white) !important;
@@ -177,6 +177,8 @@
     column-count: 5;
 
     li {
+      padding-bottom: 0.5em;
+
       &:hover {
         color: var(--page-color);
       }

@@ -1,6 +1,6 @@
 .gallery {
   position: relative;
-  --height: calc(100vh - 10vh - var(--space));
+  --height: calc(100vh - var(--navbar-height) - var(--space));
   --width: 100%;
   width: var(--width);
   border-top: var(--line-thick);
@@ -10,6 +10,11 @@
   @include mq($until: desktop) {
     //max-width: 100vw;
     //min-width: 100vw;
+  }
+
+  &:first-of-type {
+    border-top: 0;
+    margin-top: 0;
   }
 
   .slide {
