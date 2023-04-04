@@ -1,17 +1,31 @@
 .newsletter {
-  padding-top: var(--space);
+  position: absolute;
+  top: var(--space);
+  right: 0;
   flex: 0 0;
-  width: var(--grid-unit);
+  width: calc(var(--grid-unit) - var(--gutter));
+  background-color: var(--white);
+  padding: 1em;
 
-  p {
-    margin-top: var(--small-space);
+  p:first-of-type {
+    margin-bottom: 0.5em;
   }
 
   input {
-    background-color: var(--white);
+    background-color: var(--light-grey);
+    width: 100%;
+    font-family: $headline-font;
+  }
+
+  .small {
+    font-family: $body-font;
   }
 
   button {
+    background-color: var(--light-grey);
     width: 100%;
+    padding: 0.8em;
+    padding-bottom: 0.9em;
+    padding-left: 1em;
   }
 }
