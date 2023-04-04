@@ -51,6 +51,15 @@ fragment NewsFragment on NewsRecord {
 					...ImageMediumFragment
 				}
 			}
+			... on DownloadPdfRecord {
+				__typename
+				id
+				url
+				text
+				image {
+					...ImageFragment
+				}
+			}
 			... on VideoRecord {
 				__typename
 				caption

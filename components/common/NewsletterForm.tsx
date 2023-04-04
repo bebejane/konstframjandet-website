@@ -25,10 +25,10 @@ export default function NewsletterForm({ }: Props) {
     setError(undefined)
     setSubmitting(true)
 
-    setTimeout(() => setSubmitting(true), 0)
-    setTimeout(() => setSuccess(true), 2000)
-    setTimeout(() => setSubmitting(false), 2000)
-    return
+    //setTimeout(() => setSubmitting(true), 0)
+    //setTimeout(() => setSuccess(true), 2000)
+    //setTimeout(() => setSubmitting(false), 2000)
+    //return
 
 
     fetch('/api/newsletter', {
@@ -59,11 +59,10 @@ export default function NewsletterForm({ }: Props) {
           value={email}
           onChange={({ target: { value } }) => setEmail(value)}
           placeholder="E-post address..."
-          required
           autoCapitalize="off"
           autoCorrect="off"
         />
-        {error && <div className={cn(s.error)}>{error}</div>}
+        {error && <div className={cn(s.error)}>Fel: {error}</div>}
         <button className="small">Skicka</button>
       </form>
       {submitting && <div className={s.overlay}><Loader /></div>}

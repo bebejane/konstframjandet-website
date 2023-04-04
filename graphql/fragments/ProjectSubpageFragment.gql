@@ -42,6 +42,15 @@ fragment ProjectSubpageFragment on ProjectSubpageRecord {
 					...ImageMediumFragment
 				}
 			}
+			... on DownloadPdfRecord {
+				__typename
+				id
+				url
+				text
+				image {
+					...ImageFragment
+				}
+			}
 			... on VideoRecord {
 				__typename
 				caption
