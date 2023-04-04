@@ -29,7 +29,9 @@ export default function Footer({ footer, menu }: FooterProps) {
 				</div>
 				<ul>
 					{menu
-						.filter(({ type }, idx) => type !== 'home' && !(type === 'project' && isMainDistrict))
+						.filter(({ type }) => type !== 'home')
+						.filter(({ type }) => !(type === 'project' && isMainDistrict))
+						.filter(({ type }) => !(type === 'district' && !isMainDistrict))
 						.map(({ type, label, slug, items, subdomain }, idx) =>
 							<li key={idx} className={cn(isMainDistrict && type === 'district' && s.double)}>
 								{slug ? <Link href={slug} locale={subdomain}>{label}</Link> : <>{label}</>}
