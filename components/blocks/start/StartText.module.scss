@@ -5,6 +5,7 @@
 
   a {
     display: flex;
+    align-items: baseline;
 
     &:hover {
       span {
@@ -14,6 +15,10 @@
 
     h2 {
       width: 25%;
+    }
+
+    p {
+      line-height: 1.2em;
     }
     .text {
       width: 75%;

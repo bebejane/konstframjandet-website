@@ -15,7 +15,7 @@ export default function StartText({ data: { text, href } }: TextBlockProps) {
       <Link href={href}>
         <h2>Om oss</h2>
         <div className={s.text}>
-          <p className="intro">
+          <p className="brauer-intro">
             {text}
           </p>
           <span className="mid">Läs mer</span>

@@ -47,7 +47,9 @@ h2.big {
   }
 }
 
-h2 {
+h2,
+.brauer-intro {
+  font-family: $headline-font !important;
   font-size: 24px;
   @include mq($from: tablet) {
     font-size: calc(1rem + 13px);

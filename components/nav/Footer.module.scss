@@ -7,6 +7,10 @@
   color: var(--light-grey);
   padding: var(--outer-margin);
 
+  a:hover {
+    color: var(--page-color);
+  }
+
   .line {
     border: var(--line-thin);
     border-color: var(--light-grey);
