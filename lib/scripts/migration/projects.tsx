@@ -1,25 +1,20 @@
+import hex2rgb from 'hex2rgb'
 import {
   allDistricts,
   itemTypeToId,
   allPages,
   htmlToMarkdown,
   cleanObject,
-  client,
   htmlToStructuredContent,
-  parseLink,
   parseSlug,
-  uploadMedia,
-  chunkArray,
   buildWpApi,
   insertRecord,
   decodeHTMLEntities
 } from './'
 
-import hex2rgb from 'hex2rgb'
-
 const parseACFContent = async (layout: any[]) => {
   if (!layout) return
-  return await htmlToStructuredContent(layout.map(({ text }) => text).join('<br/>'))
+  return await htmlToStructuredContent(layout.map(({ text }) => text).join(''))
 }
 
 const migrateProjects = async (subdomain: string | undefined) => {
@@ -35,6 +30,7 @@ const migrateProjects = async (subdomain: string | undefined) => {
     const allPosts = await allPages(wpapi, 'project')
 
     //return console.log(JSON.stringify(allPosts, null, 2))
+
     // Main projects
     let projects = await Promise.all(allPosts.filter(({ parent }) => !parent).map(async ({
       id,
