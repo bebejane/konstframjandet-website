@@ -1,6 +1,8 @@
 .header {
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: baseline;
 
   &.full,
   &.news {
@@ -11,6 +13,10 @@
     @include mq($from: tablet) {
       padding-left: var(--grid-unit);
     }
+  }
+
+  h1 {
+    width: 90%;
   }
 
   &.project {
@@ -93,7 +99,6 @@
     }
   }
 
-
   .bgcolor {
     position: absolute;
     top: 0;
@@ -106,15 +111,13 @@
   }
 
   .view {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin-top: 1rem;
+    line-height: 0;
     cursor: pointer;
-
     svg {
-      width: 2rem;
-      height: 2rem;
+      width: 4.5rem;
+      height: 4.5rem;
+      display: block;
+      margin-bottom: -1.5rem;
     }
   }
 
