@@ -5,6 +5,8 @@ import { usePage } from '/lib/context/page'
 import useStore from '/lib/store'
 import { Image } from 'react-datocms'
 import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components'
+import ListIcon from '/public/images/list.svg'
+import ThumbIcon from '/public/images/thumb.svg'
 import BalanceText from 'react-balance-text'
 
 export default function SectionHeader() {
@@ -44,7 +46,7 @@ export default function SectionHeader() {
       }
       {layout === 'news' &&
         <span className={cn(s.view, 'mid')} onClick={() => setView(view === 'full' ? 'list' : 'full')}>
-          {view === 'list' ? 'Full' : 'List'}
+          {view === 'list' ? <ThumbIcon /> : <ListIcon />}
         </span>
       }
     </header >
