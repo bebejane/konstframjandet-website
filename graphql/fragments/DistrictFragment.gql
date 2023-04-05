@@ -71,33 +71,36 @@ fragment DistrictFragment on DistrictRecord {
 			}
 			headline
 			text
-			externalLink
 			link {
 				__typename
-				... on AboutRecord {
-					__typename
-					slug
-				}
-				... on NewsRecord {
-					__typename
-					slug
-				}
-				... on ProjectRecord {
-					__typename
-					slug
-				}
-				... on ProjectSubpageRecord {
-					__typename
-					slug
-					_allReferencingProjects {
-						__typename
-						slug
-					}
-				}
 				... on ExternalLinkRecord {
 					__typename
 					url
 					title
+				}
+				... on InternalLinkRecord {
+					__typename
+					id
+					record {
+						... on AboutRecord {
+							__typename
+							id
+							slug
+							title
+						}
+						... on NewsRecord {
+							__typename
+							id
+							slug
+							title
+						}
+						... on ProjectRecord {
+							__typename
+							id
+							slug
+							title
+						}
+					}
 				}
 			}
 		}
@@ -118,7 +121,38 @@ fragment DistrictFragment on DistrictRecord {
 		... on StartTextRecord {
 			__typename
 			text
-			href
+			link {
+				__typename
+				... on ExternalLinkRecord {
+					__typename
+					url
+					title
+				}
+				... on InternalLinkRecord {
+					__typename
+					id
+					record {
+						... on AboutRecord {
+							__typename
+							id
+							slug
+							title
+						}
+						... on NewsRecord {
+							__typename
+							id
+							slug
+							title
+						}
+						... on ProjectRecord {
+							__typename
+							id
+							slug
+							title
+						}
+					}
+				}
+			}
 		}
 		... on StartImageGalleryRecord {
 			__typename

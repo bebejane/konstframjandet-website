@@ -3,20 +3,17 @@ import cn from 'classnames'
 import React from 'react'
 import { Image } from 'react-datocms'
 import Link from 'next/link'
-import { Bubble } from '/components'
-import { recordToSlug } from '/lib/utils'
+import { Bubble, DatoLink } from '/components'
 
 export type ImageShortcutBlockProps = {
   data: ImageShortcutRecord
 }
 
-export default function ImageShortcut({ data: { headline, image, link, externalLink, text } }: ImageShortcutBlockProps) {
-
-  const href = link ? recordToSlug(link) : externalLink
+export default function ImageShortcut({ data: { headline, image, link, text } }: ImageShortcutBlockProps) {
 
   return (
     <section className={s.container}>
-      <Link href={href}>
+      <DatoLink link={link}>
         <figure>
           {image &&
             <Image
@@ -37,8 +34,7 @@ export default function ImageShortcut({ data: { headline, image, link, externalL
           </figcaption>
         </figure>
         <Bubble className={cn(s.bubble, 'mid')}>Visa</Bubble>
-
-      </Link>
+      </DatoLink>
     </section >
   )
 }

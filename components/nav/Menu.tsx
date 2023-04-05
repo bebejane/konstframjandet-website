@@ -9,6 +9,7 @@ import { animateLogo } from '/lib/utils'
 import { SearchResult } from '/components'
 import type { Menu } from '/lib/menu'
 import Link from 'next/link'
+import { useOnClickOutside } from 'usehooks-ts'
 
 export type MenuProps = {
 	districts: DistrictRecord[]
@@ -17,17 +18,19 @@ export type MenuProps = {
 
 export default function Menu({ districts, menu }: MenuProps) {
 
+	const searchRef = useRef<HTMLInputElement | null>(null)
+	const ref = useRef<HTMLElement | null>(null)
+	const districtsPopupRef = useRef(null)
+
 	const router = useRouter()
 	const { asPath } = router
 	const { district, isHome, isMainDistrict } = usePage()
 	const { scrolledPosition } = useScrollInfo()
 	const [offset, setOffset] = useState(0)
+	const [districtHover, setDistrictHover] = useState<string | undefined>()
 	const [showDistricts, setShowDistricts] = useState(false)
 	const [showSearch, setShowSearch] = useState(false)
 	const [query, setQuery] = useState('')
-	const searchRef = useRef<HTMLInputElement | null>(null)
-	const ref = useRef<HTMLElement | null>(null)
-
 	const scrollY = Math.min(offset, scrolledPosition)
 	const ratio = Math.min(1, ((scrolledPosition || 0) / offset)) || 0
 
@@ -35,6 +38,8 @@ export default function Menu({ districts, menu }: MenuProps) {
 	const searchStyle = { minHeight: `calc(var(--navbar-height) - ${scrollY}px)` }
 	const resultsStyle = { minHeight: `calc(100vh - var(--navbar-height) + ${scrollY}px)`, maxHeight: `calc(100vh - var(--navbar-height) + ${scrollY}px)` }
 	const logoStyle = { fontSize: `calc(${Math.max(0.8, (1 - ratio))} * var(--navbar-height) + calc(-1 * var(--navbar-space))` }
+
+	useOnClickOutside(districtsPopupRef, () => setShowDistricts(false))
 
 	const resetSearch = () => {
 		setQuery('')
@@ -102,12 +107,22 @@ export default function Menu({ districts, menu }: MenuProps) {
 				</div>
 			</nav>
 
-			<nav className={cn(s.districts, showDistricts && s.show)} style={navStyle}>
+			<nav
+				ref={districtsPopupRef}
+				className={cn(s.districts, showDistricts && s.show)}
+				style={{ ...navStyle, backgroundColor: 'var(--white)' }}
+			>
 				<span className="mid">Besök våra distrikt</span>
 				<ul>
-					{districts?.filter(({ subdomain }) => primarySubdomain !== subdomain).map(({ id, subdomain, name }) =>
+					{districts?.filter(({ subdomain }) => primarySubdomain !== subdomain).map(({ id, subdomain, name, color }) =>
 						<li key={id}>
-							<Link href={`/`} locale={subdomain}>{name}</Link>
+							<Link
+								href={`/`}
+								locale={subdomain}
+								onMouseEnter={() => setDistrictHover(id)}
+								onMouseLeave={() => setDistrictHover(undefined)}
+								style={{ color: districtHover === id ? color.hex : 'unset' }}
+							>{name}</Link>
 						</li>
 					)}
 				</ul>
@@ -128,6 +143,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 				</div>
 				<span className={cn(s.close, 'small')} onClick={resetSearch}>Stäng</span>
 			</div>
+
 		</>
 	)
 }
