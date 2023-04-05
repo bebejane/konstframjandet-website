@@ -26,7 +26,6 @@ const migrateAbout = async (subdomain: string | undefined) => {
     const districtId = districts.find(el => el.subdomain === subdomain).id
     const itemTypeId = (await itemTypeToId('about')).id
     const allPosts = await allPages(wpapi, 'about')
-
     //return console.log(JSON.stringify(allPosts, null, 2))
 
     let items = await Promise.all(allPosts.map(async ({
@@ -39,6 +38,7 @@ const migrateAbout = async (subdomain: string | undefined) => {
         dropcap
       } }) =>
     (cleanObject({
+      createdAt,
       title: decodeHTMLEntities(title.rendered),
       intro: intro ? htmlToMarkdown(intro) : undefined,
       content: await htmlToStructuredContent(content.rendered),
@@ -52,8 +52,8 @@ const migrateAbout = async (subdomain: string | undefined) => {
     const chunked = chunkArray(items, 10)
 
     for (let i = 0, total = 0; i < chunked.length; i++) {
-      console.log(`${(total += chunked[i].length)}/${items.length}`)
       await Promise.allSettled(chunked[i].map((el) => insertRecord(el, itemTypeId)))
+      console.log(`${(total += chunked[i].length)}/${items.length}`)
     }
 
   } catch (err) {

@@ -149,12 +149,15 @@ export const insertRecord = async (el: any, itemTypeId: string) => {
 		}
 	}
 	try {
-		const item = await client.items.create({
-			item_type: { type: 'item_type', id: itemTypeId },
-			...el
-		})
+		let item = await client.items.create({ item_type: { type: 'item_type', id: itemTypeId }, ...el, createdAt: undefined })
+		if (el.createdAt) {
+			console.log('update', el.createdAt)
+			item = await client.items.update(item.id, { meta: { created_at: el.createdAt } })
+		}
+
 		return item
 	} catch (err) {
+		console.log(err)
 		throw err
 	}
 }

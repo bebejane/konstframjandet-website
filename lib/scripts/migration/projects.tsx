@@ -47,6 +47,7 @@ const migrateProjects = async (subdomain: string | undefined) => {
       } }) =>
     (cleanObject({
       id,
+      createdAt,
       image: image ? { url: image?.url, title: image?.caption } : undefined,
       title: decodeHTMLEntities(title.rendered),
       intro: htmlToMarkdown(excerpt),
@@ -73,6 +74,7 @@ const migrateProjects = async (subdomain: string | undefined) => {
           dropcap
         } }) =>
       (cleanObject({
+        createdAt,
         image: layout && layout[0].image ? { url: layout[0].image, title: layout[0].caption } : undefined,
         title: decodeHTMLEntities(title.rendered),
         subtitle: layout?.[0]?.sub_headline ?? undefined,
@@ -83,34 +85,27 @@ const migrateProjects = async (subdomain: string | undefined) => {
       }))))
     })))
 
-
-    projects.forEach((el, idx) => {
-      delete projects[idx].id
-      delete projects[idx].parent
-      projects[idx].subprojects.forEach((el, i) => {
-        delete projects[idx].subprojects[i].id
-        delete projects[idx].subprojects[i].parent
-      })
-    })
     //return console.log(JSON.stringify(projects, null, 2))
 
     for (let i = 0, total = 0; i < projects.length; i++) {
 
       const subprojects = projects[i].subprojects
-      const result = await Promise.allSettled(subprojects.map(el => insertRecord(el, itemTypeIdSub)))
+      const result = await Promise.allSettled(subprojects.map(el => insertRecord({
+        ...el,
+        id: undefined,
+        parent: undefined
+      }, itemTypeIdSub)))
 
       if (projects[i].subprojects.length)
         console.log(`${(total += subprojects.length)}/${allPosts.length}`)
 
       const subpage = result.filter(res => res.status === 'fulfilled').map((res) => res.status === 'fulfilled' ? res.value.id : undefined)
-      const project = { ...projects[i] }
-      delete project.subprojects;
 
       try {
-        await insertRecord({ ...project, subpage }, itemTypeId)
+        await insertRecord({ ...projects[i], subprojects: undefined, subpage }, itemTypeId)
         console.log(`${(total += 1)}/${allPosts.length}`)
       } catch (err) {
-        console.log('FAILED', project.title, project.slug)
+        console.log('FAILED', projects[i].title, projects[i].slug)
         console.log(err)
       }
     }
