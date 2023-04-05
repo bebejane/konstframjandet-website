@@ -19,7 +19,7 @@ export default function NewsCard({ view = 'full', news: { title, subtitle, intro
     <li className={cn(s.card, isHome && s.home, view === 'list' && s.list)}>
       <div className={s.content}>
         <Link href={`/aktuellt/${slug}`}>
-          <h2 className="big">{title} — {subtitle}</h2>
+          <h2 className="big">{title}{subtitle && <span> — {subtitle}</span>}</h2>
         </Link>
         <Markdown className="big">
           {intro}
