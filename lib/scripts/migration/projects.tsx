@@ -1,4 +1,5 @@
 import hex2rgb from 'hex2rgb'
+import fs from 'fs'
 import {
   allDistricts,
   itemTypeToId,
@@ -14,6 +15,9 @@ import {
 
 const parseACFContent = async (layout: any[]) => {
   if (!layout) return
+
+  console.log(layout.map(({ text }) => text).join(''))
+
   return await htmlToStructuredContent(layout.map(({ text }) => text).join(''))
 }
 
@@ -27,8 +31,10 @@ const migrateProjects = async (subdomain: string | undefined) => {
     const districtId = districts.find(el => el.subdomain === subdomain).id
     const itemTypeId = (await itemTypeToId('project')).id
     const itemTypeIdSub = (await itemTypeToId('project_subpage')).id
-    const allPosts = await allPages(wpapi, 'project')
+    //const allPosts = await allPages(wpapi, 'project')
+    const allPosts = JSON.parse(fs.readFileSync('./lib/scripts/migration/projects.json', { encoding: 'utf-8' }))
 
+    return await parseACFContent(allPosts[0].acf.layout)
     //return console.log(JSON.stringify(allPosts, null, 2))
 
     // Main projects
@@ -85,6 +91,7 @@ const migrateProjects = async (subdomain: string | undefined) => {
       }))))
     })))
 
+    return console.log(allPosts)
     //return console.log(JSON.stringify(projects, null, 2))
 
     for (let i = 0, total = 0; i < projects.length; i++) {

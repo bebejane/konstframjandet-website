@@ -39,7 +39,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 	const resultsStyle = { minHeight: `calc(100vh - var(--navbar-height) + ${scrollY}px)`, maxHeight: `calc(100vh - var(--navbar-height) + ${scrollY}px)` }
 	const logoStyle = { fontSize: `calc(${Math.max(0.8, (1 - ratio))} * var(--navbar-height) + calc(-1 * var(--navbar-space))` }
 
-	useOnClickOutside(districtsPopupRef, () => setShowDistricts(false))
+	useOnClickOutside(districtsPopupRef, () => setTimeout(() => showDistricts && setShowDistricts(false), 10))
 
 	const resetSearch = () => {
 		setQuery('')
