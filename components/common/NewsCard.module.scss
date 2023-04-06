@@ -101,6 +101,10 @@
         padding-right: 5%;
       }
     }
+
+    h2 {
+      padding-top: 0;
+    }
     > a {
       @include mq($until: tablet) {
         display: none;
