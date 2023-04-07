@@ -15,6 +15,7 @@ module.exports = {
 			headers: {
 				Authorization: process.env.GRAPHQL_API_TOKEN,
 				"X-Exclude-Invalid": true,
+				"X-Environment": process.env.DATOCMS_ENVIRONMENT || "main",
 			},
 		},
 	},

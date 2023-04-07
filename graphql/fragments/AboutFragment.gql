@@ -60,6 +60,12 @@ fragment AboutFragment on AboutRecord {
 					url
 				}
 			}
+			... on SoundRecord {
+				__typename
+				id
+				url
+				provider
+			}
 		}
 	}
 }

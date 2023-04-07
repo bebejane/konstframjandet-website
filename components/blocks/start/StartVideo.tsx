@@ -1,11 +1,11 @@
-import s from "./Video.module.scss"
+import s from "./StartVideo.module.scss"
 import { useEffect, useRef, useState } from "react";
 import { useWindowSize } from "rooks"
 import Youtube from 'react-youtube'
 import Vimeo from '@u-wave/react-vimeo'
 import { DatoMarkdown as Markdown } from "dato-nextjs-utils/components";
 
-export default function Video({ data, editable }) {
+export default function StartVideo({ data }) {
 
 	const ref = useRef<HTMLDivElement | null>(null)
 	const [height, setHeight] = useState(360);
@@ -19,7 +19,7 @@ export default function Video({ data, editable }) {
 	const style = { height: `${height}px`, width: '100%' }
 
 	return (
-		<p className={s.video} ref={ref} >
+		<div className={s.video} ref={ref} >
 			{provider === 'youtube' ?
 				<Youtube
 					opts={{
@@ -41,6 +41,6 @@ export default function Video({ data, editable }) {
 			{title &&
 				<Markdown className={s.caption} allowedElements={['em', 'p']}>{title}</Markdown>
 			}
-		</p>
+		</div>
 	)
 }

@@ -76,6 +76,12 @@ fragment ProjectFragment on ProjectRecord {
 					url
 				}
 			}
+			... on SoundRecord {
+				__typename
+				id
+				url
+				provider
+			}
 		}
 	}
 }

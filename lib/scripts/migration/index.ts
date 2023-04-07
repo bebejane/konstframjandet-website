@@ -9,6 +9,8 @@ import { decode as decodeHTMLEntities } from 'html-entities';
 import sanitizeHtml from 'sanitize-html';
 import { HastNode, HastElementNode, CreateNodeFunction, Context, parse5ToStructuredText } from 'datocms-html-to-structured-text';
 import { visit, find } from 'unist-utils-core';
+import getVideoId from 'get-video-id';
+
 
 import path from 'path';
 export { default as striptags } from 'striptags'
@@ -195,7 +197,13 @@ export const removeTrailingBr = (html: string): string => {
 	return html.replace(/^\s*(?:<br\s*\/?\s*>)+|(?:<br\s*\/?\s*>)+\s*$/gi, '');
 }
 
-export const htmlToStructuredContent = async (html: string, imageBlockId?: string, videoBlockId?: string) => {
+export type BlockIds = {
+	video?: string
+	audio?: string
+	image?: string
+}
+
+export const htmlToStructuredContent = async (html: string, blocks: BlockIds = {}) => {
 
 	/*
 	html = html.replaceAll('<br />\n', '\n')
@@ -230,13 +238,16 @@ export const htmlToStructuredContent = async (html: string, imageBlockId?: strin
 
 	const content = await parse5ToStructuredText(parse5.parse(html, { sourceCodeLocationInfo: true }), {
 		preprocess: (tree: HastNode) => {
+			if (!blocks.image) return
+
 			const liftedImages = new WeakSet();
 			const body = find(
 				tree,
 				(node: HastNode) =>
 					(node.type === 'element' && node.tagName === 'body') ||
 					node.type === 'root',
-			);
+			)
+			// process images
 			visit<HastNode, HastElementNode & { children: HastNode[] }>(
 				body,
 				(node, index, parents) => {
@@ -291,7 +302,7 @@ export const htmlToStructuredContent = async (html: string, imageBlockId?: strin
 				_context: Context,
 			) => {
 
-				if (node.type !== 'element' || !node.properties || !imageBlockId)
+				if (node.type !== 'element' || !node.properties || !blocks.image)
 					return;
 
 				let { src: url, alt: title, srcSet } = node.properties;
@@ -303,7 +314,7 @@ export const htmlToStructuredContent = async (html: string, imageBlockId?: strin
 
 				return createNode('block', {
 					item: buildBlockRecord({
-						item_type: { id: imageBlockId, type: 'item_type' },
+						item_type: { id: blocks.image, type: 'item_type' },
 						image: {
 							upload_id: upload.id,
 						},
@@ -317,30 +328,44 @@ export const htmlToStructuredContent = async (html: string, imageBlockId?: strin
 				_context: Context,
 			) => {
 
-				if (node.type !== 'element' || !node.properties || !videoBlockId)
+				if (node.type !== 'element' || !node.properties || !node.properties.src)
 					return;
 
 				const { src: url, width, height } = node.properties;
 
-				if (url.indexOf('youtube') === -1) {
-					console.log('not youtube', url)
+				// Handle soundcloud embeds
+				if (url.includes('soundcloud')) {
+					if (!blocks.audio) return
+					const soundcloudUrl = url.split('?url=')[1]
+					return createNode('block', {
+						item: buildBlockRecord({
+							item_type: { id: blocks.audio, type: 'item_type' },
+							url: soundcloudUrl,
+						}),
+					});
+				}
+
+				if (!blocks.video) return
+				const video = getVideoId(url)
+
+				if (!['vimeo', 'youtube'].includes(video.service)) {
+					console.log('not valid video', video.service)
 					return
 				}
 
-				const provider_uid = url.split('embed/')[1].split('?')[0]
-				////https://www.youtube.com/embed/XHDNOxCJ6lE?feature=oembed
-				console.log('add youtube block video...')
+				const videoUrl = video.service === 'vimeo' ? `https://vimeo.com/${video.id}` : `https://www.youtube.com/watch?v=${video.id}`
+
 				return createNode('block', {
 					item: buildBlockRecord({
-						item_type: { id: videoBlockId, type: 'item_type' },
+						item_type: { id: blocks.video, type: 'item_type' },
 						video: {
-							provider: 'youtube',
-							provider_uid,
-							url: `https://www.youtube.com/watch?v=${provider_uid}`,
-							width,
-							height,
-							thumbnail_url: `https://img.youtube.com/vi/${provider_uid}/maxresdefault.jpg`,
-							title: 'no title'
+							provider: video.service,
+							provider_uid: video.id,
+							url: videoUrl,
+							width: width || 1280,
+							height: height || 720,
+							thumbnail_url: video.service === 'vimeo' ? `https://i.vimeocdn.com/video/${video.id}_1280x720.jpg` : `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`,
+							title: ''
 						}
 					}),
 				});

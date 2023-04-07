@@ -74,6 +74,12 @@ fragment NewsFragment on NewsRecord {
 					url
 				}
 			}
+			... on SoundRecord {
+				__typename
+				id
+				url
+				provider
+			}
 		}
 	}
 }

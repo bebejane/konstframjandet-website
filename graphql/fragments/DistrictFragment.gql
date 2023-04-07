@@ -59,6 +59,12 @@ fragment DistrictFragment on DistrictRecord {
 					url
 				}
 			}
+			... on SoundRecord {
+				__typename
+				id
+				url
+				provider
+			}
 		}
 	}
 	content {
