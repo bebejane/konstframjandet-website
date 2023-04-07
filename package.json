@@ -14,10 +14,10 @@
 		"barrel:watch": "watch 'node ./lib/scripts/barrel' ./components",
 		"postbuild": "next-sitemap",
 		"migrate:clean": "datocms environments:destroy dev ; datocms environments:fork main dev",
-		"migrate:news": "npm run migrate:clean && tsx ./lib/scripts/migration/news.tsx",
-		"migrate:projects": "npm run migrate:clean && tsx ./lib/scripts/migration/projects.tsx",
-		"migrate:abouts": "npm run migrate:clean && tsx ./lib/scripts/migration/abouts.tsx",
-		"migrate:test": "tsx ./lib/scripts/migration/projects.tsx"
+		"migrate:news": "npm run migrate:clean && tsx ./lib/scripts/migration/news.ts",
+		"migrate:projects": "npm run migrate:clean && tsx ./lib/scripts/migration/projects.ts",
+		"migrate:abouts": "npm run migrate:clean && tsx ./lib/scripts/migration/abouts.ts",
+		"migrate:test": "tsx ./lib/scripts/migration/projects.ts"
 	},
 	"exports": {
 		"lib/*": "/lib",
@@ -103,6 +103,8 @@
 		"tsx": "^3.12.3",
 		"turndown": "^7.1.2",
 		"typescript": "^4.9.4",
+		"unified": "^10.1.2",
+		"unist-utils-core": "^1.0.5",
 		"watch": "^1.0.2",
 		"wpapi": "^1.2.2"
 	}
