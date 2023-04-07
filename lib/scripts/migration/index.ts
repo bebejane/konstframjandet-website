@@ -337,10 +337,12 @@ export const htmlToStructuredContent = async (html: string, blocks: BlockIds = {
 				if (url.includes('soundcloud')) {
 					if (!blocks.audio) return
 					const soundcloudUrl = url.split('?url=')[1]
+
 					return createNode('block', {
 						item: buildBlockRecord({
 							item_type: { id: blocks.audio, type: 'item_type' },
 							url: soundcloudUrl,
+							provider: 'soundcloud',
 						}),
 					});
 				}
