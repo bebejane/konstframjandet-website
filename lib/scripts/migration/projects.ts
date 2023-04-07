@@ -85,8 +85,8 @@ const migrateProjects = async (subdomain: string | undefined) => {
       (cleanObject({
         createdAt,
         image: layout && layout[0].image ? { url: layout[0].image, title: layout[0].caption } : undefined,
-        title: decodeHTMLEntities(title.rendered),
-        subtitle: layout?.[0]?.sub_headline ?? undefined,
+        title: title.rendered,
+        subtitle: layout?.[0]?.sub_headline,
         content: await htmlToStructuredContent(content.rendered, imageBlockId, videoBlockId),
         dropcap,
         slug: parseSlug(slug),
@@ -108,8 +108,10 @@ const migrateProjects = async (subdomain: string | undefined) => {
         parent: undefined
       }, itemTypeIdSub)))
 
-      if (projects[i].subprojects.length)
-        console.log(`${(total += subprojects.length)}/${allPosts.length}`)
+      const fulfilled = result.filter(el => el.status === 'fulfilled')
+      const rejected = result.filter(el => el.status === 'rejected')
+
+      console.log(`${(total += fulfilled.length)}/${allPosts.length}`)
 
       const subpage = result.filter(res => res.status === 'fulfilled').map((res) => res.status === 'fulfilled' ? res.value.id : undefined)
 

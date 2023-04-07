@@ -6,8 +6,10 @@ import { GraphQLClient, gql } from "graphql-request";
 import slugify from 'slugify'
 import WPAPI from 'wpapi';
 import { decode as decodeHTMLEntities } from 'html-entities';
-import { visit, find } from 'unist-utils-core';
+import sanitizeHtml from 'sanitize-html';
 import { HastNode, HastElementNode, CreateNodeFunction, Context, parse5ToStructuredText } from 'datocms-html-to-structured-text';
+import { visit, find } from 'unist-utils-core';
+
 import path from 'path';
 export { default as striptags } from 'striptags'
 export { decodeHTMLEntities, ApiError }
@@ -43,13 +45,11 @@ export const allPages = async (wpapi, type: string, opt = { perPage: 100 }) => {
 
 	while (true) {
 		try {
-
 			const res = await wpapi[type]().page(++page).perPage(opt.perPage).param({ status: 'publish' })
 			if (res.length === 0 || Object.keys(res).length === 0) break
 			items.push.apply(items, res)
-
 		} catch (err) {
-			console.error(err)
+			//console.error(err)
 			break;
 		}
 	}
@@ -57,24 +57,21 @@ export const allPages = async (wpapi, type: string, opt = { perPage: 100 }) => {
 }
 
 export const cleanObject = (obj: any) => {
-	Object.keys(obj).forEach((k) => !obj[k] && delete obj[k]);
+	Object.keys(obj).forEach((k) => {
+		!obj[k] && delete obj[k]
+		typeof obj[k] === 'string' && (obj[k] = decodeHTMLEntities(obj[k]).trim())
+	});
 	return obj
 }
 
 export const parseLink = (url: string) => {
-
 	if (!url) return undefined
-	url = url.toLowerCase()
-	if (url.startsWith('http') || url.startsWith('https')) return url
-
+	if (url.toLowerCase().startsWith('http://') || url.toLowerCase().startsWith('https://')) return url
 	return `https://${url}`
-
 }
 
 export const parseSlug = (slug: string) => {
-	return slugify(decodeURI(slug), {
-		lower: true
-	})
+	return slugify(decodeURI(slug), { lower: true })
 }
 
 export const htmlToMarkdown = (content: string) => {
@@ -111,6 +108,7 @@ export const uploadMedia = async (image, tags: string[] = []) => {
 export default async function findOrCreateUploadWithUrl(
 	client: Client,
 	url: string,
+	title?: string
 ) {
 	let upload;
 
@@ -193,36 +191,115 @@ export const insertRecord = async (el: any, itemTypeId: string) => {
 	}
 }
 
+export const removeTrailingBr = (html: string): string => {
+	return html.replace(/^\s*(?:<br\s*\/?\s*>)+|(?:<br\s*\/?\s*>)+\s*$/gi, '');
+}
+
 export const htmlToStructuredContent = async (html: string, imageBlockId?: string, videoBlockId?: string) => {
 
-	html = html.replaceAll('<br />', '\n')
+	/*
+	html = html.replaceAll('<br />\n', '\n')
 	html = html.replaceAll('<br/>', '\n')
 	html = html.replaceAll('<br>', '\n')
 	html = html.replaceAll('<p class="blank">&nbsp;</p>', ' \n')
 	html = html.replaceAll('<p>&nbsp;</p>', ' ')
+	*/
+
 	/*
-	html = html.replaceAll('<br />\n', '<br />')
+	html = html.replaceAll('<div></div>\n', '')
+	
 	html = html.replaceAll('\n', '<br />')
 	html = html.replaceAll('<p class="blank">&nbsp;</p>', '<br />')
 	html = html.replaceAll('<p>&nbsp;</p>', '<br />')
-	*/
+	html = html.replaceAll('<p></p>', '<br />')
+	html = html.replaceAll('<p><br /></p>', '<br />')
+*/
+	html = html.replaceAll('<br />\n', '<br />')
+	html = html.replaceAll('<p> </p>', '')
+	html = html.replaceAll('<div></div>', '')
+	html = html.replaceAll('<p></p>', '')
+	html = sanitizeHtml(html, {
+		allowedTags: [
+			"h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "dd", "div", "img",
+			"dl", "dt", "li", "ol", "p", "pre", "ul", "a", "b", "br", "em", "i",
+			"span", "strong", "sub", "sup", "iframe"
+		],
+	})
+	html = removeTrailingBr(html)
 	html = decodeHTMLEntities(html)
 
 	const content = await parse5ToStructuredText(parse5.parse(html, { sourceCodeLocationInfo: true }), {
-		// now that images are top-level, convert them into `block` dast nodes
+		preprocess: (tree: HastNode) => {
+			const liftedImages = new WeakSet();
+			const body = find(
+				tree,
+				(node: HastNode) =>
+					(node.type === 'element' && node.tagName === 'body') ||
+					node.type === 'root',
+			);
+			visit<HastNode, HastElementNode & { children: HastNode[] }>(
+				body,
+				(node, index, parents) => {
+					if (
+						node.type !== 'element' ||
+						node.tagName !== 'img' ||
+						liftedImages.has(node) ||
+						parents.length === 1
+					) {
+						return;
+					}
+					const imgParent = parents[parents.length - 1];
+					imgParent.children.splice(index, 1);
+					let i = parents.length;
+					let splitChildrenIndex = index;
+					let childrenAfterSplitPoint: HastNode[] = [];
+					while (--i > 0) {
+						const parent = parents[i];
+						const parentsParent = parents[i - 1];
+						childrenAfterSplitPoint =
+							parent.children.splice(splitChildrenIndex);
+						splitChildrenIndex = parentsParent.children.indexOf(parent);
+						let nodeInserted = false;
+						if (i === 1) {
+							splitChildrenIndex += 1;
+							parentsParent.children.splice(splitChildrenIndex, 0, node);
+							liftedImages.add(node);
+							nodeInserted = true;
+						}
+						splitChildrenIndex += 1;
+						if (childrenAfterSplitPoint.length > 0) {
+							parentsParent.children.splice(splitChildrenIndex, 0, {
+								...parent,
+								children: childrenAfterSplitPoint,
+							});
+						}
+						if (parent.children.length === 0) {
+							splitChildrenIndex -= 1;
+							parentsParent.children.splice(
+								nodeInserted ? splitChildrenIndex - 1 : splitChildrenIndex,
+								1,
+							);
+						}
+					}
+				},
+			);
+		},
 		handlers: {
 			img: async (
 				createNode: CreateNodeFunction,
 				node: HastNode,
 				_context: Context,
 			) => {
-				if (node.type !== 'element' || !node.properties || !imageBlockId) {
-					return;
-				}
 
-				const { src: url } = node.properties;
-				console.log('upload block image...')
-				const upload = await findOrCreateUploadWithUrl(client, url);
+				if (node.type !== 'element' || !node.properties || !imageBlockId)
+					return;
+
+				let { src: url, alt: title, srcSet } = node.properties;
+				if (srcSet)
+					url = srcSet.sort((a, b) => parseInt(a.split(' ')[1]) > parseInt(b.split(' ')[1]) ? -1 : 1)[0].split(' ')[0]
+
+				console.log('upload block image:', url)
+				const upload = await uploadMedia({ url, title });
 
 				return createNode('block', {
 					item: buildBlockRecord({
@@ -230,6 +307,7 @@ export const htmlToStructuredContent = async (html: string, imageBlockId?: strin
 						image: {
 							upload_id: upload.id,
 						},
+						layout: 'medium',
 					}),
 				});
 			},
@@ -238,9 +316,10 @@ export const htmlToStructuredContent = async (html: string, imageBlockId?: strin
 				node: HastNode,
 				_context: Context,
 			) => {
-				if (node.type !== 'element' || !node.properties || !videoBlockId) {
+
+				if (node.type !== 'element' || !node.properties || !videoBlockId)
 					return;
-				}
+
 				const { src: url, width, height } = node.properties;
 
 				if (url.indexOf('youtube') === -1) {
@@ -273,6 +352,6 @@ export const htmlToStructuredContent = async (html: string, imageBlockId?: strin
 }
 
 export const parseDatoError = (err: any): string => {
-	const errors = (err as ApiError).errors.map(({ attributes: { code, details } }) => ({ code, field: details?.field, message: details?.message, errors: Array.isArray(details?.errors) ? details?.errors.join('. ') : undefined }))
-	return errors.map(({ code, field, message, errors }) => `${code} ${field ? `(${field})` : ''} ${message} ${errors ? `(${errors})` : ''}`).join('\n')
+	const errors = (err as ApiError).errors.map(({ attributes: { code, details } }) => ({ code, field: details?.field, message: details?.message, detailsCode: details?.code, errors: Array.isArray(details?.errors) ? details?.errors.join('. ') : undefined }))
+	return errors.map(({ code, field, message, detailsCode, errors }) => `${code} ${field ? `(${field})` : ''} ${message || ''} ${detailsCode || ''} ${errors ? `(${errors})` : ''}`).join('\n')
 }

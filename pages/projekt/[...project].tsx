@@ -23,7 +23,7 @@ export default function ProjectItem({ project: { id, title, content }, project, 
 
   const { asPath } = useRouter()
   const { isHome, district, color } = usePage()
-
+  console.log(project)
   useEffect(() => {
 
     const r = document.querySelector<HTMLElement>(':root')
