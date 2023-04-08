@@ -80,7 +80,6 @@ fragment ProjectFragment on ProjectRecord {
 				__typename
 				id
 				url
-				provider
 			}
 		}
 	}

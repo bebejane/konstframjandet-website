@@ -63,7 +63,6 @@ fragment DistrictFragment on DistrictRecord {
 				__typename
 				id
 				url
-				provider
 			}
 		}
 	}

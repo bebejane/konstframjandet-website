@@ -64,7 +64,6 @@ fragment AboutFragment on AboutRecord {
 				__typename
 				id
 				url
-				provider
 			}
 		}
 	}

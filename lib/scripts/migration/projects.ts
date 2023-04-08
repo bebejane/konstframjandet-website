@@ -12,31 +12,27 @@ import {
   insertRecord,
   decodeHTMLEntities,
   ApiError,
-  parseDatoError
+  allItemTypes,
+  parseDatoError,
+  noImage
 } from './'
 
-const parseACFContent = async (layout: any[]) => {
-  if (!layout) return
-
-  console.log(layout.map(({ text }) => text).join(''))
-
-  return await htmlToStructuredContent(layout.map(({ text }) => text).join(''))
-}
 
 const migrateProjects = async (subdomain: string | undefined) => {
 
   console.time('import')
   try {
 
-    const wpapi = buildWpApi(subdomain)
     const districts = await allDistricts()
     const districtId = districts.find(el => el.subdomain === subdomain).id
     const itemTypeId = (await itemTypeToId('project')).id
     const itemTypeIdSub = (await itemTypeToId('project_subpage')).id
     const imageBlockId = (await itemTypeToId('image')).id
     const videoBlockId = (await itemTypeToId('video')).id
-    const allPosts = await allPages(wpapi, 'project')
-    //const allPosts = JSON.parse(fs.readFileSync('./lib/scripts/migration/projects.json', { encoding: 'utf-8' }))
+    const audioBlockId = (await itemTypeToId('sound')).id
+    const blockIds = { image: imageBlockId, video: videoBlockId, audio: audioBlockId }
+    //const allPosts = await allPages(wpapi, 'project')
+    const allPosts = JSON.parse(fs.readFileSync('./lib/scripts/migration/projects.json', { encoding: 'utf-8' }))
     //return await parseACFContent(allPosts[0].acf.layout)
     //return console.log(JSON.stringify(allPosts, null, 2))
 
@@ -57,10 +53,10 @@ const migrateProjects = async (subdomain: string | undefined) => {
     (cleanObject({
       id,
       createdAt,
-      image: image ? { url: image?.url, title: image?.caption } : undefined,
+      image: image ? { url: image?.url, title: image?.caption } : noImage,
       title: decodeHTMLEntities(title.rendered),
-      intro: htmlToMarkdown(excerpt),
-      content: await htmlToStructuredContent(content.rendered, imageBlockId, videoBlockId),
+      intro: htmlToMarkdown(excerpt) || 'No intro...',
+      content: await htmlToStructuredContent(content.rendered, blockIds),
       dropcap,
       color: color ? { red: hex2rgb(color).rgb[0], green: hex2rgb(color).rgb[1], blue: hex2rgb(color).rgb[2], alpha: 255 } : undefined,
       completed: is_archived,
@@ -84,20 +80,21 @@ const migrateProjects = async (subdomain: string | undefined) => {
         } }) =>
       (cleanObject({
         createdAt,
-        image: layout && layout[0].image ? { url: layout[0].image, title: layout[0].caption } : undefined,
+        image: layout && layout[0].image ? { url: layout[0].image, title: layout[0].caption } : noImage,
         title: title.rendered,
+        intro: 'No intro...',
         subtitle: layout?.[0]?.sub_headline,
-        content: await htmlToStructuredContent(content.rendered, imageBlockId, videoBlockId),
+        content: await htmlToStructuredContent(layout?.map(({ text }) => text).join(' ') || ' ', blockIds),
         dropcap,
         slug: parseSlug(slug),
         district: districtId
       }))))
     })))
-
+    //return
     //return console.log(allPosts)
     //return console.log(JSON.stringify(projects, null, 2))
     let errors = 0;
-    let total = 0
+    let success = 0;
 
     for (let i = 0; i < projects.length; i++) {
 
@@ -111,20 +108,28 @@ const migrateProjects = async (subdomain: string | undefined) => {
       const fulfilled = result.filter(el => el.status === 'fulfilled')
       const rejected = result.filter(el => el.status === 'rejected')
 
-      console.log(`${(total += fulfilled.length)}/${allPosts.length}`)
+      errors += rejected.length
+      success += fulfilled.length
+
+      if (rejected.length > 0)
+        console.log(rejected.map((el: any) => parseDatoError(el.reason)).join('\n'))
+      if (fulfilled.length > 0)
+        console.log(`${(success + errors)}/${allPosts.length}`)
 
       const subpage = result.filter(res => res.status === 'fulfilled').map((res) => res.status === 'fulfilled' ? res.value.id : undefined)
 
       try {
         await insertRecord({ ...projects[i], subprojects: undefined, subpage }, itemTypeId)
-        console.log(`${(++total)}/${allPosts.length}`)
+        success++
       } catch (err) {
+        errors++;
         console.log('FAILED', projects[i].title)
         console.log(parseDatoError(err))
-        errors++;
+
       }
+      console.log(`${(success + errors)}/${allPosts.length}`)
     }
-    console.log('DONE', `${total}/${allPosts.length}`, `Errors: ${errors}/${allPosts.length}`)
+    console.log('DONE', `${success}/${allPosts.length}`, `Errors: ${errors}/${allPosts.length}`)
   } catch (err) {
     console.log(err)
   }

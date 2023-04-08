@@ -78,7 +78,6 @@ fragment NewsFragment on NewsRecord {
 				__typename
 				id
 				url
-				provider
 			}
 		}
 	}

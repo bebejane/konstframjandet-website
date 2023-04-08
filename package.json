@@ -17,7 +17,7 @@
 		"migrate:news": "npm run migrate:clean && tsx ./lib/scripts/migration/news.ts",
 		"migrate:projects": "npm run migrate:clean && tsx ./lib/scripts/migration/projects.ts",
 		"migrate:abouts": "npm run migrate:clean && tsx ./lib/scripts/migration/abouts.ts",
-		"migrate:test": "tsx ./lib/scripts/migration/projects.ts"
+		"migrate:test": "datocms environments:fork main dev ; tsx ./lib/scripts/migration/projects.ts"
 	},
 	"exports": {
 		"lib/*": "/lib",

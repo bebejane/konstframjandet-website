@@ -18,7 +18,7 @@ export { decodeHTMLEntities, ApiError }
 export const client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, environment: 'dev' })
 export const toMarkdown = new NodeHtmlMarkdown()
 export const baseDomain = 'konstframjandet.se/wp-json'
-
+export const noImage = { url: 'https://www.datocms-assets.com/94618/1680937798-no-photo-available.png', title: undefined }
 export const buildWpApi = (subdomain: string | undefined) => {
 
 	subdomain = subdomain === 'forbundet' ? undefined : subdomain
@@ -38,6 +38,7 @@ export const buildWpApi = (subdomain: string | undefined) => {
 }
 
 export const itemTypeToId = async (model: string) => (await client.itemTypes.list()).find(({ api_key }) => api_key === model)
+export const allItemTypes = async (model: string) => (await client.itemTypes.list())
 
 export const allPages = async (wpapi, type: string, opt = { perPage: 100 }) => {
 
@@ -203,29 +204,24 @@ export type BlockIds = {
 	image?: string
 }
 
-export const htmlToStructuredContent = async (html: string, blocks: BlockIds = {}) => {
+export const cleanWordpressHtml = (html: string) => {
 
-	/*
-	html = html.replaceAll('<br />\n', '\n')
-	html = html.replaceAll('<br/>', '\n')
-	html = html.replaceAll('<br>', '\n')
-	html = html.replaceAll('<p class="blank">&nbsp;</p>', ' \n')
-	html = html.replaceAll('<p>&nbsp;</p>', ' ')
-	*/
 
-	/*
-	html = html.replaceAll('<div></div>\n', '')
-	
-	html = html.replaceAll('\n', '<br />')
-	html = html.replaceAll('<p class="blank">&nbsp;</p>', '<br />')
-	html = html.replaceAll('<p>&nbsp;</p>', '<br />')
-	html = html.replaceAll('<p></p>', '<br />')
-	html = html.replaceAll('<p><br /></p>', '<br />')
-*/
+	html = html.replaceAll('<P>', '<p>')
+	html = html.replaceAll('</P>', '</p>')
+	html = html.replaceAll('<br>', '<br />')
+	html = html.replaceAll('<p><br />', '<p>')
+	html = html.replaceAll('<br /></p>', '</p>')
 	html = html.replaceAll('<br />\n', '<br />')
-	html = html.replaceAll('<p> </p>', '')
 	html = html.replaceAll('<div></div>', '')
 	html = html.replaceAll('<p></p>', '')
+	html = html.replaceAll('<p> </p>', '')
+	html = html.replaceAll('<p>&nbsp;</p>', '')
+	html = html.replaceAll('<p class=\"blank\">&nbsp;</p>', '')
+	html = html.replaceAll('\n', '')
+
+
+	/*
 	html = sanitizeHtml(html, {
 		allowedTags: [
 			"h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "dd", "div", "img",
@@ -233,14 +229,24 @@ export const htmlToStructuredContent = async (html: string, blocks: BlockIds = {
 			"span", "strong", "sub", "sup", "iframe"
 		],
 	})
+	*/
 	html = removeTrailingBr(html)
 	html = decodeHTMLEntities(html)
+
+	return html
+}
+
+export const htmlToStructuredContent = async (html: string, blocks: BlockIds = {}) => {
+	html = cleanWordpressHtml(html)
+	//	console.log(html)
+	//return null
 
 	const content = await parse5ToStructuredText(parse5.parse(html, { sourceCodeLocationInfo: true }), {
 		preprocess: (tree: HastNode) => {
 			if (!blocks.image) return
 
 			const liftedImages = new WeakSet();
+			const liftedIframes = new WeakSet();
 			const body = find(
 				tree,
 				(node: HastNode) =>
@@ -294,7 +300,57 @@ export const htmlToStructuredContent = async (html: string, blocks: BlockIds = {
 					}
 				},
 			);
+			// process iframes
+			/*
+			visit<HastNode, HastElementNode & { children: HastNode[] }>(
+				body,
+				(node, index, parents) => {
+					if (
+						node.type !== 'element' ||
+						node.tagName !== 'iframe' ||
+						liftedIframes.has(node) ||
+						parents.length === 1
+					) {
+						return;
+					}
+					const iframeParent = parents[parents.length - 1];
+					iframeParent.children.splice(index, 1);
+					let i = parents.length;
+					let splitChildrenIndex = index;
+					let childrenAfterSplitPoint: HastNode[] = [];
+					while (--i > 0) {
+						const parent = parents[i];
+						const parentsParent = parents[i - 1];
+						childrenAfterSplitPoint =
+							parent.children.splice(splitChildrenIndex);
+						splitChildrenIndex = parentsParent.children.indexOf(parent);
+						let nodeInserted = false;
+						if (i === 1) {
+							splitChildrenIndex += 1;
+							parentsParent.children.splice(splitChildrenIndex, 0, node);
+							liftedIframes.add(node);
+							nodeInserted = true;
+						}
+						splitChildrenIndex += 1;
+						if (childrenAfterSplitPoint.length > 0) {
+							parentsParent.children.splice(splitChildrenIndex, 0, {
+								...parent,
+								children: childrenAfterSplitPoint,
+							});
+						}
+						if (parent.children.length === 0) {
+							splitChildrenIndex -= 1;
+							parentsParent.children.splice(
+								nodeInserted ? splitChildrenIndex - 1 : splitChildrenIndex,
+								1,
+							);
+						}
+					}
+				},
+			);
+			*/
 		},
+
 		handlers: {
 			img: async (
 				createNode: CreateNodeFunction,
@@ -309,7 +365,7 @@ export const htmlToStructuredContent = async (html: string, blocks: BlockIds = {
 				if (srcSet)
 					url = srcSet.sort((a, b) => parseInt(a.split(' ')[1]) > parseInt(b.split(' ')[1]) ? -1 : 1)[0].split(' ')[0]
 
-				console.log('upload block image:', url)
+				console.log('image block:', url)
 				const upload = await uploadMedia({ url, title });
 
 				return createNode('block', {
@@ -336,39 +392,41 @@ export const htmlToStructuredContent = async (html: string, blocks: BlockIds = {
 				// Handle soundcloud embeds
 				if (url.includes('soundcloud')) {
 					if (!blocks.audio) return
-					const soundcloudUrl = url.split('?url=')[1]
-
+					const soundcloudUrl = decodeURIComponent(url).split('url=')[1]
+					console.log('audio block', soundcloudUrl)
 					return createNode('block', {
 						item: buildBlockRecord({
 							item_type: { id: blocks.audio, type: 'item_type' },
-							url: soundcloudUrl,
-							provider: 'soundcloud',
+							url: soundcloudUrl
 						}),
 					});
 				}
 
 				if (!blocks.video) return
-				const video = getVideoId(url)
+				const meta = getVideoId(url)
 
-				if (!['vimeo', 'youtube'].includes(video.service)) {
-					console.log('not valid video', video.service)
+				if (!['vimeo', 'youtube'].includes(meta.service)) {
+					console.log('not valid video', meta.service)
 					return
 				}
 
-				const videoUrl = video.service === 'vimeo' ? `https://vimeo.com/${video.id}` : `https://www.youtube.com/watch?v=${video.id}`
+				const videoUrl = meta.service === 'vimeo' ? `https://vimeo.com/${meta.id}` : `https://www.youtube.com/watch?v=${meta.id}`
+				const video = {
+					provider: meta.service,
+					provider_uid: meta.id,
+					url: videoUrl,
+					width: width || 1280,
+					height: height || 720,
+					thumbnail_url: meta.service === 'vimeo' ? `https://i.vimeocdn.com/video/${meta.id}_1280x720.jpg` : `https://img.youtube.com/vi/${meta.id}/maxresdefault.jpg`,
+					title: `${meta.service} ${meta.id}`
+				}
+
+				console.log('video block', videoUrl)
 
 				return createNode('block', {
 					item: buildBlockRecord({
 						item_type: { id: blocks.video, type: 'item_type' },
-						video: {
-							provider: video.service,
-							provider_uid: video.id,
-							url: videoUrl,
-							width: width || 1280,
-							height: height || 720,
-							thumbnail_url: video.service === 'vimeo' ? `https://i.vimeocdn.com/video/${video.id}_1280x720.jpg` : `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`,
-							title: ''
-						}
+						video
 					}),
 				});
 			},
