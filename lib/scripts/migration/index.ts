@@ -1,4 +1,7 @@
+
 import * as dotenv from 'dotenv'; dotenv.config({ path: "./.env" });
+import fs from 'fs'
+import path from 'path';
 import { buildClient, buildBlockRecord, Client, ApiError } from '@datocms/cma-client-node';
 import { NodeHtmlMarkdown } from 'node-html-markdown'
 import * as parse5 from 'parse5';
@@ -10,9 +13,7 @@ import sanitizeHtml from 'sanitize-html';
 import { HastNode, HastElementNode, CreateNodeFunction, Context, parse5ToStructuredText, visitChildren } from 'datocms-html-to-structured-text';
 import { visit, find } from 'unist-utils-core';
 import getVideoId from 'get-video-id';
-import fs from 'fs'
 
-import path from 'path';
 export { default as striptags } from 'striptags'
 export { decodeHTMLEntities, ApiError }
 export const client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, environment: 'dev' })
@@ -81,6 +82,7 @@ export const cleanObject = (obj: any) => {
 		!obj[k] && delete obj[k]
 		typeof obj[k] === 'string' && (obj[k] = decodeHTMLEntities(obj[k]).trim())
 	});
+
 	return obj
 }
 
@@ -210,9 +212,11 @@ export const insertRecord = async (el: any, itemTypeId: string) => {
 		}
 	}
 	try {
+
 		let item = await client.items.create({ item_type: { type: 'item_type', id: itemTypeId }, ...el, createdAt: undefined })
+
 		if (el.createdAt)
-			item = await client.items.update(item.id, { meta: { created_at: el.createdAt } })
+			item = await client.items.update(item.id, { meta: { created_at: el.createdAt, first_published_at: el.createdAt } })
 
 		return item
 	} catch (err) {
@@ -239,14 +243,13 @@ export const cleanWordpressHtml = (html: string) => {
 	html = html.replaceAll('<br>', '<br />')
 	html = html.replaceAll('<p><br />', '<p>')
 	html = html.replaceAll('<br /></p>', '</p>')
-	html = html.replaceAll('<br />\n', '<br />')
 	html = html.replaceAll('<div></div>', '')
-	html = html.replaceAll('<p></p>', '')
-	html = html.replaceAll('<p> </p>', '')
-	html = html.replaceAll('<p>&nbsp;</p>', '')
-	html = html.replaceAll('<p class=\"blank\">&nbsp;</p>', '')
+	html = html.replaceAll('<p></p>', '<br />')
+	html = html.replaceAll('<p> </p>', '<br />')
+	html = html.replaceAll('<p>&nbsp;</p>', '<br />')
+	html = html.replaceAll('<p class=\"blank\">&nbsp;</p>', '<br />')
+	html = html.replaceAll('<br /><br /><br />', '<br /><br />')
 	html = html.replaceAll('\n', '')
-
 
 	/*
 	html = sanitizeHtml(html, {
@@ -364,11 +367,11 @@ export const htmlToStructuredContent = async (html: string, blocks: BlockIds = {
 				if (node.type !== 'element' || !node.properties)
 					return context.defaultHandlers.a(createNode, node, context)
 
-				const fileTypes = ['pdf', 'doc', 'xlsx', 'mp3', 'wav', 'doc', 'docx', 'zip']
+				const fileTypes = ['pdf', 'doc', 'xlsx', 'mp3', 'wav', 'doc', 'docx', 'zip', 'jpg', 'jpeg', 'png', 'gif', 'svg']
 				const fileEnding = node.type === 'element' ? node.properties?.href?.toLowerCase().split('.').at(-1) : null
 				const { href: url } = node.properties;
 
-				if (!url.toLowerCase().includes('konstframjandet.se') || !fileTypes.includes(fileEnding))
+				if (!url.toLowerCase().includes('konstframjandet.se/wp-content/uploads') || !fileTypes.includes(fileEnding))
 					return context.defaultHandlers.a(createNode, node, context)
 
 				console.log('upload file:', url, 'as', fileEnding)
