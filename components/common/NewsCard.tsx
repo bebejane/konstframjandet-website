@@ -32,11 +32,13 @@ export default function NewsCard({ view = 'full', news: { title, subtitle, intro
           <span><Link href={`/aktuellt/${slug}`}>Läs mer</Link></span>
         </div>
       </div>
-      <Link href={`/aktuellt/${slug}`}>
-        <figure className={s.figure}>
-          <Image data={image.responsiveImage} className={s.image} />
-        </figure>
-      </Link>
+      {image &&
+        <Link href={`/aktuellt/${slug}`}>
+          <figure className={s.figure}>
+            <Image data={image.responsiveImage} className={s.image} />
+          </figure>
+        </Link>
+      }
     </li>
   )
 }

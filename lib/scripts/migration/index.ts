@@ -7,10 +7,10 @@ import slugify from 'slugify'
 import WPAPI from 'wpapi';
 import { decode as decodeHTMLEntities } from 'html-entities';
 import sanitizeHtml from 'sanitize-html';
-import { HastNode, HastElementNode, CreateNodeFunction, Context, parse5ToStructuredText } from 'datocms-html-to-structured-text';
+import { HastNode, HastElementNode, CreateNodeFunction, Context, parse5ToStructuredText, visitChildren } from 'datocms-html-to-structured-text';
 import { visit, find } from 'unist-utils-core';
 import getVideoId from 'get-video-id';
-
+import fs from 'fs'
 
 import path from 'path';
 export { default as striptags } from 'striptags'
@@ -18,7 +18,8 @@ export { decodeHTMLEntities, ApiError }
 export const client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, environment: 'dev' })
 export const toMarkdown = new NodeHtmlMarkdown()
 export const baseDomain = 'konstframjandet.se/wp-json'
-export const noImage = { url: 'https://www.datocms-assets.com/94618/1680937798-no-photo-available.png', title: undefined }
+export const noImage = undefined //{ url: 'https://www.datocms-assets.com/94618/1680937798-no-photo-available.png', title: undefined }
+
 export const buildWpApi = (subdomain: string | undefined) => {
 
 	subdomain = subdomain === 'forbundet' ? undefined : subdomain
@@ -48,7 +49,12 @@ export const allBlockIds = async () => {
 	}
 }
 
-
+export const writeErrors = (errors: any[], subdomain: string, type: string) => {
+	if (errors.length) {
+		fs.writeFileSync(`./lib/scripts/migration/errors/${subdomain}-${type}.error.json`, JSON.stringify(errors, null, 2), { encoding: 'utf8' })
+		console.log(`Errors (${subdomain}-${type}): ${errors.length}`)
+	}
+}
 
 export const allPages = async (wpapi, type: string, opt = { perPage: 100 }) => {
 
@@ -62,7 +68,8 @@ export const allPages = async (wpapi, type: string, opt = { perPage: 100 }) => {
 			if (res.length === 0 || Object.keys(res).length === 0) break
 			items.push.apply(items, res)
 		} catch (err) {
-			//console.error(err)
+			if (err.code !== 'rest_post_invalid_page_number')
+				console.error(err)
 			break;
 		}
 	}
@@ -81,6 +88,14 @@ export const parseLink = (url: string) => {
 	if (!url) return undefined
 	if (url.toLowerCase().startsWith('http://') || url.toLowerCase().startsWith('https://')) return url
 	return `https://${url}`
+}
+
+
+export const printProgress = (progress: string) => {
+	return console.log(progress)
+	process.stdout.clearLine(0);
+	process.stdout.cursorTo(0);
+	process.stdout.write(progress);
 }
 
 export const parseSlug = (slug: string) => {
@@ -189,7 +204,8 @@ export const insertRecord = async (el: any, itemTypeId: string) => {
 			const upload = await uploadMedia(el.image)
 			el.image = { upload_id: upload.id }
 		} catch (err) {
-			console.log('IMAGE ERROR: ', err)
+			if (err !== 'no image')
+				console.error(err)
 			delete el.image;
 		}
 	}
@@ -248,9 +264,8 @@ export const cleanWordpressHtml = (html: string) => {
 }
 
 export const htmlToStructuredContent = async (html: string, blocks: BlockIds = {}) => {
+	if (!html) return html
 	html = cleanWordpressHtml(html)
-	//	console.log(html)
-	//return null
 
 	const content = await parse5ToStructuredText(parse5.parse(html, { sourceCodeLocationInfo: true }), {
 		preprocess: (tree: HastNode) => {
@@ -311,57 +326,7 @@ export const htmlToStructuredContent = async (html: string, blocks: BlockIds = {
 					}
 				},
 			);
-			// process iframes
-			/*
-			visit<HastNode, HastElementNode & { children: HastNode[] }>(
-				body,
-				(node, index, parents) => {
-					if (
-						node.type !== 'element' ||
-						node.tagName !== 'iframe' ||
-						liftedIframes.has(node) ||
-						parents.length === 1
-					) {
-						return;
-					}
-					const iframeParent = parents[parents.length - 1];
-					iframeParent.children.splice(index, 1);
-					let i = parents.length;
-					let splitChildrenIndex = index;
-					let childrenAfterSplitPoint: HastNode[] = [];
-					while (--i > 0) {
-						const parent = parents[i];
-						const parentsParent = parents[i - 1];
-						childrenAfterSplitPoint =
-							parent.children.splice(splitChildrenIndex);
-						splitChildrenIndex = parentsParent.children.indexOf(parent);
-						let nodeInserted = false;
-						if (i === 1) {
-							splitChildrenIndex += 1;
-							parentsParent.children.splice(splitChildrenIndex, 0, node);
-							liftedIframes.add(node);
-							nodeInserted = true;
-						}
-						splitChildrenIndex += 1;
-						if (childrenAfterSplitPoint.length > 0) {
-							parentsParent.children.splice(splitChildrenIndex, 0, {
-								...parent,
-								children: childrenAfterSplitPoint,
-							});
-						}
-						if (parent.children.length === 0) {
-							splitChildrenIndex -= 1;
-							parentsParent.children.splice(
-								nodeInserted ? splitChildrenIndex - 1 : splitChildrenIndex,
-								1,
-							);
-						}
-					}
-				},
-			);
-			*/
 		},
-
 		handlers: {
 			img: async (
 				createNode: CreateNodeFunction,
@@ -372,12 +337,12 @@ export const htmlToStructuredContent = async (html: string, blocks: BlockIds = {
 				if (node.type !== 'element' || !node.properties || !blocks.image)
 					return;
 
-				let { src: url, alt: title, srcSet } = node.properties;
+				let { src: url, srcSet } = node.properties;
 				if (srcSet)
 					url = srcSet.sort((a, b) => parseInt(a.split(' ')[1]) > parseInt(b.split(' ')[1]) ? -1 : 1)[0].split(' ')[0]
 
-				console.log('image block:', url)
-				const upload = await uploadMedia({ url, title });
+				//console.log('image block:', url)
+				const upload = await uploadMedia({ url });
 
 				return createNode('block', {
 					item: buildBlockRecord({
@@ -388,6 +353,29 @@ export const htmlToStructuredContent = async (html: string, blocks: BlockIds = {
 						layout: 'medium',
 					}),
 				});
+			},
+			//@ts-ignore
+			a: async (
+				createNode: CreateNodeFunction,
+				node: HastNode,
+				context: Context,
+			) => {
+
+				if (node.type !== 'element' || !node.properties)
+					return context.defaultHandlers.a(createNode, node, context)
+
+				const fileTypes = ['pdf', 'doc', 'xlsx', 'mp3', 'wav', 'doc', 'docx', 'zip']
+				const fileEnding = node.type === 'element' ? node.properties?.href?.toLowerCase().split('.').at(-1) : null
+				const { href: url } = node.properties;
+
+				if (!url.toLowerCase().includes('konstframjandet.se') || !fileTypes.includes(fileEnding))
+					return context.defaultHandlers.a(createNode, node, context)
+
+				console.log('upload file:', url, 'as', fileEnding)
+				const upload = await uploadMedia({ url });
+				node.properties.href = upload.url
+
+				return context.defaultHandlers.a(createNode, node, context)
 			},
 			iframe: async (
 				createNode: CreateNodeFunction,
@@ -404,7 +392,7 @@ export const htmlToStructuredContent = async (html: string, blocks: BlockIds = {
 				if (url.includes('soundcloud')) {
 					if (!blocks.audio) return
 					const soundcloudUrl = decodeURIComponent(url).split('url=')[1]
-					console.log('audio block', soundcloudUrl)
+					//console.log('audio block', soundcloudUrl)
 					return createNode('block', {
 						item: buildBlockRecord({
 							item_type: { id: blocks.audio, type: 'item_type' },
@@ -432,7 +420,7 @@ export const htmlToStructuredContent = async (html: string, blocks: BlockIds = {
 					title: `${meta.service} ${meta.id}`
 				}
 
-				console.log('video block', videoUrl)
+				//console.log('video block', videoUrl)
 
 				return createNode('block', {
 					item: buildBlockRecord({

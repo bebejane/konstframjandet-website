@@ -20,12 +20,14 @@ export default function StartSelectionCard({ item }: CardProps) {
     <li className={s.card} key={item.id}>
       <Link href={slug} locale={subdomain}>
         <figure className={s.figure}>
-          <Image
-            data={item.image.responsiveImage}
-            pictureClassName={s.image}
-            placeholderClassName={s.image}
-            objectFit="cover"
-          />
+          {item.image &&
+            <Image
+              data={item.image.responsiveImage}
+              pictureClassName={s.image}
+              placeholderClassName={s.image}
+              objectFit="cover"
+            />
+          }
         </figure>
       </Link>
       <Link href={slug} locale={subdomain}>

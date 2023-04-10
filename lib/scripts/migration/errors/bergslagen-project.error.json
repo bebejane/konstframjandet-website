@@ -1,0 +1,1887 @@
+[
+  {
+    "item": {
+      "createdAt": "2021-04-18T21:52:12",
+      "image": {
+        "url": "http://bergslagen.konstframjandet.se/wp-content/uploads/sites/8/2021/04/stig.jpg",
+        "title": ""
+      },
+      "title": "Skogen mellan oss",
+      "intro": "Med skogen som tema och plats går sex av Konstfrämjandets distrikt i Mellansverige samman i en unik konstsatsning; Skogen mellan oss!",
+      "content": {
+        "schema": "dast",
+        "document": {
+          "children": [
+            {
+              "children": [
+                {
+                  "value": "Projektet ”Skogen mellan oss” stärker konstens roll utanför storstäderna genom ett program som under 2021 knyter samman ett femtontal platser. I Konstfrämjandets distrikt Gävleborg och Uppland i öst över Västmanland, Bergslagen och Dalarna till Värmland i väst skapas egna delprojekt samtidigt som samverkan sker med kollegorna.",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "– ”Skogen mellan oss” är i grunden ett större samarbete. I projektet arbetar vi sida vid sida med bland annat konstnärer, lokala aktörer och föreningsliv, säger verksamhetsledare Kerstin Wagner.",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "Med den gemensamma identiteten kommer Konstfrämjandets distrikt att sprida händelser såsom utställningar, föreläsningar och workshops över ett stort geografiskt område.",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "Arrangörerna hoppas att projektet inspirerar civilsamhälle och beslutsfattare till diskussioner om kulturens strukturer på landsbygden. Genom temat lyfts samtidigt frågor kring skogen som plats för alltifrån exploatering, produktion och rekreation till migration, historia, mystik och hem.",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "I Bergslagen påbörjades projektet sommaren 2020 då ",
+                  "type": "span"
+                },
+                {
+                  "value": "konstnären Kristina Lindberg spenderade 1 månad i Nyhyttan för att starta en konstnärligt process. Resultaten kommer visas i form av utställningar, workshops och samtal i Nyhyttan och Konstfrämjandets galleri i Örebro under hösten 2021. Inom ramen för projektet kommer även konstnärsgruppen OTALT från Arvika att genomföra en performance i Tivedens nationalpark och Örebros fristadskonstnär Abdalla Basher skapar nya verk. Ytterligare konstnärer kommer dessutom bjudas in att delta i projektet.",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "För ytterligare info besök gärna Skogen mellan oss hemsida: ",
+                  "type": "span"
+                },
+                {
+                  "url": "http://konstframjandet.se/projekt/skogen-mellan-oss/",
+                  "children": [
+                    {
+                      "value": "www.skogenmellanoss.se",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "link"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "type": "thematicBreak"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "value": "Projektet finansieras av:",
+                          "marks": [
+                            "strong"
+                          ],
+                          "type": "span"
+                        },
+                        {
+                          "value": "  Postkodstiftelsen, Folkrörelsernas Konstfrämjande samt Kulturrådet.",
+                          "type": "span"
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "listItem"
+                },
+                {
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "value": "Samarbetsparter: ",
+                          "marks": [
+                            "strong"
+                          ],
+                          "type": "span"
+                        },
+                        {
+                          "value": "Laxå Kommun, NorART, Nora kommun och Ljusstråk, Nyhyttans Kurort.",
+                          "type": "span"
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "listItem"
+                },
+                {
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "value": "Vill du medverka i projektet? ",
+                          "marks": [
+                            "strong"
+                          ],
+                          "type": "span"
+                        },
+                        {
+                          "value": "Kontakta projektledarna:",
+                          "marks": [
+                            "strong"
+                          ],
+                          "type": "span"
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "listItem"
+                },
+                {
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "value": "Kerstin Wagner: kerstin.wagner@konstframjandet.se",
+                          "type": "span"
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "listItem"
+                },
+                {
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "value": "Kristina Lindberg: kristina.lindberg@konstframjandet.se",
+                          "type": "span"
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "listItem"
+                }
+              ],
+              "style": "bulleted",
+              "type": "list"
+            }
+          ],
+          "type": "root"
+        }
+      },
+      "dropcap": true,
+      "color": {
+        "red": 91,
+        "green": 130,
+        "blue": 78,
+        "alpha": 255
+      },
+      "completed": true,
+      "slug": "skogen-mellan-oss",
+      "district": "133470832",
+      "subprojects": [
+        {
+          "createdAt": "2021-10-05T22:04:01",
+          "title": "Utställning -Under en fyrkantig sol",
+          "content": {
+            "schema": "dast",
+            "document": {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "value": "I sitt konstnärskap tar Kristina Lindberg sig an samtidens ekologiska, ontologiska, och socioekonomiska frågor. Via skulpturer i b.la trä, sten och stål omprövar hon systematiskt vad material och form är eller hur det/ den uppstår och förändras. Det ofta tidskrävande arbetet med verken kan t.ex. liknas vid en iscensättning av geologiska eller biologiska processer. På detta sätt sonderar hon de komplexa sammanhangen mellan olika livsformer och kulturer.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "”I samband med att jag utforskat skulptur som uttrycksmedel har jag kommit att se dess egenskaper genom olika vetenskapliga filter. Ett konceptuellt förhållningssätt till arbetet med en skulpturs yta, form, kropp, tyngd och volym öppnar upp för att se hur mediet kan spegla även större kroppars ombildningar.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Samhällskroppen med urbana och rurala traditioner lyder många gånger under samma fysikaliska lagar som urskogen, insjön eller berget. Utmaningen i mitt konstnärskap är att försöka hitta nya sätt att se och uppleva dessa långsamma och ofta osynliga processer. Jag har t.ex. intresserat mig mycket för övergångar mellan industri och informationssamhälle och hur det i sin tur har format de politiska och ”naturliga” landskapen. En frågeställning som ofta dyker upp i dessa sammanhang är; var  gränsen mellan ”naturliga” och ”onaturliga” material går när energi och materia endast kan omvandlas -aldrig försvinna? Att mänskligt arbete (ur ett biogeokemiskt perspektiv) endast förändrar och byter plats på material öppnar på det sättet upp för existentiella reflektioner om mening.”",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Kristina Lindberg är född 1981 och bor inte i Stockholm, Berlin eller New York. Hon har studerat vid Gerrit Rietveld Academie i Amsterdam samt vid Akademin Valand där hon tog sin Masterexamen i Fri Konst 2011. Hon har tidigare ställt ut på bl.a 3.e Våningen/ Gbg, Galleri Box/ Gbg, Örebro Konsthall, OpenART/ Örebro, Kunsthal Charlottenborg/ Köpenhamn, Galleri Pictura/ Lund, Galleri 54/ Gbg, Verkstedhallen/Trondheim, Platform STHLM project space, Moscow Biennale for Young Art mf. Under 2021 deltar hon bland annat i utställningen ”SO SURE” i Hjalteyri/ Island och i ”Ett träd ingen skog” i Bryggeriet/ Nora.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "item": {
+                    "type": "item",
+                    "attributes": {
+                      "image": {
+                        "upload_id": "41470859"
+                      },
+                      "layout": "medium"
+                    },
+                    "relationships": {
+                      "item_type": {
+                        "data": {
+                          "id": "1545634",
+                          "type": "item_type"
+                        }
+                      }
+                    }
+                  },
+                  "type": "block"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "”Spånskiva” Harts, kol, zink, krom, järn, bark och trä. 2020 Kristina Lindberg",
+                      "marks": [
+                        "emphasis"
+                      ],
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "type": "root"
+            }
+          },
+          "dropcap": true,
+          "slug": "utstallning-under-en-fyrkantig-sol",
+          "district": "133470832"
+        },
+        {
+          "createdAt": "2021-09-12T17:30:56",
+          "title": "Skogen mellan oss Bergslagen i media",
+          "subtitle": "Under 2021 har \"Skogen mellan oss\" dykt upp i media med jämna mellanrum. Vi har samlat allt som skrivits om projektet i media, läs om deltagande konstnärer, utställningar och andra händelser i artiklarna här.",
+          "content": {
+            "schema": "dast",
+            "document": {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "url": "http://bergslagen.konstframjandet.se/projekt/skogen-mellan-oss/ljusstrak-fyller-20-ar-nora-ar-omtalat-for-alla-dess-konstnarer/",
+                      "children": [
+                        {
+                          "value": "Ljusstråk fyller 20 år: ”Nora är omtalat för alla dess konstnärer”. Artikel 4/9 av Rolf Larsson på Nerikes Allehanda",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "url": "http://bergslagen.konstframjandet.se/projekt/skogen-mellan-oss/anna-vill-vacka-fragor-med-ett-enda-frageteckenhoppas-starta-en-process-hos-oss-sjalva/",
+                      "children": [
+                        {
+                          "value": "Anna vill väcka frågor ",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "link"
+                    },
+                    {
+                      "url": "http://bergslagen.konstframjandet.se/projekt/skogen-mellan-oss/anna-vill-vacka-fragor-med-ett-enda-frageteckenhoppas-starta-en-process-hos-oss-sjalva/",
+                      "children": [
+                        {
+                          "value": "med ett enda frågetecken:”Hoppas starta en process hos oss själva”. Artikel 2/7 av Alexa",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "link"
+                    },
+                    {
+                      "url": "http://bergslagen.konstframjandet.se/projekt/skogen-mellan-oss/anna-vill-vacka-fragor-med-ett-enda-frageteckenhoppas-starta-en-process-hos-oss-sjalva/",
+                      "children": [
+                        {
+                          "value": "nder Lindhe på Nerikes Allehanda",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "url": "http://bergslagen.konstframjandet.se/projekt/skogen-mellan-oss/de-vill-vacka-fragor-med-konstinstallation-pa-hygge-artikel-av-ann-louise-larsson-pa-lansposten/?preview_id=1024&preview_nonce=71b5280155&_thumbnail_id=-1&preview=true",
+                      "children": [
+                        {
+                          "value": "”De vill väcka frågor med konstinstallation på hygge”. Artikel 17/6 av Ann-Lousie Larsson på Länsposten",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "url": "http://bergslagen.konstframjandet.se/projekt/skogen-mellan-oss/skogen-mellan-oss-i-media/",
+                      "children": [
+                        {
+                          "value": "”Projekt satsar allt på skogen”. Intervju 25/4 av Sofia Gustavsson på Nerikes Allehanda",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "url": "http://bergslagen.konstframjandet.se/projekt/skogen-mellan-oss/skogen-mellan-oss-i-media/konst-i-naturen-i-sommar-intervju-av-sanna-rosell-vid-orebrokompaniet/",
+                      "children": [
+                        {
+                          "value": "”Konst i naturen i sommar”. Intervju 23/2 av Sanna Rosell på Örebrokompaniet",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "type": "root"
+            }
+          },
+          "slug": "skogen-mellan-oss-bergslagen-i-media",
+          "district": "133470832"
+        },
+        {
+          "createdAt": "2021-09-11T15:26:27",
+          "title": "Skogstorg -Sympatiska symbioser",
+          "content": {
+            "schema": "dast",
+            "document": {
+              "children": [
+                {
+                  "item": {
+                    "type": "item",
+                    "attributes": {
+                      "image": {
+                        "upload_id": "41470864"
+                      },
+                      "layout": "medium"
+                    },
+                    "relationships": {
+                      "item_type": {
+                        "data": {
+                          "id": "1545634",
+                          "type": "item_type"
+                        }
+                      }
+                    }
+                  },
+                  "type": "block"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Petter Nilsson",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Inom ramen för projektet ”Skogen mellan oss” anordnar Konstfrämjandet Bergslagen konferensen ”Skogstorg -Sympatiska symbioser” mellan 21.a–23.e september i Nyhyttans kurortshotell. Med ett program fullt av spännande samtal rör sig konferensen i gränslandet mellan konst, politik, klimat och landsbygd.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Lyssna t.ex. till forskaren och professorn vid Skogsmästarskolan i Skinnskatteberg Per Angelstam, naturguiden och filmskaparen Viktor Säfve, naturguiden och poeten Lovisa Larsson eller delta i paneldebatt med konstnärskollektivet Ställbergs Gruva, Katarina Strömgren Sandh-kulturchef Region Örebro län, Tomas Dahlberg Kulturchef Laxå kommun, Monika Aune miljöpartiet Nora Kommun/ Region Örebro Län och Helena Backius -Södra Hyttan och Naturskyddsföreningen. Som en del av konferensen visas även utställningen ”Det som annalkas” med; Petter Nilsson, Josie Ahlström, Mattias Käll, Abdalla Basher, Sara Rönnbäck, Anna Bergström och Kristina Lindberg som visar skulptur, måleri, performance och installation.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "I samband med Skogstorg -Sympatiska symbioser och utställningen -Det som annalkas har Konstfrämjandet Bergslagen också gett ut en katalog med information om de konstnärskap, föreläsningar, workshops och samtal som man kan ta del av under konferensen. Nu kan ni ta del av katalogen här:",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "url": "https://www.datocms-assets.com/94618/1681145865-program-och-utst-c3-a4llningskatalog-nyhyttan-liten-1.pdf",
+                      "children": [
+                        {
+                          "value": "Program och utställningskatalog Sympatiska symbioser.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "För att kunna följa rådande restriktioner är det viktigt att vi vet hur många som kommer på konferensen, därför ber vi besökare om att föranmäla sitt deltagande genom att följa länken här nedanför samt fylla i formuläret om vilka dagar man kommer delta. Välkomna!",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "url": "https://docs.google.com/forms/d/e/1FAIpQLSdsRTceJadhn4los0JT-QU-LGMRtfj-vR_g8sCMC_iHnrF-7w/viewform?usp=pp_url&entry.1390378799=Jag+anm%C3%A4ler+mig+till+konferensen+p%C3%A5+torsdag+men+kommer+ej+delta+i+m%C3%A5ltider.&entry.1390378799=__other_option__&entry.1390378799.other_option_response=-",
+                      "children": [
+                        {
+                          "value": "Sympatiska symbioser föranmälan.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "type": "root"
+            }
+          },
+          "dropcap": true,
+          "slug": "skogstorg-sympatiska-symbioser",
+          "district": "133470832"
+        },
+        {
+          "createdAt": "2021-08-19T22:41:10",
+          "title": "Grupputställning -Det som annalkas",
+          "content": {
+            "schema": "dast",
+            "document": {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "value": "Grupputställning med Abdalla Basher, Josie Ahlström, Anna Bergström, Mattias Käll, Kristina Lindberg, Petter Nilsson och Sara Rönnbäck i samband med skogstorg Sympatiska symbioser och kulturslingan Ljusstråk.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "I samband med Nora kommuns årliga kulturslinga Ljusstråk deltar Skogen mellan oss genom Konstfrämjandet Bergslagen i år som gästutställare. I Nyhyttans Kurortshotell kan man den 4.e sep träffa deltagande konstnärer och se utställningen ”Det som annalkas”. Ljusstråk pågår mellan den 4-5.e sep, utställningen pågår dock ända fram till den 23.e sep. Deltagande konstnärer är: Abdalla Basher, Josie Ahlström, Anna Bergström, Mattias Käll, Kristina Lindberg, Petter Nilsson och Sara Rönnbäck.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "”Skogen som tema är aktuellt, det fångar in diskurser som klimat, ekologi, hälsa och omställning av livsstil. I Skogen mellan oss ger Konstfrämjandet konstnärer möjlighet att utveckla nya konstverk utifrån temat. Skogen byggde det välstånd som dagens samhälle vilar på. Genom att synliggöra arbetet  som har skett och sker i Bergslagens skogar lyfter vi samtidigt några av vår tids mest angelägna frågor.”",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Bergslagens skogar har använts som en källa för råvaror i tusentals år och genererat lika många berättelser om arbetet som utförts i dem.  Ända sen 600 talet f.k har t.ex. järn utvunnits ur dess gruvor och röda jord. Järnbruken, kolmilorna, hyttorna och smedjorna krävde mycket av skogens resurser i form av ved att elda med. Enorma områden har i omgångar varit helt kalhuggna. Människans attityd till skogen som en outtömlig och förnybar källa för bränsle och material har förändrats väldigt lite sedan dess.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Idag är de flesta skogar egentligen stora industriella odlingar, där bolag bereder mark, planterar och skördar i allt snabbare takt. Trädslag och biotoper av ringa ekonomiskt värde röjs undan vilket på sikt utarmar den biologiska mångfalden. Ett exempel är hur granbarkborrens naturliga fiender förlorat sina värdväxter, och hur avsaknaden av förmultnade träd gjort att insekten snabbt ökat i antal och gett sig på friska träd istället. Paradoxalt nog så ser många på just skogen som en källa till förnybart bränsle och hållbara material inför framtiden.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "item": {
+                    "type": "item",
+                    "attributes": {
+                      "image": {
+                        "upload_id": "41470863"
+                      },
+                      "layout": "medium"
+                    },
+                    "relationships": {
+                      "item_type": {
+                        "data": {
+                          "id": "1545634",
+                          "type": "item_type"
+                        }
+                      }
+                    }
+                  },
+                  "type": "block"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Målning av Petter Nilsson",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "type": "root"
+            }
+          },
+          "dropcap": true,
+          "slug": "grupputstallning-det-som-annalkas",
+          "district": "133470832"
+        },
+        {
+          "createdAt": "2021-08-19T22:33:35",
+          "title": "Abdalla Basher",
+          "content": {
+            "schema": "dast",
+            "document": {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "value": "Konstfrämjandet Bergslagen samarbetar med Örebro kommuns fristadskonstnär Abdalla Basher. Inom ramen för Skogen mellan oss skapar han nu en serie nya verk.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Abdalla f.1979 i Sudan tog sin examen i Fri konst vid University of Sudan 2004. Sedan dess har han deltagit i ett flertal grupp och separatutställningar i sitt hemland men också internationellt, däribland Etiopien, Egypten, Dubai och Uganda. Han är en aktiv konstnär i den sudanska konstvärlden.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "De senaste tre åren har han bott och haft sin ateljé i Kairo där han bland annat har varit knuten till gallerierna Al Mashrabia Art Gallery och Acces Art Gallery. Hans utbredda resande inom nordöstra Afrika har gjort avtryck i hans konstnärskap och inspirerat till måleriet han idag ägnar sig åt. I sitt konstnärskap lyfter han även frågor om mänskliga rättigheter och han innehar idag Örebro kommuns fristadsstipendium (2021-2023). Fristadsprogrammet innebär att en konstnär som är utsatt för förföljelse och/eller censur i sitt eget hemland, ska få möjlighet att arbeta fritt och utvecklas inom sitt konstområde i en trygg miljö.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "item": {
+                    "type": "item",
+                    "attributes": {
+                      "image": {
+                        "upload_id": "41470857"
+                      },
+                      "layout": "medium"
+                    },
+                    "relationships": {
+                      "item_type": {
+                        "data": {
+                          "id": "1545634",
+                          "type": "item_type"
+                        }
+                      }
+                    }
+                  },
+                  "type": "block"
+                }
+              ],
+              "type": "root"
+            }
+          },
+          "dropcap": true,
+          "slug": "abdalla-basher",
+          "district": "133470832"
+        },
+        {
+          "createdAt": "2021-07-07T20:59:13",
+          "title": "Performance -Ansiktskramare",
+          "content": {
+            "schema": "dast",
+            "document": {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "value": "I den deltagarbaserade performancen ”Facehugger” bjuds betraktaren in att delta i en middag tillsammans med konstnären och konstnärens skulptur. Inuti skulpturen av trä har gul ostronskivling odlats och det är svampar från denna odling som ska serveras i form av soppa. Skulptur blir till svamp som blir till betraktare. Under middagen utforskar deltagarna genom samtal med konstnären tankar om hur kroppar transformeras och muterar. Vad betyder t.ex. den spekulativa gränsen mellan ”döda” och ”levande” material? Vad händer med de symboliska funktioner vi fyller en skulptur med när den med tiden ändrar form, färg och material, eller hur imiterar tankar och ideér en parasits livscykel för att använda människan som värddjur…",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Inom ramen för Skogen mellan oss har nu också en ny del av verket börjat att växa fram i form av en bordskiva/ skulptur som middagen serveras vid.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Välkomna! OBS. Max 8 Deltagare, föranmälan sker till malinenordin@gmail.com",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "item": {
+                    "type": "item",
+                    "attributes": {
+                      "image": {
+                        "upload_id": "41470869"
+                      },
+                      "layout": "medium"
+                    },
+                    "relationships": {
+                      "item_type": {
+                        "data": {
+                          "id": "1545634",
+                          "type": "item_type"
+                        }
+                      }
+                    }
+                  },
+                  "type": "block"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Foto: Kristina Lindberg",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "type": "root"
+            }
+          },
+          "dropcap": true,
+          "slug": "ansiktskramare",
+          "district": "133470832"
+        },
+        {
+          "createdAt": "2021-07-03T21:48:13",
+          "title": "Skogen och jag -kåseri av Anders Wallén",
+          "content": {
+            "schema": "dast",
+            "document": {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "value": "För skogen mellan oss har musikern och författaren Anders Wallén skrivit ett nytt kåseri som kan läsas i NorARTs zine Ett träd ingen skog. Magasinet ges ut i samband med NorArts årliga utställning av samtidskonst i Bryggeriet och går att hämta/ läsa i konsthallens shop vid entrén. Om man inte kan ta sig till Bryggeriet i sommar har man också möjlighet att läsa texten här nedan. Grafisk design i magasinet står Skogen grafisk form för.  Årets utställning \"Ett träd ingen skog\" pågår mellan 19 juni - 2 augusti.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Jag tycker om att skogen finns. Precis som jag tycker om att jazz finns. Jazz är understundom obegriplig med dess utövare förmår i sina bästa stunder att koppla ihop de osynliga trådar som stryker förbi oss och sammanför den rökiga lokalen, de halvdruckna drinkarna, den salongsberusade publiken och mannen som somnat i ett hörn med den stora skriande tystnaden. Skogen är liksom jazzen ett mysterium med en manual med miljoner hänvisningar. Och när jag ställs inför sådant ger jag upp. Som att placeras inför gud eller en japansk bil med bruksanvisning på originalspråket. Jag inser att det inte är någon mening med att försöka förstå. Jag vill inte förstå lite. Jag vill förstå allt. Och då ör det ingen idé att lära sig namnen på olika fåglar eller att försöka begripa avantgardistiska tonlekar. Då omfamnar jag istället tanken att låta mysterier vila i frid. Att bara glädjas över att de finns. Möjligen kan man spåra min ståndpunkt till morsan och farsan. Morsan var glad och öppen och längtade till havet och farsan var butter och sluten och längtade till en tät granskog. Morsan lyssnade på Harry Belafonte och farsan på Lars Gullin. Varje sommarlov uppstod en dragkamp mellan mormors hus i Stockholms skärgård och den egenbyggda stugan invid en liten sjö i Bergslagen. Jag blev en som stod mittemellan. Var jag en calypsoman eller en jazzman? Var jag en skogsman eller en havsman?",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Jag valde tillslut att bosätta mig i Bergslagen där skogen finns runt hörnet. Och det är något med närheten som gör att man inte nödvändigtvis utnyttjar den. När jag bodde i Stockholm åkte jag till stugan för att fiska och traska i naturen. Nu när jag bor här har vandrarkängorna torkat ihop och årorna står lutade i garaget. Skogen är numera som en lugnande tablett i fickan. Om jag vet att den finns där behöver jag inte använda den.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Men så kom den. Pandemin. Den förändrade saker. Den gjorde oss nyförälskade i naturen. Som tillflykt. Nu trängs de vana med de ovana. De luttrade och de nyvaknade. Det uppstår Stureplansträngsel vid grillplatser och vindskydd.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Men skogen är också en arena. En kamp mellan myran och skogsmaskinen. Och om människor som bor i den. Som somnar i en skog och vaknar på ett kalhygge. Om rovdrift och hänsyn och alla sköna miljoner däremellan. Skogen är mycket. Ibland för mycket för en som alltför ofta söker något annat. Sanningen är att en liten rörlig del i mig alltid längtar någon annanstans. Alldeles oavsett var jag befinner mig finns det alltid en del som inte är närvarande. Jag saknar havet när jag är i skogen. Som en liten gosse som bor hos pappa och längtar efter mamma. Lyssnar på Miles Davis nu. Det är en sådan dag. Och det är som om trumpeten säger ”meddelas endast på detta sätt” Och jag minns vad han sa. Miles Davis alltså. ”Don´t play what´s there, play what´s not there”.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "item": {
+                    "type": "item",
+                    "attributes": {
+                      "image": {
+                        "upload_id": "41470866"
+                      },
+                      "layout": "medium"
+                    },
+                    "relationships": {
+                      "item_type": {
+                        "data": {
+                          "id": "1545634",
+                          "type": "item_type"
+                        }
+                      }
+                    }
+                  },
+                  "type": "block"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Foto: Kristina Lindberg",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "item": {
+                    "type": "item",
+                    "attributes": {
+                      "image": {
+                        "upload_id": "41470879"
+                      },
+                      "layout": "medium"
+                    },
+                    "relationships": {
+                      "item_type": {
+                        "data": {
+                          "id": "1545634",
+                          "type": "item_type"
+                        }
+                      }
+                    }
+                  },
+                  "type": "block"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Foto: Kristina Lindberg",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "type": "root"
+            }
+          },
+          "dropcap": true,
+          "slug": "skogen-och-jag-kaseri-av-anders-wallen",
+          "district": "133470832"
+        },
+        {
+          "createdAt": "2021-06-13T23:11:27",
+          "title": "Utställning -Ett träd ingen skog",
+          "content": {
+            "schema": "dast",
+            "document": {
+              "children": [
+                {
+                  "item": {
+                    "type": "item",
+                    "attributes": {
+                      "image": {
+                        "upload_id": "41470860"
+                      },
+                      "layout": "medium"
+                    },
+                    "relationships": {
+                      "item_type": {
+                        "data": {
+                          "id": "1545634",
+                          "type": "item_type"
+                        }
+                      }
+                    }
+                  },
+                  "type": "block"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Inom ramen för Skogen mellan oss samarbetar Konstfrämjandet Bergslagen och NorART i och med utställningen ”Ett träd ingen skog”. Utställningen pågår i konsthallen Bryggeriet mellan 19/6 och 1/8.",
+                      "marks": [
+                        "strong"
+                      ],
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Medverkande konstnärer:",
+                      "marks": [
+                        "strong"
+                      ],
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Patrik Bäck",
+                      "marks": [
+                        "strong"
+                      ],
+                      "type": "span"
+                    },
+                    {
+                      "value": " -Konstnär från Kristinehamn som är verksam i Stockholm. Målar skogsmotiv i akryl och tecknar i kol.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Anna S. Pettersson och Daniel Wiklund",
+                      "marks": [
+                        "strong"
+                      ],
+                      "type": "span"
+                    },
+                    {
+                      "value": " -Duo verksamma i Kumla kommer visa verket Forget Me Not som är en storskalig skulptur med projicerade videor.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Studio Växt",
+                      "marks": [
+                        "strong"
+                      ],
+                      "type": "span"
+                    },
+                    {
+                      "value": " -Baserade i Dalsland sammansatt av flera medlemmar med olika inriktiningar inom konst och hantverk t.ex trä och textil. Växt är: Laura Blake, Álvaro Aramburu, Joe Clark, Biba Šehović Jelušić, Alice Hultdin, Funny Livdotter, Robert Curran, Linnea Dalstrand.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Kristina Lindberg",
+                      "marks": [
+                        "strong"
+                      ],
+                      "type": "span"
+                    },
+                    {
+                      "value": " -I sitt konstnärskap tar Lindberg sig an samtidens ekologiska, ontologiska, och socioekonomiska frågor. Via skulpturer i b.la trä, sten och stål omprövar hon systematiskt vad material och form är eller hur det/ den uppstår och förändras. Det ofta tidskrävande arbetet med verken kan t.ex. liknas vid en iscensättning av geologiska eller biologiska processer. På detta sätt sonderar hon de komplexa sammanhangen mellan olika livsformer och kulturer.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Sara Söderberg",
+                      "marks": [
+                        "strong"
+                      ],
+                      "type": "span"
+                    },
+                    {
+                      "value": " -Konstnär baserad i Stockholm. I sitt konstnärskap arbetar hon med artifakter och skulpturer med fokus på att dekonstruera materialistisk kultur.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "item": {
+                    "type": "item",
+                    "attributes": {
+                      "image": {
+                        "upload_id": "41470844"
+                      },
+                      "layout": "medium"
+                    },
+                    "relationships": {
+                      "item_type": {
+                        "data": {
+                          "id": "1545634",
+                          "type": "item_type"
+                        }
+                      }
+                    }
+                  },
+                  "type": "block"
+                }
+              ],
+              "type": "root"
+            }
+          },
+          "dropcap": true,
+          "slug": "ett-trad-ingen-skog",
+          "district": "133470832"
+        },
+        {
+          "createdAt": "2021-06-11T19:19:24",
+          "image": {
+            "url": "http://bergslagen.konstframjandet.se/wp-content/uploads/sites/8/2021/06/Vad-är-en-skog-1.gif",
+            "title": ""
+          },
+          "title": "Utställning -Vad är en skog?",
+          "content": {
+            "schema": "dast",
+            "document": {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "value": "Vad är en skog? Vad är en kolbädd? Vad är naturvård, eller för all del vad är en soptipp? I Tiveden har konstnären Anna Bergström utforskat ett av traktens kalhyggen i samband med byggandet av ett landartverk.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Med ett liv sammanflätat med skogen som omringar Tiveden arbetar konsthantverkaren Anna Bergström i och med naturen. Vi träffades under våren i hennes tiny house omringat av växthus, ateljé och bodar för att diskutera om konsten, klimatet, livet och tiden. Detta samtal materialiseras nu delvis i den landart som skogen och Anna visar under sommaren.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "I mitten av ett av ortens kalhyggen som omgärdar nationalparken har nu landart i form av ett frågetecken tagit form, detta då verket i processens början utgick från vad en skog är. Hygget har dock visat sig bära på flera berättelser som ger upphov till frågor. I ena änden hittade Anna en gammal kolbädd härstammandes från en kolmila. I andra änden har kanten av en liten rondell fått tjäna som avstjälpningsplats för trädgårdsavfall på orten. Decennier av kompostering har bidragit till att syrén, såpnejlika, praktlysing, spirea och ett litet kastanjeträd numer växer på platsen. Straxt intill avstjälpningsplatsen hittade Anna också låga stenstrukturer som ser ut att ha tillhört någon form av byggnad en gång i tiden. Anna har frågat flera äldre personer i byn men ingen minns några byggnader, bara soptippen. Nästa steg blir att fråga lantmäteriet och titta i gamla arkiv efter byggnaden. Anna lade också märke till en helt ny slags märkning från skogsbolaget som avverkat skogen, en stor lönn hade sparats och runt stammen satt avspärrningsband där det stod naturvård på, runt kolbädden sitter en remsa som det står kulturvård på.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Hur kommer vi påverkas på ett personligt och känslomässigt plan om/när vi inte längre har tillgång till de naturliga och politiska landskap som är så starkt förknippade med vår identitet och kultur?",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Verket kan besökas under hela sommaren. Invigning sker den 2.a juli med invigningstal av Konstfrämjandet Bergslagens styrelseordförande Siv Palmgren. Välkomna!",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "type": "root"
+            }
+          },
+          "dropcap": true,
+          "slug": "vad-ar-en-skog",
+          "district": "133470832"
+        },
+        {
+          "createdAt": "2021-05-06T21:47:42",
+          "title": "Skogstorg: Bokcirkel",
+          "content": {
+            "schema": "dast",
+            "document": {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "value": "Skogstorg -Bokcirkel är en del av Konstfrämjandets interregionala konstprojekt Skogen mellan oss. Under projektet kommer ett flertal Skogstorg, som lyfter diskussioner och samtal som berör konst och landsbygd, att äga rum. Skogstorg - Bokcirkel är ett av dessa samtal och fungerar ungefär som ett digitalt fikarum.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Bokcirkeln sträcker sig över hela projektåret, sker varje måndag kl. 19-20 och lämnar utrymme för samtal kring litteratur, konst, begrepp, dokumentärer och liknande som projektet Skogen mellan oss berörs av. Deltagare och publik till projektet är välkomna att skapa egna samtal.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "value": "Registrera dig för att få brev med anmälningsformulär inför varje cirkelträff:  ",
+                      "type": "span"
+                    },
+                    {
+                      "url": "https://docs.google.com/forms/d/e/1FAIpQLSfciuddGEMWr62HJbaLOOZUp5R2nrAL-E8VMQGcAwtGsKxllQ/viewform",
+                      "children": [
+                        {
+                          "value": "https://docs.google.com/forms/d/e/1FAIpQLSfciuddGEMWr62HJbaLOOZUp5R2nrAL-E8VMQGcAwtGsKxllQ/viewform",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ]
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "value": "10/5  ",
+                              "type": "span"
+                            },
+                            {
+                              "value": "Trädens superkrafter",
+                              "marks": [
+                                "emphasis"
+                              ],
+                              "type": "span"
+                            },
+                            {
+                              "value": " – Vetenskapens värld SVTplay",
+                              "type": "span"
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "listItem"
+                    },
+                    {
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "value": "17/5 ",
+                              "type": "span"
+                            },
+                            {
+                              "value": "Granskogsfolk",
+                              "marks": [
+                                "emphasis"
+                              ],
+                              "type": "span"
+                            },
+                            {
+                              "value": " : del 1 av David Thurfjell",
+                              "type": "span"
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "listItem"
+                    },
+                    {
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "value": "24/5 ",
+                              "type": "span"
+                            },
+                            {
+                              "value": "More of everything",
+                              "marks": [
+                                "emphasis"
+                              ],
+                              "type": "span"
+                            },
+                            {
+                              "value": " -Uppmärksammad film om svenskt skogsbruk. Viktor Säfve, medskapare till filmen öppnar bokcirkeln med en presentation av filmen och deltar sedan i efterföljande samtal.",
+                              "type": "span"
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "listItem"
+                    },
+                    {
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "value": "31/5 ",
+                              "type": "span"
+                            },
+                            {
+                              "value": "Granskogsfolk",
+                              "marks": [
+                                "emphasis"
+                              ],
+                              "type": "span"
+                            },
+                            {
+                              "value": " : del 2 av David Thurfjell",
+                              "type": "span"
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "listItem"
+                    },
+                    {
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "value": "7/6 Konstpolitiskt samtal med utgångspunkt i ",
+                              "type": "span"
+                            },
+                            {
+                              "value": "En annan landsbygd: om gestaltad livsmiljö på landsbygden",
+                              "marks": [
+                                "emphasis"
+                              ],
+                              "type": "span"
+                            },
+                            {
+                              "value": " av Angelica Åkerman",
+                              "type": "span"
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "listItem"
+                    },
+                    {
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "value": "14/6 ",
+                              "type": "span"
+                            },
+                            {
+                              "value": "The Forrest Unseen",
+                              "marks": [
+                                "emphasis"
+                              ],
+                              "type": "span"
+                            },
+                            {
+                              "value": " -David George Haskell",
+                              "type": "span"
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "listItem"
+                    }
+                  ],
+                  "style": "bulleted",
+                  "type": "list"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "value": "Träd",
+                              "marks": [
+                                "emphasis"
+                              ],
+                              "type": "span"
+                            },
+                            {
+                              "value": " -Gunnar Wetterberg",
+                              "type": "span"
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "listItem"
+                    },
+                    {
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "value": "Jordlöparens bok",
+                              "marks": [
+                                "emphasis"
+                              ],
+                              "type": "span"
+                            },
+                            {
+                              "value": " -Thomas Tidholm",
+                              "type": "span"
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "listItem"
+                    },
+                    {
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "value": "Svamparnas planet",
+                              "marks": [
+                                "emphasis"
+                              ],
+                              "type": "span"
+                            },
+                            {
+                              "value": " -Jesper Nyström",
+                              "type": "span"
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "listItem"
+                    },
+                    {
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "value": "Livets tunna väggar",
+                              "marks": [
+                                "emphasis"
+                              ],
+                              "type": "span"
+                            },
+                            {
+                              "value": " -Nina Burton",
+                              "type": "span"
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "listItem"
+                    },
+                    {
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "value": "The Carrier bag Theory of fiction",
+                              "marks": [
+                                "emphasis"
+                              ],
+                              "type": "span"
+                            },
+                            {
+                              "value": " -Ursula K.Lee Guin",
+                              "type": "span"
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "listItem"
+                    }
+                  ],
+                  "style": "bulleted",
+                  "type": "list"
+                }
+              ],
+              "type": "root"
+            }
+          },
+          "dropcap": true,
+          "slug": "skogstorg-bokcirkel",
+          "district": "133470832"
+        },
+        {
+          "createdAt": "2021-05-04T19:09:53",
+          "image": {
+            "url": "http://bergslagen.konstframjandet.se/wp-content/uploads/sites/8/2021/05/otalt-gif.png",
+            "title": ""
+          },
+          "title": "Performance -Women walking talking grieving",
+          "content": {
+            "schema": "dast",
+            "document": {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "value": "Konstnärsgruppen OTALT genomför den deltagarbaserade performancen Women walking talking grieving i Tivedens nationalpark den 20.e och 21.a Maj. I verket undersöker OTALT kvinnors plats i naturen, reservatstanken och sorgen över förlorade naturmiljöer. Vill du delta verket?",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "OTALT (Helene Karlsson & Sara Falkstad) är en feministisk konstgrupp baserad i Arvika som bland annat arbetar med performance och relationella konstprojekt. De arbetar ofta med konst i det offentliga rummet och förankring i lokalsamhället, där publiken blir deltagare och medskapare i uttryck som rör sig mellan bildkonst, performance, poesi och kulturarvsförmedling.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "value": "Nu söker OTALT deltagare till sitt performance ",
+                      "type": "span"
+                    },
+                    {
+                      "value": "Women walking talking Tiveden",
+                      "marks": [
+                        "emphasis"
+                      ],
+                      "type": "span"
+                    },
+                    {
+                      "value": " vid två tillfällen torsdag 20 maj kl 16.00 samt fredag 21 Maj kl 12.00. Skicka intresseanmälan till otalt.arvika@gmail.com.",
+                      "type": "span"
+                    },
+                    {
+                      "value": "Women walking talking grieving",
+                      "marks": [
+                        "emphasis"
+                      ],
+                      "type": "span"
+                    },
+                    {
+                      "value": " är ett performance som undersöker kvinnors plats i naturen, reservatstanken och sorgen över förlorade naturmiljöer. OTALT vandrar, reflekterar, samtalar och dokumenterar i naturreservat, tillsammans med andra kvinnor.",
+                      "type": "span"
+                    },
+                    {
+                      "value": "Genom vår egen fysiska och mentala upplevelse, och genom samtalet oss emellan, vill vi undersöka relationen mellan människa och natur. Vilka hörn i medvetandet motsvaras av ormbunkarnas spiraler, vilka rivsår får våra kroppar av barr och taggar? Är ensamheten en förutsättning för att möta naturens fysiska och mentala form, eller upplever vi naturen bäst tillsammans med andra människor? Hur ska vi handskas med sorgen? Sorgen över förlusten av biologisk mångfald och naturmiljöer, över destruktiva relationer, över ofrånkomliga beroenden, mellan människor och mellan människa och jord? Vill du delta?",
+                      "type": "span"
+                    },
+                    {
+                      "value": "Du som är kvinna eller icke-binär och vill delta i vårt performance, skicka en intresseanmälan till otalt.arvika@gmail.com senast ons 18/5. Begränsat antal platser. Glöm inte att ange vilket datum du är intresserad av att delta (20.e eller 21.a.)",
+                      "type": "span"
+                    },
+                    {
+                      "value": "Vad innebär det att vara med i vårt performance? Vi träffas vid ett naturreservat och går en vandring tillsammans, där vi helt enkelt möts och samtalar. Det finns ingen uttalad samtalsledare eller agenda. Vi kommer vid ett tillfälle stanna upp och ge utrymme för reflektion på egen hand. Den som vill kan dela med sig av det man skrivit/tecknat/fotograferat till oss och det kommer då bli del av OTALTs konstverk, och kan komma att användas i t ex utställningar, självklart med era namn om ni vill det. Vandringen kan också komma att filmas av medföljande filmare.",
+                      "type": "span"
+                    },
+                    {
+                      "value": "Vår grupp kommer inte att vara större än 8 personer och en förutsättning är att man kan ta sig till platsen med egen bil. Vi är ute i ca 2 timmar med varje grupp.",
+                      "type": "span"
+                    },
+                    {
+                      "value": "OTALT genomför sitt projekt ",
+                      "type": "span"
+                    },
+                    {
+                      "value": "Women walking talking grieving",
+                      "marks": [
+                        "emphasis"
+                      ],
+                      "type": "span"
+                    },
+                    {
+                      "value": " inom Konstfrämjandets projekt Skogen mellan oss. ",
+                      "type": "span"
+                    },
+                    {
+                      "url": "http://konstframjandet.se/projekt/skogen-mellan-oss/?fbclid=IwAR1iHOBWmuiCQDYXYtoSEvQcd9TQxCwbyygk28LdxyoOF91JRW-n0KFJhXY",
+                      "children": [
+                        {
+                          "value": "http://konstframjandet.se/projekt/skogen-mellan-oss/",
+                          "type": "span"
+                        }
+                      ],
+                      "meta": [
+                        {
+                          "id": "target",
+                          "value": "_blank"
+                        },
+                        {
+                          "id": "rel",
+                          "value": "nofollow noopener"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ]
+                }
+              ],
+              "type": "root"
+            }
+          },
+          "dropcap": true,
+          "slug": "women-walking-talking-grieving",
+          "district": "133470832"
+        },
+        {
+          "createdAt": "2021-05-03T20:45:40",
+          "image": {
+            "url": "http://bergslagen.konstframjandet.se/wp-content/uploads/sites/8/2021/05/svampar-brända.jpg",
+            "title": ""
+          },
+          "title": "Skogen mellan oss i Bergslagen",
+          "subtitle": "Tivedens nationalpark, Bryggeriet i Nora och Nyhyttan",
+          "content": {
+            "schema": "dast",
+            "document": {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "value": "Skogen som tema är aktuellt, det fångar in diskurser som klimat, ekologi, hälsa och omställning av livsstil. I ",
+                      "type": "span"
+                    },
+                    {
+                      "value": "Skogen mellan oss",
+                      "marks": [
+                        "emphasis"
+                      ],
+                      "type": "span"
+                    },
+                    {
+                      "value": " ger Konstfrämjandet konstnärer möjlighet att utveckla nya konstverk utifrån temat. Skogen byggde det välstånd som dagens samhälle vilar på. Genom att synliggöra arbetet som har skett och sker i Bergslagens skogar lyfter vi samtidigt några av vår tids mest angelägna frågor. ",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "I Bergslagen kommer Skogen mellan oss att göra nedslag i Tivedens nationalpark, Bryggeriet i Nora samt i Nyhyttan. På dessa platser kommer vi visa utställningar och performances med konstnärer som deltar i projektet samt hålla workshops, konstnärssamtal, föreläsningar och screenings. I slutet av maj kommer t.ex. den feministiska konstgruppen OTALT från Arvika att genomföra en deltagarbaserad performance vid namn ”Women walking talking grieving” Tivedens nationalpark. I Tiveden arbetar också lokala konstnärerna Anna Bergström och Jeanette Håkansson med att ta fram ett nytt platsspecifikt verk i skogen som omger deras hem.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "I konsthallen Bryggeriet i Nora samarbetar vi med föreningen NorART i grupputställningen ”Ett träd ingen skog” curerad av Maline Ardesjö Nordin.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Nyhyttans kurort, ett gammalt hälsohem som nu fungerar som hotell kommer att verka som en uppsamlande plats där aktiviteter kopplade till projektets olika förgreningar kan lyftas fram under en intensiv vecka. Där kan långväga gäster övernatta enstaka dagar eller hela veckan samtidigt som man under dagen kan ta del av föreläsningar och konst. Professor Per Angelstam från SLU och Viktor Säfve som har varit med och skapat den uppmärksammade filmen ”More of everything” -om svenskt skogsbruk har t.ex. bjudits in för att föreläsa. Konstnärerna Kristina Lindberg, Mattias Käll och Josie Ahlström ställer ut och utöver detta kommer det anordnas forum för samtal och workshops. Fler konstnärer och föreläsare kommer dessutom att tillkomma!",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Tillsammans med Västmanland, Dalarnas och Värmlands distrikt har vi dessutom startat upp en bokcirkel där vi träffas varje vardaglig måndag kl. 19-20 på Zoom. I bokcirkeln läser och samtalar vi om litteratur som berör frågor kring klimat, skog, glesbygd och konst. Cirkeln sträcker sig över hela året, deltagare i projektet och andra intresserade är välkomna att delta. ",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                },
+                {
+                  "children": [
+                    {
+                      "value": "Sist men inte minst så samarbetar KFB också med Örebros Fristadskonstnär; Abdalla Basher som  inom ramen för projektet kommer att skapa nya verk.",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "paragraph"
+                }
+              ],
+              "type": "root"
+            }
+          },
+          "dropcap": true,
+          "slug": "skogen-mellan-oss-i-bergslagen",
+          "district": "133470832"
+        }
+      ]
+    },
+    "error": {
+      "request": {
+        "url": "https://site-api.datocms.com/items",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "Bearer 10dfb3953f46f2d30a0a9a52f476a2",
+          "user-agent": "@datocms/cma-client v1.2.9",
+          "x-environment": "dev",
+          "x-api-version": "3"
+        },
+        "body": {
+          "data": {
+            "type": "item",
+            "attributes": {
+              "image": {
+                "upload_id": "41470946"
+              },
+              "title": "Skogen mellan oss",
+              "intro": "Med skogen som tema och plats går sex av Konstfrämjandets distrikt i Mellansverige samman i en unik konstsatsning; Skogen mellan oss!",
+              "content": {
+                "schema": "dast",
+                "document": {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "value": "Projektet ”Skogen mellan oss” stärker konstens roll utanför storstäderna genom ett program som under 2021 knyter samman ett femtontal platser. I Konstfrämjandets distrikt Gävleborg och Uppland i öst över Västmanland, Bergslagen och Dalarna till Värmland i väst skapas egna delprojekt samtidigt som samverkan sker med kollegorna.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "– ”Skogen mellan oss” är i grunden ett större samarbete. I projektet arbetar vi sida vid sida med bland annat konstnärer, lokala aktörer och föreningsliv, säger verksamhetsledare Kerstin Wagner.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "Med den gemensamma identiteten kommer Konstfrämjandets distrikt att sprida händelser såsom utställningar, föreläsningar och workshops över ett stort geografiskt område.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "Arrangörerna hoppas att projektet inspirerar civilsamhälle och beslutsfattare till diskussioner om kulturens strukturer på landsbygden. Genom temat lyfts samtidigt frågor kring skogen som plats för alltifrån exploatering, produktion och rekreation till migration, historia, mystik och hem.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "I Bergslagen påbörjades projektet sommaren 2020 då ",
+                          "type": "span"
+                        },
+                        {
+                          "value": "konstnären Kristina Lindberg spenderade 1 månad i Nyhyttan för att starta en konstnärligt process. Resultaten kommer visas i form av utställningar, workshops och samtal i Nyhyttan och Konstfrämjandets galleri i Örebro under hösten 2021. Inom ramen för projektet kommer även konstnärsgruppen OTALT från Arvika att genomföra en performance i Tivedens nationalpark och Örebros fristadskonstnär Abdalla Basher skapar nya verk. Ytterligare konstnärer kommer dessutom bjudas in att delta i projektet.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "För ytterligare info besök gärna Skogen mellan oss hemsida: ",
+                          "type": "span"
+                        },
+                        {
+                          "url": "http://konstframjandet.se/projekt/skogen-mellan-oss/",
+                          "children": [
+                            {
+                              "value": "www.skogenmellanoss.se",
+                              "type": "span"
+                            }
+                          ],
+                          "type": "link"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "type": "thematicBreak"
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "value": "Projektet finansieras av:",
+                                  "marks": [
+                                    "strong"
+                                  ],
+                                  "type": "span"
+                                },
+                                {
+                                  "value": "  Postkodstiftelsen, Folkrörelsernas Konstfrämjande samt Kulturrådet.",
+                                  "type": "span"
+                                }
+                              ]
+                            }
+                          ],
+                          "type": "listItem"
+                        },
+                        {
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "value": "Samarbetsparter: ",
+                                  "marks": [
+                                    "strong"
+                                  ],
+                                  "type": "span"
+                                },
+                                {
+                                  "value": "Laxå Kommun, NorART, Nora kommun och Ljusstråk, Nyhyttans Kurort.",
+                                  "type": "span"
+                                }
+                              ]
+                            }
+                          ],
+                          "type": "listItem"
+                        },
+                        {
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "value": "Vill du medverka i projektet? ",
+                                  "marks": [
+                                    "strong"
+                                  ],
+                                  "type": "span"
+                                },
+                                {
+                                  "value": "Kontakta projektledarna:",
+                                  "marks": [
+                                    "strong"
+                                  ],
+                                  "type": "span"
+                                }
+                              ]
+                            }
+                          ],
+                          "type": "listItem"
+                        },
+                        {
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "value": "Kerstin Wagner: kerstin.wagner@konstframjandet.se",
+                                  "type": "span"
+                                }
+                              ]
+                            }
+                          ],
+                          "type": "listItem"
+                        },
+                        {
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "value": "Kristina Lindberg: kristina.lindberg@konstframjandet.se",
+                                  "type": "span"
+                                }
+                              ]
+                            }
+                          ],
+                          "type": "listItem"
+                        }
+                      ],
+                      "style": "bulleted",
+                      "type": "list"
+                    }
+                  ],
+                  "type": "root"
+                }
+              },
+              "dropcap": true,
+              "color": {
+                "red": 91,
+                "green": 130,
+                "blue": 78,
+                "alpha": 255
+              },
+              "completed": true,
+              "slug": "skogen-mellan-oss",
+              "district": "133470832",
+              "subpage": [
+                "102698122",
+                "102698120",
+                "102698126",
+                "102698135",
+                "102698133",
+                "102698125",
+                "102698136",
+                "102698137",
+                "102698157",
+                "102698128",
+                "102698160",
+                "102698147"
+              ]
+            },
+            "relationships": {
+              "item_type": {
+                "data": {
+                  "id": "1452646",
+                  "type": "item_type"
+                }
+              }
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 422,
+        "statusText": "Unprocessable Entity",
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "access-control-allow-headers": "authorization, content-type, x-environment, x-organization, x-site-domain, x-api-version, user-agent, x-session-id, x-include-drafts, x-exclude-invalid",
+          "access-control-allow-methods": "GET, POST, PUT, OPTIONS, DELETE",
+          "access-control-allow-origin": "*",
+          "access-control-expose-headers": "x-ratelimit-limit, x-ratelimit-remaining, x-ratelimit-reset",
+          "access-control-max-age": "1728000",
+          "cache-control": "no-cache",
+          "cf-cache-status": "DYNAMIC",
+          "cf-ray": "7b5c89ba6c39abce-CPH",
+          "connection": "keep-alive",
+          "content-encoding": "gzip",
+          "content-type": "application/json; charset=utf-8",
+          "date": "Mon, 10 Apr 2023 16:59:02 GMT",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "server": "cloudflare",
+          "strict-transport-security": "max-age=15552000; includeSubDomains; preload",
+          "transfer-encoding": "chunked",
+          "vary": "Accept,Accept-Encoding",
+          "via": "1.1 vegur",
+          "x-api-version": "3",
+          "x-content-type-options": "nosniff",
+          "x-download-options": "noopen",
+          "x-environment": "dev",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-queue-time": "1ms",
+          "x-ratelimit-limit": "60",
+          "x-ratelimit-remaining": "44",
+          "x-request-id": "6d44373a-981e-4113-bb0d-84e38998842e",
+          "x-runtime": "0.039915",
+          "x-xss-protection": "1; mode=block"
+        },
+        "body": {
+          "data": [
+            {
+              "id": "3017da",
+              "type": "api_error",
+              "attributes": {
+                "code": "INVALID_FIELD",
+                "details": {
+                  "field": "slug",
+                  "field_id": "7577568",
+                  "field_label": "Permalänk",
+                  "field_type": "slug",
+                  "code": "VALIDATION_UNIQUE",
+                  "options": {}
+                }
+              }
+            }
+          ]
+        }
+      },
+      "preCallStack": "Error\n    at Client.Client2.request (/Users/bebejane/Work/konstochteknik/konstframjandet/konstframjandet-website/node_modules/.pnpm/@datocms+cma-client@1.2.9/node_modules/@datocms/cma-client/dist/cjs/generated/Client.js:130:225)\n    at Item2.Item2.rawCreate (/Users/bebejane/Work/konstochteknik/konstframjandet/konstframjandet-website/node_modules/.pnpm/@datocms+cma-client@1.2.9/node_modules/@datocms/cma-client/dist/cjs/generated/resources/Item.js:298:28)\n    at Item2.Item2.create (/Users/bebejane/Work/konstochteknik/konstframjandet/konstframjandet-website/node_modules/.pnpm/@datocms+cma-client@1.2.9/node_modules/@datocms/cma-client/dist/cjs/generated/resources/Item.js:281:21)\n    at insertRecord (/Users/bebejane/Work/konstochteknik/konstframjandet/konstframjandet-website/lib/scripts/migration/index.ts:213:33)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at migrateProjects (/Users/bebejane/Work/konstochteknik/konstframjandet/konstframjandet-website/lib/scripts/migration/projects.ts:129:9)\n    at async Promise.allSettled (index 2)\n    at migrateAll (/Users/bebejane/Work/konstochteknik/konstframjandet/konstframjandet-website/lib/scripts/migration/all.ts:11:3)"
+    }
+  }
+]

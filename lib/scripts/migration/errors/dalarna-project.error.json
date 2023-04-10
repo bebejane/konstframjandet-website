@@ -1,0 +1,1476 @@
+[
+  {
+    "item": {
+      "createdAt": "2021-02-17T10:22:46",
+      "image": {
+        "url": "http://dalarna.konstframjandet.se/wp-content/uploads/sites/12/2021/02/tillhemsidan.jpg",
+        "title": ""
+      },
+      "title": "Skogen mellan oss",
+      "intro": "Sex av Konstfrämjandets distrikt i Mellansverige fångar in ett utbrett intresse för skogen som företeelse inom konsten. Ett förenat konstprogram knyter under 2021 samman ett femtontal platser, byar och mindre orter.",
+      "content": {
+        "schema": "dast",
+        "document": {
+          "children": [
+            {
+              "children": [
+                {
+                  "value": "Konstfrämjandet Dalarnas del i projektet formulerade sig som en expedition – med ett brett spektra av konstnärliga inriktningar, gränsöverskridande kulturuttryck och med en aktiv inriktning på kombinationen mellan kultur och friluftsliv.",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "Expeditionen var tänkt fungera som ett utforskande, både geografiskt och konstnärligt, för att skapa möten i de mellanrum som finns i Dalarna och skogarna mellan oss likväl mellan den vana och ovana konstpubliken. En expedition kan vara så nära som en dunge i en trädgård, mellan två vätskestationer eller med ett avstånd ända ut i rymden. Mikro till makro. Det är färden, erfarenheterna och upptäckterna under tiden som är det väsentliga och som vi ämnade samla inom ramen för projektet.",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "– I Skogen mellan oss vill belysa att samtidskonst inte är bunden till konventionella konsthallar, gallerier och de centrala delarna av regionen utan att även andra arenor kan fungera som mötesplatser och utställningsytor, beskrev projektets konstnärliga ledare Anna Linnea Liljeholm vid uppstarten av projektet.",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "I Dalarna gav i projektet bland annat utrymme till ett fåtal platsrelaterade residens för konstnärer verksamma i regionen, ett upplevelselopp där konsten mötte både skog och motion. Och i Sundborn uppfördes det permanenta verket ",
+                  "type": "span"
+                },
+                {
+                  "value": "Det okända",
+                  "marks": [
+                    "emphasis"
+                  ],
+                  "type": "span"
+                },
+                {
+                  "value": " att uppföras i mitten av sommaren 2021. Även mindre nedslag så som digitala bokcirklar, vandringar och workshops arrangerades under projekttiden. Kolla gärna in ",
+                  "type": "span"
+                },
+                {
+                  "url": "http://skogenmellanoss.se/distrikt/dalarna/",
+                  "children": [
+                    {
+                      "value": "distriktets program här ",
+                      "type": "span"
+                    }
+                  ],
+                  "type": "link"
+                },
+                {
+                  "value": " för mer information och bilddokumentation från flera delar av projektet.",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "Projektet sker i grunden i samverkan med övriga deltagande distrikt och förbundet – tillika med frilansande konstnärer,  regionala aktörer och det lokala föreningslivet.",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "Samarbetspartners:",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Galleri Svarta Gran – Omid Massali",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Konst i Dalarna – Hållams Linnea Henriksson",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "Deltagande konstnärer:",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Mikael Johansson",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Ebba Matz",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Gum Lina Gabrielsson",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Nanna Hellberg",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Lina Sofia Lundin",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Kristin Ylikiiskilä Broberg",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Elin Båve",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Jens Masimov",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Elin Magnusson",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Andreas Sandberg",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Marja Leena Sillanpää",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Niklas Darke",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "Konstnärlig ledare och projektsamordnare – Anna Linnea Liljeholm",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "annalinnea.liljeholm@konstframjandet.se",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "Projektet presenteras i sin helhet via skogenmellanoss.se",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "På Facebook i gruppen Skogen mellan oss",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "eller på instagram under kontot @skogenmellanoss",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "type": "thematicBreak"
+            },
+            {
+              "children": [
+                {
+                  "value": "Genomfört program:",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "22 februari",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Den digitala bokcirkeln – Skogstorg. Start med boken Träd följt av 12 st träffar med totalt ca: 100 deltagare. I samverkan med Bergslagen, Västmanland och Värmland.",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "9 april – 30 oktober",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "platsspecifika residens som pågått under hela projekttiden. geografiskt spridda över Dalarna (processinriktning – att lyfta möjligheten för konstnärer att vara verksamma på landsbygden) I samverkan med KiD – Konst i Dalarna. Gum Lina Gabrielsson Älvdalen, Kristin Ylikiiskilä Broberg Falun, Nanna Hellberg Leksand, Lina Sofia Lundin Haghed.",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "15 juni",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Känn en byggd. Vandring vid Rogsån – workshopledare konstnär Lina Sofia Lundin – Haghed",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "10 juli",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Det okända.",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "permanent Land Art verk. 25 besökare invigning – självbetjäning resten av sommaren. i samarbete med Linderdahlska stiftelsen – Sundborn konstnär Ebba Matz och landskapsarkitekt Mikael Johansson.",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "4 september",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Texten i Skogen — en live essä. Workshop med författaren Niklas Darke – Gagnef",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "25 september – 9 oktober",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Art Run (350 besökare invigningsdagen – tillgängligt ytterligare 14 dagar utan räkning) I samverkan med Galleri Svarta Gran. Stångjärn, Falun. Medverkande konstnärer Kristin Ylikiiskilä Broberg, Elin Båve, Marja Leena Sillanpää, Jens Masimov, Elin Magnusson och Andreas Sandberg.",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "4 oktober",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Bland träden – ett samtal om konst och skogsbruk.",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Konstnär Nina Edling (Aktiverad som konstnär i Upplands program) och hennes far Tony Johansson. samtalet anordnades i samverkan med Bild och Form Dalarna i Wallénhallen i Leksand i samband med att utställningen ”En annan landsbygd” visades.",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "30 oktober",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Presentation av de platsspecifika residensen (20 besökare) Wallénhallen i Leksand.",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "31 oktober",
+                  "type": "span"
+                },
+                {
+                  "value": "\n",
+                  "type": "span"
+                },
+                {
+                  "value": "Kollektivt tecknande, Skogens material – workshop med konstnär Anna Linnea Liljeholm i samarbete med konstnär Gum Lina Gabrielsson.",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "children": [
+                {
+                  "value": "*Mindre workshops och konstnärssamtal (sammanlagda deltagare 40 – 50 st)",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "item": {
+                "type": "item",
+                "attributes": {
+                  "image": {
+                    "upload_id": "41473036"
+                  },
+                  "layout": "medium"
+                },
+                "relationships": {
+                  "item_type": {
+                    "data": {
+                      "id": "1545634",
+                      "type": "item_type"
+                    }
+                  }
+                }
+              },
+              "type": "block"
+            },
+            {
+              "children": [
+                {
+                  "value": "Bild från Wallénhallen i Leksand när konstnär Gum Lina Gabrielsson presenterar sitt arbete från residenset i Hållberg, Älvdalen. Foto: Pontus Ersbacken.",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "item": {
+                "type": "item",
+                "attributes": {
+                  "image": {
+                    "upload_id": "41473060"
+                  },
+                  "layout": "medium"
+                },
+                "relationships": {
+                  "item_type": {
+                    "data": {
+                      "id": "1545634",
+                      "type": "item_type"
+                    }
+                  }
+                }
+              },
+              "type": "block"
+            },
+            {
+              "children": [
+                {
+                  "value": "Residensträff och vandring kring konstnären Lina Sofia Lundins utvalda plats vid Rogsån i Haghed. Foto: Anna Linnea Liljeholm",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "item": {
+                "type": "item",
+                "attributes": {
+                  "image": {
+                    "upload_id": "41473078"
+                  },
+                  "layout": "medium"
+                },
+                "relationships": {
+                  "item_type": {
+                    "data": {
+                      "id": "1545634",
+                      "type": "item_type"
+                    }
+                  }
+                }
+              },
+              "type": "block"
+            },
+            {
+              "children": [
+                {
+                  "value": "Bild från bygget av det permanenta land art verket Det Okända vid Prästtjärnen i Sundborn. Landskapsarkitekt Mikael Johansson och konstnär Ebba Matz. Foto: Mikael Johansson.",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "item": {
+                "type": "item",
+                "attributes": {
+                  "image": {
+                    "upload_id": "41473080"
+                  },
+                  "layout": "medium"
+                },
+                "relationships": {
+                  "item_type": {
+                    "data": {
+                      "id": "1545634",
+                      "type": "item_type"
+                    }
+                  }
+                }
+              },
+              "type": "block"
+            },
+            {
+              "children": [
+                {
+                  "value": "Bild från invigningsdagen av Det okända vid Prästtjärn i sundborn. Landskapsarkitekt Mikael Johansson och konstnär Ebba Matz. Foto: Pontus Ersbacken.",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "item": {
+                "type": "item",
+                "attributes": {
+                  "image": {
+                    "upload_id": "41473081"
+                  },
+                  "layout": "medium"
+                },
+                "relationships": {
+                  "item_type": {
+                    "data": {
+                      "id": "1545634",
+                      "type": "item_type"
+                    }
+                  }
+                }
+              },
+              "type": "block"
+            },
+            {
+              "children": [
+                {
+                  "value": "Bild Från Art Run i Stångtjärn, Falun. Foto: Erik Garmo",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "item": {
+                "type": "item",
+                "attributes": {
+                  "image": {
+                    "upload_id": "41473082"
+                  },
+                  "layout": "medium"
+                },
+                "relationships": {
+                  "item_type": {
+                    "data": {
+                      "id": "1545634",
+                      "type": "item_type"
+                    }
+                  }
+                }
+              },
+              "type": "block"
+            },
+            {
+              "children": [
+                {
+                  "value": "Konstnär Marja Leena Sillanpää, Art Run i Stångtjärn, Falun. Foto: Erik Garmo",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "item": {
+                "type": "item",
+                "attributes": {
+                  "image": {
+                    "upload_id": "41473083"
+                  },
+                  "layout": "medium"
+                },
+                "relationships": {
+                  "item_type": {
+                    "data": {
+                      "id": "1545634",
+                      "type": "item_type"
+                    }
+                  }
+                }
+              },
+              "type": "block"
+            },
+            {
+              "children": [
+                {
+                  "value": "Konstnär Jens Masimov, Art Run i Stångtjärn, Falun. Foto: Erik Garmo",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            },
+            {
+              "item": {
+                "type": "item",
+                "attributes": {
+                  "image": {
+                    "upload_id": "41473084"
+                  },
+                  "layout": "medium"
+                },
+                "relationships": {
+                  "item_type": {
+                    "data": {
+                      "id": "1545634",
+                      "type": "item_type"
+                    }
+                  }
+                }
+              },
+              "type": "block"
+            },
+            {
+              "children": [
+                {
+                  "value": "Konstnär Kristin Ylikiskilää Broberg deltog både i residensprogrammet och vid Art Run i Stångtjärn, Falun. Foto: Erik Garmo.",
+                  "type": "span"
+                }
+              ],
+              "type": "paragraph"
+            }
+          ],
+          "type": "root"
+        }
+      },
+      "dropcap": true,
+      "color": {
+        "red": 212,
+        "green": 197,
+        "blue": 226,
+        "alpha": 255
+      },
+      "completed": true,
+      "slug": "skogen-mellan-oss",
+      "district": "133470826",
+      "subprojects": []
+    },
+    "error": {
+      "request": {
+        "url": "https://site-api.datocms.com/items",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "Bearer 10dfb3953f46f2d30a0a9a52f476a2",
+          "user-agent": "@datocms/cma-client v1.2.9",
+          "x-environment": "dev",
+          "x-api-version": "3"
+        },
+        "body": {
+          "data": {
+            "type": "item",
+            "attributes": {
+              "image": {
+                "upload_id": "41473091"
+              },
+              "title": "Skogen mellan oss",
+              "intro": "Sex av Konstfrämjandets distrikt i Mellansverige fångar in ett utbrett intresse för skogen som företeelse inom konsten. Ett förenat konstprogram knyter under 2021 samman ett femtontal platser, byar och mindre orter.",
+              "content": {
+                "schema": "dast",
+                "document": {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "value": "Konstfrämjandet Dalarnas del i projektet formulerade sig som en expedition – med ett brett spektra av konstnärliga inriktningar, gränsöverskridande kulturuttryck och med en aktiv inriktning på kombinationen mellan kultur och friluftsliv.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "Expeditionen var tänkt fungera som ett utforskande, både geografiskt och konstnärligt, för att skapa möten i de mellanrum som finns i Dalarna och skogarna mellan oss likväl mellan den vana och ovana konstpubliken. En expedition kan vara så nära som en dunge i en trädgård, mellan två vätskestationer eller med ett avstånd ända ut i rymden. Mikro till makro. Det är färden, erfarenheterna och upptäckterna under tiden som är det väsentliga och som vi ämnade samla inom ramen för projektet.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "– I Skogen mellan oss vill belysa att samtidskonst inte är bunden till konventionella konsthallar, gallerier och de centrala delarna av regionen utan att även andra arenor kan fungera som mötesplatser och utställningsytor, beskrev projektets konstnärliga ledare Anna Linnea Liljeholm vid uppstarten av projektet.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "I Dalarna gav i projektet bland annat utrymme till ett fåtal platsrelaterade residens för konstnärer verksamma i regionen, ett upplevelselopp där konsten mötte både skog och motion. Och i Sundborn uppfördes det permanenta verket ",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Det okända",
+                          "marks": [
+                            "emphasis"
+                          ],
+                          "type": "span"
+                        },
+                        {
+                          "value": " att uppföras i mitten av sommaren 2021. Även mindre nedslag så som digitala bokcirklar, vandringar och workshops arrangerades under projekttiden. Kolla gärna in ",
+                          "type": "span"
+                        },
+                        {
+                          "url": "http://skogenmellanoss.se/distrikt/dalarna/",
+                          "children": [
+                            {
+                              "value": "distriktets program här ",
+                              "type": "span"
+                            }
+                          ],
+                          "type": "link"
+                        },
+                        {
+                          "value": " för mer information och bilddokumentation från flera delar av projektet.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "Projektet sker i grunden i samverkan med övriga deltagande distrikt och förbundet – tillika med frilansande konstnärer,  regionala aktörer och det lokala föreningslivet.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "Samarbetspartners:",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Galleri Svarta Gran – Omid Massali",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Konst i Dalarna – Hållams Linnea Henriksson",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "Deltagande konstnärer:",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Mikael Johansson",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Ebba Matz",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Gum Lina Gabrielsson",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Nanna Hellberg",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Lina Sofia Lundin",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Kristin Ylikiiskilä Broberg",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Elin Båve",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Jens Masimov",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Elin Magnusson",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Andreas Sandberg",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Marja Leena Sillanpää",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Niklas Darke",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "Konstnärlig ledare och projektsamordnare – Anna Linnea Liljeholm",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "annalinnea.liljeholm@konstframjandet.se",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "Projektet presenteras i sin helhet via skogenmellanoss.se",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "På Facebook i gruppen Skogen mellan oss",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "eller på instagram under kontot @skogenmellanoss",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "type": "thematicBreak"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "Genomfört program:",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "22 februari",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Den digitala bokcirkeln – Skogstorg. Start med boken Träd följt av 12 st träffar med totalt ca: 100 deltagare. I samverkan med Bergslagen, Västmanland och Värmland.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "9 april – 30 oktober",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "platsspecifika residens som pågått under hela projekttiden. geografiskt spridda över Dalarna (processinriktning – att lyfta möjligheten för konstnärer att vara verksamma på landsbygden) I samverkan med KiD – Konst i Dalarna. Gum Lina Gabrielsson Älvdalen, Kristin Ylikiiskilä Broberg Falun, Nanna Hellberg Leksand, Lina Sofia Lundin Haghed.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "15 juni",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Känn en byggd. Vandring vid Rogsån – workshopledare konstnär Lina Sofia Lundin – Haghed",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "10 juli",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Det okända.",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "permanent Land Art verk. 25 besökare invigning – självbetjäning resten av sommaren. i samarbete med Linderdahlska stiftelsen – Sundborn konstnär Ebba Matz och landskapsarkitekt Mikael Johansson.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "4 september",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Texten i Skogen — en live essä. Workshop med författaren Niklas Darke – Gagnef",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "25 september – 9 oktober",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Art Run (350 besökare invigningsdagen – tillgängligt ytterligare 14 dagar utan räkning) I samverkan med Galleri Svarta Gran. Stångjärn, Falun. Medverkande konstnärer Kristin Ylikiiskilä Broberg, Elin Båve, Marja Leena Sillanpää, Jens Masimov, Elin Magnusson och Andreas Sandberg.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "4 oktober",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Bland träden – ett samtal om konst och skogsbruk.",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Konstnär Nina Edling (Aktiverad som konstnär i Upplands program) och hennes far Tony Johansson. samtalet anordnades i samverkan med Bild och Form Dalarna i Wallénhallen i Leksand i samband med att utställningen ”En annan landsbygd” visades.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "30 oktober",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Presentation av de platsspecifika residensen (20 besökare) Wallénhallen i Leksand.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "31 oktober",
+                          "type": "span"
+                        },
+                        {
+                          "value": "\n",
+                          "type": "span"
+                        },
+                        {
+                          "value": "Kollektivt tecknande, Skogens material – workshop med konstnär Anna Linnea Liljeholm i samarbete med konstnär Gum Lina Gabrielsson.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "*Mindre workshops och konstnärssamtal (sammanlagda deltagare 40 – 50 st)",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "item": {
+                        "type": "item",
+                        "attributes": {
+                          "image": {
+                            "upload_id": "41473036"
+                          },
+                          "layout": "medium"
+                        },
+                        "relationships": {
+                          "item_type": {
+                            "data": {
+                              "id": "1545634",
+                              "type": "item_type"
+                            }
+                          }
+                        }
+                      },
+                      "type": "block"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "Bild från Wallénhallen i Leksand när konstnär Gum Lina Gabrielsson presenterar sitt arbete från residenset i Hållberg, Älvdalen. Foto: Pontus Ersbacken.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "item": {
+                        "type": "item",
+                        "attributes": {
+                          "image": {
+                            "upload_id": "41473060"
+                          },
+                          "layout": "medium"
+                        },
+                        "relationships": {
+                          "item_type": {
+                            "data": {
+                              "id": "1545634",
+                              "type": "item_type"
+                            }
+                          }
+                        }
+                      },
+                      "type": "block"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "Residensträff och vandring kring konstnären Lina Sofia Lundins utvalda plats vid Rogsån i Haghed. Foto: Anna Linnea Liljeholm",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "item": {
+                        "type": "item",
+                        "attributes": {
+                          "image": {
+                            "upload_id": "41473078"
+                          },
+                          "layout": "medium"
+                        },
+                        "relationships": {
+                          "item_type": {
+                            "data": {
+                              "id": "1545634",
+                              "type": "item_type"
+                            }
+                          }
+                        }
+                      },
+                      "type": "block"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "Bild från bygget av det permanenta land art verket Det Okända vid Prästtjärnen i Sundborn. Landskapsarkitekt Mikael Johansson och konstnär Ebba Matz. Foto: Mikael Johansson.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "item": {
+                        "type": "item",
+                        "attributes": {
+                          "image": {
+                            "upload_id": "41473080"
+                          },
+                          "layout": "medium"
+                        },
+                        "relationships": {
+                          "item_type": {
+                            "data": {
+                              "id": "1545634",
+                              "type": "item_type"
+                            }
+                          }
+                        }
+                      },
+                      "type": "block"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "Bild från invigningsdagen av Det okända vid Prästtjärn i sundborn. Landskapsarkitekt Mikael Johansson och konstnär Ebba Matz. Foto: Pontus Ersbacken.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "item": {
+                        "type": "item",
+                        "attributes": {
+                          "image": {
+                            "upload_id": "41473081"
+                          },
+                          "layout": "medium"
+                        },
+                        "relationships": {
+                          "item_type": {
+                            "data": {
+                              "id": "1545634",
+                              "type": "item_type"
+                            }
+                          }
+                        }
+                      },
+                      "type": "block"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "Bild Från Art Run i Stångtjärn, Falun. Foto: Erik Garmo",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "item": {
+                        "type": "item",
+                        "attributes": {
+                          "image": {
+                            "upload_id": "41473082"
+                          },
+                          "layout": "medium"
+                        },
+                        "relationships": {
+                          "item_type": {
+                            "data": {
+                              "id": "1545634",
+                              "type": "item_type"
+                            }
+                          }
+                        }
+                      },
+                      "type": "block"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "Konstnär Marja Leena Sillanpää, Art Run i Stångtjärn, Falun. Foto: Erik Garmo",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "item": {
+                        "type": "item",
+                        "attributes": {
+                          "image": {
+                            "upload_id": "41473083"
+                          },
+                          "layout": "medium"
+                        },
+                        "relationships": {
+                          "item_type": {
+                            "data": {
+                              "id": "1545634",
+                              "type": "item_type"
+                            }
+                          }
+                        }
+                      },
+                      "type": "block"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "Konstnär Jens Masimov, Art Run i Stångtjärn, Falun. Foto: Erik Garmo",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    {
+                      "item": {
+                        "type": "item",
+                        "attributes": {
+                          "image": {
+                            "upload_id": "41473084"
+                          },
+                          "layout": "medium"
+                        },
+                        "relationships": {
+                          "item_type": {
+                            "data": {
+                              "id": "1545634",
+                              "type": "item_type"
+                            }
+                          }
+                        }
+                      },
+                      "type": "block"
+                    },
+                    {
+                      "children": [
+                        {
+                          "value": "Konstnär Kristin Ylikiskilää Broberg deltog både i residensprogrammet och vid Art Run i Stångtjärn, Falun. Foto: Erik Garmo.",
+                          "type": "span"
+                        }
+                      ],
+                      "type": "paragraph"
+                    }
+                  ],
+                  "type": "root"
+                }
+              },
+              "dropcap": true,
+              "color": {
+                "red": 212,
+                "green": 197,
+                "blue": 226,
+                "alpha": 255
+              },
+              "completed": true,
+              "slug": "skogen-mellan-oss",
+              "district": "133470826",
+              "subpage": []
+            },
+            "relationships": {
+              "item_type": {
+                "data": {
+                  "id": "1452646",
+                  "type": "item_type"
+                }
+              }
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 422,
+        "statusText": "Unprocessable Entity",
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "access-control-allow-headers": "authorization, content-type, x-environment, x-organization, x-site-domain, x-api-version, user-agent, x-session-id, x-include-drafts, x-exclude-invalid",
+          "access-control-allow-methods": "GET, POST, PUT, OPTIONS, DELETE",
+          "access-control-allow-origin": "*",
+          "access-control-expose-headers": "x-ratelimit-limit, x-ratelimit-remaining, x-ratelimit-reset",
+          "access-control-max-age": "1728000",
+          "cache-control": "no-cache",
+          "cf-cache-status": "DYNAMIC",
+          "cf-ray": "7b5cb6e61b0d1d06-CPH",
+          "connection": "keep-alive",
+          "content-encoding": "gzip",
+          "content-type": "application/json; charset=utf-8",
+          "date": "Mon, 10 Apr 2023 17:29:52 GMT",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "server": "cloudflare",
+          "strict-transport-security": "max-age=15552000; includeSubDomains; preload",
+          "transfer-encoding": "chunked",
+          "vary": "Accept,Accept-Encoding",
+          "via": "1.1 vegur",
+          "x-api-version": "3",
+          "x-content-type-options": "nosniff",
+          "x-download-options": "noopen",
+          "x-environment": "dev",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-queue-time": "7ms",
+          "x-ratelimit-limit": "60",
+          "x-ratelimit-remaining": "58",
+          "x-request-id": "dc7ab890-4b3f-44c5-b39e-5ca93019fb8d",
+          "x-runtime": "0.281691",
+          "x-xss-protection": "1; mode=block"
+        },
+        "body": {
+          "data": [
+            {
+              "id": "3017da",
+              "type": "api_error",
+              "attributes": {
+                "code": "INVALID_FIELD",
+                "details": {
+                  "field": "slug",
+                  "field_id": "7577568",
+                  "field_label": "Permalänk",
+                  "field_type": "slug",
+                  "code": "VALIDATION_UNIQUE",
+                  "options": {}
+                }
+              }
+            }
+          ]
+        }
+      },
+      "preCallStack": "Error\n    at Client.Client2.request (/Users/bebejane/Work/konstochteknik/konstframjandet/konstframjandet-website/node_modules/.pnpm/@datocms+cma-client@1.2.9/node_modules/@datocms/cma-client/dist/cjs/generated/Client.js:130:225)\n    at Item2.Item2.rawCreate (/Users/bebejane/Work/konstochteknik/konstframjandet/konstframjandet-website/node_modules/.pnpm/@datocms+cma-client@1.2.9/node_modules/@datocms/cma-client/dist/cjs/generated/resources/Item.js:298:28)\n    at Item2.Item2.create (/Users/bebejane/Work/konstochteknik/konstframjandet/konstframjandet-website/node_modules/.pnpm/@datocms+cma-client@1.2.9/node_modules/@datocms/cma-client/dist/cjs/generated/resources/Item.js:281:21)\n    at insertRecord (/Users/bebejane/Work/konstochteknik/konstframjandet/konstframjandet-website/lib/scripts/migration/index.ts:213:33)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at migrateProjects (/Users/bebejane/Work/konstochteknik/konstframjandet/konstframjandet-website/lib/scripts/migration/projects.ts:129:9)\n    at async Promise.allSettled (index 2)\n    at migrateAll (/Users/bebejane/Work/konstochteknik/konstframjandet/konstframjandet-website/lib/scripts/migration/all.ts:11:3)"
+    }
+  }
+]

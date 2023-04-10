@@ -17,11 +17,13 @@ export default function ProjectCard({ project: { id, title, intro, image, slug, 
       <Link href={`/projekt/${slug}`}>
         <figure>
           <div className={s.text}>
-            <Image
-              data={image.responsiveImage}
-              className={s.image}
-              objectFit="cover"
-            />
+            {image &&
+              <Image
+                data={image.responsiveImage}
+                className={s.image}
+                objectFit="cover"
+              />
+            }
             {color?.hex &&
               <div className={s.bgcolor} style={{ backgroundColor: color.hex }}></div>
             }

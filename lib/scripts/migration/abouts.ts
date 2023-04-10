@@ -10,13 +10,16 @@ import {
   chunkArray,
   buildWpApi,
   insertRecord,
-  decodeHTMLEntities
+  decodeHTMLEntities,
+  writeErrors,
+  printProgress
 } from './'
 
 export const migrateAbout = async (subdomain: string | undefined) => {
 
-  console.time('import')
+  console.time(`import-about-${subdomain}`)
 
+  const errors = []
   try {
 
     const wpapi = buildWpApi(subdomain)
@@ -51,14 +54,16 @@ export const migrateAbout = async (subdomain: string | undefined) => {
     const chunked = chunkArray(items, 10)
 
     for (let i = 0, total = 0; i < chunked.length; i++) {
-      await Promise.allSettled(chunked[i].map((el) => insertRecord(el, itemTypeId)))
-      console.log(`${(total += chunked[i].length)}/${items.length}`)
+      const res = await Promise.allSettled(chunked[i].map((el) => insertRecord(el, itemTypeId)))
+      res.forEach((el, index) => el.status === 'rejected' && errors.push({ item: chunked[i][index], error: el.reason }));
+      printProgress(`${(total += chunked[i].length)}/${items.length}`)
     }
 
   } catch (err) {
     console.log(err)
   }
-  console.timeEnd('import')
+  writeErrors(errors, subdomain, 'about')
+  console.timeEnd(`import-about-${subdomain}`)
 }
 
 //migrateAbout('dalarna')
