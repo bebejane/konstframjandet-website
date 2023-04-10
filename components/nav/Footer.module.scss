@@ -52,7 +52,7 @@
       display: flex;
     }
 
-    > ul {
+    >ul {
       @include mq($until: desktop) {
         display: none;
       }
@@ -61,7 +61,7 @@
       flex: 1 1 100%;
       flex-direction: row;
 
-      > li {
+      >li {
         flex: 0 0 calc(100% / 4);
         padding-right: 1rem;
         overflow: hidden;
@@ -82,12 +82,12 @@
           display: block;
 
           ul {
-            flex-direction: row;
-            flex-wrap: wrap;
+            display: block;
+            column-count: 3;
 
             li {
-              flex: 0 0 33%;
-              white-space: unset;
+              white-space: pre;
+              text-overflow: ellipsis;
             }
           }
         }

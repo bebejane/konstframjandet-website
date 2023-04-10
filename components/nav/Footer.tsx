@@ -4,13 +4,15 @@ import type { Menu } from '/lib/menu'
 import Link from 'next/link'
 import { primarySubdomain } from '/lib/utils'
 import { usePage } from '/lib/context/page'
+import { useState } from 'react'
 
 export type FooterProps = {
 	footer: any
 	menu: Menu
+	districts: DistrictRecord[]
 }
 
-export default function Footer({ footer, menu }: FooterProps) {
+export default function Footer({ footer, menu, districts }: FooterProps) {
 
 	const { isMainDistrict } = usePage()
 
@@ -39,14 +41,18 @@ export default function Footer({ footer, menu }: FooterProps) {
 								<ul>
 									{items?.map(({ label, slug, subdomain }, idx) =>
 										<li key={`${idx}-sub`}>
-											<Link href={slug} scroll={true} locale={subdomain}>{label}</Link>
+											<Link
+												href={slug}
+												scroll={true}
+												locale={subdomain}
+											>{label}</Link>
 										</li>
 									)}
 								</ul>
 							</li>
 						)}
 				</ul>
-			</nav>
-		</footer>
+			</nav >
+		</footer >
 	)
 }

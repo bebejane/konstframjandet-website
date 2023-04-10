@@ -38,7 +38,17 @@ export const buildWpApi = (subdomain: string | undefined) => {
 }
 
 export const itemTypeToId = async (model: string) => (await client.itemTypes.list()).find(({ api_key }) => api_key === model)
-export const allItemTypes = async (model: string) => (await client.itemTypes.list())
+export const allItemTypes = async () => (await client.itemTypes.list())
+export const allBlockIds = async () => {
+	const items = await allItemTypes();
+	return {
+		image: items.find(({ api_key }) => api_key === 'image').id,
+		video: items.find(({ api_key }) => api_key === 'video').id,
+		audio: items.find(({ api_key }) => api_key === 'audio').id,
+	}
+}
+
+
 
 export const allPages = async (wpapi, type: string, opt = { perPage: 100 }) => {
 
@@ -209,6 +219,7 @@ export const cleanWordpressHtml = (html: string) => {
 
 	html = html.replaceAll('<P>', '<p>')
 	html = html.replaceAll('</P>', '</p>')
+	html = html.replaceAll('<div><div>\n<div><div>\n', '<br />')
 	html = html.replaceAll('<br>', '<br />')
 	html = html.replaceAll('<p><br />', '<p>')
 	html = html.replaceAll('<br /></p>', '</p>')
@@ -440,3 +451,4 @@ export const parseDatoError = (err: any): string => {
 	const errors = (err as ApiError).errors.map(({ attributes: { code, details } }) => ({ code, field: details?.field, message: details?.message, detailsCode: details?.code, errors: Array.isArray(details?.errors) ? details?.errors.join('. ') : undefined }))
 	return errors.map(({ code, field, message, detailsCode, errors }) => `${code} ${field ? `(${field})` : ''} ${message || ''} ${detailsCode || ''} ${errors ? `(${errors})` : ''}`).join('\n')
 }
+

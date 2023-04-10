@@ -12,13 +12,13 @@ import {
   insertRecord,
   decodeHTMLEntities,
   ApiError,
-  allItemTypes,
+  allBlockIds,
   parseDatoError,
   noImage
 } from './'
 
 
-const migrateProjects = async (subdomain: string | undefined) => {
+export const migrateProjects = async (subdomain: string | undefined) => {
 
   console.time('import')
   try {
@@ -27,10 +27,7 @@ const migrateProjects = async (subdomain: string | undefined) => {
     const districtId = districts.find(el => el.subdomain === subdomain).id
     const itemTypeId = (await itemTypeToId('project')).id
     const itemTypeIdSub = (await itemTypeToId('project_subpage')).id
-    const imageBlockId = (await itemTypeToId('image')).id
-    const videoBlockId = (await itemTypeToId('video')).id
-    const audioBlockId = (await itemTypeToId('sound')).id
-    const blockIds = { image: imageBlockId, video: videoBlockId, audio: audioBlockId }
+    const blockIds = await allBlockIds()
     //const allPosts = await allPages(wpapi, 'project')
     const allPosts = JSON.parse(fs.readFileSync('./lib/scripts/migration/projects.json', { encoding: 'utf-8' }))
     //return await parseACFContent(allPosts[0].acf.layout)
@@ -137,4 +134,4 @@ const migrateProjects = async (subdomain: string | undefined) => {
   console.timeEnd('import')
 }
 
-migrateProjects('vastmanland')
+//migrateProjects('vastmanland')

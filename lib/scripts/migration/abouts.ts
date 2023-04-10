@@ -4,18 +4,16 @@ import {
   allPages,
   htmlToMarkdown,
   cleanObject,
-  client,
   htmlToStructuredContent,
-  parseLink,
   parseSlug,
-  uploadMedia,
+  allBlockIds,
   chunkArray,
   buildWpApi,
   insertRecord,
   decodeHTMLEntities
 } from './'
 
-const migrateAbout = async (subdomain: string | undefined) => {
+export const migrateAbout = async (subdomain: string | undefined) => {
 
   console.time('import')
 
@@ -26,6 +24,7 @@ const migrateAbout = async (subdomain: string | undefined) => {
     const districtId = districts.find(el => el.subdomain === subdomain).id
     const itemTypeId = (await itemTypeToId('about')).id
     const allPosts = await allPages(wpapi, 'about')
+    const blockIds = await allBlockIds()
     //return console.log(JSON.stringify(allPosts, null, 2))
 
     let items = await Promise.all(allPosts.map(async ({
@@ -41,7 +40,7 @@ const migrateAbout = async (subdomain: string | undefined) => {
       createdAt,
       title: decodeHTMLEntities(title.rendered),
       intro: intro ? htmlToMarkdown(intro) : undefined,
-      content: await htmlToStructuredContent(content.rendered),
+      content: await htmlToStructuredContent(content.rendered, blockIds),
       slug: parseSlug(slug),
       dropcap,
       district: districtId
@@ -62,4 +61,4 @@ const migrateAbout = async (subdomain: string | undefined) => {
   console.timeEnd('import')
 }
 
-migrateAbout('dalarna')
+//migrateAbout('dalarna')

@@ -74,7 +74,7 @@ fragment NewsFragment on NewsRecord {
 					url
 				}
 			}
-			... on SoundRecord {
+			... on AudioRecord {
 				__typename
 				id
 				url

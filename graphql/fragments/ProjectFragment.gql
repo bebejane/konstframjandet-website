@@ -76,7 +76,7 @@ fragment ProjectFragment on ProjectRecord {
 					url
 				}
 			}
-			... on SoundRecord {
+			... on AudioRecord {
 				__typename
 				id
 				url

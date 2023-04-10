@@ -12,26 +12,27 @@ import {
   parseSlug,
   chunkArray,
   buildWpApi,
+  allBlockIds,
   insertRecord,
   parseDatoError,
 } from './'
 
-const migrateNews = async (subdomain: string = 'forbundet') => {
+export const migrateNews = async (subdomain: string = 'forbundet') => {
 
   console.time('import')
 
   try {
-
+    const errors = []
     const wpapi = buildWpApi(subdomain)
     const districts = await allDistricts()
     const districtId = districts.find(el => el.subdomain === subdomain).id
     const itemTypeId = (await itemTypeToId('news')).id
-    const imageBlockId = (await itemTypeToId('image')).id
-    const videoBlockId = (await itemTypeToId('video')).id
+    const blockIds = await allBlockIds()
+
     //const allPosts = JSON.parse(fs.readFileSync('./news.json', { encoding: 'utf-8' }))
     const allPosts = await allPages(wpapi, 'news')
 
-    //return console.log(JSON.stringify(allPosts, null, 2))
+    fs.writeFileSync('./lib/scripts/migration/news.json', JSON.stringify(allPosts, null, 2))
 
     let news = await Promise.all(allPosts.map(async ({
       date: createdAt,
@@ -57,7 +58,7 @@ const migrateNews = async (subdomain: string = 'forbundet') => {
       title: title.rendered,
       subtitle: subtitle,
       intro: htmlToMarkdown(excerpt) || 'xxx',
-      content: await htmlToStructuredContent(text, imageBlockId, videoBlockId),
+      content: await htmlToStructuredContent(text, blockIds),
       dropcap,
       where: place,
       address,
@@ -88,4 +89,4 @@ const migrateNews = async (subdomain: string = 'forbundet') => {
   console.timeEnd('import')
 }
 
-migrateNews('dalarna')
+//migrateNews('dalarna')
