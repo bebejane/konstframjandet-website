@@ -24,9 +24,11 @@
       padding-right: calc(2 * var(--grid-unit));
     }
 
-    &.medium {}
+    &.medium {
+    }
 
-    &.large {}
+    &.large {
+    }
 
     &.portrait {
       padding-left: calc(3 * var(--grid-unit));
@@ -52,7 +54,7 @@
 
       .structured {
         &.dropcap {
-          >p:first-of-type {
+          > p:first-of-type {
             &:first-child:first-letter {
               color: var(--page-color);
               float: left;
@@ -65,10 +67,9 @@
             }
           }
         }
-      }
-
-      &>*:nth-last-child(2) {
-        margin-bottom: 0;
+        & > *:nth-last-child(2) {
+          margin-bottom: 0;
+        }
       }
 
       .back {

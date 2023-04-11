@@ -3,6 +3,8 @@
     margin-top: var(--space);
     padding-bottom: var(--big-space);
     border-bottom: var(--line-thick);
+    border-top: var(--line-thick);
+    padding-top: var(--small-space);
 
     @include mq($from: tablet) {
       padding-left: var(--grid-unit);
