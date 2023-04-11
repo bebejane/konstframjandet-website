@@ -2,7 +2,6 @@ import s from './Image.module.scss'
 import cn from 'classnames'
 import React from 'react'
 import { Image as DatoImage } from 'react-datocms'
-import { ImageGallery } from '/components'
 import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components'
 
 export type ImageBlockProps = {
