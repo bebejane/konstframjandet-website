@@ -10,6 +10,7 @@ TODO
 *.code-workspace
 /package-lock.json
 .vercel
-
+/lib/scripts/migration/data
+/lib/scripts/migration/errors/*.json
 .mailing
 sitemap*

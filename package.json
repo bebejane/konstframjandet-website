@@ -4,6 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "LOG_GRAPHQL=false next dev & npm run barrel:watch & graphql-codegen --watch",
+		"dev:migration": "LOG_GRAPHQL=false DATOCMS_ENVIRONMENT=migration DATOCMS_INCLUDE_DRAFTS=true next dev & npm run barrel:watch & graphql-codegen --watch",
 		"dev:emails": "npx mailing",
 		"build": "next build",
 		"codegen": "graphql-codegen",
@@ -13,7 +14,7 @@
 		"barrel": "node ./lib/scripts/barrel",
 		"barrel:watch": "watch 'node ./lib/scripts/barrel' ./components",
 		"postbuild": "next-sitemap",
-		"migrate:clean": "datocms environments:destroy dev ; datocms environments:fork main dev",
+		"migrate:clean": "datocms environments:destroy migration ; datocms environments:fork main migration",
 		"migrate:errors": "tsx ./lib/scripts/migration/errors/index.ts",
 		"migrate:all": "npm run migrate:clean && tsx ./lib/scripts/migration/all.ts",
 		"migrate:news": "npm run migrate:clean && tsx ./lib/scripts/migration/news.ts",

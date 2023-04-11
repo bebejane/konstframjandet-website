@@ -16,7 +16,7 @@ import getVideoId from 'get-video-id';
 
 export { default as striptags } from 'striptags'
 export { decodeHTMLEntities, ApiError }
-export const client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, environment: 'dev' })
+export const client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, environment: 'migration' })
 export const toMarkdown = new NodeHtmlMarkdown()
 export const baseDomain = 'konstframjandet.se/wp-json'
 export const noImage = undefined //{ url: 'https://www.datocms-assets.com/94618/1680937798-no-photo-available.png', title: undefined }
@@ -36,6 +36,7 @@ export const buildWpApi = (subdomain: string | undefined) => {
 	wpapi.news = wpapi.registerRoute('wp/v2', '/kf-news/(?P<id>)');
 	wpapi.project = wpapi.registerRoute('wp/v2', '/kf-project/(?P<id>)');
 	wpapi.about = wpapi.registerRoute('wp/v2', '/kf-about/(?P<id>)');
+	wpapi.subdomain = subdomain
 	return wpapi
 }
 
@@ -58,6 +59,9 @@ export const writeErrors = (errors: any[], subdomain: string, type: string) => {
 }
 
 export const allPages = async (wpapi, type: string, opt = { perPage: 100 }) => {
+
+	if (fs.existsSync(`./lib/scripts/migration/data/${wpapi.subdomain}-${type}.json`))
+		return JSON.parse(fs.readFileSync(`./lib/scripts/migration/data/${wpapi.subdomain}-${type}.json`, { encoding: 'utf8' }))
 
 	const items = []
 	let page = 0;
@@ -122,6 +126,7 @@ export const uploadMedia = async (image, tags: string[] = []) => {
 		url: image.url,
 		skipCreationIfAlreadyExists: true,
 		//onProgress: (p) => console.log(p),
+		tags,
 		default_field_metadata: {
 			en: {
 				title: image.title || null,
@@ -199,11 +204,11 @@ export const chunkArray = (array: any[], chunkSize: number) => {
 	return newArr
 }
 
-export const insertRecord = async (el: any, itemTypeId: string) => {
+export const insertRecord = async (el: any, itemTypeId: string, tags: string[] = []) => {
 
 	if (el.image) {
 		try {
-			const upload = await uploadMedia(el.image)
+			const upload = await uploadMedia(el.image, tags)
 			el.image = { upload_id: upload.id }
 		} catch (err) {
 			if (err !== 'no image')
@@ -266,7 +271,7 @@ export const cleanWordpressHtml = (html: string) => {
 	return html
 }
 
-export const htmlToStructuredContent = async (html: string, blocks: BlockIds = {}) => {
+export const htmlToStructuredContent = async (html: string, blocks: BlockIds = {}, tags: string[] = []) => {
 	if (!html) return html
 	html = cleanWordpressHtml(html)
 
@@ -345,7 +350,7 @@ export const htmlToStructuredContent = async (html: string, blocks: BlockIds = {
 					url = srcSet.sort((a, b) => parseInt(a.split(' ')[1]) > parseInt(b.split(' ')[1]) ? -1 : 1)[0].split(' ')[0]
 
 				//console.log('image block:', url)
-				const upload = await uploadMedia({ url });
+				const upload = await uploadMedia({ url }, tags);
 
 				return createNode('block', {
 					item: buildBlockRecord({
@@ -375,7 +380,7 @@ export const htmlToStructuredContent = async (html: string, blocks: BlockIds = {
 					return context.defaultHandlers.a(createNode, node, context)
 
 				console.log('upload file:', url, 'as', fileEnding)
-				const upload = await uploadMedia({ url });
+				const upload = await uploadMedia({ url }, tags);
 				node.properties.href = upload.url
 
 				return context.defaultHandlers.a(createNode, node, context)

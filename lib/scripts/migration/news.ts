@@ -31,11 +31,11 @@ export const migrateNews = async (subdomain: string = 'forbundet') => {
     const districtId = districts.find(el => el.subdomain === subdomain).id
     const itemTypeId = (await itemTypeToId('news')).id
     const blockIds = await allBlockIds()
-    //const allPosts = JSON.parse(fs.readFileSync('./news.json', { encoding: 'utf-8' }))
     const allPosts = await allPages(wpapi, 'news')
 
-    //fs.writeFileSync('./lib/scripts/migration/news.json', JSON.stringify(allPosts, null, 2))
-    console.log(`Import ${allPosts.length} items...`)
+    fs.writeFileSync(`./lib/scripts/migration/data/${subdomain}-news.json`, JSON.stringify(allPosts, null, 2))
+
+    console.log(`Import ${allPosts.length} news items...`)
     console.log('Parse news items...')
     let news = await Promise.all(allPosts.map(async ({
       date: createdAt,
@@ -57,11 +57,12 @@ export const migrateNews = async (subdomain: string = 'forbundet') => {
         dropcap
       } }) =>
     (cleanObject({
+      createdAt,
       image: { url: image.url, title: image.caption || caption },
       title: title.rendered,
       subtitle: subtitle,
       intro: htmlToMarkdown(excerpt),
-      content: await htmlToStructuredContent(text, blockIds),
+      content: await htmlToStructuredContent(text, blockIds, [subdomain]),
       dropcap,
       where: place,
       address,
@@ -79,7 +80,7 @@ export const migrateNews = async (subdomain: string = 'forbundet') => {
     console.log('Insert news items...')
     for (let i = 0, total = 0; i < chunked.length; i++) {
 
-      const res = await Promise.allSettled(chunked[i].map((el) => insertRecord(el, itemTypeId)))
+      const res = await Promise.allSettled(chunked[i].map((el) => insertRecord(el, itemTypeId, [subdomain])))
       res.forEach((el, index) => el.status === 'rejected' && errors.push({ item: chunked[i][index], error: el.reason }));
       const fulfilled = res.filter(el => el.status === 'fulfilled')
       printProgress(`${(total += fulfilled.length)}/${news.length}`)
