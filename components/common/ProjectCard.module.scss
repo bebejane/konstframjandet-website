@@ -1,7 +1,7 @@
 .card {
   position: relative;
-  margin-top: var(--space);
-  border-bottom: var(--line-thick);
+  margin-bottom: var(--space);
+  //border-bottom: var(--line-thick);
 
   &:nth-child(odd) {
     border-right: var(--line-thin);
@@ -9,7 +9,6 @@
 
   @include mq($from: tablet) {
     flex: 0 0 50%;
-    margin-bottom: var(--space);
   }
 
   @include mq($until: tablet) {
