@@ -192,6 +192,7 @@ type ColorField = {
   __typename?: 'ColorField';
   alpha: Scalars['IntType'];
   blue: Scalars['IntType'];
+  cssRgb: Scalars['String'];
   green: Scalars['IntType'];
   hex: Scalars['String'];
   red: Scalars['IntType'];
@@ -2236,6 +2237,13 @@ type NewsModelContentField = {
   value: Scalars['JsonField'];
 };
 
+type NewsModelExtraField = {
+  __typename?: 'NewsModelExtraField';
+  blocks: Array<Scalars['String']>;
+  links: Array<Scalars['String']>;
+  value: Scalars['JsonField'];
+};
+
 type NewsModelFilter = {
   OR?: InputMaybe<Array<InputMaybe<NewsModelFilter>>>;
   _createdAt?: InputMaybe<CreatedAtFilter>;
@@ -2252,10 +2260,12 @@ type NewsModelFilter = {
   district?: InputMaybe<LinkFilter>;
   dropcap?: InputMaybe<BooleanFilter>;
   externalLink?: InputMaybe<StringFilter>;
+  extra?: InputMaybe<StructuredTextFilter>;
   id?: InputMaybe<ItemIdFilter>;
   image?: InputMaybe<FileFilter>;
   intro?: InputMaybe<TextFilter>;
   misc?: InputMaybe<StringFilter>;
+  price?: InputMaybe<StringFilter>;
   slug?: InputMaybe<SlugFilter>;
   subtitle?: InputMaybe<StringFilter>;
   time?: InputMaybe<StringFilter>;
@@ -2292,6 +2302,8 @@ enum NewsModelOrderBy {
   id_DESC = 'id_DESC',
   misc_ASC = 'misc_ASC',
   misc_DESC = 'misc_DESC',
+  price_ASC = 'price_ASC',
+  price_DESC = 'price_DESC',
   subtitle_ASC = 'subtitle_ASC',
   subtitle_DESC = 'subtitle_DESC',
   time_ASC = 'time_ASC',
@@ -2322,10 +2334,12 @@ type NewsRecord = RecordInterface & {
   district: DistrictRecord;
   dropcap?: Maybe<Scalars['BooleanType']>;
   externalLink?: Maybe<Scalars['String']>;
+  extra?: Maybe<NewsModelExtraField>;
   id: Scalars['ItemId'];
   image?: Maybe<FileField>;
   intro?: Maybe<Scalars['String']>;
   misc?: Maybe<Scalars['String']>;
+  price?: Maybe<Scalars['String']>;
   slug: Scalars['String'];
   subtitle?: Maybe<Scalars['String']>;
   time?: Maybe<Scalars['String']>;

@@ -18,7 +18,7 @@ files.forEach((file) => {
   errors.forEach(({ item, error }) => {
     console.log(`Item: ${item.title}`)
     console.log(parseDatoError({ errors: error.response.body.data }))
-    console.log(`https://${subdomain}.konstframjandet.se/${typeToPath[type]}/${item.slug}`)
+    console.log(`http://${subdomain}.konstframjandet.se/${typeToPath[type]}/${item.slug}`)
     console.log('\n')
   })
 
