@@ -64,8 +64,8 @@ export const migrateAbout = async (subdomain: string | undefined) => {
       printProgress(`${(total += chunked[i].length)}/${items.length}`)
     }
     writeErrors(errors, subdomain, 'about')
-  } catch (e) {
-    writeErrors(e, subdomain, 'about')
+  } catch (err) {
+    writeErrors([{ error: err }], subdomain, 'about')
   }
   console.timeEnd(`import-about-${subdomain}`)
 }

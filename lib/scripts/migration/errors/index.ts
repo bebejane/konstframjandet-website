@@ -16,10 +16,9 @@ files.forEach((file) => {
 
   console.log(`\n-- ${subdomain} ${type} -----------------------------------`.toUpperCase())
   errors.forEach(({ item, error }) => {
-    console.log(`Item: ${item.title}`)
-    console.log(parseDatoError({ errors: error.response.body.data }))
-    console.log(`http://${subdomain}.konstframjandet.se/${typeToPath[type]}/${item.slug}`)
+    console.log(`Item: ${item?.title}`)
+    console.log(error.response.body.data ? parseDatoError({ errors: error.response.body.data }) : error)
+    console.log(`http://${subdomain}.konstframjandet.se/${typeToPath[type]}/${item?.slug}`)
     console.log('\n')
   })
-
 })

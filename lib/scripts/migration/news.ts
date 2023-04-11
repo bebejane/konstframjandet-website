@@ -89,7 +89,7 @@ export const migrateNews = async (subdomain: string = 'forbundet') => {
 
     writeErrors(errors, subdomain, 'news')
   } catch (err) {
-    writeErrors(err, subdomain, 'news')
+    writeErrors([{ error: err }], subdomain, 'news')
   }
 
   console.timeEnd(`import-news-${subdomain}`)
