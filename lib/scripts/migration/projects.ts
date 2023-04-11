@@ -35,11 +35,7 @@ export const migrateProjects = async (subdomain: string | undefined) => {
     const itemTypeIdSub = (await itemTypeToId('project_subpage')).id
     const blockIds = await allBlockIds()
     const allPosts = await allPages(wpapi, 'project')
-    fs.writeFileSync('./lib/scripts/migration/projects.json', JSON.stringify(allPosts, null, 2))
-    //const allPosts = JSON.parse(fs.readFileSync('./lib/scripts/migration/projects.json', { encoding: 'utf-8' }))
-    //return await parseACFContent(allPosts[0].acf.layout)
-    //return console.log(JSON.stringify(allPosts, null, 2))
-
+    fs.writeFileSync(`./lib/scripts/migration/data/${subdomain}-project.json`, JSON.stringify(allPosts, null, 2))
     // Main projects
     console.log(`Parse ${allPosts.length} project items...`)
     let projects = await Promise.all(allPosts.filter(({ parent }) => !parent).map(async ({
@@ -61,7 +57,7 @@ export const migrateProjects = async (subdomain: string | undefined) => {
       image: image ? { url: image?.url, title: image?.caption } : noImage,
       title: decodeHTMLEntities(title.rendered),
       intro: htmlToMarkdown(excerpt),
-      content: await htmlToStructuredContent(content.rendered, blockIds),
+      content: await htmlToStructuredContent(content.rendered, blockIds, [subdomain]),
       dropcap,
       color: color ? { red: hex2rgb(color).rgb[0], green: hex2rgb(color).rgb[1], blue: hex2rgb(color).rgb[2], alpha: 255 } : undefined,
       completed: is_archived,
@@ -89,7 +85,7 @@ export const migrateProjects = async (subdomain: string | undefined) => {
         image: image ? { url: image.url, title: image.caption } : layout && layout[0].image ? { url: layout[0].image, title: layout[0].caption } : noImage,
         title: title.rendered,
         subtitle: layout?.[0]?.sub_headline,
-        content: await htmlToStructuredContent(layout && layout.map(({ text }) => text).join('') ? layout.map(({ text }) => text).join(' ') : content?.rendered, blockIds),
+        content: await htmlToStructuredContent(layout && layout.map(({ text }) => text).join('') ? layout.map(({ text }) => text).join(' ') : content?.rendered, blockIds, [subdomain]),
         dropcap,
         slug: parseSlug(slug),
         district: districtId
@@ -111,7 +107,7 @@ export const migrateProjects = async (subdomain: string | undefined) => {
         ...el,
         id: undefined,
         parent: undefined
-      }, itemTypeIdSub)))
+      }, itemTypeIdSub, [subdomain])))
 
       const fulfilled = result.filter(el => el.status === 'fulfilled')
       const rejected = result.filter(el => el.status === 'rejected')
@@ -120,21 +116,14 @@ export const migrateProjects = async (subdomain: string | undefined) => {
       errs += rejected.length
       success += fulfilled.length
 
-      //if (rejected.length > 0) console.log(rejected.map((el: any) => parseDatoError(el.reason)).join('\n'))
-      //if (fulfilled.length > 0) console.log(`${(success + errs)}/${allPosts.length}`)
-
       const subpage = result.filter(res => res.status === 'fulfilled').map((res) => res.status === 'fulfilled' ? res.value.id : undefined)
 
       try {
-        await insertRecord({ ...projects[i], subprojects: undefined, subpage }, itemTypeId)
+        await insertRecord({ ...projects[i], subprojects: undefined, subpage }, itemTypeId, [subdomain])
         success++
       } catch (err) {
         errors.push({ item: projects[i], error: err })
         errs++;
-        //console.log('FAILED', projects[i].title)
-        //console.log(parseDatoError(err))
-
-
       }
       printProgress(`${(success + errs)}/${totalItems}`)
     }

@@ -7,7 +7,7 @@ const subdomain = process.argv[2] || undefined
 
 const migrateAll = async () => {
   const subdomains = (await allDistricts()).map(d => d.subdomain)
-  //const subdomains = ['dalarna', 'bergslagen']
+  //const subdomains = ['dalarna']
   console.time(`migrateall`)
   for (let i = 0; i < subdomains.length; i++)
     await migrate(subdomains[i])
