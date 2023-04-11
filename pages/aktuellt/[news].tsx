@@ -42,7 +42,6 @@ export default function NewsItem({ news: {
               {address && <>{address}<br /></>}
               {date && <>{date}<br /></>}
               {time && <>{time}<br /></>}
-              {misc && <>{misc}</>}
             </p>
           </>
         }

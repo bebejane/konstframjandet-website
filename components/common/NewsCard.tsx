@@ -28,7 +28,6 @@ export default function NewsCard({ view = 'full', news: { title, subtitle, intro
           {where && <span>{where}</span>}
           {date && <span>{date}</span>}
           {time && <span>{time}</span>}
-          {misc && <span>{misc}</span>}
           <span><Link href={`/aktuellt/${slug}`}>Läs mer</Link></span>
         </div>
       </div>
