@@ -54,7 +54,7 @@ export const siteSearch = async (opt: any) => {
     return {}
 
 
-  const client = buildClient({ apiToken: process.env.GRAPHQL_API_TOKEN });
+  const client = buildClient({ apiToken: process.env.GRAPHQL_API_TOKEN, environment: process.env.GRAPHQL_ENVIRONMENT });
   const itemTypes = await client.itemTypes.list();
 
   const search = (await client.items.list({
