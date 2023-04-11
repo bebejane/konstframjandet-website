@@ -8,7 +8,7 @@ query AllNews($first: IntType = 100, $skip: IntType = 0, $districtId: ItemId) {
 		...NewsFragment
 	}
 
-	pagination: _allNewsMeta {
+	pagination: _allNewsMeta(filter: { district: { eq: $districtId } }) {
 		count
 	}
 }

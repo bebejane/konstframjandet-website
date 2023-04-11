@@ -53,8 +53,8 @@ export const siteSearch = async (opt: any) => {
   if (isEmptyObject(variables))
     return {}
 
-
-  const client = buildClient({ apiToken: process.env.GRAPHQL_API_TOKEN, environment: process.env.DATOCMS_ENVIRONMENT });
+  const environment = process.env.DATOCMS_ENVIRONMENT ?? process.env.NEXT_PUBLIC_DATOCMS_ENVIRONMENT ?? 'main'
+  const client = buildClient({ apiToken: process.env.GRAPHQL_API_TOKEN, environment });
   const itemTypes = await client.itemTypes.list();
 
   const search = (await client.items.list({

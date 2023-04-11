@@ -16,7 +16,7 @@ export default function Projects({ projects, completedProjects }: Props) {
       <div className={s.container}>
         <ProjectContainer>
           {projects.map((item, idx) =>
-            <ProjectCard key={idx} project={item} />
+            <ProjectCard key={idx} project={item} index={idx} total={projects.length} />
           )}
         </ProjectContainer>
         {completedProjects.length > 0 &&
@@ -24,7 +24,7 @@ export default function Projects({ projects, completedProjects }: Props) {
             <h2 className={cn('big', s.completed)}>Avslutade projekt</h2>
             <ProjectContainer>
               {completedProjects.map((item, idx) =>
-                <ProjectCard key={idx} project={item} />
+                <ProjectCard key={idx} project={item} index={idx} total={completedProjects.length} />
               )}
             </ProjectContainer>
           </>
