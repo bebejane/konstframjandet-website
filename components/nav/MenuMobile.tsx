@@ -45,7 +45,7 @@ export default function MenuMobile({ districts, menu }: Props) {
         <div className={s.line}></div>
       </header>
       <div className={cn(s.menuMobile, open && s.open)}>
-        <nav className={cn(s.menu)} ref={ref}>
+        <nav className={s.menu} ref={ref}>
           <ul>
             {menu.map(({ type, slug, label, items }) =>
               <li className={cn(s.active)} key={type}>

@@ -31,6 +31,7 @@ type AboutModelContentField = {
 };
 
 type AboutModelFilter = {
+  AND?: InputMaybe<Array<InputMaybe<AboutModelFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<AboutModelFilter>>>;
   _createdAt?: InputMaybe<CreatedAtFilter>;
   _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
@@ -234,6 +235,7 @@ type DistrictModelContentContactField = {
 type DistrictModelContentField = ImageRecord | ImageShortcutRecord | StartImageGalleryRecord | StartProjectRecord | StartSelectedDistrictNewsRecord | StartSelectedNewsRecord | StartTextRecord;
 
 type DistrictModelFilter = {
+  AND?: InputMaybe<Array<InputMaybe<DistrictModelFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<DistrictModelFilter>>>;
   _createdAt?: InputMaybe<CreatedAtFilter>;
   _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
@@ -354,6 +356,7 @@ type DownloadPdfRecord_seoMetaTagsArgs = {
 };
 
 type ExternalLinkModelFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ExternalLinkModelFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<ExternalLinkModelFilter>>>;
   _createdAt?: InputMaybe<CreatedAtFilter>;
   _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
@@ -459,6 +462,7 @@ type FileField = FileFieldInterface & {
   size: Scalars['IntType'];
   smartTags: Array<Scalars['String']>;
   tags: Array<Scalars['String']>;
+  thumbhash?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   url: Scalars['String'];
   video?: Maybe<UploadVideoField>;
@@ -534,6 +538,7 @@ type FileFieldInterface = {
   size: Scalars['IntType'];
   smartTags: Array<Scalars['String']>;
   tags: Array<Scalars['String']>;
+  thumbhash?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   url: Scalars['String'];
   video?: Maybe<UploadVideoField>;
@@ -714,6 +719,14 @@ type ImgixParams = {
    * [Open Imgix reference »](https://docs.imgix.com/apis/url/bg)
    */
   bg?: InputMaybe<Scalars['String']>;
+  /**
+   * Background Removal
+   *
+   * Removes background from image.
+   *
+   * [Open Imgix reference »](https://docs.imgix.com/apis/rendering/background-removal/bg-remove)
+   */
+  bgRemove?: InputMaybe<Scalars['BooleanType']>;
   /**
    * Blend
    *
@@ -1167,6 +1180,18 @@ type ImgixParams = {
    */
   fpZ?: InputMaybe<Scalars['FloatType']>;
   /**
+   * Frames Per Second
+   *
+   * Specifies the framerate of the generated image.
+   */
+  fps?: InputMaybe<Scalars['IntType']>;
+  /**
+   * Frame Selection
+   *
+   * Specifies the frame of an animated image to use.
+   */
+  frame?: InputMaybe<Scalars['String']>;
+  /**
    * Gamma
    *
    * Adjusts the gamma of the source image.
@@ -1174,6 +1199,12 @@ type ImgixParams = {
    * [Open Imgix reference »](https://docs.imgix.com/apis/url/adjustment/gam)
    */
   gam?: InputMaybe<Scalars['IntType']>;
+  /**
+   * Animated Gif Quality
+   *
+   * Depends on: `fm=gif`
+   */
+  gifQ?: InputMaybe<Scalars['IntType']>;
   /**
    * Grid Colors
    *
@@ -1223,6 +1254,12 @@ type ImgixParams = {
    */
   hue?: InputMaybe<Scalars['IntType']>;
   /**
+   * Frame Interval
+   *
+   * Displays every Nth frame starting with the first frame.
+   */
+  interval?: InputMaybe<Scalars['IntType']>;
+  /**
    * Invert
    *
    * Inverts the colors on the source image.
@@ -1236,6 +1273,12 @@ type ImgixParams = {
    * Determine if IPTC data should be passed for JPEG images.
    */
   iptc?: InputMaybe<ImgixParamsIptc>;
+  /**
+   * Animation Loop Count
+   *
+   * Specifies the number of times an animated image should repeat. A value of 0 means infinite looping.
+   */
+  loop?: InputMaybe<Scalars['IntType']>;
   /**
    * Lossless Compression
    *
@@ -1563,6 +1606,12 @@ type ImgixParams = {
    */
   rect?: InputMaybe<Scalars['String']>;
   /**
+   * Reverse
+   *
+   * Reverses the frame order on the source animation.
+   */
+  reverse?: InputMaybe<Scalars['BooleanType']>;
+  /**
    * Rotation
    *
    * Rotates an image by a specified number of degrees.
@@ -1602,6 +1651,12 @@ type ImgixParams = {
    * [Open Imgix reference »](https://docs.imgix.com/apis/url/adjustment/sharp)
    */
   sharp?: InputMaybe<Scalars['FloatType']>;
+  /**
+   * Frame Skip
+   *
+   * Skips every Nth frame starting with the first frame.
+   */
+  skip?: InputMaybe<Scalars['IntType']>;
   /**
    * Transparency
    *
@@ -2058,6 +2113,7 @@ type InUseFilter = {
 };
 
 type InternalLinkModelFilter = {
+  AND?: InputMaybe<Array<InputMaybe<InternalLinkModelFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<InternalLinkModelFilter>>>;
   _createdAt?: InputMaybe<CreatedAtFilter>;
   _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
@@ -2245,6 +2301,7 @@ type NewsModelExtraField = {
 };
 
 type NewsModelFilter = {
+  AND?: InputMaybe<Array<InputMaybe<NewsModelFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<NewsModelFilter>>>;
   _createdAt?: InputMaybe<CreatedAtFilter>;
   _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
@@ -2398,6 +2455,7 @@ enum ProjectModelFieldsReferencingProjectSubpageModel {
 }
 
 type ProjectModelFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ProjectModelFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<ProjectModelFilter>>>;
   _createdAt?: InputMaybe<CreatedAtFilter>;
   _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
@@ -2512,6 +2570,7 @@ type ProjectSubpageModelContentField = {
 };
 
 type ProjectSubpageModelFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ProjectSubpageModelFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<ProjectSubpageModelFilter>>>;
   _createdAt?: InputMaybe<CreatedAtFilter>;
   _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
@@ -3375,6 +3434,7 @@ type UploadFilenameFilter = {
 };
 
 type UploadFilter = {
+  AND?: InputMaybe<Array<InputMaybe<UploadFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<UploadFilter>>>;
   _createdAt?: InputMaybe<UploadCreatedAtFilter>;
   _updatedAt?: InputMaybe<UploadUpdatedAtFilter>;
