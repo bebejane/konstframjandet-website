@@ -123,6 +123,11 @@ fragment DistrictFragment on DistrictRecord {
 				...NewsFragmentLight
 			}
 		}
+		... on StartLatestNewsRecord {
+			__typename
+			id
+			count
+		}
 		... on StartTextRecord {
 			__typename
 			text

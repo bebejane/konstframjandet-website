@@ -1,0 +1,17 @@
+.container {
+  margin-top: var(--space);
+
+  header {
+    display: flex;
+    flex-direction: row;
+
+    h2 {
+      flex: 1 1 100%;
+    }
+
+    a {
+      flex: 1 1;
+      white-space: pre;
+    }
+  }
+}

@@ -13,7 +13,13 @@ query Start($districtId: ItemId) {
 			}
 		}
 	}
-
+	latestNews: allNews(
+		filter: { district: { eq: $districtId } }
+		first: 4
+		orderBy: [_createdAt_DESC]
+	) {
+		...NewsFragmentLight
+	}
 	district(filter: { id: { eq: $districtId } }) {
 		...DistrictFragment
 	}

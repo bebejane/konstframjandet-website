@@ -16,9 +16,3 @@ export async function getStaticPaths() {
     fallback: 'blocking'
   }
 }
-/*
-export async function getStaticPaths() {
-  return getStaticDistrictPaths(AllProjectsDocument, 'project')
-}
-
-*/
