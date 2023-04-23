@@ -11,7 +11,7 @@ export type CardProps = {
   view?: 'list' | 'full'
 }
 
-export default function NewsCard({ view = 'full', news: { id, title, subtitle, intro, image, slug, address, where, date, time, misc } }: CardProps) {
+export default function NewsCard({ view = 'full', news: { id, title, subtitle, intro, image, slug, where, date, time, misc } }: CardProps) {
 
   const { isHome } = usePage()
 

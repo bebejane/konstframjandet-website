@@ -1,5 +1,4 @@
 import styles from './ReadMore.module.scss'
-import { recordToSlug } from '/lib/utils'
 import cn from 'classnames'
 import Link from 'next/link'
 

@@ -4,7 +4,6 @@ import type { Menu } from '/lib/menu'
 import Link from 'next/link'
 import { primarySubdomain } from '/lib/utils'
 import { usePage } from '/lib/context/page'
-import { useState } from 'react'
 
 export type FooterProps = {
 	footer: any

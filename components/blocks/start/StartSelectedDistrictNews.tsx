@@ -1,6 +1,4 @@
-import s from './StartSelectedDistrictNews.module.scss'
 import { StartSelectionContainer, StartSelectionCard } from '/components'
-import Link from 'next/link'
 
 export type Props = {
   data: StartSelectedDistrictNewsRecord

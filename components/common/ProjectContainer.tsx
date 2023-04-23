@@ -1,6 +1,6 @@
 import s from './ProjectContainer.module.scss'
 import cn from 'classnames'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 export type Props = {
   children?: React.ReactNode | React.ReactNode[],

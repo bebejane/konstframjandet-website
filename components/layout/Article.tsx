@@ -1,7 +1,7 @@
 import s from './Article.module.scss'
 import cn from 'classnames'
 import React, { useEffect } from 'react'
-import { StructuredContent, Aside } from "/components";
+import { StructuredContent } from "/components";
 import { Image } from 'react-datocms';
 import { DatoSEO, DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
 import useStore from '/lib/store';

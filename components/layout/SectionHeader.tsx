@@ -1,6 +1,6 @@
 import s from './SectionHeader.module.scss'
 import cn from 'classnames'
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { usePage } from '/lib/context/page'
 import useStore from '/lib/store'
 import { Image } from 'react-datocms'

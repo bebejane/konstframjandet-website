@@ -4,7 +4,7 @@ import { useWindowSize } from "rooks"
 import Youtube from 'react-youtube'
 import Vimeo from '@u-wave/react-vimeo'
 
-export default function Video({ data, editable }) {
+export default function Video({ data }) {
 
 	const ref = useRef<HTMLDivElement | null>(null)
 	const [height, setHeight] = useState(360);
