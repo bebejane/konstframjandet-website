@@ -70,6 +70,11 @@
         & > *:nth-last-child(2) {
           margin-bottom: 0;
         }
+
+        h2 {
+          color: var(--page-color);
+          padding-bottom: 0.8em;
+        }
       }
 
       .back {
