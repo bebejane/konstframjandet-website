@@ -5,13 +5,14 @@ import { useEffect, useState } from 'react'
 import { randomInt } from '/lib/utils'
 
 type Props = {
-  children: string
+  children: string | React.ReactNode
   href?: string
   onClick?: () => void
   className?: string
+  disabled?: boolean
 }
 
-export default function Bubble({ href, className, children, onClick }: Props) {
+export default function Bubble({ href, className, children, onClick, disabled = false }: Props) {
 
   const [styles, setStyles] = useState({})
   const [toggle, setToggle] = useState(false)
@@ -24,6 +25,7 @@ export default function Bubble({ href, className, children, onClick }: Props) {
   const button = (
     <button
       className={cn(s.bubble, 'mid', className)}
+      disabled={disabled}
       style={styles}
       onMouseLeave={() => setToggle(!toggle)}
       onClick={onClick}

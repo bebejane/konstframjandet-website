@@ -39,6 +39,8 @@ export default function ImageGallery({ id, images, onClick, editable = false }: 
 
 	}, [innerHeight, innerWidth, calculatePositions])
 
+	if (!images || !images.length) return null
+
 	return (
 		<div className={s.gallery} data-editable={editable} ref={containerRef}>
 			<div className={s.fade}></div>
@@ -53,7 +55,7 @@ export default function ImageGallery({ id, images, onClick, editable = false }: 
 				onSlideChange={({ realIndex }) => setIndex(realIndex)}
 				onSwiper={(swiper) => swiperRef.current = swiper}
 			>
-				{images.map((item, idx) =>
+				{images?.map((item, idx) =>
 					<SwiperSlide key={`${idx}-${captionHeight}`} className={cn(s.slide)} >
 						<figure id={`${id}-${item.id}`} onClick={() => onClick?.(item.id)} >
 							<Image

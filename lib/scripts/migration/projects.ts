@@ -127,13 +127,12 @@ export const migrateProjects = async (subdomain: string | undefined) => {
       }
       printProgress(`${(success + errs)}/${totalItems}`)
     }
+    writeErrors(errors, subdomain, 'project')
     console.log('\nDONE', `${success}/${totalItems}`, `Errors: ${errs}/${totalItems}`)
+
   } catch (err) {
-    console.log(err)
+    writeErrors([{ error: err }], subdomain, 'project')
   }
-
-  writeErrors(errors, subdomain, 'project')
-
   console.timeEnd(`import-project-${subdomain}`)
 }
 

@@ -2,7 +2,6 @@ import s from './MenuMobile.module.scss'
 import cn from 'classnames'
 import { useRouter } from 'next/router'
 import { useState, useRef, useEffect } from 'react'
-import { primarySubdomain } from '/lib/utils'
 import { usePage } from '/lib/context/page'
 import { animateLogo } from '/lib/utils'
 import type { Menu } from '/lib/menu'
@@ -45,7 +44,7 @@ export default function MenuMobile({ districts, menu }: Props) {
         <div className={s.line}></div>
       </header>
       <div className={cn(s.menuMobile, open && s.open)}>
-        <nav className={cn(s.menu)} ref={ref}>
+        <nav className={s.menu} ref={ref}>
           <ul>
             {menu.map(({ type, slug, label, items }) =>
               <li className={cn(s.active)} key={type}>

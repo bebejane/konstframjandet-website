@@ -18,7 +18,6 @@ export default function Contact({ district: { id, intro, contentContact }, distr
         intro={intro}
         content={contentContact}
       />
-
       <NewsletterForm />
     </>
   );
@@ -30,6 +29,7 @@ export const getStaticProps = withGlobalProps({ queries: [DistrictDocument] }, a
     props: {
       ...props,
       page: {
+        layout: 'contact',
         title: 'Kontakta oss'
       }
     },

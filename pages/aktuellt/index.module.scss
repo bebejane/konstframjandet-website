@@ -7,4 +7,10 @@
     margin-right: auto;
     background-color: var(--page-color);
   }
+
+  .loader {
+    min-height: 1rem;
+    font-size: 2rem;
+    padding: 0 !important;
+  }
 }

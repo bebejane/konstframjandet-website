@@ -11,7 +11,7 @@ export type Props = {
 export default function NewsContainer({ children, className, view = 'full' }: Props) {
 
   return (
-    <ul className={cn(s.container, view === 'list' && s.list)}>
+    <ul className={cn(s.container, className, view === 'list' && s.list)}>
       {children}
     </ul>
   )

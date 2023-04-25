@@ -5,11 +5,7 @@ import cn from 'classnames'
 import { useState } from 'react'
 import { isEmail } from "/lib/utils";
 
-export type Props = {
-
-}
-
-export default function NewsletterForm({ }: Props) {
+export default function NewsletterForm() {
 
   const [email, setEmail] = useState('')
   const [error, setError] = useState<string | undefined>()

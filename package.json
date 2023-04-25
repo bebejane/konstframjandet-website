@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "LOG_GRAPHQL=false next dev & npm run barrel:watch & graphql-codegen --watch",
-		"dev:migration": "LOG_GRAPHQL=false DATOCMS_ENVIRONMENT=migration DATOCMS_INCLUDE_DRAFTS=true next dev & npm run barrel:watch & graphql-codegen --watch",
+		"dev:migration": "LOG_GRAPHQL=false NEXT_PUBLIC_DATOCMS_ENVIRONMENT=migration DATOCMS_ENVIRONMENT=migration DATOCMS_INCLUDE_DRAFTS=true next dev & npm run barrel:watch & graphql-codegen --watch",
 		"dev:emails": "npx mailing",
 		"build": "next build",
 		"codegen": "graphql-codegen",
@@ -17,9 +17,9 @@
 		"migrate:clean": "datocms environments:destroy migration ; datocms environments:fork main migration",
 		"migrate:errors": "tsx ./lib/scripts/migration/errors/index.ts",
 		"migrate:all": "npm run migrate:clean && tsx ./lib/scripts/migration/all.ts",
-		"migrate:news": "npm run migrate:clean && tsx ./lib/scripts/migration/news.ts",
-		"migrate:projects": "npm run migrate:clean && tsx ./lib/scripts/migration/projects.ts",
-		"migrate:abouts": "npm run migrate:clean && tsx ./lib/scripts/migration/abouts.ts",
+		"migrate:news": "tsx ./lib/scripts/migration/news.ts",
+		"migrate:projects": "tsx ./lib/scripts/migration/projects.ts",
+		"migrate:abouts": "tsx ./lib/scripts/migration/abouts.ts",
 		"migrate:test": "datocms environments:fork main dev ; tsx ./lib/scripts/migration/projects.ts"
 	},
 	"exports": {

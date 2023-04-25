@@ -1,7 +1,6 @@
 .card {
   position: relative;
   margin-bottom: var(--space);
-  //border-bottom: var(--line-thick);
 
   &:nth-child(odd) {
     border-right: var(--line-thin);
@@ -90,6 +89,28 @@
         mix-blend-mode: multiply;
         transition: opacity 0.5s ease;
       }
+    }
+  }
+
+
+
+}
+
+.divider {
+  height: 0px;
+  margin: 0;
+  margin-bottom: var(--space);
+  flex: 0 0 100%;
+  background-color: var(--white);
+  border-bottom: var(--line-thin);
+
+  @include mq($until: tablet) {
+    display: none;
+  }
+
+  &.odd {
+    &:last-of-type {
+      display: none;
     }
   }
 }

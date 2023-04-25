@@ -63,17 +63,17 @@ export const migrateNews = async (subdomain: string = 'forbundet') => {
       subtitle: subtitle,
       intro: htmlToMarkdown(excerpt),
       content: await htmlToStructuredContent(text, blockIds, [subdomain]),
+      extra: await htmlToStructuredContent(extra_text, blockIds, [subdomain]),
       dropcap,
       where: place,
       address,
       date,
       time,
-      misc: decodeHTMLEntities(striptags(extra_text))?.trim(),
+      price,
       external_link: parseLink(external_link),
       slug: parseSlug(slug),
       district: districtId
     }))))
-    //return
 
     const chunked = chunkArray(news, 40)
 
@@ -87,11 +87,11 @@ export const migrateNews = async (subdomain: string = 'forbundet') => {
       //console.log(res.filter(el => el.status === 'rejected').map((el) => el.status === 'rejected' && parseDatoError(el.reason)))
     }
 
+    writeErrors(errors, subdomain, 'news')
   } catch (err) {
-    console.log(err)
-    console.log(parseDatoError(err))
+    writeErrors([{ error: err }], subdomain, 'news')
   }
-  writeErrors(errors, subdomain, 'news')
+
   console.timeEnd(`import-news-${subdomain}`)
 }
 

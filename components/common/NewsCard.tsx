@@ -11,12 +11,12 @@ export type CardProps = {
   view?: 'list' | 'full'
 }
 
-export default function NewsCard({ view = 'full', news: { title, subtitle, intro, image, slug, address, where, date, time, misc } }: CardProps) {
+export default function NewsCard({ view = 'full', news: { id, title, subtitle, intro, image, slug, where, date, time, misc } }: CardProps) {
 
   const { isHome } = usePage()
 
   return (
-    <li className={cn(s.card, isHome && s.home, view === 'list' && s.list)}>
+    <li id={id} className={cn(s.card, isHome && s.home, view === 'list' && s.list)}>
       <div className={s.content}>
         <Link href={`/aktuellt/${slug}`}>
           <h2 className="big">{title}{subtitle && <span> — {subtitle}</span>}</h2>
@@ -31,7 +31,7 @@ export default function NewsCard({ view = 'full', news: { title, subtitle, intro
           <span><Link href={`/aktuellt/${slug}`}>Läs mer</Link></span>
         </div>
       </div>
-      {image &&
+      {image?.responsiveImage &&
         <Link href={`/aktuellt/${slug}`}>
           <figure className={s.figure}>
             <Image data={image.responsiveImage} className={s.image} />

@@ -5,7 +5,8 @@
   align-items: baseline;
 
   &.full,
-  &.news {
+  &.news,
+  &.contact {
     padding-top: var(--small-space);
     padding-bottom: var(--big-space);
     border-bottom: var(--line-thick);
@@ -113,6 +114,7 @@
   .view {
     line-height: 0;
     cursor: pointer;
+
     svg {
       width: 4.5rem;
       height: 4.5rem;

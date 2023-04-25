@@ -9,10 +9,10 @@ import React from "react";
 export type Props = {
 	district: DistrictRecord
 	start: StartRecord
+	latestNews: NewsRecord[]
 }
 
-export default function Home({ district, start }: Props) {
-
+export default function Home({ district, start, latestNews }: Props) {
 	const { isMainDistrict } = usePage()
 
 	const selectedInDistricts = (
@@ -30,7 +30,10 @@ export default function Home({ district, start }: Props) {
 					block.__typename === 'StartSelectedDistrictNewsRecord' && isMainDistrict ?
 						<React.Fragment key={idx}>{selectedInDistricts}</React.Fragment>
 						:
-						<Block key={idx} data={block} record={district} />
+						block.__typename === 'StartLatestNewsRecord' ?
+							<Block key={idx} data={{ ...block, news: latestNews }} record={district} />
+							:
+							<Block key={idx} data={block} record={district} />
 				)}
 
 			{!isMainDistrict &&

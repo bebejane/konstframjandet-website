@@ -1,7 +1,5 @@
 import s from './StartText.module.scss'
-import cn from 'classnames'
 import React from 'react'
-import Link from 'next/link'
 import { DatoLink } from '/components'
 
 export type TextBlockProps = {

@@ -18,8 +18,8 @@ export default function StartProject({ data: { projects } }: Props) {
         <Link href={'/projekt'} className="mid">Visa alla</Link>
       </header>
       <ProjectContainer>
-        {projects.map(item =>
-          <ProjectCard key={item.id} project={item} />
+        {projects.map((item, index) =>
+          <ProjectCard key={item.id} project={item} index={index} total={projects.length} />
         )}
       </ProjectContainer>
     </section >

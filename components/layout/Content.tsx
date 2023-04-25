@@ -15,7 +15,7 @@ export type ContentProps = {
 	intro?: string
 }
 
-export default function Content({ children, title, image, intro, menu }: ContentProps) {
+export default function Content({ children, title }: ContentProps) {
 
 	const { asPath } = useRouter()
 	const { layout, isHome } = usePage()

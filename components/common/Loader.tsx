@@ -24,7 +24,7 @@ const animateLoader = async () => {
 
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-export default function Loader({ message, loading = true, className, invert = false }: Props) {
+export default function Loader({ loading = true, className, invert = false }: Props) {
   if (!loading) return null
 
   const ref = useRef<HTMLSpanElement | null>(null)

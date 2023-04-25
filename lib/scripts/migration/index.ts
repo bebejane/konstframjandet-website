@@ -36,6 +36,7 @@ export const buildWpApi = (subdomain: string | undefined) => {
 	wpapi.news = wpapi.registerRoute('wp/v2', '/kf-news/(?P<id>)');
 	wpapi.project = wpapi.registerRoute('wp/v2', '/kf-project/(?P<id>)');
 	wpapi.about = wpapi.registerRoute('wp/v2', '/kf-about/(?P<id>)');
+	wpapi.contact = wpapi.registerRoute('wp/v2', '/kf-contact/(?P<id>)');
 	wpapi.subdomain = subdomain
 	return wpapi
 }
