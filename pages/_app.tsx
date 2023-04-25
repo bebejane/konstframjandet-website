@@ -35,7 +35,7 @@ function App({ Component, pageProps, router }) {
     return <Component {...pageProps} />
 
   const isMainDistrict = district?.subdomain === primarySubdomain
-  const siteTitle = `Konstnärsfrämjandet${!isMainDistrict ? ` ${district.name}` : ''}`
+  const siteTitle = `Konstnärsfrämjandet${!isMainDistrict ? ` ${district?.name}` : ''}`
 
   return (
     <>
