@@ -48,10 +48,13 @@
 
       .intro {
         position: relative;
+        padding-bottom: var(--space);
+
         .fade {
           background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0));
           z-index: 1;
           bottom: 0;
+          top: 0;
         }
       }
 
@@ -72,7 +75,7 @@
         @include mq($from: tablet) {
           padding-left: var(--grid-unit);
           width: 80%;
-          padding-bottom: var(--space);
+          padding-bottom: 0;
         }
 
         header  {
