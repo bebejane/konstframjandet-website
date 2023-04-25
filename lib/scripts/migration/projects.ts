@@ -136,4 +136,4 @@ export const migrateProjects = async (subdomain: string | undefined) => {
   console.timeEnd(`import-project-${subdomain}`)
 }
 
-migrateProjects('vastmanland')
+//migrateProjects('vastmanland')

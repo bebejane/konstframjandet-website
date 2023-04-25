@@ -15,7 +15,7 @@
 		"barrel:watch": "watch 'node ./lib/scripts/barrel' ./components",
 		"postbuild": "next-sitemap",
 		"migrate:clean": "datocms environments:destroy migration ; datocms environments:fork main migration",
-		"migrate:errors": "tsx ./lib/scripts/migration/errors/index.ts",
+		"migrate:errors": "tsx ./lib/scripts/migration/errors.ts",
 		"migrate:all": "npm run migrate:clean && tsx ./lib/scripts/migration/all.ts",
 		"migrate:news": "tsx ./lib/scripts/migration/news.ts",
 		"migrate:projects": "tsx ./lib/scripts/migration/projects.ts",

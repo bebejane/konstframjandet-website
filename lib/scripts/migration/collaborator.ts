@@ -1,4 +1,7 @@
 import { allDistricts, client } from "./";
+//import { buildClient } from '@datocms/cma-client-node';
+
+//const client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, environment: 'main', extraHeaders: { 'X-Include-Drafts': 'true' } })
 
 export const updateAllCollaborator = async () => {
 
@@ -25,16 +28,10 @@ export const updateCollaborator = async (subdomain: string) => {
 
   if (!user) throw new Error(`user not found for ${district.name}`)
 
-  // Set all records to the user
-
-  const creator = { creator: { type: "user", id: user.id } }
-
   let total = 0
   let updated = 0
   let uploadsTotal = 0
   let uploadsUpdated = 0
-
-
 
   for await (const record of client.items.listPagedIterator({ version: 'all' })) {
     total++

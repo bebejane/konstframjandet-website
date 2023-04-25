@@ -16,7 +16,8 @@ import getVideoId from 'get-video-id';
 
 export { default as striptags } from 'striptags'
 export { decodeHTMLEntities, ApiError }
-export const client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, environment: 'migration', extraHeaders: { 'X-Include-Drafts': 'true' } })
+export const DATOCMS_ENVIRONMENT = 'main'
+export const client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, environment: DATOCMS_ENVIRONMENT, extraHeaders: { 'X-Include-Drafts': 'true' } })
 export const toMarkdown = new NodeHtmlMarkdown()
 export const baseDomain = 'konstframjandet.se/wp-json'
 export const noImage = undefined //{ url: 'https://www.datocms-assets.com/94618/1680937798-no-photo-available.png', title: undefined }
@@ -181,7 +182,7 @@ export async function allDistricts() {
 	const graphQLClient = new GraphQLClient("https://graphql.datocms.com", {
 		headers: {
 			Authorization: process.env.GRAPHQL_API_TOKEN,
-			"X-Environment": "migration",
+			"X-Environment": DATOCMS_ENVIRONMENT,
 			"X-Exclude-Invalid": 'true',
 		},
 	});
