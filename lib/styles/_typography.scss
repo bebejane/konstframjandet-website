@@ -110,6 +110,9 @@ label,
 .body-small strong {
   font-family: $headline-font;
   font-size: 16px;
+  @include mq($from: wide) {
+    font-size: 18px;
+  }
   font-weight: normal;
 }
 
