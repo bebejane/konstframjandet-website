@@ -16,7 +16,8 @@ import getVideoId from 'get-video-id';
 
 export { default as striptags } from 'striptags'
 export { decodeHTMLEntities, ApiError }
-export const client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, environment: 'migration' })
+export const DATOCMS_ENVIRONMENT = 'main'
+export const client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, environment: DATOCMS_ENVIRONMENT, extraHeaders: { 'X-Include-Drafts': 'true' } })
 export const toMarkdown = new NodeHtmlMarkdown()
 export const baseDomain = 'konstframjandet.se/wp-json'
 export const noImage = undefined //{ url: 'https://www.datocms-assets.com/94618/1680937798-no-photo-available.png', title: undefined }
@@ -126,7 +127,6 @@ export const uploadMedia = async (image, tags: string[] = []) => {
 	const upload = await client.uploads.createFromUrl({
 		url: image.url,
 		skipCreationIfAlreadyExists: true,
-		//onProgress: (p) => console.log(p),
 		tags,
 		default_field_metadata: {
 			en: {
@@ -182,6 +182,7 @@ export async function allDistricts() {
 	const graphQLClient = new GraphQLClient("https://graphql.datocms.com", {
 		headers: {
 			Authorization: process.env.GRAPHQL_API_TOKEN,
+			"X-Environment": DATOCMS_ENVIRONMENT,
 			"X-Exclude-Invalid": 'true',
 		},
 	});
@@ -192,6 +193,7 @@ export async function allDistricts() {
 				id
 				name
 				subdomain
+				email
 			}
 		}
 	`);
@@ -340,7 +342,7 @@ export const htmlToStructuredContent = async (html: string, blocks: BlockIds = {
 			img: async (
 				createNode: CreateNodeFunction,
 				node: HastNode,
-				_context: Context,
+				context: Context,
 			) => {
 
 				if (node.type !== 'element' || !node.properties || !blocks.image)
@@ -350,7 +352,9 @@ export const htmlToStructuredContent = async (html: string, blocks: BlockIds = {
 				if (srcSet)
 					url = srcSet.sort((a, b) => parseInt(a.split(' ')[1]) > parseInt(b.split(' ')[1]) ? -1 : 1)[0].split(' ')[0]
 
-				//console.log('image block:', url)
+				if (!url)
+					return null
+
 				const upload = await uploadMedia({ url }, tags);
 
 				return createNode('block', {
@@ -381,6 +385,7 @@ export const htmlToStructuredContent = async (html: string, blocks: BlockIds = {
 					return context.defaultHandlers.a(createNode, node, context)
 
 				console.log('upload file:', url, 'as', fileEnding)
+
 				const upload = await uploadMedia({ url }, tags);
 				node.properties.href = upload.url
 
