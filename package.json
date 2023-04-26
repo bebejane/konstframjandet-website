@@ -6,7 +6,7 @@
 		"dev": "LOG_GRAPHQL=false next dev & npm run barrel:watch & graphql-codegen --watch",
 		"dev:migration": "LOG_GRAPHQL=false NEXT_PUBLIC_DATOCMS_ENVIRONMENT=migration DATOCMS_ENVIRONMENT=migration DATOCMS_INCLUDE_DRAFTS=true next dev & npm run barrel:watch & graphql-codegen --watch",
 		"dev:emails": "npx mailing",
-		"build": "next build",
+		"build": "next build && next-sitemap",
 		"codegen": "graphql-codegen",
 		"start": "next start",
 		"lint": "next lint",
