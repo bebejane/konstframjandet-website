@@ -12,6 +12,7 @@
     @include mq($until: tablet) {
       column-count: 2;
     }
+
     border-bottom: var(--line-thin);
     padding-bottom: var(--small-space);
 
@@ -35,8 +36,7 @@
     list-style: none;
     padding-left: 0;
 
-    li {
-    }
+    li {}
   }
 
   &.hideMobile {
@@ -53,6 +53,10 @@
     column-count: 1;
     margin-bottom: var(--small-space);
 
+    &.hide {
+      display: none;
+    }
+
     &:not(:first-of-type) {
       margin-top: var(--space);
     }
@@ -61,6 +65,7 @@
       width: 100%;
       text-align: center;
     }
+
     @include mq($from: tablet) {
       display: none;
     }
