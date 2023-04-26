@@ -8,7 +8,7 @@ export async function getStaticPaths() {
 
   projects.forEach(({ slug, subpage, district }) => {
     paths.push({ params: { district: district.name, project: [slug] } })
-    subpage.forEach(({ slug: subslug }) => paths.push({ params: { district: district.name, project: [slug, subslug] } }))
+    subpage?.forEach(({ slug: subslug }) => paths.push({ params: { district: district.name, project: [slug, subslug] } }))
   })
 
   return {
