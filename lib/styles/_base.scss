@@ -36,7 +36,8 @@
 	--z-menu-mobile: 900;
 	--z-navbar-mobile: 901;
 	--z-fullscreen-gallery: 1000;
-	--z-fullscreen-gallery-close: 1001;
+	--z-fullscreen-gallery-slide: 1001;
+	--z-fullscreen-gallery-close: 1002;
 
 	@include mq($from: tablet) {
 		--gutter: 4vw;

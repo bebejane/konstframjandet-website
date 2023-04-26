@@ -27,16 +27,17 @@ export type ArticleProps = {
 
 export default function Article({ id, title, content, image, imageSize, intro, backLink, aside, record = {}, dropcap = false }: ArticleProps) {
 
-  const [setImageId, setImages] = useStore((state) => [state.setImageId, state.setImages])
+  const [setImageId, setImages, imageId] = useStore((state) => [state.setImageId, state.setImages, state.imageId])
 
   useEffect(() => {
     const images = [image]
     content?.blocks.forEach(el => {
       el.__typename === 'ImageRecord' && images.push(el.image)
     })
+    console.log(images)
     setImages(images.filter(el => el))
   }, [])
-
+  console.log(imageId)
   return (
     <>
       <DatoSEO title={title} />
