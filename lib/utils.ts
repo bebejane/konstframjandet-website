@@ -192,6 +192,9 @@ export async function getStaticDistrictPaths(doc: TypedDocumentNode, segment: st
     paths.push.apply(paths, items.map(i => ({ params: { district: subdomain, [segment]: i.slug } })))
   })
 
+  //if(process.env.NODE_ENV === 'production'){}
+  await sleep(1000)
+
   return {
     paths,
     fallback: 'blocking',
