@@ -48,6 +48,8 @@ export default async (phase, { defaultConfig }) => {
 		},
 		experimental: {
 			scrollRestoration: true,
+			workerThreads: false,
+			cpus: 1,
 		},
 		publicRuntimeConfig: {
 			sites,

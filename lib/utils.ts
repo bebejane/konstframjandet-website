@@ -179,7 +179,6 @@ export const randomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-
 export async function getStaticDistrictPaths(doc: TypedDocumentNode, segment: string) {
 
   const res = await apiQueryAll(doc)
@@ -191,9 +190,6 @@ export async function getStaticDistrictPaths(doc: TypedDocumentNode, segment: st
     const items = data.filter(({ district }) => district && district?.id === id)
     paths.push.apply(paths, items.map(i => ({ params: { district: subdomain, [segment]: i.slug } })))
   })
-
-  //if(process.env.NODE_ENV === 'production'){}
-  await sleep(1000)
 
   return {
     paths,
