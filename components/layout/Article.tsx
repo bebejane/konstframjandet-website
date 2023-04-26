@@ -29,8 +29,6 @@ export default function Article({ id, title, content, image, imageSize, intro, b
 
   const [setImageId, setImages] = useStore((state) => [state.setImageId, state.setImages])
 
-
-
   useEffect(() => {
     const images = [image]
     content?.blocks.forEach(el => {
@@ -43,7 +41,7 @@ export default function Article({ id, title, content, image, imageSize, intro, b
     <>
       <DatoSEO title={title} />
       <div className={cn(s.article, 'article')}>
-        {image &&
+        {image?.responsiveImage &&
           <>
             <figure
               className={cn(s.mainImage, imageSize && s[imageSize], image.height > image.width && s.portrait)}

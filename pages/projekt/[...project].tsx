@@ -53,7 +53,6 @@ export default function ProjectItem({ project: { id, title, content }, project, 
         record={project}
         backLink={'/projekt'}
       />
-
       {project.__typename === 'ProjectRecord' && project.webpage &&
         <Bubble href={project.webpage} className={s.direct}>
           Besök projektets hemsida

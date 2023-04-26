@@ -15,13 +15,13 @@ export default function SectionHeader() {
   const [view, setView] = useStore((state) => [state.view, state.setView])
 
   return (
-    <header className={cn(s.header, s[layout], colorOption && s[colorOption])}>
+    <header className={cn(s.header, s[layout], colorOption && s[colorOption], !image?.responsiveImage && s.noimage)}>
       <h1>
         <BalanceText><span>{title}{subtitle && ` — ${subtitle}`}</span></BalanceText>
         <div className={s.fade}></div>
       </h1>
 
-      {image &&
+      {image?.responsiveImage &&
         <figure>
           <Image
             data={image.responsiveImage}
