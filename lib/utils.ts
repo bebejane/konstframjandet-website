@@ -184,7 +184,7 @@ export async function getStaticDistrictPaths(doc: TypedDocumentNode, segment: st
   const res = await apiQueryAll(doc)
   const data = res[Object.keys(res)[0]];
   const paths = []
-  const districts = await allDistricts()
+  const districts = await allDistricts(true)
 
   districts.forEach(({ id, subdomain }) => {
     const items = data.filter(({ district }) => district && district?.id === id)
