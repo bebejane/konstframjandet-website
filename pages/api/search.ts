@@ -81,6 +81,7 @@ export const siteSearch = async (opt: any) => {
     return {}
 
   console.log('site search', q, district)
+
   const itemTypes = await client.itemTypes.list();
   const models = ['about', 'project', 'project_subpage', 'news']
   const result = await Promise.all(models.map(model => searchModel(variables.query, model, district)))
@@ -109,24 +110,20 @@ export const siteSearch = async (opt: any) => {
     })
   }
 
-  try {
-    Object.keys(data).forEach(type => {
-      if (!data[type].length)
-        delete data[type]
-      else
-        data[type] = data[type].map(el => ({
-          __typename: el.__typename,
-          _modelApiKey: el._modelApiKey,
-          category: itemTypes.find(({ api_key }) => api_key === el._modelApiKey).name,
-          title: el.title,
-          text: truncateText(el.text, { sentences: 1, useEllipsis: true, minLength: 100 }),
-          slug: `${el.district?.subdomain !== primarySubdomain ? `/${el.district?.subdomain}` : ''}${recordToSlug(el)}`
-        }))
-    })
-    return data;
-  } catch (err) {
-    console.log(err)
-    throw err
-  }
+  Object.keys(data).forEach(type => {
+    if (!data[type].length)
+      delete data[type]
+    else
+      data[type] = data[type].map(el => ({
+        __typename: el.__typename,
+        _modelApiKey: el._modelApiKey,
+        category: itemTypes.find(({ api_key }) => api_key === el._modelApiKey).name,
+        title: el.title,
+        text: truncateText(el.text, { sentences: 1, useEllipsis: true, minLength: 100 }),
+        slug: `${el.district?.subdomain !== primarySubdomain ? `/${el.district?.subdomain}` : ''}${recordToSlug(el)}`
+      }))
+  })
+  return data;
+
 
 }
