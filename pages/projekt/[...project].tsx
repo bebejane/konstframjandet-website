@@ -53,7 +53,6 @@ export default function ProjectItem({ project: { id, title, content }, project, 
         record={project}
         backLink={'/projekt'}
       />
-
       {project.__typename === 'ProjectRecord' && project.webpage &&
         <Bubble href={project.webpage} className={s.direct}>
           Besök projektets hemsida
@@ -94,7 +93,8 @@ export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, r
   if (isSubpage)
     parentProject = (await apiQuery(ProjectBySubpageDocument, { variables: { subpageId: project.id }, preview: context.preview }))?.project ?? null
 
-  const projectMenu = (project.__typename === 'ProjectRecord' ? project.subpage : parentProject.subpage).map(({ id, title, slug }) => ({
+  const subpages = project.__typename === 'ProjectRecord' ? project?.subpage : parentProject?.subpage
+  const projectMenu = !subpages ? [] : subpages.map(({ id, title, slug }) => ({
     id,
     title,
     slug: `/projekt/${isSubpage ? parentProject.slug : project.slug}/${slug}`

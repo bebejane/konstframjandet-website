@@ -30,9 +30,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      z-index: var(--z-fullscreen-gallery-slide);
 
       .image {
         position: relative;
+        z-index: 1000;
         margin: 0;
         object-fit: contain;
         max-height: var(--height);
@@ -106,7 +108,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    z-index: 1;
+    z-index: var(--z-fullscreen-gallery);
 
     button {
       background-color: var(--white);

@@ -1,9 +1,10 @@
 import s from './Article.module.scss'
 import cn from 'classnames'
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { StructuredContent } from "/components";
 import { Image } from 'react-datocms';
 import { DatoSEO, DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
+import { useScrollInfo } from 'dato-nextjs-utils/hooks';
 import useStore from '/lib/store';
 import Link from 'next/link';
 
@@ -26,21 +27,22 @@ export type ArticleProps = {
 
 export default function Article({ id, title, content, image, imageSize, intro, backLink, aside, record = {}, dropcap = false }: ArticleProps) {
 
-  const [setImageId, setImages] = useStore((state) => [state.setImageId, state.setImages])
+  const [setImageId, setImages, imageId] = useStore((state) => [state.setImageId, state.setImages, state.imageId])
 
   useEffect(() => {
     const images = [image]
     content?.blocks.forEach(el => {
       el.__typename === 'ImageRecord' && images.push(el.image)
     })
+    console.log(images)
     setImages(images.filter(el => el))
   }, [])
-
+  console.log(imageId)
   return (
     <>
       <DatoSEO title={title} />
       <div className={cn(s.article, 'article')}>
-        {image &&
+        {image?.responsiveImage &&
           <>
             <figure
               className={cn(s.mainImage, imageSize && s[imageSize], image.height > image.width && s.portrait)}
@@ -68,15 +70,33 @@ export default function Article({ id, title, content, image, imageSize, intro, b
                 content={content}
                 onClick={(imageId) => setImageId(imageId)}
               />
-              {backLink &&
-                <div className={s.back}>
-                  <Link href={backLink} className="mid">Visa alla</Link>
-                </div>
-              }
+              {backLink && <BackLink href={backLink} />}
             </div>
           </div>
         </section>
       </div>
     </>
+  )
+}
+
+const BackLink = ({ href }) => {
+
+  const ref = useRef<HTMLDivElement | null>(null)
+  const [hide, setHide] = useState(false)
+  const { scrolledPosition } = useScrollInfo()
+
+  useEffect(() => {
+    const aside = document.getElementsByTagName('aside')[0]
+    if (aside === undefined) return
+    const { bottom } = aside.getBoundingClientRect()
+    const hide = ref.current.getBoundingClientRect().top <= bottom + 30
+    setHide(hide)
+
+  }, [scrolledPosition])
+
+  return (
+    <div ref={ref} className={cn(s.back, hide && s.hide)}>
+      <Link href={href} className="mid">Visa alla</Link>
+    </div>
   )
 }

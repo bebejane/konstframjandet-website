@@ -19,7 +19,7 @@ export default function ProjectCard({ project: { id, title, intro, image, slug, 
         <Link href={`/projekt/${slug}`}>
           <figure>
             <div className={s.text}>
-              {image &&
+              {image?.responsiveImage &&
                 <Image
                   data={image.responsiveImage}
                   className={s.image}

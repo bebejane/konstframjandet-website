@@ -1,5 +1,5 @@
 query Menu($districtId: ItemId) {
-	abouts: allAbouts(filter: { district: { eq: $districtId } }, first: 100) {
+	abouts: allAbouts(filter: { district: { eq: $districtId } }, first: 100, orderBy: position_ASC) {
 		id
 		slug
 		title
