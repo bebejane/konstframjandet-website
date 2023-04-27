@@ -41,10 +41,9 @@ export default function NewsletterForm() {
 
   return (
     <div className={s.newsletter}>
-      <p className="mid">Nyhetsbrev</p>
+      <p className="mid">Nationellt nyhetsbrev</p>
       <p className="body-small">
-        Anmäl dig till vårt nyhetsbrev för att få information om våra utställningar och projekt,
-        och tips på andra konstrelaterade händelser.
+        Anmäl dig till Konstfrämjandets nationella nyhetsbrev här, för information om Konstfrämjandets händelser i hela landet.
       </p>
 
       <form onSubmit={handleSubmit}>

@@ -53,6 +53,10 @@
       }
 
       .structured {
+        @include mq($from: tablet) {
+          min-height: 50vh;
+        }
+
         &.dropcap {
           > p:first-of-type {
             &:first-child:first-letter {
