@@ -52,6 +52,7 @@ export default function NewsletterForm() {
           id="email"
           name="email"
           type="email"
+          className="small"
           value={email}
           onChange={({ target: { value } }) => setEmail(value)}
           placeholder="E-post address..."

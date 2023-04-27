@@ -50,7 +50,7 @@
 
   h2 {
     padding-top: 0.2em;
-    padding-bottom: var(--small-space);
+    padding-bottom: calc(0.8 * var(--small-space));
   }
 
   .meta {

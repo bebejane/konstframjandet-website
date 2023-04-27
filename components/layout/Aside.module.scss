@@ -2,6 +2,10 @@
   margin-top: var(--space);
   width: 100%;
 
+  @include mq($until: tablet) {
+    display: none;
+  }
+
   @include mq($from: tablet) {
     position: sticky;
     top: var(--navbar-height);
@@ -36,7 +40,8 @@
     list-style: none;
     padding-left: 0;
 
-    li {}
+    li {
+    }
   }
 
   &.hideMobile {

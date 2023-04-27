@@ -6,6 +6,7 @@
   flex-basis: 100%;
   padding: var(--outer-margin);
   padding-top: var(--navbar-height);
+  min-height: 90vh;
 
   article {
     position: relative;
@@ -13,7 +14,8 @@
     align-items: flex-start;
     flex-direction: column-reverse;
 
-    @include mq($until: tablet) {}
+    @include mq($until: tablet) {
+    }
 
     @include mq($from: tablet) {
       flex-direction: row;

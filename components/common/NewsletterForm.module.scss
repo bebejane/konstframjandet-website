@@ -27,6 +27,9 @@
     padding: 0.8em;
     padding-bottom: 0.9em;
     padding-left: 1em;
+    &:hover {
+      background-color: var(--black);
+    }
   }
 
   .error {
@@ -35,7 +38,7 @@
     margin-bottom: 1rem;
   }
 
-  @include mq($until : desktop) {
+  @include mq($until: desktop) {
     position: relative;
     width: 100%;
     margin-bottom: var(--space);
