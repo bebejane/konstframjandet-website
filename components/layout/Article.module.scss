@@ -67,6 +67,8 @@
             }
           }
         }
+
+        //Denna ska bara användas på aktuellt och projektsidor
         & > *:nth-last-child(2) {
           margin-bottom: 0;
         }
