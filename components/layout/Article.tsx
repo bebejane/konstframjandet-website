@@ -37,7 +37,7 @@ export default function Article({ id, title, content, image, imageSize, intro, b
     console.log(images)
     setImages(images.filter(el => el))
   }, [])
-  console.log(imageId)
+
   return (
     <>
       <DatoSEO title={title} />
@@ -50,6 +50,7 @@ export default function Article({ id, title, content, image, imageSize, intro, b
             >
               <Image
                 data={image.responsiveImage}
+                className={s.image}
                 pictureClassName={s.picture}
               />
               <figcaption>

@@ -5,9 +5,10 @@ import { apiQueryAll, mainDistrict } from '/lib/utils';
 import { apiQuery } from "dato-nextjs-utils/api";
 import { ProjectDocument, ProjectSubpageDocument, ProjectBySubpageDocument, AllProjectsDocument } from "/graphql";
 import { Aside, Article, SideMenu, Bubble } from '/components';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { usePage } from '/lib/context/page';
 import { useRouter } from 'next/router';
+import { useScrollInfo } from 'dato-nextjs-utils/hooks';
 
 export type Props = {
   project: ProjectRecord | ProjectSubpageRecord,
@@ -23,16 +24,23 @@ export default function ProjectItem({ project: { id, title, content }, project, 
 
   const { asPath } = useRouter()
   const { isHome, district, color } = usePage()
+  const { scrolledPosition, documentHeight, viewportHeight } = useScrollInfo()
+  const [showWebPage, setShowWebPage] = useState(true)
 
   useEffect(() => {
-
     const r = document.querySelector<HTMLElement>(':root')
-
     setTimeout(() => { // Override _app styling
       r.style.setProperty('--page-color', color ?? district?.color?.hex);
     }, 30)
 
   }, [isHome, project, parentProject, asPath])
+
+  useEffect(() => {
+    const footer = document.getElementById('footer')
+    const { height } = footer?.getBoundingClientRect() ?? { height: 0 }
+    const threshold = (documentHeight - height - viewportHeight) - 100
+    setShowWebPage(scrolledPosition < threshold)
+  }, [scrolledPosition])
 
   return (
     <>
@@ -53,7 +61,7 @@ export default function ProjectItem({ project: { id, title, content }, project, 
         record={project}
         backLink={'/projekt'}
       />
-      {project.__typename === 'ProjectRecord' && project.webpage &&
+      {project.__typename === 'ProjectRecord' && project.webpage && showWebPage &&
         <Bubble href={project.webpage} className={s.direct}>
           Besök projektets hemsida
         </Bubble>

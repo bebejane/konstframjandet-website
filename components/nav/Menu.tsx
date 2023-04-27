@@ -99,7 +99,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 					<ul>
 						{menu.map(({ type, slug, label }, idx) =>
 							type !== 'district' ?
-								<li key={idx} className={cn(((asPath.startsWith(slug) && slug !== '/') || (isHome && type == 'home')) && !showDistricts && s.active)}>
+								<li key={idx} className={cn(((asPath.startsWith(`/${slug.split('/')[1]}`) && slug !== '/') || (isHome && type == 'home')) && !showDistricts && s.active)}>
 									{slug ? <Link href={slug}>{label}</Link> : <>{label}</>}
 								</li>
 								: isMainDistrict &&
@@ -122,7 +122,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 					{districts?.filter(({ subdomain }) => primarySubdomain !== subdomain).map(({ id, subdomain, name, color }) =>
 						<li key={id}>
 							<Link
-								href={`/`}
+								href={`/ `}
 								locale={subdomain}
 								onMouseEnter={() => setDistrictHover(id)}
 								onMouseLeave={() => setDistrictHover(undefined)}
