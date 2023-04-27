@@ -7,9 +7,10 @@ import { DatoMarkdown as Markdown } from "dato-nextjs-utils/components";
 
 export type Props = {
   query: string
+  district: DistrictRecord
 }
 
-export default function SearchResult({ query }: Props) {
+export default function SearchResult({ query, district }: Props) {
 
   const [results, setResults] = useState<any | undefined>()
   const [error, setError] = useState<Error | undefined>()
@@ -18,7 +19,8 @@ export default function SearchResult({ query }: Props) {
 
   const siteSearch = (q) => {
     const variables = {
-      q: q ? `${q.split(' ').filter(el => el).join('|')}` : undefined
+      q: q ? `${q.split(' ').filter(el => el).join('|')}` : undefined,
+      district: district?.id,
     };
 
     if (!Object.keys(variables).filter(k => variables[k] !== undefined).length)

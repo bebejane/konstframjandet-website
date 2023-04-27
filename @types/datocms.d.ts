@@ -3882,10 +3882,11 @@ type SiteSearchQueryVariables = Exact<{
   first?: InputMaybe<Scalars['IntType']>;
   skip?: InputMaybe<Scalars['IntType']>;
   locale?: InputMaybe<SiteLocale>;
+  districtId?: InputMaybe<Scalars['ItemId']>;
 }>;
 
 
-type SiteSearchQuery = { __typename?: 'Query', abouts: Array<{ __typename: 'AboutRecord', _modelApiKey: string, title: string, slug: string, text?: string | null }>, news: Array<{ __typename: 'NewsRecord', _modelApiKey: string, title: string, slug: string, text?: string | null }>, projects: Array<{ __typename: 'ProjectRecord', _modelApiKey: string, title: string, slug: string, text?: string | null }> };
+type SiteSearchQuery = { __typename?: 'Query', abouts: Array<{ __typename: 'AboutRecord', _modelApiKey: string, title: string, slug: string, text?: string | null, district: { __typename?: 'DistrictRecord', id: any, subdomain: string } }>, news: Array<{ __typename: 'NewsRecord', _modelApiKey: string, title: string, slug: string, text?: string | null, district: { __typename?: 'DistrictRecord', id: any, subdomain: string } }>, projects: Array<{ __typename: 'ProjectRecord', _modelApiKey: string, title: string, slug: string, text?: string | null, district: { __typename?: 'DistrictRecord', id: any, subdomain: string } }>, projectSubpages: Array<{ __typename: 'ProjectSubpageRecord', _modelApiKey: string, title?: string | null, slug: string, text?: string | null, district: { __typename?: 'DistrictRecord', id: any, subdomain: string } }> };
 
 type StartQueryVariables = Exact<{
   districtId?: InputMaybe<Scalars['ItemId']>;

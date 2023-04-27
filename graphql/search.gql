@@ -5,36 +5,70 @@ query SiteSearch(
 	$first: IntType = 100
 	$skip: IntType = 0
 	$locale: SiteLocale
+	$districtId: ItemId
 ) {
 	abouts: allAbouts(
 		first: $first
 		skip: $skip
 		locale: $locale
-		filter: { id: { in: $aboutIds } }
+		filter: { id: { in: $aboutIds }, district: { eq: $districtId } }
 	) {
 		__typename
 		_modelApiKey
 		title
 		text: intro(markdown: false)
 		slug
+		district {
+			id
+			subdomain
+		}
 	}
-	news: allNews(first: $first, skip: $skip, locale: $locale, filter: { id: { in: $newsIds } }) {
+	news: allNews(
+		first: $first
+		skip: $skip
+		locale: $locale
+		filter: { id: { in: $newsIds }, district: { eq: $districtId } }
+	) {
 		__typename
 		_modelApiKey
 		title
 		text: intro(markdown: false)
 		slug
+		district {
+			id
+			subdomain
+		}
 	}
 	projects: allProjects(
 		first: $first
 		skip: $skip
 		locale: $locale
-		filter: { id: { in: $projectIds } }
+		filter: { id: { in: $projectIds }, district: { eq: $districtId } }
 	) {
 		__typename
 		_modelApiKey
 		title
 		text: intro(markdown: false)
 		slug
+		district {
+			id
+			subdomain
+		}
+	}
+	projectSubpages: allProjectSubpages(
+		first: $first
+		skip: $skip
+		locale: $locale
+		filter: { id: { in: $projectIds }, district: { eq: $districtId } }
+	) {
+		__typename
+		_modelApiKey
+		title
+		text: intro(markdown: false)
+		slug
+		district {
+			id
+			subdomain
+		}
 	}
 }

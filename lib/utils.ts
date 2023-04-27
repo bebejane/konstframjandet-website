@@ -214,6 +214,7 @@ export type TruncateOptions = {
 }
 
 export const truncateText = (text: string, options: TruncateOptions): string => {
+
   let { sentences = 1, useEllipsis = false, minLength = 0 } = options;
 
   // Split the text into sentences
@@ -229,6 +230,7 @@ export const truncateText = (text: string, options: TruncateOptions): string => 
 
   // Cut off at ! and ? until minimum length is reached
   while (truncatedText.length < minLength && truncatedText.search(/[!?]/) > -1) {
+    if (!sentencesArr[sentences]) break;
     truncatedText = truncatedText.concat(sentencesArr[sentences].match(/^[^!.?]+[!.?]+/) ? sentencesArr[sentences].match(/^[^!.?]+[!.?]+/)[0] : "");
     sentences++;
   }

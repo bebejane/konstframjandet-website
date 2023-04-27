@@ -41,6 +41,11 @@ export default function Menu({ districts, menu }: MenuProps) {
 
 	useOnClickOutside(districtsPopupRef, () => setTimeout(() => showDistricts && setShowDistricts(false), 10))
 
+	const handleSearchSubmit = (e) => {
+		e.preventDefault()
+		setQuery(searchRef.current.value);
+	}
+
 	const resetSearch = () => {
 		setQuery('')
 		setShowSearch(false)
@@ -130,20 +135,19 @@ export default function Menu({ districts, menu }: MenuProps) {
 
 			<div className={cn(s.search, showSearch && s.show)} style={searchStyle}>
 				<div className={s.bar} style={searchStyle}>
-					<input
-						className={'mid'}
-						placeholder={'Sök...'}
-						ref={searchRef}
-						value={query}
-						onChange={({ target: { value } }) => setQuery(value)}
-					/>
+					<form onSubmit={handleSearchSubmit}>
+						<input
+							className={'mid'}
+							placeholder={'Sök...'}
+							ref={searchRef}
+						/>
+					</form>
 				</div>
 				<div className={s.results} style={query ? resultsStyle : {}}>
-					<SearchResult query={query} />
+					<SearchResult query={query} district={district} />
 				</div>
 				<span className={cn(s.close, 'small')} onClick={resetSearch}>Stäng</span>
 			</div>
-
 		</>
 	)
 }
