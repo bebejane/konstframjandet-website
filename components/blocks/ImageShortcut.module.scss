@@ -27,6 +27,7 @@
       .image {
         width: 100%;
         height: 70vh;
+        max-width: none !important;
 
         @include mq($from: tablet) {
           height: calc(100vh - var(--navbar-height) - calc(var(--space) * 2));
