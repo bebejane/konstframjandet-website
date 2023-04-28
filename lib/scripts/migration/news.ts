@@ -95,4 +95,4 @@ export const migrateNews = async (subdomain: string = 'forbundet') => {
   console.timeEnd(`import-news-${subdomain}`)
 }
 
-//migrateNews('dalarna')
+//migrateNews('vasterbotten')

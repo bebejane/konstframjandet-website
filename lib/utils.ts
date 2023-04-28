@@ -16,7 +16,7 @@ export const breakpoints = {
 }
 
 export const primarySubdomain = 'forbundet'
-export const pageSize = 10;
+export const pageSize = 50;
 
 export const chunkArray = (array: any[] | React.ReactNode[], chunkSize: number) => {
   const newArr = []
