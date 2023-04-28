@@ -1,16 +1,15 @@
 .card {
   position: relative;
   margin-bottom: var(--space);
-
-  &:nth-child(odd) {
-    border-right: var(--line-thin);
-  }
+  border-right: var(--line-thin);
 
   @include mq($from: tablet) {
     flex: 0 0 50%;
   }
 
   @include mq($until: tablet) {
+    border-right: 0;
+
     &:first-child {
       padding-bottom: 0;
     }
