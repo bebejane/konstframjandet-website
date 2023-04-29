@@ -7,7 +7,6 @@ import useStore from "/lib/store";
 import { useApiQuery } from "dato-nextjs-utils/hooks";
 import { apiQuery } from "dato-nextjs-utils/api";
 import { pageSize } from "/lib/utils";
-import { useEffect, useState } from "react";
 
 export type Props = {
   news: NewsRecord[]
@@ -27,7 +26,6 @@ export default function News({ news: newsFromProps, district, pagination }: Prop
     preview: true,
   });
 
-
   return (
     <>
       <div className={cn(s.container, view && s.list)}>
@@ -40,10 +38,12 @@ export default function News({ news: newsFromProps, district, pagination }: Prop
             />
           )}
         </NewsContainer>
-        {error && <p className="error">Något gick fel</p>}
-        <Bubble className={s.more} onClick={nextPage} disabled={page.end}>
-          {loading ? <Loader className={s.loader} /> : 'Fler'}
-        </Bubble>
+        {error && <p className="error">Något gick fel: {error.message}</p>}
+        {!page.end &&
+          <Bubble className={s.more} onClick={nextPage}>
+            {loading ? <Loader className={s.loader} /> : 'Fler'}
+          </Bubble>
+        }
       </div>
     </>
   );

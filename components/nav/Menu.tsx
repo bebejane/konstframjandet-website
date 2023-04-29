@@ -18,9 +18,10 @@ export type MenuProps = {
 
 export default function Menu({ districts, menu }: MenuProps) {
 
-	const searchRef = useRef<HTMLInputElement | null>(null)
 	const ref = useRef<HTMLElement | null>(null)
-	const districtsPopupRef = useRef(null)
+	const searchRef = useRef<HTMLInputElement | null>(null)
+	const searchBarRef = useRef<HTMLInputElement | null>(null)
+	const districtsPopupRef = useRef<HTMLDivElement | null>(null)
 
 	const router = useRouter()
 	const { asPath } = router
@@ -31,6 +32,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 	const [showDistricts, setShowDistricts] = useState(false)
 	const [showSearch, setShowSearch] = useState(false)
 	const [query, setQuery] = useState('')
+
 	const scrollY = Math.min(offset, scrolledPosition)
 	const ratio = Math.min(1, ((scrolledPosition || 0) / offset)) || 0
 
@@ -40,6 +42,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 	const logoStyle = { fontSize: `calc(${Math.max(0.8, (1 - ratio))} * var(--navbar-height) + calc(-1 * var(--navbar-space))` }
 
 	useOnClickOutside(districtsPopupRef, () => setTimeout(() => showDistricts && setShowDistricts(false), 10))
+	useOnClickOutside(searchBarRef, () => setShowSearch(false))
 
 	const handleSearchSubmit = (e) => {
 		e.preventDefault()
@@ -68,8 +71,12 @@ export default function Menu({ districts, menu }: MenuProps) {
 	}, [])
 
 	useEffect(() => {
-		searchRef.current?.[showSearch ? 'focus' : 'blur']()
-	}, [showSearch])
+		searchRef.current[showSearch ? 'focus' : 'blur']();
+		searchRef.current.value = ''
+		setQuery('')
+
+	}, [searchRef, showSearch])
+
 
 	return (
 		<>
@@ -133,7 +140,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 				</ul>
 			</nav>
 
-			<div className={cn(s.search, showSearch && s.show)} style={searchStyle}>
+			<div ref={searchBarRef} className={cn(s.search, showSearch && s.show)} style={searchStyle}>
 				<div className={s.bar} style={searchStyle}>
 					<form onSubmit={handleSearchSubmit}>
 						<input

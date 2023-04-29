@@ -11,8 +11,8 @@ export const breakpoints = {
   mobile: 320,
   tablet: 740,
   desktop: 980,
-  wide: 1441,
-  navBreak: 1368
+  wide: 1900,
+  navBreak: 1100
 }
 
 export const primarySubdomain = 'forbundet'

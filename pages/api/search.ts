@@ -7,7 +7,6 @@ import { truncateText, isEmptyObject, recordToSlug, primarySubdomain } from '/li
 const environment = process.env.DATOCMS_ENVIRONMENT ?? process.env.NEXT_PUBLIC_DATOCMS_ENVIRONMENT ?? 'main'
 const client = buildClient({ apiToken: process.env.GRAPHQL_API_TOKEN, environment });
 
-
 export const config = {
   runtime: 'edge',
 }
@@ -65,7 +64,6 @@ export const searchModel = async (query, model, districtId) => {
   }
 
   return result
-
 }
 
 
@@ -120,10 +118,8 @@ export const siteSearch = async (opt: any) => {
         category: itemTypes.find(({ api_key }) => api_key === el._modelApiKey).name,
         title: el.title,
         text: truncateText(el.text, { sentences: 1, useEllipsis: true, minLength: 100 }),
-        slug: `${el.district?.subdomain !== primarySubdomain ? `/${el.district?.subdomain}` : ''}${recordToSlug(el)}`
+        slug: `${el.district?.subdomain !== primarySubdomain ? `/${el.district?.subdomain}` : ''}${recordToSlug(el)}` //TODO: change to real subdomains
       }))
   })
   return data;
-
-
 }

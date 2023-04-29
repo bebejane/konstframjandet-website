@@ -138,6 +138,7 @@
 
     .active,
     .active>a,
+    span:hover,
     li:hover,
     a:hover {
       color: var(--white) !important;
@@ -211,6 +212,7 @@
       margin: 0;
       margin-right: var(--grid-unit);
       margin-left: var(--grid-unit);
+      width: calc(100%);
       padding-left: 0;
     }
   }
