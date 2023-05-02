@@ -58,4 +58,4 @@ export const updateCollaborator = async (subdomain: string) => {
   console.timeEnd('update')
 }
 
-updateCollaborator('vastmanland')
+//updateCollaborator('kraft')
