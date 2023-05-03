@@ -1,6 +1,6 @@
 import withGlobalProps from "/lib/withGlobalProps";
 import { apiQuery } from 'dato-nextjs-utils/api';
-import { apiQueryAll } from '/lib/utils';
+import { apiQueryAll, mainDistrict } from '/lib/utils';
 import { AboutDocument, AllAboutsDocument } from "/graphql";
 import { Aside, Article, SideMenu } from '/components';
 
@@ -29,7 +29,8 @@ export default function AboutItem({ about: { id, content, intro, slug, _seoMetaT
 }
 
 export async function getStaticPaths() {
-  const { abouts } = await apiQueryAll(AllAboutsDocument)
+  const { id: districtId } = await mainDistrict()
+  const { abouts } = await apiQueryAll(AllAboutsDocument, { variables: { districtId } })
   const paths = abouts.map(({ slug }) => ({ params: { about: slug } }))
 
   return {

@@ -3,9 +3,7 @@ import withGlobalProps from "/lib/withGlobalProps";
 import { apiQuery } from "dato-nextjs-utils/api";
 import { NewsDocument, AllNewsDocument } from "/graphql";
 import { Article, Aside } from '/components';
-import { apiQueryAll } from '/lib/utils';
-import format from 'date-fns/format';
-import { capitalize } from '/lib/utils';
+import { apiQueryAll, mainDistrict } from '/lib/utils';
 
 export type Props = {
   news: NewsRecord
@@ -62,7 +60,8 @@ export default function NewsItem({ news: {
 }
 
 export async function getStaticPaths() {
-  const { news } = await apiQueryAll(AllNewsDocument)
+  const { id: districtId } = await mainDistrict()
+  const { news } = await apiQueryAll(AllNewsDocument, { variables: { districtId } })
   const paths = news.map(({ slug }) => ({ params: { news: slug } }))
   return {
     paths,
