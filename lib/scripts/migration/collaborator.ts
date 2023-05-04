@@ -23,6 +23,10 @@ export const updateCollaborator = async (subdomain: string) => {
   const users = await client.users.list()
   const districts = await allDistricts()
   const district = districts.find(el => el.subdomain === subdomain)
+
+  if (!district)
+    throw new Error(`district not found for ${subdomain}`)
+
   const districtId = district.id
   const user = users.find(el => el.email === district.email)
 
@@ -58,4 +62,7 @@ export const updateCollaborator = async (subdomain: string) => {
   console.timeEnd('update')
 }
 
-//updateCollaborator('kraft')
+const district = process.argv[2]?.trim()
+
+if (district)
+  updateCollaborator(district)
