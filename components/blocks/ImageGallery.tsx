@@ -19,6 +19,7 @@ export default function ImageGallery({ id, images, onClick, editable = false }: 
 	const [captionHeight, setCaptionHeight] = useState<number | undefined>()
 
 	const calculatePositions = useCallback(() => {
+		if (!containerRef.current) return
 
 		Array.from(containerRef.current.querySelectorAll<HTMLImageElement>('picture>img')).forEach(img => {
 			setArrowMarginTop((state) => img.clientHeight / 2 > state ? img.clientHeight / 2 : state)

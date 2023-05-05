@@ -18,7 +18,7 @@ export default function Video({ data }) {
 	const style = { height: `${height}px`, width: '100%' }
 
 	return (
-		<p className={s.video} ref={ref} >
+		<div className={s.video} ref={ref} >
 			{provider === 'youtube' ?
 				<Youtube
 					opts={{
@@ -37,6 +37,6 @@ export default function Video({ data }) {
 					:
 					<div>{provider} not supported!</div>
 			}
-		</p>
+		</div>
 	)
 }
