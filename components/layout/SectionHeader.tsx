@@ -13,15 +13,15 @@ export default function SectionHeader() {
 
   const { title, subtitle, image, intro, layout, color, colorOption } = usePage()
   const [view, setView] = useStore((state) => [state.view, state.setView])
-
+  const noImage = !image?.responsiveImage
   return (
-    <header className={cn(s.header, s[layout], colorOption && s[colorOption], !image?.responsiveImage && s.noimage)}>
+    <header className={cn(s.header, s[layout], colorOption && s[colorOption], noImage && s.noimage)}>
       <h1>
         <BalanceText><span>{title}{subtitle && ` — ${subtitle}`}</span></BalanceText>
         <div className={s.fade}></div>
       </h1>
 
-      {image?.responsiveImage &&
+      {!noImage &&
         <figure>
           <Image
             data={image.responsiveImage}
@@ -41,7 +41,7 @@ export default function SectionHeader() {
           </div>
         </>
       }
-      {color &&
+      {color && !noImage &&
         <div className={s.bgcolor} style={{ backgroundColor: color }}></div>
       }
       {layout === 'news' &&
