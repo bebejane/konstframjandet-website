@@ -24,12 +24,13 @@
       padding-right: calc(2 * var(--grid-unit));
     }
 
-    &.medium {}
+    &.medium {
+    }
 
-    &.large {}
+    &.large {
+    }
 
     &.portrait {
-
       padding-left: calc(1 * var(--grid-unit));
       padding-right: calc(1 * var(--grid-unit));
 
@@ -53,11 +54,11 @@
 
       .structured {
         @include mq($from: tablet) {
-          min-height: 50vh;
+          //min-height: 50vh;
         }
 
         &.dropcap {
-          >p:first-of-type {
+          > p:first-of-type {
             &:first-child:first-letter {
               color: var(--page-color);
               float: left;
@@ -71,7 +72,7 @@
           }
         }
 
-        &>*:nth-last-child(2) {
+        & > *:nth-last-child(2) {
           margin-bottom: 0;
         }
 
