@@ -64,7 +64,7 @@ export default function Article({ id, title, content, image, imageSize, intro, b
             {intro &&
               <Markdown className={cn(s.intro, "intro")}>{intro}</Markdown>
             }
-            <div className={cn(s.structured, (record.dropcap || dropcap) && s.dropcap)}>
+            <div className={cn(s.structured, (record.dropcap || dropcap) && s.dropcap, !backLink && s.nobackLink)}>
               <StructuredContent
                 id={id}
                 record={record}
@@ -74,8 +74,8 @@ export default function Article({ id, title, content, image, imageSize, intro, b
               {backLink && <BackLink href={backLink} />}
             </div>
           </div>
-        </section>
-      </div>
+        </section >
+      </div >
     </>
   )
 }

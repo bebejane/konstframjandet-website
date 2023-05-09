@@ -164,6 +164,15 @@ declare module '*/VideoFragment.gql' {
 }
     
 
+declare module '*/global.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const GetSiteSEO: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/menu.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;

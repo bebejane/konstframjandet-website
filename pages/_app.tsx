@@ -10,12 +10,10 @@ import setDefaultOptions from 'date-fns/setDefaultOptions';
 
 setDefaultOptions({ locale: sv })
 
-
-
 function App({ Component, pageProps, router }) {
 
   const { asPath } = router
-  const { district, districts, footer, menu } = pageProps
+  const { district, districts, footer, menu, site } = pageProps
 
   const page = pageProps.page || {} as PageProps
   const isHome = asPath === '/' || districts?.find(({ subdomain }) => `/${subdomain}` === asPath) !== undefined
@@ -35,11 +33,11 @@ function App({ Component, pageProps, router }) {
     return <Component {...pageProps} />
 
   const isMainDistrict = district?.subdomain === primarySubdomain
-  const siteTitle = `Konstnärsfrämjandet${!isMainDistrict ? ` ${district?.name}` : ''}`
+  const siteTitle = `Konstfrämjandet${!isMainDistrict ? ` ${district?.name}` : ''}`
 
   return (
     <>
-      <DefaultDatoSEO siteTitle={siteTitle} />
+      <DefaultDatoSEO siteTitle={siteTitle} site={site} />
       <PageProvider value={{ district, ...page, isHome }} key={router.locale}>
         <Layout
           title={page?.title}

@@ -8,7 +8,7 @@ const generatePreviewUrl = async ({ item, itemType, locale }) => {
   let path = null;
   const { slug, district: districtId } = item.attributes
   const district = districtId ? (await allDistricts()).find(({ id }) => id === districtId) : undefined
-  const districtSlug = district && district.subdomain !== primarySubdomain ? `/${district.subdomain}` : ''
+  const districtSlug = district && district.subdomain !== primarySubdomain ? `/${district.subdomain}` : '' //TODO: change to real subdomains
 
   switch (itemType.attributes.api_key) {
     case 'news':
@@ -44,7 +44,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === 'OPTIONS') return res.status(200).send('ok');
 
   const url = await generatePreviewUrl(req.body);
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL //TODO: change to real subdomains
   const previewLinks = !url ? [] : [{
     label: 'Live',
     url: `${baseUrl}${url}`
@@ -53,7 +53,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     url: `${baseUrl}/api/preview?slug=${url}&secret=${process.env.DATOCMS_PREVIEW_SECRET}`,
   }]
 
-  console.log(previewLinks)
   return res.status(200).json({ previewLinks });
 };
 

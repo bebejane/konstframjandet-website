@@ -9,7 +9,6 @@ type ModalProps = {
 const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   if (isServer) return null
-
   return ReactDOM.createPortal(props.children, document.body)
 })
 

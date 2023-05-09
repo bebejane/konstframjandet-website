@@ -14,3 +14,4 @@ TODO
 /lib/scripts/migration/errors/*.json
 .mailing
 sitemap*
+robots.txt

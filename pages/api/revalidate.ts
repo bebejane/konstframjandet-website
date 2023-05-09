@@ -3,6 +3,8 @@ import { apiQuery } from 'dato-nextjs-utils/api';
 import { allDistricts } from '/lib/utils';
 import { ProjectBySubpageDocument } from '/graphql';
 
+//TODO switch revalidate to subdomains
+
 export default withRevalidate(async (record, revalidate) => {
 
   const { api_key: apiKey, } = record.model;
