@@ -2654,6 +2654,7 @@ type ProjectSubpageRecord = RecordInterface & {
 /** Record of type Undersida (project_subpage) */
 type ProjectSubpageRecord_allReferencingProjectsArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<ProjectModelFilter>;
   first?: InputMaybe<Scalars['IntType']>;
   locale?: InputMaybe<SiteLocale>;
   orderBy?: InputMaybe<Array<InputMaybe<ProjectModelOrderBy>>>;
@@ -2664,6 +2665,8 @@ type ProjectSubpageRecord_allReferencingProjectsArgs = {
 
 /** Record of type Undersida (project_subpage) */
 type ProjectSubpageRecord_allReferencingProjectsMetaArgs = {
+  filter?: InputMaybe<ProjectModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
   through?: InputMaybe<InverseRelationshipFilterBetweenProjectAndProjectSubpage>;
 };
 
@@ -2715,7 +2718,7 @@ type Query = {
   /** Returns meta information regarding a record collection */
   _allProjectsMeta: CollectionMetadata;
   /** Returns meta information regarding an assets collection */
-  _allUploadsMeta?: Maybe<CollectionMetadata>;
+  _allUploadsMeta: CollectionMetadata;
   /** Returns the single instance record */
   _site: Site;
   /** Returns a specific record */
