@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { allDistricts, primarySubdomain } from '/lib/utils';
 import { apiQuery } from 'dato-nextjs-utils/api';
-import { withWebPreviews } from 'dato-nextjs-utils/hocs';
+import { withWebPreviews } from 'dato-nextjs-utils/hoc';
 import { ProjectBySubpageDocument } from '/graphql';
 
 export default withWebPreviews(async ({ item, itemType, locale }) => {
