@@ -1,4 +1,3 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
 import { allDistricts, primarySubdomain } from '/lib/utils';
 import { apiQuery } from 'dato-nextjs-utils/api';
 import { withWebPreviews } from 'dato-nextjs-utils/hoc';

@@ -22,8 +22,7 @@ export default function News({ news: newsFromProps, district, pagination }: Prop
   const { data: { news }, loading, error, nextPage, page } = useApiQuery<{ news: NewsRecord[] }>(AllNewsDocument, {
     initialData: { news: newsFromProps, pagination },
     variables: { first: pageSize, districtId: district.id },
-    pageSize,
-    preview: true,
+    pageSize
   });
 
   return (
@@ -53,7 +52,7 @@ export default function News({ news: newsFromProps, district, pagination }: Prop
 export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
 
   const districtId = props.district.id as string
-  const { news, pagination } = await apiQuery(AllNewsDocument, { variables: { districtId, first: pageSize }, preview: true })
+  const { news, pagination } = await apiQuery(AllNewsDocument, { variables: { districtId, first: pageSize }, preview: context.preview })
 
   return {
     props: {
