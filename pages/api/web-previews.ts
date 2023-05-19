@@ -1,9 +1,14 @@
 import { allDistricts, primarySubdomain } from '/lib/utils';
+
 import { apiQuery } from 'dato-nextjs-utils/api';
-import { withWebPreviews } from 'dato-nextjs-utils/hoc';
+import { withWebPreviewsEdge } from 'dato-nextjs-utils/hoc';
 import { ProjectBySubpageDocument } from '/graphql';
 
-export default withWebPreviews(async ({ item, itemType, locale }) => {
+export const config = {
+  runtime: 'edge'
+}
+
+export default withWebPreviewsEdge(async ({ item, itemType, locale }) => {
 
   let path = null;
   const { slug, district: districtId } = item.attributes
