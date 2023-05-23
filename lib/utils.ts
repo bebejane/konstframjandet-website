@@ -1,9 +1,8 @@
 import { TypedDocumentNode } from "@apollo/client/core";
-import { apiQuery } from "dato-nextjs-utils/api";
+import { apiQuery, ApiQueryOptions } from "dato-nextjs-utils/api";
 import { AllDistricsDocument, DistrictBySubdomainDocument } from '/graphql';
 import * as EmailValidator from 'email-validator';
-import type { ApiQueryOptions } from "dato-nextjs-utils/api";
-import React from "react";
+import { ReactNode } from "react";
 
 export const isServer = typeof window === 'undefined';
 
@@ -18,7 +17,7 @@ export const breakpoints = {
 export const primarySubdomain = 'forbundet'
 export const pageSize = 50;
 
-export const chunkArray = (array: any[] | React.ReactNode[], chunkSize: number) => {
+export const chunkArray = (array: any[] | ReactNode[], chunkSize: number) => {
   const newArr = []
   for (let i = 0; i < array.length; i += chunkSize)
     newArr.push(array.slice(i, i + chunkSize));

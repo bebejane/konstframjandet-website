@@ -40,6 +40,8 @@ export default function NewsItem({ news: {
               {address && <>{address}<br /></>}
               {date && <>{date}<br /></>}
               {time && <>{time}<br /></>}
+              {misc && <>{misc}<br /></>}
+              {externalLink && <><a href={externalLink}>Extern länk</a><br /></>}
             </p>
           </>
         }
