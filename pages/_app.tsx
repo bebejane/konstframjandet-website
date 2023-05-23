@@ -1,5 +1,6 @@
 import '/lib/styles/index.scss'
 import "swiper/css";
+import { useState } from 'react';
 import { Layout } from '/components';
 import { PageProvider, usePage } from '/lib/context/page'
 import { useEffect } from 'react';
@@ -12,17 +13,22 @@ setDefaultOptions({ locale: sv })
 
 function App({ Component, pageProps, router }) {
 
+  const [isHome, setIsHome] = useState(false)
   const { asPath } = router
   const { district, districts, footer, menu, site } = pageProps
 
   const page = pageProps.page || {} as PageProps
-  const isHome = asPath === '/' || districts?.find(({ subdomain }) => `/${subdomain}` === asPath) !== undefined
+
+  useEffect(() => {
+    const isHome = asPath === '/' || districts?.find(({ subdomain }) => `/${subdomain}` === asPath) !== undefined
+    setIsHome(isHome)
+  }, [asPath, districts])
 
   useEffect(() => {
 
     const r = document.querySelector<HTMLElement>(':root')
-    r.style.setProperty('--background', isHome ? district?.color?.hex : 'var(--light-grey)');
     r.style.setProperty('--page-color', district?.color?.hex);
+    r.style.setProperty('--background', isHome ? district?.color?.hex : 'var(--light-grey)');
 
   }, [isHome, district])
 
