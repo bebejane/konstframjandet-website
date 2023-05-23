@@ -16,6 +16,9 @@ export default withWebPreviewsEdge(async ({ item, itemType, locale }) => {
   const districtSlug = district && district.subdomain !== primarySubdomain ? `/${district.subdomain}` : '' //TODO: change to real subdomains
 
   switch (itemType.attributes.api_key) {
+    case 'start':
+      path = `/`;
+      break;
     case 'news':
       path = `/aktuellt/${slug}`;
       break;
