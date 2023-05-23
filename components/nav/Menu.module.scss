@@ -30,6 +30,10 @@
   &.home>a:hover {
     color: var(--white);
   }
+
+  @include mq($until: desktop) {
+    display: none;
+  }
 }
 
 .menu {

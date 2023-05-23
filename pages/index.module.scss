@@ -1,4 +1,7 @@
 .container {
   display: block;
 
+  section:last-child {
+    border-bottom: 0;
+  }
 }

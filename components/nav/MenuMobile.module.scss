@@ -1,7 +1,7 @@
 .navbar,
 .menuMobile {
   color: var(--white);
-  transition: background-color 0.3s ease-out, color 0.3s ease-out;
+
 
   @include mq($from: desktop) {
     display: none !important;
@@ -20,6 +20,7 @@
   z-index: var(--z-navbar-mobile);
   color: var(--black);
   background-color: var(--background);
+  transition: background-color var(--color-transition);
 
   .line {
     width: calc(100% - (2 * var(--outer-margin)));
@@ -70,7 +71,7 @@
   background-color: var(--black);
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.3s ease-out;
+  transition: opacity var(--color-transition), color var(--color-transition);
 
   &.open {
     opacity: 1;
