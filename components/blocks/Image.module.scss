@@ -16,11 +16,22 @@
   }
 
   &.right {
-    margin-right: calc(-1 * var(--grid-unit));
-    width: var(--grid-unit);
     float: right;
     margin-top: 0;
+    width: calc(var(--grid-unit) * 2);
+
     padding-left: var(--gutter);
+    @include mq($from: tablet) {
+      margin-right: calc(-1 * var(--grid-unit));
+      width: var(--grid-unit);
+    }
+
+    @include mq($until: tablet) {
+      margin-bottom: var(--small-space) !important;
+      figcaption {
+        padding-left: 0 !important;
+      }
+    }
   }
 
   & > div {

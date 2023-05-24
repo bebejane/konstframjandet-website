@@ -73,7 +73,9 @@
         }
 
         & > *:nth-last-child(2) {
-          margin-bottom: 0;
+          @include mq($from: tablet) {
+            margin-bottom: 0;
+          }
         }
 
         &.nobackLink {

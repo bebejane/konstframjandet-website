@@ -109,7 +109,10 @@ figcaption,
 label,
 .body-small strong {
   font-family: $headline-font;
-  font-size: 16px;
+  font-size: 14px;
+  @include mq($from: tablet) {
+    font-size: 16px;
+  }
   @include mq($from: wide) {
     font-size: 18px;
   }
