@@ -12,11 +12,10 @@ export type Props = {
   menu: Menu
 }
 
-export default function MenuMobile({ districts, menu }: Props) {
+export default function MenuMobile({ menu }: Props) {
 
   const router = useRouter()
-  const { asPath } = router
-  const { district, isHome, isMainDistrict } = usePage()
+  const { district, isMainDistrict } = usePage()
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLElement | null>(null)
   const [subSelected, setSubSelected] = useState<string | null>(null)
@@ -54,13 +53,15 @@ export default function MenuMobile({ districts, menu }: Props) {
                   <>
                     <span onClick={() => setSubSelected(type === subSelected ? null : type)}>{label}</span>
                     <ul className={cn(type === subSelected && s.expanded)}>
-                      {items.map(({ type, slug, label }, idx) =>
+                      {items.map(({ type, slug, label, subdomain }, idx) =>
                         <li key={idx}>
-                          <Link href={slug}>{label}</Link>
+                          <Link
+                            href={type === 'district' ? '/' : slug}
+                            locale={type === 'district' ? subdomain : undefined}
+                          >{label}</Link>
                         </li>
                       )}
                     </ul>
-
                   </>
                 }
               </li>

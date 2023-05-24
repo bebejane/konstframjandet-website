@@ -27,6 +27,7 @@
 	--line-thin: 3px solid var(--white);
 	--background: var(--light-grey);
 	--page-color: transparent;
+	--color-transition: 0.7s ease-in-out;
 
 	--z-background-image: 0;
 	--z-menu: 400;
@@ -64,7 +65,7 @@ body {
 	-webkit-font-smoothing: antialiased;
 	font-feature-settings: "liga", "kern";
 	overflow-x: hidden;
-	transition: background-color 0.7s ease-in-out;
+	transition: background-color var(--color-transition);
 
 	.home {
 		background-color: var(--page-color);
