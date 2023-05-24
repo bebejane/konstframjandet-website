@@ -18,6 +18,7 @@
 
   h1 {
     width: 100%;
+
     @include mq($from: tablet) {
       width: 90%;
     }
