@@ -7,6 +7,11 @@
   color: var(--light-grey);
   padding: var(--outer-margin);
 
+  @include mq($from: tablet) {
+    padding-top: calc(0.5 * var(--outer-margin));
+    padding-bottom: calc(0.5 * var(--outer-margin));
+  }
+
   a:hover {
     color: var(--page-color);
   }
@@ -52,7 +57,7 @@
       display: flex;
     }
 
-    >ul {
+    > ul {
       @include mq($until: desktop) {
         display: none;
       }
@@ -61,7 +66,7 @@
       flex: 1 1 100%;
       flex-direction: row;
 
-      >li {
+      > li {
         flex: 0 0 calc(100% / 4);
         padding-right: 1rem;
         overflow: hidden;

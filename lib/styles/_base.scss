@@ -28,7 +28,6 @@
 	--background: var(--light-grey);
 	--page-color: transparent;
 	--color-transition: 0.7s ease-in-out;
-
 	--z-background-image: 0;
 	--z-menu: 400;
 	--z-search: 500;
@@ -50,8 +49,8 @@
 		--navbar-height: calc((2 * var(--navbar-space)) + var(--navbar-title-size) + 0.5rem + var(--navbar-text-size));
 	}
 
-	@include mq($until: desktop) {
-		//--navbar-height: 2rem;
+	@include mq($from: wide) {
+		--outer-margin: 10vw;
 	}
 }
 

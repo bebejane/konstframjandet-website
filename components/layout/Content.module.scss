@@ -8,14 +8,15 @@
   padding-top: var(--navbar-height);
   min-height: 90vh;
 
+  @include mq($from: wide) {
+    padding-bottom: calc(0.5 * var(--outer-margin));
+  }
+
   article {
     position: relative;
     display: flex;
     align-items: flex-start;
     flex-direction: column-reverse;
-
-    @include mq($until: tablet) {
-    }
 
     @include mq($from: tablet) {
       flex-direction: row;

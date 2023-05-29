@@ -21,7 +21,7 @@ export default function Aside({ children, title, titleHref, backLink, backLinkTy
         titleHref ?
           <Link href={titleHref}><h3>{title}</h3></Link>
           :
-          <h3>{title}</h3>
+          <h3 className="mid">{title}</h3>
         : null
       }
       {children &&

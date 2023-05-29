@@ -2,6 +2,7 @@
   list-style: none;
 
   li {
+    line-height: 1.1;
     &:not(:last-of-type) {
       padding-bottom: 0.5em;
     }

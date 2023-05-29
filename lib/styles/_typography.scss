@@ -61,7 +61,7 @@ input.mid {
   font-size: 1.5rem;
   font-weight: normal;
   padding-bottom: 1em;
-  line-height: calc(1em - 1px);
+  line-height: calc(1em);
 
   @include mq($from: tablet) {
     font-size: 1.4rem;
