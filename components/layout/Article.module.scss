@@ -24,9 +24,11 @@
       padding-right: calc(2 * var(--grid-unit));
     }
 
-    &.medium {}
+    &.medium {
+    }
 
-    &.large {}
+    &.large {
+    }
   }
 
   section {
@@ -46,7 +48,7 @@
         }
 
         &.dropcap {
-          >p:first-of-type {
+          > p:first-of-type {
             &:first-child:first-letter {
               color: var(--page-color);
               float: left;
@@ -60,16 +62,16 @@
           }
         }
 
-        &>*:nth-last-child(2) {
+        & > *:nth-last-child(2) {
           @include mq($from: desktop) {
-            &>*:nth-last-child(2) {
-              @include mq($from: tablet) {
+            & > *:nth-last-child(2) {
+              @include mq($from: desktop) {
                 margin-bottom: 0;
               }
             }
 
             &.nobackLink {
-              &>*:nth-last-child(2) {
+              & > *:nth-last-child(2) {
                 margin-bottom: 1rem;
               }
             }

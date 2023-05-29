@@ -290,3 +290,20 @@ $mq-media-type: all !default;
 @if length($mq-show-breakpoints) > 0 {
   @include mq-show-breakpoints;
 }
+
+@mixin aspect-ratio($width, $height) {
+  aspect-ratio: $width / $height;
+  // Fallback (current, using padding hack)
+  @supports not (aspect-ratio: 1 / 1) {
+    &::before {
+      float: left;
+      padding-top: calc(100% * #{$height} / #{$width});
+      content: "";
+    }
+    &::after {
+      display: block;
+      content: "";
+      clear: both;
+    }
+  }
+}

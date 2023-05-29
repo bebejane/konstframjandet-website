@@ -71,7 +71,6 @@
 
     figure {
       position: relative;
-      aspect-ratio: 1 / 1;
       padding-left: 5%;
       display: flex;
       justify-content: center;
@@ -87,6 +86,8 @@
   }
 
   .image {
+    aspect-ratio: 1 / 1;
+
     object-fit: cover;
     mask-position: 50% 50%;
     mask-size: contain;

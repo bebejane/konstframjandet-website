@@ -34,13 +34,14 @@ h1,
 h2.big {
   font-size: 34px;
   color: var(--page-color);
+  line-height: calc(1em);
 
   @include mq($from: tablet) {
     font-size: 58px;
+    line-height: calc(1em - 2px);
   }
 
   font-weight: normal;
-  line-height: calc(1em - 2px);
 
   &.noPadding {
     padding: 0;
