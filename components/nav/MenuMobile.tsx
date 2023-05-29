@@ -15,7 +15,7 @@ export type Props = {
 export default function MenuMobile({ menu }: Props) {
 
   const router = useRouter()
-  const { district, isMainDistrict } = usePage()
+  const { district, isMainDistrict, isHome } = usePage()
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLElement | null>(null)
   const [subSelected, setSubSelected] = useState<string | null>(null)
@@ -32,6 +32,14 @@ export default function MenuMobile({ menu }: Props) {
     return () => router.events.off('routeChangeStart', handleRouteChangeStart)
   }, [])
 
+  useEffect(() => {
+
+    const r = document.querySelector<HTMLElement>(':root')
+    r.style.setProperty('--page-color', open ? 'var(--black)' : district?.color?.hex);
+    r.style.setProperty('--background', open ? 'var(--black)' : isHome ? district?.color?.hex : 'var(--light-grey)');
+
+  }, [open])
+
   return (
     <>
       <header className={cn(s.navbar, open && s.open)}>
@@ -45,7 +53,7 @@ export default function MenuMobile({ menu }: Props) {
       <div className={cn(s.menuMobile, open && s.open)}>
         <nav className={s.menu} ref={ref}>
           <ul>
-            {menu.map(({ type, slug, label, items }) =>
+            {menu.filter(({ type }) => !(type === 'district' && !isMainDistrict)).map(({ type, slug, label, items }) =>
               <li className={cn(s.active)} key={type}>
                 {slug && !items?.length ?
                   <Link href={slug}>{label}</Link>
