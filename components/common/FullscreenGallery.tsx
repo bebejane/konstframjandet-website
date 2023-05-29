@@ -83,7 +83,7 @@ export default function FullscreenGallery({ images, onClose, index = 0, show }: 
                   data={image.responsiveImage}
                   lazyLoad={false}
                   usePlaceholder={false}
-                  onLoad={() => setLoaded({ ...loaded, [image.id]: true })}
+                  onLoad={() => setLoaded((l) => ({ ...l, [image.id]: true }))}
                   fadeInDuration={0}
                 />
                 {!loaded[image.id] && initLoaded &&
