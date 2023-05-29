@@ -54,6 +54,7 @@ export const getStaticProps = withGlobalProps({ queries: [AllAboutsDocument] }, 
       page: {
         title: about.title
       }
-    }
+    },
+    revalidate
   };
 });

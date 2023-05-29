@@ -125,6 +125,7 @@ export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, r
         color: projectColor,
         colorOption: project.colorOption ?? parentProject?.colorOption ?? null
       }
-    }
+    },
+    revalidate
   };
 });
