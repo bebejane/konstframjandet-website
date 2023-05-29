@@ -37,9 +37,9 @@ export default function SectionHeader() {
       {intro &&
         <>
           <div className={s.introWrapper}>
-            <Markdown className={cn(s.intro, "intro")}>
+            <p className={cn(s.intro, "intro")}>
               {intro}
-            </Markdown>
+            </p>
             <div className={s.fade}></div>
           </div>
         </>
