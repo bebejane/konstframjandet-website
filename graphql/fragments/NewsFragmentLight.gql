@@ -3,7 +3,7 @@ fragment NewsFragmentLight on NewsRecord {
 	title
 	intro(markdown: false)
 	image {
-		...ImageFragment
+		...ImageThumbnailFragment
 	}
 	address
 	date
