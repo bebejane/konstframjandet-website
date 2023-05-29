@@ -60,11 +60,11 @@
           }
         }
 
-        <<<<<<< HEAD &>*:nth-last-child(2) {
+        &>*:nth-last-child(2) {
           @include mq($from: desktop) {
-            =======&>*:nth-last-child(2) {
+            &>*:nth-last-child(2) {
               @include mq($from: tablet) {
-                >>>>>>>f595511 (clean) margin-bottom: 0;
+                margin-bottom: 0;
               }
             }
 
@@ -118,3 +118,5 @@
         }
       }
     }
+  }
+}
