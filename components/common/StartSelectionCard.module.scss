@@ -106,10 +106,4 @@
   &:nth-child(4) > a > figure .image {
     mask-image: url(/images/mask4.svg);
   }
-
-  @include mq($until: tablet) {
-  }
-
-  @include mq($from: tablet) {
-  }
 }

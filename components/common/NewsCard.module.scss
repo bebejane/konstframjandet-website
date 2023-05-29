@@ -4,6 +4,7 @@
   padding-top: var(--space);
   padding-bottom: var(--space);
   border-bottom: var(--line-thin);
+  width: 100%;
 
   @include mq($from: desktop) {
     flex-direction: row;
@@ -109,6 +110,7 @@
       @include mq($until: desktop) {
         display: none;
       }
+
       flex: 0 0 25%;
       padding-right: var(--gutter);
     }
