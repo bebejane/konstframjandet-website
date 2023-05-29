@@ -5,7 +5,7 @@
   padding-bottom: var(--space);
   border-bottom: var(--line-thin);
 
-  @include mq($from: tablet) {
+  @include mq($from: desktop) {
     flex-direction: row;
   }
 
@@ -64,7 +64,7 @@
 
   > div,
   a {
-    @include mq($from: tablet) {
+    @include mq($from: desktop) {
       flex: 0 0 50%;
     }
   }
@@ -79,7 +79,7 @@
     display: flex;
     aspect-ratio: 6 / 4;
 
-    @include mq($until: tablet) {
+    @include mq($until: desktop) {
       margin-bottom: var(--small-space);
     }
 
@@ -96,7 +96,7 @@
 
   &.list {
     > div {
-      @include mq($from: tablet) {
+      @include mq($from: desktop) {
         flex: 0 0 75%;
         padding-right: 5%;
       }
@@ -106,7 +106,7 @@
       padding-top: 0;
     }
     > a {
-      @include mq($until: tablet) {
+      @include mq($until: desktop) {
         display: none;
       }
       flex: 0 0 25%;

@@ -40,7 +40,7 @@
     flex-direction: row;
 
     .about {
-      @include mq($from: tablet) {
+      @include mq($from: desktop) {
         flex: 0 0 calc(var(--grid-unit));
         padding-right: 3rem;
       }
@@ -49,7 +49,7 @@
     }
 
     ul {
-      @include mq($until: tablet) {
+      @include mq($until: desktop) {
         display: none;
       }
 

@@ -29,7 +29,7 @@
         height: 70vh;
         max-width: none !important;
 
-        @include mq($from: tablet) {
+        @include mq($from: desktop) {
           height: calc(100vh - var(--navbar-height) - calc(var(--space) * 2));
         }
       }
@@ -73,7 +73,7 @@
         padding-right: var(--outer-margin);
         padding-bottom: var(--outer-margin);
 
-        @include mq($from: tablet) {
+        @include mq($from: desktop) {
           padding-left: var(--grid-unit);
           width: 80%;
           padding-bottom: 0;

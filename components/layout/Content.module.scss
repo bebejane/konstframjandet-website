@@ -18,7 +18,7 @@
     align-items: flex-start;
     flex-direction: column-reverse;
 
-    @include mq($from: tablet) {
+    @include mq($from: desktop) {
       flex-direction: row;
     }
   }

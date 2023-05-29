@@ -2,7 +2,6 @@
 .menuMobile {
   color: var(--white);
 
-
   @include mq($from: desktop) {
     display: none !important;
   }
@@ -17,6 +16,7 @@
   flex-direction: row;
   height: var(--navbar-height);
   padding: var(--outer-margin);
+  padding-top: 1.5rem;
   z-index: var(--z-navbar-mobile);
   color: var(--black);
   background-color: var(--background);
@@ -52,7 +52,7 @@
     color: var(--white);
     background-color: var(--black);
 
-    >* {
+    > * {
       color: var(--white);
     }
   }
@@ -92,7 +92,6 @@
       display: none;
     }
 
-
     ul {
       list-style: none;
     }
@@ -103,8 +102,8 @@
       border-bottom: var(--line-thin);
     }
 
-    >ul {
-      >li {
+    > ul {
+      > li {
         ul {
           display: none;
 
@@ -132,6 +131,7 @@
   top: 0;
   right: 0;
   margin: var(--outer-margin);
+  margin-top: 1.4rem;
   color: var(--white);
   font-size: 2rem;
 }

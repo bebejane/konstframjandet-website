@@ -6,7 +6,7 @@
   width: 100%;
   border-bottom: var(--line-thick);
 
-  @include mq($from: tablet) {
+  @include mq($from: desktop) {
     li:nth-child(odd) {
       & > div {
         padding-right: var(--gutter);

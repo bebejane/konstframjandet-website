@@ -7,7 +7,7 @@
   padding-left: 0;
   margin-top: var(--space);
 
-  @include mq($from: tablet) {
+  @include mq($from: desktop) {
     li {
       &:nth-of-type(odd) {
         padding-right: calc(0.5 * var(--gutter));

@@ -11,7 +11,7 @@
     padding-bottom: var(--big-space);
     border-bottom: var(--line-thick);
 
-    @include mq($from: tablet) {
+    @include mq($from: desktop) {
       padding-left: var(--grid-unit);
     }
   }
@@ -19,7 +19,7 @@
   h1 {
     width: 100%;
 
-    @include mq($from: tablet) {
+    @include mq($from: desktop) {
       width: 90%;
     }
   }
@@ -39,7 +39,7 @@
       top: var(--small-space);
       left: var(--outer-margin);
 
-      @include mq($from: tablet) {
+      @include mq($from: desktop) {
         left: 0;
         padding-left: var(--grid-unit);
       }
@@ -53,7 +53,7 @@
         z-index: -1;
         margin-left: calc(-1 * var(--outer-margin));
 
-        @include mq($from: tablet) {
+        @include mq($from: desktop) {
           margin-left: calc(-1 * var(--grid-unit));
         }
       }
@@ -87,7 +87,7 @@
       left: var(--outer-margin);
       margin-right: var(--outer-margin);
 
-      @include mq($from: tablet) {
+      @include mq($from: desktop) {
         left: var(--grid-unit);
         margin-right: calc(2 * var(--gutter));
       }
@@ -101,7 +101,7 @@
         z-index: -1;
         margin-left: calc(-1 * var(--outer-margin));
 
-        @include mq($from: tablet) {
+        @include mq($from: desktop) {
           margin-left: calc(-1 * var(--grid-unit));
         }
       }

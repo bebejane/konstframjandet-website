@@ -2,10 +2,10 @@
   position: relative;
   margin-bottom: var(--space);
 
-  @include mq($from: tablet) {
+  @include mq($from: desktop) {
     flex: 0 0 50%;
 
-    &:nth-child(3n+1) {
+    &:nth-child(3n + 1) {
       border-right: var(--line-thin);
     }
 
@@ -14,7 +14,7 @@
     }
   }
 
-  @include mq($until: tablet) {
+  @include mq($until: desktop) {
     border-right: 0;
 
     &:first-child {
@@ -97,9 +97,6 @@
       }
     }
   }
-
-
-
 }
 
 .divider {

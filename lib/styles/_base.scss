@@ -39,7 +39,7 @@
 	--z-fullscreen-gallery-slide: 1001;
 	--z-fullscreen-gallery-close: 1002;
 
-	@include mq($from: tablet) {
+	@include mq($from: desktop) {
 		--gutter: 4vw;
 		--logo-size: 84px;
 		--small-space: 1.5rem;

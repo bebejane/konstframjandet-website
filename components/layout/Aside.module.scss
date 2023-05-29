@@ -2,25 +2,25 @@
   margin-top: var(--space);
   width: 100%;
 
-  @include mq($until: tablet) {
-    display: none;
+  @include mq($until: desktop) {
+    //display: none;
   }
 
-  @include mq($from: tablet) {
+  @include mq($from: desktop) {
     position: sticky;
     top: var(--navbar-height);
     width: var(--grid-unit);
   }
 
   div {
-    @include mq($until: tablet) {
+    @include mq($until: desktop) {
       column-count: 2;
     }
 
     border-bottom: var(--line-thin);
     padding-bottom: var(--small-space);
 
-    @include mq($from: tablet) {
+    @include mq($from: desktop) {
       margin-right: var(--gutter);
     }
 
@@ -71,7 +71,7 @@
       text-align: center;
     }
 
-    @include mq($from: tablet) {
+    @include mq($from: desktop) {
       display: none;
     }
   }

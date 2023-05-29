@@ -3,7 +3,7 @@
   padding-top: var(--space);
   width: 100%;
 
-  @include mq($from: tablet) {
+  @include mq($from: desktop) {
     width: 75%;
   }
 
@@ -34,7 +34,7 @@
       padding-left: calc(1 * var(--grid-unit));
       padding-right: calc(1 * var(--grid-unit));
 
-      @include mq($until: tablet) {
+      @include mq($until: desktop) {
         padding-left: calc(0 * var(--grid-unit));
         padding-right: calc(0 * var(--grid-unit));
       }
@@ -42,18 +42,18 @@
   }
 
   section {
-    @include mq($from: tablet) {
+    @include mq($from: desktop) {
       display: flex;
       flex-direction: row;
     }
 
     .content {
-      @include mq($from: tablet) {
+      @include mq($from: desktop) {
         width: calc(2 * var(--grid-unit));
       }
 
       .structured {
-        @include mq($from: tablet) {
+        @include mq($from: desktop) {
           //min-height: 50vh;
         }
 
@@ -73,7 +73,7 @@
         }
 
         & > *:nth-last-child(2) {
-          @include mq($from: tablet) {
+          @include mq($from: desktop) {
             margin-bottom: 0;
           }
         }
@@ -103,11 +103,11 @@
           opacity: 0;
         }
 
-        @include mq($until: tablet) {
+        @include mq($until: desktop) {
           display: none;
         }
 
-        @include mq($from: tablet) {
+        @include mq($from: desktop) {
           position: absolute;
           margin-left: calc(-1 * var(--grid-unit));
           margin-top: -1em;
