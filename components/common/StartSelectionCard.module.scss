@@ -48,7 +48,7 @@
 
   p {
     padding-bottom: 1em;
-    margin-top: 1em;
+    margin-top: 0.7em;
     margin-bottom: 0 !important;
   }
 
@@ -91,23 +91,25 @@
   }
 
   // bubble masks
-  &:nth-child(1)>a>figure .image {
+  &:nth-child(1) > a > figure .image {
     mask-image: url(/images/mask1.svg);
   }
 
-  &:nth-child(2)>a>figure .image {
+  &:nth-child(2) > a > figure .image {
     mask-image: url(/images/mask2.svg);
   }
 
-  &:nth-child(3)>a>figure .image {
+  &:nth-child(3) > a > figure .image {
     mask-image: url(/images/mask3.svg);
   }
 
-  &:nth-child(4)>a>figure .image {
+  &:nth-child(4) > a > figure .image {
     mask-image: url(/images/mask4.svg);
   }
 
-  @include mq($until: tablet) {}
+  @include mq($until: tablet) {
+  }
 
-  @include mq($from: tablet) {}
+  @include mq($from: tablet) {
+  }
 }
