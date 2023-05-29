@@ -13,6 +13,9 @@
     a {
       flex: 1 1;
       white-space: pre;
+      &:hover {
+        color: white;
+      }
     }
   }
 }

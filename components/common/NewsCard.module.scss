@@ -60,6 +60,9 @@
 
     span {
       display: block;
+      a {
+        border-bottom: 1px solid var(--page-color);
+      }
     }
   }
 
