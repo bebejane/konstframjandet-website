@@ -42,7 +42,26 @@ fragment DistrictFragment on DistrictRecord {
 				__typename
 				id
 				logotypes {
-					...ImageMediumFragment
+					id
+					mimeType
+					url
+					title
+					alt
+					height
+					width
+					responsiveImage(
+						imgixParams: { q: 70, ar: "4:4", auto: format }
+						sizes: "(max-width: 46.24em) 100vw, 20vw"
+					) {
+						src
+						width
+						height
+						alt
+						title
+						base64
+						bgColor
+						sizes
+					}
 				}
 			}
 			... on VideoRecord {

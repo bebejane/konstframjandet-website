@@ -39,7 +39,7 @@ fragment ProjectSubpageFragment on ProjectSubpageRecord {
 				__typename
 				id
 				logotypes {
-					...ImageMediumFragment
+					...ImageLogoFragment
 				}
 			}
 			... on DownloadPdfRecord {

@@ -34,7 +34,7 @@ fragment AboutFragment on AboutRecord {
 				__typename
 				id
 				logotypes {
-					...ImageMediumFragment
+					...ImageLogoFragment
 				}
 			}
 			... on DownloadPdfRecord {
