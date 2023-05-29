@@ -9,10 +9,14 @@
     padding: 0;
     padding-bottom: var(--space);
 
+    @include mq($from: desktop) {
+      width: calc(100% + 2 * (var(--small-space)));
+      margin-right: calc(-1 * var(--small-space));
+      margin-left: calc(-1 * var(--small-space));
+    }
   }
 
   &:not(:last-of-type) {
     border-bottom: var(--line-thick);
   }
-
 }
