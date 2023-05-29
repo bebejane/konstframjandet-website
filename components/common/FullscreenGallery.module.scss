@@ -8,7 +8,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #000;
+  background-color: var(--foreground);
   z-index: var(--z-fullscreen-gallery);
   padding: var(--space);
 
@@ -80,7 +80,6 @@
     margin-left: var(--outer-margin);
 
     .text {
-
       p {
         padding: 0;
         margin: 0;
@@ -97,7 +96,8 @@
     cursor: pointer;
     margin: var(--small-space);
 
-    &:hover {}
+    &:hover {
+    }
   }
 
   .back,
@@ -127,5 +127,6 @@
     right: var(--space);
   }
 
-  @include mq($until: tablet) {}
+  @include mq($until: tablet) {
+  }
 }
