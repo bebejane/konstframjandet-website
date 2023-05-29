@@ -4,6 +4,7 @@
   padding-top: var(--space);
   padding-bottom: var(--space);
   border-bottom: var(--line-thin);
+  width: 100%;
 
   @include mq($from: tablet) {
     flex-direction: row;
@@ -20,8 +21,9 @@
   }
 
   &.home {
-    a > h2,
-    p > a {
+
+    a>h2,
+    p>a {
       color: var(--black) !important;
 
       &:hover {
@@ -31,7 +33,7 @@
       transition: color 0.2s ease;
     }
 
-    p > a {
+    p>a {
       border-color: var(--white) !important;
     }
 
@@ -62,7 +64,7 @@
     }
   }
 
-  > div,
+  >div,
   a {
     @include mq($from: tablet) {
       flex: 0 0 50%;
@@ -88,14 +90,12 @@
     }
   }
 
-  @include mq($until: tablet) {
-  }
+  @include mq($until: tablet) {}
 
-  @include mq($from: tablet) {
-  }
+  @include mq($from: tablet) {}
 
   &.list {
-    > div {
+    >div {
       @include mq($from: tablet) {
         flex: 0 0 75%;
         padding-right: 5%;
@@ -105,10 +105,12 @@
     h2 {
       padding-top: 0;
     }
-    > a {
+
+    >a {
       @include mq($until: tablet) {
         display: none;
       }
+
       flex: 0 0 25%;
       padding-right: var(--gutter);
     }

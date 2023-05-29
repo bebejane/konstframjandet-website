@@ -45,7 +45,7 @@ export default function Article({ id, title, content, image, imageSize, intro, b
         {image?.responsiveImage &&
           <>
             <figure
-              className={cn(s.mainImage, imageSize && s[imageSize], image.height > image.width && s.portrait)}
+              className={cn(s.mainImage, imageSize && s[imageSize])}
               onClick={() => setImageId(image?.id)}
             >
               <Image
