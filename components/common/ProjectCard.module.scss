@@ -39,6 +39,7 @@
       display: flex;
       background-color: var(--black);
       aspect-ratio: 4/4;
+      height: 100%;
 
       @include mq($from: tablet) {
         aspect-ratio: 6/4;
