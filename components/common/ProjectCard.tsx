@@ -3,7 +3,9 @@ import cn from 'classnames'
 import React from 'react'
 import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components'
 import { Image } from 'react-datocms/image'
+import { truncateWords } from '/lib/utils'
 import Link from 'next/link'
+import useDevice from '/lib/hooks/useDevice'
 
 export type CardProps = {
   project: ProjectRecord
@@ -12,6 +14,8 @@ export type CardProps = {
 }
 
 export default function ProjectCard({ project: { id, title, intro, image, slug, color }, project, index, total }: CardProps) {
+
+  const { isMobile } = useDevice()
 
   return (
     <>
@@ -29,7 +33,7 @@ export default function ProjectCard({ project: { id, title, intro, image, slug, 
               {color?.hex &&
                 <div className={s.bgcolor} style={{ backgroundColor: color.hex }}></div>
               }
-              <h1>{title}</h1>
+              <h1>{truncateWords(title, isMobile ? 200 : 70)}</h1>
 
               <Markdown className={cn(s.intro)}>
                 {intro}
