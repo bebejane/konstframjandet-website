@@ -38,11 +38,10 @@
       position: relative;
       display: flex;
       background-color: var(--black);
-      //aspect-ratio: 4/4;
-      //height: 100%;
+      aspect-ratio: 4/4;
 
       @include mq($from: tablet) {
-        //aspect-ratio: 6/4;
+        aspect-ratio: 6/4;
       }
 
       h1,
@@ -70,9 +69,10 @@
         .intro {
           color: var(--white);
           bottom: 0;
+          font-weight: bold;
 
           p {
-            font-weight: bold;
+
             margin: 0;
           }
         }
@@ -83,6 +83,7 @@
         height: 100%;
         width: 100%;
         aspect-ratio: 1/1;
+
         @include mq($from: desktop) {
           aspect-ratio: 6/4;
         }

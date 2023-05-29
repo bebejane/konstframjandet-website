@@ -35,9 +35,9 @@ export default function ProjectCard({ project: { id, title, intro, image, slug, 
               }
               <h1>{truncateWords(title, isMobile ? 200 : 70)}</h1>
 
-              <Markdown className={cn(s.intro)}>
-                {intro}
-              </Markdown>
+              <p className={cn(s.intro)}>
+                {truncateWords(intro, isMobile ? 400 : 200)}
+              </p>
             </div>
 
           </figure>
