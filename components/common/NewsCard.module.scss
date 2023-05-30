@@ -1,10 +1,10 @@
 .card {
   display: flex;
-  flex-direction: column-reverse;
   padding-top: var(--space);
   padding-bottom: var(--space);
   border-bottom: var(--line-thin);
   width: 100%;
+  flex-direction: column-reverse;
 
   @include mq($from: desktop) {
     flex-direction: row;

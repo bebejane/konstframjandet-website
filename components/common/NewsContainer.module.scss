@@ -27,7 +27,9 @@
       display: none;
     }
     li {
-      flex-direction: row-reverse;
+      @include mq($from: desktop) {
+        flex-direction: row-reverse;
+      }
       & > div {
         padding-left: 0;
       }
