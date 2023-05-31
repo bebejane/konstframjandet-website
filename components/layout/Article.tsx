@@ -5,6 +5,9 @@ import { StructuredContent } from "/components";
 import { Image } from 'react-datocms';
 import { DatoSEO, DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
 import { useScrollInfo } from 'dato-nextjs-utils/hooks';
+import strip from 'strip-markdown'
+import { remark } from 'remark'
+
 import useStore from '/lib/store';
 import Link from 'next/link';
 
@@ -28,6 +31,7 @@ export type ArticleProps = {
 export default function Article({ id, title, content, image, imageSize, intro, backLink, aside, record = {}, dropcap = false }: ArticleProps) {
 
   const [setImageId, setImages, imageId] = useStore((state) => [state.setImageId, state.setImages, state.imageId])
+  const description = intro ? remark().use(strip).processSync(intro).value as string : null
 
   useEffect(() => {
     const images = [image]
@@ -40,7 +44,7 @@ export default function Article({ id, title, content, image, imageSize, intro, b
 
   return (
     <>
-      <DatoSEO title={title} />
+      <DatoSEO title={title} description={description} />
       <div className={cn(s.article, 'article')}>
         {image?.responsiveImage &&
           <>
