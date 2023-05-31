@@ -97,7 +97,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 							<>
 								<a className="symbol" href={district.facebook}>7</a>
 								<a className="symbol" href={district.instagram}>8</a>
-								<Link href="https://www.konstframjandet.se">Till Konstfrämjandet.se</Link>
+								<Link href="https://www.konstframjandet.se" locale={primarySubdomain}>Till Konstfrämjandet.se</Link>
 							</>
 						}
 					</div>
