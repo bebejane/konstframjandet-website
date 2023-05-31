@@ -39,7 +39,7 @@ dependencies:
     version: 2.29.3
   dato-nextjs-utils:
     specifier: github:bebejane/dato-nextjs-utils
-    version: github.com/bebejane/dato-nextjs-utils/e8fc1d67fa5e8fca0881902a142aecd54e760f2c(@apollo/client@3.8.0-alpha.8)(@datocms/cma-client@1.2.9)(@types/node@18.14.6)(@types/react-dom@18.2.1)(@types/react@18.0.28)(next-seo@5.15.0)(next@13.2.3)(react-dom@18.2.0)(react@18.2.0)
+    version: github.com/bebejane/dato-nextjs-utils/5b000fd3d1c3a3fbc13f32919c4b85fa8b74dcf8(@apollo/client@3.8.0-alpha.8)(@datocms/cma-client@1.2.9)(@types/node@18.14.6)(@types/react-dom@18.2.1)(@types/react@18.0.28)(next-seo@5.15.0)(next@13.2.3)(react-dom@18.2.0)(react@18.2.0)
   datocms-structured-text-utils:
     specifier: ^2.0.4
     version: 2.0.4
@@ -11128,11 +11128,11 @@ packages:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: false
 
-  github.com/bebejane/dato-nextjs-utils/e8fc1d67fa5e8fca0881902a142aecd54e760f2c(@apollo/client@3.8.0-alpha.8)(@datocms/cma-client@1.2.9)(@types/node@18.14.6)(@types/react-dom@18.2.1)(@types/react@18.0.28)(next-seo@5.15.0)(next@13.2.3)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {tarball: https://codeload.github.com/bebejane/dato-nextjs-utils/tar.gz/e8fc1d67fa5e8fca0881902a142aecd54e760f2c}
-    id: github.com/bebejane/dato-nextjs-utils/e8fc1d67fa5e8fca0881902a142aecd54e760f2c
+  github.com/bebejane/dato-nextjs-utils/5b000fd3d1c3a3fbc13f32919c4b85fa8b74dcf8(@apollo/client@3.8.0-alpha.8)(@datocms/cma-client@1.2.9)(@types/node@18.14.6)(@types/react-dom@18.2.1)(@types/react@18.0.28)(next-seo@5.15.0)(next@13.2.3)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {tarball: https://codeload.github.com/bebejane/dato-nextjs-utils/tar.gz/5b000fd3d1c3a3fbc13f32919c4b85fa8b74dcf8}
+    id: github.com/bebejane/dato-nextjs-utils/5b000fd3d1c3a3fbc13f32919c4b85fa8b74dcf8
     name: dato-nextjs-utils
-    version: 1.0.279
+    version: 1.0.281
     engines: {node: '>=0.16'}
     peerDependencies:
       '@apollo/client': 3 - 4
