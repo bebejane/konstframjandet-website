@@ -22,6 +22,7 @@ export default function NewsItem({ news: {
   time,
   where,
   subtitle,
+  _seoMetaTags
 }, news }: Props) {
 
   const haveMeta = [where, address, date, time, misc].filter(el => el).length > 0
@@ -55,6 +56,7 @@ export default function NewsItem({ news: {
         intro={intro}
         content={content}
         date={date}
+        seo={_seoMetaTags}
         backLink={'/aktuellt'}
       />
     </>

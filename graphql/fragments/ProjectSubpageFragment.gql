@@ -72,4 +72,7 @@ fragment ProjectSubpageFragment on ProjectSubpageRecord {
 			}
 		}
 	}
+	_seoMetaTags {
+		...SeoMetaTagsFragment
+	}
 }

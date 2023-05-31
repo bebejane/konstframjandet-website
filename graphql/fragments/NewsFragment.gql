@@ -81,4 +81,7 @@ fragment NewsFragment on NewsRecord {
 			}
 		}
 	}
+	_seoMetaTags {
+		...SeoMetaTagsFragment
+	}
 }

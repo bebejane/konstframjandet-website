@@ -20,7 +20,7 @@ export type Props = {
   }[]
 }
 
-export default function ProjectItem({ project: { id, title, content }, project, parentProject, projectMenu }: Props) {
+export default function ProjectItem({ project: { id, title, content, _seoMetaTags }, project, parentProject, projectMenu }: Props) {
 
   const { asPath } = useRouter()
   const { isHome, district, color } = usePage()
@@ -60,6 +60,7 @@ export default function ProjectItem({ project: { id, title, content }, project, 
         content={content}
         record={project}
         backLink={'/projekt'}
+        seo={_seoMetaTags}
       />
       {project.__typename === 'ProjectRecord' && project.webpage && showWebPage &&
         <Bubble href={project.webpage} className={s.direct}>

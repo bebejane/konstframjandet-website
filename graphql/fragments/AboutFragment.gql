@@ -67,4 +67,7 @@ fragment AboutFragment on AboutRecord {
 			}
 		}
 	}
+	_seoMetaTags {
+		...SeoMetaTagsFragment
+	}
 }

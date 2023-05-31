@@ -26,9 +26,10 @@ export type ArticleProps = {
   date?: string
   backLink?: string
   aside?: React.ReactNode | React.ReactNode[] | undefined
+  seo?: Tag[]
 }
 
-export default function Article({ id, title, content, image, imageSize, intro, backLink, aside, record = {}, dropcap = false }: ArticleProps) {
+export default function Article({ id, title, content, image, imageSize, intro, backLink, record = {}, dropcap = false, seo }: ArticleProps) {
 
   const [setImageId, setImages, imageId] = useStore((state) => [state.setImageId, state.setImages, state.imageId])
   const description = intro ? remark().use(strip).processSync(intro).value as string : null
@@ -44,7 +45,7 @@ export default function Article({ id, title, content, image, imageSize, intro, b
 
   return (
     <>
-      <DatoSEO title={title} description={description} />
+      <DatoSEO seo={seo} title={title} description={description} />
       <div className={cn(s.article, 'article')}>
         {image?.responsiveImage &&
           <>
