@@ -97,7 +97,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 							<>
 								<a className="symbol" href={district.facebook}>7</a>
 								<a className="symbol" href={district.instagram}>8</a>
-								<Link href="/" locale={primarySubdomain}>Till Konstfrämjandet.se</Link>
+								<Link href="https://www.konstframjandet.se">Till Konstfrämjandet.se</Link>
 							</>
 						}
 					</div>
@@ -129,7 +129,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 					{districts?.filter(({ subdomain }) => primarySubdomain !== subdomain).map(({ id, subdomain, name, color }) =>
 						<li key={id}>
 							<Link
-								href={`/ `}
+								href={`https://${subdomain}.konstframjandet.se`}
 								locale={subdomain}
 								onMouseEnter={() => setDistrictHover(id)}
 								onMouseLeave={() => setDistrictHover(undefined)}

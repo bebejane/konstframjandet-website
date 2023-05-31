@@ -1,0 +1,24 @@
+cname.vercel-dns.com.
+76.76.21.21
+
+93.90.147.101
+
+forbundet       forbundet.konstframjandet.se
+
+bergslagen      bergslagen.konstframjandet.se
+dalarna         dalarna.konstframjandet.se
+X fyrbodal        fyrbodal.konstframjandet.se
+gavleborg       gavleborg.konstframjandet.se
+X jamtland        jamtland.konstframjandet.se
+X kraft           kraft.konstframjandet.se
+X norrbotten      norrbotten.konstframjandet.se
+skane           skane.konstframjandet.se
+smaland         smaland.konstframjandet.se
+X sormland        sormland.konstframjandet.se
+X stockholm       stockholm.konstframjandet.se
+X uppland         uppland.konstframjandet.se
+varmland        varmland.konstframjandet.se
+vasterbotten    vasterbotten.konstframjandet.se
+X vasternorrland  vasternorrland.konstframjandet.se
+vastmanland     vastmanland.konstframjandet.se
+vastra          vastra.konstframjandet.se
