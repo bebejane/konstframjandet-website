@@ -19,6 +19,9 @@ export default withWebPreviewsEdge(async ({ item, itemType, locale }) => {
     case 'start':
       path = `/`;
       break;
+    case 'district':
+      path = `/`;
+      break;
     case 'news':
       path = `/aktuellt/${slug}`;
       break;
