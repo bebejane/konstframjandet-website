@@ -28,7 +28,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }).then(() => console.log('revalidation sent')).catch(err => console.error(err))
   await sleep(1000)
   return res.json({ revalidated: true })
-
 }
 
 export const basicAuth = (req: NextApiRequest) => {

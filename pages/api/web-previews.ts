@@ -13,7 +13,7 @@ export default withWebPreviewsEdge(async ({ item, itemType, locale }) => {
   let path = null;
   const { slug, district: districtId } = item.attributes
   const district = districtId ? (await allDistricts()).find(({ id }) => id === districtId) : undefined
-  const districtSlug = district && district.subdomain !== primarySubdomain ? `/${district.subdomain}` : '' //TODO: change to real subdomains
+  const districtSlug = district && district.subdomain !== primarySubdomain ? `https://${district.subdomain}.konstframjandet.se` : ''
 
   switch (itemType.attributes.api_key) {
     case 'start':
