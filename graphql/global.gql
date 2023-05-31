@@ -1,4 +1,4 @@
-query GetSiteSEO {
+query Global {
 	site: _site {
 		...SiteFragment
 	}

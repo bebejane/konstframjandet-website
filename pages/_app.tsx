@@ -15,7 +15,7 @@ function App({ Component, pageProps, router }) {
 
   const [isHome, setIsHome] = useState(false)
   const { asPath } = router
-  const { district, districts, footer, menu, site } = pageProps
+  const { district, districts, footer, menu, site, seo } = pageProps
 
   const page = pageProps.page || {} as PageProps
 

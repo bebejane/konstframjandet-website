@@ -6,11 +6,11 @@ export interface StoreState {
   showSearch: boolean
   searchQuery: string | undefined
   view: 'list' | 'full'
-  images: FileField[]
+  images: ImageFileField[]
   imageId: string
   setShowMenu: (showMenu: boolean) => void
   setShowMenuMobile: (showMenuMobile: boolean) => void
-  setImages: (images: FileField[] | undefined) => void
+  setImages: (images: ImageFileField[] | undefined) => void
   setImageId: (imageId: string | undefined) => void
   setShowSearch: (showSearch: boolean) => void
   setSearchQuery: (searchQuery: string) => void
@@ -40,7 +40,7 @@ const useStore = create<StoreState>((set) => ({
       imageId
     })
     ),
-  setImages: (images: FileField[] | undefined) =>
+  setImages: (images: ImageFileField[] | undefined) =>
     set((state) => ({
       images
     })

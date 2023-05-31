@@ -14,7 +14,7 @@ export type ArticleProps = {
   title?: string
   subtitle?: string
   intro?: string
-  image?: FileField
+  image?: ImageFileField
   imageSize?: 'small' | 'medium' | 'large'
   content?: any
   onClick?: (id: string) => void
