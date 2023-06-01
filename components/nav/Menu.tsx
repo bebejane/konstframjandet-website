@@ -2,7 +2,7 @@ import s from './Menu.module.scss'
 import cn from 'classnames'
 import { useRouter } from 'next/router'
 import { useState, useRef, useEffect } from 'react'
-import { primarySubdomain } from '/lib/utils'
+import { primarySubdomain, districtUrl } from '/lib/utils'
 import { useScrollInfo } from 'dato-nextjs-utils/hooks'
 import { usePage } from '/lib/context/page'
 import { animateLogo } from '/lib/utils'
@@ -97,7 +97,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 							<>
 								<a className="symbol" href={district.facebook}>7</a>
 								<a className="symbol" href={district.instagram}>8</a>
-								<Link href="https://www.konstframjandet.se" locale={primarySubdomain}>Till Konstfrämjandet.se</Link>
+								<Link href={process.env.NODE_ENV === 'production' ? 'https://www.konstframjandet.se' : '/'} locale={primarySubdomain}>Till Konstfrämjandet.se</Link>
 							</>
 						}
 					</div>
@@ -126,15 +126,15 @@ export default function Menu({ districts, menu }: MenuProps) {
 			>
 				<span className="mid">Besök våra distrikt</span>
 				<ul>
-					{districts?.filter(({ subdomain }) => primarySubdomain !== subdomain).map(({ id, subdomain, name, color }) =>
-						<li key={id}>
+					{districts?.filter(d => primarySubdomain !== d.subdomain).map(d =>
+						<li key={d.id}>
 							<Link
-								href={`https://${subdomain}.konstframjandet.se`}
-								locale={subdomain}
-								onMouseEnter={() => setDistrictHover(id)}
+								href={districtUrl(d)}
+								locale={d.subdomain}
+								onMouseEnter={() => setDistrictHover(d.id)}
 								onMouseLeave={() => setDistrictHover(undefined)}
-								style={{ color: districtHover === id ? color.hex : 'unset' }}
-							>{name}</Link>
+								style={{ color: districtHover === d.id ? d.color.hex : 'unset' }}
+							>{d.name}</Link>
 						</li>
 					)}
 				</ul>

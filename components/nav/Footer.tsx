@@ -41,7 +41,7 @@ export default function Footer({ footer, menu, districts }: FooterProps) {
 									{items?.map(({ type, label, slug, subdomain }, idx) =>
 										<li key={`${idx}-sub`}>
 											<Link
-												href={type === 'district' ? `https://${subdomain}.konstframjandet.se` : slug}
+												href={(type === 'district' && process.env.NODE_ENV === 'production') ? `https://${subdomain}.konstframjandet.se` : slug}
 												scroll={true}
 												locale={subdomain}
 											>{label}</Link>
