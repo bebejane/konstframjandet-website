@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { sleep, allDistricts } from '/lib/utils';
+import { allDistricts, primarySubdomain } from '/lib/utils';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
@@ -14,8 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (!district)
     return res.status(500).send('No district')
 
-  const domain = `${district.subdomain}.konstframjandet.se`
-
+  const domain = `${district.subdomain === primarySubdomain ? 'www' : district.subdomain}.konstframjandet.se`
 
   try {
     console.log(`revalidate subdomain: ${domain}`)
@@ -46,4 +45,3 @@ export const basicAuth = (req: NextApiRequest) => {
   const [user, pwd] = Buffer.from(auth, 'base64').toString().split(':')
   return user === process.env.BASIC_AUTH_USER && pwd === process.env.BASIC_AUTH_PASSWORD
 }
-
