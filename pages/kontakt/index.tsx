@@ -10,7 +10,7 @@ export default function Contact({ district: { id, intro, contentContact }, distr
 
   return (
     <>
-      <Aside>
+      <Aside hideOnMobile={true}>
       </Aside>
       <Article
         id={id}
