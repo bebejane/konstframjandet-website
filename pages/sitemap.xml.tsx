@@ -1,13 +1,13 @@
 
-import { recordToSlug, apiQueryAll, allDistricts, primarySubdomain } from "/lib/utils";
+import { recordToSlug, apiQueryAll, allDistricts, primarySubdomain, districtUrl } from "/lib/utils";
 import { AllNewsDocument, AllProjectsDocument, AllAboutsDocument } from "/graphql";
 
 const staticPaths = ['', 'aktuellt', 'kontakt', 'om', 'projekt']
 
 function SiteMap() { }
 
-function generateSiteMap(subdomain: string, posts: { path: string, updated: string }[]) {
-  const baseUrl = `https://${subdomain === primarySubdomain ? 'www' : subdomain}.konstframjandet.se`;
+function generateSiteMap(district: DistrictRecord, posts: { path: string, updated: string }[]) {
+  const baseUrl = districtUrl(district);
 
   return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -43,7 +43,7 @@ export async function getServerSideProps({ res, locale: subdomain }) {
     p.subpage.forEach(sp => posts.push({ path: `${recordToSlug(p)}/${sp.slug}`, updated: sp._updatedAt }));
   })
 
-  const sitemap = generateSiteMap(district.subdomain, posts);
+  const sitemap = generateSiteMap(district, posts);
 
   res.setHeader('Content-Type', 'text/xml');
   res.write(sitemap);

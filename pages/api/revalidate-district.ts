@@ -1,10 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { allDistricts, primarySubdomain } from '/lib/utils';
+import { allDistricts, primarySubdomain, districtUrl } from '/lib/utils';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
-  if (!basicAuth(req))
-    return res.status(401).send('Access denied')
+  if (!basicAuth(req)) return res.status(401).send('Access denied')
 
   const payload = req.body?.entity;
   const districtId = payload?.attributes?.district ?? payload?.id;
@@ -14,11 +13,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (!district)
     return res.status(500).send('No district')
 
-  const domain = `${district.subdomain === primarySubdomain ? 'www' : district.subdomain}.konstframjandet.se`
+  const url = districtUrl(district)
 
   try {
-    console.log(`revalidate subdomain: ${domain}`)
-    await fetch(`https://${domain}/api/revalidate`, {
+    console.log(`revalidate-district url: ${url}`)
+    await fetch(`${url}/api/revalidate`, {
       method: 'POST',
       body: JSON.stringify({ ...req.body }),
       headers: {
@@ -27,7 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         'Content-Type': 'application/json'
       }
     })
-    console.log(`revalidate subdomain: ${domain} done!`)
+    console.log(`revalidate url: ${url} done!`)
   } catch (err) {
     return res.status(500).send(err.message || err)
   }

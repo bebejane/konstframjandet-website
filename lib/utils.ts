@@ -206,6 +206,11 @@ export async function mainDistrict(): Promise<DistrictRecord> {
   return district as DistrictRecord
 }
 
+export function districtUrl(district: DistrictRecord): string {
+  const { subdomain } = district
+  return process.env.NODE_ENV === 'production' ? `${subdomain === primarySubdomain ? 'www' : subdomain}.konstframjandet.se` : `http://localhost:3000${subdomain !== primarySubdomain ? `/${subdomain}` : ''}`
+}
+
 export type TruncateOptions = {
   sentences: number
   useEllipsis: boolean
