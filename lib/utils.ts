@@ -206,8 +206,8 @@ export async function mainDistrict(): Promise<DistrictRecord> {
   return district as DistrictRecord
 }
 
-export function districtUrl(district: DistrictRecord): string {
-  const { subdomain } = district
+export function districtUrl(district: DistrictRecord | string): string {
+  const subdomain = typeof district === 'object' ? district.subdomain : district
   return process.env.NODE_ENV === 'production' ? `https://${subdomain === primarySubdomain ? 'www' : subdomain}.konstframjandet.se` : `http://localhost:3000${subdomain !== primarySubdomain ? `/${subdomain}` : ''}`
 }
 

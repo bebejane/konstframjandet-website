@@ -3,7 +3,7 @@ import cn from 'classnames'
 import { useRouter } from 'next/router'
 import { useState, useRef, useEffect } from 'react'
 import { usePage } from '/lib/context/page'
-import { animateLogo } from '/lib/utils'
+import { animateLogo, districtUrl } from '/lib/utils'
 import type { Menu } from '/lib/menu'
 import Link from 'next/link'
 
@@ -64,7 +64,7 @@ export default function MenuMobile({ menu }: Props) {
                       {items.map(({ type, slug, label, subdomain }, idx) =>
                         <li key={idx}>
                           <Link
-                            href={type === 'district' ? '/' : slug}
+                            href={type === 'district' ? districtUrl(subdomain) : slug}
                             locale={type === 'district' ? subdomain : undefined}
                           >{label}</Link>
                         </li>
