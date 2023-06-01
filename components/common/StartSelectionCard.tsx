@@ -4,7 +4,7 @@ import React from 'react'
 import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components'
 import { Image } from 'react-datocms/image'
 import Link from 'next/link'
-import { recordToSlug } from '/lib/utils'
+import { recordToSlug, districtUrl } from '/lib/utils'
 
 export type CardProps = {
   item: (NewsRecord | ProjectRecord)
@@ -12,13 +12,14 @@ export type CardProps = {
 
 export default function StartSelectionCard({ item }: CardProps) {
 
-  const slug = recordToSlug(item)
-  const subdomain = item.district.subdomain
-  const intro = `**${item.district.name}** ${item.intro}`
+  const district = item.district
+  const { subdomain, name } = district
+  const intro = `**${name}** ${item.intro}`
+  const slug = `${districtUrl(district)}${recordToSlug(item)}`
 
   return (
     <li className={s.card} key={item.id}>
-      <Link href={slug} locale={subdomain}>
+      <Link href={slug} locale={false}>
         <figure className={s.figure}>
           {item.image &&
             <Image
