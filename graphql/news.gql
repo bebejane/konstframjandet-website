@@ -5,7 +5,7 @@ query AllNews($first: IntType = 100, $skip: IntType = 0, $districtId: ItemId) {
 		skip: $skip
 		orderBy: [_createdAt_DESC]
 	) {
-		...NewsFragment
+		...NewsFragmentLight
 	}
 
 	pagination: _allNewsMeta(filter: { district: { eq: $districtId } }) {

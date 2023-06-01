@@ -1,6 +1,6 @@
 query AllAbouts($first: IntType = 100, $skip: IntType = 0, $districtId: ItemId) {
 	abouts: allAbouts(filter: { district: { eq: $districtId } }, first: $first, skip: $skip) {
-		...AboutFragment
+		...AboutFragmentLight
 	}
 	pagination: _allAboutsMeta {
 		count

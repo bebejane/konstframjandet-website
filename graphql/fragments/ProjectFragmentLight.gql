@@ -1,9 +1,10 @@
 fragment ProjectFragmentLight on ProjectRecord {
+	_createdAt
+	_updatedAt
 	id
 	title
 	subtitle
 	slug
-	_createdAt
 	intro(markdown: false)
 	color {
 		hex

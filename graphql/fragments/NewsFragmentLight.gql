@@ -1,4 +1,6 @@
 fragment NewsFragmentLight on NewsRecord {
+	_createdAt
+	_updatedAt
 	id
 	title
 	intro(markdown: false)
