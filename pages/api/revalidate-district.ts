@@ -15,21 +15,24 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(500).send('No district')
 
   const domain = `${district.subdomain}.konstframjandet.se`
-  console.log(`revalidate subdomain: ${domain}`)
 
-  fetch(`https://${domain}/api/revalidate`, {
-    method: 'POST',
-    body: JSON.stringify({ ...req.body }),
-    headers: {
-      'Authorization': 'Basic ' + Buffer.from(process.env.BASIC_AUTH_USER + ":" + process.env.BASIC_AUTH_PASSWORD).toString('base64'),
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    }
-  })
-    .then(() => console.log('revalidation sent'))
-    .catch(err => console.error('error:', err))
 
-  await sleep(5000)
+  try {
+    console.log(`revalidate subdomain: ${domain}`)
+    await fetch(`https://${domain}/api/revalidate`, {
+      method: 'POST',
+      body: JSON.stringify({ ...req.body }),
+      headers: {
+        'Authorization': 'Basic ' + Buffer.from(process.env.BASIC_AUTH_USER + ":" + process.env.BASIC_AUTH_PASSWORD).toString('base64'),
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    console.log(`revalidate subdomain: ${domain} done!`)
+  } catch (err) {
+    return res.status(500).send(err.message || err)
+  }
+
   return res.json({ revalidated: true })
 }
 
