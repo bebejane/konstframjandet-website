@@ -70,10 +70,12 @@ export default async (phase, { defaultConfig }) => {
 		i18n: {
 			locales: siteKeys,
 			defaultLocale: primarySubdomain,
-			domains: siteKeys.map((siteKey) => ({
-				domain: sites[siteKey].domain,
-				defaultLocale: siteKey,
-			})),
+			domains: siteKeys
+				.filter((siteKey) => sites[siteKey].domain !== primarySubdomain)
+				.map((siteKey) => ({
+					domain: sites[siteKey].domain,
+					defaultLocale: siteKey,
+				})),
 		},
 		webpack: (config, ctx) => {
 			config.module.rules.push({

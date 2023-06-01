@@ -1,4 +1,4 @@
-import { allDistricts, primarySubdomain } from '/lib/utils';
+import { allDistricts } from '/lib/utils';
 export { default, getStaticProps } from '/pages'
 
 export async function getStaticPaths() {
