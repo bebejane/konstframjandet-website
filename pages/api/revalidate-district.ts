@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(401).send('Access denied')
 
   const payload = req.body?.entity;
-  const districtId = payload?.attributes?.district;
+  const districtId = payload?.attributes?.district ?? payload?.id;
   const districts = await allDistricts()
   const district = districts.find(el => el.id === districtId)
 
@@ -17,7 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const domain = `${district.subdomain}.konstframjandet.se`
   console.log(`revalidate subdomain: ${domain}`)
 
-  await fetch(`https://${domain}/api/revalidate`, {
+  fetch(`https://${domain}/api/revalidate`, {
     method: 'POST',
     body: JSON.stringify({ ...req.body }),
     headers: {
@@ -25,9 +25,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
-  })//.then(() => console.log('revalidation sent')).catch(err => console.error(err))
-  console.log('revalidation sent')
-  await sleep(1000)
+  })
+    .then(() => console.log('revalidation sent'))
+    .catch(err => console.error('error:', err))
+
+  await sleep(5000)
   return res.json({ revalidated: true })
 }
 
