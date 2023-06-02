@@ -1,5 +1,15 @@
 {
-  "github":{
-    "silent":true
-  }
+	"github": {
+		"silent": true
+	},
+	"crons": [
+		{
+			"path": "/api/revalidate-district",
+			"schedule": "*/1 * * * *"
+		},
+		{
+			"path": "/api/revalidate",
+			"schedule": "*/1 * * * *"
+		}
+	]
 }
