@@ -32,13 +32,7 @@ export default async (phase, { defaultConfig }) => {
 		.map(({ subdomain }) => (sites[subdomain] = { domain: `${subdomain}.${baseDomain}` }));
 
 	const siteKeys = Object.keys(sites);
-	/*
-	siteKeys
-		.sort((a, b) => (a > b ? 1 : -1))
-		.forEach((siteKey, index) => {
-			console.log(`${sites[siteKey].domain}`);
-		});
-		*/
+
 	/**
 	 * @type {import('next').NextConfig}
 	 */

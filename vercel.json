@@ -4,12 +4,12 @@
 	},
 	"crons": [
 		{
-			"path": "/api/revalidate-district",
-			"schedule": "*/1 * * * *"
+			"path": "/api/revalidate-district?ping=1",
+			"schedule": "*/3 * * * *"
 		},
 		{
-			"path": "/api/revalidate",
-			"schedule": "*/1 * * * *"
+			"path": "/api/revalidate?ping=1",
+			"schedule": "*/3 * * * *"
 		}
 	]
 }
