@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { allDistricts, primarySubdomain, districtUrl } from '/lib/utils';
+import { allDistricts, districtUrl } from '/lib/utils';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
@@ -22,8 +22,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const url = districtUrl(district)
 
   try {
-    console.log(`revalidate-district url: ${url}`)
-    await fetch(`${url}/api/revalidate`, {
+    console.log(`revalidate-district: ${url}`)
+    const response = await fetch(`${url}/api/revalidate`, {
       method: 'POST',
       body: JSON.stringify({ ...req.body }),
       headers: {
@@ -32,12 +32,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         'Content-Type': 'application/json'
       }
     })
-    console.log(`revalidate url: ${url} done!`)
+    const data = await response.json()
+    return res.json(data)
   } catch (err) {
     return res.status(500).send(err.message || err)
   }
-
-  return res.json({ revalidated: true })
 }
 
 export const basicAuth = (req: NextApiRequest) => {

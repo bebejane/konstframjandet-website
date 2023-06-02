@@ -5,11 +5,11 @@
 	"crons": [
 		{
 			"path": "/api/revalidate-district?ping=1",
-			"schedule": "*/3 * * * *"
+			"schedule": "* * * * *"
 		},
 		{
 			"path": "/api/revalidate?ping=1",
-			"schedule": "*/3 * * * *"
+			"schedule": "* * * * *"
 		}
 	]
 }
