@@ -8,7 +8,7 @@
 
   @include mq($from: tablet) {
     max-width: calc(100% + (var(--grid-unit) * 2));
-    margin-right: calc(-1 * var(--grid-unit));
+    margin-right: calc(-1 * var(--grid-unit) + var(--outer-margin));
   }
 
   .fade {
@@ -29,17 +29,18 @@
       display: none;
     }
 
+    position: absolute;
+    top: 0;
+    right: 0;
+
     width: 3em;
     height: 3em;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 0;
-    right: 0;
     z-index: 1000;
     margin: 0;
-    margin-right: calc(-1 * var(--grid-unit));
+    margin-right: calc(-4em);
     transform: translateY(-50%);
     cursor: pointer;
   }
