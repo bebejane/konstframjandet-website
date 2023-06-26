@@ -38,6 +38,7 @@ export default function Article({ id, title, content, image, imageSize, intro, b
     const images = [image]
     content?.blocks.forEach(el => {
       el.__typename === 'ImageRecord' && images.push(el.image)
+      el.__typename === 'ImageGalleryRecord' && images.push.apply(images, el.images)
     })
     console.log(images)
     setImages(images.filter(el => el))

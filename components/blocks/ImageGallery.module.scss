@@ -4,12 +4,9 @@
   min-width: 100%;
   margin-top: var(--space);
   margin-bottom: var(--space);
-  //margin-left: calc(-1 * var(--outer-margin));
   max-width: calc(100% + (var(--outer-margin)));
-  margin-right: calc(-1 * (var(--outer-margin) * 2));
 
   @include mq($from: tablet) {
-    margin-left: calc(-1 * var(--grid-unit));
     max-width: calc(100% + (var(--grid-unit) * 2));
     margin-right: calc(-1 * var(--grid-unit));
   }
@@ -57,7 +54,7 @@
     user-select: none;
     cursor: pointer;
 
-    > div {
+    >div {
       display: flex;
       flex-direction: row;
       align-items: flex-end;
@@ -69,7 +66,7 @@
         width: calc((100% - (var(--gutter) * 2)) / 3);
         padding-right: var(--gutter);
 
-        > figure {
+        >figure {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
