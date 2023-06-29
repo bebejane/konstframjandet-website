@@ -88,9 +88,7 @@ export const recordToSlug = (record: any): string => {
   return href
 }
 
-export const isEmail = (email: string): boolean => {
-  return EmailValidator.validate(email)
-}
+export const isEmail = (email: string): boolean => EmailValidator.validate(email)
 
 export const truncateParagraph = (s: string, sentances: number = 1, ellipsis: boolean = true, minLength = 200): string => {
   if (!s || s.length < minLength)
