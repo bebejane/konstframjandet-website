@@ -117,9 +117,10 @@ export const sleep = (ms: number) => new Promise((resolve, refject) => setTimeou
 
 export const apiQueryAll = async (doc: TypedDocumentNode, opt: ApiQueryOptions = {}): Promise<any> => {
 
-  const results = {}
   let size = 100;
   let skip = 0;
+
+  const results = {}
   const res = await apiQuery(doc, { variables: { ...opt.variables, first: size, skip } });
 
   if (res.pagination?.count === undefined)
