@@ -14,17 +14,14 @@
   }
 
   @include mq($from: desktop) {
+    flex: 0 0 25%;
     padding-right: var(--small-space);
     padding-left: var(--small-space);
+    padding-bottom: var(--small-space);
     border-right: var(--line-thin);
 
-    flex: 0 0 25%;
-
-    &:nth-child(1) {
-      //padding-left: 0;
-    }
-
-    &:nth-child(4) {
+    &:nth-child(4),
+    &:nth-child(8) {
       border: 0;
     }
   }
@@ -64,6 +61,7 @@
 
   a {
     width: 100%;
+
     &:first-of-type {
       display: flex;
       justify-content: center;
@@ -80,8 +78,7 @@
         width: 50%;
       }
 
-      @include mq($from: desktop) {
-      }
+      @include mq($from: desktop) {}
     }
   }
 
@@ -99,19 +96,35 @@
   }
 
   // bubble masks
-  &:nth-child(1) > a > figure .image {
+  &:nth-child(1)>a>figure .image {
     mask-image: url(/images/mask1.svg);
   }
 
-  &:nth-child(2) > a > figure .image {
+  &:nth-child(2)>a>figure .image {
     mask-image: url(/images/mask2.svg);
   }
 
-  &:nth-child(3) > a > figure .image {
+  &:nth-child(3)>a>figure .image {
     mask-image: url(/images/mask3.svg);
   }
 
-  &:nth-child(4) > a > figure .image {
+  &:nth-child(4)>a>figure .image {
     mask-image: url(/images/mask4.svg);
+  }
+
+  &:nth-child(5)>a>figure .image {
+    mask-image: url(/images/mask2.svg);
+  }
+
+  &:nth-child(6)>a>figure .image {
+    mask-image: url(/images/mask3.svg);
+  }
+
+  &:nth-child(7)>a>figure .image {
+    mask-image: url(/images/mask1.svg);
+  }
+
+  &:nth-child(8)>a>figure .image {
+    mask-image: url(/images/mask2.svg);
   }
 }
