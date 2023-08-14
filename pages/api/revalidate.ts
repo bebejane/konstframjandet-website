@@ -3,8 +3,6 @@ import { apiQuery } from 'dato-nextjs-utils/api';
 import { allDistricts } from '/lib/utils';
 import { ProjectBySubpageDocument } from '/graphql';
 
-//TODO switch revalidate to subdomains
-
 export default withRevalidate(async (record, revalidate) => {
 
   const { api_key: apiKey, } = record.model;
@@ -13,6 +11,9 @@ export default withRevalidate(async (record, revalidate) => {
   const paths = []
 
   switch (apiKey) {
+    case 'start':
+      paths.push(`/`)
+      break;
     case 'about':
       paths.push(`/om/${slug}`)
       break;

@@ -22,7 +22,8 @@
 		"migrate:projects": "tsx ./lib/scripts/migration/projects.ts",
 		"migrate:collaborator": "tsx ./lib/scripts/migration/collaborator.ts",
 		"migrate:abouts": "tsx ./lib/scripts/migration/abouts.ts",
-		"migrate:test": "datocms environments:fork main dev ; tsx ./lib/scripts/migration/projects.ts"
+		"migrate:test": "datocms environments:fork main dev ; tsx ./lib/scripts/migration/projects.ts",
+		"test": "tsx ./lib/scripts/test.ts"
 	},
 	"exports": {
 		"lib/*": "/lib",

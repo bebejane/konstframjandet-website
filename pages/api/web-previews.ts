@@ -16,8 +16,6 @@ export default withWebPreviewsEdge(async ({ item, itemType, locale }) => {
   const district = districtId ? (await allDistricts()).find(({ id }) => id === districtId) : undefined
   const districtSlug = district && district.subdomain !== primarySubdomain ? `https://${district.subdomain}.konstframjandet.se` : '' //TODO: change to real subdomains
 
-  console.log(itemType.attributes.api_key, districtSlug, districtId, district.subdomain)
-
   switch (itemType.attributes.api_key) {
     case 'start':
       path = `/`;
@@ -36,6 +34,9 @@ export default withWebPreviewsEdge(async ({ item, itemType, locale }) => {
       project && (path = `/projekt/${project.slug}/${slug}`)
       break;
     case 'district':
+      path = '/';
+      break;
+    case 'start':
       path = '/';
       break;
     default:

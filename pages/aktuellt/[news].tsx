@@ -19,6 +19,7 @@ export default function NewsItem({ news: {
   date,
   misc,
   externalLink,
+  extra,
   time,
   where,
   subtitle,
@@ -55,6 +56,7 @@ export default function NewsItem({ news: {
         image={image}
         intro={intro}
         content={content}
+        extraContent={extra}
         date={date}
         seo={_seoMetaTags}
         backLink={'/aktuellt'}

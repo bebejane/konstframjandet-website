@@ -20,6 +20,7 @@ export type ArticleProps = {
   image?: ImageFileField
   imageSize?: 'small' | 'medium' | 'large'
   content?: any
+  extraContent?: any
   onClick?: (id: string) => void
   record: any
   dropcap?: boolean
@@ -29,7 +30,7 @@ export type ArticleProps = {
   seo?: Tag[]
 }
 
-export default function Article({ id, title, content, image, imageSize, intro, backLink, record = {}, dropcap = false, seo }: ArticleProps) {
+export default function Article({ id, title, content, extraContent, image, imageSize, intro, backLink, record = {}, dropcap = false, seo }: ArticleProps) {
 
   const [setImageId, setImages, imageId] = useStore((state) => [state.setImageId, state.setImages, state.imageId])
   const description = intro ? remark().use(strip).processSync(intro).value as string : null
@@ -77,6 +78,15 @@ export default function Article({ id, title, content, image, imageSize, intro, b
                 content={content}
                 onClick={(imageId) => setImageId(imageId)}
               />
+              {extraContent &&
+                <p className={s.extraContent}>
+                  <StructuredContent
+                    id={id}
+                    record={record}
+                    content={extraContent}
+                  />
+                </p>
+              }
               {backLink && <BackLink href={backLink} />}
             </div>
           </div>
