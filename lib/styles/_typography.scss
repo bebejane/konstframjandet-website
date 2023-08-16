@@ -120,10 +120,14 @@ label,
   font-weight: normal;
 }
 
-.body-small {
+.body-small,
+.body-small p {
   font-size: 15px;
   @include mq($from: tablet) {
     font-size: 16px;
+  }
+  @include mq($from: semi-wide) {
+    font-size: 18px;
   }
   font-family: $body-font;
 }

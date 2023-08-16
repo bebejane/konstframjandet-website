@@ -127,4 +127,12 @@
       //padding-top: 0;
     }
   }
+
+  .extraContent {
+    border-top: var(--line-thick);
+    padding-top: 1em;
+    p {
+      margin-bottom: 0;
+    }
+  }
 }

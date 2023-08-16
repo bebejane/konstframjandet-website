@@ -79,13 +79,13 @@ export default function Article({ id, title, content, extraContent, image, image
                 onClick={(imageId) => setImageId(imageId)}
               />
               {extraContent &&
-                <p className={s.extraContent}>
+                <div className={cn(s.extraContent, "body-small")}>
                   <StructuredContent
                     id={id}
                     record={record}
                     content={extraContent}
                   />
-                </p>
+                </div>
               }
               {backLink && <BackLink href={backLink} />}
             </div>
