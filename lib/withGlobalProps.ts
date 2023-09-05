@@ -18,7 +18,7 @@ export default function withGlobalProps(opt: any, callback: Function): GetStatic
 
   return async (context) => {
     const { districts } = await apiQuery(AllDistricsDocument)
-    const district = districts.find(({ subdomain }) => subdomain === context.locale)
+    const district = districts.find(({ subdomain }) => context.params?.district ? subdomain === context.params?.district : subdomain === context.locale)
 
     if (!district)
       return { notFound: true };

@@ -18,6 +18,7 @@ export default function Projects({ projects, completedProjects }: Props) {
           {projects.map((item, idx) =>
             <ProjectCard key={idx} project={item} index={idx} total={projects.length} />
           )}
+          {projects.length === 0 && <p className={s.noProjects}>Det finns inga aktuella projekt just nu.</p>}
         </ProjectContainer>
         {completedProjects.length > 0 &&
           <>

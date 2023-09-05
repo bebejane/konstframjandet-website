@@ -10,4 +10,10 @@
       padding-left: var(--grid-unit);
     }
   }
+
+  .noProjects {
+    @include mq($from: tablet) {
+      padding-left: var(--grid-unit);
+    }
+  }
 }
