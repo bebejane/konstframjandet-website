@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@apollo/client':
     specifier: ^3.8.0-alpha.8
@@ -39,7 +43,7 @@ dependencies:
     version: 2.29.3
   dato-nextjs-utils:
     specifier: github:bebejane/dato-nextjs-utils
-    version: github.com/bebejane/dato-nextjs-utils/0fa128de6e71fb13fe8fbc232b9030e4d49db98b(@apollo/client@3.8.0-alpha.8)(@datocms/cma-client@1.2.9)(@types/node@18.14.6)(@types/react-dom@18.2.7)(@types/react@18.0.28)(next-seo@5.15.0)(next@13.2.3)(react-dom@18.2.0)(react@18.2.0)
+    version: github.com/bebejane/dato-nextjs-utils/98109f07c44d5ec14f39c14ba9cd23c942df633d(@apollo/client@3.8.0-alpha.8)(@datocms/cma-client@1.2.9)(@types/node@18.14.6)(@types/react-dom@18.2.7)(@types/react@18.0.28)(next-seo@5.15.0)(next@13.2.3)(react-dom@18.2.0)(react@18.2.0)
   datocms-structured-text-utils:
     specifier: ^2.0.4
     version: 2.0.4
@@ -11156,11 +11160,11 @@ packages:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: false
 
-  github.com/bebejane/dato-nextjs-utils/0fa128de6e71fb13fe8fbc232b9030e4d49db98b(@apollo/client@3.8.0-alpha.8)(@datocms/cma-client@1.2.9)(@types/node@18.14.6)(@types/react-dom@18.2.7)(@types/react@18.0.28)(next-seo@5.15.0)(next@13.2.3)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {tarball: https://codeload.github.com/bebejane/dato-nextjs-utils/tar.gz/0fa128de6e71fb13fe8fbc232b9030e4d49db98b}
-    id: github.com/bebejane/dato-nextjs-utils/0fa128de6e71fb13fe8fbc232b9030e4d49db98b
+  github.com/bebejane/dato-nextjs-utils/98109f07c44d5ec14f39c14ba9cd23c942df633d(@apollo/client@3.8.0-alpha.8)(@datocms/cma-client@1.2.9)(@types/node@18.14.6)(@types/react-dom@18.2.7)(@types/react@18.0.28)(next-seo@5.15.0)(next@13.2.3)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {tarball: https://codeload.github.com/bebejane/dato-nextjs-utils/tar.gz/98109f07c44d5ec14f39c14ba9cd23c942df633d}
+    id: github.com/bebejane/dato-nextjs-utils/98109f07c44d5ec14f39c14ba9cd23c942df633d
     name: dato-nextjs-utils
-    version: 1.0.325
+    version: 1.0.341
     engines: {node: '>=0.16'}
     peerDependencies:
       '@apollo/client': 3 - 4
