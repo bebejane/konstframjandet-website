@@ -16,6 +16,7 @@ function generateSiteMap(district: DistrictRecord, posts: { path: string, update
       .map((path) =>
         `<url>
            <loc>${`${baseUrl}/${path}`}</loc>
+           <changefreq>weekly</changefreq>
         </url>`
       ).join('')}
 
@@ -24,6 +25,7 @@ function generateSiteMap(district: DistrictRecord, posts: { path: string, update
         `<url>
           <loc>${`${baseUrl}${path}`}</loc>
           <lastmod>${updated}</lastmod>
+          <changefreq>weekly</changefreq>
         </url>`
       ).join('')}
    </urlset>

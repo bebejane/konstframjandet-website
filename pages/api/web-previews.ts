@@ -30,7 +30,7 @@ export default withWebPreviewsEdge(async ({ item, itemType, locale }) => {
       path = `/projekt/${slug}`;
       break;
     case 'project_subpage':
-      const { project } = await apiQuery(ProjectBySubpageDocument, { variables: { subpageId: item.id } })
+      const { project } = await apiQuery(ProjectBySubpageDocument, { variables: { subpageId: item.attributes.id } })
       project && (path = `/projekt/${project.slug}/${slug}`)
       break;
     case 'district':
