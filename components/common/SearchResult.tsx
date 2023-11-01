@@ -45,9 +45,13 @@ export default function SearchResult({ query, district }: Props) {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
     setResults(undefined)
-    setLoading(true)
     setError(undefined)
 
+    if (!query) {
+      setLoading(false)
+      return
+    }
+    setLoading(true)
     clearTimeout(searchTimeout.current)
     searchTimeout.current = setTimeout(() => siteSearch(query), 250)
   }, [query])
@@ -60,7 +64,6 @@ export default function SearchResult({ query, district }: Props) {
         <>
           {Object.keys(results).map((type, idx) =>
             <ul key={idx}>
-              {/*<li><h3>{results[type][0].category}</h3></li>*/}
               {results[type]?.map(({ category, title, text, image, slug }, i) =>
                 <li key={i}>
                   <h1>

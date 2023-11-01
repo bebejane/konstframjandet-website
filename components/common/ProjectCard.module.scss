@@ -41,6 +41,7 @@
 
       @include mq($from: tablet) {
         aspect-ratio: 6/4;
+        max-width: 100%;
       }
 
       h1,

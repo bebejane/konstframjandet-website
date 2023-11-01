@@ -24,6 +24,7 @@ export type SearchResult = {
 
 export default async function handler(req: NextRequest, res: NextResponse) {
 
+  console.log('search')
   try {
 
     const params = await req.json();
