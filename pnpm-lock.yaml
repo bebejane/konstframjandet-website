@@ -43,7 +43,7 @@ dependencies:
     version: 2.29.3
   dato-nextjs-utils:
     specifier: github:bebejane/dato-nextjs-utils
-    version: github.com/bebejane/dato-nextjs-utils/11290f6e141ad15a4f0e25f0365c6b8ff2be56f1(@apollo/client@3.8.0-alpha.8)(@datocms/cma-client-node@3.0.2)(@datocms/cma-client@3.0.1)(@types/node@18.14.6)(@types/react-dom@18.2.14)(@types/react@18.0.28)(datocms-listen@0.1.15)(next-seo@5.15.0)(next@13.5.6)(react-datocms@4.0.9)(react-dom@18.2.0)(react@18.2.0)
+    version: github.com/bebejane/dato-nextjs-utils/0839614ec51598cbee91cb77c92e1dc1b51f58a4(@apollo/client@3.8.0-alpha.8)(@datocms/cma-client-browser@3.0.1)(@datocms/cma-client-node@3.0.2)(@datocms/cma-client@3.0.1)(@types/node@18.14.6)(@types/react-dom@18.2.14)(@types/react@18.0.28)(datocms-listen@0.1.15)(next-seo@5.15.0)(next@13.5.6)(react-datocms@4.0.9)(react-dom@18.2.0)(react@18.2.0)
   datocms-structured-text-utils:
     specifier: ^2.0.4
     version: 2.0.4
@@ -4602,8 +4602,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001557
-      electron-to-chromium: 1.4.569
+      caniuse-lite: 1.0.30001559
+      electron-to-chromium: 1.4.572
       node-releases: 2.0.13
       update-browserslist-db: 1.0.13(browserslist@4.22.1)
 
@@ -4698,6 +4698,9 @@ packages:
 
   /caniuse-lite@1.0.30001557:
     resolution: {integrity: sha512-91oR7hLNUP3gG6MLU+n96em322a8Xzes8wWdBKhLgUoiJsAF5irZnxSUCbc+qUZXNnPCfUwLOi9ZCZpkvjQajw==}
+
+  /caniuse-lite@1.0.30001559:
+    resolution: {integrity: sha512-cPiMKZgqgkg5LY3/ntGeLFUpi6tzddBNS58A4tnTgQw1zON7u2sZMU7SzOeVH4tj20++9ggL+V6FDOFMTaFFYA==}
 
   /capital-case@1.0.4:
     resolution: {integrity: sha512-ds37W8CytHgwnhGGTi88pcPyR15qoNkOpYwmMMfnWqqWgESapLqvDx6huFjQ5vqWSn2Z06173XNA7LtMOeUh1A==}
@@ -5662,8 +5665,8 @@ packages:
   /electron-to-chromium@1.4.296:
     resolution: {integrity: sha512-i/6Q+Y9bluDa2a0NbMvdtG5TuS/1Fr3TKK8L+7UUL9QjRS5iFJzCC3r70xjyOnLiYG8qGV4/mMpe6HuAbdJW4w==}
 
-  /electron-to-chromium@1.4.569:
-    resolution: {integrity: sha512-LsrJjZ0IbVy12ApW3gpYpcmHS3iRxH4bkKOW98y1/D+3cvDUWGcbzbsFinfUS8knpcZk/PG/2p/RnkMCYN7PVg==}
+  /electron-to-chromium@1.4.572:
+    resolution: {integrity: sha512-RlFobl4D3ieetbnR+2EpxdzFl9h0RAJkPK3pfiwMug2nhBin2ZCsGIAJWdpNniLz43sgXam/CgipOmvTA+rUiA==}
 
   /elegant-spinner@1.0.1:
     resolution: {integrity: sha512-B+ZM+RXvRqQaAmkMlO/oSe5nMUOaUnyfGYCEHoR8wrXsZR2mA0XVibsxV1bvTwxdRWah1PkQqso2EzhILGHtEQ==}
@@ -11373,15 +11376,16 @@ packages:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: false
 
-  github.com/bebejane/dato-nextjs-utils/11290f6e141ad15a4f0e25f0365c6b8ff2be56f1(@apollo/client@3.8.0-alpha.8)(@datocms/cma-client-node@3.0.2)(@datocms/cma-client@3.0.1)(@types/node@18.14.6)(@types/react-dom@18.2.14)(@types/react@18.0.28)(datocms-listen@0.1.15)(next-seo@5.15.0)(next@13.5.6)(react-datocms@4.0.9)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {tarball: https://codeload.github.com/bebejane/dato-nextjs-utils/tar.gz/11290f6e141ad15a4f0e25f0365c6b8ff2be56f1}
-    id: github.com/bebejane/dato-nextjs-utils/11290f6e141ad15a4f0e25f0365c6b8ff2be56f1
+  github.com/bebejane/dato-nextjs-utils/0839614ec51598cbee91cb77c92e1dc1b51f58a4(@apollo/client@3.8.0-alpha.8)(@datocms/cma-client-browser@3.0.1)(@datocms/cma-client-node@3.0.2)(@datocms/cma-client@3.0.1)(@types/node@18.14.6)(@types/react-dom@18.2.14)(@types/react@18.0.28)(datocms-listen@0.1.15)(next-seo@5.15.0)(next@13.5.6)(react-datocms@4.0.9)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {tarball: https://codeload.github.com/bebejane/dato-nextjs-utils/tar.gz/0839614ec51598cbee91cb77c92e1dc1b51f58a4}
+    id: github.com/bebejane/dato-nextjs-utils/0839614ec51598cbee91cb77c92e1dc1b51f58a4
     name: dato-nextjs-utils
-    version: 1.0.406
+    version: 1.0.420
     engines: {node: '>=0.16'}
     peerDependencies:
       '@apollo/client': '>=3'
-      '@datocms/cma-client': '>= 1.1.0'
+      '@datocms/cma-client': '>= 2.0.0'
+      '@datocms/cma-client-browser': '>= 2.0.0'
       '@datocms/cma-client-node': '>= 2.0.0'
       '@types/node': '>= 16'
       '@types/react': '>= 17'
@@ -11395,6 +11399,7 @@ packages:
     dependencies:
       '@apollo/client': 3.8.0-alpha.8(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
       '@datocms/cma-client': 3.0.1
+      '@datocms/cma-client-browser': 3.0.1
       '@datocms/cma-client-node': 3.0.2
       '@next/env': 13.2.3
       '@types/node': 18.14.6
