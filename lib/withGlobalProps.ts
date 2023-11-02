@@ -17,6 +17,11 @@ export default function withGlobalProps(opt: any, callback: Function): GetStatic
     queries.push(SEOQuery(opt.seo))
 
   return async (context) => {
+
+    // Avoid invalid district paths
+    if (context.params?.district && isInvalidDistrictPath(context.params?.district))
+      return { notFound: true };
+
     const { districts } = await apiQuery(AllDistricsDocument)
     const district = districts.find(({ subdomain }) => context.params?.district ? subdomain === context.params?.district : subdomain === context.locale)
 
@@ -37,4 +42,8 @@ export default function withGlobalProps(opt: any, callback: Function): GetStatic
     else
       return { props: { ...props }, context, revalidate };
   }
+}
+
+const isInvalidDistrictPath = (path: string) => {
+  return ['.', '.php', 'wp-content'].some(el => path.includes(el))
 }
