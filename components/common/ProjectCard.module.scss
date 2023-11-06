@@ -65,6 +65,7 @@
       .text {
         margin: 0;
         padding-bottom: 0;
+        height: 100%;
 
         .intro {
           color: var(--white);
@@ -87,8 +88,6 @@
         @include mq($from: desktop) {
           aspect-ratio: 6/4;
         }
-
-        //opacity: 0.5;
       }
 
       .bgcolor {
