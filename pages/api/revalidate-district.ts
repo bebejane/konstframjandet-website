@@ -1,5 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { allDistricts, districtUrl } from '/lib/utils';
+import { allDistricts, districtUrl, primarySubdomain } from '/lib/utils';
+
+export const config = {
+  maxDuration: 120
+}
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
@@ -14,7 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const payload = req.body?.entity;
   const districtId = payload?.attributes?.district ?? payload?.id;
   const districts = await allDistricts()
-  const district = districts.find(el => el.id === districtId)
+  const district = districts.find(el => el.id === districtId) ?? districts.find(el => el.subdomain === primarySubdomain)
 
   if (!district)
     return res.status(500).send('No district')
@@ -35,6 +39,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const data = await response.json()
     return res.json(data)
   } catch (err) {
+    console.log(err)
     return res.status(500).send(err.message || err)
   }
 }
