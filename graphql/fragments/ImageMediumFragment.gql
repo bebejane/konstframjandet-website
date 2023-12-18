@@ -10,6 +10,7 @@ fragment ImageMediumFragment on ImageFileField {
 		imgixParams: { q: 70, ar: "4:4", auto: format }
 		sizes: "(max-width: 46.24em) 100vw, 20vw"
 	) {
+		sizes
 		src
 		width
 		height

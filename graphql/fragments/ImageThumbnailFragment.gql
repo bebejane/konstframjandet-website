@@ -11,6 +11,7 @@ fragment ImageThumbnailFragment on ImageFileField {
 		sizes: "(max-width: 46.24em) 50vw, 25vw"
 	) {
 		src
+		sizes
 		width
 		height
 		alt
