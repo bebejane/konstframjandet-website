@@ -41,9 +41,8 @@ export default function Article({ id, title, content, extraContent, image, image
       el.__typename === 'ImageRecord' && images.push(el.image)
       el.__typename === 'ImageGalleryRecord' && images.push.apply(images, el.images)
     })
-    console.log(images)
     setImages(images.filter(el => el))
-  }, [])
+  }, [id, image])
 
   return (
     <>
