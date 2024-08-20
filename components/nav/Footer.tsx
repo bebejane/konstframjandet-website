@@ -20,8 +20,10 @@ export default function Footer({ footer, menu, districts }: FooterProps) {
 			<div className={s.line}></div>
 			<nav>
 				<div className={s.about}>
-					<span className={s.logo}>B</span>
-					<Link href={'/'} scroll={true} locale={primarySubdomain}>
+					<Link href={'https://www.konstframjandet.se'} scroll={true}>
+						<span className={s.logo}>B</span>
+					</Link>
+					<Link href={'https://www.konstframjandet.se'} scroll={true}>
 						Konstfrämjandet
 					</Link>
 					<br /><br />

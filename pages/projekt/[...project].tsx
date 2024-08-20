@@ -26,7 +26,7 @@ export default function ProjectItem({ project: { id, title, content, _seoMetaTag
   const { isHome, district, color } = usePage()
   const { scrolledPosition, documentHeight, viewportHeight } = useScrollInfo()
   const [showWebPage, setShowWebPage] = useState(true)
-
+  console.log(project)
   useEffect(() => {
     const r = document.querySelector<HTMLElement>(':root')
     setTimeout(() => { // Override _app styling
@@ -92,7 +92,8 @@ export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, r
 
   const isSubpage = context.params.project.length === 2
   const slug = context.params.project[!isSubpage ? 0 : 1]
-  const { project }: { project: ProjectRecord | ProjectSubpageRecord } = await apiQuery(!isSubpage ? ProjectDocument : ProjectSubpageDocument, { variables: { slug }, preview: context.preview })
+  const districtId = props.district?.id
+  const { project }: { project: ProjectRecord | ProjectSubpageRecord } = await apiQuery(!isSubpage ? ProjectDocument : ProjectSubpageDocument, { variables: { slug, districtId }, preview: context.preview })
 
   if (!project)
     return { notFound: true }
@@ -100,7 +101,7 @@ export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, r
   let parentProject: ProjectRecord = null;
 
   if (isSubpage)
-    parentProject = (await apiQuery(ProjectBySubpageDocument, { variables: { subpageId: project.id }, preview: context.preview }))?.project ?? null
+    parentProject = (await apiQuery(ProjectBySubpageDocument, { variables: { subpageId: project.id, districtId }, preview: context.preview }))?.project ?? null
 
   const subpages = project.__typename === 'ProjectRecord' ? project?.subpage : parentProject?.subpage
   const projectMenu = !subpages ? [] : subpages.map(({ id, title, slug }) => ({
