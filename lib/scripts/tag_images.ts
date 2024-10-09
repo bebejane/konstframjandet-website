@@ -10,7 +10,7 @@ const chunkArray = (array: any[], chunkSize: number) => {
   return newArr
 }
 
-export const client: Client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, environment: 'dev', extraHeaders: { 'X-Include-Drafts': 'true' } })
+export const client: Client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, environment: 'main', extraHeaders: { 'X-Include-Drafts': 'true' } })
 
 const main = async () => {
   try {
@@ -25,10 +25,13 @@ const main = async () => {
 
     const uploads: Upload[] = []
     console.log('Getting uploads...')
+
     // this iterates over every page of results:
     for await (const upload of client.uploads.listPagedIterator({ perPage: 500 })) {
       uploads.push(upload)
     }
+
+    console.log(uploads.length)
 
     const other: Upload[] = []
     const skipped: Upload[] = []
@@ -55,7 +58,7 @@ const main = async () => {
       if (!districtUploads[subdomain])
         districtUploads[subdomain] = { uploads: [], tags: [subdomain], upload_collection }
 
-      if (upload.tags.includes(subdomain) && upload.upload_collection.id === upload_collection.id) {
+      if (upload.tags.includes(subdomain) && upload.upload_collection && upload.upload_collection?.id === upload_collection.id) {
         skipped.push(upload)
         continue;
       }
@@ -79,7 +82,7 @@ const main = async () => {
     console.log('Uploads:', uploads.length, 'Skipped:', skipped.length, 'Other:', other.length)
 
   } catch (error) {
-
+    console.log(error)
     if (error instanceof ApiError) {
       console.log(JSON.stringify(error.response))
     } else {

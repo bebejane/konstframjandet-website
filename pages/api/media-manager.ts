@@ -60,7 +60,7 @@ export default withVercelCronAuthEdge(async (req: NextRequest, res: NextResponse
       if (!districtUploads[subdomain])
         districtUploads[subdomain] = { uploads: [], tags: [subdomain], upload_collection }
 
-      if (upload.tags.includes(subdomain) && upload.upload_collection.id === upload_collection.id) {
+      if (upload.tags.includes(subdomain) && upload.upload_collection && upload.upload_collection?.id === upload_collection.id) {
         skipped.push(upload)
         continue;
       }
