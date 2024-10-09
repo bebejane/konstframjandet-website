@@ -5,6 +5,7 @@ import { withVercelCronAuthEdge } from 'dato-nextjs-utils/hoc';
 
 export const config = {
   runtime: 'edge',
+  maxDuration: 60 * 2,
 }
 
 export const client: Client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, extraHeaders: { 'X-Include-Drafts': 'true' } })
@@ -79,8 +80,9 @@ export default withVercelCronAuthEdge(async (req: NextRequest, res: NextResponse
         await client.uploads.bulkTag({ uploads: chunks[i], tags })
       }
     }
+    const updated = uploads.length - skipped.length - other.length
 
-    console.log('Uploads:', uploads.length, 'Skipped:', skipped.length, 'Other:', other.length)
+    console.log('Updated:', updated, 'Total uploads:', uploads.length, 'Skipped:', skipped.length, 'Other:', other.length)
 
     return NextResponse.json({ success: true }, {
       status: 200,
