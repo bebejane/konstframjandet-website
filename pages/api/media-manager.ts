@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { buildClient, Client, ApiError } from '@datocms/cma-client-browser';
 import { Upload } from '@datocms/cma-client/dist/types/generated/SimpleSchemaTypes';
-import { withVercelCronAuthEdge } from 'dato-nextjs-utils/hoc/';
+import { withVercelCronAuthEdge } from 'dato-nextjs-utils/hoc';
 
 export const config = {
   runtime: 'edge',
