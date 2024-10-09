@@ -26,7 +26,7 @@ export default function ProjectItem({ project: { id, title, content, _seoMetaTag
   const { isHome, district, color } = usePage()
   const { scrolledPosition, documentHeight, viewportHeight } = useScrollInfo()
   const [showWebPage, setShowWebPage] = useState(true)
-  console.log(project)
+
   useEffect(() => {
     const r = document.querySelector<HTMLElement>(':root')
     setTimeout(() => { // Override _app styling

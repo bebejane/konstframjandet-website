@@ -1,7 +1,13 @@
-
-import * as dotenv from 'dotenv'; dotenv.config({ path: "./.env" });
-import { buildClient, Client, ApiError } from '@datocms/cma-client-node';
+import { NextRequest, NextResponse } from 'next/server'
+import { buildClient, Client, ApiError } from '@datocms/cma-client-browser';
 import { Upload } from '@datocms/cma-client/dist/types/generated/SimpleSchemaTypes';
+import withVercelCronAuthEdge from 'dato-nextjs-utils/hoc/withVercelCronAuthEdge';
+
+export const config = {
+  runtime: 'edge',
+}
+
+export const client: Client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, extraHeaders: { 'X-Include-Drafts': 'true' } })
 
 const chunkArray = (array: any[], chunkSize: number) => {
   const newArr = []
@@ -10,9 +16,8 @@ const chunkArray = (array: any[], chunkSize: number) => {
   return newArr
 }
 
-export const client: Client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, environment: 'dev', extraHeaders: { 'X-Include-Drafts': 'true' } })
+export default withVercelCronAuthEdge(async (req: NextRequest, res: NextResponse) => {
 
-const main = async () => {
   try {
 
     const users = await client.users.list()
@@ -64,7 +69,6 @@ const main = async () => {
 
     }
 
-
     for (const [subdomain] of Object.entries(districtUploads)) {
       const { uploads, tags, upload_collection } = districtUploads[subdomain]
       if (!uploads.length) continue;
@@ -78,14 +82,18 @@ const main = async () => {
 
     console.log('Uploads:', uploads.length, 'Skipped:', skipped.length, 'Other:', other.length)
 
+    return NextResponse.json({ success: true }, {
+      status: 200,
+      headers: { 'content-type': 'application/json' }
+    })
   } catch (error) {
-
-    if (error instanceof ApiError) {
-      console.log(JSON.stringify(error.response))
-    } else {
-      console.log(JSON.stringify(error))
-    }
+    console.log(error)
+    return NextResponse.json({
+      success: false,
+      error: error.message || error.toString()
+    }, {
+      status: 500,
+      headers: { 'content-type': 'application/json' }
+    })
   }
-}
-
-main()
+});
