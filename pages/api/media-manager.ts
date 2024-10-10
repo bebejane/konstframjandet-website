@@ -1,11 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server';
 import { buildClient, Client, ApiError } from '@datocms/cma-client-browser';
 import { Upload } from '@datocms/cma-client/dist/types/generated/SimpleSchemaTypes';
 import { withVercelCronAuthEdge } from 'dato-nextjs-utils/hoc';
 
 export const config = {
-  runtime: 'edge',
-  maxDuration: 60 * 2,
+  runtime: 'edge'
 }
 
 export const client: Client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, extraHeaders: { 'X-Include-Drafts': 'true' } })

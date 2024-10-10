@@ -10,7 +10,16 @@ const chunkArray = (array: any[], chunkSize: number) => {
   return newArr
 }
 
-export const client: Client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, environment: 'main', extraHeaders: { 'X-Include-Drafts': 'true' } })
+function checkIfDuplicateExists(arr) {
+  return new Set(arr).size !== arr.length
+}
+
+export const client: Client = buildClient({
+  apiToken: process.env.DATOCMS_API_TOKEN,
+  //environment: 'dev',
+  environment: 'main',
+  extraHeaders: { 'X-Include-Drafts': 'true' }
+})
 
 const main = async () => {
   try {
@@ -22,16 +31,15 @@ const main = async () => {
       version: 'published',
       page: { limit: 100 }
     })
+    const mainDistrict = districts.find(el => el.subdomain === 'forbundet')
 
     const uploads: Upload[] = []
-    console.log('Getting uploads...')
+    //console.log('Getting uploads...')
 
     // this iterates over every page of results:
     for await (const upload of client.uploads.listPagedIterator({ perPage: 500 })) {
       uploads.push(upload)
     }
-
-    console.log(uploads.length)
 
     const other: Upload[] = []
     const skipped: Upload[] = []
@@ -67,6 +75,46 @@ const main = async () => {
 
     }
 
+
+    for (const upload of other) {
+      try {
+        const refs = await client.uploads.references(upload.id)
+        const allDistricts = refs.map(r => r.district).filter(el => el)
+        const haveMultipleDistricts = !checkIfDuplicateExists(allDistricts) && allDistricts.length > 1
+
+        const district = districts.find(({ id }) => {
+          if (haveMultipleDistricts)
+            return refs.some(r => r.district && allDistricts.filter(d => d !== mainDistrict.id).find((d) => d === id))
+          else
+            return refs.some(r => r.district === id)
+        })
+
+        const user = users.find(el => el.email === district?.email)
+
+        if (haveMultipleDistricts) {
+          //console.log(district.subdomain, district.id, mainDistrict.id, user?.email, upload.basename)
+        }
+
+
+        if (district) {
+
+          console.log(district.subdomain, user.email, upload.basename, haveMultipleDistricts)
+
+          await client.uploads.update(upload.id, {
+            creator: {
+              type: "user",
+              id: user.id
+            }
+          })
+        }
+
+      } catch (err) {
+        console.log(err)
+        return
+      }
+    }
+
+    return process.exit(1)
 
     for (const [subdomain] of Object.entries(districtUploads)) {
       const { uploads, tags, upload_collection } = districtUploads[subdomain]
