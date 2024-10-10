@@ -43,7 +43,7 @@ dependencies:
     version: 2.30.0
   dato-nextjs-utils:
     specifier: github:bebejane/dato-nextjs-utils
-    version: github.com/bebejane/dato-nextjs-utils/2d26ecea9a9985c361979aafcef0776c1002e54b(@apollo/client@3.11.8)(@datocms/cma-client-browser@3.3.12)(@datocms/cma-client-node@3.3.12)(@datocms/cma-client@3.3.12)(@types/node@18.19.55)(@types/react-dom@18.3.0)(@types/react@18.3.11)(datocms-listen@1.0.1)(next-seo@5.15.0)(next@13.5.6)(react-datocms@4.2.2)(react-dom@18.3.1)(react@18.3.1)
+    version: github.com/bebejane/dato-nextjs-utils/b2102f06e442eab768efefbbea0eb430393ab554(@apollo/client@3.11.8)(@datocms/cma-client-browser@3.3.12)(@datocms/cma-client-node@3.3.12)(@datocms/cma-client@3.3.12)(@types/node@18.19.55)(@types/react-dom@18.3.0)(@types/react@18.3.11)(datocms-listen@1.0.1)(next-seo@5.15.0)(next@13.5.6)(react-datocms@4.2.2)(react-dom@18.3.1)(react@18.3.1)
   datocms-structured-text-utils:
     specifier: ^2.0.4
     version: 2.1.12
@@ -11746,11 +11746,11 @@ packages:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: false
 
-  github.com/bebejane/dato-nextjs-utils/2d26ecea9a9985c361979aafcef0776c1002e54b(@apollo/client@3.11.8)(@datocms/cma-client-browser@3.3.12)(@datocms/cma-client-node@3.3.12)(@datocms/cma-client@3.3.12)(@types/node@18.19.55)(@types/react-dom@18.3.0)(@types/react@18.3.11)(datocms-listen@1.0.1)(next-seo@5.15.0)(next@13.5.6)(react-datocms@4.2.2)(react-dom@18.3.1)(react@18.3.1):
-    resolution: {tarball: https://codeload.github.com/bebejane/dato-nextjs-utils/tar.gz/2d26ecea9a9985c361979aafcef0776c1002e54b}
-    id: github.com/bebejane/dato-nextjs-utils/2d26ecea9a9985c361979aafcef0776c1002e54b
+  github.com/bebejane/dato-nextjs-utils/b2102f06e442eab768efefbbea0eb430393ab554(@apollo/client@3.11.8)(@datocms/cma-client-browser@3.3.12)(@datocms/cma-client-node@3.3.12)(@datocms/cma-client@3.3.12)(@types/node@18.19.55)(@types/react-dom@18.3.0)(@types/react@18.3.11)(datocms-listen@1.0.1)(next-seo@5.15.0)(next@13.5.6)(react-datocms@4.2.2)(react-dom@18.3.1)(react@18.3.1):
+    resolution: {tarball: https://codeload.github.com/bebejane/dato-nextjs-utils/tar.gz/b2102f06e442eab768efefbbea0eb430393ab554}
+    id: github.com/bebejane/dato-nextjs-utils/b2102f06e442eab768efefbbea0eb430393ab554
     name: dato-nextjs-utils
-    version: 1.0.429
+    version: 1.0.430
     engines: {node: '>=0.16'}
     peerDependencies:
       '@apollo/client': '>=3'
