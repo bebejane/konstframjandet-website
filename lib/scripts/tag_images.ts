@@ -75,6 +75,8 @@ const main = async () => {
 
     }
 
+    console.log(other.length)
+    return
 
     for (const upload of other) {
       try {
@@ -90,11 +92,6 @@ const main = async () => {
         })
 
         const user = users.find(el => el.email === district?.email)
-
-        if (haveMultipleDistricts) {
-          //console.log(district.subdomain, district.id, mainDistrict.id, user?.email, upload.basename)
-        }
-
 
         if (district) {
 
