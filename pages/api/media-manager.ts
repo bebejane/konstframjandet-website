@@ -1,11 +1,10 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 import { buildClient, Client, ApiError } from '@datocms/cma-client-browser';
 import { Upload } from '@datocms/cma-client/dist/types/generated/SimpleSchemaTypes';
-import { withVercelCronAuth } from 'dato-nextjs-utils/hoc';
+import { withVercelCronAuthEdge } from 'dato-nextjs-utils/hoc';
 
 export const config = {
-  maxDuration: 3 * 60,
-  runtime: 'nodejs'
+  runtime: 'edge'
 }
 
 export const client: Client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, extraHeaders: { 'X-Include-Drafts': 'true' } })
@@ -17,7 +16,7 @@ const chunkArray = (array: any[], chunkSize: number) => {
   return newArr
 }
 
-export default withVercelCronAuth(async (req: NextApiRequest, res: NextApiResponse) => {
+export default withVercelCronAuthEdge(async (req: NextRequest, res: NextResponse) => {
 
   try {
 
@@ -84,9 +83,18 @@ export default withVercelCronAuth(async (req: NextApiRequest, res: NextApiRespon
 
     console.log('Updated:', updated, 'Total uploads:', uploads.length, 'Skipped:', skipped.length, 'Other:', other.length)
 
-    return res.status(200).json({ success: true })
-
+    return NextResponse.json({ success: true }, {
+      status: 200,
+      headers: { 'content-type': 'application/json' }
+    })
   } catch (error) {
-    return res.status(500).json({ success: false, error: error.message || error.toString() })
+    console.log(error)
+    return NextResponse.json({
+      success: false,
+      error: error.message || error.toString()
+    }, {
+      status: 500,
+      headers: { 'content-type': 'application/json' }
+    })
   }
 });

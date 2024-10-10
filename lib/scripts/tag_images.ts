@@ -75,8 +75,7 @@ const main = async () => {
 
     }
 
-    console.log(other.length)
-    return
+    /*
 
     for (const upload of other) {
       try {
@@ -112,6 +111,7 @@ const main = async () => {
     }
 
     return process.exit(1)
+    */
 
     for (const [subdomain] of Object.entries(districtUploads)) {
       const { uploads, tags, upload_collection } = districtUploads[subdomain]
