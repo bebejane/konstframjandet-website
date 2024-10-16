@@ -76,3 +76,10 @@
     }
   }
 }
+
+.taller {
+  @include mq($from: desktop) {
+    position: relative;
+    top: 0;
+  }
+}
