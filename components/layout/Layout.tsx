@@ -29,8 +29,9 @@ export default function Layout({ children, menu: menuFromProps, footer, title, d
 			<MenuMobile districts={districts} menu={menu} />
 			<Footer footer={footer} menu={menu} districts={districts} />
 			<FullscreenGallery
+				key={imageId}
 				index={images?.findIndex((image) => image?.id === imageId)}
-				images={images}
+				images={images as unknown[] as FileField[]}
 				show={imageId !== undefined}
 				onClose={() => setImageId(undefined)}
 			/>
