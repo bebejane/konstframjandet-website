@@ -20,7 +20,7 @@ export type Props = {
   }[]
 }
 
-export default function ProjectItem({ project: { id, title, content, _seoMetaTags }, project, parentProject, projectMenu }: Props) {
+export default function ProjectItem({ project: { id, title, image, content, _seoMetaTags }, project, parentProject, projectMenu }: Props) {
 
   const { asPath } = useRouter()
   const { isHome, district, color } = usePage()
@@ -58,7 +58,7 @@ export default function ProjectItem({ project: { id, title, content, _seoMetaTag
         id={id}
         title={title}
         content={content}
-        record={project}
+        imageCaption={image?.title}
         backLink={'/projekt'}
         seo={_seoMetaTags}
       />

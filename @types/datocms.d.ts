@@ -255,6 +255,7 @@ type DistrictModelFilter = {
   contentContact?: InputMaybe<StructuredTextFilter>;
   dropcap?: InputMaybe<BooleanFilter>;
   email?: InputMaybe<StringFilter>;
+  englishShortcut?: InputMaybe<BooleanFilter>;
   facebook?: InputMaybe<StringFilter>;
   id?: InputMaybe<ItemIdFilter>;
   instagram?: InputMaybe<StringFilter>;
@@ -284,6 +285,8 @@ enum DistrictModelOrderBy {
   dropcap_DESC = 'dropcap_DESC',
   email_ASC = 'email_ASC',
   email_DESC = 'email_DESC',
+  englishShortcut_ASC = 'englishShortcut_ASC',
+  englishShortcut_DESC = 'englishShortcut_DESC',
   facebook_ASC = 'facebook_ASC',
   facebook_DESC = 'facebook_DESC',
   id_ASC = 'id_ASC',
@@ -317,6 +320,7 @@ type DistrictRecord = RecordInterface & {
   contentContact?: Maybe<DistrictModelContentContactField>;
   dropcap?: Maybe<Scalars['BooleanType']>;
   email?: Maybe<Scalars['String']>;
+  englishShortcut?: Maybe<Scalars['BooleanType']>;
   facebook?: Maybe<Scalars['String']>;
   id: Scalars['ItemId'];
   instagram?: Maybe<Scalars['String']>;

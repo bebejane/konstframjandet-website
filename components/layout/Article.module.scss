@@ -24,11 +24,9 @@
       padding-right: calc(2 * var(--grid-unit));
     }
 
-    &.medium {
-    }
+    &.medium {}
 
-    &.large {
-    }
+    &.large {}
 
     &.portrait {
       padding-left: calc(1 * var(--grid-unit));
@@ -39,6 +37,12 @@
         padding-right: calc(0 * var(--grid-unit));
       }
     }
+  }
+
+  .caption {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 
   section {
@@ -58,7 +62,7 @@
         }
 
         &.dropcap {
-          > p:first-of-type {
+          >p:first-of-type {
             &:first-child:first-letter {
               color: var(--page-color);
               float: left;
@@ -72,14 +76,14 @@
           }
         }
 
-        & > *:nth-last-child(2) {
+        &>*:nth-last-child(2) {
           @include mq($from: desktop) {
             margin-bottom: 0;
           }
         }
 
         &.nobackLink {
-          & > *:nth-last-child(2) {
+          &>*:nth-last-child(2) {
             margin-bottom: 1rem;
           }
         }
@@ -131,6 +135,7 @@
   .extraContent {
     border-top: var(--line-thick);
     padding-top: 1em;
+
     p {
       margin-bottom: 0;
     }
