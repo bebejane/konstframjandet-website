@@ -19,10 +19,11 @@ export type ArticleProps = {
   intro?: string
   image?: ImageFileField
   imageSize?: 'small' | 'medium' | 'large'
+  imageCaption?: string
   content?: any
   extraContent?: any
   onClick?: (id: string) => void
-  record: any
+  record?: any
   dropcap?: boolean
   date?: string
   backLink?: string
@@ -30,7 +31,7 @@ export type ArticleProps = {
   seo?: Tag[]
 }
 
-export default function Article({ id, title, content, extraContent, image, imageSize, intro, backLink, record = {}, dropcap = false, seo }: ArticleProps) {
+export default function Article({ id, title, imageCaption, content, extraContent, image, imageSize, intro, backLink, record = {}, dropcap = false, seo }: ArticleProps) {
 
   const [setImageId, setImages, imageId] = useStore((state) => [state.setImageId, state.setImages, state.imageId])
   const description = intro ? remark().use(strip).processSync(intro).value as string : null
@@ -64,6 +65,9 @@ export default function Article({ id, title, content, extraContent, image, image
               </figcaption>
             </figure>
           </>
+        }
+        {imageCaption &&
+          <span className={s.caption}>{imageCaption}</span>
         }
         <section>
           <div className={s.content}>

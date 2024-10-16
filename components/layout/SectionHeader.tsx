@@ -8,28 +8,12 @@ import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components'
 import ListIcon from '/public/images/list.svg'
 import ThumbIcon from '/public/images/thumb.svg'
 import BalanceText from 'react-balance-text'
-import { is } from 'date-fns/locale'
-
 
 export default function SectionHeader() {
 
   const { title, subtitle, image, intro, layout, color, colorOption } = usePage()
   const [view, setView] = useStore((state) => [state.view, state.setView])
   const noImage = !image?.responsiveImage
-
-  const [imageTitle, setImageTitle] = useState<string | null>(null);
-
-  useEffect(() => {
-    const imgElement = document.querySelector('header picture img');
-    if (imgElement) {
-      const title = imgElement.getAttribute('title');
-      setImageTitle(title); // Store the title in the state variable
-    }
-  }, []); // Empty dependency array to run only once on mount
-
-  console.log('Image Title:', imageTitle); // This will log the title to the console
-
-
   return (
     <header className={cn(s.header, s[layout], colorOption && s[colorOption], noImage && s.noimage)}>
       <h1>
