@@ -67,7 +67,7 @@ export default function Article({ id, title, imageCaption, content, extraContent
           </>
         }
         {imageCaption &&
-          <span className={s.caption}>{imageCaption}</span>
+          <span className={cn("small", s.caption)}>{imageCaption}</span>
         }
         <section>
           <div className={s.content}>
