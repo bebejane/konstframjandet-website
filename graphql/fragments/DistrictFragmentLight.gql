@@ -5,6 +5,7 @@ fragment DistrictFragmentLight on DistrictRecord {
 	subdomain
 	instagram
 	facebook
+	englishShortcut
 	color {
 		hex
 	}

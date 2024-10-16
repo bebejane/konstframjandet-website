@@ -33,16 +33,27 @@
     display: block;
     margin-top: -0.15em;
     padding-bottom: 0.25em;
+
+    @include mq($from: desktop) {
+      font-size: calc(0.8 * var(--navbar-height) + calc(-1 * var(--navbar-space)));
+    }
   }
 
   nav {
     display: flex;
     flex-direction: row;
+    padding-bottom: 1rem;
 
     .about {
       @include mq($from: desktop) {
         flex: 0 0 calc(var(--grid-unit));
         padding-right: 3rem;
+      }
+
+      @include mq($from: desktop) {
+        .mobile {
+          display: none;
+        }
       }
 
       line-height: 1.25em;
@@ -67,9 +78,14 @@
       flex-direction: row;
 
       > li {
-        flex: 0 0 calc(100% / 4);
-        padding-right: 1rem;
+        flex: 0 0 calc(100% / 3);
+        padding-right: 2rem;
+        padding-left: 1rem;
         overflow: hidden;
+
+        &:first-of-type {
+          padding-left: 0;
+        }
 
         ul {
           flex-direction: column;

@@ -12,6 +12,7 @@ fragment DistrictFragment on DistrictRecord {
 	email
 	facebook
 	instagram
+	englishShortcut
 	intro(markdown: false)
 	contentContact {
 		value

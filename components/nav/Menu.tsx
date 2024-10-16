@@ -97,6 +97,13 @@ export default function Menu({ districts, menu }: MenuProps) {
 							<>
 								<a className="symbol" href={district.facebook}>7</a>
 								<a className="symbol" href={district.instagram}>8</a>
+								{console.log('district.englishShortcut:', district.englishShortcut)}
+
+								{district.englishShortcut && (
+									<Link href="/om/english" locale={primarySubdomain}>
+										English
+									</Link>
+								)}
 								<Link href={process.env.NODE_ENV === 'production' ? 'https://www.konstframjandet.se' : '/'} locale={primarySubdomain}>Till Konstfrämjandet.se</Link>
 							</>
 						}

@@ -1,6 +1,6 @@
 import s from './SectionHeader.module.scss'
 import cn from 'classnames'
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import { usePage } from '/lib/context/page'
 import useStore from '/lib/store'
 import { Image } from 'react-datocms'
@@ -17,12 +17,27 @@ export default function SectionHeader() {
   const [view, setView] = useStore((state) => [state.view, state.setView])
   const noImage = !image?.responsiveImage
 
+  const [imageTitle, setImageTitle] = useState<string | null>(null);
+
+  useEffect(() => {
+    const imgElement = document.querySelector('header picture img');
+    if (imgElement) {
+      const title = imgElement.getAttribute('title');
+      setImageTitle(title); // Store the title in the state variable
+    }
+  }, []); // Empty dependency array to run only once on mount
+
+  console.log('Image Title:', imageTitle); // This will log the title to the console
+
+
   return (
     <header className={cn(s.header, s[layout], colorOption && s[colorOption], noImage && s.noimage)}>
       <h1>
-        <BalanceText><span>{title}{subtitle && ` — ${subtitle}`}</span></BalanceText>
+        <BalanceText><span>{title}{subtitle && ` — ${subtitle}`}</span> </BalanceText>
         <div className={s.fade}></div>
       </h1>
+
+
 
       {!noImage &&
         <figure>
@@ -31,9 +46,13 @@ export default function SectionHeader() {
             className={s.image}
             pictureClassName={s.image}
             objectFit="cover"
+            alt={image.title}
           />
         </figure>
       }
+
+
+
       {intro &&
         <>
           <div className={s.introWrapper}>
