@@ -1,8 +1,8 @@
 query AllAbouts($first: IntType = 100, $skip: IntType = 0, $districtId: ItemId) {
-	abouts: allAbouts(filter: { district: { eq: $districtId } }, first: $first, skip: $skip) {
+	allAbouts(filter: { district: { eq: $districtId } }, first: $first, skip: $skip) {
 		...AboutFragmentLight
 	}
-	pagination: _allAboutsMeta {
+	_allAboutsMeta {
 		count
 	}
 }
@@ -11,4 +11,89 @@ query About($slug: String!, $districtId: ItemId) {
 	about(filter: { slug: { eq: $slug }, district: { eq: $districtId } }) {
 		...AboutFragment
 	}
+}
+
+fragment AboutFragment on AboutRecord {
+	_createdAt
+	_updatedAt
+	id
+	title
+	slug
+	intro(markdown: false)
+	dropcap
+	content {
+		value
+		blocks {
+			__typename
+			... on ButtonRecord {
+				__typename
+				id
+				text
+				url
+			}
+			... on ImageGalleryRecord {
+				__typename
+				id
+				images {
+					...ImageFragment
+				}
+			}
+			... on ImageRecord {
+				__typename
+				id
+				image {
+					...ImageFragment
+				}
+				layout
+			}
+			... on LogoRecord {
+				__typename
+				id
+				logotypes {
+					...ImageLogoFragment
+				}
+			}
+			... on DownloadPdfRecord {
+				__typename
+				id
+				url
+				text
+				image {
+					...ImageFragment
+				}
+			}
+			... on VideoRecord {
+				__typename
+				caption
+				id
+				video {
+					width
+					height
+					provider
+					providerUid
+					thumbnailUrl
+					title
+					url
+				}
+			}
+			... on AudioRecord {
+				__typename
+				id
+				url
+			}
+		}
+	}
+	_seoMetaTags {
+		...SeoMetaTagsFragment
+	}
+}
+
+fragment AboutFragmentLight on AboutRecord {
+	_createdAt
+	_updatedAt
+	id
+	title
+	slug
+	intro(markdown: false)
+	dropcap
 }

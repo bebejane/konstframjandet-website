@@ -1,3 +1,4 @@
+'use client'
 import s from "./Video.module.scss"
 import { useEffect, useRef, useState } from "react";
 import { useWindowSize } from "rooks"

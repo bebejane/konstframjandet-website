@@ -1,6 +1,7 @@
+'use client'
 import ReactDOM from 'react-dom';
 import React from 'react'
-import { isServer } from '/lib/utils';
+import { isServer } from '@/lib/utils';
 
 type ModalProps = {
   children: React.ReactElement | React.ReactElement[]

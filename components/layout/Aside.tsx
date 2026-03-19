@@ -1,8 +1,9 @@
+'use client'
+
 import s from './Aside.module.scss'
 import { useEffect, useState } from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
-import { useScrollInfo } from 'dato-nextjs-utils/hooks'
 
 export type Props = {
   children: React.ReactNode[] | React.ReactNode

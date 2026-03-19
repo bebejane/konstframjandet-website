@@ -1,6 +1,8 @@
+'use client'
+
 import s from './Loader.module.scss'
 import cn from 'classnames'
-import { sleep } from '/lib/utils'
+import { sleep } from 'next-dato-utils/utils'
 import { useEffect, useRef } from 'react'
 
 type Props = {

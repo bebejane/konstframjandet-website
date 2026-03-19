@@ -1,8 +1,10 @@
+'use client'
+
 import s from './Bubble.module.scss'
 import cn from 'classnames'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { randomInt } from '/lib/utils'
+import { randomInt } from '@/lib/utils'
 
 type Props = {
   children: string | React.ReactNode

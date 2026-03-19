@@ -1,5 +1,4 @@
 import s from './DownloadPdf.module.scss'
-import React from 'react'
 import Link from 'next/link'
 import { Image } from 'react-datocms'
 

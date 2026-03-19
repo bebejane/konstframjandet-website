@@ -1,9 +1,11 @@
+'use client'
+
 import s from "./StartVideo.module.scss"
 import { useEffect, useRef, useState } from "react";
 import { useWindowSize } from "rooks"
 import Youtube from 'react-youtube'
 import Vimeo from '@u-wave/react-vimeo'
-import { DatoMarkdown as Markdown } from "dato-nextjs-utils/components";
+import { Markdown } from "next-dato-utils/components";
 
 export default function StartVideo({ data }) {
 
@@ -39,7 +41,7 @@ export default function StartVideo({ data }) {
 					<div>{provider} not supported!</div>
 			}
 			{title &&
-				<Markdown className={s.caption} allowedElements={['em', 'p']}>{title}</Markdown>
+				<Markdown className={s.caption} allowedElements={['em', 'p']} content={title}/>
 			}
 		</div>
 	)

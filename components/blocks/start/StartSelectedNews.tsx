@@ -1,7 +1,5 @@
 import s from './StartSelectedNews.module.scss'
-import cn from 'classnames'
-import React from 'react'
-import { NewsContainer, NewsCard } from '/components'
+import { NewsContainer, NewsCard } from '@/components'
 import Link from 'next/link'
 
 export type Props = {

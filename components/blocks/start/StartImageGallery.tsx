@@ -1,11 +1,13 @@
+'use client'
+
 import s from './StartImageGallery.module.scss'
 import cn from 'classnames'
-import React, { useState, useRef } from 'react'
+import { useState, useRef } from 'react'
 import { Swiper as SwiperReact, SwiperSlide } from 'swiper/react';
 import type { Swiper } from 'swiper';
 import { Image } from 'react-datocms'
-import { recordToSlug } from '/lib/utils';
-import { Bubble } from '/components'
+import { recordToSlug } from '@/lib/utils';
+import { Bubble } from '@/components'
 import Link from 'next/link';
 
 export type ExternalLinkQuery = {

@@ -1,11 +1,12 @@
+'use client'
+
 import s from './ProjectCard.module.scss'
 import cn from 'classnames'
-import React from 'react'
-import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components'
+import { Markdown } from 'next-dato-utils/components'
 import { Image } from 'react-datocms/image'
-import { truncateWords } from '/lib/utils'
+import { truncateWords } from '@/lib/utils'
 import Link from 'next/link'
-import useDevice from '/lib/hooks/useDevice'
+import useDevice from '@/lib/hooks/useDevice'
 
 export type CardProps = {
   project: ProjectRecord
@@ -34,12 +35,8 @@ export default function ProjectCard({ project: { id, title, intro, image, slug, 
                 <div className={s.bgcolor} style={{ backgroundColor: color.hex }}></div>
               }
               <h1>{truncateWords(title, isMobile ? 200 : 70)}</h1>
-
-              <Markdown className={cn(s.intro)}>
-                {truncateWords(intro, isMobile ? 400 : 200)?.replaceAll('\n', ' ')}
-              </Markdown>
+              <Markdown className={cn(s.intro)} content={intro?.replaceAll('\n', ' ')} truncate={isMobile ? 400 : 200}/>
             </div>
-
           </figure>
         </Link>
 

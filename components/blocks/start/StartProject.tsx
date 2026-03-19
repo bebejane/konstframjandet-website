@@ -1,8 +1,5 @@
 import s from './StartProject.module.scss'
-import cn from 'classnames'
-import React from 'react'
-import { Image } from 'react-datocms'
-import { ProjectContainer, ProjectCard } from '/components'
+import { ProjectContainer, ProjectCard } from '@/components'
 import Link from 'next/link'
 
 export type Props = {

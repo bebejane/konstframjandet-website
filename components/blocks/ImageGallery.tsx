@@ -1,10 +1,12 @@
+'use client'
+
 import s from './ImageGallery.module.scss'
 import cn from 'classnames'
 import React, { useCallback, useState, useRef, useEffect } from 'react'
 import { Swiper as SwiperReact, SwiperSlide } from 'swiper/react';
 import type { Swiper } from 'swiper';
 import { Image } from 'react-datocms'
-import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
+import { Markdown } from 'next-dato-utils/components';
 import { useWindowSize } from 'rooks';
 
 export type ImageGalleryBlockProps = { id: string, data: ImageGalleryRecord, onClick?: Function, editable?: boolean }
@@ -67,7 +69,7 @@ export default function ImageGallery({ id, data: { images }, onClick, editable =
 								onLoad={calculatePositions}
 							/>
 							<figcaption>
-								{item.title && <Markdown allowedElements={['em', 'p']}>{item.title}</Markdown>}
+								{item.title && <Markdown allowedElements={['em', 'p']} content={item.title}/>}
 							</figcaption>
 						</figure>
 					</SwiperSlide>

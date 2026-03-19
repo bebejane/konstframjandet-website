@@ -1,6 +1,6 @@
 import { TypedDocumentNode } from '@apollo/client/core/core.cjs';
 import { useEffect, useState, useCallback } from "react";
-import { apiQuery } from 'dato-nextjs-utils/api';
+import { apiQuery } from 'next-dato-utils/api';
 
 export type UseApiQueryProps = {
   variables?: any,

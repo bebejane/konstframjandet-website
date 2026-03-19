@@ -1,7 +1,9 @@
+'use client'
+
 import s from './SideMenu.module.scss'
 import cn from 'classnames'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 
 export type Props = {
   items: {
@@ -12,14 +14,14 @@ export type Props = {
 }
 
 export default function SideMenu({ items }: Props) {
-  const { asPath } = useRouter()
+  const pathname = usePathname()
 
   if (!items || !items.length) return null
 
   return (
     <ul className={s.sidemenu}>
       {items.map(({ id, slug, title }) =>
-        <li key={id} className={cn(slug === asPath && s.selected)}>
+        <li key={id} className={cn(slug === pathname && s.selected)}>
           <Link href={slug}>{title}</Link>
         </li>
       )}

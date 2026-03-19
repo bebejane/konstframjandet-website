@@ -13,7 +13,7 @@ query Start($districtId: ItemId) {
 			}
 		}
 	}
-	latestNews: allNews(
+	allNews(
 		filter: { district: { eq: $districtId } }
 		first: 4
 		orderBy: [_createdAt_DESC]

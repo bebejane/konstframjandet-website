@@ -1,20 +1,21 @@
+'use client'
 import s from './MenuMobile.module.scss'
 import cn from 'classnames'
-import { useRouter } from 'next/router'
 import { useState, useRef, useEffect } from 'react'
-import { usePage } from '/lib/context/page'
-import { animateLogo, districtUrl } from '/lib/utils'
-import type { Menu } from '/lib/menu'
+import { usePage } from '@/lib/context/page'
+import {  districtUrl } from '@/lib/utils'
+import type { Menu } from '@/lib/menu'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export type Props = {
-  districts: DistrictRecord[]
+  districts: AllDistrictsQuery['allDistricts']
   menu: Menu
 }
 
 export default function MenuMobile({ menu }: Props) {
 
-  const router = useRouter()
+  const pathname = usePathname()
   const { district, isMainDistrict, isHome } = usePage()
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLElement | null>(null)
@@ -24,12 +25,12 @@ export default function MenuMobile({ menu }: Props) {
   menu = menu.map((item) => ['about', 'district'].includes(item.type) ? item : { ...item, items: [] })
 
   useEffect(() => {
-    const handleRouteChangeStart = (path: string) => {
-      setOpen(false)
-      animateLogo('logo-mobile')
-    }
-    router.events.on('routeChangeStart', handleRouteChangeStart)
-    return () => router.events.off('routeChangeStart', handleRouteChangeStart)
+    // const handleRouteChangeStart = (path: string) => {
+    //   setOpen(false)
+    //   animateLogo('logo-mobile')
+    // }
+    // router.events.on('routeChangeStart', handleRouteChangeStart)
+    // return () => router.events.off('routeChangeStart', handleRouteChangeStart)
   }, [])
 
   useEffect(() => {

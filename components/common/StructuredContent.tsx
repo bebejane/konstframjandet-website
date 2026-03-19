@@ -1,6 +1,6 @@
 import { StructuredText, renderNodeRule } from 'react-datocms';
 import { isParagraph, isRoot } from 'datocms-structured-text-utils';
-import Block from '/components/blocks';
+import Block from '@/components/blocks';
 
 export type Props = {
   id: string

@@ -1,9 +1,11 @@
+'use client'
+
 import s from "./SearchResult.module.scss";
 import cn from 'classnames'
-import { Loader } from "/components";
+import { Loader } from '@/components';
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { DatoMarkdown as Markdown } from "dato-nextjs-utils/components";
+import { Markdown } from "next-dato-utils/components";
 
 export type Props = {
   query: string
@@ -70,7 +72,7 @@ export default function SearchResult({ query, district }: Props) {
                     <Link href={slug}>{title}</Link>
                   </h1>
                   <div className={cn(s.intro, "intro")}>
-                    <Markdown>{text}</Markdown>
+                    <Markdown content={text}/>
                   </div>
                   <Link href={slug} className="mid">Läs mer</Link>
                 </li>

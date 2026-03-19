@@ -1,5 +1,4 @@
 import s from './Button.module.scss'
-import React from 'react'
 import Link from 'next/link'
 
 export type Props = { data: ButtonRecord }

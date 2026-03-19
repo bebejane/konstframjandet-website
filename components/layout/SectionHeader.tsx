@@ -1,12 +1,13 @@
+'use client'
+
 import s from './SectionHeader.module.scss'
 import cn from 'classnames'
-import React, { useEffect, useState } from 'react';
-import { usePage } from '/lib/context/page'
-import useStore from '/lib/store'
+import { usePage } from '@/lib/context/page'
+import useStore from '@/lib/store'
 import { Image } from 'react-datocms'
-import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components'
-import ListIcon from '/public/images/list.svg'
-import ThumbIcon from '/public/images/thumb.svg'
+import { Markdown } from 'next-dato-utils/components'
+//import ListIcon from '/public/images/list.svg'
+//import ThumbIcon from '/public/images/thumb.svg'
 import BalanceText from 'react-balance-text'
 
 export default function SectionHeader() {
@@ -20,29 +21,21 @@ export default function SectionHeader() {
         <BalanceText><span>{title}{subtitle && ` — ${subtitle}`}</span> </BalanceText>
         <div className={s.fade}></div>
       </h1>
-
-
-
-      {!noImage &&
+      {!noImage && image.responsiveImage &&
         <figure>
           <Image
             data={image.responsiveImage}
             className={s.image}
             pictureClassName={s.image}
             objectFit="cover"
-            alt={image.title}
+            //alt={image.title}
           />
         </figure>
       }
-
-
-
       {intro &&
         <>
           <div className={s.introWrapper}>
-            <Markdown className={cn(s.intro, "intro")}>
-              {intro?.replaceAll('\n', ' ')}
-            </Markdown>
+            <Markdown className={cn(s.intro, "intro")} content={intro?.replaceAll('\n', ' ')}/>
             <div className={s.fade}></div>
           </div>
         </>
@@ -52,7 +45,7 @@ export default function SectionHeader() {
       }
       {layout === 'news' &&
         <span className={cn(s.view, 'mid')} onClick={() => setView(view === 'full' ? 'list' : 'full')}>
-          {view === 'list' ? <ThumbIcon /> : <ListIcon />}
+          {/* {view === 'list' ? <ThumbIcon /> : <ListIcon />} */}
         </span>
       }
     </header >

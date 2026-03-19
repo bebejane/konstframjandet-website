@@ -1,4 +1,6 @@
-import create from "zustand";
+import { create } from "zustand";
+import { shallow } from 'zustand/shallow';
+
 
 export interface StoreState {
   showMenu: boolean
@@ -7,7 +9,7 @@ export interface StoreState {
   searchQuery: string | undefined
   view: 'list' | 'full'
   images: ImageFileField[]
-  imageId: string
+  imageId?: string
   setShowMenu: (showMenu: boolean) => void
   setShowMenuMobile: (showMenuMobile: boolean) => void
   setImages: (images: ImageFileField[] | undefined) => void

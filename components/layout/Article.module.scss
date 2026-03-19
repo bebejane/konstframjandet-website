@@ -67,7 +67,7 @@
             &:first-child:first-letter {
               color: var(--page-color);
               float: left;
-              font-family: $headline-font;
+              font-family: var(--headline-font);
               font-weight: normal;
               line-height: 0.7em;
               font-size: 5rem;

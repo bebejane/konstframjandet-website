@@ -1,5 +1,5 @@
-query AllDistrics {
-	districts: allDistricts(first: 100, orderBy: name_ASC) {
+query AllDistricts {
+	allDistricts(first: 100, orderBy: name_ASC) {
 		...DistrictFragmentLight
 	}
 }
@@ -13,5 +13,228 @@ query District($districtId: ItemId) {
 query DistrictBySubdomain($subdomain: String) {
 	district(filter: { subdomain: { eq: $subdomain } }) {
 		...DistrictFragment
+	}
+}
+
+fragment DistrictFragment on DistrictRecord {
+	id
+	name
+	email
+	subdomain
+	color {
+		hex
+		red
+		green
+		blue
+	}
+	email
+	facebook
+	instagram
+	englishShortcut
+	intro(markdown: false)
+	contentContact {
+		value
+		blocks {
+			__typename
+			... on ButtonRecord {
+				__typename
+				id
+				text
+				url
+			}
+			... on ImageGalleryRecord {
+				__typename
+				id
+				images {
+					...ImageFragment
+				}
+			}
+			... on ImageRecord {
+				__typename
+				id
+				image {
+					...ImageFragment
+				}
+				layout
+			}
+			... on LogoRecord {
+				__typename
+				id
+				logotypes {
+					id
+					mimeType
+					url
+					title
+					alt
+					height
+					width
+					responsiveImage(
+						imgixParams: { q: 70, ar: "4:4", auto: format }
+						sizes: "(max-width: 46.24em) 100vw, 20vw"
+					) {
+						src
+						width
+						height
+						alt
+						title
+						base64
+						bgColor
+						sizes
+					}
+				}
+			}
+			... on VideoRecord {
+				__typename
+				caption
+				id
+				video {
+					width
+					height
+					provider
+					providerUid
+					thumbnailUrl
+					title
+					url
+				}
+			}
+			... on AudioRecord {
+				__typename
+				id
+				url
+			}
+		}
+	}
+	content {
+		__typename
+		... on ImageShortcutRecord {
+			__typename
+			id
+			image {
+				...ImageFragment
+			}
+			headline
+			text
+			link {
+				__typename
+				... on ExternalLinkRecord {
+					__typename
+					url
+					title
+				}
+				... on InternalLinkRecord {
+					__typename
+					id
+					record {
+						... on AboutRecord {
+							__typename
+							id
+							slug
+							title
+						}
+						... on NewsRecord {
+							__typename
+							id
+							slug
+							title
+						}
+						... on ProjectRecord {
+							__typename
+							id
+							slug
+							title
+						}
+					}
+				}
+			}
+		}
+		... on StartProjectRecord {
+			__typename
+			id
+			projects {
+				...ProjectFragmentLight
+			}
+		}
+		... on StartSelectedNewsRecord {
+			__typename
+			id
+			news {
+				...NewsFragmentLight
+			}
+		}
+		... on StartLatestNewsRecord {
+			__typename
+			id
+			count
+		}
+		... on StartTextRecord {
+			__typename
+			text
+			link {
+				__typename
+				... on ExternalLinkRecord {
+					__typename
+					url
+					title
+				}
+				... on InternalLinkRecord {
+					__typename
+					id
+					record {
+						... on AboutRecord {
+							__typename
+							id
+							slug
+							title
+						}
+						... on NewsRecord {
+							__typename
+							id
+							slug
+							title
+						}
+						... on ProjectRecord {
+							__typename
+							id
+							slug
+							title
+						}
+					}
+				}
+			}
+		}
+		... on StartImageGalleryRecord {
+			__typename
+			id
+			links {
+				... on ExternalLinkRecord {
+					...ExternalLinkFragment
+				}
+				... on NewsRecord {
+					...NewsFragmentLight
+				}
+				... on ProjectRecord {
+					...ProjectFragmentLight
+				}
+			}
+		}
+		... on StartSelectedDistrictNewsRecord {
+			__typename
+		}
+	}
+	_seoMetaTags {
+		...SeoMetaTagsFragment
+	}
+}
+
+fragment DistrictFragmentLight on DistrictRecord {
+	id
+	name
+	email
+	subdomain
+	instagram
+	facebook
+	englishShortcut
+	color {
+		hex
 	}
 }

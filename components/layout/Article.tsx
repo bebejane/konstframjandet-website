@@ -1,14 +1,15 @@
+'use client'
+
 import s from './Article.module.scss'
 import cn from 'classnames'
 import React, { useEffect, useRef, useState } from 'react'
-import { StructuredContent } from "/components";
+import { StructuredContent } from '@/components';
 import { Image } from 'react-datocms';
-import { DatoSEO, DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
-import { useScrollInfo } from 'dato-nextjs-utils/hooks';
+import {Markdown } from 'next-dato-utils/components';
+import { useScrollInfo } from 'next-dato-utils/hooks';
 import strip from 'strip-markdown'
 import { remark } from 'remark'
-
-import useStore from '/lib/store';
+import useStore from '@/lib/store';
 import Link from 'next/link';
 
 export type ArticleProps = {
@@ -47,7 +48,7 @@ export default function Article({ id, title, imageCaption, content, extraContent
 
   return (
     <>
-      <DatoSEO seo={seo} title={title} description={description} />
+      {/* <DatoSEO seo={seo} title={title} description={description} /> */}
       <div className={cn(s.article, 'article')}>
         {image?.responsiveImage &&
           <>
@@ -72,7 +73,7 @@ export default function Article({ id, title, imageCaption, content, extraContent
         <section>
           <div className={s.content}>
             {intro &&
-              <Markdown className={cn(s.intro, "intro")}>{intro}</Markdown>
+              <Markdown className={cn(s.intro, "intro")} content={intro}/>
             }
             <div className={cn(s.structured, (record.dropcap || dropcap) && s.dropcap, !backLink && s.nobackLink)}>
               <StructuredContent

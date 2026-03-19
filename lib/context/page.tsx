@@ -1,7 +1,23 @@
-import { useContext, createContext } from "react";
-import { primarySubdomain } from "/lib/utils";
+'use client'
 
-const initialState: PageProps = {
+import { useContext, createContext } from "react";
+import { primarySubdomain } from "@/lib/utils";
+
+export type PageMeta = {
+  district?: DistrictRecord
+  title?: string
+  subtitle?: string
+  image?: FileField
+  intro?: string
+  color?: string
+  colorOption?: string
+  layout: 'full' | 'project' | 'home' | 'news'
+  isHome: boolean
+  isMainDistrict: boolean
+}
+
+
+const initialState: PageMeta = {
   district: undefined,
   title: undefined,
   subtitle: undefined,
@@ -15,8 +31,8 @@ const initialState: PageProps = {
 export const PageContext = createContext(initialState);
 
 export type PageProviderProps = {
-  children: React.ReactElement,
-  value: PageProps
+  children: React.ReactNode | React.ReactNode[] | undefined,
+  value: PageMeta
 }
 
 // Context provider
@@ -34,6 +50,6 @@ export const PageProvider = ({ children, value }: PageProviderProps) => {
   )
 };
 // usePage hook
-export const usePage = (): PageProps => {
+export const usePage = (): PageMeta => {
   return useContext(PageContext)
 }

@@ -14,11 +14,11 @@
   input {
     background-color: var(--light-grey);
     width: 100%;
-    font-family: $headline-font;
+    font-family: var(--headline-font);
   }
 
   .small {
-    font-family: $body-font;
+    font-family: var(--body-font);
   }
 
   button {

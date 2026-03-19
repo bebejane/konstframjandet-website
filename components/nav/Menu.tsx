@@ -1,18 +1,21 @@
+'use client'
+
 import s from './Menu.module.scss'
 import cn from 'classnames'
 import { useRouter } from 'next/router'
 import { useState, useRef, useEffect } from 'react'
-import { primarySubdomain, districtUrl } from '/lib/utils'
-import { useScrollInfo } from 'dato-nextjs-utils/hooks'
-import { usePage } from '/lib/context/page'
-import { animateLogo } from '/lib/utils'
-import { SearchResult } from '/components'
-import type { Menu } from '/lib/menu'
+import { primarySubdomain, districtUrl } from '@/lib/utils'
+import { useScrollInfo } from 'next-dato-utils/hooks'
+import { usePage } from '@/lib/context/page'
+import { animateLogo } from '@/lib/utils'
+import { SearchResult } from '@/components'
+import type { Menu } from '@/lib/menu'
 import Link from 'next/link'
 import { useOnClickOutside } from 'usehooks-ts'
+import { usePathname } from 'next/navigation'
 
 export type MenuProps = {
-	districts: DistrictRecord[]
+	districts: AllDistrictsQuery['allDistricts']
 	menu: Menu
 }
 
@@ -23,8 +26,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 	const searchBarRef = useRef<HTMLInputElement | null>(null)
 	const districtsPopupRef = useRef<HTMLDivElement | null>(null)
 
-	const router = useRouter()
-	const { asPath } = router
+	const pathname = usePathname()
 	const { district, isHome, isMainDistrict } = usePage()
 	const { scrolledPosition } = useScrollInfo()
 	const [offset, setOffset] = useState(0)
@@ -61,13 +63,13 @@ export default function Menu({ districts, menu }: MenuProps) {
 
 	useEffect(() => {
 
-		const handleRouteChangeStart = (path: string) => {
-			setShowDistricts(false)
-			animateLogo('logo')
-			resetSearch()
-		}
-		router.events.on('routeChangeStart', handleRouteChangeStart)
-		return () => router.events.off('routeChangeStart', handleRouteChangeStart)
+		// const handleRouteChangeStart = (path: string) => {
+		// 	setShowDistricts(false)
+		// 	animateLogo('logo')
+		// 	resetSearch()
+		// }
+		// router.events.on('routeChangeStart', handleRouteChangeStart)
+		// return () => router.events.off('routeChangeStart', handleRouteChangeStart)
 	}, [])
 
 	useEffect(() => {
@@ -113,7 +115,7 @@ export default function Menu({ districts, menu }: MenuProps) {
 					<ul>
 						{menu.map(({ type, slug, label }, idx) =>
 							type !== 'district' ?
-								<li key={idx} className={cn(((asPath.startsWith(`/${slug.split('/')[1]}`) && slug !== '/') || (isHome && type == 'home')) && !showDistricts && s.active)}>
+								<li key={idx} className={cn(((pathname.startsWith(`/${slug?.split('/')[1]}`) && slug !== '/') || (isHome && type == 'home')) && !showDistricts && s.active)}>
 									{slug ? <Link href={slug}>{label}</Link> : <>{label}</>}
 								</li>
 								: isMainDistrict &&

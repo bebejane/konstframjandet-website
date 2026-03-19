@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { recordToSlug } from '/lib/utils'
+import { recordToSlug } from '@/lib/utils'
 
 export type Props = {
   link: ExternalLinkRecord | (InternalLinkRecord & { internalTitle: String }) | any

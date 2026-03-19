@@ -1,6 +1,6 @@
 import s from './StartText.module.scss'
 import React from 'react'
-import { DatoLink } from '/components'
+import { DatoLink } from '@/components'
 
 export type TextBlockProps = {
   data: StartTextRecord

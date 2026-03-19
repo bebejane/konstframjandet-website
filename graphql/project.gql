@@ -1,5 +1,5 @@
 query AllProjects($first: IntType = 100, $skip: IntType = 0, $districtId: ItemId) {
-	projects: allProjects(
+	allProjects(
 		filter: { district: { eq: $districtId } }
 		first: $first
 		skip: $skip
@@ -7,7 +7,7 @@ query AllProjects($first: IntType = 100, $skip: IntType = 0, $districtId: ItemId
 	) {
 		...ProjectFragmentLight
 	}
-	pagination: _allProjectsMeta {
+	_allProjectsMeta {
 		count
 	}
 }
@@ -25,7 +25,210 @@ query ProjectBySubpage($subpageId: ItemId) {
 }
 
 query ProjectSubpage($slug: String!, $districtId: ItemId) {
-	project: projectSubpage(filter: { slug: { eq: $slug }, district: { eq: $districtId } }) {
+	projectSubpage(filter: { slug: { eq: $slug }, district: { eq: $districtId } }) {
 		...ProjectSubpageFragment
 	}
+}
+
+fragment ProjectFragment on ProjectRecord {
+	id
+	title
+	subtitle
+	slug
+	_createdAt
+	intro(markdown: false)
+	color {
+		hex
+	}
+	colorOption
+	completed
+	webpage
+	district {
+		...DistrictFragmentLight
+	}
+	image {
+		...ImageFragment
+	}
+	subpage {
+		...ProjectSubpageFragmentLight
+	}
+	dropcap
+	content {
+		value
+		blocks {
+			__typename
+			... on ButtonRecord {
+				__typename
+				id
+				text
+				url
+			}
+			... on DownloadPdfRecord {
+				__typename
+				id
+				url
+				text
+				image {
+					...ImageFragment
+				}
+			}
+			... on ImageGalleryRecord {
+				__typename
+				id
+				images {
+					...ImageFragment
+				}
+			}
+			... on ImageRecord {
+				__typename
+				id
+				image {
+					...ImageFragment
+				}
+				layout
+			}
+			... on LogoRecord {
+				__typename
+				id
+				logotypes {
+					...ImageLogoFragment
+				}
+			}
+			... on VideoRecord {
+				__typename
+				caption
+				id
+				video {
+					width
+					height
+					provider
+					providerUid
+					thumbnailUrl
+					title
+					url
+				}
+			}
+			... on AudioRecord {
+				__typename
+				id
+				url
+			}
+		}
+	}
+	_seoMetaTags {
+		...SeoMetaTagsFragment
+	}
+}
+
+fragment ProjectFragmentLight on ProjectRecord {
+	_createdAt
+	_updatedAt
+	id
+	title
+	subtitle
+	slug
+	intro(markdown: false)
+	color {
+		hex
+	}
+	colorOption
+	completed
+	district {
+		...DistrictFragmentLight
+	}
+	subpage {
+		...ProjectSubpageFragmentLight
+	}
+	image {
+		...ImageFragment
+	}
+}
+
+fragment ProjectSubpageFragment on ProjectSubpageRecord {
+	_createdAt
+	id
+	title
+	subtitle
+	slug
+	intro(markdown: false)
+	image {
+		...ImageFragment
+	}
+	dropcap
+	colorOption
+	content {
+		value
+		blocks {
+			__typename
+			... on ButtonRecord {
+				__typename
+				id
+				text
+				url
+			}
+			... on ImageGalleryRecord {
+				__typename
+				id
+				images {
+					...ImageFragment
+				}
+			}
+			... on ImageRecord {
+				__typename
+				id
+				image {
+					...ImageFragment
+				}
+				layout
+			}
+			... on LogoRecord {
+				__typename
+				id
+				logotypes {
+					...ImageLogoFragment
+				}
+			}
+			... on DownloadPdfRecord {
+				__typename
+				id
+				url
+				text
+				image {
+					...ImageFragment
+				}
+			}
+			... on VideoRecord {
+				__typename
+				caption
+				id
+				video {
+					width
+					height
+					provider
+					providerUid
+					thumbnailUrl
+					title
+					url
+				}
+			}
+			... on AudioRecord {
+				__typename
+				id
+				url
+			}
+		}
+	}
+	_seoMetaTags {
+		...SeoMetaTagsFragment
+	}
+}
+
+fragment ProjectSubpageFragmentLight on ProjectSubpageRecord {
+	_createdAt
+	_updatedAt
+	id
+	title
+	subtitle
+	slug
+	intro(markdown: false)
 }

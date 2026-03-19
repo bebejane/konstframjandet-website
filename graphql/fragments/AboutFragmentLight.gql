@@ -1,9 +1,0 @@
-fragment AboutFragmentLight on AboutRecord {
-	_createdAt
-	_updatedAt
-	id
-	title
-	slug
-	intro(markdown: false)
-	dropcap
-}

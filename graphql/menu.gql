@@ -1,10 +1,10 @@
 query Menu($districtId: ItemId) {
-	abouts: allAbouts(filter: { district: { eq: $districtId } }, first: 100, orderBy: position_ASC) {
+	allAbouts(filter: { district: { eq: $districtId } }, first: 100, orderBy: position_ASC) {
 		id
 		slug
 		title
 	}
-	projects: allProjects(
+	allProjects(
 		filter: { district: { eq: $districtId } }
 		first: 4
 		orderBy: _createdAt_DESC
@@ -13,12 +13,12 @@ query Menu($districtId: ItemId) {
 		slug
 		title
 	}
-	news: allNews(filter: { district: { eq: $districtId } }, first: 4, orderBy: _createdAt_DESC) {
+	allNews(filter: { district: { eq: $districtId } }, first: 4, orderBy: _createdAt_DESC) {
 		id
 		slug
 		title
 	}
-	districts: allDistricts(first: 100, orderBy: name_ASC) {
+	allDistricts(first: 100, orderBy: name_ASC) {
 		id
 		subdomain
 		facebook

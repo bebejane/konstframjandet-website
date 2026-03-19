@@ -1,9 +1,0 @@
-fragment ProjectSubpageFragmentLight on ProjectSubpageRecord {
-	_createdAt
-	_updatedAt
-	id
-	title
-	subtitle
-	slug
-	intro(markdown: false)
-}

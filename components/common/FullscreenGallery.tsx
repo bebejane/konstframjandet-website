@@ -1,13 +1,14 @@
+'use client'
 import s from './FullscreenGallery.module.scss'
 import cn from 'classnames'
-import { DatoMarkdown as Markdown } from "dato-nextjs-utils/components";
+import { Markdown } from "next-dato-utils/components";
 import { Image } from 'react-datocms'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectFade } from 'swiper'
+import { EffectFade } from 'swiper/modules'
 import SwiperCore from 'swiper'
 import React, { useState, useRef, useEffect } from 'react';
 import type { Swiper as SwiperType } from 'swiper'
-import { Loader, Modal } from "/components";
+import { Loader, Modal } from '@/components';
 
 SwiperCore.use([EffectFade]);
 

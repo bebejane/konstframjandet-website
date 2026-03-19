@@ -1,4 +1,4 @@
-import { StartSelectionContainer, StartSelectionCard } from '/components'
+import { StartSelectionContainer, StartSelectionCard } from '@/components'
 
 export type Props = {
   data: StartSelectedDistrictNewsRecord

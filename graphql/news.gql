@@ -1,5 +1,5 @@
 query AllNews($first: IntType = 100, $skip: IntType = 0, $districtId: ItemId) {
-	news: allNews(
+	allNews(
 		filter: { district: { eq: $districtId } }
 		first: $first
 		skip: $skip
@@ -8,7 +8,7 @@ query AllNews($first: IntType = 100, $skip: IntType = 0, $districtId: ItemId) {
 		...NewsFragmentLight
 	}
 
-	pagination: _allNewsMeta(filter: { district: { eq: $districtId } }) {
+	_allNewsMeta(filter: { district: { eq: $districtId } }) {
 		count
 	}
 }
@@ -17,4 +17,119 @@ query News($slug: String!, $districtId: ItemId) {
 	news(filter: { slug: { eq: $slug }, district: { eq: $districtId } }) {
 		...NewsFragment
 	}
+}
+
+fragment NewsFragment on NewsRecord {
+	id
+	title
+	intro(markdown: false)
+	image {
+		...ImageFragment
+	}
+	address
+	date
+	district {
+		...DistrictFragment
+	}
+	externalLink
+	misc
+	subtitle
+	time
+	title
+	where
+	slug
+	dropcap
+	extra {
+		value
+	}
+	_createdAt
+	content {
+		value
+		blocks {
+			__typename
+			... on ButtonRecord {
+				__typename
+				id
+				text
+				url
+			}
+			... on ImageGalleryRecord {
+				__typename
+				id
+				images {
+					...ImageFragment
+				}
+			}
+			... on ImageRecord {
+				__typename
+				id
+				image {
+					...ImageFragment
+				}
+				layout
+			}
+			... on LogoRecord {
+				__typename
+				id
+				logotypes {
+					...ImageLogoFragment
+				}
+			}
+			... on DownloadPdfRecord {
+				__typename
+				id
+				url
+				text
+				image {
+					...ImageFragment
+				}
+			}
+			... on VideoRecord {
+				__typename
+				caption
+				id
+				video {
+					width
+					height
+					provider
+					providerUid
+					thumbnailUrl
+					title
+					url
+				}
+			}
+			... on AudioRecord {
+				__typename
+				id
+				url
+			}
+		}
+	}
+	_seoMetaTags {
+		...SeoMetaTagsFragment
+	}
+}
+
+fragment NewsFragmentLight on NewsRecord {
+	_createdAt
+	_updatedAt
+	id
+	title
+	#intro(markdown: false)
+	image {
+		...ImageThumbnailFragment
+	}
+	address
+	date
+	district {
+		...DistrictFragmentLight
+	}
+	externalLink
+	misc
+	subtitle
+	time
+	title
+	where
+	slug
+	_createdAt
 }

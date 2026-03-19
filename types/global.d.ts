@@ -1,0 +1,4 @@
+
+type ThumbnailImage = {
+  thumb: FileField
+}

@@ -1,5 +1,4 @@
-import styles from './ReadMore.module.scss'
-import cn from 'classnames'
+import s from './ReadMore.module.scss'
 import Link from 'next/link'
 
 type Props = {
@@ -17,7 +16,7 @@ export default function ReadMore({ message, link, invert = false, regional, exte
   return (
     <Link
       href={link}
-      className={cn(styles.more)}
+      className={s.more}
     >
       {message}
     </Link>

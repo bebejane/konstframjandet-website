@@ -1,9 +1,11 @@
-import { TypedDocumentNode } from "@apollo/client/core";
-import { apiQuery, ApiQueryOptions } from "dato-nextjs-utils/api";
-import { AllDistricsDocument, DistrictBySubdomainDocument } from '/graphql';
+import { apiQuery, TypedDocumentNode,  } from "next-dato-utils/api";
+import { sleep  } from "next-dato-utils/utils";
+import { AllDistrictsDocument, DistrictBySubdomainDocument } from '@/graphql';
 import * as EmailValidator from 'email-validator';
 import { ReactNode } from "react";
 
+export const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+export const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'localhost:3000';
 export const isServer = typeof window === 'undefined';
 
 export const breakpoints = {
@@ -109,68 +111,7 @@ export const truncateParagraph = (s: string, sentances: number = 1, ellipsis: bo
 
 export const isEmptyObject = (obj: any) => Object.keys(obj).filter(k => obj[k] !== undefined).length === 0
 
-export const capitalize = (str: string, lower: boolean = false) => {
-  return (lower ? str.toLowerCase() : str).replace(/(?:^|\s|["'([{])+\S/g, match => match.toUpperCase());
-}
 
-export const sleep = (ms: number) => new Promise((resolve, refject) => setTimeout(resolve, ms))
-
-export const apiQueryAll = async (doc: TypedDocumentNode, opt: ApiQueryOptions = {}): Promise<any> => {
-
-  let size = 100;
-  let skip = 0;
-
-  const results = {}
-  const res = await apiQuery(doc, { variables: { ...opt.variables, first: size, skip } });
-
-  if (res.pagination?.count === undefined)
-    throw new Error('Not a pagable query')
-
-  const { count } = res.pagination
-
-  const mergeProps = (res) => {
-    const props = Object.keys(res);
-
-    for (let i = 0; i < props.length; i++) {
-      const k = props[i]
-      const el = res[props[i]];
-      if (Array.isArray(el)) {
-        results[k] = !results[k] ? el : results[k].concat(el)
-      } else
-        results[k] = el;
-    }
-  }
-
-  const isRejected = (input: PromiseSettledResult<unknown>): input is PromiseRejectedResult =>
-    input.status === 'rejected'
-
-  const isFulfilled = <T>(input: PromiseSettledResult<T>): input is PromiseFulfilledResult<T> =>
-    input.status === 'fulfilled'
-
-  mergeProps(res)
-
-  let reqs = []
-  for (let skip = size; skip < count; skip += size) {
-    if (reqs.length < 50 && skip + size < count) {
-      reqs.push(apiQuery(doc, { variables: { ...opt.variables, first: size, skip } }))
-    } else {
-
-      reqs.push(apiQuery(doc, { variables: { ...opt.variables, first: size, skip } }))
-      const data = await Promise.allSettled(reqs)
-      const error = data.find(isRejected)?.reason
-      if (error)
-        throw new Error(error)
-
-      for (let x = 0; x < data.length; x++) {
-        //@ts-ignore
-        mergeProps(data[x].value);
-      }
-      await sleep(100)
-      reqs = []
-    }
-  }
-  return results
-}
 export const randomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -179,7 +120,7 @@ export const randomInt = (min, max) => {
 
 export async function getStaticDistrictPaths(doc: TypedDocumentNode, segment: string) {
 
-  const res = await apiQueryAll(doc)
+  const res = await apiQuery(doc, {all: true})
   const data = res[Object.keys(res)[0]];
   const paths = []
   const districts = await allDistricts(true)
@@ -196,8 +137,8 @@ export async function getStaticDistrictPaths(doc: TypedDocumentNode, segment: st
 }
 
 export async function allDistricts(excludeMain: boolean = false): Promise<DistrictRecord[]> {
-  const { districts } = await apiQuery(AllDistricsDocument)
-  return districts.filter(({ subdomain }) => excludeMain ? subdomain !== primarySubdomain : true) as DistrictRecord[]
+  const { allDistricts } = await apiQuery(AllDistrictsDocument, {all: true})
+  return allDistricts.filter(({ subdomain }) => excludeMain ? subdomain !== primarySubdomain : true) as DistrictRecord[]
 }
 
 export async function mainDistrict(): Promise<DistrictRecord> {
@@ -266,3 +207,4 @@ export const truncateWords = (text: string, minLength: number): string => {
   }
   return truncatedText + '...';
 }
+

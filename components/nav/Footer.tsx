@@ -1,17 +1,17 @@
+'use client'
+
 import s from './Footer.module.scss'
 import cn from 'classnames'
-import type { Menu } from '/lib/menu'
+import type { Menu } from '@/lib/menu'
 import Link from 'next/link'
-import { primarySubdomain } from '/lib/utils'
-import { usePage } from '/lib/context/page'
+import { usePage } from '@/lib/context/page'
 
 export type FooterProps = {
-	footer: any
 	menu: Menu
-	districts: DistrictRecord[]
+	districts: AllDistrictsQuery['allDistricts']
 }
 
-export default function Footer({ footer, menu, districts }: FooterProps) {
+export default function Footer({ menu }: FooterProps) {
 
 	const { isMainDistrict } = usePage()
 
@@ -33,15 +33,7 @@ export default function Footer({ footer, menu, districts }: FooterProps) {
 					</div>
 				</div>
 				<ul>
-					{menu
-						/*
-						.filter(({ type }) => type !== 'home')
-						.filter(({ type }) => !(type === 'project' && isMainDistrict))
-						.filter(({ type }) => !(type === 'district' && !isMainDistrict))
-						.filter(({ type }) => !(type === 'contact' && isMainDistrict))*/
-						.filter(({ type }) => type === 'contact' || type === 'about')
-
-						.map(({ type, label, slug, items, subdomain }, idx) =>
+					{menu.filter(({ type }) => type === 'contact' || type === 'about').map(({ type, label, slug, items, subdomain }, idx) =>
 							<li key={idx} className={cn(isMainDistrict && type === 'district' && s.double)}>
 								{slug ? <Link href={slug} locale={subdomain}>{label}</Link> : <>{label}</>}
 								<ul>

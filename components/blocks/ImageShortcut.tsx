@@ -1,8 +1,7 @@
 import s from './ImageShortcut.module.scss'
 import cn from 'classnames'
-import React from 'react'
 import { Image } from 'react-datocms'
-import { Bubble, DatoLink } from '/components'
+import { Bubble, DatoLink } from '@/components'
 
 export type ImageShortcutBlockProps = {
   data: ImageShortcutRecord

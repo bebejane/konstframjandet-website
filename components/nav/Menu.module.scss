@@ -16,7 +16,7 @@
   max-width: 0;
   z-index: var(--z-logo);
   left: var(--outer-margin);
-  font-family: $symbol-font;
+  font-family: var(--symbol-font);
   font-size: var(--logo-size);
 
   a {
@@ -82,7 +82,7 @@
       &:not(:last-of-type)::after {
         content: "4";
         padding-left: 0.6em;
-        font-family: $symbol-font;
+        font-family: var(--symbol-font);
       }
     }
   }
@@ -133,7 +133,7 @@
         content: "4";
         color: var(--black);
         padding-left: 0.6em;
-        font-family: $symbol-font;
+        font-family: var(--symbol-font);
       }
     }
   }

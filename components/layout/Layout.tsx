@@ -1,10 +1,10 @@
+'use client'
+
 import s from './Layout.module.scss'
 import React, { useState } from 'react'
-import { Content, Footer, Grid, Menu, FullscreenGallery, MenuMobile } from '/components'
-import type { MenuItem } from '/lib/menu'
-import { useRouter } from 'next/router'
-import { useStore } from '/lib/store'
-import { usePage } from '/lib/context/page'
+import { Content, Footer, Menu, FullscreenGallery, MenuMobile } from '@/components'
+import type { MenuItem } from '@/lib/menu'
+import { useStore } from '@/lib/store'
 
 
 export type LayoutProps = {
@@ -27,15 +27,14 @@ export default function Layout({ children, menu: menuFromProps, footer, title, d
 			</Content>
 			<Menu districts={districts} menu={menu} />
 			<MenuMobile districts={districts} menu={menu} />
-			<Footer footer={footer} menu={menu} districts={districts} />
+			<Footer  menu={menu} districts={districts} />
 			<FullscreenGallery
 				key={imageId}
 				index={images?.findIndex((image) => image?.id === imageId)}
 				images={images as unknown[] as FileField[]}
 				show={imageId !== undefined}
 				onClose={() => setImageId(undefined)}
-			/>
-			<Grid />
+			/>		
 		</>
-	)
+	)	
 }
