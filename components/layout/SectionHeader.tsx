@@ -54,6 +54,7 @@ export default function SectionHeader() {
 				onClick={() => setView(view === 'full' ? 'list' : 'full')}
 			>
 				{view === 'list' ? <ThumbIcon /> : <ListIcon />}
+				Hej
 			</span>
 			{/* )} */}
 		</header>

@@ -46,9 +46,9 @@ export default function StartImageGallery({ id, data: { links } }: Props) {
 					<SwiperSlide key={idx} className={s.slide}>
 						<Link href={recordToSlug(item)}>
 							<figure>
-								{(item.image || item.linkImage) && (
+								{(item.image ?? item.linkImage) && (
 									<Image
-										data={(item.image || item.linkImage).responsiveImage}
+										data={(item.image ?? item.linkImage).responsiveImage}
 										className={s.picture}
 										pictureClassName={s.picture}
 										placeholderClassName={s.picture}
@@ -72,16 +72,16 @@ export default function StartImageGallery({ id, data: { links } }: Props) {
 				))}
 			</SwiperReact>
 			<div className={s.prev}>
-				<Bubble onClick={() => swiperRef.current.slidePrev()}>‹</Bubble>
+				<Bubble onClick={() => swiperRef.current?.slidePrev()}>‹</Bubble>
 			</div>
 			<div className={s.next}>
-				<Bubble onClick={() => swiperRef.current.slideNext()}>›</Bubble>
+				<Bubble onClick={() => swiperRef.current?.slideNext()}>›</Bubble>
 			</div>
 			<nav className={s.pagination}>
 				{links.map((item, idx) => (
 					<div
 						key={idx}
-						onClick={() => swiperRef.current.slideTo(idx)}
+						onClick={() => swiperRef.current?.slideTo(idx)}
 						className={cn(index === idx && s.selected)}
 					>
 						<span></span>

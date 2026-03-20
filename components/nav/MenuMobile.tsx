@@ -1,11 +1,13 @@
 'use client';
+
 import s from './MenuMobile.module.scss';
 import cn from 'classnames';
 import { useState, useRef, useEffect } from 'react';
 import { usePage } from '@/lib/context/page';
-import { districtUrl } from '@/lib/utils';
+import { animateLogo, districtUrl } from '@/lib/utils';
 import type { Menu } from '@/lib/menu';
 import Link from '@/components/nav/Link';
+import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
 
 export type Props = {
@@ -26,21 +28,19 @@ export default function MenuMobile({ menu }: Props) {
 	);
 
 	useEffect(() => {
-		// const handleRouteChangeStart = (path: string) => {
-		//   setOpen(false)
-		//   animateLogo('logo-mobile')
-		// }
-		// router.events.on('routeChangeStart', handleRouteChangeStart)
-		// return () => router.events.off('routeChangeStart', handleRouteChangeStart)
-	}, []);
+		return () => {
+			setOpen(false);
+			animateLogo('logo-mobile');
+		};
+	}, [pathname]);
 
 	useEffect(() => {
-		const r = document.querySelector<HTMLElement>(':root');
-		r.style.setProperty('--page-color', open ? 'var(--black)' : district?.color?.hex);
-		r.style.setProperty(
-			'--background',
-			open ? 'var(--black)' : isHome ? district?.color?.hex : 'var(--light-grey)',
-		);
+		const root = document.querySelector<HTMLElement>(':root');
+		const color = open ? 'var(--black)' : district?.color?.hex;
+		const bg = open ? 'var(--black)' : isHome ? district?.color?.hex : 'var(--light-grey)';
+		if (!root) return;
+		color && root.style.setProperty('--page-color', color);
+		bg && root.style.setProperty('--background', bg);
 	}, [open]);
 
 	return (
@@ -49,7 +49,7 @@ export default function MenuMobile({ menu }: Props) {
 				<Link id='logo-mobile' href={'/'} className={s.logo}>
 					A
 				</Link>
-				<h2>{isMainDistrict ? 'Konstfrämjandet' : `${district.name}`}</h2>
+				<h2>{isMainDistrict ? 'Konstfrämjandet' : `${district?.name}`}</h2>
 				<div className={cn(s.hamburger, 'symbol')} onClick={() => setOpen(!open)}>
 					{open ? '5' : '2'}
 				</div>
@@ -70,16 +70,12 @@ export default function MenuMobile({ menu }: Props) {
 												{label}
 											</span>
 											<ul className={cn(type === subSelected && s.expanded)}>
-												{items?.map(({ type, slug, label, subdomain }, idx) => (
-													<li key={idx}>
-														<Link
-															href={type === 'district' ? districtUrl(subdomain) : slug}
-															subdomain={type === 'district' ? subdomain : undefined}
-														>
-															{label}
-														</Link>
-													</li>
-												))}
+												{items?.map(({ type, slug, label, subdomain }, idx) => {
+													const href = type === 'district' ? districtUrl(district) : slug;
+													return (
+														<li key={idx}>{href && <NextLink href={href}>{label}</NextLink>}</li>
+													);
+												})}
 											</ul>
 										</>
 									)}

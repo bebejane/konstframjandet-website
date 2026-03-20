@@ -3,14 +3,12 @@ import { NewsContainer, NewsCard } from '@/components';
 import Link from '@/components/nav/Link';
 
 export type Props = {
-	count: number;
 	data: {
-		news: NewsRecord[];
-		count: number;
+		news?: NewsRecord[];
 	};
 };
 
-export default function StartLatestNews({ data: { news, count } }: Props) {
+export default function StartLatestNews({ data: { news } }: Props) {
 	return (
 		<section className={s.container}>
 			<header className='mid'>
@@ -20,7 +18,7 @@ export default function StartLatestNews({ data: { news, count } }: Props) {
 				</Link>
 			</header>
 			<NewsContainer>
-				{news.slice(0, count).map((item) => (
+				{news?.map((item) => (
 					<NewsCard key={item.id} news={item} />
 				))}
 			</NewsContainer>
