@@ -12,10 +12,11 @@
 		padding-bottom: calc(0.5 * var(--outer-margin));
 	}
 
-	a:hover {
-		color: var(--page-color);
+	@include mq($from: desktop) {
+		a:hover {
+			color: var(--page-color);
+		}
 	}
-
 	.line {
 		border: var(--line-thin);
 		border-color: var(--light-grey);

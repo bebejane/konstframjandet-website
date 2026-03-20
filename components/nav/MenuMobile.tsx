@@ -47,9 +47,9 @@ export default function MenuMobile({ menu, district }: Props) {
 	return (
 		<>
 			<header className={cn(s.navbar, open && s.open)}>
-				<Link id='logo-mobile' href={'/'} className={s.logo}>
+				<NextLink id='logo-mobile' href={'/'} className={s.logo}>
 					A
-				</Link>
+				</NextLink>
 				<h2>{isMainDistrict ? 'Konstfrämjandet' : `${district?.name}`}</h2>
 				<div className={cn(s.hamburger, 'symbol')} onClick={() => setOpen(!open)}>
 					{open ? '5' : '2'}

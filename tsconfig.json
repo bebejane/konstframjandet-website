@@ -29,7 +29,10 @@
       "datocms.config": [
         "./datocms.config.ts"
       ]
-    }
+    },
+    "typeRoots": [
+      "./types"
+    ]
   },
   "include": [
     "next-env.d.ts",

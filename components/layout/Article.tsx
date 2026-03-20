@@ -7,8 +7,6 @@ import { StructuredContent } from '@/components';
 import { Image } from 'react-datocms';
 import { Markdown } from 'next-dato-utils/components';
 import { useScrollInfo } from 'next-dato-utils/hooks';
-import strip from 'strip-markdown';
-import { remark } from 'remark';
 import useStore from '@/lib/store';
 import Link from '@/components/nav/Link';
 import { useShallow } from 'zustand/shallow';
@@ -59,7 +57,6 @@ export default function Article({
 
 	return (
 		<>
-			{/* <DatoSEO seo={seo} title={title} description={description} /> */}
 			<div className={cn(s.article, 'article')}>
 				{image?.responsiveImage && (
 					<>
