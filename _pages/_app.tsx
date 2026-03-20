@@ -1,12 +1,12 @@
-import '@/lib/styles/index.scss'
+import '/lib/styles/index.scss'
 import "swiper/css";
 import { useState } from 'react';
-import { Layout } from '@/components';
-import { PageProvider, usePage } from '@/lib/context/page'
+import { Layout } from '/components';
+import { PageProvider, usePage } from '/lib/context/page'
 import { useEffect } from 'react';
-import { DefaultDatoSEO } from 'next-dato-utils/components';
+import { DefaultDatoSEO } from 'dato-nextjs-utils/components';
 import { sv } from 'date-fns/locale'
-import { primarySubdomain } from '@/lib/utils';
+import { primarySubdomain } from '/lib/utils';
 import setDefaultOptions from 'date-fns/setDefaultOptions';
 
 setDefaultOptions({ locale: sv })

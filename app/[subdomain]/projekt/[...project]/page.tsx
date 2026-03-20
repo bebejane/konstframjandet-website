@@ -1,5 +1,3 @@
-import s from './page.module.scss';
-import cn from 'classnames';
 import { mainDistrict } from '@/lib/utils';
 import { apiQuery } from 'next-dato-utils/api';
 import {
@@ -10,10 +8,7 @@ import {
 	DistrictBySubdomainDocument,
 } from '@/graphql';
 import { Aside, Article, SideMenu, Bubble } from '@/components';
-//import { useEffect, useState } from 'react';
-//import { usePage } from '@/lib/context/page';
-//import { useRouter } from 'next/router';
-//import { useScrollInfo } from 'dato-nextjs-utils/hooks';
+import { ProjectWebpage } from './ProjectWebpage';
 
 export type Props = {
 	project: ProjectRecord | ProjectSubpageRecord;
@@ -61,29 +56,7 @@ export default async function ProjectItem({
 		parentProject?.color?.hex ??
 		(project.__typename === 'ProjectRecord' ? project.color?.hex : null);
 
-	const showWebPage = true;
-
-	// const { asPath } = useRouter();
-	// const { isHome, district, color } = usePage();
-	// const { scrolledPosition, documentHeight, viewportHeight } = useScrollInfo();
-	// const [showWebPage, setShowWebPage] = useState(true);
-
-	// useEffect(() => {
-	//   const r = document.querySelector<HTMLElement>(':root')
-	//   setTimeout(() => { // Override _app styling
-	//     r.style.setProperty('--page-color', color ?? district?.color?.hex);
-	//   }, 30)
-
-	// }, [isHome, project, parentProject, asPath])
-
-	// useEffect(() => {
-	//   const footer = document.getElementById('footer')
-	//   const { height } = footer?.getBoundingClientRect() ?? { height: 0 }
-	//   const threshold = (documentHeight - height - viewportHeight) - 100
-	//   setShowWebPage(scrolledPosition < threshold)
-	// }, [scrolledPosition])
-
-	const { id, title, image, content, _seoMetaTags } = project;
+	const { id, title, image, intro, subtitle, content, _seoMetaTags } = project;
 
 	return (
 		<>
@@ -99,14 +72,16 @@ export default async function ProjectItem({
 				id={id}
 				title={title}
 				content={content}
+				intro={intro}
 				imageCaption={image?.title}
+				subtitle={subtitle}
 				backLink={'/projekt'}
 				seo={_seoMetaTags}
 			/>
-			{project.__typename === 'ProjectRecord' && project.webpage && showWebPage && (
-				<Bubble href={project.webpage} className={s.direct}>
+			{project.__typename === 'ProjectRecord' && project.webpage && (
+				<ProjectWebpage href={project.webpage} color={projectColor}>
 					Besök projektets hemsida
-				</Bubble>
+				</ProjectWebpage>
 			)}
 		</>
 	);

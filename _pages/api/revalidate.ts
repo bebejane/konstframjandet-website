@@ -1,6 +1,6 @@
 import { withRevalidate } from 'dato-nextjs-utils/hoc'
-import { apiQuery } from 'next-dato-utils/api';
-import { allDistricts } from '@/lib/utils';
+import { apiQuery } from 'dato-nextjs-utils/api';
+import { allDistricts } from '/lib/utils';
 import { ProjectBySubpageDocument } from '/graphql';
 
 export default withRevalidate(async (record, revalidate) => {

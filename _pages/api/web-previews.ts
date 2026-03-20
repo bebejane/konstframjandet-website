@@ -1,6 +1,6 @@
-import { allDistricts, primarySubdomain } from '@/lib/utils';
+import { allDistricts, primarySubdomain } from '/lib/utils';
 
-import { apiQuery } from 'next-dato-utils/api';
+import { apiQuery } from 'dato-nextjs-utils/api';
 import { withWebPreviewsEdge } from 'dato-nextjs-utils/hoc';
 import { ProjectBySubpageDocument } from '/graphql';
 

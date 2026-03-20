@@ -86,7 +86,7 @@ export default async function NewsItem({ params }: PageProps<'/[subdomain]/aktue
 				record={news}
 				title={title}
 				subtitle={subtitle}
-				image={image}
+				image={image as ImageFileField}
 				intro={intro}
 				content={content}
 				extraContent={extra}

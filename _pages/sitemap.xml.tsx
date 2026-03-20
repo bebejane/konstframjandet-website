@@ -1,6 +1,6 @@
 
-import { recordToSlug, apiQueryAll, allDistricts, primarySubdomain, districtUrl } from "@/lib/utils";
-import { AllNewsDocument, AllProjectsDocument, AllAboutsDocument } from "@/graphql";
+import { recordToSlug, apiQueryAll, allDistricts, primarySubdomain, districtUrl } from "/lib/utils";
+import { AllNewsDocument, AllProjectsDocument, AllAboutsDocument } from "/graphql";
 
 const staticPaths = ['', 'aktuellt', 'kontakt', 'om', 'projekt']
 

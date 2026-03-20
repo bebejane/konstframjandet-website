@@ -48,6 +48,7 @@
 		"react-datocms": "^8.0.0",
 		"react-dom": "^18.2.0",
 		"react-intersection-observer": "^9.4.3",
+		"react-wrap-balancer": "^1.1.1",
 		"react-youtube": "^10.1.0",
 		"remark": "^14.0.3",
 		"rooks": "^9.7.0",
@@ -72,6 +73,7 @@
 		"graphql-config": "^5.1.5",
 		"react-email": "5.0.1",
 		"tsx": "^4.21.0",
+		"turbopack-inline-svg-loader": "^1.0.3",
 		"typescript": "^5"
 	}
 }

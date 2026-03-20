@@ -24,7 +24,6 @@ export type ArticleProps = {
 	imageCaption?: string | null;
 	content?: any | null;
 	extraContent?: any | null;
-	onClick?: (id: string) => void;
 	record?: any;
 	dropcap?: boolean;
 	date?: string | null;
@@ -50,15 +49,15 @@ export default function Article({
 	const [setImageId, setImages, imageId] = useStore(
 		useShallow((state) => [state.setImageId, state.setImages, state.imageId]),
 	);
-	const description = intro ? (remark().use(strip).processSync(intro).value as string) : null;
+	//const description = intro ? (remark().use(strip).processSync(intro).value as string) : null;
 
 	useEffect(() => {
 		const images = [image];
-		content?.blocks.forEach((el) => {
+		content?.blocks.forEach((el: any) => {
 			el.__typename === 'ImageRecord' && images.push(el.image);
 			el.__typename === 'ImageGalleryRecord' && images.push.apply(images, el.images);
 		});
-		setImages(images.filter((el) => el));
+		setImages(images.filter((el) => el) as ImageFileField[]);
 	}, [id, image]);
 
 	return (
@@ -111,14 +110,14 @@ export default function Article({
 	);
 }
 
-const BackLink = ({ href }) => {
+function BackLink({ href }: { href: string }) {
 	const ref = useRef<HTMLDivElement | null>(null);
 	const [hide, setHide] = useState(false);
 	const { scrolledPosition } = useScrollInfo();
 
 	useEffect(() => {
 		const aside = document.getElementsByTagName('aside')[0];
-		if (aside === undefined) return;
+		if (!aside || !ref.current) return;
 		const { bottom } = aside.getBoundingClientRect();
 		const hide = ref.current.getBoundingClientRect().top <= bottom + 30;
 		setHide(hide);
@@ -131,4 +130,4 @@ const BackLink = ({ href }) => {
 			</Link>
 		</div>
 	);
-};
+}

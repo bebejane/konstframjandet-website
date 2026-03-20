@@ -6,7 +6,8 @@ import { Markdown } from 'next-dato-utils/components';
 import { Image } from 'react-datocms/image';
 import Link from '@/components/nav/Link';
 import { usePage } from '@/lib/context/page';
-import BalanceText from 'react-balance-text';
+import Balancer from 'react-wrap-balancer';
+
 export type CardProps = {
 	news: NewsRecord;
 	view?: 'list' | 'full';
@@ -23,10 +24,10 @@ export default function NewsCard({
 			<div className={s.content}>
 				<Link href={`/aktuellt/${slug}`}>
 					<h2 className='big'>
-						<BalanceText>
+						<Balancer>
 							{title}
 							{subtitle && <span> — {subtitle}</span>}
-						</BalanceText>
+						</Balancer>
 					</h2>
 				</Link>
 				<Markdown className='big' content={intro} />
