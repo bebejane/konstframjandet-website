@@ -137,17 +137,15 @@ export default function Menu({ district, districts, menu }: MenuProps) {
 				</div>
 				<div className={s.wrapper}>
 					<ul>
-						{menu.map(({ type, slug, label }, idx) =>
-							type !== 'district' ? (
-								<li
-									key={idx}
-									className={cn(
-										((pathname.startsWith(`/${slug?.split('/')[1]}`) && slug !== '/') ||
-											(isHome && type == 'home')) &&
-											!showDistricts &&
-											s.active,
-									)}
-								>
+						{menu.map(({ type, slug, label }, idx) => {
+							const rootSlug = slug?.split('/')[1] ?? '';
+							const active =
+								(pathname.startsWith(`/${rootSlug}`) ||
+									pathname.startsWith(`/${district.subdomain}/${rootSlug}`)) &&
+								slug !== '/';
+
+							return type !== 'district' ? (
+								<li key={idx} className={cn(active && !showDistricts && s.active)}>
 									{slug ? <Link href={slug}>{label}</Link> : <>{label}</>}
 								</li>
 							) : (
@@ -160,8 +158,8 @@ export default function Menu({ district, districts, menu }: MenuProps) {
 										Distrikt
 									</li>
 								)
-							),
-						)}
+							);
+						})}
 					</ul>
 					<span className={'mid'} onClick={() => setShowSearch(true)}>
 						Sök
