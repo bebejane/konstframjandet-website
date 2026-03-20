@@ -1,4 +1,5 @@
 import { NextConfig } from 'next';
+import districts from './districts.json' assert { type: 'json' };
 import path from 'path';
 
 const nextConfig: NextConfig = {
@@ -26,6 +27,16 @@ const nextConfig: NextConfig = {
 	logging: false,
 	experimental: {
 		prefetchInlining: true,
+	},
+	rewrites() {
+		return process.env.NODE_ENV === 'development'
+			? ['/', '/om/:path*', '/kontakt/:path*', '/aktuellt/:path*', '/projekt/:path*'].map(
+					(path) => ({
+						source: path,
+						destination: `/forbundet${path}`,
+					}),
+				)
+			: [];
 	},
 	async headers() {
 		return [

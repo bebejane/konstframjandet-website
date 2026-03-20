@@ -7,7 +7,7 @@ query AllProjects($first: IntType = 100, $skip: IntType = 0, $districtId: ItemId
 	) {
 		...ProjectFragmentLight
 	}
-	_allProjectsMeta {
+	_allProjectsMeta(filter: { district: { eq: $districtId } }) {
 		count
 	}
 }

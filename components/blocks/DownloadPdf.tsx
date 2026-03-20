@@ -1,11 +1,10 @@
-import s from './DownloadPdf.module.scss'
-import Link from 'next/link'
-import { Image } from 'react-datocms'
+import s from './DownloadPdf.module.scss';
+import Link from '@/components/nav/Link';
+import { Image } from 'react-datocms';
 
-export type Props = { data: DownloadPdfRecord }
+export type Props = { data: DownloadPdfRecord };
 
 export default function DownloadPdf({ data: { url, image, text } }: Props) {
-
 	return (
 		<Link className={s.button} href={url}>
 			<button>
@@ -13,5 +12,5 @@ export default function DownloadPdf({ data: { url, image, text } }: Props) {
 				<span>{text}</span>
 			</button>
 		</Link>
-	)
+	);
 }

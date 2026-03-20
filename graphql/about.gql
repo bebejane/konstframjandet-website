@@ -2,7 +2,7 @@ query AllAbouts($first: IntType = 100, $skip: IntType = 0, $districtId: ItemId) 
 	allAbouts(filter: { district: { eq: $districtId } }, first: $first, skip: $skip) {
 		...AboutFragmentLight
 	}
-	_allAboutsMeta {
+	_allAboutsMeta(filter: { district: { eq: $districtId } }) {
 		count
 	}
 }

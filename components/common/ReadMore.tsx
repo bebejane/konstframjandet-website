@@ -1,24 +1,26 @@
-import s from './ReadMore.module.scss'
-import Link from 'next/link'
+import s from './ReadMore.module.scss';
+import Link from '@/components/nav/Link';
 
 type Props = {
-  message?: string
-  link: string,
-  invert?: boolean
-  regional?: boolean
-  external?: boolean
-}
+	message?: string;
+	link: string;
+	invert?: boolean;
+	regional?: boolean;
+	external?: boolean;
+};
 
-export default function ReadMore({ message, link, invert = false, regional, external = false }: Props) {
+export default function ReadMore({
+	message,
+	link,
+	invert = false,
+	regional,
+	external = false,
+}: Props) {
+	if (!link) return null;
 
-  if (!link) return null
-
-  return (
-    <Link
-      href={link}
-      className={s.more}
-    >
-      {message}
-    </Link>
-  )
+	return (
+		<Link href={link} className={s.more}>
+			{message}
+		</Link>
+	);
 }

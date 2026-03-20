@@ -1,0 +1,254 @@
+[
+  {
+    "id": "133470832",
+    "name": "Bergslagen",
+    "email": "bergslagen@konstframjandet.se",
+    "subdomain": "bergslagen",
+    "instagram": "https://www.instagram.com/konstframjandetbergslagen/",
+    "facebook": "https://www.facebook.com/KonstframjandetiBergslagen?fref=ts",
+    "englishShortcut": null,
+    "color": {
+      "hex": "#3BAAE2"
+    }
+  },
+  {
+    "id": "133470826",
+    "name": "Dalarna",
+    "email": "dalarna@konstframjandet.se",
+    "subdomain": "dalarna",
+    "instagram": "https://www.instagram.com/konstframjandetdalarna/?next=%2F",
+    "facebook": "https://www.facebook.com/profile.php?id=100064582576485",
+    "englishShortcut": null,
+    "color": {
+      "hex": "#967EEA"
+    }
+  },
+  {
+    "id": "133470799",
+    "name": "Fyrbodal",
+    "email": "fyrbodal@konstframjandet.se",
+    "subdomain": "fyrbodal",
+    "instagram": "https://www.instagram.com/konstframjandet_fyrbodal/",
+    "facebook": "",
+    "englishShortcut": null,
+    "color": {
+      "hex": "#B5B5B5"
+    }
+  },
+  {
+    "id": "133471196",
+    "name": "Gävleborg",
+    "email": "gavleborg@konstframjandet.se",
+    "subdomain": "gavleborg",
+    "instagram": "https://www.instagram.com/konstframjandetgavleborg/",
+    "facebook": "https://www.facebook.com/konstframjandetgavleborg/",
+    "englishShortcut": null,
+    "color": {
+      "hex": "#9FCEBD"
+    }
+  },
+  {
+    "id": "198143068",
+    "name": "Gotland",
+    "email": "gotland@konstframjandet.se",
+    "subdomain": "gotland",
+    "instagram": "https://www.instagram.com/konstframjandetgotland/",
+    "facebook": "https://www.facebook.com/profile.php?id=61552362710901",
+    "englishShortcut": null,
+    "color": {
+      "hex": "#975F2E"
+    }
+  },
+  {
+    "id": "JhXPRWP1QXWRwlHNCR8Quw",
+    "name": "Halland",
+    "email": "halland@konstframjandet.se",
+    "subdomain": "halland",
+    "instagram": "https://www.instagram.com/konstframjandethalland/",
+    "facebook": "https://www.facebook.com/profile.php?id=61583416616321",
+    "englishShortcut": false,
+    "color": {
+      "hex": "#B8BC9F"
+    }
+  },
+  {
+    "id": "133470828",
+    "name": "Jämtland",
+    "email": "jamtland@konstframjandet.se",
+    "subdomain": "jamtland",
+    "instagram": "https://www.instagram.com/konstframjandetjamtland/?hl=sv",
+    "facebook": "https://www.facebook.com/kfjamtland",
+    "englishShortcut": null,
+    "color": {
+      "hex": "#BDDAC1"
+    }
+  },
+  {
+    "id": "122564749",
+    "name": "Konstfrämjandet",
+    "email": "info@konstframjandet.se",
+    "subdomain": "forbundet",
+    "instagram": "https://www.instagram.com/konstframjandet/",
+    "facebook": "https://www.facebook.com/folkrorelsernas.konstframjande",
+    "englishShortcut": null,
+    "color": {
+      "hex": "#F5C010"
+    }
+  },
+  {
+    "id": "133470809",
+    "name": "Kraft (Sörmland)",
+    "email": "kraft@konstframjandet.se",
+    "subdomain": "kraft",
+    "instagram": "https://www.instagram.com/konstframjandetkraft/",
+    "facebook": "https://www.facebook.com/kraftkonst",
+    "englishShortcut": null,
+    "color": {
+      "hex": "#AF4C2D"
+    }
+  },
+  {
+    "id": "122735045",
+    "name": "Norrbotten",
+    "email": "norrbotten@konstframjandet.se",
+    "subdomain": "norrbotten",
+    "instagram": "https://www.instagram.com/konstframjandetnorrbotten/",
+    "facebook": "https://www.facebook.com/konstframjandet.norrbotten",
+    "englishShortcut": null,
+    "color": {
+      "hex": "#9D8EC7"
+    }
+  },
+  {
+    "id": "XlgxNGi1QvKsaW5iZHibnQ",
+    "name": "Östergötland",
+    "email": "ostergotland@konstframjandet.se",
+    "subdomain": "ostergotland",
+    "instagram": "https://www.instagram.com/konstframjandetostergotland/",
+    "facebook": "https://www.facebook.com/profile.php?id=61584192503574",
+    "englishShortcut": true,
+    "color": {
+      "hex": "#6B8583"
+    }
+  },
+  {
+    "id": "133470821",
+    "name": "Skåne",
+    "email": "skane@konstframjandet.se",
+    "subdomain": "skane",
+    "instagram": "https://www.instagram.com/konstframjandetskane/",
+    "facebook": "https://www.facebook.com/konstframjandet.skane",
+    "englishShortcut": null,
+    "color": {
+      "hex": "#98B3B3"
+    }
+  },
+  {
+    "id": "122565723",
+    "name": "Småland",
+    "email": "smaland@konstframjandet.se",
+    "subdomain": "smaland",
+    "instagram": "https://www.instagram.com/smalandstriennalen/",
+    "facebook": "",
+    "englishShortcut": null,
+    "color": {
+      "hex": "#BC5656"
+    }
+  },
+  {
+    "id": "133470825",
+    "name": "Sörmland",
+    "email": "sormland@konstframjandet.se",
+    "subdomain": "sormland",
+    "instagram": "https://www.instagram.com/konstframjandetsormland/",
+    "facebook": "https://www.facebook.com/profile.php?id=100064557494862",
+    "englishShortcut": null,
+    "color": {
+      "hex": "#C8C3A4"
+    }
+  },
+  {
+    "id": "133470820",
+    "name": "Stockholm",
+    "email": "stockholm@konstframjandet.se",
+    "subdomain": "stockholm",
+    "instagram": "https://www.instagram.com/konstframjandetstockholm/",
+    "facebook": "https://www.facebook.com/profile.php?id=100080072701128",
+    "englishShortcut": false,
+    "color": {
+      "hex": "#E08DA9"
+    }
+  },
+  {
+    "id": "133470817",
+    "name": "Uppland",
+    "email": "uppland@konstframjandet.se",
+    "subdomain": "uppland",
+    "instagram": "https://www.instagram.com/konstframjandetuppland/",
+    "facebook": "https://www.facebook.com/konstframjandetuppland",
+    "englishShortcut": null,
+    "color": {
+      "hex": "#EF7D00"
+    }
+  },
+  {
+    "id": "133471204",
+    "name": "Värmland",
+    "email": "varmland@konstframjandet.se",
+    "subdomain": "varmland",
+    "instagram": "https://www.instagram.com/konstframjandetvarmland/",
+    "facebook": "https://www.facebook.com/konstframjandetvarmland",
+    "englishShortcut": null,
+    "color": {
+      "hex": "#5DAA82"
+    }
+  },
+  {
+    "id": "133471201",
+    "name": "Västerbotten",
+    "email": "vasterbotten@konstframjandet.se",
+    "subdomain": "vasterbotten",
+    "instagram": "https://www.instagram.com/konstframjandetvasterbotten/",
+    "facebook": "https://www.facebook.com/konstframjandetvasterbotten",
+    "englishShortcut": null,
+    "color": {
+      "hex": "#82D6BD"
+    }
+  },
+  {
+    "id": "133470810",
+    "name": "Västernorrland",
+    "email": "vasternorrland@konstframjandet.se",
+    "subdomain": "vasternorrland",
+    "instagram": "https://www.instagram.com/konstframjandetvasternorrland/",
+    "facebook": "https://www.facebook.com/konstframjandetvasternorrland",
+    "englishShortcut": null,
+    "color": {
+      "hex": "#BF43E0"
+    }
+  },
+  {
+    "id": "122565546",
+    "name": "Västmanland",
+    "email": "vastmanland@konstframjandet.se",
+    "subdomain": "vastmanland",
+    "instagram": "https://www.instagram.com/konstframjandet.vastmanland",
+    "facebook": "https://www.facebook.com/konstframjandetvastmanland",
+    "englishShortcut": null,
+    "color": {
+      "hex": "#75E671"
+    }
+  },
+  {
+    "id": "133470814",
+    "name": "Västra",
+    "email": "vastra@konstframjandet.se",
+    "subdomain": "vastra",
+    "instagram": "",
+    "facebook": "https://www.facebook.com/KonstframjandetVastra",
+    "englishShortcut": null,
+    "color": {
+      "hex": "#FF7D3D"
+    }
+  }
+]

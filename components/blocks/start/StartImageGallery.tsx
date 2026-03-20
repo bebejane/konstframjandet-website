@@ -1,34 +1,33 @@
-'use client'
+'use client';
 
-import s from './StartImageGallery.module.scss'
-import cn from 'classnames'
-import { useState, useRef } from 'react'
+import s from './StartImageGallery.module.scss';
+import cn from 'classnames';
+import { useState, useRef } from 'react';
 import { Swiper as SwiperReact, SwiperSlide } from 'swiper/react';
 import type { Swiper } from 'swiper';
-import { Image } from 'react-datocms'
+import { Image } from 'react-datocms';
 import { recordToSlug } from '@/lib/utils';
-import { Bubble } from '@/components'
-import Link from 'next/link';
+import { Bubble } from '@/components';
+import Link from '@/components/nav/Link';
 
 export type ExternalLinkQuery = {
-	linkImage: FileField
-	linkIntro: string
-}
+	linkImage: FileField;
+	linkIntro: string;
+};
 
 export type StartImageGalleryRecordExtended = {
-	links: (StartImageGalleryModelLinksField & ExternalLinkQuery)[]
-}
+	links: (StartImageGalleryModelLinksField & ExternalLinkQuery)[];
+};
 
 export type Props = {
-	id: string
-	data: StartImageGalleryRecordExtended
-}
+	id: string;
+	data: StartImageGalleryRecordExtended;
+};
 
 export default function StartImageGallery({ id, data: { links } }: Props) {
-
-	const swiperRef = useRef<Swiper | null>(null)
-	const containerRef = useRef<HTMLDivElement | null>(null)
-	const [index, setIndex] = useState(0)
+	const swiperRef = useRef<Swiper | null>(null);
+	const containerRef = useRef<HTMLDivElement | null>(null);
+	const [index, setIndex] = useState(0);
 
 	return (
 		<section className={s.gallery} ref={containerRef}>
@@ -41,13 +40,13 @@ export default function StartImageGallery({ id, data: { links } }: Props) {
 				slidesPerView={'auto'}
 				initialSlide={index}
 				onSlideChange={({ realIndex }) => setIndex(realIndex)}
-				onSwiper={(swiper) => swiperRef.current = swiper}
+				onSwiper={(swiper) => (swiperRef.current = swiper)}
 			>
-				{links.map((item, idx) =>
+				{links.map((item, idx) => (
 					<SwiperSlide key={idx} className={s.slide}>
 						<Link href={recordToSlug(item)}>
 							<figure>
-								{(item.image || item.linkImage) &&
+								{(item.image || item.linkImage) && (
 									<Image
 										data={(item.image || item.linkImage).responsiveImage}
 										className={s.picture}
@@ -55,16 +54,14 @@ export default function StartImageGallery({ id, data: { links } }: Props) {
 										placeholderClassName={s.picture}
 										objectFit={'cover'}
 									/>
-								}
+								)}
 								<figcaption>
 									<header>
 										<div className={s.fade}></div>
-										<h1>
-											{item.title}
-										</h1>
+										<h1>{item.title}</h1>
 									</header>
 									<div className={s.intro}>
-										<p className="intro">{(item.intro || item.linkIntro)}</p>
+										<p className='intro'>{item.intro || item.linkIntro}</p>
 										<div className={s.fade}></div>
 									</div>
 								</figcaption>
@@ -72,12 +69,16 @@ export default function StartImageGallery({ id, data: { links } }: Props) {
 							<Bubble className={cn(s.bubble, 'mid')}>Visa</Bubble>
 						</Link>
 					</SwiperSlide>
-				)}
+				))}
 			</SwiperReact>
-			<div className={s.prev}><Bubble onClick={() => swiperRef.current.slidePrev()}>‹</Bubble></div>
-			<div className={s.next}><Bubble onClick={() => swiperRef.current.slideNext()}>›</Bubble></div>
+			<div className={s.prev}>
+				<Bubble onClick={() => swiperRef.current.slidePrev()}>‹</Bubble>
+			</div>
+			<div className={s.next}>
+				<Bubble onClick={() => swiperRef.current.slideNext()}>›</Bubble>
+			</div>
 			<nav className={s.pagination}>
-				{links.map((item, idx) =>
+				{links.map((item, idx) => (
 					<div
 						key={idx}
 						onClick={() => swiperRef.current.slideTo(idx)}
@@ -85,8 +86,8 @@ export default function StartImageGallery({ id, data: { links } }: Props) {
 					>
 						<span></span>
 					</div>
-				)}
+				))}
 			</nav>
 		</section>
-	)
+	);
 }

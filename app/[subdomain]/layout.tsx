@@ -7,14 +7,14 @@ import { primarySubdomain } from '@/lib/utils';
 import { apiQuery } from 'next-dato-utils/api';
 
 export default async function SubdomainLayout({ params, children }: LayoutProps<'/[subdomain]'>) {
-  const subdomain =  (await params).subdomain
+  const subdomain =  (await params).subdomain ?? primarySubdomain
 	const	page = {
 				title: 'Hem',
 				layout: 'home',
 			} as PageMeta
 	
 	const { allDistricts, draftUrl } = await apiQuery(AllDistrictsDocument)
-	const district = allDistricts.find(({ subdomain }) => subdomain === primarySubdomain) as DistrictRecord
+	const district = allDistricts.find((d) => d.subdomain === subdomain) as DistrictRecord
 	const districtId = district.id	
 	const title = district.name
 	const menu = await buildMenu(districtId)
@@ -26,7 +26,7 @@ export default async function SubdomainLayout({ params, children }: LayoutProps<
   //   r.style.setProperty('--background', isHome ? district?.color?.hex : 'var(--light-grey)');
 
   // }, [isHome, district])
-console.log('layot')
+
 	return (
     <html lang='sv-SE'>
 			<body id='root'>

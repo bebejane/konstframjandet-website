@@ -1,9 +1,8 @@
 import s from "./page.module.scss";
+import React from "react";
 import { AllDistrictsDocument, StartDocument } from '@/graphql';
 import { StartSelectionContainer, StartSelectionCard } from "@/components";
 import { Block } from '@/components'
-import { PageMeta, usePage } from "@/lib/context/page";
-import React from "react";
 import { apiQuery } from "next-dato-utils/api";
 import { primarySubdomain } from "@/lib/utils";
 import { notFound } from "next/navigation";
@@ -11,13 +10,14 @@ import { notFound } from "next/navigation";
 export default async function Home({ params }: PageProps<'/[subdomain]'>) {
 	const subdomain =  (await params).subdomain ?? primarySubdomain
 	const { allDistricts, draftUrl } = await apiQuery(AllDistrictsDocument)
-	const district = allDistricts.find((d) => d.subdomain === subdomain)
-	if(!district) return notFound()
-	const isMainDistrict = district.subdomain === primarySubdomain
-	const { start, allNews} = await apiQuery(StartDocument, { variables: { districtId:district.id } })
-	// const { isMainDistrict } = usePage()
+	const districtId = allDistricts.find((d) => d.subdomain === subdomain)?.id
 	
-	console.log(district)
+	if(!districtId) return notFound()
+
+	const { start, district, allNews } = await apiQuery(StartDocument, { variables: { districtId } })
+	const isMainDistrict = district?.subdomain === primarySubdomain
+	
+	//console.log(district?.subdomain)
 
 	const selectedInDistricts = (
 		<StartSelectionContainer>
@@ -29,7 +29,7 @@ export default async function Home({ params }: PageProps<'/[subdomain]'>) {
 
 	return (
 		<div className={s.container}>
-			{start?.content?.map((block, idx) =>
+			{district?.content?.map((block, idx) =>
 					block.__typename === 'StartSelectedDistrictNewsRecord' && isMainDistrict ?
 						<React.Fragment key={idx}>{selectedInDistricts}</React.Fragment>
 						:

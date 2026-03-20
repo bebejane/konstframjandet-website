@@ -2,18 +2,19 @@
 	"name": "konstframjandet-website",
 	"version": "0.2.0",
 	"private": true,
+	"type": "module",
 	"scripts": {
 		"dev": "next dev --turbo & pnpm run codegen",
-    "start": "next start",
-    "preview": "pnpm run build && pnpm run start",
-    "build": "pnpm i github:bebejane/next-dato-utils && next build",
-    "build:dev": "next build",
-    "dev:email": "PORT=4000 email dev",
-    "codegen": "graphql-codegen --watch",
-    "codegen:datocms": "pnpx @datocms/cli schema:generate ./types/datocms-cma.ts",
-    "lint": "next lint",
-    "reset": "rm -rf ./node_modules && rm -rf pnpm-lock.yaml && rm -rf .next && pnpm i",
-    "reset:cache": "rm -rf .next/cache"
+		"start": "next start",
+		"preview": "pnpm run build && pnpm run start",
+		"build": "pnpm prebuild && next build",
+		"prebuild": "tsx prebuild",
+		"dev:email": "PORT=4000 email dev",
+		"codegen": "graphql-codegen --watch",
+		"codegen:datocms": "pnpx @datocms/cli schema:generate ./types/datocms-cma.ts",
+		"lint": "next lint",
+		"reset": "rm -rf ./node_modules && rm -rf pnpm-lock.yaml && rm -rf .next && pnpm i",
+		"reset:cache": "rm -rf .next/cache"
 	},
 	"dependencies": {
 		"@datocms/cma-client": "5.3.0",
@@ -70,6 +71,7 @@
 		"@types/react-dom": "^19.2.3",
 		"graphql-config": "^5.1.5",
 		"react-email": "5.0.1",
+		"tsx": "^4.21.0",
 		"typescript": "^5"
 	}
 }

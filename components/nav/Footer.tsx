@@ -1,22 +1,21 @@
-'use client'
+'use client';
 
-import s from './Footer.module.scss'
-import cn from 'classnames'
-import type { Menu } from '@/lib/menu'
-import Link from 'next/link'
-import { usePage } from '@/lib/context/page'
+import s from './Footer.module.scss';
+import cn from 'classnames';
+import type { Menu } from '@/lib/menu';
+import Link from '@/components/nav/Link';
+import { usePage } from '@/lib/context/page';
 
 export type FooterProps = {
-	menu: Menu
-	districts: AllDistrictsQuery['allDistricts']
-}
+	menu: Menu;
+	districts: AllDistrictsQuery['allDistricts'];
+};
 
 export default function Footer({ menu }: FooterProps) {
-
-	const { isMainDistrict } = usePage()
+	const { isMainDistrict } = usePage();
 
 	return (
-		<footer className={cn(s.footer)} id="footer">
+		<footer className={cn(s.footer)} id='footer'>
 			<div className={s.line}></div>
 			<nav>
 				<div className={s.about}>
@@ -26,39 +25,48 @@ export default function Footer({ menu }: FooterProps) {
 					<div className={s.mobile}>
 						<Link href={'https://www.konstframjandet.se'} scroll={true}>
 							Konstfrämjandet
-						</Link><br />
+						</Link>
 						<br />
-						Konstfrämjandet är en organisation bildad 1947 som arbetar med konstbildning
-						och med att föra ut konst till människor i deras vardag. Vi verkar i hela Sverige.
+						<br />
+						Konstfrämjandet är en organisation bildad 1947 som arbetar med konstbildning och med att
+						föra ut konst till människor i deras vardag. Vi verkar i hela Sverige.
 					</div>
 				</div>
 				<ul>
-					{menu.filter(({ type }) => type === 'contact' || type === 'about').map(({ type, label, slug, items, subdomain }, idx) =>
+					{menu
+						.filter(({ type }) => type === 'contact' || type === 'about')
+						.map(({ type, label, slug, items, subdomain }, idx) => (
 							<li key={idx} className={cn(isMainDistrict && type === 'district' && s.double)}>
-								{slug ? <Link href={slug} locale={subdomain}>{label}</Link> : <>{label}</>}
+								{slug ? <Link href={slug}>{label}</Link> : <>{label}</>}
 								<ul>
-									{items?.map(({ type, label, slug, subdomain }, idx) =>
+									{items?.map(({ type, label, slug, subdomain }, idx) => (
 										<li key={`${idx}-sub`}>
 											<Link
-												href={(type === 'district' && process.env.NODE_ENV === 'production') ? `https://${subdomain}.konstframjandet.se` : slug}
+												href={
+													type === 'district' && process.env.NODE_ENV === 'production'
+														? `https://${subdomain}.konstframjandet.se`
+														: (slug ?? '')
+												}
 												scroll={true}
-												locale={subdomain}
-											>{label}</Link>
+											>
+												{label}
+											</Link>
 										</li>
-									)}
+									))}
 								</ul>
 							</li>
-						)}
+						))}
 					<li>
 						<Link href={'https://www.konstframjandet.se'} scroll={true}>
 							Konstfrämjandet
-						</Link><br />
+						</Link>
 						<br />
-						Konstfrämjandet är en organisation bildad 1947 som arbetar med konstbildning
-						och med att föra ut konst till människor i deras vardag. Vi verkar i hela Sverige.
+						<br />
+						Konstfrämjandet är en organisation bildad 1947 som arbetar med konstbildning och med att
+						föra ut konst till människor i deras vardag. Vi verkar i hela Sverige.
 					</li>
 				</ul>
-			</nav >
-		</footer >
-	)
+			</nav>
+		</footer>
+	);
 }
