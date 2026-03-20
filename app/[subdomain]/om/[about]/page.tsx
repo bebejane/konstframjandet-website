@@ -2,6 +2,8 @@ import { apiQuery } from 'next-dato-utils/api';
 import { AboutDocument, AllAboutsDocument, DistrictBySubdomainDocument } from '@/graphql';
 import { Aside, Article, SideMenu, SectionHeader } from '@/components';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
+import { buildMetadata } from '@/app/[subdomain]/layout';
 
 export default async function About({ params }: PageProps<'/[subdomain]/om/[about]'>) {
 	const { about: slug, subdomain } = await params;
@@ -39,4 +41,21 @@ export async function generateStaticParams({ params }: PageProps<'/[subdomain]/o
 		variables: { districtId: district?.id },
 	});
 	return allAbouts.map(({ slug: about }) => ({ about }));
+}
+
+export async function generateMetadata({
+	params,
+}: PageProps<'/[subdomain]/om/[about]'>): Promise<Metadata> {
+	const { about: slug, subdomain } = await params;
+	const { district } = await apiQuery(DistrictBySubdomainDocument, { variables: { subdomain } });
+	const { about } = await apiQuery(AboutDocument, {
+		variables: { slug, districtId: district?.id },
+	});
+
+	return await buildMetadata({
+		title: about?.title,
+		pathname: `/om/${slug}`,
+		subdomain,
+		description: about?.intro,
+	});
 }

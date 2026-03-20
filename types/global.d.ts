@@ -15,3 +15,8 @@ declare module 'react' {
 		[key: `--${string}`]: string | number | undefined;
 	}
 }
+
+declare module '*.svg' {
+	const content: import('next/image').StaticImageData;
+	export default content;
+}

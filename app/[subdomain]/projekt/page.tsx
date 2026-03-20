@@ -4,6 +4,8 @@ import { AllProjectsDocument, DistrictBySubdomainDocument } from '@/graphql';
 import { ProjectContainer, ProjectCard, SectionHeader } from '@/components';
 import { notFound } from 'next/navigation';
 import { apiQuery } from 'next-dato-utils/api';
+import { Metadata } from 'next';
+import { buildMetadata } from '@/app/[subdomain]/layout';
 
 export type Props = {
 	projects: ProjectRecord[];
@@ -60,18 +62,13 @@ export default async function Projects({ params }: PageProps<'/[subdomain]/proje
 		</>
 	);
 }
-
-// export const getStaticProps = withGlobalProps({ queries: [AllProjectsDocument] }, async ({ props, revalidate }: any) => {
-
-//   return {
-//     props: {
-//       ...props,
-//       projects: props.projects.filter(({ completed }) => !completed),
-//       completedProjects: props.projects.filter(({ completed }) => completed),
-//       page: {
-//         title: 'Aktuella projekt'
-//       }
-//     },
-//     revalidate
-//   };
-// });
+export async function generateMetadata({
+	params,
+}: PageProps<'/[subdomain]/projekt'>): Promise<Metadata> {
+	const { subdomain } = await params;
+	return await buildMetadata({
+		title: 'Aktuella projekt',
+		pathname: `/projekt`,
+		subdomain,
+	});
+}

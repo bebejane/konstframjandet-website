@@ -87,16 +87,6 @@ declare module '*/VideoFragment.gql' {
 }
     
 
-declare module '*/global.gql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const Global: DocumentNode;
-export const SiteFragment: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
 declare module '*/menu.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -138,6 +128,25 @@ declare module '*/search.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const SiteSearch: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/site.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const Site: DocumentNode;
+export const SiteFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/sitemap.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const Sitemap: DocumentNode;
 
   export default defaultDocument;
 }

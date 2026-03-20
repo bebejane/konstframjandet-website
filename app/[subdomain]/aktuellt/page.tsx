@@ -1,14 +1,12 @@
 import s from './page.module.scss';
-import cn from 'classnames';
-import withGlobalProps from '@/lib/withGlobalProps';
 import { AllNewsDocument, DistrictBySubdomainDocument } from '@/graphql';
-import { NewsCard, NewsContainer, Bubble, Loader, SectionHeader } from '@/components';
-import useStore from '@/lib/store';
-//import { useApiQuery } from 'dato-nextjs-utils/hooks';
+import { SectionHeader } from '@/components';
 import { apiQuery } from 'next-dato-utils/api';
 import { pageSize } from '@/lib/utils';
 import { notFound } from 'next/navigation';
 import NewsLoader from '@/app/[subdomain]/aktuellt/NewsLoader';
+import { Metadata } from 'next';
+import { buildMetadata } from '@/app/[subdomain]/layout';
 
 export type Props = {
 	news: NewsRecord[];
@@ -43,26 +41,13 @@ export default async function News({ params }: PageProps<'/[subdomain]/aktuellt'
 	);
 }
 
-// export const getStaticProps = withGlobalProps(
-// 	{ queries: [] },
-// 	async ({ props, revalidate, context }: any) => {
-// 		const districtId = props.district.id as string;
-// 		const { news, pagination } = await apiQuery(AllNewsDocument, {
-// 			variables: { districtId, first: pageSize },
-// 			preview: context.preview,
-// 		});
-
-// 		return {
-// 			props: {
-// 				...props,
-// 				news,
-// 				pagination,
-// 				page: {
-// 					title: 'Aktuellt',
-// 					layout: 'news',
-// 				} as PageProps,
-// 			},
-// 			revalidate,
-// 		};
-// 	},
-// );
+export async function generateMetadata({
+	params,
+}: PageProps<'/[subdomain]/aktuellt'>): Promise<Metadata> {
+	const { subdomain } = await params;
+	return await buildMetadata({
+		title: 'Aktuellt',
+		pathname: '/aktuellt',
+		subdomain,
+	});
+}

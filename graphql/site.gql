@@ -1,11 +1,11 @@
-query Global {
+query Site {
 	_site {
 		...SiteFragment
 	}
 }
 
 fragment SiteFragment on Site {
-	favicon: faviconMetaTags {
+	faviconMetaTags {
 		attributes
 		content
 		tag

@@ -8,6 +8,7 @@ import { Markdown } from 'next-dato-utils/components';
 import ListIcon from '@/public/images/list.svg';
 import ThumbIcon from '@/public/images/thumb.svg';
 import Balancer from 'react-balance-text';
+import Icon from '@/components/common/Icon';
 
 export type SectionHeaderProps = {
 	layout: 'full' | 'project' | 'home' | 'news' | 'contact';
@@ -70,7 +71,11 @@ export default function SectionHeader({
 					className={cn(s.view, 'mid')}
 					onClick={() => setView(view === 'full' ? 'list' : 'full')}
 				>
-					{/* {view === 'list' ? <ThumbIcon /> : <ListIcon />} */}
+					{view === 'list' ? (
+						<Icon src={ListIcon} nofill={true} />
+					) : (
+						<Icon src={ThumbIcon} nofill={true} />
+					)}
 				</span>
 			)}
 		</header>

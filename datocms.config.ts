@@ -5,13 +5,12 @@ import {
 	getItemReferenceRoutes,
 } from 'next-dato-utils/config';
 import { MetadataRoute } from 'next';
-import { ProjectBySubpageDocument } from '@/graphql';
+import { DistrictBySubdomainDocument, ProjectBySubpageDocument, SitemapDocument } from '@/graphql';
+import { getTenantUrl } from '@/lib/tenancy';
+
+const routes: DatoCmsConfig['routes'] = {};
 
 export default {
-	// i18n: {
-	// 	locales,
-	// 	defaultLocale,
-	// },
 	routes: {
 		start: async () => ['/'],
 		about: async () => ['/om'],
@@ -31,23 +30,54 @@ export default {
 		contact: async () => ['/kontakt'],
 		upload: async ({ id }) => getUploadReferenceRoutes(id),
 	},
-	sitemap: async () => {
-		// const { allPosts } = await apiQuery(AllPostsDocument, { all: true });
-		// return [
-		// 	{
-		// 		url: `${process.env.NEXT_PUBLIC_SITE_URL}/`,
-		// 		lastModified: new Date(),
-		// 		changeFrequency: 'daily',
-		// 		priority: 1,
-		// 	},
-		// ].concat(
-		// 	allPosts.map((post) => ({
-		// 		url: `${process.env.NEXT_PUBLIC_SITE_URL}/post/${post.slug}`,
-		// 		lastModified: new Date(post._updatedAt),
-		// 		changeFrequency: 'daily',
-		// 		priority: 0.8,
-		// 	}))
-		// ) as MetadataRoute.Sitemap;
+	sitemap: async ({ params }: LayoutProps<'/[subdomain]'>) => {
+		console.log(params);
+		const { subdomain } = await params;
+		console.log(subdomain);
+		const { district } = await apiQuery(DistrictBySubdomainDocument, { variables: { subdomain } });
+		const { allNews, allAbouts, allProjects } = await apiQuery(SitemapDocument, {
+			all: true,
+			variables: { districtId: district?.id },
+		});
+
+		const staticRoutes = ['/', '/om', '/projekt', '/aktuellt', '/kontakt'];
+		const posts = [
+			...allAbouts,
+			...allNews,
+			...allProjects,
+			...allProjects.flatMap((p) =>
+				p.subpage.map((sub) => ({ ...sub, slug: `${p.slug}/${sub.slug}` })).flat(),
+			),
+		] as {
+			_modelApiKey: string;
+			_updatedAt: string;
+			id: string;
+			title: string;
+			slug: string;
+		}[];
+
+		return staticRoutes
+			.map((pathname) => ({
+				url: getTenantUrl(subdomain, pathname),
+				lastModified: new Date(),
+				changeFrequency: 'weekly',
+				priority: pathname === '/' ? 1 : 0.8,
+			}))
+			.concat(
+				posts.map(({ slug, _modelApiKey, _updatedAt }) => ({
+					url: getTenantUrl(
+						subdomain,
+						_modelApiKey === 'about'
+							? `/om/${slug}`
+							: _modelApiKey === 'news'
+								? `/aktuellt/${slug}`
+								: `/projekt/${slug}`,
+					),
+					lastModified: new Date(_updatedAt),
+					changeFrequency: 'monthly',
+					priority: 0.7,
+				})),
+			) as MetadataRoute.Sitemap;
 	},
 	manifest: async () => {
 		return {

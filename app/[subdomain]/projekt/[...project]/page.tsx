@@ -7,8 +7,11 @@ import {
 	AllProjectsDocument,
 	DistrictBySubdomainDocument,
 } from '@/graphql';
-import { Aside, Article, SideMenu, Bubble, SectionHeader } from '@/components';
+import { Aside, Article, SideMenu, SectionHeader } from '@/components';
 import { ProjectWebpage } from './ProjectWebpage';
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { buildMetadata } from '@/app/[subdomain]/layout';
 
 export type Props = {
 	project: ProjectRecord | ProjectSubpageRecord;
@@ -23,39 +26,8 @@ export type Props = {
 export default async function ProjectItem({
 	params,
 }: PageProps<'/[subdomain]/projekt/[...project]'>) {
-	const { project: _project, subdomain } = await params;
-	const { district } = await apiQuery(DistrictBySubdomainDocument, { variables: { subdomain } });
-	const isSubpage = _project.length === 2;
-	const slug = _project[!isSubpage ? 0 : 1];
-	const districtId = district?.id;
-	const { project } = await apiQuery(!isSubpage ? ProjectDocument : ProjectSubpageDocument, {
-		variables: { slug, districtId },
-	});
-
-	if (!project) return { notFound: true };
-
-	let parentProject: ProjectRecord | null = null;
-
-	if (isSubpage) {
-		const res = await apiQuery(ProjectBySubpageDocument, {
-			variables: { subpageId: project.id, districtId },
-		});
-		parentProject = res?.project as ProjectRecord | null;
-	}
-	const subpages =
-		project.__typename === 'ProjectRecord' ? project?.subpage : parentProject?.subpage;
-
-	const projectMenu =
-		subpages?.map(({ id, title, slug }) => ({
-			id,
-			title,
-			slug: `/projekt/${isSubpage ? parentProject?.slug : project.slug}/${slug}`,
-		})) ?? [];
-
-	const projectColor =
-		parentProject?.color?.hex ??
-		(project.__typename === 'ProjectRecord' ? project.color?.hex : null);
-	const colorOption = project.colorOption ?? parentProject?.colorOption ?? null;
+	const { project, parentProject, projectMenu, projectColor, colorOption } = await getData(params);
+	if (!project) return notFound();
 
 	const { id, title, image, intro, subtitle, content, _seoMetaTags } = project;
 
@@ -80,7 +52,6 @@ export default async function ProjectItem({
 				</Aside>
 				<Article
 					id={id}
-					title={title}
 					content={content}
 					intro={intro}
 					imageCaption={image?.title}
@@ -112,61 +83,55 @@ export async function generateStaticParams() {
 	return paths;
 }
 
-// export const getStaticProps = withGlobalProps(
-// 	{ queries: [] },
-// 	async ({ props, revalidate, context }: any) => {
-// 		const isSubpage = context.params.project.length === 2;
-// 		const slug = context.params.project[!isSubpage ? 0 : 1];
-// 		const districtId = props.district?.id;
-// 		const { project }: { project: ProjectRecord | ProjectSubpageRecord } = await apiQuery(
-// 			!isSubpage ? ProjectDocument : ProjectSubpageDocument,
-// 			{ variables: { slug, districtId }, preview: context.preview },
-// 		);
+export async function generateMetadata({
+	params,
+}: PageProps<'/[subdomain]/projekt/[...project]'>): Promise<Metadata> {
+	const { project, subdomain } = await getData(params);
 
-// 		if (!project) return { notFound: true };
+	return await buildMetadata({
+		title: project?.title,
+		pathname: `/projekt/${project.slug}`,
+		subdomain,
+		image: project?.image as FileField,
+		description: project?.intro,
+	});
+}
 
-// 		let parentProject: ProjectRecord = null;
+async function getData(params: PageProps<'/[subdomain]/projekt/[...project]'>['params']) {
+	const { project: _project, subdomain } = await params;
+	const { district } = await apiQuery(DistrictBySubdomainDocument, { variables: { subdomain } });
+	const isSubpage = _project.length === 2;
+	const slug = _project[!isSubpage ? 0 : 1];
+	const districtId = district?.id;
+	const { project } = await apiQuery(!isSubpage ? ProjectDocument : ProjectSubpageDocument, {
+		variables: { slug, districtId },
+	});
 
-// 		if (isSubpage)
-// 			parentProject =
-// 				(
-// 					await apiQuery(ProjectBySubpageDocument, {
-// 						variables: { subpageId: project.id, districtId },
-// 						preview: context.preview,
-// 					})
-// 				)?.project ?? null;
+	if (!project) return notFound();
 
-// 		const subpages =
-// 			project.__typename === 'ProjectRecord' ? project?.subpage : parentProject?.subpage;
-// 		const projectMenu = !subpages
-// 			? []
-// 			: subpages.map(({ id, title, slug }) => ({
-// 					id,
-// 					title,
-// 					slug: `/projekt/${isSubpage ? parentProject.slug : project.slug}/${slug}`,
-// 				}));
+	let parentProject: ProjectRecord | null = null;
 
-// 		const projectColor =
-// 			parentProject?.color?.hex ??
-// 			(project.__typename === 'ProjectRecord' ? project.color?.hex : null);
+	if (isSubpage) {
+		const res = await apiQuery(ProjectBySubpageDocument, {
+			variables: { subpageId: project.id, districtId },
+		});
+		parentProject = res?.project as ProjectRecord | null;
+	}
+	const subpages =
+		project.__typename === 'ProjectRecord' ? project?.subpage : parentProject?.subpage;
 
-// 		return {
-// 			props: {
-// 				...props,
-// 				project,
-// 				parentProject,
-// 				projectMenu,
-// 				page: {
-// 					title: project.title,
-// 					subtitle: project.subtitle,
-// 					image: project.image,
-// 					intro: project.intro,
-// 					layout: 'project',
-// 					color: projectColor,
-// 					colorOption: project.colorOption ?? parentProject?.colorOption ?? null,
-// 				},
-// 			},
-// 			revalidate,
-// 		};
-// 	},
-// );
+	const projectMenu =
+		subpages?.map(({ id, title, slug }) => ({
+			id,
+			title,
+			slug: `/projekt/${isSubpage ? parentProject?.slug : project.slug}/${slug}`,
+		})) ?? [];
+
+	const projectColor =
+		parentProject?.color?.hex ??
+		(project.__typename === 'ProjectRecord' ? project.color?.hex : null);
+
+	const colorOption = project.colorOption ?? parentProject?.colorOption ?? null;
+
+	return { project, parentProject, projectMenu, projectColor, colorOption, subdomain };
+}

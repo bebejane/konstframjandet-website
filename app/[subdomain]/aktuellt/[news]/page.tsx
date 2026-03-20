@@ -4,6 +4,8 @@ import { NewsDocument, AllNewsDocument, DistrictBySubdomainDocument } from '@/gr
 import { Article, Aside, SectionHeader } from '@/components';
 import { mainDistrict } from '@/lib/utils';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
+import { buildMetadata } from '@/app/[subdomain]/layout';
 
 export type Props = {
 	news: NewsRecord;
@@ -86,7 +88,6 @@ export default async function NewsItem({ params }: PageProps<'/[subdomain]/aktue
 				<Article
 					id={id}
 					record={news}
-					title={title}
 					subtitle={subtitle}
 					image={image as ImageFileField}
 					intro={intro}
@@ -105,4 +106,18 @@ export async function generateStaticParams() {
 	const { id: districtId } = await mainDistrict();
 	const { allNews } = await apiQuery(AllNewsDocument, { all: true, variables: { districtId } });
 	return allNews.map(({ slug: news }) => ({ news }));
+}
+
+export async function generateMetadata({
+	params,
+}: PageProps<'/[subdomain]/aktuellt/[news]'>): Promise<Metadata> {
+	const { subdomain, news: slug } = await params;
+	const { district } = await apiQuery(DistrictBySubdomainDocument, { variables: { subdomain } });
+	const { news } = await apiQuery(NewsDocument, { variables: { slug, districtId: district?.id } });
+	return await buildMetadata({
+		title: news?.title,
+		pathname: `/aktuellt/${slug}`,
+		subdomain,
+		image: news?.image as FileField,
+	});
 }

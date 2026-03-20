@@ -1,0 +1,39 @@
+query Sitemap($districtId: ItemId!) {
+	allAbouts(filter: { district: { eq: $districtId } }) {
+		_modelApiKey
+		id
+		slug
+		title
+		_updatedAt
+	}
+	_allAboutsMeta(filter: { district: { eq: $districtId } }) {
+		count
+	}
+	allNews(filter: { district: { eq: $districtId } }) {
+		_modelApiKey
+		id
+		slug
+		title
+		_updatedAt
+	}
+	_allNewsMeta(filter: { district: { eq: $districtId } }) {
+		count
+	}
+	allProjects(filter: { district: { eq: $districtId } }) {
+		_modelApiKey
+		id
+		slug
+		title
+		_updatedAt
+		subpage {
+			_modelApiKey
+			id
+			slug
+			title
+			_updatedAt
+		}
+	}
+	_allProjectsMeta(filter: { district: { eq: $districtId } }) {
+		count
+	}
+}
