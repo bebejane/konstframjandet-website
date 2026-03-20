@@ -5,7 +5,6 @@ import cn from 'classnames';
 import { useState, useRef, useEffect } from 'react';
 import { primarySubdomain, districtUrl, animateLogo } from '@/lib/utils';
 import { useScrollInfo } from 'next-dato-utils/hooks';
-import { usePage } from '@/lib/context/page';
 import { SearchResult } from '@/components';
 import type { Menu } from '@/lib/menu';
 import Link from '@/components/nav/Link';
@@ -14,17 +13,19 @@ import { useOnClickOutside } from 'usehooks-ts';
 import { usePathname } from 'next/navigation';
 
 export type MenuProps = {
-	districts: AllDistrictsQuery['allDistricts'];
+	district: DistrictRecord;
 	menu: Menu;
+	districts: AllDistrictsQuery['allDistricts'];
 };
 
-export default function Menu({ districts, menu }: MenuProps) {
+export default function Menu({ district, districts, menu }: MenuProps) {
 	const ref = useRef<HTMLElement | null>(null);
 	const searchRef = useRef<HTMLInputElement | null>(null);
 	const searchBarRef = useRef<HTMLDivElement | null>(null);
 	const districtsPopupRef = useRef<HTMLDivElement | null>(null);
 	const pathname = usePathname();
-	const { district, isHome, isMainDistrict } = usePage();
+	const isHome = pathname === '/';
+	const isMainDistrict = district?.subdomain === primarySubdomain;
 	const { scrolledPosition } = useScrollInfo();
 	const [offset, setOffset] = useState(0);
 	const [ratio, setRatio] = useState(0);

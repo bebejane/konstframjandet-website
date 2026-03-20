@@ -1,7 +1,7 @@
 import s from './page.module.scss';
 import cn from 'classnames';
 import { AllProjectsDocument, DistrictBySubdomainDocument } from '@/graphql';
-import { ProjectContainer, ProjectCard } from '@/components';
+import { ProjectContainer, ProjectCard, SectionHeader } from '@/components';
 import { notFound } from 'next/navigation';
 import { apiQuery } from 'next-dato-utils/api';
 
@@ -24,36 +24,39 @@ export default async function Projects({ params }: PageProps<'/[subdomain]/proje
 
 	return (
 		<>
-			<div className={s.container}>
-				<ProjectContainer>
-					{projects.map((item, idx) => (
-						<ProjectCard
-							key={idx}
-							project={item as ProjectRecord}
-							index={idx}
-							total={projects.length}
-						/>
-					))}
-					{projects.length === 0 && (
-						<p className={s.noProjects}>Det finns inga aktuella projekt just nu.</p>
+			<SectionHeader title={'Aktuella projekt'} layout='project' />
+			<article>
+				<div className={s.container}>
+					<ProjectContainer>
+						{projects.map((item, idx) => (
+							<ProjectCard
+								key={idx}
+								project={item as ProjectRecord}
+								index={idx}
+								total={projects.length}
+							/>
+						))}
+						{projects.length === 0 && (
+							<p className={s.noProjects}>Det finns inga aktuella projekt just nu.</p>
+						)}
+					</ProjectContainer>
+					{completedProjects.length > 0 && (
+						<>
+							<h2 className={cn('big', s.completed)}>Avslutade projekt</h2>
+							<ProjectContainer>
+								{completedProjects.map((item, idx) => (
+									<ProjectCard
+										key={idx}
+										project={item as ProjectRecord}
+										index={idx}
+										total={completedProjects.length}
+									/>
+								))}
+							</ProjectContainer>
+						</>
 					)}
-				</ProjectContainer>
-				{completedProjects.length > 0 && (
-					<>
-						<h2 className={cn('big', s.completed)}>Avslutade projekt</h2>
-						<ProjectContainer>
-							{completedProjects.map((item, idx) => (
-								<ProjectCard
-									key={idx}
-									project={item as ProjectRecord}
-									index={idx}
-									total={completedProjects.length}
-								/>
-							))}
-						</ProjectContainer>
-					</>
-				)}
-			</div>
+				</div>
+			</article>
 		</>
 	);
 }

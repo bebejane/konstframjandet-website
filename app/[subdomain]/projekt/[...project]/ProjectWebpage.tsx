@@ -2,7 +2,6 @@
 
 import s from './ProjectWebpage.module.scss';
 import { Bubble } from '@/components';
-import { usePage } from '@/lib/context/page';
 import { useScrollInfo } from 'next-dato-utils/hooks';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';

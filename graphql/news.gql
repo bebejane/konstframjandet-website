@@ -115,7 +115,7 @@ fragment NewsFragmentLight on NewsRecord {
 	_updatedAt
 	id
 	title
-	#intro(markdown: false)
+	intro(markdown: false)
 	image {
 		...ImageThumbnailFragment
 	}

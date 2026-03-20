@@ -30,8 +30,6 @@ export { default as StructuredContent } from './common/StructuredContent';
 export { default as VideoPlayer } from './common/VideoPlayer';
 export { default as Article } from './layout/Article';
 export { default as Aside } from './layout/Aside';
-export { default as Content } from './layout/Content';
-export { default as Layout } from './layout/Layout';
 export { default as Modal } from './layout/Modal';
 export { default as SectionHeader } from './layout/SectionHeader';
 export { default as DatoLink } from './nav/DatoLink';

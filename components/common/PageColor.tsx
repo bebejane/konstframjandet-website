@@ -1,11 +1,9 @@
 'use client';
 
-import { usePage } from '@/lib/context/page';
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 
-export default function PageColor() {
-	const { district } = usePage();
+export default function PageColor({ district }: { district: DistrictRecord }) {
 	const pathname = usePathname();
 
 	useEffect(() => {

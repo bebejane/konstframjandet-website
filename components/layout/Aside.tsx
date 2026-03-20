@@ -28,17 +28,10 @@ export default function Aside({
 		const checkHeight = () => {
 			const asideElement = document.querySelector('aside');
 			if (!asideElement) return;
-
 			const navElement = document.querySelector('nav');
 			const navHeight = navElement ? navElement.offsetHeight : 0;
 			const asideHeight = asideElement.offsetHeight;
-
-			if (asideHeight + navHeight > window.innerHeight) {
-				setIsTaller(true);
-			} else {
-				setIsTaller(false);
-				console.log(navHeight);
-			}
+			setIsTaller(asideHeight + navHeight > window.innerHeight);
 		};
 
 		checkHeight();

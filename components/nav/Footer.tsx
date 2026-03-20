@@ -4,16 +4,16 @@ import s from './Footer.module.scss';
 import cn from 'classnames';
 import type { Menu } from '@/lib/menu';
 import Link from '@/components/nav/Link';
-import { usePage } from '@/lib/context/page';
+import { primarySubdomain } from '@/lib/utils';
 
 export type FooterProps = {
 	menu: Menu;
+	district: DistrictRecord;
 	districts: AllDistrictsQuery['allDistricts'];
 };
 
-export default function Footer({ menu }: FooterProps) {
-	const { isMainDistrict } = usePage();
-
+export default function Footer({ menu, district }: FooterProps) {
+	const isMainDistrict = district?.subdomain === primarySubdomain;
 	return (
 		<footer className={cn(s.footer)} id='footer'>
 			<div className={s.line}></div>

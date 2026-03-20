@@ -1,6 +1,6 @@
 import { apiQuery } from 'next-dato-utils/api';
 import { AboutDocument, AllAboutsDocument, DistrictBySubdomainDocument } from '@/graphql';
-import { Aside, Article, SideMenu } from '@/components';
+import { Aside, Article, SideMenu, SectionHeader } from '@/components';
 import { notFound } from 'next/navigation';
 
 export default async function About({ params }: PageProps<'/[subdomain]/om/[about]'>) {
@@ -11,19 +11,22 @@ export default async function About({ params }: PageProps<'/[subdomain]/om/[abou
 	});
 
 	if (!about) return notFound();
-	const { id, content, intro, _seoMetaTags } = about;
+	const { id, title, content, intro, _seoMetaTags } = about;
 	const { allAbouts } = await apiQuery(AllAboutsDocument, {
 		variables: { districtId: district?.id },
 	});
 
 	return (
 		<>
-			<Aside hideOnMobile={true}>
-				<SideMenu
-					items={allAbouts.map(({ id, slug, title }) => ({ id, title, slug: `/om/${slug}` }))}
-				/>
-			</Aside>
-			<Article id={id} intro={intro} content={content} record={about} seo={_seoMetaTags} />
+			<SectionHeader title={title} layout='full' />
+			<article>
+				<Aside hideOnMobile={true}>
+					<SideMenu
+						items={allAbouts.map(({ id, slug, title }) => ({ id, title, slug: `/om/${slug}` }))}
+					/>
+				</Aside>
+				<Article id={id} intro={intro} content={content} record={about} seo={_seoMetaTags} />
+			</article>
 		</>
 	);
 }

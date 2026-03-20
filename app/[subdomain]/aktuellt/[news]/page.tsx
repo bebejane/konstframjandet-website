@@ -1,7 +1,7 @@
 import s from './[news].module.scss';
 import { apiQuery } from 'next-dato-utils/api';
 import { NewsDocument, AllNewsDocument, DistrictBySubdomainDocument } from '@/graphql';
-import { Article, Aside } from '@/components';
+import { Article, Aside, SectionHeader } from '@/components';
 import { mainDistrict } from '@/lib/utils';
 import { notFound } from 'next/navigation';
 
@@ -37,63 +37,66 @@ export default async function NewsItem({ params }: PageProps<'/[subdomain]/aktue
 
 	return (
 		<>
-			<Aside title={'Var & när'} backLink={'/aktuellt'} backLinkType={'aktuellt'}>
-				{haveMeta && (
-					<>
-						<p>
-							{where && (
-								<>
-									{where}
-									<br />
-								</>
-							)}
-							{address && (
-								<>
-									{address}
-									<br />
-								</>
-							)}
-							{date && (
-								<>
-									{date}
-									<br />
-								</>
-							)}
-							{time && (
-								<>
-									{time}
-									<br />
-								</>
-							)}
-							{misc && (
-								<>
-									{misc}
-									<br />
-								</>
-							)}
-							{externalLink && (
-								<>
-									<a href={externalLink}>Extern länk</a>
-									<br />
-								</>
-							)}
-						</p>
-					</>
-				)}
-			</Aside>
-			<Article
-				id={id}
-				record={news}
-				title={title}
-				subtitle={subtitle}
-				image={image as ImageFileField}
-				intro={intro}
-				content={content}
-				extraContent={extra}
-				date={date}
-				seo={_seoMetaTags}
-				backLink={'/aktuellt'}
-			/>
+			<SectionHeader title={title} subtitle={subtitle} layout='news' />
+			<article>
+				<Aside title={'Var & när'} backLink={'/aktuellt'} backLinkType={'aktuellt'}>
+					{haveMeta && (
+						<>
+							<p>
+								{where && (
+									<>
+										{where}
+										<br />
+									</>
+								)}
+								{address && (
+									<>
+										{address}
+										<br />
+									</>
+								)}
+								{date && (
+									<>
+										{date}
+										<br />
+									</>
+								)}
+								{time && (
+									<>
+										{time}
+										<br />
+									</>
+								)}
+								{misc && (
+									<>
+										{misc}
+										<br />
+									</>
+								)}
+								{externalLink && (
+									<>
+										<a href={externalLink}>Extern länk</a>
+										<br />
+									</>
+								)}
+							</p>
+						</>
+					)}
+				</Aside>
+				<Article
+					id={id}
+					record={news}
+					title={title}
+					subtitle={subtitle}
+					image={image as ImageFileField}
+					intro={intro}
+					content={content}
+					extraContent={extra}
+					date={date}
+					seo={_seoMetaTags}
+					backLink={'/aktuellt'}
+				/>
+			</article>
 		</>
 	);
 }

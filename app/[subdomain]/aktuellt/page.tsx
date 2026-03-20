@@ -2,7 +2,7 @@ import s from './page.module.scss';
 import cn from 'classnames';
 import withGlobalProps from '@/lib/withGlobalProps';
 import { AllNewsDocument, DistrictBySubdomainDocument } from '@/graphql';
-import { NewsCard, NewsContainer, Bubble, Loader } from '@/components';
+import { NewsCard, NewsContainer, Bubble, Loader, SectionHeader } from '@/components';
 import useStore from '@/lib/store';
 //import { useApiQuery } from 'dato-nextjs-utils/hooks';
 import { apiQuery } from 'next-dato-utils/api';
@@ -28,13 +28,18 @@ export default async function News({ params }: PageProps<'/[subdomain]/aktuellt'
 	});
 
 	return (
-		<div className={s.container}>
-			<NewsLoader
-				allNews={allNews}
-				district={district as DistrictRecord}
-				count={_allNewsMeta.count}
-			/>
-		</div>
+		<>
+			<SectionHeader title='Aktuellt' layout='news' />
+			<article>
+				<div className={s.container}>
+					<NewsLoader
+						allNews={allNews}
+						district={district as DistrictRecord}
+						count={_allNewsMeta.count}
+					/>
+				</div>
+			</article>
+		</>
 	);
 }
 

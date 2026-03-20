@@ -5,8 +5,8 @@ import cn from 'classnames';
 import { Markdown } from 'next-dato-utils/components';
 import { Image } from 'react-datocms/image';
 import Link from '@/components/nav/Link';
-import { usePage } from '@/lib/context/page';
 import Balancer from 'react-wrap-balancer';
+import { usePathname } from 'next/navigation';
 
 export type CardProps = {
 	news: NewsRecord;
@@ -17,10 +17,10 @@ export default function NewsCard({
 	view = 'full',
 	news: { id, title, subtitle, intro, image, slug, where, date, time, misc },
 }: CardProps) {
-	const { isHome } = usePage();
+	const pathname = usePathname();
 
 	return (
-		<li id={id} className={cn(s.card, isHome && s.home, view === 'list' && s.list)}>
+		<li id={id} className={cn(s.card, pathname === '/' && s.home, view === 'list' && s.list)}>
 			<div className={s.content}>
 				<Link href={`/aktuellt/${slug}`}>
 					<h2 className='big'>

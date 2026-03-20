@@ -7,7 +7,7 @@ import {
 	AllProjectsDocument,
 	DistrictBySubdomainDocument,
 } from '@/graphql';
-import { Aside, Article, SideMenu, Bubble } from '@/components';
+import { Aside, Article, SideMenu, Bubble, SectionHeader } from '@/components';
 import { ProjectWebpage } from './ProjectWebpage';
 
 export type Props = {
@@ -55,34 +55,45 @@ export default async function ProjectItem({
 	const projectColor =
 		parentProject?.color?.hex ??
 		(project.__typename === 'ProjectRecord' ? project.color?.hex : null);
+	const colorOption = project.colorOption ?? parentProject?.colorOption ?? null;
 
 	const { id, title, image, intro, subtitle, content, _seoMetaTags } = project;
 
 	return (
 		<>
-			<Aside
-				title={parentProject?.title ?? project.title}
-				titleHref={parentProject ? `/projekt/${parentProject.slug}` : undefined}
-				backLink={'/projekt'}
-				backLinkType={'projekt'}
-			>
-				{projectMenu.length > 0 && <SideMenu items={projectMenu as any} />}
-			</Aside>
-			<Article
-				id={id}
+			<SectionHeader
 				title={title}
-				content={content}
+				layout='project'
+				image={image as FileField}
 				intro={intro}
-				imageCaption={image?.title}
-				subtitle={subtitle}
-				backLink={'/projekt'}
-				seo={_seoMetaTags}
+				color={projectColor}
+				colorOption={colorOption}
 			/>
-			{project.__typename === 'ProjectRecord' && project.webpage && (
-				<ProjectWebpage href={project.webpage} color={projectColor}>
-					Besök projektets hemsida
-				</ProjectWebpage>
-			)}
+			<article>
+				<Aside
+					title={parentProject?.title ?? project.title}
+					titleHref={parentProject ? `/projekt/${parentProject.slug}` : undefined}
+					backLink={'/projekt'}
+					backLinkType={'projekt'}
+				>
+					{projectMenu.length > 0 && <SideMenu items={projectMenu as any} />}
+				</Aside>
+				<Article
+					id={id}
+					title={title}
+					content={content}
+					intro={intro}
+					imageCaption={image?.title}
+					subtitle={subtitle}
+					backLink={'/projekt'}
+					seo={_seoMetaTags}
+				/>
+				{project.__typename === 'ProjectRecord' && project.webpage && (
+					<ProjectWebpage href={project.webpage} color={projectColor}>
+						Besök projektets hemsida
+					</ProjectWebpage>
+				)}
+			</article>
 		</>
 	);
 }

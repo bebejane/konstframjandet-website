@@ -22,7 +22,7 @@ export default function StartSelectionCard({ item }: CardProps) {
 					{item.image && (
 						<Image
 							data={item.image.responsiveImage}
-							pictureClassName={s.image}
+							imgClassName={s.image}
 							placeholderClassName={s.image}
 							objectFit='cover'
 						/>

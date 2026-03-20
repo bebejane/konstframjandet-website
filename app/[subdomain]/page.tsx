@@ -1,7 +1,7 @@
 import s from './page.module.scss';
 import React from 'react';
 import { AllDistrictsDocument, StartDocument } from '@/graphql';
-import { StartSelectionContainer, StartSelectionCard } from '@/components';
+import { StartSelectionContainer, StartSelectionCard, SectionHeader } from '@/components';
 import { Block } from '@/components';
 import { apiQuery } from 'next-dato-utils/api';
 import { primarySubdomain } from '@/lib/utils';
@@ -26,17 +26,22 @@ export default async function Home({ params }: PageProps<'/[subdomain]'>) {
 	);
 
 	return (
-		<div className={s.container}>
-			{district?.content?.map((block, idx) =>
-				block.__typename === 'StartSelectedDistrictNewsRecord' && isMainDistrict ? (
-					<React.Fragment key={idx}>{selectedInDistricts}</React.Fragment>
-				) : block.__typename === 'StartLatestNewsRecord' ? (
-					<Block key={idx} data={{ ...block, news: allNews }} record={district} />
-				) : (
-					<Block key={idx} data={block} record={district} />
-				),
-			)}
-			{!isMainDistrict && selectedInDistricts}
-		</div>
+		<>
+			<SectionHeader layout='home' />
+			<article>
+				<div className={s.container}>
+					{district?.content?.map((block, idx) =>
+						block.__typename === 'StartSelectedDistrictNewsRecord' && isMainDistrict ? (
+							<React.Fragment key={idx}>{selectedInDistricts}</React.Fragment>
+						) : block.__typename === 'StartLatestNewsRecord' ? (
+							<Block key={idx} data={{ ...block, news: allNews }} record={district} />
+						) : (
+							<Block key={idx} data={block} record={district} />
+						),
+					)}
+					{!isMainDistrict && selectedInDistricts}
+				</div>
+			</article>
+		</>
 	);
 }
