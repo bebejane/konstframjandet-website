@@ -27,15 +27,15 @@ export default function FullscreenGallery({}: FullscreenGalleryProps) {
 	const [initLoaded, setInitLoaded] = useState(false);
 	const isSingleSlide = images?.length === 1;
 	const isHidden = !images || !imageId;
-	const index = 0;
+	const index = images?.findIndex((image) => image?.id === imageId) ?? 0;
 
 	useEffect(() => {
 		if (images && images[realIndex]?.title) setTitle(images[realIndex]?.title);
 	}, [realIndex, images, setTitle]);
 
-	// useEffect(() => {
-	// 	setRealIndex(index);
-	// }, [index]);
+	useEffect(() => {
+		setRealIndex(index);
+	}, [index]);
 
 	useEffect(() => {
 		const handleKeys = ({ key }: KeyboardEvent) => {
@@ -82,7 +82,7 @@ export default function FullscreenGallery({}: FullscreenGalleryProps) {
 						{images.map((image, idx) => (
 							<SwiperSlide key={idx} className={cn(s.slide)}>
 								<Image
-									pictureClassName={s.image}
+									imgClassName={s.image}
 									data={image.responsiveImage}
 									usePlaceholder={false}
 									onLoad={() => setLoaded((l) => ({ ...l, [image.id]: true }))}

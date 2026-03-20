@@ -16,7 +16,6 @@ import { useShallow } from 'zustand/shallow';
 export type ArticleProps = {
 	id: string;
 	children?: React.ReactNode | React.ReactNode[] | undefined;
-	title?: string;
 	subtitle?: string | null;
 	intro?: string | null;
 	image?: ImageFileField | null;
@@ -34,7 +33,6 @@ export type ArticleProps = {
 
 export default function Article({
 	id,
-	title,
 	imageCaption,
 	content,
 	extraContent,
@@ -46,10 +44,9 @@ export default function Article({
 	dropcap = false,
 	seo,
 }: ArticleProps) {
-	const [setImageId, setImages, imageId] = useStore(
-		useShallow((state) => [state.setImageId, state.setImages, state.imageId]),
+	const [setImageId, setImages, images] = useStore(
+		useShallow((state) => [state.setImageId, state.setImages, state.images]),
 	);
-	//const description = intro ? (remark().use(strip).processSync(intro).value as string) : null;
 
 	useEffect(() => {
 		const images = [image];
@@ -90,12 +87,7 @@ export default function Article({
 								!backLink && s.nobackLink,
 							)}
 						>
-							<StructuredContent
-								id={id}
-								record={record}
-								content={content}
-								onClick={(imageId) => setImageId(imageId)}
-							/>
+							<StructuredContent id={id} record={record} content={content} />
 							{extraContent && (
 								<div className={cn(s.extraContent, 'body-small')}>
 									<StructuredContent id={id} record={record} content={extraContent} />

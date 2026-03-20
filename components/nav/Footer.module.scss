@@ -1,118 +1,125 @@
 .footer {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background-color: var(--black);
-  color: var(--light-grey);
-  padding: var(--outer-margin);
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	background-color: var(--black);
+	color: var(--light-grey);
+	padding: var(--outer-margin);
 
-  @include mq($from: tablet) {
-    padding-top: calc(0.5 * var(--outer-margin));
-    padding-bottom: calc(0.5 * var(--outer-margin));
-  }
+	@include mq($from: tablet) {
+		padding-top: calc(0.5 * var(--outer-margin));
+		padding-bottom: calc(0.5 * var(--outer-margin));
+	}
 
-  a:hover {
-    color: var(--page-color);
-  }
+	a:hover {
+		color: var(--page-color);
+	}
 
-  .line {
-    border: var(--line-thin);
-    border-color: var(--light-grey);
-    margin-bottom: var(--space);
-  }
+	.line {
+		border: var(--line-thin);
+		border-color: var(--light-grey);
+		margin-bottom: var(--space);
+	}
 
-  a {
-    color: var(--white);
-  }
+	a {
+		color: var(--white);
+	}
 
-  .logo {
-    font-family: "KF-Symbol";
-    font-size: 3rem;
-    line-height: 1;
-    display: block;
-    margin-top: -0.15em;
-    padding-bottom: 0.25em;
+	.logo {
+		font-family: 'KF-Symbol';
+		font-size: 3rem;
+		line-height: 1;
+		display: block;
+		margin-top: -0.15em;
+		padding-bottom: 0.25em;
 
-    @include mq($from: desktop) {
-      font-size: calc(0.8 * var(--navbar-height) + calc(-1 * var(--navbar-space)));
-    }
-  }
+		@include mq($from: desktop) {
+			font-size: calc(0.8 * var(--navbar-height) + calc(-1 * var(--navbar-space)));
+		}
+	}
 
-  nav {
-    display: flex;
-    flex-direction: row;
-    padding-bottom: 1rem;
+	nav {
+		display: flex;
+		flex-direction: row;
+		padding-bottom: 1rem;
 
-    .about {
-      @include mq($from: desktop) {
-        flex: 0 0 calc(var(--grid-unit));
-        padding-right: 3rem;
-      }
+		.about {
+			@include mq($from: desktop) {
+				flex: 0 0 calc(var(--grid-unit));
+				padding-right: 3rem;
+			}
 
-      @include mq($from: desktop) {
-        .mobile {
-          display: none;
-        }
-      }
+			@include mq($from: desktop) {
+				.mobile {
+					display: none;
+				}
+			}
 
-      line-height: 1.25em;
-    }
+			line-height: 1.25em;
+		}
 
-    ul {
-      @include mq($until: desktop) {
-        display: none;
-      }
+		@include mq($until: tablet) {
+			flex-direction: column;
+			.about {
+				padding-bottom: var(--space);
+			}
+		}
 
-      list-style: none;
-      display: flex;
-    }
+		ul {
+			@include mq($until: desktop) {
+				display: none;
+			}
 
-    > ul {
-      @include mq($until: desktop) {
-        display: none;
-      }
+			list-style: none;
+			display: flex;
+		}
 
-      display: flex;
-      flex: 1 1 100%;
-      flex-direction: row;
+		> ul {
+			@include mq($until: desktop) {
+				display: none;
+			}
 
-      > li {
-        flex: 0 0 calc(100% / 3);
-        padding-right: 2rem;
-        padding-left: 1rem;
-        overflow: hidden;
+			display: flex;
+			flex: 1 1 100%;
+			flex-direction: row;
 
-        &:first-of-type {
-          padding-left: 0;
-        }
+			> li {
+				flex: 0 0 calc(100% / 3);
+				padding-right: 2rem;
+				padding-left: 1rem;
+				overflow: hidden;
 
-        ul {
-          flex-direction: column;
-          margin-top: 1rem;
-          color: var(--white);
+				&:first-of-type {
+					padding-left: 0;
+				}
 
-          li {
-            padding-bottom: 0.2em;
-            line-height: 1.2;
-          }
-        }
+				ul {
+					flex-direction: column;
+					margin-top: 1rem;
+					color: var(--white);
 
-        &.double {
-          flex: 0 0 calc(2 * calc(100% / 4));
-          display: block;
+					li {
+						padding-bottom: 0.2em;
+						line-height: 1.2;
+					}
+				}
 
-          ul {
-            display: block;
-            column-count: 3;
+				&.double {
+					flex: 0 0 calc(2 * calc(100% / 4));
+					display: block;
 
-            li {
-              white-space: pre;
-              text-overflow: ellipsis;
-            }
-          }
-        }
-      }
-    }
-  }
+					ul {
+						display: block;
+						column-count: 3;
+
+						li {
+							white-space: pre;
+							text-overflow: ellipsis;
+						}
+					}
+				}
+			}
+		}
+	}
 }

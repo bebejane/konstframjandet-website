@@ -1,4 +1,5 @@
 import '@/styles/index.scss';
+import 'swiper/css';
 import s from './layout.module.scss';
 import { Footer, FullscreenGallery, Menu, MenuMobile } from '@/components';
 import { AllDistrictsDocument } from '@/graphql';
@@ -7,7 +8,7 @@ import { primarySubdomain } from '@/lib/utils';
 import { apiQuery } from 'next-dato-utils/api';
 import PageColor from '@/components/common/PageColor';
 import { DistrictProvider } from '@/lib/context/district';
-import { Provider as BalancerProvider } from 'react-wrap-balancer';
+//import { Provider as BalancerProvider } from 'react-balance-text';
 
 export default async function SubdomainLayout({ params, children }: LayoutProps<'/[subdomain]'>) {
 	const subdomain = (await params).subdomain ?? primarySubdomain;
@@ -20,11 +21,10 @@ export default async function SubdomainLayout({ params, children }: LayoutProps<
 		<html lang='sv-SE'>
 			<body id='root'>
 				<DistrictProvider value={{ district }}>
-					<BalancerProvider>
-						<main id='content' className={s.layout}>
-							{children}
-						</main>
-					</BalancerProvider>
+					<main id='content' className={s.layout}>
+						{children}
+					</main>
+
 					<Menu district={district} districts={allDistricts} menu={menu} />
 					<MenuMobile district={district} districts={allDistricts} menu={menu} />
 					<Footer district={district} menu={menu} districts={allDistricts} />

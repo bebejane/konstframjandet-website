@@ -7,7 +7,7 @@ import { Image } from 'react-datocms';
 import { Markdown } from 'next-dato-utils/components';
 import ListIcon from '@/public/images/list.svg';
 import ThumbIcon from '@/public/images/thumb.svg';
-import Balancer from 'react-wrap-balancer';
+import Balancer from 'react-balance-text';
 
 export type SectionHeaderProps = {
 	layout: 'full' | 'project' | 'home' | 'news' | 'contact';
@@ -35,15 +35,17 @@ export default function SectionHeader({
 		<header
 			className={cn(s.header, s[layout], colorOption && s[colorOption], noImage && s.noimage)}
 		>
-			<h1>
-				<span>
-					<Balancer>
-						{title}
-						{subtitle && ` — ${subtitle}`}
-					</Balancer>
-				</span>{' '}
-				<div className={s.fade} />
-			</h1>
+			{(title || subtitle) && (
+				<h1>
+					<span>
+						<Balancer>
+							{title}
+							{subtitle && ` — ${subtitle}`}
+						</Balancer>
+					</span>{' '}
+					<div className={s.fade} />
+				</h1>
+			)}
 			{!noImage && image?.responsiveImage && (
 				<figure>
 					<Image

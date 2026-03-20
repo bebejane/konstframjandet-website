@@ -1,6 +1,11 @@
 import { apiQuery } from 'next-dato-utils/api';
-import { DatoCmsConfig, getUploadReferenceRoutes, getItemReferenceRoutes } from 'next-dato-utils/config';
+import {
+	DatoCmsConfig,
+	getUploadReferenceRoutes,
+	getItemReferenceRoutes,
+} from 'next-dato-utils/config';
 import { MetadataRoute } from 'next';
+import { ProjectBySubpageDocument } from '@/graphql';
 
 export default {
 	// i18n: {
@@ -8,7 +13,23 @@ export default {
 	// 	defaultLocale,
 	// },
 	routes: {
-		
+		start: async () => ['/'],
+		about: async () => ['/om'],
+		news: async ({ id, slug }) => [
+			`/aktuellt/${slug}`,
+			'/aktuellt',
+			...(await getItemReferenceRoutes(id)),
+		],
+		project: async ({ id, slug }) => [`/projekt/${slug}`, ...(await getItemReferenceRoutes(id))],
+		project_subpage: async ({ id }) => {
+			const { project } = await apiQuery(ProjectBySubpageDocument, {
+				variables: { subpageId: id },
+			});
+			return project ? [`/projekt/${project.slug}`, ...(await getItemReferenceRoutes(id))] : null;
+		},
+		district: async () => ['/', '/om', '/projekt', '/aktuellt'],
+		contact: async () => ['/kontakt'],
+		upload: async ({ id }) => getUploadReferenceRoutes(id),
 	},
 	sitemap: async () => {
 		// const { allPosts } = await apiQuery(AllPostsDocument, { all: true });

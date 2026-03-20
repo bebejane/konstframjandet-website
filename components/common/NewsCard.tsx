@@ -5,7 +5,7 @@ import cn from 'classnames';
 import { Markdown } from 'next-dato-utils/components';
 import { Image } from 'react-datocms/image';
 import Link from '@/components/nav/Link';
-import Balancer from 'react-wrap-balancer';
+import Balancer from 'react-balance-text';
 import { usePathname } from 'next/navigation';
 
 export type CardProps = {

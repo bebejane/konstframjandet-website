@@ -1,47 +1,67 @@
-'use client'
+'use client';
 
-import s from './ImageGallery.module.scss'
-import cn from 'classnames'
-import React, { useCallback, useState, useRef, useEffect } from 'react'
+import s from './ImageGallery.module.scss';
+import cn from 'classnames';
+import React, { useCallback, useState, useRef, useEffect } from 'react';
 import { Swiper as SwiperReact, SwiperSlide } from 'swiper/react';
 import type { Swiper } from 'swiper';
-import { Image } from 'react-datocms'
+import { Image } from 'react-datocms';
 import { Markdown } from 'next-dato-utils/components';
 import { useWindowSize } from 'rooks';
+import useStore, { useShallow } from '@/lib/store';
 
-export type ImageGalleryBlockProps = { id: string, data: ImageGalleryRecord, onClick?: Function, editable?: boolean }
+export type ImageGalleryBlockProps = {
+	id: string;
+	data: ImageGalleryRecord;
+	onClick?: Function;
+	editable?: boolean;
+};
 
-export default function ImageGallery({ id, data: { images }, onClick, editable = false }: ImageGalleryBlockProps) {
-
-	const swiperRef = useRef<Swiper | null>(null)
-	const containerRef = useRef<HTMLDivElement | null>(null)
-	const [index, setIndex] = useState(0)
-	const [arrowMarginTop, setArrowMarginTop] = useState(0)
-	const { innerHeight, innerWidth } = useWindowSize()
-	const [captionHeight, setCaptionHeight] = useState<number | undefined>()
+export default function ImageGallery({
+	id,
+	data: { images },
+	onClick,
+	editable = false,
+}: ImageGalleryBlockProps) {
+	const [setImageId] = useStore(useShallow((state) => [state.setImageId]));
+	const swiperRef = useRef<Swiper | null>(null);
+	const containerRef = useRef<HTMLDivElement | null>(null);
+	const [index, setIndex] = useState(0);
+	const [arrowMarginTop, setArrowMarginTop] = useState(0);
+	const { innerHeight, innerWidth } = useWindowSize();
+	const [captionHeight, setCaptionHeight] = useState<number | undefined>();
 
 	const calculatePositions = useCallback(() => {
-		if (!containerRef.current) return
+		if (!containerRef.current) return;
 
-		Array.from(containerRef.current.querySelectorAll<HTMLImageElement>('picture>img')).forEach(img => {
-			setArrowMarginTop((state) => img.clientHeight / 2 > state ? img.clientHeight / 2 : state)
-		})
+		const images = containerRef.current.querySelectorAll<HTMLImageElement>('figure');
+		let figureHeight = 0;
 
-		let figcaptionHeight = 0
+		Array.from(images).forEach((img) => {
+			figureHeight = img.clientHeight > figureHeight ? img.clientHeight : figureHeight;
+		});
 
-		Array.from(containerRef.current.querySelectorAll<HTMLDivElement>('figure>figcaption')).forEach(caption => {
-			caption.style.minHeight = '0px'
-			figcaptionHeight = caption.clientHeight > figcaptionHeight || !figcaptionHeight ? caption.clientHeight : figcaptionHeight
-			caption.style.minHeight = `${figcaptionHeight}px`
-		})
+		setArrowMarginTop(figureHeight / 2);
 
-	}, [setArrowMarginTop])
+		let figcaptionHeight = 0;
+
+		Array.from(containerRef.current.querySelectorAll<HTMLDivElement>('figure>figcaption')).forEach(
+			(caption) => {
+				caption.style.minHeight = '0px';
+				figcaptionHeight =
+					caption.clientHeight > figcaptionHeight || !figcaptionHeight
+						? caption.clientHeight
+						: figcaptionHeight;
+				caption.style.minHeight = `${figcaptionHeight}px`;
+			},
+		);
+	}, []);
 
 	useEffect(() => {
-		calculatePositions()
-	}, [innerHeight, innerWidth, calculatePositions])
+		calculatePositions();
+	}, [innerHeight, innerWidth]);
 
-	if (!images || !images.length) return null
+	if (!images || !images.length) return null;
 
 	return (
 		<div className={s.gallery} data-editable={editable} ref={containerRef}>
@@ -55,33 +75,28 @@ export default function ImageGallery({ id, data: { images }, onClick, editable =
 				slidesPerView='auto'
 				initialSlide={index}
 				onSlideChange={({ realIndex }) => setIndex(realIndex)}
-				onSwiper={(swiper) => swiperRef.current = swiper}
+				onSwiper={(swiper) => (swiperRef.current = swiper)}
 			>
-				{images?.map((item, idx) =>
-					<SwiperSlide key={`${idx}-${captionHeight}`} className={cn(s.slide)} >
-						<figure id={`${id}-${item.id}`} onClick={() => onClick?.(item.id)} >
-							<Image
-								data={item.responsiveImage}
-								className={s.image}
-								pictureClassName={s.picture}
-								placeholderClassName={s.picture}
-								objectFit={'cover'}
-								onLoad={calculatePositions}
-							/>
+				{images?.map((item, idx) => (
+					<SwiperSlide key={`${idx}-${captionHeight}`} className={s.slide}>
+						<figure id={item.id} onClick={() => setImageId(item.id)}>
+							<Image data={item.responsiveImage} onLoad={calculatePositions} />
 							<figcaption>
-								{item.title && <Markdown allowedElements={['em', 'p']} content={item.title}/>}
+								{item.title && <Markdown allowedElements={['em', 'p']} content={item.title} />}
 							</figcaption>
 						</figure>
 					</SwiperSlide>
-				)}
+				))}
 			</SwiperReact>
-			{images.length > 3 &&
+			{images.length > 3 && (
 				<div
 					className={s.next}
 					style={{ top: `${arrowMarginTop}px`, display: arrowMarginTop ? 'flex' : 'none' }}
 					onClick={() => swiperRef.current?.slideNext()}
-				>→</div>
-			}
+				>
+					→
+				</div>
+			)}
 		</div>
-	)
+	);
 }
