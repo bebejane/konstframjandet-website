@@ -10,7 +10,8 @@ export type LinkProperties = LinkProps & HTMLProps<HTMLAnchorElement>;
 const Link: FC<LinkProperties> = (props: LinkProperties) => {
 	const isdev = process.env.NODE_ENV === 'development';
 	const { district } = usePage();
-	const subdomain = isdev ? `/${district?.subdomain}` : '';
+	const subdomain =
+		isdev && district?.subdomain !== primarySubdomain ? `/${district?.subdomain}` : '';
 	const href = `${subdomain}${props.href}`;
 	return (
 		<NextLink {...props} href={href}>
