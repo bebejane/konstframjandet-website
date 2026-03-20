@@ -76,15 +76,18 @@ export default {
 			) as MetadataRoute.Sitemap;
 		return sitemap;
 	},
-	manifest: async () => {
+	manifest: async ({ params }: RouteContext<'/[subdomain]/manifest.json'>) => {
+		const { subdomain } = await params;
+		const { district } = await apiQuery(DistrictBySubdomainDocument, { variables: { subdomain } });
+
 		return {
-			name: 'Konstfrämjandet',
-			short_name: 'Konstfrämjandet',
-			description: 'Konstfrämjandet',
+			name: `Konstfrämjandet - ${district?.name}`,
+			short_name: `Konstfrämjandet - ${district?.name}`,
+			description: `Konstfrämjandet - ${district?.name}`,
 			start_url: '/',
 			display: 'standalone',
 			background_color: '#ffffff',
-			theme_color: '#000000',
+			theme_color: district?.color?.hex ?? '#000000',
 			icons: [
 				{
 					src: '/favicon.ico',
@@ -94,7 +97,7 @@ export default {
 			],
 		} satisfies MetadataRoute.Manifest;
 	},
-	robots: async () => {
+	robots: async ({ params }: RouteContext<'/[subdomain]/robots.txt'>) => {
 		return {
 			rules: {
 				userAgent: '*',
