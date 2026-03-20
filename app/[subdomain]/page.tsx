@@ -4,18 +4,18 @@ import { AllDistrictsDocument, StartDocument } from '@/graphql';
 import { StartSelectionContainer, StartSelectionCard, SectionHeader } from '@/components';
 import { Block } from '@/components';
 import { apiQuery } from 'next-dato-utils/api';
-import { primarySubdomain } from '@/lib/utils';
 import { notFound } from 'next/navigation';
+import { PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
 
 export default async function Home({ params }: PageProps<'/[subdomain]'>) {
-	const subdomain = (await params).subdomain ?? primarySubdomain;
+	const subdomain = (await params).subdomain ?? PRIMARY_SUBDOMAIN;
 	const { allDistricts, draftUrl } = await apiQuery(AllDistrictsDocument);
 	const districtId = allDistricts.find((d) => d.subdomain === subdomain)?.id;
 
 	if (!districtId) return notFound();
 
 	const { start, district, allNews } = await apiQuery(StartDocument, { variables: { districtId } });
-	const isMainDistrict = district?.subdomain === primarySubdomain;
+	const isMainDistrict = district?.subdomain === PRIMARY_SUBDOMAIN;
 
 	const selectedInDistricts = (
 		<StartSelectionContainer>

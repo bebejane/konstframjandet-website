@@ -8,8 +8,6 @@ import { MetadataRoute } from 'next';
 import { DistrictBySubdomainDocument, ProjectBySubpageDocument, SitemapDocument } from '@/graphql';
 import { getTenantUrl } from '@/lib/tenancy';
 
-const routes: DatoCmsConfig['routes'] = {};
-
 export default {
 	routes: {
 		start: async () => ['/'],
@@ -30,14 +28,12 @@ export default {
 		contact: async () => ['/kontakt'],
 		upload: async ({ id }) => getUploadReferenceRoutes(id),
 	},
-	sitemap: async ({ params }: LayoutProps<'/[subdomain]'>) => {
-		console.log(params);
+	sitemap: async ({ params }: RouteContext<'/[subdomain]/sitemap.xml'>) => {
 		const { subdomain } = await params;
-		console.log(subdomain);
 		const { district } = await apiQuery(DistrictBySubdomainDocument, { variables: { subdomain } });
 		const { allNews, allAbouts, allProjects } = await apiQuery(SitemapDocument, {
 			all: true,
-			variables: { districtId: district?.id },
+			variables: { districtId: district?.id, first: 500, skip: 0 },
 		});
 
 		const staticRoutes = ['/', '/om', '/projekt', '/aktuellt', '/kontakt'];
@@ -56,7 +52,7 @@ export default {
 			slug: string;
 		}[];
 
-		return staticRoutes
+		const sitemap = staticRoutes
 			.map((pathname) => ({
 				url: getTenantUrl(subdomain, pathname),
 				lastModified: new Date(),
@@ -78,6 +74,7 @@ export default {
 					priority: 0.7,
 				})),
 			) as MetadataRoute.Sitemap;
+		return sitemap;
 	},
 	manifest: async () => {
 		return {

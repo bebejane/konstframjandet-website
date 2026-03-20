@@ -4,19 +4,19 @@ import s from './layout.module.scss';
 import { Footer, FullscreenGallery, Menu, MenuMobile } from '@/components';
 import { AllDistrictsDocument, SiteDocument } from '@/graphql';
 import { buildMenu } from '@/lib/menu';
-import { primarySubdomain } from '@/lib/utils';
 import { apiQuery } from 'next-dato-utils/api';
 import PageColor from '@/components/common/PageColor';
 import { DistrictProvider } from '@/lib/context/district';
 import { Metadata } from 'next';
 import { Icon } from 'next/dist/lib/metadata/types/metadata-types';
-import { PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
+import { getTenantUrl, PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
 import { notFound } from 'next/navigation';
 
 export default async function SubdomainLayout({ params, children }: LayoutProps<'/[subdomain]'>) {
 	const subdomain = (await params).subdomain ?? PRIMARY_SUBDOMAIN;
 	const { allDistricts, draftUrl } = await apiQuery(AllDistrictsDocument);
 	const district = allDistricts.find((d) => d.subdomain === subdomain) as DistrictRecord;
+	console.log('subdomain', subdomain);
 	if (!district) return notFound();
 	const districtId = district.id;
 	const menu = await buildMenu(districtId);
@@ -68,7 +68,7 @@ export async function generateMetadata(props: LayoutProps<'/'>): Promise<Metadat
 			description: globalSeo?.fallbackSeo?.description?.substring(0, 157),
 			image: globalSeo?.fallbackSeo?.image as FileField,
 			pathname: '/',
-			subdomain: primarySubdomain,
+			subdomain: PRIMARY_SUBDOMAIN,
 		})),
 	};
 }
@@ -94,8 +94,8 @@ export async function buildMetadata({
 			? `${description.substring(0, 157)}...`
 			: description;
 
-	const url = `${process.env.NEXT_PUBLIC_BASE_PROTOCOL}${subdomain === primarySubdomain ? (process.env.NODE_ENV === 'production' ? 'www.' : '') : subdomain}${process.env.NEXT_PUBLIC_BASE_DOMAIN}${pathname}`;
-	console.log(url);
+	const url = getTenantUrl(subdomain, pathname);
+
 	return {
 		title,
 		alternates: {

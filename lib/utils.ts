@@ -3,10 +3,7 @@ import { sleep } from 'next-dato-utils/utils';
 import { AllDistrictsDocument, DistrictBySubdomainDocument } from '@/graphql';
 import * as EmailValidator from 'email-validator';
 import { ReactNode } from 'react';
-
-export const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
-export const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'localhost:3000';
-export const isServer = typeof window === 'undefined';
+import { PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
 
 export const breakpoints = {
 	mobile: 320,
@@ -16,7 +13,6 @@ export const breakpoints = {
 	navBreak: 1100,
 };
 
-export const primarySubdomain = 'forbundet';
 export const pageSize = 50;
 
 export const chunkArray = (array: any[] | ReactNode[], chunkSize: number) => {
@@ -132,36 +128,16 @@ export const randomInt = (min, max) => {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-export async function getStaticDistrictPaths(doc: TypedDocumentNode, segment: string) {
-	const res = await apiQuery(doc, { all: true });
-	const data = res[Object.keys(res)[0]];
-	const paths = [];
-	const districts = await allDistricts(true);
-
-	districts.forEach(({ id, subdomain }) => {
-		const items = data.filter(({ district }) => district && district?.id === id);
-		paths.push.apply(
-			paths,
-			items.map((i) => ({ params: { district: subdomain, [segment]: i.slug } })),
-		);
-	});
-
-	return {
-		paths,
-		fallback: 'blocking',
-	};
-}
-
 export async function allDistricts(excludeMain: boolean = false): Promise<DistrictRecord[]> {
 	const { allDistricts } = await apiQuery(AllDistrictsDocument, { all: true });
 	return allDistricts.filter(({ subdomain }) =>
-		excludeMain ? subdomain !== primarySubdomain : true,
+		excludeMain ? subdomain !== PRIMARY_SUBDOMAIN : true,
 	) as DistrictRecord[];
 }
 
 export async function mainDistrict(): Promise<DistrictRecord> {
 	const { district } = await apiQuery(DistrictBySubdomainDocument, {
-		variables: { subdomain: primarySubdomain },
+		variables: { subdomain: PRIMARY_SUBDOMAIN },
 	});
 	return district as DistrictRecord;
 }
@@ -169,8 +145,8 @@ export async function mainDistrict(): Promise<DistrictRecord> {
 export function districtUrl(district?: DistrictRecord | string): string {
 	const subdomain = typeof district === 'object' ? district.subdomain : district;
 	return process.env.NODE_ENV === 'production'
-		? `https://${subdomain === primarySubdomain ? 'www' : subdomain}.konstframjandet.se`
-		: `http://localhost:3000${subdomain !== primarySubdomain ? `/${subdomain}` : ''}`;
+		? `https://${subdomain === PRIMARY_SUBDOMAIN ? 'www' : subdomain}.konstframjandet.se`
+		: `http://localhost:3000${subdomain !== PRIMARY_SUBDOMAIN ? `/${subdomain}` : ''}`;
 }
 
 export type TruncateOptions = {

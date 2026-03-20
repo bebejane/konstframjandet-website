@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { basicAuth } from 'next-dato-utils/route-handlers';
-import { allDistricts, districtUrl, primarySubdomain } from '@/lib/utils';
+import { allDistricts, districtUrl } from '@/lib/utils';
+import { PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
 
 export async function POST(req: Request) {
 	return basicAuth(req, async (req) => {
@@ -10,7 +11,7 @@ export async function POST(req: Request) {
 		const districts = await allDistricts();
 		const district =
 			districts.find((el) => el.id === districtId) ??
-			districts.find((el) => el.subdomain === primarySubdomain);
+			districts.find((el) => el.subdomain === PRIMARY_SUBDOMAIN);
 
 		if (!district)
 			return new Response(JSON.stringify({ error: 'District not found' }), {

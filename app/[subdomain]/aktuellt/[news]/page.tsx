@@ -39,7 +39,7 @@ export default async function NewsItem({ params }: PageProps<'/[subdomain]/aktue
 
 	return (
 		<>
-			<SectionHeader title={title} subtitle={subtitle} layout='news' />
+			<SectionHeader title={title} subtitle={subtitle} layout='full' />
 			<article>
 				<Aside title={'Var & när'} backLink={'/aktuellt'} backLinkType={'aktuellt'}>
 					{haveMeta && (

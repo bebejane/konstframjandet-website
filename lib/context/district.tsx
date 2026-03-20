@@ -1,7 +1,6 @@
 'use client';
 
 import { useContext, createContext } from 'react';
-import { primarySubdomain } from '@/lib/utils';
 
 export type DistrictProps = {
 	district?: DistrictRecord;

@@ -4699,6 +4699,8 @@ type SiteFragment = { __typename?: 'Site', faviconMetaTags: Array<{ __typename?:
 
 type SitemapQueryVariables = Exact<{
   districtId: Scalars['ItemId']['input'];
+  first: Scalars['IntType']['input'];
+  skip: Scalars['IntType']['input'];
 }>;
 
 

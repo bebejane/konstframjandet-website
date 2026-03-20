@@ -1,5 +1,5 @@
-query Sitemap($districtId: ItemId!) {
-	allAbouts(filter: { district: { eq: $districtId } }) {
+query Sitemap($districtId: ItemId!, $first: IntType!, $skip: IntType!) {
+	allAbouts(filter: { district: { eq: $districtId } }, first: $first, skip: $skip) {
 		_modelApiKey
 		id
 		slug
@@ -9,7 +9,7 @@ query Sitemap($districtId: ItemId!) {
 	_allAboutsMeta(filter: { district: { eq: $districtId } }) {
 		count
 	}
-	allNews(filter: { district: { eq: $districtId } }) {
+	allNews(filter: { district: { eq: $districtId } }, first: $first) {
 		_modelApiKey
 		id
 		slug
@@ -19,7 +19,7 @@ query Sitemap($districtId: ItemId!) {
 	_allNewsMeta(filter: { district: { eq: $districtId } }) {
 		count
 	}
-	allProjects(filter: { district: { eq: $districtId } }) {
+	allProjects(filter: { district: { eq: $districtId } }, first: $first, skip: $skip) {
 		_modelApiKey
 		id
 		slug

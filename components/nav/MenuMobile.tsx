@@ -3,11 +3,12 @@
 import s from './MenuMobile.module.scss';
 import cn from 'classnames';
 import { useState, useRef, useEffect } from 'react';
-import { animateLogo, districtUrl, primarySubdomain } from '@/lib/utils';
+import { animateLogo, districtUrl } from '@/lib/utils';
 import type { Menu } from '@/lib/menu';
 import Link from '@/components/nav/Link';
 import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
+import { PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
 
 export type Props = {
 	menu: Menu;
@@ -18,7 +19,7 @@ export type Props = {
 export default function MenuMobile({ menu, district }: Props) {
 	const pathname = usePathname();
 	const isHome = pathname === '/';
-	const isMainDistrict = district?.subdomain === primarySubdomain;
+	const isMainDistrict = district?.subdomain === PRIMARY_SUBDOMAIN;
 	const [open, setOpen] = useState(false);
 	const ref = useRef<HTMLElement | null>(null);
 	const [subSelected, setSubSelected] = useState<string | null>(null);

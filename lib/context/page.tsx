@@ -1,7 +1,7 @@
 'use client';
 
 import { useContext, createContext } from 'react';
-import { primarySubdomain } from '@/lib/utils';
+import { PRIMARY_SUBDOMAIN } from '@/lib/utils';
 
 export type PageMeta = {
 	district?: DistrictRecord;
@@ -42,7 +42,7 @@ export const PageProvider = ({ children, value }: PageProviderProps) => {
 				...initialState,
 				...value,
 				layout: value.layout || initialState.layout,
-				isMainDistrict: value?.district?.subdomain === primarySubdomain,
+				isMainDistrict: value?.district?.subdomain === PRIMARY_SUBDOMAIN,
 			}}
 		>
 			{children}

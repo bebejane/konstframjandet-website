@@ -9,8 +9,9 @@ import { EffectFade } from 'swiper/modules';
 import SwiperCore from 'swiper';
 import React, { useState, useRef, useEffect } from 'react';
 import type { Swiper as SwiperType } from 'swiper';
-import { Loader, Modal } from '@/components';
+import { Loader } from '@/components';
 import { useStore, useShallow } from '@/lib/store';
+import { Modal } from 'next-dato-utils/components';
 
 SwiperCore.use([EffectFade]);
 

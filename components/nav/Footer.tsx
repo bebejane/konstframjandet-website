@@ -1,10 +1,8 @@
-'use client';
-
 import s from './Footer.module.scss';
 import cn from 'classnames';
 import type { Menu } from '@/lib/menu';
 import Link from '@/components/nav/Link';
-import { primarySubdomain } from '@/lib/utils';
+import { PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
 
 export type FooterProps = {
 	menu: Menu;
@@ -13,17 +11,17 @@ export type FooterProps = {
 };
 
 export default function Footer({ menu, district }: FooterProps) {
-	const isMainDistrict = district?.subdomain === primarySubdomain;
+	const isMainDistrict = district.subdomain === PRIMARY_SUBDOMAIN;
 	return (
-		<footer className={cn(s.footer)} id='footer'>
+		<footer className={s.footer} id='footer'>
 			<div className={s.line}></div>
 			<nav>
 				<div className={s.about}>
-					<Link href={'https://www.konstframjandet.se'} scroll={true}>
+					<Link href={'/'} scroll={true}>
 						<span className={s.logo}>B</span>
 					</Link>
 					<div className={s.mobile}>
-						<Link href={'https://www.konstframjandet.se'} scroll={true}>
+						<Link href={'/'} scroll={true}>
 							Konstfrämjandet
 						</Link>
 						<br />
@@ -42,12 +40,12 @@ export default function Footer({ menu, district }: FooterProps) {
 									{items?.map(({ type, label, slug, subdomain }, idx) => (
 										<li key={`${idx}-sub`}>
 											<Link
+												scroll={true}
 												href={
 													type === 'district' && process.env.NODE_ENV === 'production'
 														? `https://${subdomain}.konstframjandet.se`
 														: (slug ?? '')
 												}
-												scroll={true}
 											>
 												{label}
 											</Link>
@@ -57,7 +55,7 @@ export default function Footer({ menu, district }: FooterProps) {
 							</li>
 						))}
 					<li>
-						<Link href={'https://www.konstframjandet.se'} scroll={true}>
+						<Link href={'/'} scroll={true}>
 							Konstfrämjandet
 						</Link>
 						<br />

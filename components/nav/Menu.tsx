@@ -3,7 +3,7 @@
 import s from './Menu.module.scss';
 import cn from 'classnames';
 import { useState, useRef, useEffect } from 'react';
-import { primarySubdomain, districtUrl, animateLogo } from '@/lib/utils';
+import { animateLogo } from '@/lib/utils';
 import { useScrollInfo } from 'next-dato-utils/hooks';
 import { SearchResult } from '@/components';
 import type { Menu } from '@/lib/menu';
@@ -11,6 +11,7 @@ import Link from '@/components/nav/Link';
 import NextLink from 'next/link';
 import { useOnClickOutside } from 'usehooks-ts';
 import { usePathname } from 'next/navigation';
+import { PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
 
 export type MenuProps = {
 	district: DistrictRecord;
@@ -25,7 +26,7 @@ export default function Menu({ district, districts, menu }: MenuProps) {
 	const districtsPopupRef = useRef<HTMLDivElement | null>(null);
 	const pathname = usePathname();
 	const isHome = pathname === '/';
-	const isMainDistrict = district?.subdomain === primarySubdomain;
+	const isMainDistrict = district?.subdomain === PRIMARY_SUBDOMAIN;
 	const { scrolledPosition } = useScrollInfo();
 	const [offset, setOffset] = useState(0);
 	const [ratio, setRatio] = useState(0);
@@ -175,7 +176,7 @@ export default function Menu({ district, districts, menu }: MenuProps) {
 				<span className='mid'>Besök våra distrikt</span>
 				<ul>
 					{districts
-						?.filter((d) => primarySubdomain !== d.subdomain)
+						?.filter((d) => PRIMARY_SUBDOMAIN !== d.subdomain)
 						.map((d) => (
 							<li key={d.id}>
 								<NextLink
