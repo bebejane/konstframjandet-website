@@ -8,6 +8,10 @@ import {
 import { MetadataRoute } from 'next';
 import { DistrictBySubdomainDocument, ProjectBySubpageDocument, SitemapDocument } from '@/graphql';
 import { getTenantUrl } from '@/lib/tenancy';
+import { buildClient } from '@datocms/cma-client';
+import { District } from '@/types/datocms-cma';
+
+const client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN!, environment: 'main' });
 
 export function getRoute(item: any): string {
 	const apiKey = getItemApiKey(item);
@@ -19,11 +23,11 @@ export function getRoute(item: any): string {
 		case 'about':
 			return '/om';
 		case 'news':
-			return `/aktuellt/${item.slug}`;
+			return `/aktuellt/${item?.slug}`;
 		case 'project':
-			return `/projekt/${item.slug}`;
+			return `/projekt/${item?.slug}`;
 		case 'project_subpage':
-			return `/projekt/${item.project?.slug}/${item.slug}`;
+			return `/projekt/${item?.project?.slug}/${item?.slug}`;
 		case 'district':
 			return '/';
 		case 'contact':
@@ -126,5 +130,33 @@ export default {
 				allow: '/',
 			},
 		};
+	},
+	webPreviews: async (item) => {
+		const { id } = item;
+		const record = await client.items.find<District>(id);
+
+		if (!record || !record.creator?.id) return null;
+
+		const [user, districts, itemTypes] = await Promise.all([
+			client.users.find(record.creator.id),
+			client.items.list<District>({
+				filter: { type: 'district' },
+				version: 'published',
+				page: { limit: 100 },
+			}),
+			client.itemTypes.list(),
+		]);
+
+		if (!user) return null;
+
+		const district = districts.find((d) => d.email === user.email);
+		const apiKey = itemTypes.find((t) => t.id === record.__itemTypeId)?.api_key;
+
+		if (!apiKey) return null;
+		if (!district) return null;
+		const subdomain = district.subdomain as string;
+		if (!subdomain) return null;
+		const url = getTenantUrl(subdomain, getRoute({ ...record, _modelApiKey: apiKey }));
+		return url;
 	},
 } satisfies DatoCmsConfig;
