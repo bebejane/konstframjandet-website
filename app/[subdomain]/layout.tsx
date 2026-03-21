@@ -11,12 +11,12 @@ import { Metadata } from 'next';
 import { Icon } from 'next/dist/lib/metadata/types/metadata-types';
 import { getTenantUrl, PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
 import { notFound } from 'next/navigation';
+import { DraftModeContentLink } from 'next-dato-utils/components';
 
 export default async function SubdomainLayout({ params, children }: LayoutProps<'/[subdomain]'>) {
 	const subdomain = (await params).subdomain ?? PRIMARY_SUBDOMAIN;
-	const { allDistricts, draftUrl } = await apiQuery(AllDistrictsDocument);
-	const district = allDistricts.find((d) => d.subdomain === subdomain) as DistrictRecord;
-	console.log('subdomain', subdomain);
+	const { allDistricts, draftUrl } = await apiQuery(AllDistrictsDocument, { stripStega: true });
+	const district = allDistricts.find((d) => d.subdomain == subdomain) as DistrictRecord;
 	if (!district) return notFound();
 	const districtId = district.id;
 	const menu = await buildMenu(districtId);
@@ -34,6 +34,7 @@ export default async function SubdomainLayout({ params, children }: LayoutProps<
 					<FullscreenGallery />
 					<PageColor district={district} />
 				</DistrictProvider>
+				<DraftModeContentLink />
 			</body>
 		</html>
 	);

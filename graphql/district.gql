@@ -17,6 +17,8 @@ query DistrictBySubdomain($subdomain: String) {
 }
 
 fragment DistrictFragment on DistrictRecord {
+	_modelApiKey
+	_editingUrl
 	id
 	name
 	email
@@ -227,6 +229,8 @@ fragment DistrictFragment on DistrictRecord {
 }
 
 fragment DistrictFragmentLight on DistrictRecord {
+	_modelApiKey
+	_editingUrl
 	id
 	name
 	email

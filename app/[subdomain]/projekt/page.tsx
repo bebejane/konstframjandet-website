@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import { apiQuery } from 'next-dato-utils/api';
 import { Metadata } from 'next';
 import { buildMetadata } from '@/app/[subdomain]/layout';
+import { DraftMode } from 'next-dato-utils/components';
 
 export type Props = {
 	projects: ProjectRecord[];
@@ -14,10 +15,13 @@ export type Props = {
 
 export default async function Projects({ params }: PageProps<'/[subdomain]/projekt'>) {
 	const { subdomain } = await params;
-	const { district } = await apiQuery(DistrictBySubdomainDocument, { variables: { subdomain } });
+	const { district } = await apiQuery(DistrictBySubdomainDocument, {
+		variables: { subdomain },
+		stripStega: true,
+	});
 	if (!district) return notFound();
 
-	const { allProjects } = await apiQuery(AllProjectsDocument, {
+	const { allProjects, draftUrl } = await apiQuery(AllProjectsDocument, {
 		all: true,
 		variables: { districtId: district.id },
 	});
@@ -59,6 +63,7 @@ export default async function Projects({ params }: PageProps<'/[subdomain]/proje
 					)}
 				</div>
 			</article>
+			<DraftMode url={draftUrl} path={`/projekt`} />
 		</>
 	);
 }

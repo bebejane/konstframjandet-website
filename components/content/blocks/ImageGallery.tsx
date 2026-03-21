@@ -1,8 +1,7 @@
 'use client';
 
 import s from './ImageGallery.module.scss';
-import cn from 'classnames';
-import React, { useCallback, useState, useRef, useEffect } from 'react';
+import { useCallback, useState, useRef, useEffect } from 'react';
 import { Swiper as SwiperReact, SwiperSlide } from 'swiper/react';
 import type { Swiper } from 'swiper';
 import { Image } from 'react-datocms';
@@ -11,18 +10,10 @@ import { useWindowSize } from 'rooks';
 import useStore, { useShallow } from '@/lib/store';
 
 export type ImageGalleryBlockProps = {
-	id: string;
 	data: ImageGalleryRecord;
-	onClick?: Function;
-	editable?: boolean;
 };
 
-export default function ImageGallery({
-	id,
-	data: { images },
-	onClick,
-	editable = false,
-}: ImageGalleryBlockProps) {
+export default function ImageGallery({ data: { id, images } }: ImageGalleryBlockProps) {
 	const [setImageId] = useStore(useShallow((state) => [state.setImageId]));
 	const swiperRef = useRef<Swiper | null>(null);
 	const containerRef = useRef<HTMLDivElement | null>(null);
@@ -64,7 +55,7 @@ export default function ImageGallery({
 	if (!images || !images.length) return null;
 
 	return (
-		<div className={s.gallery} data-editable={editable} ref={containerRef}>
+		<div className={s.gallery} ref={containerRef}>
 			<div className={s.fade}></div>
 			<SwiperReact
 				id={`${id}-swiper-wrap`}

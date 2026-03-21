@@ -1,28 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { PRIMARY_SUBDOMAIN, BASE_DOMAIN, BASE_PROTOCOL } from '@/lib/tenancy';
+import { PRIMARY_SUBDOMAIN, BASE_DOMAIN } from '@/lib/tenancy';
 import districts from './districts.json' assert { type: 'json' };
+
+export default async function proxy(req: NextRequest) {
+	const prod = process.env.NODE_ENV === 'production';
+	const pathname = req.nextUrl.pathname;
+	const domain = req.headers.get('host') as string;
+	const subdomain = districts.find((d) => d.subdomain === pathname.split('/')[1])?.subdomain;
+	const isAllowedDomain = domain === BASE_DOMAIN;
+
+	if (!isAllowedDomain) return new Response(null, { status: 404 });
+
+	if (prod) {
+		return NextResponse.rewrite(new URL(`/${subdomain ?? PRIMARY_SUBDOMAIN}${pathname}`, req.url));
+	} else {
+		return NextResponse.rewrite(
+			new URL(`${!subdomain ? `/${PRIMARY_SUBDOMAIN}${pathname}` : `${pathname}`}`, req.url),
+		);
+	}
+}
 
 export const config = {
 	matcher: ['/((?!api/|_next/|_static/|_vercel|images|fonts|[\\w-]+\\.\\w+).*)'],
 };
-
-export default async function proxy(req: NextRequest) {
-	const url = req.nextUrl;
-	const hostname = req.headers.get('host') as string;
-	const isAllowedDomain = hostname === BASE_DOMAIN;
-	const subdomain = hostname.split('.')[0];
-	console.log('proxy', url.pathname, subdomain);
-	if (isAllowedDomain && !districts.some((d) => d.subdomain === subdomain)) {
-		console.log('proxy: next');
-		return NextResponse.next();
-	}
-
-	const subdomainData = districts.find((d) => d.subdomain === subdomain);
-
-	if (subdomainData) {
-		console.log('proxy: rewrite');
-		return NextResponse.rewrite(new URL(`/${subdomain}${url.pathname}`, req.url));
-	}
-	console.log('proxy: 404');
-	return new Response(null, { status: 404 });
-}

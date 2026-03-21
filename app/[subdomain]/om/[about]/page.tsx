@@ -4,11 +4,15 @@ import { Aside, Article, SideMenu, SectionHeader } from '@/components';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { buildMetadata } from '@/app/[subdomain]/layout';
+import { DraftMode } from 'next-dato-utils/components';
 
 export default async function About({ params }: PageProps<'/[subdomain]/om/[about]'>) {
 	const { about: slug, subdomain } = await params;
-	const { district } = await apiQuery(DistrictBySubdomainDocument, { variables: { subdomain } });
-	const { about } = await apiQuery(AboutDocument, {
+	const { district } = await apiQuery(DistrictBySubdomainDocument, {
+		variables: { subdomain },
+		stripStega: true,
+	});
+	const { about, draftUrl } = await apiQuery(AboutDocument, {
 		variables: { slug, districtId: district?.id },
 	});
 
@@ -29,6 +33,7 @@ export default async function About({ params }: PageProps<'/[subdomain]/om/[abou
 				</Aside>
 				<Article id={id} intro={intro} content={content} record={about} seo={_seoMetaTags} />
 			</article>
+			<DraftMode url={draftUrl} path={`/om/${slug}`} />
 		</>
 	);
 }

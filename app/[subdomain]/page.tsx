@@ -2,19 +2,27 @@ import s from './page.module.scss';
 import React from 'react';
 import { AllDistrictsDocument, StartDocument } from '@/graphql';
 import { StartSelectionContainer, StartSelectionCard, SectionHeader } from '@/components';
-import { Block } from '@/components';
+import Block from '@/components/content/Block';
 import { apiQuery } from 'next-dato-utils/api';
 import { notFound } from 'next/navigation';
 import { PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
+import { DraftMode } from 'next-dato-utils/components';
 
 export default async function Home({ params }: PageProps<'/[subdomain]'>) {
 	const subdomain = (await params).subdomain ?? PRIMARY_SUBDOMAIN;
-	const { allDistricts, draftUrl } = await apiQuery(AllDistrictsDocument);
-	const districtId = allDistricts.find((d) => d.subdomain === subdomain)?.id;
+	const { allDistricts } = await apiQuery(AllDistrictsDocument, { stripStega: true });
+	const district = allDistricts.find((d) => d.subdomain === subdomain);
 
-	if (!districtId) return notFound();
+	if (!district) return notFound();
 
-	const { start, district, allNews } = await apiQuery(StartDocument, { variables: { districtId } });
+	const {
+		start,
+		allNews,
+		district: startDistrict,
+		draftUrl,
+	} = await apiQuery(StartDocument, {
+		variables: { districtId: district.id },
+	});
 	const isMainDistrict = district?.subdomain === PRIMARY_SUBDOMAIN;
 
 	const selectedInDistricts = (
@@ -30,18 +38,19 @@ export default async function Home({ params }: PageProps<'/[subdomain]'>) {
 			<SectionHeader layout='home' />
 			<article>
 				<div className={s.container}>
-					{district?.content?.map((block, idx) =>
+					{startDistrict?.content?.map((block, idx) =>
 						block.__typename === 'StartSelectedDistrictNewsRecord' && isMainDistrict ? (
 							<React.Fragment key={idx}>{selectedInDistricts}</React.Fragment>
 						) : block.__typename === 'StartLatestNewsRecord' ? (
-							<Block key={idx} data={{ ...block, news: allNews }} record={district} />
+							<Block key={idx} data={{ ...block, news: allNews }} />
 						) : (
-							<Block key={idx} data={block} record={district} />
+							<Block key={idx} data={block} />
 						),
 					)}
 					{!isMainDistrict && selectedInDistricts}
 				</div>
 			</article>
+			<DraftMode url={draftUrl} path='/' />
 		</>
 	);
 }

@@ -20,6 +20,7 @@ query News($slug: String!, $districtId: ItemId) {
 }
 
 fragment NewsFragment on NewsRecord {
+	_modelApiKey
 	id
 	title
 	intro(markdown: false)
@@ -111,6 +112,7 @@ fragment NewsFragment on NewsRecord {
 }
 
 fragment NewsFragmentLight on NewsRecord {
+	_modelApiKey
 	_createdAt
 	_updatedAt
 	id

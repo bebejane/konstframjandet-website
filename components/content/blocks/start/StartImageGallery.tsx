@@ -6,9 +6,9 @@ import { useState, useRef } from 'react';
 import { Swiper as SwiperReact, SwiperSlide } from 'swiper/react';
 import type { Swiper } from 'swiper';
 import { Image } from 'react-datocms';
-import { recordToSlug } from '@/lib/utils';
 import { Bubble } from '@/components';
 import Link from '@/components/nav/Link';
+import { getRoute } from '@/datocms.config';
 
 export type ExternalLinkQuery = {
 	linkImage: FileField;
@@ -20,11 +20,10 @@ export type StartImageGalleryRecordExtended = {
 };
 
 export type Props = {
-	id: string;
 	data: StartImageGalleryRecordExtended;
 };
 
-export default function StartImageGallery({ id, data: { links } }: Props) {
+export default function StartImageGallery({ data: { links } }: Props) {
 	const swiperRef = useRef<Swiper | null>(null);
 	const containerRef = useRef<HTMLDivElement | null>(null);
 	const [index, setIndex] = useState(0);
@@ -32,7 +31,7 @@ export default function StartImageGallery({ id, data: { links } }: Props) {
 	return (
 		<section className={s.gallery} ref={containerRef}>
 			<SwiperReact
-				id={`${id}-swiper-wrap`}
+				id={`swiper-wrap`}
 				className={s.swiper}
 				loop={true}
 				noSwiping={false}
@@ -42,34 +41,37 @@ export default function StartImageGallery({ id, data: { links } }: Props) {
 				onSlideChange={({ realIndex }) => setIndex(realIndex)}
 				onSwiper={(swiper) => (swiperRef.current = swiper)}
 			>
-				{links.map((item, idx) => (
-					<SwiperSlide key={idx} className={s.slide}>
-						<Link href={recordToSlug(item)}>
-							<figure>
-								{(item.image ?? item.linkImage) && (
-									<Image
-										data={(item.image ?? item.linkImage).responsiveImage}
-										className={s.picture}
-										pictureClassName={s.picture}
-										placeholderClassName={s.picture}
-										objectFit={'cover'}
-									/>
-								)}
-								<figcaption>
-									<header>
-										<div className={s.fade}></div>
-										<h1>{item.title}</h1>
-									</header>
-									<div className={s.intro}>
-										<p className='intro'>{item.intro || item.linkIntro}</p>
-										<div className={s.fade}></div>
-									</div>
-								</figcaption>
-							</figure>
-							<Bubble className={cn(s.bubble, 'mid')}>Visa</Bubble>
-						</Link>
-					</SwiperSlide>
-				))}
+				{links.map((item, idx) => {
+					const image = item.image ?? item.linkImage;
+					return (
+						<SwiperSlide key={idx} className={s.slide}>
+							<Link href={getRoute(item)}>
+								<figure>
+									{image.responsiveImage && (
+										<Image
+											data={image.responsiveImage}
+											className={s.picture}
+											pictureClassName={s.picture}
+											placeholderClassName={s.picture}
+											objectFit={'cover'}
+										/>
+									)}
+									<figcaption>
+										<header>
+											<div className={s.fade}></div>
+											<h1>{item.title}</h1>
+										</header>
+										<div className={s.intro}>
+											<p className='intro'>{item.intro || item.linkIntro}</p>
+											<div className={s.fade}></div>
+										</div>
+									</figcaption>
+								</figure>
+								<Bubble className={cn(s.bubble, 'mid')}>Visa</Bubble>
+							</Link>
+						</SwiperSlide>
+					);
+				})}
 			</SwiperReact>
 			<div className={s.prev}>
 				<Bubble onClick={() => swiperRef.current?.slidePrev()}>‹</Bubble>

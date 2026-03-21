@@ -1,5 +1,5 @@
+import config from '@/datocms.config';
 import Link from '@/components/nav/Link';
-import { recordToSlug } from '@/lib/utils';
 
 export type Props = {
 	link: ExternalLinkRecord | (InternalLinkRecord & { internalTitle: String }) | any;
@@ -7,10 +7,11 @@ export type Props = {
 	children?: React.ReactNode;
 };
 
-export default function DatoLink({ link, className, children }: Props) {
+export default async function DatoLink({ link, className, children }: Props) {
 	if (!link) return null;
 
-	const slug = link.__typename === 'ExternalLinkRecord' ? link.url : recordToSlug(link.record);
+	const slug =
+		link.__typename === 'ExternalLinkRecord' ? link.url : await config.route(link.record);
 	const title =
 		link.__typename === 'ExternalLinkRecord'
 			? link.title

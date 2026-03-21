@@ -1,17 +1,17 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
 import { basicAuth } from 'next-dato-utils/route-handlers';
-import { allDistricts, districtUrl } from '@/lib/utils';
-import { PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
+import { getTenantUrl, PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
+import { apiQuery } from 'next-dato-utils/api';
+import { AllDistrictsDocument } from '@/graphql';
 
 export async function POST(req: Request) {
 	return basicAuth(req, async (req) => {
 		const body = await req.json();
 		const payload = body?.entity;
 		const districtId = payload?.attributes?.district ?? payload?.id;
-		const districts = await allDistricts();
+		const { allDistricts } = await apiQuery(AllDistrictsDocument, { all: true });
 		const district =
-			districts.find((el) => el.id === districtId) ??
-			districts.find((el) => el.subdomain === PRIMARY_SUBDOMAIN);
+			allDistricts.find((el) => el.id === districtId) ??
+			allDistricts.find((el) => el.subdomain === PRIMARY_SUBDOMAIN);
 
 		if (!district)
 			return new Response(JSON.stringify({ error: 'District not found' }), {
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
 				headers: { 'Content-Type': 'application/json' },
 			});
 
-		const url = districtUrl(district);
+		const url = getTenantUrl(district.subdomain, '/');
 
 		try {
 			console.log(`revalidate-district: ${url}`);

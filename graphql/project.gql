@@ -31,6 +31,8 @@ query ProjectSubpage($slug: String!, $districtId: ItemId) {
 }
 
 fragment ProjectFragment on ProjectRecord {
+	_modelApiKey
+	_editingUrl
 	id
 	title
 	subtitle
@@ -121,8 +123,10 @@ fragment ProjectFragment on ProjectRecord {
 }
 
 fragment ProjectFragmentLight on ProjectRecord {
+	_modelApiKey
 	_createdAt
 	_updatedAt
+	_editingUrl
 	id
 	title
 	subtitle
@@ -145,7 +149,9 @@ fragment ProjectFragmentLight on ProjectRecord {
 }
 
 fragment ProjectSubpageFragment on ProjectSubpageRecord {
+	_modelApiKey
 	_createdAt
+	_editingUrl
 	id
 	title
 	subtitle
@@ -226,6 +232,7 @@ fragment ProjectSubpageFragment on ProjectSubpageRecord {
 fragment ProjectSubpageFragmentLight on ProjectSubpageRecord {
 	_createdAt
 	_updatedAt
+	_editingUrl
 	id
 	title
 	subtitle

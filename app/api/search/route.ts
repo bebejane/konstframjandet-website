@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server';
 import { apiQuery } from 'next-dato-utils/api';
 import { buildClient } from '@datocms/cma-client';
 import { SiteSearchDocument } from '@/graphql';
-import { truncateText, recordToSlug } from '@/lib/utils';
+import { truncateText } from 'next-dato-utils/utils';
 import { PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
 
 const environment =
@@ -111,20 +111,24 @@ export const siteSearch = async (opt: { q: string; district: string }) => {
 		});
 	}
 
-	Object.keys(data).forEach((type) => {
-		if (!data[type].length) delete data[type];
-		else
-			data[type] = data[type]
-				.filter((el) => el)
-				.map((el) => ({
-					__typename: el.__typename,
-					_modelApiKey: el._modelApiKey,
-					category: itemTypes?.find(({ api_key }) => api_key === el._modelApiKey)?.name,
-					title: el.title,
-					text: truncateText(el.text, { sentences: 1, useEllipsis: true, minLength: 100 }),
-					slug: `${el.district?.subdomain !== PRIMARY_SUBDOMAIN ? `/${el.district?.subdomain}` : ''}${recordToSlug(el)}`,
-					//TODO: change to real subdomains
-				}));
-	});
+	for (const type in data) {
+		if (!data[type].length) {
+			delete data[type];
+			continue;
+		}
+		const items = (data[type] = data[type].filter((el) => el));
+
+		for (const item of items) {
+			const d = {
+				__typename: item.__typename,
+				_modelApiKey: item._modelApiKey,
+				category: itemTypes?.find(({ api_key }) => api_key === item._modelApiKey)?.name,
+				title: item.title,
+				text: truncateText(item.text, { sentences: 1, useEllipsis: true, minLength: 100 }),
+				slug: `${item.district?.subdomain !== PRIMARY_SUBDOMAIN ? `/${item.district?.subdomain}` : ''}${await config.route(item)}`,
+			};
+			data[type].push(d);
+		}
+	}
 	return data;
 };

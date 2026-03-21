@@ -5,7 +5,7 @@ import { AllNewsDocument } from '@/graphql';
 import { NewsCard, NewsContainer, Bubble, Loader } from '@/components';
 import useStore, { useShallow } from '@/lib/store';
 import { useApiQuery } from 'next-dato-utils/hooks';
-import { pageSize } from '@/lib/utils';
+import { pageSize } from '@/lib/constants';
 
 export type Props = {
 	allNews: AllNewsQuery['allNews'];

@@ -25,12 +25,13 @@ const base: Menu = [
 export const buildMenu = async (districtId: string) => {
 	const { allNews, allAbouts, allProjects, allDistricts } = await apiQuery(MenuDocument, {
 		variables: { districtId, first: 100 },
+		stripStega: true,
 	});
 
 	const district = allDistricts.find(({ id }) => id === districtId);
 
+	let items: MenuItem[];
 	const menu = base.map((item) => {
-		let items: MenuItem[];
 		switch (item.type) {
 			case 'news':
 				items = allNews.map((el) => ({
@@ -41,7 +42,7 @@ export const buildMenu = async (districtId: string) => {
 				break;
 			case 'about':
 				items = allAbouts.map((el) => ({ type: 'about', label: el.title, slug: `/om/${el.slug}` }));
-				item.slug = items[0]?.slug ?? null;
+				items[0]?.slug && (item.slug = items[0]?.slug);
 				break;
 			case 'project':
 				items = allProjects.map((el) => ({
@@ -79,7 +80,7 @@ export const buildMenu = async (districtId: string) => {
 			default:
 				break;
 		}
-		return { ...item, items: items ? items : item.items, subdomain: district?.subdomain };
+		return { ...item, items: items ?? item.items, subdomain: district?.subdomain };
 	});
 
 	return menu.filter(({ items }) => !(items && items.length === 0));

@@ -1,6 +1,7 @@
 import { apiQuery } from 'next-dato-utils/api';
 import {
 	DatoCmsConfig,
+	getItemApiKey,
 	getUploadReferenceRoutes,
 	getItemReferenceRoutes,
 } from 'next-dato-utils/config';
@@ -8,21 +9,42 @@ import { MetadataRoute } from 'next';
 import { DistrictBySubdomainDocument, ProjectBySubpageDocument, SitemapDocument } from '@/graphql';
 import { getTenantUrl } from '@/lib/tenancy';
 
+export function getRoute(item: any): string {
+	const apiKey = getItemApiKey(item);
+	if (!apiKey) throw new Error('No api key found');
+
+	switch (apiKey) {
+		case 'start':
+			return '/';
+		case 'about':
+			return '/om';
+		case 'news':
+			return `/aktuellt/${item.slug}`;
+		case 'project':
+			return `/projekt/${item.slug}`;
+		case 'project_subpage':
+			return `/projekt/${item.project?.slug}/${item.slug}`;
+		case 'district':
+			return '/';
+		case 'contact':
+			return '/kontakt';
+		default:
+			throw new Error('No route found for apiKey: ' + apiKey);
+	}
+}
+
 export default {
+	route: async (item) => getRoute(item)?.[0] ?? null,
 	routes: {
-		start: async () => ['/'],
-		about: async () => ['/om'],
-		news: async ({ id, slug }) => [
-			`/aktuellt/${slug}`,
-			'/aktuellt',
-			...(await getItemReferenceRoutes(id)),
-		],
-		project: async ({ id, slug }) => [`/projekt/${slug}`, ...(await getItemReferenceRoutes(id))],
-		project_subpage: async ({ id }) => {
+		start: async () => [getRoute('start')],
+		about: async () => [getRoute('about')],
+		news: async (item) => [getRoute(item), '/aktuellt', ...(await getItemReferenceRoutes(item.id))],
+		project: async (item) => [getRoute(item), ...(await getItemReferenceRoutes(item.id))],
+		project_subpage: async (item) => {
 			const { project } = await apiQuery(ProjectBySubpageDocument, {
-				variables: { subpageId: id },
+				variables: { subpageId: item.id },
 			});
-			return project ? [`/projekt/${project.slug}`, ...(await getItemReferenceRoutes(id))] : null;
+			return project ? [getRoute(item), ...(await getItemReferenceRoutes(item.id))] : null;
 		},
 		district: async () => ['/', '/om', '/projekt', '/aktuellt'],
 		contact: async () => ['/kontakt'],

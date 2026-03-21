@@ -6,11 +6,10 @@ import { Markdown } from 'next-dato-utils/components';
 import useStore, { useShallow } from '@/lib/store';
 
 export type ImageBlockProps = {
-	id: string;
 	data: ImageRecord;
 };
 
-export default function Image({ id, data: { image, layout } }: ImageBlockProps) {
+export default function Image({ data: { image, layout } }: ImageBlockProps) {
 	const [setImageId] = useStore(useShallow((state) => [state.setImageId]));
 	return (
 		<figure className={cn(s.container, layout && s[layout])} onClick={() => setImageId(image.id)}>

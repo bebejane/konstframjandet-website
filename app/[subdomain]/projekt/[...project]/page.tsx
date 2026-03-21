@@ -1,4 +1,3 @@
-import { mainDistrict } from '@/lib/utils';
 import { apiQuery } from 'next-dato-utils/api';
 import {
 	ProjectDocument,
@@ -12,6 +11,7 @@ import { ProjectWebpage } from './ProjectWebpage';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { buildMetadata } from '@/app/[subdomain]/layout';
+import { DraftMode } from 'next-dato-utils/components';
 
 export type Props = {
 	project: ProjectRecord | ProjectSubpageRecord;
@@ -26,10 +26,11 @@ export type Props = {
 export default async function ProjectItem({
 	params,
 }: PageProps<'/[subdomain]/projekt/[...project]'>) {
-	const { project, parentProject, projectMenu, projectColor, colorOption } = await getData(params);
+	const { project, parentProject, projectMenu, projectColor, colorOption, draftUrls } =
+		await getData(params);
 	if (!project) return notFound();
 
-	const { id, title, image, intro, subtitle, content, _seoMetaTags } = project;
+	const { id, title, image, intro, subtitle, content, _seoMetaTags, slug } = project;
 
 	return (
 		<>
@@ -65,14 +66,18 @@ export default async function ProjectItem({
 					</ProjectWebpage>
 				)}
 			</article>
+			<DraftMode url={draftUrls} path={`/projekt/${slug}`} />
 		</>
 	);
 }
 
-export async function generateStaticParams() {
-	const district = await mainDistrict();
+export async function generateStaticParams({
+	params,
+}: PageProps<'/[subdomain]/projekt/[...project]'>): Promise<any> {
+	const { subdomain } = await params;
+	const { district } = await apiQuery(DistrictBySubdomainDocument, { variables: { subdomain } });
 	const { allProjects } = await apiQuery(AllProjectsDocument, {
-		variables: { districtId: district.id },
+		variables: { districtId: district?.id },
 	});
 
 	const paths: { project: string[] }[] = [];
@@ -99,13 +104,21 @@ export async function generateMetadata({
 
 async function getData(params: PageProps<'/[subdomain]/projekt/[...project]'>['params']) {
 	const { project: _project, subdomain } = await params;
-	const { district } = await apiQuery(DistrictBySubdomainDocument, { variables: { subdomain } });
+	const { district } = await apiQuery(DistrictBySubdomainDocument, {
+		variables: { subdomain },
+		stripStega: true,
+	});
+	const draftUrls: string[] = [];
 	const isSubpage = _project.length === 2;
 	const slug = _project[!isSubpage ? 0 : 1];
 	const districtId = district?.id;
-	const { project } = await apiQuery(!isSubpage ? ProjectDocument : ProjectSubpageDocument, {
-		variables: { slug, districtId },
-	});
+	const { project, draftUrl } = await apiQuery(
+		!isSubpage ? ProjectDocument : ProjectSubpageDocument,
+		{
+			variables: { slug, districtId },
+		},
+	);
+	draftUrl && draftUrls.push(draftUrl);
 
 	if (!project) return notFound();
 
@@ -116,6 +129,7 @@ async function getData(params: PageProps<'/[subdomain]/projekt/[...project]'>['p
 			variables: { subpageId: project.id, districtId },
 		});
 		parentProject = res?.project as ProjectRecord | null;
+		res?.draftUrl && draftUrls.push(res.draftUrl);
 	}
 	const subpages =
 		project.__typename === 'ProjectRecord' ? project?.subpage : parentProject?.subpage;
@@ -133,5 +147,5 @@ async function getData(params: PageProps<'/[subdomain]/projekt/[...project]'>['p
 
 	const colorOption = project.colorOption ?? parentProject?.colorOption ?? null;
 
-	return { project, parentProject, projectMenu, projectColor, colorOption, subdomain };
+	return { project, parentProject, projectMenu, projectColor, colorOption, subdomain, draftUrls };
 }

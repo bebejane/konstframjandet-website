@@ -4,7 +4,7 @@ import s from './ProjectCard.module.scss';
 import cn from 'classnames';
 import { Markdown } from 'next-dato-utils/components';
 import { Image } from 'react-datocms/image';
-import { truncateWords } from '@/lib/utils';
+import { truncateWords } from 'next-dato-utils/utils';
 import Link from '@/components/nav/Link';
 import useDevice from '@/lib/hooks/useDevice';
 
@@ -15,8 +15,7 @@ export type CardProps = {
 };
 
 export default function ProjectCard({
-	project: { id, title, intro, image, slug, color },
-	project,
+	project: { _editingUrl, id, title, intro, image, slug, color },
 	index,
 	total,
 }: CardProps) {
@@ -25,7 +24,7 @@ export default function ProjectCard({
 	return (
 		<>
 			<li className={s.card} key={id}>
-				<Link href={`/projekt/${slug}`}>
+				<Link href={`/projekt/${slug}`} data-datocms-content-link-url={_editingUrl}>
 					<figure>
 						<div className={s.text}>
 							{image?.responsiveImage && (

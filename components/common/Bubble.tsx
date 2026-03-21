@@ -4,7 +4,7 @@ import s from './Bubble.module.scss';
 import cn from 'classnames';
 import Link from '@/components/nav/Link';
 import { useEffect, useState } from 'react';
-import { randomInt } from '@/lib/utils';
+import { rInt } from 'next-dato-utils/utils';
 
 type Props = {
 	children: string | React.ReactNode;
@@ -19,8 +19,8 @@ export default function Bubble({ href, className, children, onClick, disabled = 
 	const [toggle, setToggle] = useState(false);
 
 	useEffect(() => {
-		const corner = ['TopLeft', 'TopRight', 'BottomRight', 'BottomLeft'][randomInt(0, 3)];
-		setStyles({ [`border${corner}Radius`]: `${50 + randomInt(3, 6)}%` });
+		const corner = ['TopLeft', 'TopRight', 'BottomRight', 'BottomLeft'][rInt(0, 3)];
+		setStyles({ [`border${corner}Radius`]: `${50 + rInt(3, 6)}%` });
 	}, [toggle]);
 
 	const button = (

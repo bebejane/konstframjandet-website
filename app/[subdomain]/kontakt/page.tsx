@@ -4,12 +4,16 @@ import { apiQuery } from 'next-dato-utils/api';
 import { notFound } from 'next/navigation';
 import { buildMetadata } from '@/app/[subdomain]/layout';
 import { Metadata } from 'next';
+import { DraftMode } from 'next-dato-utils/components';
 
 export default async function Contact({ params }: PageProps<'/[subdomain]/kontakt'>) {
 	const { subdomain } = await params;
-	const { district } = await apiQuery(DistrictBySubdomainDocument, { variables: { subdomain } });
+	const { district, draftUrl } = await apiQuery(DistrictBySubdomainDocument, {
+		variables: { subdomain },
+	});
 	if (!district) return notFound();
-	const { id, contentContact, intro, _seoMetaTags } = district;
+
+	const { id, contentContact, intro, _seoMetaTags, _editingUrl } = district;
 
 	return (
 		<>
@@ -25,6 +29,7 @@ export default async function Contact({ params }: PageProps<'/[subdomain]/kontak
 				/>
 				<NewsletterForm />
 			</article>
+			<DraftMode url={draftUrl} path={`/kontakt`} />
 		</>
 	);
 }

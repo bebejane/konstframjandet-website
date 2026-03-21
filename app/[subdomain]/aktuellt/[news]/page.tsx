@@ -1,11 +1,10 @@
-import s from './[news].module.scss';
 import { apiQuery } from 'next-dato-utils/api';
 import { NewsDocument, AllNewsDocument, DistrictBySubdomainDocument } from '@/graphql';
 import { Article, Aside, SectionHeader } from '@/components';
-import { mainDistrict } from '@/lib/utils';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { buildMetadata } from '@/app/[subdomain]/layout';
+import { DraftMode } from 'next-dato-utils/components';
 
 export type Props = {
 	news: NewsRecord;
@@ -13,9 +12,14 @@ export type Props = {
 
 export default async function NewsItem({ params }: PageProps<'/[subdomain]/aktuellt/[news]'>) {
 	const { news: slug, subdomain } = await params;
-	const { district } = await apiQuery(DistrictBySubdomainDocument, { variables: { subdomain } });
+	const { district } = await apiQuery(DistrictBySubdomainDocument, {
+		variables: { subdomain },
+		stripStega: true,
+	});
 	if (!district) return notFound();
-	const { news } = await apiQuery(NewsDocument, { variables: { slug, districtId: district.id } });
+	const { news, draftUrl } = await apiQuery(NewsDocument, {
+		variables: { slug, districtId: district.id },
+	});
 	if (!news) return notFound();
 
 	const {
@@ -98,13 +102,20 @@ export default async function NewsItem({ params }: PageProps<'/[subdomain]/aktue
 					backLink={'/aktuellt'}
 				/>
 			</article>
+			<DraftMode url={draftUrl} path={`/aktuellt/${slug}`} />
 		</>
 	);
 }
 
-export async function generateStaticParams() {
-	const { id: districtId } = await mainDistrict();
-	const { allNews } = await apiQuery(AllNewsDocument, { all: true, variables: { districtId } });
+export async function generateStaticParams({
+	params,
+}: PageProps<'/[subdomain]/aktuellt/[news]'>): Promise<{ news: string }[]> {
+	const { subdomain } = await params;
+	const { district } = await apiQuery(DistrictBySubdomainDocument, { variables: { subdomain } });
+	const { allNews } = await apiQuery(AllNewsDocument, {
+		all: true,
+		variables: { districtId: district?.id },
+	});
 	return allNews.map(({ slug: news }) => ({ news }));
 }
 

@@ -1,23 +1,20 @@
+import config from '@/datocms.config';
 import s from './StartSelectionCard.module.scss';
 import cn from 'classnames';
 import { Markdown } from 'next-dato-utils/components';
 import { Image } from 'react-datocms/image';
 import Link from '@/components/nav/Link';
-import { recordToSlug, districtUrl } from '@/lib/utils';
 
 export type CardProps = {
 	item: NewsRecord | ProjectRecord;
 };
 
-export default function StartSelectionCard({ item }: CardProps) {
-	const district = item.district;
-	const { subdomain, name } = district;
-	const intro = `**${name}** ${item.intro}`;
-	const slug = `${districtUrl(district)}${recordToSlug(item)}`;
+export default async function StartSelectionCard({ item }: CardProps) {
+	const href = await config.route(item);
 
 	return (
 		<li className={s.card} key={item.id}>
-			<Link href={slug}>
+			<Link href={href}>
 				<figure className={s.figure}>
 					{item.image && (
 						<Image
@@ -29,11 +26,11 @@ export default function StartSelectionCard({ item }: CardProps) {
 					)}
 				</figure>
 			</Link>
-			<Link href={slug}>
+			<Link href={href}>
 				<h3>{item.title}</h3>
 			</Link>
-			<Markdown className='body-small' content={intro} />
-			<Link href={slug} className={cn('small', s.more)}>
+			{item.intro && <Markdown className='body-small' content={item.intro} />}
+			<Link href={href} className={cn('small', s.more)}>
 				Läs mer
 			</Link>
 		</li>

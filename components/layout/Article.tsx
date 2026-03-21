@@ -3,7 +3,7 @@
 import s from './Article.module.scss';
 import cn from 'classnames';
 import React, { useEffect, useRef, useState } from 'react';
-import { StructuredContent } from '@/components';
+import Content from '@/components/content/Content';
 import { Image } from 'react-datocms';
 import { Markdown } from 'next-dato-utils/components';
 import { useScrollInfo } from 'next-dato-utils/hooks';
@@ -84,10 +84,10 @@ export default function Article({
 								!backLink && s.nobackLink,
 							)}
 						>
-							<StructuredContent id={id} record={record} content={content} />
+							<Content id={id} content={content} />
 							{extraContent && (
 								<div className={cn(s.extraContent, 'body-small')}>
-									<StructuredContent id={id} record={record} content={extraContent} />
+									<Content id={id} content={extraContent} />
 								</div>
 							)}
 							{backLink && <BackLink href={backLink} />}
