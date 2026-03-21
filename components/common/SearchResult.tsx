@@ -6,6 +6,7 @@ import { Loader } from '@/components';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Markdown } from 'next-dato-utils/components';
+import { type SearchResult } from '@/app/api/search/route';
 
 export type Props = {
 	query: string;
@@ -13,13 +14,13 @@ export type Props = {
 };
 
 export default function SearchResult({ query, district }: Props) {
-	const [results, setResults] = useState<any | undefined>();
-	const [error, setError] = useState<Error | undefined>();
+	const [results, setResults] = useState<SearchResult | null>(null);
+	const [error, setError] = useState<Error | null>(null);
 	const [loading, setLoading] = useState<boolean>(false);
 	const searchTimeout = useRef<NodeJS.Timeout | null>(null);
 
-	const siteSearch = (q) => {
-		const variables = {
+	const siteSearch = (q: string) => {
+		const variables: { q?: string; district?: string } = {
 			q: q
 				? `${q
 						.split(' ')
@@ -28,9 +29,6 @@ export default function SearchResult({ query, district }: Props) {
 				: undefined,
 			district: district?.id,
 		};
-
-		if (!Object.keys(variables).filter((k) => variables[k] !== undefined).length)
-			return setLoading(false);
 
 		fetch('/api/search', {
 			body: JSON.stringify(variables),
@@ -49,8 +47,8 @@ export default function SearchResult({ query, district }: Props) {
 
 	useEffect(() => {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
-		setResults(undefined);
-		setError(undefined);
+		setResults(null);
+		setError(null);
 
 		if (!query) {
 			setLoading(false);
@@ -62,7 +60,7 @@ export default function SearchResult({ query, district }: Props) {
 	}, [query]);
 
 	if (!query) return null;
-
+	console.log(results);
 	return (
 		<div className={s.container}>
 			{results && Object.keys(results).length > 0 ? (

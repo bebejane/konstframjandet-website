@@ -1,11 +1,6 @@
 import { District } from '@/types/datocms-cma';
-import { buildClient } from '@datocms/cma-client-browser';
 import { basicAuth } from 'next-dato-utils/route-handlers';
-
-export const client = buildClient({
-	apiToken: process.env.DATOCMS_API_TOKEN!,
-	extraHeaders: { 'X-Include-Drafts': 'true' },
-});
+import { client } from '@/lib/client';
 
 export default async function POST(req: Request) {
 	return basicAuth(req, async (req: Request) => {

@@ -2,13 +2,12 @@
 // import { buildClient, Client, ApiError } from '@datocms/cma-client-browser';
 // import { Upload } from '@datocms/cma-client/dist/types/generated/SimpleSchemaTypes';
 // import { withVercelCronAuth } from 'dato-nextjs-utils/hoc';
+//import { client } from '@/lib/client';
 
 // export const config = {
 //   maxDuration: 10 * 60,
 //   runtime: 'nodejs'
 // }
-
-// export const client: Client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, extraHeaders: { 'X-Include-Drafts': 'true' } })
 
 // const chunkArray = (array: any[], chunkSize: number) => {
 //   const newArr = []

@@ -1,14 +1,9 @@
 import config from '@/datocms.config';
 import type { NextRequest } from 'next/server';
 import { apiQuery } from 'next-dato-utils/api';
-import { buildClient } from '@datocms/cma-client';
 import { SiteSearchDocument } from '@/graphql';
 import { truncateText } from 'next-dato-utils/utils';
-import { PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
-
-const environment =
-	process.env.DATOCMS_ENVIRONMENT ?? process.env.NEXT_PUBLIC_DATOCMS_ENVIRONMENT ?? 'main';
-const client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN!, environment });
+import { client } from '@/lib/client';
 
 export type SearchResult = {
 	[index: string]: {
@@ -22,15 +17,17 @@ export type SearchResult = {
 };
 
 export async function POST(req: NextRequest) {
-	console.log('search');
 	try {
+		console.time('search');
 		const params = await req.json();
 		const results = await siteSearch(params);
+		console.timeEnd('search');
 		return new Response(JSON.stringify(results), {
 			status: 200,
 			headers: { 'content-type': 'application/json' },
 		});
 	} catch (err) {
+		console.timeEnd('search');
 		console.error(err);
 		return new Response(JSON.stringify(err), {
 			status: 500,
@@ -54,7 +51,7 @@ export const searchModel = async (query: string, model: string, districtId: stri
 				},
 			},
 		},
-		{ perPage: 100 },
+		{ perPage: 500 },
 	)) {
 		result.push(record);
 	}
@@ -76,8 +73,6 @@ export const siteSearch = async (opt: { q: string; district: string }) => {
 	};
 
 	if (!variables?.query) return {};
-
-	console.log('site search', q, district);
 
 	const itemTypes = await client.itemTypes.list();
 	const models = ['about', 'project', 'project_subpage', 'news'];
@@ -110,14 +105,15 @@ export const siteSearch = async (opt: { q: string; district: string }) => {
 			data[k] = data[k].concat(res[k as keyof typeof res]);
 		});
 	}
+	delete data.draftUrl;
 
 	for (const type in data) {
 		if (!data[type].length) {
 			delete data[type];
 			continue;
 		}
-		const items = (data[type] = data[type].filter((el) => el));
-
+		const items = data[type].filter((el) => el);
+		const results = [];
 		for (const item of items) {
 			const d = {
 				__typename: item.__typename,
@@ -125,10 +121,11 @@ export const siteSearch = async (opt: { q: string; district: string }) => {
 				category: itemTypes?.find(({ api_key }) => api_key === item._modelApiKey)?.name,
 				title: item.title,
 				text: truncateText(item.text, { sentences: 1, useEllipsis: true, minLength: 100 }),
-				slug: `${item.district?.subdomain !== PRIMARY_SUBDOMAIN ? `/${item.district?.subdomain}` : ''}${await config.route(item)}`,
+				slug: await config.route(item),
 			};
-			data[type].push(d);
+			results.push(d);
 		}
+		data[type] = results;
 	}
 	return data;
 };

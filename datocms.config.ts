@@ -8,10 +8,8 @@ import {
 import { MetadataRoute } from 'next';
 import { DistrictBySubdomainDocument, ProjectBySubpageDocument, SitemapDocument } from '@/graphql';
 import { getTenantUrl } from '@/lib/tenancy';
-import { buildClient } from '@datocms/cma-client';
+import { client } from '@/lib/client';
 import { District } from '@/types/datocms-cma';
-
-const client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN!, environment: 'main' });
 
 export function getRoute(item: any): string {
 	const apiKey = getItemApiKey(item);
@@ -38,7 +36,7 @@ export function getRoute(item: any): string {
 }
 
 export default {
-	route: async (item) => getRoute(item)?.[0] ?? null,
+	route: async (item) => getRoute(item) ?? null,
 	routes: {
 		start: async () => [getRoute('start')],
 		about: async () => [getRoute('about')],
