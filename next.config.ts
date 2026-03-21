@@ -1,6 +1,7 @@
 import { NextConfig } from 'next';
 import districts from './districts.json' assert { type: 'json' };
 import path from 'path';
+import { PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
 
 const nextConfig: NextConfig = {
 	sassOptions: {
@@ -37,16 +38,24 @@ const nextConfig: NextConfig = {
 	experimental: {
 		prefetchInlining: true,
 	},
-	rewrites() {
+	rewrites: async () => {
 		return process.env.NODE_ENV === 'development'
-			? ['/', '/om/:path*', '/kontakt/:path*', '/aktuellt/:path*', '/projekt/:path*'].map(
-					(path) => ({
-						source: path,
-						destination: `/forbundet${path}`,
-					}),
-				)
+			? [
+					'/',
+					'/om/:path*',
+					'/kontakt/:path*',
+					'/aktuellt/:path*',
+					'/projekt/:path*',
+					'/sitemap.xml',
+					'/robots.txt',
+					'/manifest.json',
+				].map((source) => ({
+					source,
+					destination: `/${PRIMARY_SUBDOMAIN}${source}`,
+				}))
 			: [];
 	},
+
 	async headers() {
 		return [
 			{

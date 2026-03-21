@@ -28,7 +28,6 @@ export default async function SubdomainLayout({ params, children }: LayoutProps<
 					<main id='content' className={s.layout}>
 						{children}
 					</main>
-
 					<Menu district={district} districts={allDistricts} menu={menu} />
 					<MenuMobile district={district} districts={allDistricts} menu={menu} />
 					<Footer district={district} menu={menu} districts={allDistricts} />

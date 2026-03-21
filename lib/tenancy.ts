@@ -5,8 +5,9 @@ export const BASE_PROTOCOL = process.env.NODE_ENV === 'production' ? 'https://' 
 
 export function getTenantUrl(subdomain: string, pathname: string) {
 	const prod = process.env.NODE_ENV === 'production';
-	const sub = subdomain === PRIMARY_SUBDOMAIN ? (prod ? 'www.' : '') : subdomain;
+	const sub =
+		subdomain === PRIMARY_SUBDOMAIN ? (prod ? 'www.' : '') : prod ? subdomain : `/${subdomain}`;
 	return prod
 		? `${BASE_PROTOCOL}${sub}${BASE_DOMAIN}${pathname}`
-		: `${BASE_PROTOCOL}${BASE_DOMAIN}/${sub}${pathname}`;
+		: `${BASE_PROTOCOL}${BASE_DOMAIN}${sub}${pathname}`;
 }
