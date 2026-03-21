@@ -1,3 +1,4 @@
+import config from '@/datocms.config';
 import { basicAuth } from 'next-dato-utils/route-handlers';
 import { getTenantUrl, PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
 import { apiQuery } from 'next-dato-utils/api';
@@ -8,7 +9,7 @@ export async function POST(req: Request) {
 		const body = await req.json();
 		const payload = body?.entity;
 		const districtId = payload?.attributes?.district ?? payload?.id;
-		const { allDistricts } = await apiQuery(AllDistrictsDocument, { all: true });
+		const { allDistricts } = await apiQuery(AllDistrictsDocument);
 		const district =
 			allDistricts.find((el) => el.id === districtId) ??
 			allDistricts.find((el) => el.subdomain === PRIMARY_SUBDOMAIN);
@@ -25,7 +26,7 @@ export async function POST(req: Request) {
 			console.log(`revalidate-district: ${url}`);
 			const response = await fetch(`${url}/api/revalidate`, {
 				method: 'POST',
-				body: JSON.stringify({ ...req.body }),
+				body: JSON.stringify({ ...body }),
 				headers: {
 					'Authorization':
 						'Basic ' +
@@ -36,6 +37,7 @@ export async function POST(req: Request) {
 					'Content-Type': 'application/json',
 				},
 			});
+
 			const data = await response.json();
 			return new Response(JSON.stringify(data), {
 				status: response.status,
