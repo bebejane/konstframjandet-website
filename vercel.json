@@ -4,12 +4,12 @@
 	},
 	"crons": [
 		{
-			"path": "/api/backup?max=3",
+			"path": "/api/backup?max=1",
 			"schedule": "0 22 * * *"
 		},
 		{
 			"path": "/api/media-manager",
-			"schedule": "*/10 * * * *"
+			"schedule": "0 22 * * * *"
 		}
 	]
 }
