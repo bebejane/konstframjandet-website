@@ -9,7 +9,7 @@
 		},
 		{
 			"path": "/api/media-manager",
-			"schedule": "0 22 * * * *"
+			"schedule": "0 22 * * *"
 		}
 	]
 }

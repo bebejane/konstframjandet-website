@@ -1,3 +1,3 @@
-## Knostfrämjandet
+## Konstfrämjandet
 
-Website for Knostfrämjandet
+Website for Konstfrämjandet
