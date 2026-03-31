@@ -141,9 +141,8 @@ export default function Menu({ district, districts, menu }: MenuProps) {
 						{menu.map(({ type, slug, label }, idx) => {
 							const rootSlug = slug?.split('/')[1] ?? '';
 							const active =
-								(pathname.startsWith(`/${rootSlug}`) ||
-									pathname.startsWith(`/${district.subdomain}/${rootSlug}`)) &&
-								slug !== '/';
+								pathname.startsWith(`/${rootSlug}`) ||
+								pathname.startsWith(`/${district.subdomain}/${rootSlug}`);
 
 							return type !== 'district' ? (
 								<li key={idx} className={cn(active && !showDistricts && s.active)}>

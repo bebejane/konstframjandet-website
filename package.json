@@ -22,8 +22,6 @@
 		"@datocms/cma-client-node": "5.3.0",
 		"@datocms/content-link": "^0.3.18",
 		"@mux/mux-player-react": "^3.11.5",
-		"@types/mjml": "^4.7.0",
-		"@types/mjml-react": "^2.0.6",
 		"@types/node": "^25.5.0",
 		"@u-wave/react-vimeo": "^0.9.12",
 		"classnames": "^2.5.1",

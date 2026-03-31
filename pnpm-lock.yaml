@@ -23,12 +23,6 @@ importers:
       '@mux/mux-player-react':
         specifier: ^3.11.5
         version: 3.11.5(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      '@types/mjml':
-        specifier: ^4.7.0
-        version: 4.7.4
-      '@types/mjml-react':
-        specifier: ^2.0.6
-        version: 2.0.10
       '@types/node':
         specifier: ^25.5.0
         version: 25.5.0
@@ -2128,15 +2122,6 @@ packages:
 
   '@types/mdast@4.0.4':
     resolution: {integrity: sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==}
-
-  '@types/mjml-core@4.15.2':
-    resolution: {integrity: sha512-Q7SxFXgoX979HP57DEVsRI50TV8x1V4lfCA4Up9AvfINDM5oD/X9ARgfoyX1qS987JCnDLv85JjkqAjt3hZSiQ==}
-
-  '@types/mjml-react@2.0.10':
-    resolution: {integrity: sha512-b4P6KjF8BKaEfmNhaZtV/KSl/Uwnfgn0M13uGWQHDF+OA2wUoMzXXC9r+RX4BNkUWrC+XgmZGvSnw9X107aW9Q==}
-
-  '@types/mjml@4.7.4':
-    resolution: {integrity: sha512-vyi1vzWgMzFMwZY7GSZYX0GU0dmtC8vLHwpgk+NWmwbwRSrlieVyJ9sn5elodwUfklJM7yGl0zQeet1brKTWaQ==}
 
   '@types/ms@2.1.0':
     resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
@@ -6667,16 +6652,6 @@ snapshots:
   '@types/mdast@4.0.4':
     dependencies:
       '@types/unist': 3.0.3
-
-  '@types/mjml-core@4.15.2': {}
-
-  '@types/mjml-react@2.0.10':
-    dependencies:
-      '@types/react': 19.2.14
-
-  '@types/mjml@4.7.4':
-    dependencies:
-      '@types/mjml-core': 4.15.2
 
   '@types/ms@2.1.0': {}
 
