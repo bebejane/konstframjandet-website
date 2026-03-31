@@ -6,7 +6,12 @@ import {
 	getItemReferenceRoutes,
 } from 'next-dato-utils/config';
 import { MetadataRoute } from 'next';
-import { DistrictBySubdomainDocument, ProjectBySubpageDocument, SitemapDocument } from '@/graphql';
+import {
+	DistrictBySubdomainDocument,
+	DistrictDocument,
+	ProjectBySubpageDocument,
+	SitemapDocument,
+} from '@/graphql';
 import { getTenantUrl } from '@/lib/tenancy';
 import { client } from '@/lib/client';
 import { District } from '@/types/datocms-cma';
@@ -69,6 +74,14 @@ export default {
 		district: async () => ['/', '/om', '/projekt', '/aktuellt'],
 		contact: async () => ['/kontakt'],
 		upload: async ({ id }) => getUploadReferenceRoutes(id),
+	},
+	revalidate: async function (item, locale) {
+		const apiKey = getItemApiKey(item);
+		const districtId = item.district;
+		const { district } = await apiQuery(DistrictDocument, { variables: { districtId } });
+		if (!district) return [];
+		const routes = await this.routes[apiKey as keyof typeof this.routes]?.(item);
+		return routes?.map((route) => `/${district.subdomain}${route}`) ?? [];
 	},
 	sitemap: async ({ params }: RouteContext<'/[subdomain]/sitemap.xml'>) => {
 		const { subdomain } = await params;
