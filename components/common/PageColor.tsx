@@ -1,6 +1,6 @@
 'use client';
 
-import { PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
+import { isTenantHome, PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 
@@ -9,20 +9,11 @@ export default function PageColor({ district }: { district: DistrictRecord }) {
 
 	function updatecolor() {
 		const root = document.querySelector<HTMLElement>(':root');
-		const path =
-			process.env.NODE_ENV === 'development' && pathname === `/${district.subdomain}`
-				? '/'
-				: pathname;
-
-		const isHome = path === '/';
-
+		const isHome = isTenantHome(pathname);
 		if (!root || !district) return;
 
 		root.style.setProperty('--page-color', district.color.hex);
-		root.style.setProperty(
-			'--background',
-			path === '/' ? district?.color?.hex : 'var(--light-grey)',
-		);
+		root.style.setProperty('--background', isHome ? district?.color?.hex : 'var(--light-grey)');
 	}
 
 	useEffect(() => {

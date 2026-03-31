@@ -2,7 +2,8 @@ import s from './Footer.module.scss';
 import cn from 'classnames';
 import type { Menu } from '@/lib/menu';
 import Link from '@/components/nav/Link';
-import { PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
+import NextLink from 'next/link';
+import { getTenantUrl, PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
 
 export type FooterProps = {
 	menu: Menu;
@@ -33,31 +34,37 @@ export default function Footer({ menu, district }: FooterProps) {
 				<ul>
 					{menu
 						.filter(({ type }) => type === 'contact' || type === 'about')
-						.map(({ type, label, slug, items, subdomain }, idx) => (
+						.map(({ type, label, slug, items, href, subdomain }, idx) => (
 							<li key={idx} className={cn(isMainDistrict && type === 'district' && s.double)}>
-								{slug ? <Link href={slug}>{label}</Link> : <>{label}</>}
+								{slug ? (
+									<Link href={slug}>{label}</Link>
+								) : href ? (
+									<a href={href}>{label}</a>
+								) : (
+									<>{label}</>
+								)}
 								<ul>
-									{items?.map(({ type, label, slug, subdomain }, idx) => (
+									{items?.map(({ type, label, slug, href, subdomain }, idx) => (
 										<li key={`${idx}-sub`}>
-											<Link
-												scroll={true}
-												href={
-													type === 'district' && process.env.NODE_ENV === 'production'
-														? `https://${subdomain}.konstframjandet.se`
-														: (slug ?? '')
-												}
-											>
-												{label}
-											</Link>
+											{href ? (
+												<a href={href}>{label}</a>
+											) : (
+												<Link
+													scroll={true}
+													href={type === 'district' ? getTenantUrl(subdomain, slug) : (slug ?? '')}
+												>
+													{label}
+												</Link>
+											)}
 										</li>
 									))}
 								</ul>
 							</li>
 						))}
 					<li className={s.aboutDesktop}>
-						<Link href={'/'} scroll={true}>
+						<NextLink href={'https://www.konstframjandet.se'} scroll={true}>
 							Konstfrämjandet
-						</Link>
+						</NextLink>
 						<br />
 						<br />
 						Konstfrämjandet är en organisation bildad 1947 som arbetar med konstbildning och med att

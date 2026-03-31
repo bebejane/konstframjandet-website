@@ -8,6 +8,7 @@ export type MenuItem = {
 	type: string;
 	label: string;
 	slug?: string;
+	href?: string;
 	subdomain?: string;
 	items?: MenuItem[];
 	color?: string;
@@ -66,13 +67,13 @@ export const buildMenu = async (districtId: string) => {
 					{
 						type: 'contact',
 						label: 'Facebook',
-						slug: district?.facebook!,
+						href: district?.facebook!,
 						subdomain: district?.subdomain,
 					},
 					{
 						type: 'contact',
 						label: 'Instagram',
-						slug: district?.instagram!,
+						href: district?.instagram!,
 						subdomain: district?.subdomain,
 					},
 				];

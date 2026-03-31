@@ -9,6 +9,7 @@ import Balancer from 'react-balance-text';
 import { usePathname } from 'next/navigation';
 import useStore, { useShallow } from '@/lib/store';
 import districts from '@/districts.json';
+import { isTenantHome } from '@/lib/tenancy';
 
 export default function NewsCard({
 	id,
@@ -24,8 +25,7 @@ export default function NewsCard({
 }: AllNewsQuery['allNews'][number]) {
 	const [view] = useStore(useShallow((state) => [state.view]));
 	const pathname = usePathname();
-	const isHome =
-		pathname === '/' || districts?.some(({ subdomain }) => `/${subdomain}` === pathname);
+	const isHome = isTenantHome(pathname);
 
 	return (
 		<li id={id} className={cn(s.card, isHome && s.home, view === 'list' && s.list)}>

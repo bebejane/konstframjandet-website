@@ -11,7 +11,7 @@ import Link from '@/components/nav/Link';
 import NextLink from 'next/link';
 import { useOnClickOutside } from 'usehooks-ts';
 import { usePathname } from 'next/navigation';
-import { BASE_DOMAIN, getTenantUrl, PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
+import { getTenantUrl, isTenantHome, PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
 
 export type MenuProps = {
 	district: DistrictRecord;
@@ -25,7 +25,7 @@ export default function Menu({ district, districts, menu }: MenuProps) {
 	const searchBarRef = useRef<HTMLDivElement | null>(null);
 	const districtsPopupRef = useRef<HTMLDivElement | null>(null);
 	const pathname = usePathname();
-	const isHome = pathname === '/' || pathname === `/${district.subdomain}`;
+	const isHome = isTenantHome(pathname);
 	const isMainDistrict = district?.subdomain === PRIMARY_SUBDOMAIN;
 	const { scrolledPosition } = useScrollInfo();
 	const [offset, setOffset] = useState(0);
@@ -100,9 +100,9 @@ export default function Menu({ district, districts, menu }: MenuProps) {
 	return (
 		<>
 			<div className={cn(s.logo, isHome && s.home)}>
-				<NextLink id='logo' href={'/'} style={logoStyle}>
+				<Link id='logo' href={'/'} style={logoStyle}>
 					A
-				</NextLink>
+				</Link>
 			</div>
 			<nav className={cn(s.menu, isHome && s.home)} style={navStyle} ref={ref}>
 				<div className={s.top} style={{ opacity: 1 - ratio }}>
@@ -116,12 +116,16 @@ export default function Menu({ district, districts, menu }: MenuProps) {
 							</>
 						) : (
 							<>
-								<a className='symbol' href={district.facebook ?? ''}>
-									7
-								</a>
-								<a className='symbol' href={district.instagram ?? ''}>
-									8
-								</a>
+								{district.facebook && (
+									<a className='symbol' href={district.facebook}>
+										7
+									</a>
+								)}
+								{district.instagram && (
+									<a className='symbol' href={district.instagram}>
+										8
+									</a>
+								)}
 								{district.englishShortcut && <Link href='/om/english'>English</Link>}
 								<NextLink href={'https://www.konstframjandet.se'}>Till Konstfrämjandet.se</NextLink>
 							</>

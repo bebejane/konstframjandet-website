@@ -4,6 +4,7 @@ import cn from 'classnames';
 import { Markdown } from 'next-dato-utils/components';
 import { Image } from 'react-datocms/image';
 import Link from '@/components/nav/Link';
+import { getTenantUrl } from '@/lib/tenancy';
 
 export type CardProps = {
 	item: NewsRecord | ProjectRecord;
@@ -11,6 +12,7 @@ export type CardProps = {
 
 export default async function StartSelectionCard({ item }: CardProps) {
 	const href = await config.route(item);
+	if (!href) return null;
 
 	return (
 		<li className={s.card} key={item.id}>
@@ -26,11 +28,11 @@ export default async function StartSelectionCard({ item }: CardProps) {
 					)}
 				</figure>
 			</Link>
-			<Link href={href}>
+			<Link href={href} district={item.district as DistrictRecord}>
 				<h3>{item.title}</h3>
 			</Link>
 			{item.intro && <Markdown className='body-small' content={item.intro} />}
-			<Link href={href} className={cn('small', s.more)}>
+			<Link href={href} district={item.district as DistrictRecord} className={cn('small', s.more)}>
 				Läs mer
 			</Link>
 		</li>

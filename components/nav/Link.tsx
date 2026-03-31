@@ -3,7 +3,7 @@
 import { default as NextLink, LinkProps } from 'next/link';
 import { HTMLProps, FC } from 'react';
 import { useDistrict } from '@/lib/context/district';
-import { PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
+import { getTenantUrl, PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
 
 export type LinkProperties = LinkProps &
 	HTMLProps<HTMLAnchorElement> & {
@@ -11,12 +11,9 @@ export type LinkProperties = LinkProps &
 	};
 
 const Link: FC<LinkProperties> = (props: LinkProperties) => {
-	const isdev = process.env.NODE_ENV === 'development';
 	const { district: _district } = useDistrict();
-	const district = props.district ?? (_district as DistrictRecord);
-	const subdomain =
-		isdev && district?.subdomain !== PRIMARY_SUBDOMAIN ? `/${district?.subdomain}` : '';
-	const href = `${subdomain}${props.href}`;
+	const district = props.district ?? _district;
+	const href = getTenantUrl(district?.subdomain, props.href);
 	return (
 		<NextLink {...props} href={href}>
 			{props.children}
