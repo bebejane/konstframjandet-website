@@ -8,7 +8,7 @@ export default async function proxy(req: NextRequest) {
 	const domain = req.headers.get('host') as string;
 	const subdomain = districts.find((d) => d.subdomain === pathname.split('/')[1])?.subdomain;
 	const isAllowedDomain = domain.endsWith(BASE_DOMAIN);
-
+	console.log({ subdomain, isAllowedDomain, domain, pathname, reqUrl: req.url });
 	if (!isAllowedDomain) return new Response(null, { status: 404 });
 
 	if (prod) {

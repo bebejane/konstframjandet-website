@@ -13,6 +13,7 @@ export default function PageColor({ district }: { district: DistrictRecord }) {
 			process.env.NODE_ENV === 'development' && pathname === `/${district.subdomain}`
 				? '/'
 				: pathname;
+		const isHome = path === '/';
 		if (!root || !district) return;
 
 		root.style.setProperty('--page-color', district.color.hex);
