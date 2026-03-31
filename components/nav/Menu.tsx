@@ -25,7 +25,7 @@ export default function Menu({ district, districts, menu }: MenuProps) {
 	const searchBarRef = useRef<HTMLDivElement | null>(null);
 	const districtsPopupRef = useRef<HTMLDivElement | null>(null);
 	const pathname = usePathname();
-	const isHome = pathname === '/';
+	const isHome = pathname === '/' || pathname === `/${district.subdomain}`;
 	const isMainDistrict = district?.subdomain === PRIMARY_SUBDOMAIN;
 	const { scrolledPosition } = useScrollInfo();
 	const [offset, setOffset] = useState(0);
@@ -137,7 +137,6 @@ export default function Menu({ district, districts, menu }: MenuProps) {
 									pathname.startsWith(`/${district.subdomain}${rootSlug}`)) &&
 									rootSlug) ||
 								(!rootSlug && [`/${district.subdomain}`, '/'].includes(pathname));
-							const isHome = pathname === '/' || pathname === `/${district.subdomain}`;
 
 							return type !== 'district' ? (
 								<li
