@@ -11,7 +11,7 @@ import Link from '@/components/nav/Link';
 import NextLink from 'next/link';
 import { useOnClickOutside } from 'usehooks-ts';
 import { usePathname } from 'next/navigation';
-import { PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
+import { BASE_DOMAIN, getTenantUrl, PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
 
 export type MenuProps = {
 	district: DistrictRecord;
@@ -176,7 +176,7 @@ export default function Menu({ district, districts, menu }: MenuProps) {
 						.map((d) => (
 							<li key={d.id}>
 								<NextLink
-									href={`/${d.subdomain}`}
+									href={getTenantUrl(district.subdomain, '/')}
 									onMouseEnter={() => setDistrictHover(d.id)}
 									onMouseLeave={() => setDistrictHover(undefined)}
 									style={{ color: districtHover === d.id ? d.color.hex : 'unset' }}
