@@ -12,6 +12,7 @@ export default async function proxy(req: NextRequest) {
 	if (!isAllowedDomain) return new Response(null, { status: 404 });
 
 	if (prod) {
+		console.log('rewrite', `/${subdomain ?? PRIMARY_SUBDOMAIN}${pathname}`, req.url);
 		return NextResponse.rewrite(new URL(`/${subdomain ?? PRIMARY_SUBDOMAIN}${pathname}`, req.url));
 	} else {
 		return NextResponse.rewrite(
