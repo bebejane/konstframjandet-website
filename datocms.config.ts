@@ -11,8 +11,8 @@ import { getTenantUrl } from '@/lib/tenancy';
 import { client } from '@/lib/client';
 import { District } from '@/types/datocms-cma';
 
-export function getRoute(item: any): string {
-	const apiKey = getItemApiKey(item);
+export function getRoute(item: any, _apiKey?: string): string {
+	const apiKey = _apiKey ?? getItemApiKey(item);
 	if (!apiKey) throw new Error('No api key found');
 
 	switch (apiKey) {
@@ -38,15 +38,24 @@ export function getRoute(item: any): string {
 export default {
 	route: async (item) => getRoute(item) ?? null,
 	routes: {
-		start: async () => [getRoute('start')],
-		about: async () => [getRoute('about')],
-		news: async (item) => [getRoute(item), '/aktuellt', ...(await getItemReferenceRoutes(item.id))],
-		project: async (item) => [getRoute(item), ...(await getItemReferenceRoutes(item.id))],
+		start: async (item) => [getRoute(item, 'start')],
+		about: async (item) => [getRoute(item, 'about')],
+		news: async (item) => [
+			getRoute(item, 'news'),
+			'/aktuellt',
+			...(await getItemReferenceRoutes(item.id)),
+		],
+		project: async (item) => [
+			getRoute(item, 'project'),
+			...(await getItemReferenceRoutes(item.id)),
+		],
 		project_subpage: async (item) => {
 			const { project } = await apiQuery(ProjectBySubpageDocument, {
 				variables: { subpageId: item.id },
 			});
-			return project ? [getRoute(item), ...(await getItemReferenceRoutes(item.id))] : null;
+			return project
+				? [getRoute(item, 'project_subpage'), ...(await getItemReferenceRoutes(item.id))]
+				: null;
 		},
 		district: async () => ['/', '/om', '/projekt', '/aktuellt'],
 		contact: async () => ['/kontakt'],
