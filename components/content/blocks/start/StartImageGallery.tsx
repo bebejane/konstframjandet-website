@@ -51,7 +51,7 @@ export default function StartImageGallery({ data: { links } }: Props) {
 										<Image
 											data={image.responsiveImage}
 											className={s.picture}
-											pictureClassName={s.picture}
+											imgClassName={s.picture}
 											placeholderClassName={s.picture}
 											objectFit={'cover'}
 										/>

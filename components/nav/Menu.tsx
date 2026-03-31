@@ -137,9 +137,13 @@ export default function Menu({ district, districts, menu }: MenuProps) {
 									pathname.startsWith(`/${district.subdomain}${rootSlug}`)) &&
 									rootSlug) ||
 								(!rootSlug && [`/${district.subdomain}`, '/'].includes(pathname));
+							const isHome = pathname === '/' || pathname === `/${district.subdomain}`;
 
 							return type !== 'district' ? (
-								<li key={idx} className={cn(active && !showDistricts && s.active)}>
+								<li
+									key={idx}
+									className={cn(active && !showDistricts && s.active, isHome && s.home)}
+								>
 									{slug ? <Link href={slug}>{label}</Link> : <>{label}</>}
 								</li>
 							) : (
