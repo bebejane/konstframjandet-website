@@ -97,8 +97,6 @@ export default function Menu({ district, districts, menu }: MenuProps) {
 
 	if (!district) return null;
 
-	const { subdomain } = district;
-
 	return (
 		<>
 			<div className={cn(s.logo, isHome && s.home)}>

@@ -60,7 +60,7 @@ export default function SearchResult({ query, district }: Props) {
 	}, [query]);
 
 	if (!query) return null;
-	console.log(results);
+
 	return (
 		<div className={s.container}>
 			{results && Object.keys(results).length > 0 ? (

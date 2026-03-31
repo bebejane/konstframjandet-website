@@ -9,7 +9,6 @@ export default async function POST(req: Request) {
 			const event_type = body.event_type;
 			const id = body?.entity?.id;
 			const creatorId = body?.entity?.relationships?.creator?.data?.id;
-			console.log({ id, event_type, creatorId });
 
 			if (event_type !== 'upload' || !id || !creatorId) throw new Error('Invalid webhook call');
 
