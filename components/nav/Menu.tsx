@@ -176,7 +176,7 @@ export default function Menu({ district, districts, menu }: MenuProps) {
 						.map((d) => (
 							<li key={d.id}>
 								<NextLink
-									href={getTenantUrl(district.subdomain, '/')}
+									href={getTenantUrl(d.subdomain, '/')}
 									onMouseEnter={() => setDistrictHover(d.id)}
 									onMouseLeave={() => setDistrictHover(undefined)}
 									style={{ color: districtHover === d.id ? d.color.hex : 'unset' }}

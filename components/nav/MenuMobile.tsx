@@ -73,8 +73,7 @@ export default function MenuMobile({ menu, district }: Props) {
 											</span>
 											<ul className={cn(type === subSelected && s.expanded)}>
 												{items?.map(({ type, slug, label, subdomain }, idx) => {
-													const href =
-														type === 'district' ? getTenantUrl(district.subdomain, slug) : slug;
+													const href = type === 'district' ? getTenantUrl(subdomain, slug) : slug;
 													return (
 														<li key={idx}>{href && <NextLink href={href}>{label}</NextLink>}</li>
 													);
