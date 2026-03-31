@@ -5,7 +5,8 @@ import { apiQuery } from 'next-dato-utils/api';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { buildMetadata } from '@/app/[subdomain]/layout';
-import { DraftMode, InfiniteScrollClient } from 'next-dato-utils/components';
+import { DraftMode } from 'next-dato-utils/components';
+import InfiniteScrollClient from '@/components/InfiniteScrollClient';
 
 export type Props = {
 	news: NewsRecord[];
@@ -40,7 +41,11 @@ export default async function News({ params }: PageProps<'/[subdomain]/aktuellt'
 							initial={allNews}
 							query={AllNewsDocument}
 							variables={variables}
-							loader={Loader}
+							loader={
+								<li className={s.loaderWrap}>
+									<Loader className={s.loader} />
+								</li>
+							}
 						>
 							{NewsCard}
 						</InfiniteScrollClient>
