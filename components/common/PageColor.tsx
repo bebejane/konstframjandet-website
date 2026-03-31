@@ -7,13 +7,15 @@ import { useEffect } from 'react';
 export default function PageColor({ district }: { district: DistrictRecord }) {
 	const pathname = usePathname();
 
-	useEffect(() => {
+	function updatecolor() {
 		const root = document.querySelector<HTMLElement>(':root');
 		const path =
 			process.env.NODE_ENV === 'development' && pathname === `/${district.subdomain}`
 				? '/'
 				: pathname;
+
 		const isHome = path === '/';
+
 		if (!root || !district) return;
 
 		root.style.setProperty('--page-color', district.color.hex);
@@ -21,6 +23,11 @@ export default function PageColor({ district }: { district: DistrictRecord }) {
 			'--background',
 			path === '/' ? district?.color?.hex : 'var(--light-grey)',
 		);
+	}
+
+	useEffect(() => {
+		updatecolor();
+		setTimeout(updatecolor, 100);
 	}, [pathname, district]);
 
 	return null;
