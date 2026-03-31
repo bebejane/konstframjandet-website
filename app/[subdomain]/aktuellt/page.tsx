@@ -1,6 +1,6 @@
 import s from './page.module.scss';
 import { AllNewsDocument, DistrictBySubdomainDocument } from '@/graphql';
-import { NewsCard, NewsContainer, SectionHeader } from '@/components';
+import { Loader, NewsCard, NewsContainer, SectionHeader } from '@/components';
 import { apiQuery } from 'next-dato-utils/api';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
@@ -40,6 +40,7 @@ export default async function News({ params }: PageProps<'/[subdomain]/aktuellt'
 							initial={allNews}
 							query={AllNewsDocument}
 							variables={variables}
+							loader={Loader}
 						>
 							{NewsCard}
 						</InfiniteScrollClient>
