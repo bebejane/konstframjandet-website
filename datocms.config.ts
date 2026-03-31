@@ -130,7 +130,7 @@ export default {
 			],
 		} satisfies MetadataRoute.Manifest;
 	},
-	robots: async ({ params }: RouteContext<'/[subdomain]/robots.txt'>) => {
+	robots: async () => {
 		return {
 			rules: {
 				userAgent: '*',
