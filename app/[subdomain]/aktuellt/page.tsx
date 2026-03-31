@@ -1,13 +1,11 @@
 import s from './page.module.scss';
 import { AllNewsDocument, DistrictBySubdomainDocument } from '@/graphql';
-import { SectionHeader } from '@/components';
+import { NewsCard, NewsContainer, SectionHeader } from '@/components';
 import { apiQuery } from 'next-dato-utils/api';
-import { pageSize } from '@/lib/constants';
 import { notFound } from 'next/navigation';
-import NewsLoader from '@/app/[subdomain]/aktuellt/NewsLoader';
 import { Metadata } from 'next';
 import { buildMetadata } from '@/app/[subdomain]/layout';
-import { DraftMode } from 'next-dato-utils/components';
+import { DraftMode, InfiniteScrollClient } from 'next-dato-utils/components';
 
 export type Props = {
 	news: NewsRecord[];
@@ -23,10 +21,12 @@ export default async function News({ params }: PageProps<'/[subdomain]/aktuellt'
 		variables: { subdomain },
 		stripStega: true,
 	});
+
 	if (!district) return notFound();
 
-	const { allNews, _allNewsMeta, draftUrl } = await apiQuery(AllNewsDocument, {
-		variables: { districtId: district.id, first: pageSize, skip: 0 },
+	const variables = { districtId: district.id, first: 10 };
+	const { allNews, draftUrl } = await apiQuery(AllNewsDocument, {
+		variables,
 	});
 
 	return (
@@ -34,11 +34,16 @@ export default async function News({ params }: PageProps<'/[subdomain]/aktuellt'
 			<SectionHeader title='Aktuellt' layout='news' />
 			<article>
 				<div className={s.container}>
-					<NewsLoader
-						allNews={allNews}
-						district={district as DistrictRecord}
-						count={_allNewsMeta.count}
-					/>
+					<NewsContainer>
+						<InfiniteScrollClient
+							id='news'
+							initial={allNews}
+							query={AllNewsDocument}
+							variables={variables}
+						>
+							{NewsCard}
+						</InfiniteScrollClient>
+					</NewsContainer>
 				</div>
 			</article>
 			<DraftMode url={draftUrl} path={`/aktuellt`} />

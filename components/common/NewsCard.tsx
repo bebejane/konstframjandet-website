@@ -7,16 +7,21 @@ import { Image } from 'react-datocms/image';
 import Link from '@/components/nav/Link';
 import Balancer from 'react-balance-text';
 import { usePathname } from 'next/navigation';
-
-export type CardProps = {
-	news: NewsRecord;
-	view?: 'list' | 'full';
-};
+import useStore, { useShallow } from '@/lib/store';
 
 export default function NewsCard({
-	view = 'full',
-	news: { id, title, subtitle, intro, image, slug, where, date, time, misc },
-}: CardProps) {
+	id,
+	title,
+	subtitle,
+	intro,
+	image,
+	slug,
+	where,
+	date,
+	time,
+	misc,
+}: AllNewsQuery['allNews'][number]) {
+	const [view] = useStore(useShallow((state) => [state.view]));
 	const pathname = usePathname();
 
 	return (

@@ -1,4 +1,4 @@
-query AllNews($first: IntType = 100, $skip: IntType = 0, $districtId: ItemId) {
+query AllNews($first: IntType = 10, $skip: IntType = 0, $districtId: ItemId) {
 	allNews(
 		filter: { district: { eq: $districtId } }
 		first: $first
