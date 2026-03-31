@@ -19,7 +19,7 @@ export default function StartLatestNews({ data: { news } }: Props) {
 			</header>
 			<NewsContainer>
 				{news?.map((item) => (
-					<NewsCard key={item.id} news={item} />
+					<NewsCard key={item.id} {...item} />
 				))}
 			</NewsContainer>
 		</section>
