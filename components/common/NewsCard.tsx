@@ -23,9 +23,10 @@ export default function NewsCard({
 }: AllNewsQuery['allNews'][number]) {
 	const [view] = useStore(useShallow((state) => [state.view]));
 	const pathname = usePathname();
+	const isHome = pathname === '/' || pathname === `/index`;
 
 	return (
-		<li id={id} className={cn(s.card, pathname === '/' && s.home, view === 'list' && s.list)}>
+		<li id={id} className={cn(s.card, isHome && s.home, view === 'list' && s.list)}>
 			<div className={s.content}>
 				<Link href={`/aktuellt/${slug}`}>
 					<h2 className='big'>
