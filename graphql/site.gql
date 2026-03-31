@@ -1,0 +1,43 @@
+query Site {
+	_site {
+		...SiteFragment
+	}
+}
+
+fragment SiteFragment on Site {
+	faviconMetaTags {
+		attributes
+		content
+		tag
+	}
+	globalSeo {
+		facebookPageUrl
+		siteName
+		titleSuffix
+		twitterAccount
+		fallbackSeo {
+			description
+			title
+			twitterCard
+			image {
+				id
+				mimeType
+				url
+				title
+				alt
+				height
+				width
+				responsiveImage(imgixParams: { auto: format }) {
+					src
+					width
+					height
+					alt
+					title
+					base64
+					#bgColor
+					sizes
+				}
+			}
+		}
+	}
+}

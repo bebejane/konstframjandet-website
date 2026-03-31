@@ -1,144 +1,147 @@
 .article {
-  position: relative;
-  padding-top: var(--space);
-  width: 100%;
+	position: relative;
+	padding-top: var(--space);
+	width: 100%;
 
-  @include mq($from: desktop) {
-    width: 75%;
-  }
+	@include mq($from: desktop) {
+		width: 75%;
+	}
 
-  figure {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: flex-start;
-    cursor: pointer;
-    //border: var(--line-thick);
+	figure {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+		align-items: flex-start;
+		cursor: pointer;
 
-    &.mainImage {
-      margin-bottom: var(--space);
-    }
+		&.mainImage {
+			margin-bottom: var(--space);
+		}
+		&.small {
+			padding-left: calc(2 * var(--grid-unit));
+			padding-right: calc(2 * var(--grid-unit));
+		}
 
-    &.small {
-      padding-left: calc(2 * var(--grid-unit));
-      padding-right: calc(2 * var(--grid-unit));
-    }
+		&.portrait {
+			padding-left: calc(1 * var(--grid-unit));
+			padding-right: calc(1 * var(--grid-unit));
 
-    &.portrait {
-      padding-left: calc(1 * var(--grid-unit));
-      padding-right: calc(1 * var(--grid-unit));
+			@include mq($until: desktop) {
+				padding-left: calc(0 * var(--grid-unit));
+				padding-right: calc(0 * var(--grid-unit));
+			}
+		}
+		.image {
+			position: relative !important;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
 
-      @include mq($until: desktop) {
-        padding-left: calc(0 * var(--grid-unit));
-        padding-right: calc(0 * var(--grid-unit));
-      }
-    }
-  }
+	.caption {
+		@include mq($from: desktop) {
+			position: absolute;
+			top: var(--space);
+			right: 0;
+			width: 25%;
+		}
+		display: block;
+		margin-bottom: var(--small-space);
+	}
 
-  .caption {
-    @include mq($from: desktop) {
-      position: absolute;
-      top: var(--space);
-      right: 0;
-      width: 25%;
-    }
-    display: block;
-    margin-bottom: var(--small-space);
-  }
+	section {
+		@include mq($from: desktop) {
+			display: flex;
+			flex-direction: row;
+		}
 
-  section {
-    @include mq($from: desktop) {
-      display: flex;
-      flex-direction: row;
-    }
+		.content {
+			@include mq($from: desktop) {
+				width: calc(2 * var(--grid-unit));
+			}
 
-    .content {
-      @include mq($from: desktop) {
-        width: calc(2 * var(--grid-unit));
-      }
+			.structured {
+				@include mq($from: desktop) {
+					//min-height: 50vh;
+				}
 
-      .structured {
-        @include mq($from: desktop) {
-          //min-height: 50vh;
-        }
+				&.dropcap {
+					> p:first-of-type {
+						&:first-child:first-letter {
+							color: var(--page-color);
+							float: left;
+							font-family: var(--headline-font);
+							font-weight: normal;
+							line-height: 0.7em;
+							font-size: 5rem;
+							padding-top: 0.1em;
+							padding-right: 8px;
+						}
+					}
+				}
 
-        &.dropcap {
-          > p:first-of-type {
-            &:first-child:first-letter {
-              color: var(--page-color);
-              float: left;
-              font-family: $headline-font;
-              font-weight: normal;
-              line-height: 0.7em;
-              font-size: 5rem;
-              padding-top: 0.1em;
-              padding-right: 8px;
-            }
-          }
-        }
+				& > *:nth-last-child(2) {
+					@include mq($from: desktop) {
+						margin-bottom: 0;
+					}
+				}
 
-        & > *:nth-last-child(2) {
-          @include mq($from: desktop) {
-            margin-bottom: 0;
-          }
-        }
+				&.nobackLink {
+					& > *:nth-last-child(2) {
+						margin-bottom: 1rem;
+					}
+				}
 
-        &.nobackLink {
-          & > *:nth-last-child(2) {
-            margin-bottom: 1rem;
-          }
-        }
+				h2 {
+					color: var(--page-color);
+					padding-bottom: 0.5em;
+					line-height: 1;
+				}
 
-        h2 {
-          color: var(--page-color);
-          padding-bottom: 0.5em;
-          line-height: 1;
-        }
+				h3 {
+					padding-bottom: 0.5em;
+				}
+			}
 
-        h3 {
-          padding-bottom: 0.5em;
-        }
-      }
+			.back {
+				transition: opacity 0.2s;
+				opacity: 1;
 
-      .back {
-        transition: opacity 0.2s;
-        opacity: 1;
+				&.hide {
+					opacity: 0;
+				}
 
-        &.hide {
-          opacity: 0;
-        }
+				@include mq($until: desktop) {
+					display: none;
+				}
 
-        @include mq($until: desktop) {
-          display: none;
-        }
+				@include mq($from: desktop) {
+					position: absolute;
+					margin-left: calc(-1 * var(--grid-unit));
+					margin-top: -1em;
+				}
 
-        @include mq($from: desktop) {
-          position: absolute;
-          margin-left: calc(-1 * var(--grid-unit));
-          margin-top: -1em;
-        }
+				&:hover {
+					color: var(--page-color);
+				}
+			}
+		}
 
-        &:hover {
-          color: var(--page-color);
-        }
-      }
-    }
+		figcaption {
+			p {
+				margin-bottom: 0;
+			}
 
-    figcaption {
-      p {
-        margin-bottom: 0;
-      }
+			//padding-top: 0;
+		}
+	}
 
-      //padding-top: 0;
-    }
-  }
+	.extraContent {
+		border-top: var(--line-thick);
+		padding-top: 1em;
 
-  .extraContent {
-    border-top: var(--line-thick);
-    padding-top: 1em;
-
-    p {
-      margin-bottom: 0;
-    }
-  }
+		p {
+			margin-bottom: 0;
+		}
+	}
 }

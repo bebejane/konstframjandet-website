@@ -1,31 +1,44 @@
+import 'dotenv/config';
+import {
+	DatoCmsConfig,
+	getItemApiKey,
+	getUploadReferenceRoutes,
+	getItemReferenceRoutes,
+} from 'next-dato-utils/config';
+import { getRoute } from '@/datocms.config';
+import { client } from '@/lib/client';
+const item = {
+	__typename: 'AboutRecord',
+	_modelApiKey: 'about',
+	category: 'Om',
+	title: 'Vår historia',
+	text: 'Folkrörelsernas Konstfrämjande bildades 1947 med uppdraget att demokratisera konsten och göra den tillgänglig för en bredare allmänhet....',
+	slug: '/',
+};
 
-import * as dotenv from 'dotenv'; dotenv.config({ path: "./.env" });
-import { buildClient, Client, ApiError } from '@datocms/cma-client-node';
-export const client: Client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, environment: 'main', extraHeaders: { 'X-Include-Drafts': 'true' } })
-
-const main = async () => {
-  try {
-
-    const webhook = (await client.webhooks.list()).find((webhook) => webhook.name === 'Revalidate district');
-    //console.log(webhook)
-
-    // this iterates over every page of results:
-    for await (const webhookCall of client.webhookCalls.listPagedIterator({ webhookId: webhook.id, perPage: 100 })) {
-      console.log(webhookCall.response_payload)
-      //console.log(webhookCall.webhook, webhookCall.created_at);
-    }
-
-
-  } catch (error) {
-    console.log('err')
-
-    if (error instanceof ApiError) {
-      console.log(error.response)
-    } else {
-      console.log(error)
-    }
-
-  }
+async function search(query: string) {
+	const { data, meta } = await client.searchResults.rawList({
+		filter: {
+			fuzzy: false,
+			query,
+			search_index_id: process.env.DATOCMS_SEARCH_INDEX_ID,
+		},
+		page: {
+			limit: 20,
+			offset: 0,
+		},
+	});
+	return data;
 }
 
-main()
+async function reIndex() {
+	const res = await client.searchIndexes.trigger(process.env.DATOCMS_SEARCH_INDEX_ID!);
+	return res;
+}
+
+async function main() {
+	//const res = await reIndex();
+	const res = await search('konst');
+	console.log(res);
+}
+main();

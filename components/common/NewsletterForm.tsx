@@ -1,9 +1,10 @@
-import s from './NewsletterForm.module.scss'
-import Loader from '/components/common/Loader';
-import cn from 'classnames'
+'use client'
 
+import s from './NewsletterForm.module.scss'
+import cn from 'classnames'
+import Loader from '@/components/common/Loader';
 import { useState } from 'react'
-import { isEmail } from "/lib/utils";
+import { isEmail } from "@/lib/utils";
 
 export default function NewsletterForm() {
 

@@ -2,238 +2,242 @@
 .menu,
 .districts,
 .search {
-  @include mq($until: desktop) {
-    display: none;
-  }
+	@include mq($until: desktop) {
+		display: none;
+	}
 }
 
 .logo {
-  position: fixed;
-  display: flex;
-  align-items: center;
-  top: var(--very-small-space);
-  left: 0;
-  max-width: 0;
-  z-index: var(--z-logo);
-  left: var(--outer-margin);
-  font-family: $symbol-font;
-  font-size: var(--logo-size);
+	position: fixed;
+	display: flex;
+	align-items: center;
+	top: var(--very-small-space);
+	left: 0;
+	max-width: 0;
+	z-index: var(--z-logo);
+	left: var(--outer-margin);
+	font-family: var(--symbol-font);
+	font-size: var(--logo-size);
 
-  a {
-    line-height: 1;
+	a {
+		line-height: 1;
 
-    &:hover {
-      color: var(--page-color);
-    }
-  }
+		&:hover {
+			color: var(--page-color);
+		}
+	}
 
-  &.home>a:hover {
-    color: var(--white);
-  }
+	&.home > a:hover {
+		color: var(--white);
+	}
 
-  @include mq($until: desktop) {
-    display: none;
-  }
+	@include mq($until: desktop) {
+		display: none;
+	}
 }
 
 .menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: var(--z-menu);
-  height: var(--navbar-height);
-  padding-top: var(--navbar-space);
-  padding-bottom: var(--navbar-space);
-  width: var(--body-width);
-  border-bottom: var(--line-thick);
-  margin-left: var(--outer-margin);
-  margin-right: var(--outer-margin);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: var(--z-menu);
+	height: var(--navbar-height);
+	padding-top: var(--navbar-space);
+	padding-bottom: var(--navbar-space);
+	width: var(--body-width);
+	border-bottom: var(--line-thick);
+	margin-left: var(--outer-margin);
+	margin-right: var(--outer-margin);
 
-  @include mq($until: desktop) {}
+	@include mq($until: desktop) {
+	}
 
-  &.small {
-    transform: translateY(-50%);
-  }
+	&.small {
+		transform: translateY(-50%);
+	}
 
-  a:hover,
-  li:hover {
-    color: var(--page-color);
+	a:hover,
+	li:hover {
+		color: var(--page-color);
 
-    &::after {
-      color: var(--black);
-    }
-  }
+		&::after {
+			color: var(--black);
+		}
+	}
 
-  h2 {
-    margin: 0;
-    padding: 0;
-    margin-left: calc(var(--grid-unit));
-  }
+	h2 {
+		margin: 0;
+		padding: 0;
+		margin-left: calc(var(--grid-unit));
+	}
 
-  .top {
-    display: flex;
-    justify-content: space-between;
+	.top {
+		display: flex;
+		justify-content: space-between;
 
-    div a {
-      &:not(:last-of-type) {
-        padding-right: 0.6em;
-      }
+		div a {
+			&:not(:last-of-type) {
+				padding-right: 0.6em;
+			}
 
-      &:not(:last-of-type)::after {
-        content: "4";
-        padding-left: 0.6em;
-        font-family: $symbol-font;
-      }
-    }
-  }
+			&:not(:last-of-type)::after {
+				content: '4';
+				padding-left: 0.6em;
+				font-family: var(--symbol-font);
+			}
+		}
+	}
 
-  .wrapper {
-    padding-top: 1rem;
-    display: flex;
-    justify-content: space-between;
+	.wrapper {
+		padding-top: 1rem;
+		display: flex;
+		justify-content: space-between;
 
-    @include mq($from: semi-wide) {
-      padding-top: 0.5rem;
-    }
+		@include mq($from: semi-wide) {
+			padding-top: 0.5rem;
+		}
 
-    @include mq($from: wide) {
-      padding-top: 0.5rem;
-    }
+		@include mq($from: wide) {
+			padding-top: 0.5rem;
+		}
 
-    li,
-    span {
-      cursor: pointer;
-    }
+		li,
+		span {
+			cursor: pointer;
+		}
 
-    span {
-      &:hover {
-        color: var(--page-color);
-      }
-    }
-  }
+		span {
+			&:hover {
+				color: var(--page-color);
+			}
+		}
+	}
 
-  ul {
-    margin-left: calc(var(--grid-unit));
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+	ul {
+		margin-left: calc(var(--grid-unit));
+		list-style: none;
+		display: flex;
+		flex-direction: row;
+		width: 100%;
 
-    li {
-      cursor: pointer;
-      margin-right: 0.6em;
-      user-select: none;
+		li {
+			cursor: pointer;
+			margin-right: 0.6em;
+			user-select: none;
 
-      &.active,
-      &.active>a {
-        color: var(--page-color);
-      }
+			&.active,
+			&.active > a {
+				color: var(--page-color);
+			}
+			&.home {
+				&.active,
+				&.active > a {
+					color: var(--white);
+				}
+			}
+			&:not(:last-of-type)::after {
+				content: '4';
+				color: var(--black);
+				padding-left: 0.6em;
+				font-family: var(--symbol-font);
+			}
+		}
+	}
 
-      &:not(:last-of-type)::after {
-        content: "4";
-        color: var(--black);
-        padding-left: 0.6em;
-        font-family: $symbol-font;
-      }
-    }
-  }
-
-  &.home {
-
-    .active,
-    .active>a,
-    span:hover,
-    li:hover,
-    a:hover {
-      color: var(--white) !important;
-    }
-  }
-
+	&.home {
+		.active,
+		.active > a,
+		span:hover,
+		li:hover,
+		a:hover {
+			color: var(--white) !important;
+		}
+	}
 }
 
 .districts {
-  position: fixed;
-  display: none;
-  flex-direction: row;
-  background-color: var(--white);
-  top: calc(var(--navbar-height));
-  left: var(--outer-margin);
-  width: var(--body-width);
-  padding: var(--small-space);
-  z-index: var(--z-district-popup);
-  border-bottom: var(--line-thick);
+	position: fixed;
+	display: none;
+	flex-direction: row;
+	background-color: var(--white);
+	top: calc(var(--navbar-height));
+	left: var(--outer-margin);
+	width: var(--body-width);
+	padding: var(--small-space);
+	z-index: var(--z-district-popup);
+	border-bottom: var(--line-thick);
 
-  &.show {
-    display: flex;
-  }
+	&.show {
+		display: flex;
+	}
 
-  span {
-    flex: 0 0 calc(var(--grid-unit));
-    color: var(--page-color);
-  }
+	span {
+		flex: 0 0 calc(var(--grid-unit));
+		color: var(--page-color);
+	}
 
-  ul {
-    width: 100%;
-    list-style: none;
-    margin-left: calc(-1 * var(--small-space));
-    column-count: 5;
+	ul {
+		width: 100%;
+		list-style: none;
+		margin-left: calc(-1 * var(--small-space));
+		column-count: 5;
 
-    li {
-      padding-bottom: 0.5em;
+		li {
+			padding-bottom: 0.5em;
 
-      &:hover {
-        color: var(--page-color);
-      }
-    }
-  }
+			&:hover {
+				color: var(--page-color);
+			}
+		}
+	}
 }
 
 .search {
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  top: 0;
-  left: 0;
-  width: 100%;
-  min-height: 100vh;
-  z-index: var(--z-search);
-  background-color: var(--white);
-  transition: transform 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
-  transform: translateY(-100%);
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	top: 0;
+	left: 0;
+	width: 100%;
+	min-height: 100vh;
+	z-index: var(--z-search);
+	background-color: var(--white);
+	transition: transform 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+	transform: translateY(-100%);
 
-  &.show {
-    transform: translateY(0%);
-  }
+	&.show {
+		transform: translateY(0%);
+	}
 
-  .bar {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    padding-left: var(--outer-margin);
+	.bar {
+		display: flex;
+		align-items: center;
+		height: 100%;
+		width: 100%;
+		padding-left: var(--outer-margin);
 
-    input {
-      margin: 0;
-      margin-right: var(--grid-unit);
-      margin-left: var(--grid-unit);
-      width: calc(100%);
-      padding-left: 0;
-    }
-  }
+		input {
+			margin: 0;
+			margin-right: var(--grid-unit);
+			margin-left: var(--grid-unit);
+			width: calc(100%);
+			padding-left: 0;
+		}
+	}
 
-  .results {
-    display: flex;
-    flex: 1 1 auto;
-    overflow-y: scroll;
-  }
+	.results {
+		display: flex;
+		flex: 1 1 auto;
+		overflow-y: scroll;
+	}
 
-  .close {
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    right: 0;
-    margin: var(--outer-margin);
-    margin-top: var(--small-space);
-    cursor: pointer;
-  }
+	.close {
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		right: 0;
+		margin: var(--outer-margin);
+		margin-top: var(--small-space);
+		cursor: pointer;
+	}
 }

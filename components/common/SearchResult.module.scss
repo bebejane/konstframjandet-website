@@ -35,7 +35,7 @@
           margin-top: var(--small-space);
 
           >strong {
-            font-family: $headline-font;
+            font-family: var(--headline-font);
             font-size: 0.75rem;
             font-weight: bold !important;
           }

@@ -1,0 +1,66 @@
+import { apiQuery } from 'next-dato-utils/api';
+import { AboutDocument, AllAboutsDocument, DistrictBySubdomainDocument } from '@/graphql';
+import { Aside, Article, SideMenu, SectionHeader } from '@/components';
+import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
+import { buildMetadata } from '@/app/[subdomain]/layout';
+import { DraftMode } from 'next-dato-utils/components';
+
+export default async function About({ params }: PageProps<'/[subdomain]/om/[about]'>) {
+	const { about: slug, subdomain } = await params;
+	const { district } = await apiQuery(DistrictBySubdomainDocument, {
+		variables: { subdomain },
+		stripStega: true,
+	});
+	const { about, draftUrl } = await apiQuery(AboutDocument, {
+		variables: { slug, districtId: district?.id },
+	});
+
+	if (!about) return notFound();
+	const { id, title, content, intro, _seoMetaTags } = about;
+	const { allAbouts } = await apiQuery(AllAboutsDocument, {
+		variables: { districtId: district?.id },
+	});
+
+	return (
+		<>
+			<SectionHeader title={title} layout='full' />
+			<article>
+				<Aside hideOnMobile={true}>
+					<SideMenu
+						items={allAbouts.map(({ id, slug, title }) => ({ id, title, slug: `/om/${slug}` }))}
+					/>
+				</Aside>
+				<Article id={id} intro={intro} content={content} record={about} seo={_seoMetaTags} />
+			</article>
+			<DraftMode url={draftUrl} path={`/om/${slug}`} />
+		</>
+	);
+}
+
+export async function generateStaticParams({ params }: PageProps<'/[subdomain]/om/[about]'>) {
+	const { subdomain } = await params;
+	const { district } = await apiQuery(DistrictBySubdomainDocument, { variables: { subdomain } });
+	const { allAbouts } = await apiQuery(AllAboutsDocument, {
+		all: true,
+		variables: { districtId: district?.id },
+	});
+	return allAbouts.map(({ slug: about }) => ({ about }));
+}
+
+export async function generateMetadata({
+	params,
+}: PageProps<'/[subdomain]/om/[about]'>): Promise<Metadata> {
+	const { about: slug, subdomain } = await params;
+	const { district } = await apiQuery(DistrictBySubdomainDocument, { variables: { subdomain } });
+	const { about } = await apiQuery(AboutDocument, {
+		variables: { slug, districtId: district?.id },
+	});
+
+	return await buildMetadata({
+		title: about?.title,
+		pathname: `/om/${slug}`,
+		subdomain,
+		description: about?.intro,
+	});
+}

@@ -1,18 +1,13 @@
-import s from './NewsContainer.module.scss'
-import cn from 'classnames'
-import React, { useEffect, useState } from 'react'
+'use client';
+import useStore, { useShallow } from '@/lib/store';
+import s from './NewsContainer.module.scss';
+import cn from 'classnames';
 
 export type Props = {
-  children?: React.ReactNode | React.ReactNode[],
-  className?: string
-  view?: 'list' | 'full'
-}
+	children?: React.ReactNode | React.ReactNode[];
+};
 
-export default function NewsContainer({ children, className, view = 'full' }: Props) {
-
-  return (
-    <ul className={cn(s.container, className, view === 'list' && s.list)}>
-      {children}
-    </ul>
-  )
+export default function NewsContainer({ children }: Props) {
+	const [view] = useStore(useShallow((state) => [state.view]));
+	return <ul className={cn(s.container, view === 'list' && s.list)}>{children}</ul>;
 }

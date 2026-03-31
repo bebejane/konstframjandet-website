@@ -7,7 +7,7 @@ query SiteSearch(
 	$locale: SiteLocale
 	$districtId: ItemId
 ) {
-	abouts: allAbouts(
+	allAbouts(
 		first: $first
 		skip: $skip
 		locale: $locale
@@ -23,7 +23,7 @@ query SiteSearch(
 			subdomain
 		}
 	}
-	news: allNews(
+	allNews(
 		first: $first
 		skip: $skip
 		locale: $locale
@@ -39,7 +39,7 @@ query SiteSearch(
 			subdomain
 		}
 	}
-	projects: allProjects(
+	allProjects(
 		first: $first
 		skip: $skip
 		locale: $locale
@@ -55,7 +55,7 @@ query SiteSearch(
 			subdomain
 		}
 	}
-	projectSubpages: allProjectSubpages(
+	allProjectSubpages(
 		first: $first
 		skip: $skip
 		locale: $locale
