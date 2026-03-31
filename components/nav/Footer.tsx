@@ -54,7 +54,7 @@ export default function Footer({ menu, district }: FooterProps) {
 								</ul>
 							</li>
 						))}
-					<li>
+					<li className={s.aboutDesktop}>
 						<Link href={'/'} scroll={true}>
 							Konstfrämjandet
 						</Link>
