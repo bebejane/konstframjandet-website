@@ -63,7 +63,7 @@ export default {
 				variables: { subpageId: item.id },
 			});
 			return project
-				? [getRoute(project, 'project_subpage'), ...(await getItemReferenceRoutes(item.id))]
+				? [`/projekt/${project.slug}/${item.slug}`, ...(await getItemReferenceRoutes(item.id))]
 				: null;
 		},
 		district: async () => ['/', '/om', '/projekt', '/aktuellt'],
