@@ -25,7 +25,7 @@ export function getRoute(item: any, _apiKey?: string): string {
 		case 'project':
 			return `/projekt/${slug}`;
 		case 'project_subpage':
-			return `/projekt/${item?.project?.slug}/${slug}`;
+			return `/projekt/${item?.subpage?.slug}/${slug}`;
 		case 'district':
 			return '/';
 		case 'contact':
