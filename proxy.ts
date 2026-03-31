@@ -9,22 +9,22 @@ export default async function proxy(req: NextRequest) {
 	const rootDomain = prod ? domain.split('.')[0] : pathname.split('/')[1];
 	const subdomain = districts.find((d) => d.subdomain === rootDomain)?.subdomain;
 	const isAllowedDomain = !subdomain ? domain.endsWith(BASE_DOMAIN) : true;
-	console.log({
-		subdomain,
-		isAllowedDomain,
-		domain,
-		pathname,
-		reqUrl: req.url,
-		rootDomain,
-	});
+	// console.log({
+	// 	subdomain,
+	// 	isAllowedDomain,
+	// 	domain,
+	// 	pathname,
+	// 	reqUrl: req.url,
+	// 	rootDomain,
+	// });
 	if (!isAllowedDomain) return new Response(null, { status: 404 });
 
 	if (prod) {
-		console.log('rewrite', `/${subdomain ?? PRIMARY_SUBDOMAIN}${pathname}`, req.url);
+		//console.log('rewrite', `/${subdomain ?? PRIMARY_SUBDOMAIN}${pathname}`, req.url);
 		return NextResponse.rewrite(new URL(`/${subdomain ?? PRIMARY_SUBDOMAIN}${pathname}`, req.url));
 	} else {
 		const path = `${!subdomain ? `/${PRIMARY_SUBDOMAIN}${pathname}` : pathname}`;
-		console.log('rewrite (dev)', path, req.url);
+		//console.log('rewrite (dev)', path, req.url);
 		return NextResponse.rewrite(new URL(path, req.url));
 	}
 }

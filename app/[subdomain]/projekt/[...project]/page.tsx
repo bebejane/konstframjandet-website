@@ -28,11 +28,10 @@ export default async function ProjectItem({
 }: PageProps<'/[subdomain]/projekt/[...project]'>) {
 	const { project, parentProject, projectMenu, projectColor, colorOption, draftUrls } =
 		await getData(params);
+	console.log('parent', parentProject);
 	if (!project) return notFound();
 
-	const { id, title, image, intro, subtitle, content, _seoMetaTags, slug, webpage, __typename } =
-		project;
-	console.log(__typename);
+	const { id, title, image, intro, subtitle, content, _seoMetaTags, slug, __typename } = project;
 
 	return (
 		<>
@@ -47,7 +46,7 @@ export default async function ProjectItem({
 			<article>
 				<Aside
 					title={parentProject?.title ?? project.title}
-					titleHref={parentProject ? `/projekt/${parentProject.slug}` : undefined}
+					titleHref={parentProject ? `/projekt/${parentProject.slug}/${project.slug}` : undefined}
 					backLink={'/projekt'}
 					backLinkType={'projekt'}
 				>
@@ -62,8 +61,8 @@ export default async function ProjectItem({
 					backLink={'/projekt'}
 					seo={_seoMetaTags}
 				/>
-				{project.__typename === 'ProjectRecord' && webpage && (
-					<ProjectWebpage href={webpage} color={projectColor}>
+				{project.__typename === 'ProjectRecord' && project.webpage && (
+					<ProjectWebpage href={project.webpage} color={projectColor}>
 						Besök projektets hemsida
 					</ProjectWebpage>
 				)}
@@ -83,9 +82,10 @@ export async function generateStaticParams({
 	});
 
 	const paths: { project: string[] }[] = [];
-	allProjects.forEach(({ slug, subpage }) =>
-		paths.push({ project: [slug, ...subpage.map(({ slug: subslug }) => subslug)] }),
-	);
+	allProjects.forEach(({ slug, subpage }) => {
+		paths.push({ project: [slug] });
+		subpage.forEach(({ slug: subSlug }) => paths.push({ project: [slug, subSlug] }));
+	});
 
 	return paths;
 }
@@ -114,16 +114,22 @@ async function getData(params: PageProps<'/[subdomain]/projekt/[...project]'>['p
 	const isSubpage = _project.length === 2;
 	const slug = _project[!isSubpage ? 0 : 1];
 	const districtId = district?.id;
-	const { project, draftUrl } = await apiQuery(
-		!isSubpage ? ProjectDocument : ProjectSubpageDocument,
-		{
+	let project: ProjectRecord | ProjectSubpageRecord | null = null;
+	if (!isSubpage) {
+		const res = await apiQuery(ProjectDocument, {
 			variables: { slug, districtId },
-		},
-	);
-	draftUrl && draftUrls.push(draftUrl);
+		});
+		project = res.project as ProjectRecord | null;
+		res.draftUrl && draftUrls.push(res.draftUrl);
+	} else {
+		const res = await apiQuery(ProjectSubpageDocument, {
+			variables: { slug, districtId },
+		});
+		project = res.projectSubpage as ProjectSubpageRecord | null;
+		res.draftUrl && draftUrls.push(res.draftUrl);
+	}
 
 	if (!project) return notFound();
-
 	let parentProject: ProjectRecord | null = null;
 
 	if (isSubpage) {

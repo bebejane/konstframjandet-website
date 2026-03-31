@@ -7,7 +7,7 @@ import Link from '@/components/nav/Link';
 
 export type Props = {
 	children?: React.ReactNode[] | React.ReactNode;
-	title?: string;
+	title?: string | null;
 	titleHref?: string;
 	hideOnMobile?: boolean;
 	backLink?: string;
