@@ -1,129 +1,129 @@
 .card {
-  display: flex;
-  padding-top: var(--space);
-  padding-bottom: var(--space);
-  border-bottom: var(--line-thin);
-  width: 100%;
-  flex-direction: column-reverse;
+	display: flex;
+	padding-top: var(--space);
+	padding-bottom: var(--space);
+	border-bottom: var(--line-thin);
+	width: 100%;
+	flex-direction: column-reverse;
 
-  @include mq($from: desktop) {
-    flex-direction: row;
-  }
+	@include mq($from: desktop) {
+		flex-direction: row;
+	}
 
-  &:last-child {
-    border-bottom: 0;
-  }
+	&:last-child {
+		border-bottom: 0;
+	}
 
-  &:hover {
-    .meta a {
-      color: var(--page-color);
-    }
-  }
+	&:hover {
+		.meta a {
+			color: var(--page-color);
+		}
+	}
 
-  &.home {
-    a > h2,
-    p > a {
-      color: var(--black) !important;
+	h2 {
+		padding-top: 0.2em;
+		padding-bottom: calc(0.8 * var(--small-space));
+	}
 
-      &:hover {
-        color: var(--white) !important;
-      }
+	.meta {
+		line-height: var(--line-height) !important;
+		column-count: 2;
 
-      transition: color 0.2s ease;
-    }
+		span {
+			display: block;
+			a {
+				border-bottom: 1px solid var(--page-color);
+			}
+		}
+	}
 
-    p > a {
-      border-color: var(--white) !important;
-    }
+	> div,
+	a {
+		@include mq($from: desktop) {
+			flex: 0 0 50%;
+		}
+	}
 
-    &:hover .meta a {
-      color: var(--black);
-    }
+	p {
+		padding-bottom: var(--small-space);
+		margin-bottom: 0 !important;
+	}
 
-    .meta a {
-      border-bottom: 1px solid var(--white);
+	figure {
+		border: var(--line-thick);
+		display: flex;
+		aspect-ratio: 6 / 4;
 
-      &:hover {
-        color: var(--white);
-      }
-    }
-  }
+		@include mq($until: desktop) {
+			margin-bottom: var(--small-space);
+		}
 
-  h2 {
-    padding-top: 0.2em;
-    padding-bottom: calc(0.8 * var(--small-space));
-  }
+		.image {
+			max-width: none !important;
+		}
 
-  .meta {
-    line-height: var(--line-height) !important;
-    column-count: 2;
+		img {
+			object-fit: cover;
+		}
+	}
 
-    span {
-      display: block;
-      a {
-        border-bottom: 1px solid var(--page-color);
-      }
-    }
-  }
+	@include mq($until: tablet) {
+	}
 
-  > div,
-  a {
-    @include mq($from: desktop) {
-      flex: 0 0 50%;
-    }
-  }
+	@include mq($from: tablet) {
+	}
 
-  p {
-    padding-bottom: var(--small-space);
-    margin-bottom: 0 !important;
-  }
+	&.list {
+		> div {
+			@include mq($from: desktop) {
+				flex: 0 0 75%;
+				padding-right: 5%;
+			}
+		}
 
-  figure {
-    border: var(--line-thick);
-    display: flex;
-    aspect-ratio: 6 / 4;
+		h2 {
+			padding-top: 0;
+		}
+		> a {
+			@include mq($until: desktop) {
+				display: none;
+			}
 
-    @include mq($until: desktop) {
-      margin-bottom: var(--small-space);
-    }
+			flex: 0 0 25%;
+			padding-right: var(--gutter);
+		}
 
-    .image {
-      max-width: none !important;
-    }
+		.meta {
+			column-count: 3;
+		}
+	}
+}
 
-    img {
-      object-fit: cover;
-    }
-  }
+.home {
+	a > h2,
+	p > a {
+		color: var(--black) !important;
 
-  @include mq($until: tablet) {
-  }
+		&:hover {
+			color: var(--white) !important;
+		}
 
-  @include mq($from: tablet) {
-  }
+		transition: color 0.2s ease;
+	}
 
-  &.list {
-    > div {
-      @include mq($from: desktop) {
-        flex: 0 0 75%;
-        padding-right: 5%;
-      }
-    }
+	p > a {
+		border-color: var(--white) !important;
+	}
 
-    h2 {
-      padding-top: 0;
-    }
-    > a {
-      @include mq($until: desktop) {
-        display: none;
-      }
+	&:hover .meta a {
+		color: var(--black);
+	}
 
-      flex: 0 0 25%;
-      padding-right: var(--gutter);
-    }
+	.meta a {
+		border-bottom: 1px solid var(--white);
 
-    .meta {
-      column-count: 3;
-    }
-  }
+		&:hover {
+			color: var(--white);
+		}
+	}
 }
