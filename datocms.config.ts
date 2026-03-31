@@ -36,7 +36,16 @@ export function getRoute(item: any, _apiKey?: string): string {
 }
 
 export default {
-	route: async (item) => getRoute(item) ?? null,
+	route: async (item) => {
+		const apiKey = getItemApiKey(item);
+		if (apiKey === 'project_subpage') {
+			const { project } = await apiQuery(ProjectBySubpageDocument, {
+				variables: { subpageId: item.id },
+			});
+			return project ? `/projekt/${project.slug}/${item.slug}` : null;
+		}
+		return getRoute(item) ?? null;
+	},
 	routes: {
 		start: async (item) => [getRoute(item, 'start')],
 		about: async (item) => [getRoute(item, 'about')],
