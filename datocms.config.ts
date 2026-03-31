@@ -14,12 +14,12 @@ import { District } from '@/types/datocms-cma';
 export function getRoute(item: any, _apiKey?: string): string {
 	const apiKey = _apiKey ?? getItemApiKey(item);
 	if (!apiKey) throw new Error('No api key found');
-
+	const { slug } = item;
 	switch (apiKey) {
 		case 'start':
 			return '/';
 		case 'about':
-			return '/om';
+			return `/om/${slug}`;
 		case 'news':
 			return `/aktuellt/${item?.slug}`;
 		case 'project':

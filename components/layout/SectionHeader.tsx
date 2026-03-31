@@ -71,7 +71,7 @@ export default function SectionHeader({
 					className={cn(s.view, 'mid')}
 					onClick={() => setView(view === 'full' ? 'list' : 'full')}
 				>
-					{view === 'list' ? (
+					{view === 'full' ? (
 						<Icon src={ListIcon} nofill={true} />
 					) : (
 						<Icon src={ThumbIcon} nofill={true} />

@@ -14,7 +14,7 @@ export default async function StartSelectionCard({ item }: CardProps) {
 
 	return (
 		<li className={s.card} key={item.id}>
-			<Link href={href}>
+			<Link href={href} district={item.district as DistrictRecord}>
 				<figure className={s.figure}>
 					{item.image && (
 						<Image
