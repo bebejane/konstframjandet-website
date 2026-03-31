@@ -15,7 +15,7 @@ const Link: FC<LinkProperties> = (props: LinkProperties) => {
 	const { district: _district } = useDistrict();
 	const district = props.district ?? (_district as DistrictRecord);
 	const subdomain =
-		!isdev && district?.subdomain !== PRIMARY_SUBDOMAIN ? `/${district?.subdomain}` : '';
+		isdev && district?.subdomain !== PRIMARY_SUBDOMAIN ? `/${district?.subdomain}` : '';
 	const href = `${subdomain}${props.href}`;
 	return (
 		<NextLink {...props} href={href}>
