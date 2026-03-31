@@ -6,10 +6,10 @@ export default async function proxy(req: NextRequest) {
 	const prod = process.env.NODE_ENV === 'production';
 	const pathname = req.nextUrl.pathname;
 	const domain = req.headers.get('host') as string;
-	const rootDomain = domain.split('/')[1];
+	const rootDomain = domain.split('.')[1];
 	const subdomain = districts.find((d) => d.subdomain === rootDomain)?.subdomain;
 	const isAllowedDomain = !subdomain ? domain.endsWith(BASE_DOMAIN) : true;
-	console.log({ subdomain, isAllowedDomain, domain, pathname, reqUrl: req.url });
+	console.log({ subdomain, isAllowedDomain, domain, pathname, reqUrl: req.url, rootDomain });
 	if (!isAllowedDomain) return new Response(null, { status: 404 });
 
 	if (prod) {
