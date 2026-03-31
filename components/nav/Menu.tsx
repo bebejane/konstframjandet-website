@@ -125,13 +125,7 @@ export default function Menu({ district, districts, menu }: MenuProps) {
 									8
 								</a>
 								{district.englishShortcut && <Link href='/om/english'>English</Link>}
-								<Link
-									href={
-										process.env.NODE_ENV === 'production' ? 'https://www.konstframjandet.se' : '/'
-									}
-								>
-									Till Konstfrämjandet.se
-								</Link>
+								<NextLink href={'/'}>Till Konstfrämjandet.se</NextLink>
 							</>
 						)}
 					</div>
@@ -139,10 +133,12 @@ export default function Menu({ district, districts, menu }: MenuProps) {
 				<div className={s.wrapper}>
 					<ul>
 						{menu.map(({ type, slug, label }, idx) => {
-							const rootSlug = slug?.split('/')[1] ?? '';
+							const rootSlug = slug?.split('/')[1] ? `/${slug?.split('/')[1]}` : '';
 							const active =
-								pathname.startsWith(`/${rootSlug}`) ||
-								pathname.startsWith(`/${district.subdomain}/${rootSlug}`);
+								((pathname.startsWith(rootSlug) ||
+									pathname.startsWith(`/${district.subdomain}${rootSlug}`)) &&
+									rootSlug) ||
+								(!rootSlug && [`/${district.subdomain}`, '/'].includes(pathname));
 
 							return type !== 'district' ? (
 								<li key={idx} className={cn(active && !showDistricts && s.active)}>

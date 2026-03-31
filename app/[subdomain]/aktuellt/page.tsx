@@ -24,7 +24,7 @@ export default async function News({ params }: PageProps<'/[subdomain]/aktuellt'
 		stripStega: true,
 	});
 	if (!district) return notFound();
-	console.log(district);
+
 	const { allNews, _allNewsMeta, draftUrl } = await apiQuery(AllNewsDocument, {
 		variables: { districtId: district.id, first: pageSize, skip: 0 },
 	});
