@@ -21,11 +21,11 @@ export function getRoute(item: any, _apiKey?: string): string {
 		case 'about':
 			return `/om/${slug}`;
 		case 'news':
-			return `/aktuellt/${item?.slug}`;
+			return `/aktuellt/${slug}`;
 		case 'project':
-			return `/projekt/${item?.slug}`;
+			return `/projekt/${slug}`;
 		case 'project_subpage':
-			return `/projekt/${item?.project?.slug}/${item?.slug}`;
+			return `/projekt/${item?.project?.slug}/${slug}`;
 		case 'district':
 			return '/';
 		case 'contact':
@@ -54,7 +54,7 @@ export default {
 				variables: { subpageId: item.id },
 			});
 			return project
-				? [getRoute(item, 'project_subpage'), ...(await getItemReferenceRoutes(item.id))]
+				? [getRoute(project, 'project_subpage'), ...(await getItemReferenceRoutes(item.id))]
 				: null;
 		},
 		district: async () => ['/', '/om', '/projekt', '/aktuellt'],
