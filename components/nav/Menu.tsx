@@ -123,7 +123,7 @@ export default function Menu({ district, districts, menu }: MenuProps) {
 									8
 								</a>
 								{district.englishShortcut && <Link href='/om/english'>English</Link>}
-								<NextLink href={'/'}>Till Konstfrämjandet.se</NextLink>
+								<NextLink href={'https://www.konstframjandet.se'}>Till Konstfrämjandet.se</NextLink>
 							</>
 						)}
 					</div>
