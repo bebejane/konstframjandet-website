@@ -6,7 +6,7 @@ export default async function proxy(req: NextRequest) {
 	const prod = process.env.NODE_ENV === 'production';
 	const pathname = req.nextUrl.pathname;
 	const domain = req.headers.get('host') as string;
-	const rootDomain = domain.split('.')[0];
+	const rootDomain = prod ? domain.split('.')[0] : pathname.split('/')[1];
 	const subdomain = districts.find((d) => d.subdomain === rootDomain)?.subdomain;
 	const isAllowedDomain = !subdomain ? domain.endsWith(BASE_DOMAIN) : true;
 	console.log({
@@ -23,11 +23,9 @@ export default async function proxy(req: NextRequest) {
 		console.log('rewrite', `/${subdomain ?? PRIMARY_SUBDOMAIN}${pathname}`, req.url);
 		return NextResponse.rewrite(new URL(`/${subdomain ?? PRIMARY_SUBDOMAIN}${pathname}`, req.url));
 	} else {
-		const path = !subdomain ? PRIMARY_SUBDOMAIN : `/${subdomain}`;
-
-		return NextResponse.rewrite(
-			new URL(`${!subdomain ? `${path}` : `${subdomain}${path}`}`, req.url),
-		);
+		const path = `${!subdomain ? `/${PRIMARY_SUBDOMAIN}${pathname}` : pathname}`;
+		console.log('rewrite (dev)', path, req.url);
+		return NextResponse.rewrite(new URL(path, req.url));
 	}
 }
 
