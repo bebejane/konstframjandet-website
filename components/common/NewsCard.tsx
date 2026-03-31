@@ -24,6 +24,7 @@ export default function NewsCard({
 	const [view] = useStore(useShallow((state) => [state.view]));
 	const pathname = usePathname();
 	const isHome = pathname === '/' || pathname === `/index`;
+	console.log(pathname, isHome);
 
 	return (
 		<li id={id} className={cn(s.card, isHome && s.home, view === 'list' && s.list)}>
