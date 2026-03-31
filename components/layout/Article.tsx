@@ -64,11 +64,7 @@ export default function Article({
 							className={cn(s.mainImage, imageSize && s[imageSize])}
 							onClick={() => setImageId(image?.id)}
 						>
-							<Image
-								data={image.responsiveImage}
-								imgClassName={s.image}
-								placeholderClassName={s.image}
-							/>
+							<Image data={image.responsiveImage} />
 							<figcaption>{image.title}</figcaption>
 						</figure>
 					</>
