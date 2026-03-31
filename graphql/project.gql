@@ -31,6 +31,7 @@ query ProjectSubpage($slug: String!, $districtId: ItemId) {
 }
 
 fragment ProjectFragment on ProjectRecord {
+	__typename
 	_modelApiKey
 	_editingUrl
 	id
@@ -123,6 +124,7 @@ fragment ProjectFragment on ProjectRecord {
 }
 
 fragment ProjectFragmentLight on ProjectRecord {
+	__typename
 	_modelApiKey
 	_createdAt
 	_updatedAt

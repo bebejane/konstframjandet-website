@@ -66,8 +66,8 @@ export default function Article({
 						>
 							<Image
 								data={image.responsiveImage}
-								className={s.image}
-								pictureClassName={s.picture}
+								imgClassName={s.image}
+								placeholderClassName={s.image}
 							/>
 							<figcaption>{image.title}</figcaption>
 						</figure>

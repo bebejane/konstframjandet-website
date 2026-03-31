@@ -30,7 +30,9 @@ export default async function ProjectItem({
 		await getData(params);
 	if (!project) return notFound();
 
-	const { id, title, image, intro, subtitle, content, _seoMetaTags, slug } = project;
+	const { id, title, image, intro, subtitle, content, _seoMetaTags, slug, webpage, __typename } =
+		project;
+	console.log(__typename);
 
 	return (
 		<>
@@ -60,8 +62,8 @@ export default async function ProjectItem({
 					backLink={'/projekt'}
 					seo={_seoMetaTags}
 				/>
-				{project.__typename === 'ProjectRecord' && project.webpage && (
-					<ProjectWebpage href={project.webpage} color={projectColor}>
+				{project.__typename === 'ProjectRecord' && webpage && (
+					<ProjectWebpage href={webpage} color={projectColor}>
 						Besök projektets hemsida
 					</ProjectWebpage>
 				)}
