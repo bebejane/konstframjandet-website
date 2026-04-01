@@ -9,5 +9,11 @@
   border-radius: 50%;
   border: 0;
   cursor: pointer;
+  @include mq($from: semi-wide) {
+    font-size: 18px !important;
+  }
 
+  @include mq($until: desktop) {
+    font-size: 1rem;
+  }
 }
