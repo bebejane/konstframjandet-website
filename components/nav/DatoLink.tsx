@@ -10,8 +10,9 @@ export type Props = {
 export default async function DatoLink({ link, className, children }: Props) {
 	if (!link) return null;
 
-	const slug =
+	const href =
 		link.__typename === 'ExternalLinkRecord' ? link.url : await config.route(link.record);
+
 	const title =
 		link.__typename === 'ExternalLinkRecord'
 			? link.title
@@ -19,9 +20,9 @@ export default async function DatoLink({ link, className, children }: Props) {
 				(link.record.__typename === 'ParticipantRecord' ? link.record.name : link.record.title);
 
 	return link.__typename === 'ExternalLinkRecord' ? (
-		<a href={slug}>{children ?? title}</a>
+		<a href={href}>{children ?? title}</a>
 	) : (
-		<Link href={slug} className={className}>
+		<Link href={href} className={className}>
 			{children ?? title}
 		</Link>
 	);

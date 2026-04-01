@@ -8,7 +8,6 @@ import Link from '@/components/nav/Link';
 import Balancer from 'react-balance-text';
 import { usePathname } from 'next/navigation';
 import useStore, { useShallow } from '@/lib/store';
-import districts from '@/districts.json';
 import { isTenantHome } from '@/lib/tenancy';
 
 export default function NewsCard({

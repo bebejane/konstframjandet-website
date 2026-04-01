@@ -1,4 +1,5 @@
 import districts from '@/districts.json';
+import { stripStega } from '@datocms/content-link';
 export const PRIMARY_SUBDOMAIN = 'forbundet';
 export const BASE_DOMAIN =
 	process.env.NODE_ENV === 'production' ? 'konstframjandet.se' : 'localhost:3000';
@@ -13,11 +14,13 @@ export function getTenantUrl(subdomain?: string, pathname = '/') {
 				: ''
 			: prod
 				? `${subdomain}.`
-				: `/${subdomain}.`;
+				: `/${subdomain}`;
 
-	return prod
+	const url = prod
 		? `${BASE_PROTOCOL}${sub}${BASE_DOMAIN}${pathname}`
 		: `${BASE_PROTOCOL}${BASE_DOMAIN}${sub}${pathname}`;
+
+	return stripStega(url);
 }
 
 export function isTenantHome(pathname: string) {

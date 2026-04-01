@@ -15,7 +15,7 @@ import { DraftModeContentLink } from 'next-dato-utils/components';
 
 export default async function SubdomainLayout({ params, children }: LayoutProps<'/[subdomain]'>) {
 	const subdomain = (await params).subdomain ?? PRIMARY_SUBDOMAIN;
-	const { allDistricts, draftUrl } = await apiQuery(AllDistrictsDocument, { stripStega: true });
+	const { allDistricts } = await apiQuery(AllDistrictsDocument, { stripStega: true });
 	const district = allDistricts.find((d) => d.subdomain == subdomain) as DistrictRecord;
 	if (!district) return notFound();
 	const districtId = district.id;

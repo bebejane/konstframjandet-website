@@ -14,6 +14,7 @@ const Link: FC<LinkProperties> = (props: LinkProperties) => {
 	const { district: _district } = useDistrict();
 	const district = props.district ?? _district;
 	const href = getTenantUrl(district?.subdomain, props.href);
+
 	return (
 		<NextLink {...props} href={href}>
 			{props.children}

@@ -48,9 +48,9 @@ export default function MenuMobile({ menu, district }: Props) {
 	return (
 		<>
 			<header className={cn(s.navbar, open && s.open)}>
-				<NextLink id='logo-mobile' href={'/'} className={s.logo}>
+				<Link id='logo-mobile' href={'/'} className={s.logo}>
 					A
-				</NextLink>
+				</Link>
 				<h2>{isMainDistrict ? 'Konstfrämjandet' : `${district?.name}`}</h2>
 				<div className={cn(s.hamburger, 'symbol')} onClick={() => setOpen(!open)}>
 					{open ? '5' : '2'}
@@ -73,7 +73,7 @@ export default function MenuMobile({ menu, district }: Props) {
 											</span>
 											<ul className={cn(type === subSelected && s.expanded)}>
 												{items?.map(({ type, slug, label, subdomain }, idx) => {
-													const href = type === 'district' ? getTenantUrl(subdomain, slug) : slug;
+													const href = type === 'district' ? getTenantUrl(subdomain) : slug;
 													return (
 														<li key={idx}>{href && <NextLink href={href}>{label}</NextLink>}</li>
 													);
