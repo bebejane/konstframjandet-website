@@ -5,8 +5,8 @@ import { apiQuery } from 'next-dato-utils/api';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { buildMetadata } from '@/app/[subdomain]/layout';
-import { DraftMode } from 'next-dato-utils/components';
-import InfiniteScrollClient from '@/components/InfiniteScrollClient';
+import { DraftMode, InfiniteScrollClient } from 'next-dato-utils/components';
+import { draftMode } from 'next/headers';
 
 export type Props = {
 	news: NewsRecord[];
@@ -30,6 +30,8 @@ export default async function News({ params }: PageProps<'/[subdomain]/aktuellt'
 		variables,
 	});
 
+	const includeDrafts = (await draftMode()).isEnabled;
+
 	return (
 		<>
 			<SectionHeader title='Aktuellt' layout='news' />
@@ -41,6 +43,7 @@ export default async function News({ params }: PageProps<'/[subdomain]/aktuellt'
 							initial={allNews}
 							query={AllNewsDocument}
 							variables={variables}
+							options={{ includeDrafts }}
 							loader={
 								<li className={s.loaderWrap}>
 									<Loader className={s.loader} />

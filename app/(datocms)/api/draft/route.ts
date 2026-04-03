@@ -9,7 +9,7 @@ export async function GET(request: NextRequest): Promise<Response> {
 
 	const check = searchParams.get('check');
 	const secret = searchParams.get('secret');
-	const origin = searchParams.get('origin');
+	const origin = searchParams.get('origin') ?? url.origin;
 	const slug = searchParams.get('slug') ?? searchParams.get('redirect') ?? '/';
 	const exit = searchParams.get('exit');
 
