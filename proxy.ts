@@ -7,13 +7,12 @@ export default async function proxy(req: NextRequest) {
 	const domain = req.headers.get('host') as string;
 	const subdomain = getTenantSubdomain(req);
 	const isAllowedDomain = !subdomain ? domain.endsWith(BASE_DOMAIN) : true;
-
 	if (!isAllowedDomain) return new Response(null, { status: 404 });
 
 	if (prod) {
 		return NextResponse.rewrite(new URL(`/${subdomain ?? PRIMARY_SUBDOMAIN}${pathname}`, req.url));
 	} else {
-		const path = `${!subdomain ? `/${PRIMARY_SUBDOMAIN}${pathname}` : pathname}`;
+		const path = `${subdomain === PRIMARY_SUBDOMAIN ? subdomain : ''}${pathname}`;
 		return NextResponse.rewrite(new URL(path, req.url));
 	}
 }
