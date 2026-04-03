@@ -12,7 +12,7 @@ import {
 	ProjectBySubpageDocument,
 	SitemapDocument,
 } from '@/graphql';
-import { getTenantUrl } from '@/lib/tenancy';
+import { BASE_DOMAIN, getTenantUrl, PRIMARY_SUBDOMAIN } from '@/lib/tenancy';
 import { client } from '@/lib/client';
 import { District } from '@/types/datocms-cma';
 
@@ -83,8 +83,7 @@ export default {
 		const routes = await this.routes[apiKey as keyof typeof this.routes]?.(item);
 		return routes?.map((route) => `/${district.subdomain}${route}`) ?? [];
 	},
-	sitemap: async ({ params }: RouteContext<'/[subdomain]/sitemap.xml'>) => {
-		const { subdomain } = await params;
+	sitemap: async (subdomain: string = PRIMARY_SUBDOMAIN) => {
 		const { district } = await apiQuery(DistrictBySubdomainDocument, { variables: { subdomain } });
 		const { allNews, allAbouts, allProjects } = await apiQuery(SitemapDocument, {
 			all: true,
@@ -131,8 +130,7 @@ export default {
 			) as MetadataRoute.Sitemap;
 		return sitemap;
 	},
-	manifest: async ({ params }: RouteContext<'/[subdomain]/manifest.json'>) => {
-		const { subdomain } = await params;
+	manifest: async (subdomain: string = PRIMARY_SUBDOMAIN) => {
 		const { district } = await apiQuery(DistrictBySubdomainDocument, { variables: { subdomain } });
 
 		return {

@@ -1,8 +1,10 @@
 import config from '@/datocms.config';
+import { getTenantSubdomain } from '@/lib/tenancy';
 import { MetadataRoute } from 'next';
+import { NextRequest } from 'next/server';
 
-export async function GET(req: Request, { params }: RouteContext<'/[subdomain]/sitemap.xml'>) {
-	const sitemap = await config.sitemap({ params });
+export async function GET(req: NextRequest, { params }: RouteContext<'/sitemap.xml'>) {
+	const sitemap = await config.sitemap(getTenantSubdomain(req));
 	const xml = generateSitemapXml(sitemap);
 
 	return new Response(xml, {

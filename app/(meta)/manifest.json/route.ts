@@ -1,7 +1,9 @@
 import config from '@/datocms.config';
+import { NextRequest } from 'next/server';
+import { getTenantSubdomain } from '@/lib/tenancy';
 
-export async function GET(req: Request, { params }: RouteContext<'/[subdomain]/manifest.json'>) {
-	const manifest = await config.manifest({ params });
+export async function GET(req: NextRequest, { params }: RouteContext<'/manifest.json'>) {
+	const manifest = await config.manifest(getTenantSubdomain(req));
 
 	return new Response(JSON.stringify(manifest), {
 		status: 200,
