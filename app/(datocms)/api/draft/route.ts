@@ -4,13 +4,23 @@ import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest): Promise<Response> {
-	const searchParams = new URL(request.url).searchParams;
-	console.log(request.url);
+	const url = new URL(request.url);
+	const searchParams = url.searchParams;
+
 	const check = searchParams.get('check');
 	const secret = searchParams.get('secret');
+	const origin = searchParams.get('origin');
 	const slug = searchParams.get('slug') ?? searchParams.get('redirect') ?? '/';
 	const exit = searchParams.get('exit');
 
+	if (origin && origin !== url.origin) {
+		const originUrl = new URL(origin);
+		searchParams.forEach((value, key) => {
+			originUrl.searchParams.set(key, value);
+		});
+		console.log('origin redirect:', originUrl.toString());
+		return NextResponse.redirect(originUrl);
+	}
 	if (check) {
 		const enabled = (await draftMode()).isEnabled;
 		const secret = (await cookies()).get('secret')?.value;
