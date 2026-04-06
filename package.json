@@ -30,7 +30,7 @@
 		"email-validator": "^2.0.4",
 		"graphql": "^16.13.1",
 		"hamburger-react": "^2.5.2",
-		"next": "16.1.7",
+		"next": "16.2.2",
 		"next-dato-utils": "github:bebejane/next-dato-utils",
 		"react": "^19.2.4",
 		"react-balance-text": "^2.0.1",

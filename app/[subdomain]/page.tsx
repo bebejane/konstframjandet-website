@@ -32,6 +32,8 @@ export default async function Home({ params }: PageProps<'/[subdomain]'>) {
 			))}
 		</StartSelectionContainer>
 	);
+	console.log('hej3');
+	console.log('\\');
 
 	return (
 		<>

@@ -9,12 +9,12 @@ export default async function proxy(req: NextRequest) {
 	const isAllowedDomain = !subdomain ? domain.endsWith(BASE_DOMAIN) : true;
 	if (!isAllowedDomain) return new Response(null, { status: 404 });
 
-	if (prod) {
+	if (prod)
 		return NextResponse.rewrite(new URL(`/${subdomain ?? PRIMARY_SUBDOMAIN}${pathname}`, req.url));
-	} else {
-		const path = `${subdomain === PRIMARY_SUBDOMAIN ? subdomain : ''}${pathname}`;
-		return NextResponse.rewrite(new URL(path, req.url));
-	}
+	else
+		return NextResponse.rewrite(
+			new URL(`${subdomain === PRIMARY_SUBDOMAIN ? `/${subdomain}` : ''}${pathname}`, req.url),
+		);
 }
 
 export const config = {
