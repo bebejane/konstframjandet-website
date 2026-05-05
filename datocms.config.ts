@@ -67,9 +67,14 @@ export default {
 			const { project } = await apiQuery(ProjectBySubpageDocument, {
 				variables: { subpageId: item.id },
 			});
+
 			return project
-				? [`/projekt/${project.slug}/${item.slug}`, ...(await getItemReferenceRoutes(item.id))]
-				: null;
+				? [
+						`/projekt/${project.slug}/${item.slug}`,
+						`/projekt/${project.slug}`,
+						...(await getItemReferenceRoutes(item.id)),
+					]
+				: [];
 		},
 		district: async () => ['/', '/om', '/projekt', '/aktuellt'],
 		contact: async () => ['/kontakt'],
