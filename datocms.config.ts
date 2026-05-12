@@ -67,7 +67,8 @@ export default {
 			const { project } = await apiQuery(ProjectBySubpageDocument, {
 				variables: { subpageId: item.id },
 			});
-
+			console.log({ item });
+			console.log({ project });
 			return project
 				? [
 						`/projekt/${project.slug}/${item.slug}`,
