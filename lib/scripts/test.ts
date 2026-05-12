@@ -7,6 +7,8 @@ import {
 } from 'next-dato-utils/config';
 import { getRoute } from '@/datocms.config';
 import { client } from '@/lib/client';
+import { ProjectBySubpageDocument } from '@/graphql';
+import { apiQuery } from 'next-dato-utils/api';
 const item = {
 	__typename: 'AboutRecord',
 	_modelApiKey: 'about',
@@ -37,8 +39,13 @@ async function reIndex() {
 }
 
 async function main() {
+	const id = 'TneP7sWGTqmpUqRO4wo9JA';
+	const { project } = await apiQuery(ProjectBySubpageDocument, {
+		variables: { subpageId: id },
+	});
+	console.log(project);
 	//const res = await reIndex();
-	const res = await search('konst');
-	console.log(res);
+	//const res = await search('konst');
+	//console.log(res);
 }
 main();
