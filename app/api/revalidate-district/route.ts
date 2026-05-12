@@ -21,10 +21,11 @@ export async function POST(req: Request) {
 			});
 
 		const url = getTenantUrl(district.subdomain, '/');
+		//const url = `http://localhost:3000/`;
 
 		try {
 			console.log(`revalidate-district: ${url}`);
-			const response = await fetch(`${url}/api/revalidate`, {
+			const response = await fetch(`${url}api/revalidate`, {
 				method: 'POST',
 				body: JSON.stringify({ ...body }),
 				headers: {
@@ -39,6 +40,7 @@ export async function POST(req: Request) {
 			});
 
 			const data = await response.json();
+			console.log(data);
 			return new Response(JSON.stringify(data), {
 				status: response.status,
 				headers: { 'Content-Type': 'application/json' },
