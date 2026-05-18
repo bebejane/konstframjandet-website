@@ -39,7 +39,7 @@ async function reIndex() {
 }
 
 async function main() {
-	const id = 'TneP7sWGTqmpUqRO4wo9JA';
+	const id = 'dI_alcflQiW3GrqAY-rTtQ';
 	const { project } = await apiQuery(ProjectBySubpageDocument, {
 		variables: { subpageId: id },
 	});
