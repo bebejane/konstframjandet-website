@@ -35,6 +35,8 @@ const nextConfig: NextConfig = {
 	logging: false,
 	experimental: {
 		prefetchInlining: true,
+		workerThreads: false,
+		cpus: 1,
 	},
 	async headers() {
 		return [
